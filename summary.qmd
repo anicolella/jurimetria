@@ -1,0 +1,25 @@
+# Sumário do Curso
+
+## **Resumo**:
+
+A pesquisa no direito e a ciência de dados: introdução, relevância e experiências; Coleta, transformação e estruturação de dados processuais com R; Estatística descritiva; Aprendizado estatístico (regressão linear, regressão logística); Aprendizado estatístico (*machine learning*); Interpretação dos resultados e elaboração de relatório.
+
+## **Plano detalhado das aulas:**
+
+1.  A pesquisa no direito e a ciência de dados: introdução, relevância e experiências - 25/04
+
+2.  Coleta, transformação e estruturação de dados processuais com R - 02/05
+
+3.  Coleta, transformação e estruturação de dados processuais com R - 09/05
+
+4.  Análise descritiva e visualização de dados processuais - 16/05
+
+5.  Modelos lineares aplicados a pesquisa em direito -- regressão linear - 23/05
+
+6.  Modelos para diferentes tipos de estrutura de dados e variáveis. - 06/06
+
+7.  Aprendizado estatístico (*machine learning*) - 13/06
+
+8.  Aprendizado estatístico (*machine learning*) - 20/06
+
+9.  Interpretação dos resultados e elaboração do relatório - 27/06

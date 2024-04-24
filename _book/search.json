@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Jurimetria",
+    "section": "",
+    "text": "1 Prefácio"
+  },
+  {
+    "objectID": "index.html#nossa-motivação",
+    "href": "index.html#nossa-motivação",
+    "title": "Jurimetria",
+    "section": "1.1 Nossa Motivação:",
+    "text": "1.1 Nossa Motivação:\nEsse curso foi criado pensando em profissionais com formação em direito, estatística, tecnologia da informação e demais profissionais que atuam tanto no judiciário quanto em tribunais administrativos. A ideia é colocar juntas diversas visões sobre um mesmo problema para buscarmos soluções mais criativas e eficicientes para as desigualdades nacionais."
+  },
+  {
+    "objectID": "index.html#nosso-objetivo",
+    "href": "index.html#nosso-objetivo",
+    "title": "Jurimetria",
+    "section": "1.2 Nosso Objetivo:",
+    "text": "1.2 Nosso Objetivo:\nÉ oferecer aos participantes uma abordagem probabilística do direito aplicado, tendo como foco os casos práticos e discutindo questões relativas ao direito e desigualdades. Especificamente, objetiva-se ensinar um conjunto de métodos quantitativos e oferecer ferramentas para coleta, transformação e análise de dados jurídicos disponibilizados nas páginas dos tribunais de justiça."
+  },
+  {
+    "objectID": "index.html#nosso-problema",
+    "href": "index.html#nosso-problema",
+    "title": "Jurimetria",
+    "section": "1.3 Nosso Problema:",
+    "text": "1.3 Nosso Problema:\nTeremos como tema de fundo nesse curso os processos de homicídio feminino. Especificamente queremos compreender qual o perfil e os determinantes do feminicidio no Estado de São Paulo."
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "2  Introdução ao Feminicídio",
+    "section": "",
+    "text": "Nessa seção pensei em falarmos um pouco no no caso referências etc…."
+  },
+  {
+    "objectID": "summary.html#resumo",
+    "href": "summary.html#resumo",
+    "title": "3  Sumário do Curso",
+    "section": "3.1 Resumo:",
+    "text": "3.1 Resumo:\nA pesquisa no direito e a ciência de dados: introdução, relevância e experiências; Coleta, transformação e estruturação de dados processuais com R; Estatística descritiva; Aprendizado estatístico (regressão linear, regressão logística); Aprendizado estatístico (machine learning); Interpretação dos resultados e elaboração de relatório."
+  },
+  {
+    "objectID": "summary.html#plano-detalhado-das-aulas",
+    "href": "summary.html#plano-detalhado-das-aulas",
+    "title": "3  Sumário do Curso",
+    "section": "3.2 Plano detalhado das aulas:",
+    "text": "3.2 Plano detalhado das aulas:\n\nA pesquisa no direito e a ciência de dados: introdução, relevância e experiências - 25/04\nColeta, transformação e estruturação de dados processuais com R - 02/05\nColeta, transformação e estruturação de dados processuais com R - 09/05\nAnálise descritiva e visualização de dados processuais - 16/05\nModelos lineares aplicados a pesquisa em direito – regressão linear - 23/05\nModelos para diferentes tipos de estrutura de dados e variáveis. - 06/06\nAprendizado estatístico (machine learning) - 13/06\nAprendizado estatístico (machine learning) - 20/06\nInterpretação dos resultados e elaboração do relatório - 27/06"
+  }
+]

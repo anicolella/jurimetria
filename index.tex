@@ -1,0 +1,302 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrreprt}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Jurimetria das Desiguladades},
+  pdfauthor={Fabiana Severi; Alexandre Nicolella, José de Jesus Filho},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Jurimetria das Desiguladades}
+\author{Fabiana Severi; Alexandre Nicolella, José de Jesus Filho}
+\date{2024-06-04}
+
+\begin{document}
+\maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, interior hidden, breakable, sharp corners, enhanced, frame hidden]}{\end{tcolorbox}}\fi
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\bookmarksetup{startatroot}
+
+\hypertarget{prefuxe1cio}{%
+\chapter{Prefácio}\label{prefuxe1cio}}
+
+\hypertarget{nossa-motivauxe7uxe3o}{%
+\section{\texorpdfstring{\textbf{Nossa
+Motivação:}}{Nossa Motivação:}}\label{nossa-motivauxe7uxe3o}}
+
+Esse curso foi criado pensando em profissionais com formação em direito,
+estatística, tecnologia da informação e demais profissionais que atuam
+tanto no judiciário quanto em tribunais administrativos. A ideia é
+colocar juntas diversas visões sobre um mesmo problema para buscarmos
+soluções mais criativas e eficicientes para as desigualdades nacionais.
+
+\hypertarget{nosso-objetivo}{%
+\section{\texorpdfstring{\textbf{Nosso
+Objetivo}:}{Nosso Objetivo:}}\label{nosso-objetivo}}
+
+É oferecer aos participantes uma abordagem probabilística do direito
+aplicado, tendo como foco os casos práticos e discutindo questões
+relativas ao direito e desigualdades. Especificamente, objetiva-se
+ensinar um conjunto de métodos quantitativos e oferecer ferramentas para
+coleta, transformação e análise de dados jurídicos disponibilizados nas
+páginas dos tribunais de justiça.
+
+\hypertarget{nosso-problema}{%
+\section{\texorpdfstring{\textbf{Nosso
+Problema}:}{Nosso Problema:}}\label{nosso-problema}}
+
+Teremos como tema de fundo nesse curso os processos de homicídio
+feminino. Especificamente queremos compreender qual o perfil e os
+determinantes do feminicidio no Estado de São Paulo.
+
+\bookmarksetup{startatroot}
+
+\hypertarget{introduuxe7uxe3o-ao-feminicuxeddio}{%
+\chapter{Introdução ao
+Feminicídio}\label{introduuxe7uxe3o-ao-feminicuxeddio}}
+
+Nessa seção pensei em falarmos um pouco no no caso referências
+etc\ldots.
+
+\bookmarksetup{startatroot}
+
+\hypertarget{sumuxe1rio-do-curso}{%
+\chapter{Sumário do Curso}\label{sumuxe1rio-do-curso}}
+
+\hypertarget{resumo}{%
+\section{\texorpdfstring{\textbf{Resumo}:}{Resumo:}}\label{resumo}}
+
+A pesquisa no direito e a ciência de dados: introdução, relevância e
+experiências; Coleta, transformação e estruturação de dados processuais
+com R; Estatística descritiva; Aprendizado estatístico (regressão
+linear, regressão logística); Aprendizado estatístico (\emph{machine
+learning}); Interpretação dos resultados e elaboração de relatório.
+
+\hypertarget{plano-detalhado-das-aulas}{%
+\section{\texorpdfstring{\textbf{Plano detalhado das
+aulas:}}{Plano detalhado das aulas:}}\label{plano-detalhado-das-aulas}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  A pesquisa no direito e a ciência de dados: introdução, relevância e
+  experiências - 25/04
+\item
+  Coleta, transformação e estruturação de dados processuais com R -
+  02/05
+\item
+  Coleta, transformação e estruturação de dados processuais com R -
+  09/05
+\item
+  Análise descritiva e visualização de dados processuais - 16/05
+\item
+  Modelos lineares aplicados a pesquisa em direito -- regressão linear -
+  23/05
+\item
+  Modelos para diferentes tipos de estrutura de dados e variáveis. -
+  06/06
+\item
+  Aprendizado estatístico (\emph{machine learning}) - 13/06
+\item
+  Aprendizado estatístico (\emph{machine learning}) - 20/06
+\item
+  Interpretação dos resultados e elaboração do relatório - 27/06
+\end{enumerate}
+
+\bookmarksetup{startatroot}
+
+\hypertarget{a-pesquisa-no-direito-e-a-ciuxeancia-de-dados}{%
+\chapter{A pesquisa no direito e a ciência de
+dados}\label{a-pesquisa-no-direito-e-a-ciuxeancia-de-dados}}
+
+\bookmarksetup{startatroot}
+
+\hypertarget{section}{%
+\chapter{}\label{section}}
+
+\bookmarksetup{startatroot}
+
+\hypertarget{references}{%
+\chapter*{References}\label{references}}
+\addcontentsline{toc}{chapter}{References}
+
+\markboth{References}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\end{CSLReferences}
+
+
+
+\end{document}
