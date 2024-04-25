@@ -1,8 +1,9 @@
-.Rproj.user
+.quarto
+/.quarto/
+.RData
 .Rhistory
-.Rdata
+
+.Rproj.user
 .httr-oauth
 .DS_Store
-.quarto
-
-/.quarto/
+.quarto/
