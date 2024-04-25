@@ -1,2 +1,9 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # jurimetria
-Notas de Aula
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+O objetivo do curso será
