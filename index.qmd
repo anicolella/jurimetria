@@ -12,6 +12,4 @@ Esse curso foi criado pensando em profissionais com formação em direito, estat
 
 Teremos como tema de fundo nesse curso os processos de homicídio feminino. Especificamente queremos compreender qual o perfil e os determinantes do feminicidio no Estado de São Paulo.
 
-```{r}
-2+2
-```
+
