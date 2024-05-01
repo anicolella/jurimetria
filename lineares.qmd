@@ -1,0 +1,559 @@
+---
+title: "Modelos Lineares"
+subtitle: "Aplicação na Pesquisa em Direito"
+format: html
+tbl-cap-location: top
+code-fold: false
+code-summary: "show the code"
+---
+
+<!---- comentário é assim que faz ------->
+
+# Regressão Linear Simples - RLS
+
+## Introdução
+
+Considere o modelo abaixo
+
+$$y = \beta_0 + \beta_1x + u $$ Nesta equação, $y$ é a variavel dependente ou também denominada de variável explicativa; $x$ é a variável explicativa e $u$ é o termo de erro. Essa equação é uma equação de **regressão linear simples**.
+
+Considere um exemplo mais concreto de uma equação de regressão linear simples. Sumponha que gostariamos de explicar a taxa de crimes nos bairros de uma cidade, dado os níveis de desemprego na localidade. Nosso modelo de regressão poderia ser específicado da seguinte maneira:
+
+$$crime_i = \beta_0 + \beta_1Desemprego_i + u$$ O subscrito $i$ se refere a um bairro hipotético da cidade. Note que nesse caso,$i$ é o subscrito que relaciona nossas unidades de observação (bairros). Nossas unidades de observação podem variar a depender do contexto em estudo: países, cidades, bairros, estados. No caso das aplicações em Jurimetria, por exemplo, podemos ter como unidade de observação varas onde tramitam os processos.
+
+Note que, novamente o termo de erro, $u$, está presente na equação. O termo de erro, não observado, capta tudo aquilo que afeta $crime$, mas que não estamos controlando. Adiante faremos hipóteses sobre as características de $u$ que irão nos auxiliar na analise da RLS.
+
+Voltemos a equação básica:
+
+$$y = \beta_0 + \beta_1x + u $$
+
+Na analise de RLS estamos interessados nos parametros $\beta_0$ e sobretudo $\beta_1$. A razão primordial para isso é que, tudo o mais constante, a relação acima aponta que
+
+$$\Delta y = \beta_1 \Delta x $$ , se $\Delta u = 0$
+
+Isto é, se tudo o mais que afeta $y$ permanecer inalterado, uma variáção em $x$, $\Delta x$, terá um impacto de $\beta_1 \Delta x$ em $y$. No exemplo da criminalidade, teremos que:
+
+$$\Delta crime = \beta_1 \Delta desemprego $$
+
+Por isso, quando conseguimos estimar os parêmetros $\beta$ estamos mais próximos de entender as relações entre $x$ e $y$ em nossas aplicações.
+
+Cabe destacar algo bastante importante.As relações acima não encerram a questão da causalidade. Como podemos inferir um impacto causal do desemprego na criminalidade se estamos ignorando todos os demais fatores que ficaram de fora do modelo - fatores que são captados em $u$ não observados.
+
+Para avançarmos no que diz respeito a firmações de carater causais, precisamos fazer hipoteses sobre o comportamento de $u$. Com isso estaremos mais perto de inferir causalidade.
+
+### Alguns Exemplos de Regressão Aplicados ao Contexto Jurídico:
+
+Considere os seguintes exemplos de RLS aplicadas ao contexto do Direito
+
+**Previsão de Sentenças com Base na Gravidade do Crime:** Onde, a variável dependente e a Duração da Sentença, e a variável independente é a Gravidade do Crime, $\beta_0$é o intercepto da regressão. $\beta_1$ é o coeficiente de regressão que representa como a gravidade do crime influência a duração da sentença, $u$ é o termo de erro.
+
+$$Dsent = \beta_0 + \beta_1{\text{Gravidade}} + u$$
+
+**Análise de Fatores que Influenciam o Tempo de Julgamento:** Variável Independente ($x$), Tipo de Processo (por exemplo, criminal, civil, administrativo). Variável Dependente ($y$, Tempo de Duração do Processo. Objetivo: Identificar se o tipo de processo tem impacto no tempo que um caso leva para ser concluído.
+
+$$Tempo = \beta_0 + \beta_1  Processo  + u$$
+
+**Previsão de Probabilidade de Recurso com Base em Decisões Anteriores:** Variável Independente ($x$): Resultado da Decisão Anterior (por exemplo, deferimento ou negação do recurso). Variável Dependente ($y$): Probabilidade de Entrada com Recurso. Objetivo: Determinar a probabilidade de um recurso ser apresentado com base no resultado de decisões passadas.
+
+$$Resultado = \beta_0 + \beta_1 Resultado_{-1} + u $$ **Análise de Relação entre Número de Testemunhas e Veredito:** Variável Independente ($x$): Número de Testemunhas. Variável Dependente ($y$): Veredito (por exemplo, culpado ou inocente). Objetivo: Investigar se o número de testemunhas influencia o veredito
+
+$$ Veredito = \beta_0 + \beta_1 Testemunhas + u $$
+
+## Hipóteses sobre o comportamento do Termo de Erro
+
+Se especificamos o modelo com $\beta_0$, podemos assumir que $u$, tem média igual a zero. Em notação de esperança matematica essa hipotese equivale a:
+
+$$E(u) = 0$$ Note que, $x$ é $u$ são variaveis aleatórias, então então podemos definir a distribuição condicional de $u$ dado qualquer valor de $x$. Especialmente, para qualquer valor de $x$ podemos obter o valor médio de $u$ para uma parte da populção com uma dado valor de $x$.
+
+Com base nisso, podemos definir uma segunda hipotese sobre $u$. Uma hipótese bastante forte, é a de que $u$ e $x$ são independentes. Tal hípótese é a hipótese crucial do modelo de RLS:
+
+$$E(u|x) = 0$$
+
+Essa hipótese é denominada de hipótese de independência da média de $x$.
+
+Justas as hipóteses de $E(u) = 0$ e $E(u|x) = 0$ são denominadas de hipotese de média condicional zero.
+
+Ao adcionarmos essas hipoteses em nosso arcabouço de estudo RLS, temos uma nova interpretação do parametro $\beta_1$ (focaremos mais neste parametro, visto que \$ é em geral menos importante na maioria das aplicações de análise de regressão)
+
+Considere o modelo baixo padrão
+
+$$y = \beta_0 + \beta_1x + u$$ Aplicando o operador $E( \cdot |x )$, obetmos
+
+$$ E( y |x ) = \beta_0 + \beta_1x $$ Assim, na equação acima, temos um aumento de uma unidade em $x$, implica em um aumento no valor esperado (ou em média) de $y$ na magnitude de $\beta_1$.
+
+Para todo $x$ a distribuição dos valores de $y$ estarão centratas ao redor da média condicional de $y$ dado $x$, \$ E( y \|x )\$. Lembre que a média é uma medida de tendencia central. Nesse sentido, a regressão linear simples calcula uma média condicional.
+
+A equação acima, é caracterizada como **função de regressão populacional**. Essa função nos fornece a elação entre os diferentes níveis de$x$ é o nível médio de $y$, isto é $E( y |x )$.
+
+![Função de Regressão Populacional](modelpop.png)
+
+Agora, podemos voltar a nossa equação base e verificarmos o progresso feito no entendimento do modelo:
+
+$$y = \beta_0 + \beta_1x + u $$ $$y = E( y |x ) + u $$ Na equação acima, $E( y |x )$ é chamada de parte sistematica de $y$. Isto é, a parte sistematicamente explicada por $x$. Já o termo de erro não observado, $u$ é a parte não sistematica de $y$, não explicada por $x$.
+
+## Estimação dos Parâmetros da RLS
+
+Não conhecemos $\beta_0$ e $\beta_1$ queremos estimadores desses parametros: $\hat{\beta_0}$ e $\hat{\beta_1}$.
+
+Suponha que tenhamos uma amostra aleatória da população: $\{(x_i, y_i): i = 1, ..., n\}$
+
+Em nosso modelo base:
+
+$$y_i = \beta_0 + \beta_1x_i + u_i $$
+
+onde $u_i$ é o erro aleatório da $i$-ésima observação.
+
+Como estimamos $\beta_0$ e $\beta_1$?
+
+Utilizando as hipoteses $E(u) = 0$ e $E(u|x) = 0$, podemos utilizar aplicar um estimador de metodos dos momentos.
+
+Como $x$ e $u$ são não correlacionados (são independentes), a covariancia entre eles é 0, $Cov(x,u) = 0$. Pode-se demostrar que
+
+$$Cov(x,u) = E(ux) - E(u)E(x)$$
+
+Mas como, por hipotese, $E(u) = 0$, a equação anterior se reduz à
+
+$$Cov(x,u) = E(ux)$$ Assim, como $Cov(x,u)$ é $0$, temos também que
+
+$$E(ux) = 0$$ Logo, temos que $$E(u) = 0$$ e
+
+$$E(xu)=0$$ Essas duas ultimas igualdades, são denominadas **condições de momentos populacionais**. Elas são hipóteses feitas na população.
+
+Para aplicarmos o Método dos Momentos, precisamos igual as condições de momento populacionais as condições de momentos amostrais.
+
+Antes, vamos reescrever as condições populacionais.
+
+Como
+
+$$y = \beta_0 + \beta_1x + u $$
+
+Podemos isolar $u$ e obtermos
+
+$$ u  =  y - \beta_0  - \beta_1x $$ Com isso podemos reescrever as hipoteses $E(u) = 0$ e $E(ux) = 0$ reespectivamente como
+
+$$E( y - \beta_0  - \beta_1x) = 0$$
+
+$$E(x( y - \beta_0  - \beta_1x)) = 0$$ Os equivalentes amostrais serão dados por:
+
+$$n^{-1} \sum_{i=1}^{n} (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2 = 0$$ e
+
+$$ n^{-1} \sum_{i=1}^{n} x_i (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2 = 0$$
+
+As duas equações acima formam um sistema de 2 equações com 2 incognitas, $\beta_0$ e $\beta_1$. Com algumas manipilações algébricas é possível demostrar que, os valores de dos parâmetros $\beta_0$ e $\beta_1$ serão dados por:
+
+$$\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}$$
+
+e
+
+$$\hat{\beta}_1 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n} (x_i - \bar{x})^2}$$
+
+Onde, \bar{x} e \bar{y} são as médias amostrais de $x$ e $y$ respectivamente.
+
+Os estimadores $\hat{\beta}_0$ e $\hat{\beta}_1$ são chamados de estimadores de Mínimos Quadrados Ordinários (MQO). Note que, entretanto, método de estimação para encontrarmos $\hat{\beta}_0$ e $\hat{\beta}_1$. Na verdade, pode-se mostrar que as estimativas do modelo de RLS serão equivalentes pelos dois métodos, dadas as hipoteses enunciadas anteriormente.
+
+A ideia é que os parametros que estimamos, $\hat{\beta}_0$ e $\hat{\beta}_1$, são os parametros que minimizam a soma dos quadrados das diferenças entre nossos $y_i$ obversados e seus **valores preditos** definidos como
+
+$$\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1x_i$$
+
+O raciocinio é o seguinte. Vamos definir a distancia entre $y_i$ é $\hat{y}_i$, denominada de **resíduo da equação** como
+
+$$\hat{u_i} = \hat{y}- \hat{y}_i = y_i - \hat{\beta}_0 + \hat{\beta}_1x$$
+
+Note que em uma amostra de tamanho $n$, teremos $n$ desses resíduos. Esconlhendo os parametros $\hat{\beta}_0$ e $\hat{\beta}_1$ que minimizam a soma dos quadrados desses resíduos:
+
+$$\sum_{i=1}^{n} \hat{u}_i^2 = \sum_{i=1}^{n} (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2$$
+
+Formalmente a soma dos quadrados dos resíduos é uma função de $\hat{\beta_0}$ e $\hat{\beta_1}$. Chamemos essa função de $Q(\hat{\beta_0},\hat{\beta_1} )$:
+
+$$Q(\hat{\beta_0},\hat{\beta_1} ) = \sum_{i=1}^{n} (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2$$ Utilizando tecnicas de minimização do cálculo (foras do escopo deste curso), obteremos os valores de $\hat{\beta_0}$ e $\hat{\beta_1}$:
+
+$$\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}$$
+
+e
+
+$$\hat{\beta}_1 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n} (x_i - \bar{x})^2}$$ Tal qual obtidos anteriormente.
+
+Independentemente do método escolido, conseguimos obter a **Função de Regressão Amostral (FRA)**, que é a versão estimada da **Função de Regressão Populacional (FRP)**
+
+A FRP é fixa e desconhecida, a FRA varia de amostra para amostra.
+
+Formalmente, a FRA é dada por
+
+$$\hat{y}= \hat{\beta}_0 + \hat{\beta}_1x$$
+
+Como mencionado anteriormente, nosso interresse primordial reside em $\hat{\beta}_1$
+
+![Valores Ajustados e Resíduos de MQO](fittedvalue.png)
+
+Note que conforme já comentado:
+
+$$\Delta \hat{y} = \hat{\beta}_1 \Delta x $$
+
+Isolando $\hat{\beta_1}$
+
+$$ \hat{\beta}_1  = \Delta \hat{y} /\Delta x $$
+
+Assim, uma variáção, $\Delta$, em $x$, nos permimite calcular o impacto em $y$, medido dado por $\hat{\beta}_1$.
+
+Antes de passarmos para o proxímo tópico de RLS, cabe mencionar uma nota sobre terminologia: quando estimamos equações de RLS do tipo $y = \beta_0 + \beta_1 x + u$, dizemos que "*rodamos a regressão de* $y$ sobre $x$ !"
+
+### Aplicação - Estimando uma Regressão Linear Simples
+
+```{r}
+### Aplicação da RLS - Método dos Mínimos Quadrados Ordinários
+
+
+
+```
+
+## Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados
+
+### Valores estimados e Resíduos
+
+Uma vez estimados $\hat{\beta}_0$ e $\hat{\beta}_1$ temos os valores ajustados ou também denominados de valores preditos ou *fitted values*.
+
+Para uma observação qualquer $i$, seu valor estimado é:
+
+$$\hat{y}_i= \hat{\beta}_0 + \hat{\beta}_1x_i$$
+
+De maneira geral teremos a reta de regressão, dada por:
+
+$$\hat{y}= \hat{\beta}_0 + \hat{\beta}_1x$$
+
+Todos os valores $\hat{y}$ estarão sobre a reta de regressão.
+
+O resíduo, tal qual definido anteriormente, será a diferença entre o valor ajustado $\hat{y}$ e o verdadeiro $y$ em nosso banco de dados:
+
+$$\hat{u}_i = y_i - \hat{y}_i$$
+
+Se $\hat{u_i} > 0$ a regressaõ subestima $y_i$. Se $\hat{u_i} < 0$ a reta superestima $y_i$. O cenário ideal é quando $\hat{u}_i= 0$, algo que quase nunca acontece.
+
+### Propriedades Algébricas do MQO
+
+(1) A Soma dos Resíduos é zero:
+
+$$\sum_{i=1}^{n} \hat{u}_i = 0$$
+
+(2) A covariancia amostral entre a variavel explicativa e os resíduos é zero:
+
+$$\sum_{i=1}^{n} x_i \hat{u}_i = 0$$
+
+(3) O ponto $(\bar{x},\bar{y})$ sempre estará sob a reta de regressão.
+
+(4) A média dos valores estimados, $\bar{\hat{y}}$ é igual a média dos valores observados $\bar{y}$.
+
+(5) Note que as estimatvas de MQO decompõe $y$ em 2 partes: 1) os valores ajustados $\hat{y}$ e os resíduos $\hat{u}$.
+
+(6) Os valores de $\hat{y}$ e $\hat{u}$ são não correlacionados na amostra!
+
+### Qualidade do Ajuste
+
+Nesta seção vamos responder a seguinte questão: "*Quão bem* $x$ explica $y$ ?"
+
+Considere as seguintes definições
+
+Soma dos Quadrado Totais (SQT):
+
+$$\text{SQT} = \sum_{i=1}^{n} (y_i - \bar{y})^2$$
+
+Soma dos Quadrados Explicados (SQE):
+
+$$\text{SQE} = \sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2$$
+
+Soma dos Quadrados dos Resíduos (SQR):
+
+$$\text{SQR} = \sum_{i=1}^{n} \hat{u}_i^2$$ Temos alguns resultados bem importantes. Note que, ao dividirmos $SQT$ por $n-1$, teremos a variancia amostral de $y$. Por sua vez, ao dividirmos $SQE$ por $n-1$, termeos a variancia populacional de $\hat{y}$.
+
+Entretanto, o resultado mais importante é o seguinte:
+
+$$SQT =  SQE + SQR$$ É apartir dessa iguadade que podemos mostrar algo sobre o ajuste dos MQO.
+
+Dívidindo ambos os lados por $SQT$ teremos
+
+$$1 = \frac{\text{SQE}}{\text{SQT}}  + \frac{\text{SQR}}{\text{SQT}}$$ Rearranjando os termos
+
+$$R^2 = \frac{\text{SQE}}{\text{SQT}} = 1 - \frac{\text{SQR}}{\text{SQT}}$$
+
+O $R^2$ é a porcentagem da variação de y que é explicada por $x$. O valor de $R^2$ sempre estará na RLS entre $0$ e $1$.
+
+O nome $R^2$ advém do fato de que, pode ser mostrado que tal médida é equivalente ao quadrado do coeficiente de correlação entre $\hat{y}$ e $y$.
+
+## Ausência de Viés e Variância dos Estimadores de MQO
+
+### Ausencia de Viés em MQO
+
+Um estimador não viésado (ou não tendêncioso) por definição, um estimador que em média "acerta" o verdadeiro valor do parâmetro estimado.
+
+Considere um estimador arbitrario $\hat{\theta}$. Quando dezemos que $\hat{\theta}$ é não viesado, queremos dizer que
+
+$$E(\hat{\theta}) = \theta$$
+
+Será que os $\hat{\beta}_0$ e $\hat{\beta}_1$ estimados pelo método do MQO são não viésados?
+
+Para responder a essa pergunta precisamos, mais uma vez, recorrer a novas hipoteses sobre os dados. Esse novo conjunto de hipoteses irão nos permitir verificarmos algumas **propriedades estatísticas do método de MQO**. A depender das hipóteses, umas mais fracas que outras, as propriedades podem mudar.
+
+A garantia da ausência de viés, em dados de corte transversal, requer quatro hipóteses:
+
+**1) Linearidade dos Parametros**: No modelo Populacional a variavel dependente $y$ está relacionada a variável dependente $x$ e ao termo de erro $u$ como:
+
+$$y = \beta_0 + \beta_1x + u $$ Por exemplo no modelo $y= \beta_0 + e^{\beta_1} + u$, não é linear no parametro $\beta_1$.
+
+**2) Amostragem Aleatória:** Usamos uma amostra aleatória de tamanho $n$, $\{(x_i, y_i): i = 1, 2, ..., n\}$ proveniente de um modelo populacional.
+
+**3) Existe Variação Amostral em** $x$: Isto é, os valores de nossa variável explicativa não são todos iguais.
+
+**4) Independencia da Média:** O termo de erro $u$ tem um valor esperado de zero, dado qualquer valor da variável explicativa.$$E(u|x) = 0$$
+
+Dadas as hipóteses 1, 2, 3 e 4:
+
+$$E(\hat{\beta_1}) = \beta_1$$
+
+e
+
+$$E(\hat{\beta_0}) = \beta_0$$
+
+Portantos nossoa estimadores de MQO, são não viésados.
+
+### Variância dos estimadores de MQO
+
+Quão distantes em média $\hat{\beta_0}$ e $\hat{\beta_1}$ estão dos verdadeiros parâmetros? Saber disso nos permite escolher o melhor estimador entre todos os etimadores não viesados - ou ao menos entre uma ampla classe deles.
+
+Para obetermos expressões tratáveis das variâncias do MQO recorremos a mais uma hipótese.
+
+**5) Hipótese de Homoscedasticidade:** O erro $u$ tem a mesma variâcia, dado qualquer valor da variável explicativa. Isto é,
+
+$$Var(u|x)=\sigma^2$$
+
+A variância de $u$ pode ser reescrita em termos de esperança:
+
+$$Var(u|x)= \sigma^2 = E(u^2|x) - [E(u|x)]^2$$
+
+Mas como temos por hipótese que $[E(u|x)]=0$, a hipótese de homoscedasticidade as vezes é representada como
+
+$$ E(u^2|x) = \sigma^2$$
+
+Note também, que como $E(u)=0$, a variancia do erro, não condicional a $x$, será dada por:
+
+$$\sigma^2=E(u^2)=Var(u)$$ Por isso chamamos $\sigma^2$ de **variância do erro**.
+
+Podemos "vizualizar" a hipótese de homoscedasticidade na figura abaixo:
+
+![Modelo de Regressão Sob Homoscedasticidade](homoscedastic.png)
+
+Apartir das hiopóteses 1,2,3,4 e 5 podemos progredir no entendimento dos MQO. Sob as hipoteses 1 - 5, as variancias de $\hat{\beta_1}$ e $\hat{\beta_0}$ são dadas por:
+
+$$\text{Var}(\hat{\beta}_1) = \frac{\sigma^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2}=\frac{\sigma^2}{\text{SST}_x}$$ e
+
+$$\text{Var}(\hat{\beta}_0) = \frac{\sigma^2n^{-1}\sum_{i=1}^{n} x_i^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2}$$
+
+Uma extenção da variância dos estimadores de MQO são seus desvios padrão definidos simplismente pela raiz quadrada da variância:
+
+$$ep(\hat{\beta}_0) = \sqrt{Var(\hat{\beta_0})}$$
+
+e
+
+$$ep(\hat{\beta}_1) = \sqrt{Var(\hat{\beta_1})} = \frac{\sigma}{\sqrt{SQT_x}}$$
+
+### Estimação da Variância do erro
+
+Note que, nas formulas das variâncias e dos desvios-padrão, o que aparece explicitamente é o parâmetro populacional, $\sigma^2$ e $\sigma$. Raramente conhecemos esses valores, logo as formulas derivadas acima terão pouca utilidade. Não obstante, caso encontremos um estimador para $\sigma^2$ e $\sigma$ podemos usar esse estimador.
+
+Podemos utilizar os resíduos para construir um estimador da variância dos erros. Lembre que o resíduos da $i$-ésima observação do modelo é dado por:
+
+$$\hat{u_i} = y_i - \hat{y_i}$$ Pode-se demostrar que, um estimador não viesado de $\sigma^2$ será dado por:
+
+$$\hat{\sigma}^2=\frac{\sum_{i=1}^{n} \hat{u}_i^2}{n-2} = \frac{\text{SQR}}{n-2}$$
+
+Com $\hat{\sigma}^2$ em mãos, podemos reescrever os erros padrão dos estimadores de MQO:
+
+$$ep(\hat{\beta}_1) = \sqrt{Var(\hat{\beta_1})} = \frac{\hat{\sigma}^2}{\sqrt{SQT_x}}$$
+
+Os erros padrão são utilizados para calcularmos as estatísticas de teste e Intervalos de Confiança para as Estimativas. Mais a frente iremos nos concentar nessas questões.
+
+## Aplicação de RLS - Foco no erro padrão do parametro b1
+
+```{r}
+
+### Aplicação do de RLS - Foco no erro padrão
+
+
+```
+
+# Regressão Linear Múltipla (RLM)
+
+A RLM é uma extensão natural da RLS. Entretanto, ao invés de termos apenas uma variável explicativa podemos ter $k$ variáveis dependentes
+
+$$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \ldots + \beta_k x_k + u$$ A hípótese fundamental é a de que:
+
+$$E(u|x_1, . . . ,x_k) = 0$$
+
+Qualquer problema que faça qualquer um dos $x_1, ...., x_k$ ser correlacionado com $u$ invalida a hipótese acima. Tal hipótese implica em não viés do MQO.
+
+## Exemplos de Regressão Multipla no Contexto Jurídico
+
+**Determinação de Fatores que Afetam o Valor de Indenizações:** Variáveis Independentes: Idade da Vítima, Gravidade do Dano, Jurisdição. Variável Dependente: Valor da Indenização.Objetivo: Analisar como a idade da vítima, a gravidade do dano e a jurisdição influenciam o valor das indenizações concedidas
+
+$$Indenização = \beta_0 + \beta_1 idade+ \beta_2 Gravidade + \beta_2 Jurisdisção + u$$
+
+**Análise de Variáveis que Influenciam Taxas de Condenação em Casos Criminais:** Variáveis Independentes: Idade do Réu, Tipo de Crime, Local do Julgamento. Variável Dependente: Taxa de Condenação.Objetivo: Investigar como a idade do réu, o tipo de crime e o local do julgamento afetam a probabilidade de condenação.
+
+$$Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Local  + \beta_3  crime + u$$
+
+**Análise de Fatores que Influenciam a Taxa de Feminicídio:** Variáveis Independentes (X): Taxa de Desemprego, Índice de Educação, Presença de Políticas de Proteção à Mulher. Variável Dependente (Y): Taxa de Feminicídio por 100.000 mulheres. Objetivo: Investigar como o desemprego, o nível de educação e a existência de políticas de proteção à mulher estão relacionados à taxa de feminicídio em diferentes regiões.
+
+$$Tx.feminicidio = \beta_0 + \beta_1 desemprego + \beta_2 educ + \beta_3 política + u $$
+
+## A Interpretação da Equação de Regressão de MQO
+
+Tal qual no modelo de RLS, temos que:
+
+$$\Delta y = \beta_1 \Delta x_1 + \beta_2 \Delta x_2 + ...+\beta_k \Delta x_k$$
+
+O coefiente $\beta_j$, com $j=1,...k$, mede o efeito do incremento de uma unidade de $x_j$ em $y$.
+
+Suponha que estejamos interessados no impacto de $x_1$. Podemos fazer o seguinte exercício: Tudo o mais constante qual o impacto de $x_1$ em $y$:
+
+$$\frac{\Delta y}{\Delta x} = \beta_1  $$
+
+Manter outros fatores fixos permite o cientista social, "mimetizar" um experimento, tal qual nas Ciências Naturasi. Obviamente, isso não tão simples assim. Entretanto, mater outros fatores fixos, e supondo que $$E(u|x_1, . . . ,x_k) = 0$$ , nos aproxíma de afirmações de cunho causal.
+
+## Estimação dos k parametros na RLM
+
+### Estimativas de MQO
+
+A mecânica para conseguirmos estimativas de $\beta_j$, fica uma pouco mais complicada. Felizmente, os *softwares*, tais como o *R*, fornecem essas estimativas com muita facilidade. Não obstante, convêm apresentar uma abordagem para o calculo desses parâmetros. Utilizaremos álgebra de matrizes para mostrar um "algoritmo" para calcular esses $\beta_j$. Em verdade, esse é o algoritmo utilizado pela função `lm()` do *R* no computo dos estimadores.
+
+Considere o modelo para a $i$-ésima observação
+
+$$y_i = \beta_0 + \beta_1 x_{i1} + \beta_{i2} x_2 + \beta_{i3} x_3 + \ldots + \beta_k x_{ik} + u$$
+
+como temos $n$ observações (tamanho de nossa amostra), podemos organizar esses valores em vetores e matrizes.
+
+Para os valores de $y$ teremos
+
+$$
+\mathbf{y} = \begin{bmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{bmatrix}
+$$
+
+Os valores das variáves independentes $X$ podem ser organizados da seguinte maneira:
+
+$$\mathbf{X} = \begin{bmatrix}
+1 & x_{11} & \cdots & x_{1k} \\
+1 & x_{21} & \cdots & x_{2k} \\
+\vdots & \vdots & \ddots & \vdots \\
+1 & x_{n1} & \cdots & x_{nk}
+\end{bmatrix}$$
+
+Os $\beta_j$ são organizados da seguinte maneira:
+
+$$\boldsymbol{\beta} = \begin{bmatrix}
+\beta_0 \\
+\beta_1 \\
+\beta_2 \\
+\vdots \\
+\beta_p
+\end{bmatrix}$$
+
+Os erros $u_i$ serão armazenados da em um vetor coluna tambêm:
+
+$$\mathbf{u} = \begin{bmatrix}
+u_1 \\
+u_2 \\
+\vdots \\
+u_n
+\end{bmatrix}$$
+
+Apartir disso representamos o modelo de RLM da seguinte maneira:
+
+$$\mathbf{y} = \mathbf{X} \boldsymbol{\beta} + \mathbf{u}$$
+
+Queremos encontrar um estimador de $\boldsymbol{\beta}$, que chamaremos de $\boldsymbol{\hat{\beta}}$. Esse estimador sera dado por:
+
+$$\hat{\boldsymbol{\beta}} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}$$
+
+Onde $\mathbf{X}^T$ é a matriz transposta de $\mathbf{X}$, e $(\mathbf{X}^T \mathbf{X})^{-1}$ é a matriz inversa da seguinte multiplicação de matrizes, $(\mathbf{X}^T \mathbf{X})$
+
+Esse vetor de estimativas irá nos fornecer os valores para os $\beta_j$,com $j=1,...,k$. Assim temos que:
+
+$$ \hat{\boldsymbol{\beta}} = \begin{bmatrix}
+\hat{\beta}_0 \\
+\hat{\beta}_1 \\
+\hat{\beta}_2 \\
+\vdots \\
+\hat{\beta}_k
+\end{bmatrix}$$
+
+Antes, de prosseguirmos cabe destacar que, embora não precisamos saber as formulas explicitas para dos $\hat{\beta_j}$, as vezes isso nos ajuda a entender o funcionamento da regressão multipla e os efeitos parciais que os $\beta_j$ exercem sobre $y$.
+
+Por exemplo, $\hat{\beta_1}$ pode ser representado da seguinte maneira no contexto da RLM:
+
+$$\hat{\beta}_1 = \frac{\sum_{i=1}^n \hat{r_{i1}} y_i}{\sum_{i=1}^n \hat{r_{i1}}^2}$$
+
+Onde $r_{i1}$ são os resíduos da regressão de $x_1$ sobre todas as demais variáveis do modelo $x_2,...,x_k$. Nesse caso, podemos entender que \$\hat{\beta}\_1 \$ mede o efeito de $x_1$ sobre $y$ após terem sido *parcializados* ou *descontados* os impactos de $x_2,...,x_k$.
+
+Para um $\beta_j$ qualquer a interpretação é análoga.
+
+$$\hat{\beta}_j = \frac{\sum_{i=1}^n \hat{r_{ij}} y_i}{\sum_{i=1}^n \hat{r_{ij}}^2}$$
+
+## Qualidade do Ajuste na Regressão Linear Multipla
+
+Tal qual na regressão linear simples, são válidas as seguintes relações:
+
+Soma dos Quadrado Totais (SQT):
+
+$$\text{SQT} = \sum_{i=1}^{n} (y_i - \bar{y})^2$$
+
+Soma dos Quadrados Explicados (SQE):
+
+$$\text{SQE} = \sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2$$
+
+Soma dos Quadrados dos Resíduos (SQR):
+
+$$\text{SQR} = \sum_{i=1}^{n} \hat{u}_i^2$$ Novamente podemos definir a qualidade do ajuste, medido pelo $R^2$, como sendo igual à
+
+$$R^2 = \frac{\text{SQE}}{\text{SQT}} = 1 - \frac{\text{SQR}}{\text{SQT}}$$
+
+Explicitamente podemos escrever o $R^2$ tal como:
+
+$$R^2 =  \frac{[\sum_{i=1}^n (y_i - \bar{y}) ( \hat{y}_i - \bar{\hat{y}} )]^2}{[\sum_{i=1}^n (y_i - \bar{y})^2][\sum_{i=1}^n(\hat{y}-\bar{\hat{y}})^2]}$$
+
+Um fato importante sobre $R^2$ é que ele nunca diminui ao incluirmos variáveis no modelo. Isso decorre de propriedades algébricas desse indicador.Por isso, os softwares geralmente reportam uma outra estatística de ajuste o R-quadrado ajustado,$\bar{R}^2$:
+
+$$\bar{R}^2 = 1 - \frac{(1 - R^2)(n - 1)}{n - k - 1}$$ O $\bar{R}^2$, tal como expresso acima conta com a presença do $R^2$ original, mas note que, no denominador estamos dividindo por $n-k-1$, onde $n$ é o tamanho da amostra em mãos, e $k-1$ se referem ao fato de termos $k$ variáveis explicativas e uma constante. Portanto, o $\bar{R}^2$, impões uma penalidade à inclusão de variáveis independentes em um modelo de regressão.
+
+Cabe destacar que, diferente do $R^2$, $\bar{R}^2$ pode ser negativo, indicando um ajuste bastante pobre do modelo.
+
+Não obstante, cabe destacar que um $R^2$ baixo não é definitivamente uma evidencia definitiva contra nosso modelo. Em ciências sociais em geral é bastante comum verificarmos $R^2$ relatvamente pequenos. Isso significa que, embora coletovamente as variáveis explicativas não expliquem muito das variações de $y$, é possível que as estimativas de MQO sejam estimativas confiaveis dos efeitos parciais - tudo o mais constante - de cada $x_j$ sobre $y$.
+
+## Valor Espererado dos Estimadores de MQO
+
+## Variância dos Estimadores de MQO
+
+## Uso de Variáveis Qualitativas na Análise de RLM
+
+## Alguns Problemas que podem surgir na análise de regressão
+
+### Viés de Variável Omitida
+
+### Multicolinearidade
+
+### Heteroscedasticidade
+
+# Teste de Hipóteses no RLM
+
+## Hipótese de Normalidade
+
+## Teste de Hipotese sob um unico Parametro
+
+### Teste contra Hipoteses Alternativas Unilaterais
+
+### Teste contra Hipoteses Alternativas Bilaterais
+
+### Cálculos dos p-valores dos Testes t
+
+### Teste de Restrições de Lineares Múltiplas: O teste F
