@@ -1,1 +1,15 @@
 # Análise Descritiva
+
+# Conceitos Básicos de Probabilidade e Estatística
+
+##  Probabilidade Conceitos Básicos
+
+## Medidas de Tendência Central
+
+##  Variáveis Aleatórias e Esperança Matématica
+
+### Uma Breve Introdução as Variáveis Aleatórias Conjuntamente Distribuídas
+
+##   Conceitos Básicos Inferência Estatística
+
+### População, Amostra, Parâmetros e Estimadores

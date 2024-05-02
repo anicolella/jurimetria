@@ -1,6 +1,6 @@
 ---
 title: "Modelos Lineares"
-subtitle: "Aplicação na Pesquisa em Direito"
+subtitle: "Aplicação a Pesquisa em Direito"
 format: html
 tbl-cap-location: top
 code-fold: false
@@ -9,7 +9,19 @@ code-summary: "show the code"
 
 <!---- comentário é assim que faz ------->
 
-# Regressão Linear Simples - RLS
+
+
+#  Regressão Linear Simples - RLS
+
+Vamos iniciar o estudo de modelos lineares começando pela Regresão Linear Simples (RLS). Mais específicamente, vamos estudar a RLS no contexto de dados de corte transversal. Tal abordagem, segmentada por tipos de dados, facilíta o entendimento das hipóteses do modelo. 
+
+Entender como funciona o modelo RLS é a base para entender como funciona outras extensões desse tipo de modelo, tal como o modelo de regressão linear multipla (RLM), amplamente utilizado em trabalhos empíricos.
+
+Os conceitos estatísticos aplicados no estudo de RLS são os mesmos apresentados na seção anterior.
+
+O matérial desta seção é baseado na 4ed do livro de Jeffrey Wooldridge, Introdução à Econometria: Uma Abordagem Moderna, de 2013. Embora o título do livro remeta à econometria, os modelos apresentados no livro são aplicaveis à diversas Ciências Sociais, tais como o Direito, Ciência Política, Sociologia, Pscologia Empírica etc...
+
+A análise de Regressão é um instrumento poderoso para os centistas sociais. Grosso modo, como veremos abaixo, ela nos permite simular, ao menos parcialmente, aplicações de caráter quase experimental. Podemos verificar como determinadas variáveis importantes nas ciencias sociais interagem com outras variáveis, as vezes em uma relação de causa e efeito. 
 
 ## Introdução
 
@@ -59,7 +71,7 @@ $$Resultado = \beta_0 + \beta_1 Resultado_{-1} + u $$ **Análise de Relação en
 
 $$ Veredito = \beta_0 + \beta_1 Testemunhas + u $$
 
-## Hipóteses sobre o comportamento do Termo de Erro
+##  Hipóteses sobre o comportamento do Termo de Erro
 
 Se especificamos o modelo com $\beta_0$, podemos assumir que $u$, tem média igual a zero. Em notação de esperança matematica essa hipotese equivale a:
 
@@ -85,7 +97,7 @@ Para todo $x$ a distribuição dos valores de $y$ estarão centratas ao redor da
 
 A equação acima, é caracterizada como **função de regressão populacional**. Essa função nos fornece a elação entre os diferentes níveis de$x$ é o nível médio de $y$, isto é $E( y |x )$.
 
-![Função de Regressão Populacional](modelpop.png)
+![Função de Regressão Populacional](figuras\modelpop.png)
 
 Agora, podemos voltar a nossa equação base e verificarmos o progresso feito no entendimento do modelo:
 
@@ -183,7 +195,7 @@ $$\hat{y}= \hat{\beta}_0 + \hat{\beta}_1x$$
 
 Como mencionado anteriormente, nosso interresse primordial reside em $\hat{\beta}_1$
 
-![Valores Ajustados e Resíduos de MQO](fittedvalue.png)
+![Valores Ajustados e Resíduos de MQO](figuras\fittedvalue.png)
 
 Note que conforme já comentado:
 
@@ -197,7 +209,7 @@ Assim, uma variáção, $\Delta$, em $x$, nos permimite calcular o impacto em $y
 
 Antes de passarmos para o proxímo tópico de RLS, cabe mencionar uma nota sobre terminologia: quando estimamos equações de RLS do tipo $y = \beta_0 + \beta_1 x + u$, dizemos que "*rodamos a regressão de* $y$ sobre $x$ !"
 
-### Aplicação - Estimando uma Regressão Linear Simples
+###  Aplicação - Estimando uma Regressão Linear Simples
 
 ```{r}
 ### Aplicação da RLS - Método dos Mínimos Quadrados Ordinários
@@ -206,7 +218,7 @@ Antes de passarmos para o proxímo tópico de RLS, cabe mencionar uma nota sobre
 
 ```
 
-## Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados
+##  Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados
 
 ### Valores estimados e Resíduos
 
@@ -246,7 +258,7 @@ $$\sum_{i=1}^{n} x_i \hat{u}_i = 0$$
 
 (6) Os valores de $\hat{y}$ e $\hat{u}$ são não correlacionados na amostra!
 
-### Qualidade do Ajuste
+###  Qualidade do Ajuste
 
 Nesta seção vamos responder a seguinte questão: "*Quão bem* $x$ explica $y$ ?"
 
@@ -314,7 +326,7 @@ $$E(\hat{\beta_0}) = \beta_0$$
 
 Portantos nossoa estimadores de MQO, são não viésados.
 
-### Variância dos estimadores de MQO
+###  Variância dos estimadores de MQO
 
 Quão distantes em média $\hat{\beta_0}$ e $\hat{\beta_1}$ estão dos verdadeiros parâmetros? Saber disso nos permite escolher o melhor estimador entre todos os etimadores não viesados - ou ao menos entre uma ampla classe deles.
 
@@ -336,9 +348,9 @@ Note também, que como $E(u)=0$, a variancia do erro, não condicional a $x$, se
 
 $$\sigma^2=E(u^2)=Var(u)$$ Por isso chamamos $\sigma^2$ de **variância do erro**.
 
-Podemos "vizualizar" a hipótese de homoscedasticidade na figura abaixo:
+Podemos "vizualizar " a hipótese de homoscedasticidade na figura abaixo:
 
-![Modelo de Regressão Sob Homoscedasticidade](homoscedastic.png)
+![Modelo de Regressão Sob Homoscedasticidade](figuras\homoscedastic.png)
 
 Apartir das hiopóteses 1,2,3,4 e 5 podemos progredir no entendimento dos MQO. Sob as hipoteses 1 - 5, as variancias de $\hat{\beta_1}$ e $\hat{\beta_0}$ são dadas por:
 
@@ -354,7 +366,7 @@ e
 
 $$ep(\hat{\beta}_1) = \sqrt{Var(\hat{\beta_1})} = \frac{\sigma}{\sqrt{SQT_x}}$$
 
-### Estimação da Variância do erro
+###  Estimação da Variância do erro
 
 Note que, nas formulas das variâncias e dos desvios-padrão, o que aparece explicitamente é o parâmetro populacional, $\sigma^2$ e $\sigma$. Raramente conhecemos esses valores, logo as formulas derivadas acima terão pouca utilidade. Não obstante, caso encontremos um estimador para $\sigma^2$ e $\sigma$ podemos usar esse estimador.
 
@@ -379,7 +391,7 @@ Os erros padrão são utilizados para calcularmos as estatísticas de teste e In
 
 ```
 
-# Regressão Linear Múltipla (RLM)
+#  Regressão Linear Múltipla (RLM)
 
 A RLM é uma extensão natural da RLS. Entretanto, ao invés de termos apenas uma variável explicativa podemos ter $k$ variáveis dependentes
 
@@ -389,7 +401,7 @@ $$E(u|x_1, . . . ,x_k) = 0$$
 
 Qualquer problema que faça qualquer um dos $x_1, ...., x_k$ ser correlacionado com $u$ invalida a hipótese acima. Tal hipótese implica em não viés do MQO.
 
-## Exemplos de Regressão Multipla no Contexto Jurídico
+##  Exemplos de Regressão Multipla no Contexto Jurídico
 
 **Determinação de Fatores que Afetam o Valor de Indenizações:** Variáveis Independentes: Idade da Vítima, Gravidade do Dano, Jurisdição. Variável Dependente: Valor da Indenização.Objetivo: Analisar como a idade da vítima, a gravidade do dano e a jurisdição influenciam o valor das indenizações concedidas
 
@@ -399,7 +411,7 @@ $$Indenização = \beta_0 + \beta_1 idade+ \beta_2 Gravidade + \beta_2 Jurisdis�
 
 $$Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Local  + \beta_3  crime + u$$
 
-**Análise de Fatores que Influenciam a Taxa de Feminicídio:** Variáveis Independentes (X): Taxa de Desemprego, Índice de Educação, Presença de Políticas de Proteção à Mulher. Variável Dependente (Y): Taxa de Feminicídio por 100.000 mulheres. Objetivo: Investigar como o desemprego, o nível de educação e a existência de políticas de proteção à mulher estão relacionados à taxa de feminicídio em diferentes regiões.
+**nálise de Fatores que Influenciam a Taxa de Feminicídio:** Variáveis Independentes (X): Taxa de Desemprego, Índice de Educação, Presença de Políticas de Proteção à Mulher. Variável Dependente (Y): Taxa de Feminicídio por 100.000 mulheres. Objetivo: Investigar como o desemprego, o nível de educação e a existência de políticas de proteção à mulher estão relacionados à taxa de feminicídio em diferentes regiões.
 
 $$Tx.feminicidio = \beta_0 + \beta_1 desemprego + \beta_2 educ + \beta_3 política + u $$
 
@@ -419,7 +431,7 @@ Manter outros fatores fixos permite o cientista social, "mimetizar" um experimen
 
 ## Estimação dos k parametros na RLM
 
-### Estimativas de MQO
+###  Estimativas de MQO
 
 A mecânica para conseguirmos estimativas de $\beta_j$, fica uma pouco mais complicada. Felizmente, os *softwares*, tais como o *R*, fornecem essas estimativas com muita facilidade. Não obstante, convêm apresentar uma abordagem para o calculo desses parâmetros. Utilizaremos álgebra de matrizes para mostrar um "algoritmo" para calcular esses $\beta_j$. Em verdade, esse é o algoritmo utilizado pela função `lm()` do *R* no computo dos estimadores.
 
@@ -498,7 +510,8 @@ Onde $r_{i1}$ são os resíduos da regressão de $x_1$ sobre todas as demais var
 
 Para um $\beta_j$ qualquer a interpretação é análoga.
 
-$$\hat{\beta}_j = \frac{\sum_{i=1}^n \hat{r_{ij}} y_i}{\sum_{i=1}^n \hat{r_{ij}}^2}$$
+$$\hat{\beta}_j = \frac{\sum_{i=1}^n \hat{r_{ij}} y_i}{\sum_{i=1}^n \hat{r_{ij}}^2}$$ 
+
 
 ## Qualidade do Ajuste na Regressão Linear Multipla
 
@@ -524,36 +537,240 @@ $$R^2 =  \frac{[\sum_{i=1}^n (y_i - \bar{y}) ( \hat{y}_i - \bar{\hat{y}} )]^2}{[
 
 Um fato importante sobre $R^2$ é que ele nunca diminui ao incluirmos variáveis no modelo. Isso decorre de propriedades algébricas desse indicador.Por isso, os softwares geralmente reportam uma outra estatística de ajuste o R-quadrado ajustado,$\bar{R}^2$:
 
-$$\bar{R}^2 = 1 - \frac{(1 - R^2)(n - 1)}{n - k - 1}$$ O $\bar{R}^2$, tal como expresso acima conta com a presença do $R^2$ original, mas note que, no denominador estamos dividindo por $n-k-1$, onde $n$ é o tamanho da amostra em mãos, e $k-1$ se referem ao fato de termos $k$ variáveis explicativas e uma constante. Portanto, o $\bar{R}^2$, impões uma penalidade à inclusão de variáveis independentes em um modelo de regressão.
+
+
+$$\bar{R}^2 = 1 - \frac{(1 - R^2)(n - 1)}{n - k - 1}$$
+O $\bar{R}^2$, tal como expresso acima conta com a presença do $R^2$ original, mas note que, no denominador estamos dividindo por $n-k-1$, onde $n$ é o tamanho da amostra em mãos, e $k-1$ se referem ao fato de termos $k$ variáveis explicativas e uma constante. Portanto, o $\bar{R}^2$, impões uma penalidade à inclusão de variáveis independentes em um modelo de regressão.
 
 Cabe destacar que, diferente do $R^2$, $\bar{R}^2$ pode ser negativo, indicando um ajuste bastante pobre do modelo.
 
 Não obstante, cabe destacar que um $R^2$ baixo não é definitivamente uma evidencia definitiva contra nosso modelo. Em ciências sociais em geral é bastante comum verificarmos $R^2$ relatvamente pequenos. Isso significa que, embora coletovamente as variáveis explicativas não expliquem muito das variações de $y$, é possível que as estimativas de MQO sejam estimativas confiaveis dos efeitos parciais - tudo o mais constante - de cada $x_j$ sobre $y$.
 
-## Valor Espererado dos Estimadores de MQO
 
-## Variância dos Estimadores de MQO
 
-## Uso de Variáveis Qualitativas na Análise de RLM
+##  Valor Espererado dos Estimadores de MQO
 
-## Alguns Problemas que podem surgir na análise de regressão
+Quando analisamos a ausencia de viés nos estimadores do modelo de RLS, um invocamos um conjunto de hipóteses. Felizmente, na nalises de RLM tais hipoteses se mantém, bastando apenas algumas modificações para o contexto de mais variáveis explicativas. Abaixo vamos enunciar essas hipoteses que garantem o não viés dos $\beta_j$ estimados.
 
-### Viés de Variável Omitida
+**1) Linearidade dos Parametros**: No modelo Populacional a variavel dependente $y$ está relacionada as variáveis  independentes e ao termo de erro $u$ como:
 
-### Multicolinearidade
+$$y = \beta_0 + \beta_1x_1 + ...+\beta_kx_k+u $$ 
 
-### Heteroscedasticidade
+
+
+**2) Amostragem Aleatória:** Usamos uma amostra aleatória de tamanho $n$, $\{(x_{i1},...,x_{ik}, y_i): i = 1, 2, ..., n\}$ proveniente de um modelo populacional.
+
+**3) Colinearidade não Perfeita:** Na amostra, e portanto na população, nehuma das variáveis explicativas são constantes e não há relações lineares extas entre as variáveis.Isto é, tais variáveis não são perfeitamente correlacionadas.
+
+\*\**4) Independencia da Média:** O termo de erro $u$ tem um valor esperado de zero, dado qualquer valor da variável explicativa.
+
+$$E(u|x_1,...,x_k) = 0$$
+
+
+Essa é a propriedade mais importante. Tal hipótese é violada quando a forma funciinal das variáveis explicativas e da variável dependente está incorreta  ou mal especificada.
+
+Qundo a hipótese se mantém, dizemos que as variáveis explicativas são exógenas.
+
+Dadas as hipóteses 1, 2, 3 e 4:
+
+$$E(\hat{\beta_j}) = \beta_j$$
+Para $j = 1,2,...,k$. Isto é, $\hat{\beta_j}$ são não viesados
+
+##  Variância dos Estimadores de MQO
+
+Analogamente ao que foi feito no caso da regressão simples, para obtermos a variância dos $\hat{\beta_j}$ de MQO presisamos recorrer à mais uma hipótese. Tal hipótese é a de homoscedasticidade. Isto é, de que condicionadas as variáveis explicativas, a variância do termo de erro é constante para todas as observações.
+
+
+**5) Hipótese de Homoscedasticidade:** O erro $u$ tem a mesma variâcia, dado qualquer valor das variáveis explicativas:
+
+
+$$Var(u|x_1,...,x_k)=\sigma^2$$
+
+ Sob as hipóteses 1,2,3,4 e 5, a varincias de $\hat{\beta_j}$ e dada por:
+
+$$\text{Var}(\hat{\beta}_j) = \frac{\hat{\sigma}^2}{\sum_{i=1}^{n} (x_{ij} - \bar{x_j})^2(1-R^2_j)}=\frac{\hat\sigma^2}{\text{SQT}_j(1-R^2_j)}$$
+Onde $SQT_j$ é a a variação amostral de $x_j$e $R^2_j$ é o R-quadrado da regressão de $x_j$ sobre as outras variáveis explicativas.O termo $\hat{\sigma}^2$ é o estimador da variâcia do termo de erro $u$, dado por:
+
+
+$$\hat{\sigma}^2=\frac{\sum_{i=1}^{n} \hat{u}_i^2}{n-k-1} = \frac{\text{SQR}}{n-k-1}$$
+Onde $n-k-1$ são os graus de liberdade do problema de MQO: $k$ variáveis e uma constantante.
+
+### Eficiencia de MQO: O Teorema de Gauss-Markov
+
+**Teorema de Gauss-Markov:**Sob as hipóteses 1,2,3,4 e 5 os estimadores $\hat{\beta}_0,\hat{\beta}_1,...,\hat{\beta}_k$ são os melhores estimadores lineares não viesados de $\beta_1, \beta_2,...,\beta_k$.
+
+Se alguma das hipóteses falhar, o teorema não é mais válido.
+
+É o teorema de Gauss-Markov que justifica o uso do MQO para estimar modelos de Regressão Linear Múltipla.
+
+
+##  Uso de Variáveis Qualitativas na Análise de RLM 
+
+Considere os exemplos mencionados anteriormente.
+
+**Determinação de Fatores que Afetam o Valor de Indenizações:** Variáveis Independentes: Idade da Vítima, Gravidade do Dano, Jurisdição. Variável Dependente: Valor da Indenização.Objetivo: Analisar como a idade da vítima, a gravidade do dano e a jurisdição influenciam o valor das indenizações concedidas
+
+$$Indenização = \beta_0 + \beta_1 idade+ \beta_2 Gravidade + \beta_2 Jurisdisção + u$$
+
+**Análise de Variáveis que Influenciam Taxas de Condenação em Casos Criminais:** Variáveis Independentes: Idade do Réu, Tipo de Crime, Local do Julgamento. Variável Dependente: Taxa de Condenação.Objetivo: Investigar como a idade do réu, o tipo de crime e o local do julgamento afetam a probabilidade de condenação.
+
+$$Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Local  + \beta_3  crime + u$$
+
+**nálise de Fatores que Influenciam a Taxa de Feminicídio:** Variáveis Independentes (X): Taxa de Desemprego, Índice de Educação, Presença de Políticas de Proteção à Mulher. Variável Dependente (Y): Taxa de Feminicídio por 100.000 mulheres. Objetivo: Investigar como o desemprego, o nível de educação e a existência de políticas de proteção à mulher estão relacionados à taxa de feminicídio em diferentes regiões.
+
+$$Tx.feminicidio = \beta_0 + \beta_1 desemprego + \beta_2 educ + \beta_3 política + u $$
+
+Em todos esses exemplos temos o denominamos de **variáveis qualitativas**. No primeiro exemplo, gravidade e jurisdição não são quantificaveis. No segundo exemplo, o tipo de crime, e a localidade também não. Por fim, no último exemplo, a variável que indica ou não a presença de uma política pública de proteção a mulher também é qualitativa. 
+
+Felizmente, isso não traz problemas adcionais a estimação de MQO. Pelo menos quando tais variáveis aparecem como variáveis explicativas. Mais a frente veremos o que acontece quando a variável dependente é do tipo qualitativa.
+
+Duas coisas mudam quando temos as variáveis qualitativas como regressores. Em primeiro lugar temos que organizar essas informações no banco de dados de modo coerente. Em sugundo lugar, a introdução de variáveis qualitativas muda a interpretação dos resultados.
+
+Fatores qualitativos geralmente aparecem na forma de informações binários, também denominadas,*dummy*.
+
+Variável Binária ou Dummy: É uma variável que assume o valor 1 se a "condição occorre" e 0 caso o contrario.
+
+Exemplos:
+O crime de feminicio ocorreu na região central? se sim, ela recebe o valor 1, se não recebe o valor 0. Podemos ter uma coluna em nosso banco de dados denominada centro, nas quais a linha recebe o valor 1 caso o crime tenha ocorrido, por exemplo, no centro e 0 caso o contrário.
+
+O crime foi considerado grave? Se sim, recebe o valor 1 se não recebe o valor 0.
+
+Suponha que queiramos investigar descriminação de gênero no mercado de trabalho. Se tivermos uma base de dados com informçoes sobre diversos individuos como anos de estudo, experiencia no mercado de trabalho. Podemos ter também uma variavel binaria que assume o valor 1 caso o individuo na amostra for do sexo feminino ou 0 caso o contrario.
+
+O mesmo pode acontecer com etnia. Podemos ter uma dummy que assuma o valor 1, caso o individuo seja autodeclarado não-branco e 0, caso o contrario.
+
+As observações que tiveram 1 como valor serão comparadas com aquelas observações que ficaram com o valor 0. Essas observações seriam nosso "grupo de comparação/grupo base". 
+
+Trabalhar com variáveis qualitativas é muito comum. Na maioria das vezes cabe ao  pesquisador o julgamento de trabalhar com uma variável desse tipo.
+
+Utilizae 1 ou 0 é, de fato, um criterio arbitrario. Todavia, essa escolha reside justamente na vantagem de se capturar informações importantes que tornam a interpretação dos resultados mais simples.
+
+
+###  Uma única Variável Dummy Independente
+
+A forma mais simples de incorporar uma variável qualitativa e simplismente adcionarmos ela na equação de regressão. 
+
+Considere o exemplo prático. Queremos relacionar anos de estudo e salários. Obviamente, o exemplo é bastante simples, mas será útil para avaliarmos a questão.
+
+
+$$salario = \beta_0 + \delta_0 feminino + \beta_1 educ + \beta_3 experiencia + u $$
+Nesse exemplo, estamos controlando educação e experiência. A variável feminino assume o valor 1, se o individuo for do sexo feminino e 0, caso o contrário, isto é, o indivíduo é um homem. Na equação $\delta_0$ mede a diferença no salario entre homems e mulheres, dado os mesmos anos de estudos e de experiencia, e evidentemente o mesmo $u$.
+
+Assim, um indicio de discriminação de genero no mercado de trabalho, seria se encontracemos uma relação do tipo $\delta_0 < 0$.
+
+Isso deveria ser interpretado como a diferença da média condicional aos níveis de educação e experiencia, entre homens e mulheres.
+
+O uso de variáveis dummy pode ser interessante no contexto da análise de políticas públicas. 
+
+Considere que tenhamos uma base de dados municipal com uma serie dados sobre crimes contra as mulheres. Suponha hipoteticamente que alguns bairros dessa cidade hipotética tenham alguma iniciativa ou política pública local de combate e prevenção desses crimes. Em um primeiro momento suponha que queremos avaliar se nesses bairros a taxa de crimes contra as mulheres é menor. Considere que temos dados sobre o nível educacional médio da população do bairro, a taxa de desemprego nesses bairros, e uma variável que assume o valor 1 se no bairro em questão existe alguma política pública como a mencionada.
+
+Considere a equação:
+
+$$Tx.feminicidio = \beta_0 + \beta_1 desemprego + \beta_2 educ + \beta_3 política + u $$
+Nesse exemplo, se estimarmos um $\beta_3 < 0$ teriamos evidências de que em bairros onde há a política pública em questão, a taxa de crimes contra as mulheres é menor. Claramente, estamos supondo que todas as hipoteses mencinadas anteriormente são validadas, de modo que temos estimadores não viesados. Se existir alguma variável omitida em $u$ ou correlação entre $u$ e as variáveis explicativas, sobretudo entre $u$ e nossa dummy de interesse, teremos um estimador viésado de $\beta_3$ e provavelmente dos demais coeficientes.
+
+### O uso de Dummies para categorias multiplas.
+
+Considere a equação abaixo
+
+$$Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Local  + \beta_3  crime + u$$
+Suponha que nossas unidades de observação sejam indivíduos na cidade de São Paulo. Suponha que o local, seja o local do crime e represente as cinco zonas da cidade de São Paulo. Da forma como esta na regressão teriamos de escolher apenas uma Zona para avaliar (assumindo o valor 1), e as demais seriam as categorias bases. Pode ser interessante, caso nosso interresse resida na região em questão. Não obstante, podemos avaliar mais categorias. 
+
+Temos 5 zonas na cidade de São Paulo. Nesse caso, precisamos utilizar uma delas como grupo base. Supoha que tal zona seja o Centro. Nosso modelo fica da seguinte maneira
+
+$$Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Leste+  \beta_3 Sul +  \beta_4 Oeste   + \beta_5 Norte + \beta_6  crime + u$$
+
+O mesmo deve ocorrer no tipo de crime. Suponha que por algum motivo razoavel classificamos os crimes em 3 categorias 1, 2 e 3,  e queremos utilizar a categoria 2 como grupo base. Nesse caso, apenas rodamos a regressão com os crimes do tipo 1 e 2 :
+
+
+
+$$Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Leste+  \beta_3 Sul +  \beta_3 Oeste   + \beta_5 Norte + \beta_6  crime1 + \beta_7  crime3 u$$
+
+O coeficiente estimado de $\beta_3$, por exemplo, captaria a diferença média da taxa de condenação entre crimes que ocorrem  na região Sul e o Centro da cidade de São Paulo, controlado para o mesmo tipo de crime e idade do indivíduo. Ja o coeficiente $\beta_6$ mediria a diferença de media entre a taxa de condenação para crimes do 1 e crimes do tipo 2, controlados pela localidade e idade do indivíduo.
+
+
+### Incorporando Informações Ordinais com o uso de Variáveis Dummy.
+
+**Determinação de Fatores que Afetam o Valor de Indenizações:** Variáveis Independentes: Idade da Vítima e Gravidade do Dano . Variável Dependente: Valor da Indenização.Objetivo: Analisar como a idade da vítima, a gravidade do dano influenciam o valor das indenizações concedidas.
+
+$$Indenização = \beta_0 + \beta_1 idade+ \beta_2 Gravidade  + u$$
+Suponha que a gravidade varie em uma escala de 0 a 4. Uma posibilidade seria estimar a equação acima, tal qual específicada.
+
+Infelizmente, seria muito dificil interpretar um aumento de uma unidade na gravidade. Uma vez que a gravidade de um crime é medida de maneira ordinal. Por exemplo uma Gravidade de um crime classificada como 4 é maior que a Gravidade de um crime classificada como 3. 
+
+Utilizando o que já aprendemos, podemos utilizar a categoria de gravidade=0 (não grave) como base de comparação. Nesse caso estimariamos a seguinte regressão:
+
+$$Indenização = \beta_0 + \beta_1 idade+ \beta_2 Grav1  ++ \beta_3 Grav2  ++ \beta_4 Grav3  ++ \beta_5 Grav4 + u$$
+onde $\beta_2$ por exemplo, capta a diferença na indenização de uma crime de gravidade 1 em comparação de um crime com gravidade igual a 0.
 
 # Teste de Hipóteses no RLM
-
 ## Hipótese de Normalidade
+## Teste de Hipótese sob um Único Parametro
+###  Teste contra Hipoteses Alternativas Unilaterais
+###  Teste contra Hipoteses Alternativas Bilaterais
+###  Cálculos dos p-valores dos Testes t
+###  Teste de Restrições de Lineares Múltiplas: O teste F
 
-## Teste de Hipotese sob um unico Parametro
 
-### Teste contra Hipoteses Alternativas Unilaterais
+# 5 - Alguns Problemas que podem surgir na Análise de Regressão com Corte Transversa
+## 5.1 - Multicolinearidade Pefeita
+A multicolinearidade é uma violação da hipótese 3. Nesse caso as variáveis ou alguma das variáveis podem ser escritas como uma combinação linear das demais. Esse é um caso extremo e que, no limite, não aparece com frequência nas aplicaçoes empíricas. Não obstante, uma multicolinearidade alta pode aparecer. Na presença de Multicolinearidade, nossos estimadores continuam sendo não viésados. Entretanto, a variância de $\hat{\beta_j}$ pode ficar muito elevada, prejudicando os procedimentos de inferência.
 
-### Teste contra Hipoteses Alternativas Bilaterais
+Podemos ver isso ao avaliarmos a formula da variância de uma dado $\hat{\beta_j}$ estimado:
 
-### Cálculos dos p-valores dos Testes t
+$$\text{Var}(\hat{\beta}_j) = \frac{\hat{\sigma}^2}{\sum_{i=1}^{n} (x_{ij} - \bar{x_j})^2(1-R^2_j)}=\frac{\hat\sigma^2}{\text{SQT}_j(1-R^2_j)}$$
 
-### Teste de Restrições de Lineares Múltiplas: O teste F
+Note que, se a relação linear entre os $x_1,...,x_k$ forem elevadas, o $R^2_j$ será alto. No limite, um $R^2_j$ proximo de faz o denominador da divisão acima ficar muito pequeno. Com um denominador pequeno a $\text{Var}(\hat{\beta}_j)$ fica muito alta. No caso em que há multicolinearidade perfeita, o $R^2_j =1$. logo, a $Var(\hat{\beta_j})$ não estará nem mesmo definida (haverá um divisão por zero!).
+
+Na prática o problema da multicolinearidade não é uma unanimidade entre os autores. Muitos livros textos dedicam capítulos interios para tratar do problema, ao passo que outros autores a enxergam como uma mal menor.
+
+A razão de se enchergar a multicolinearidade como uma mal menor é o fato de que ao olharmos novamente para o denominador da variância de $\beta_j$, veremos que a variância de $\hat{\beta_j}$ pode diminuir ao aumentarmos a Soma dos Quadrados dos Totais de $x_j$, $SQT_j$. Isso pode ser feito aumentando o tamanho da amostra, e por conseguinte a variabilidade dos valores de $x_j$. Por isso alguns autores se referem de maneira satírica ao problema da multicolinearidade como o problema da **micronumerosidade**. A razão disso é que, muitas vezes, nossa variância é alta porque nossa amostra é muito pequena.
+
+
+
+##  Heteroscedasticidade
+
+A heteroscedasticidade é a violação da hipótese de homoscedasticidade. Nesse caso, a variância do termo de erro $u$ deixa de ser constante. Logo cada observação passa a ter sua própria variância.
+
+Não entraremos nos detalhes técnicos de como resolver o problema. Felizmente, a heterocesdasticidade pode ser detectada e corrigida sem grandes problemas.
+
+A heteroscedasticidade, embora não interfira no viés das estimativas de MQO, interfere na variância. Quando ela esta presente nossos estimadores de MQO não serão mais eficientes. Isto é, MQO deixa de ter variância mínima. Com isso os erros padrão reportados pelo software estátistico serão problemáticos e todo nosso procedimento de inferência poderá estar comprometido.
+
+Uma saída é computar erros-padrão  robustos para nossos estimadores. Tais erros padrão robustos à heteroscedasticidade são maiores que os erros padrão convencionais. Não obstante, podemos nos resguardar do problema da heteroscedasticidade. 
+
+Vamos verificar isso com um exemplo:
+
+```{r}
+### Aplicação: Erros Padrão Robustos à Heteroscedasticidade
+
+
+
+
+
+```
+
+
+Para detectar formalmente a heteroscedasticidade, podemos utilizar os seguintes testes: teste de Breusch-Pagan (BP) e o Teste de White.
+
+```{r}
+
+####Teste de Breusch-Pagan para Heteroscedasticidade
+
+
+
+#####Teste de White para a detecção de Heteroscedasticidade
+```
+
+
+##  Viés de Variável Omitida e a Correlação entre as variáveis explicativas e o termo de Erro.
+
+
+
+
+
+
+#  Modelos com Variáveis Dependentes Qualitativas:Modelo de Probabilidade Linear (MPM), Probit e Logit.
+
+
+
+#  Modelos de Contagem e Duração: Regressão de Poisson e Modelo de Sobrevivência de Cox.
