@@ -1,1 +1,7 @@
 # Manipulação de Dados
+
+## Criando um projeto
+
+Primeiramente precisamos criar um projeto. Clique no icone +R crie um projeto chamado feminicídio em uma nova pasta
+
+## Instalando os Packages Necessários

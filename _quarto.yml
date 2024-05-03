@@ -6,7 +6,7 @@ book:
   title: "Jurimetria"
   subtitle: "Compreendendo as Desigualdades"
   navbar:
-    background: primary
+    background: "#283747"
     search: true
     left:
       - text: "Home"
@@ -20,7 +20,7 @@ book:
         href: https://github.com/
         aria-label: GitHub
   sidebar:
-    background: light
+    background: "#F4F6F6"
     search: true
   image: logo_fdrp.png
   page-navigation: true
