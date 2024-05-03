@@ -229,5 +229,19 @@
     "title": "6  Análise Descritiva",
     "section": "7.4 Conceitos Básicos Inferência Estatística",
     "text": "7.4 Conceitos Básicos Inferência Estatística\n\n7.4.1 População, Amostra, Parâmetros e Estimadores"
+  },
+  {
+    "objectID": "manipulacao.html#criando-um-projeto",
+    "href": "manipulacao.html#criando-um-projeto",
+    "title": "5  Manipulação de Dados",
+    "section": "5.1 Criando um projeto",
+    "text": "5.1 Criando um projeto\nPrimeiramente precisamos criar um projeto. Clique no icone +R crie um projeto chamado feminicídio em uma nova pasta"
+  },
+  {
+    "objectID": "manipulacao.html#instalando-os-packages-necessários",
+    "href": "manipulacao.html#instalando-os-packages-necessários",
+    "title": "5  Manipulação de Dados",
+    "section": "5.2 Instalando os Packages Necessários",
+    "text": "5.2 Instalando os Packages Necessários"
   }
 ]
