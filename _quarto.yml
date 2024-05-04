@@ -41,8 +41,6 @@ book:
       - references.qmd
 
 
-
-
 bibliography: references.bib
 
 format:
@@ -50,6 +48,7 @@ format:
     theme: sandstone
   pdf:
     documentclass: scrreprt
+
 
 editor: visual
 
