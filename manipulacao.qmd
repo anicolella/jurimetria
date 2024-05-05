@@ -72,11 +72,8 @@ example(summary)
 **Case Sensitivy**:
 O R diferencia letras minúsculas e maiúscula. Ou seja, m é diferente de M. Por exemplo, considere as três formas de escrever a palavra idade.
 
-\begin{center}
-idade ou Idade ou IDADE
-\end{center}
 
-<p style="text-align: center;">idade ou Idade ou IDADE</p>
+<p style="text-align: center;">**idade** ou **Idade** ou **IDADE**</p>
 
 Cada uma delas representa variáveis diferentes.
 
@@ -318,17 +315,6 @@ names(homic_abs)
 ```
 
 
-Observamos que a variável não possui labels. Vamos colocar os Labels nessa variável, ou seja, os rótulos.
-
-
-```{r,eval=F} 
-names(dolar15) <-c("cambio15_jan","cambio15_fev","cambio15_mar","cambio15_abr",
-                   "cambio15_mai","cambio15_jun","cambio15_jul","cambio15_ago",
-                   "cambio15_set","cambio15_out","cambio15_nov","cambio15_dez") 
-```
-
-
-
 Podemos combinar as duas variáveis de forma distintas, por exemplo combinar na forma de um vetor, combinar como coluna ou combinar como linha, vejamos a diferença:
 
 ```{r, results='hide'} 
@@ -485,6 +471,150 @@ df_feminic22$mais_50
 
 
 ### Operadores Aritméticos e Lógicos
+
+Utilizando os vetores criados anteriormente: 
+
+```{r} 
+feminic_abs>50
+feminic_abs[feminic_abs>50]
+feminic_abs[feminic_abs < 50 | feminic_abs > 100]
+feminic_abs[feminic_abs > 50 & feminic_abs < 100]
+mean(feminic_abs)
+feminic_M <- (feminic_abs[feminic_abs< 100 & feminic_abs > 50])
+feminic_M
+```
+
+A tabela abaixo contém alguns operadaroes lógicos frequentemente utilizados. 
+
+| Operador | Significado  |
+|:-----:|:---------------:|
+|    <  | Menor que       |
+|    <= | Menor igual     |
+|    >  | Maior que       |
+|    >= | Maior igual     |
+|    == |	Exatamente igual|
+|    != |	Diferente       |
+|    !x |	Não x           |
+|x \| y	| x OU y          |
+|x \& y |	x E y           |
+
+: Operadores Lógicos no R {.striped .hover }
+
+
+
+## Algumas Funções Importantes
+
+### Ordenando os Dados
+
+Vamos ordenar os estados dos nossos 2 *data frames* pela participação do feminicídio no total de homicídios de mulheres. 
+
+```{r,message=F} 
+
+df_feminic22_ord<-df_feminic22[order(df_feminic22$part_feminic, decreasing = TRUE),] 
+
+df_t_feminic22_ord<-df_t_feminic22[order(df_t_feminic22$part_t_feminic, decreasing = TRUE),] 
+
+```
+
+
+### Fazendo Merge
+
+Temos dois *data frames* um contendo homicídios e feminicídios e outro contendo as tentativas. Vamos agora juntar os dois. Para isso os bancos devem conter uma chave única que identifica cada linha e essa deve estar presente nos dois bancos. Inclusive devem ter o mesmo nome.No caso em questão podemos usar o estado como nossa chave que irá conectar os dois bancos. 
+
+
+```{r, warning=FALSE} 
+df_final_feminic_22 <- merge(df_feminic22,df_t_feminic22,by="sigla",keep.all=TRUE)
+```
+
+
+Agora temos um banco único com homicídios e tentativas de homicídios. 
+
+### Agregando
+
+Vamos criar um banco de dados que contenha os valores médios das variáveis. Para isso vamos agregar fazendo a média por região. Poderíamos utilizar outra função, como a soma, para fazer a agregação:
+
+
+```{r,warning=FALSE} 
+regiao_media <-aggregate(df_final_feminic_22, by=list(df_final_feminic_22$regiao.x), FUN=mean, na.rm=TRUE)
+regiao_media
+```
+
+
+
+### Criando Subconjunto
+
+**Selecionando Variáveis**:
+
+Podemos estar interessado em manter somente algumas variáveis no nosso banco de dados, por exemplo, queremos manter estado e a  participação do feminicídio no total. Assim:
+
+```{r} 
+var_sel <- c("sigla", "part_feminic", "part_t_feminic")
+feminic_sel <- df_final_feminic_22[var_sel]
+
+feminic_sel1 <- df_final_feminic_22[c("sigla", "part_feminic", "part_t_feminic")]
+
+```
+
+
+Ou podemos fazer indicar as colunas que queremos selecionar. Na segunda opção selecionamos até o final do nosso banco
+
+```{r} 
+feminic_sel2 <- df_final_feminic_22[c(1:3,5:6,12:15)]
+feminic_sel3 <- df_final_feminic_22[c(1:3,10:ncol(df_final_feminic_22))]
+```
+
+
+\textbf{Excluindo Variáveis}:
+
+Ao fazer o merge as variáveis que tinham o mesmo nome nos dois bancos, como estado, foram mantidas e agora possuem os nomes estado.x e estado.y, vamos manter apenas uma e trocar o seu nome. O comando `names`ajuda a saber a posição da variável no banco 
+
+```{r} 
+names(df_final_feminic_22)
+final_fem_22 <- df_final_feminic_22[c(-12)]
+
+library(reshape)
+final_fem_22 <- rename(final_fem_22, c(estado.x="estados"))
+
+```
+
+::: {.callout-warning}
+## Cuidado ao tirar colunas
+
+Se fizermos o comando de tirar colunas no mesmo *data frame*, ao rodar novamente ele continuará sempre tirando a coluna indicada. O ideal seria construir outro *data frame* como fizemos acima.  
+:::
+
+Ou podemos especificar a o nome da coluna que será retirada. Vamos agora tirar a região que ficou duplicada
+
+```{r,eval=F} 
+final_fem_22$regiao.y <-  NULL
+
+library(reshape)
+final_fem_22 <- rename(final_fem_22, c(regiao.x="regiao"))
+```
+
+
+
+**Selecionando Variáveis**:
+
+Vamos selecionar as observações dos estados da região Norte e Nordeste:
+
+
+```{r,message=F} 
+  
+fem_n_nd <- final_fem_22[ which(final_fem_22$regiao=="NE" | final_fem_22$regiao=="N"),]
+
+fem_n_nd1 <- final_fem_22[ which((final_fem_22$regiao=="NE" | final_fem_22$regiao=="N") & final_fem_22$part_feminic>=50),]
+
+```
+
+
+
+Ou podemos selecionar as observações em que a participação do feminicídio está entre 30 e 50\%:
+
+
+```{r} 
+fem_n_nd2 <- subset(final_fem_22, final_fem_22$part_feminic >= 30 & final_fem_22$part_feminic <= 50 )
+```
 
 
 
