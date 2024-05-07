@@ -959,7 +959,9 @@ Cuidado ao tirar colunas
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>final_fem_22<span class="sc">$</span>regiao.y <span class="ot">&lt;-</span>  <span class="cn">NULL</span></span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span>
-<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>final_fem_22 <span class="ot">&lt;-</span> <span class="fu">rename</span>(final_fem_22, <span class="fu">c</span>(<span class="at">regiao.x=</span><span class="st">"regiao"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>final_fem_22 <span class="ot">&lt;-</span> <span class="fu">rename</span>(final_fem_22, <span class="fu">c</span>(<span class="at">regiao.x=</span><span class="st">"regiao"</span>))</span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(final_fem_22, <span class="at">file =</span> <span class="st">"dados.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Selecionando Variáveis</strong>:</p>
 <p>Vamos selecionar as observações dos estados da região Norte e Nordeste:</p>
