@@ -289,17 +289,14 @@ Ela mede a variabilidade conjunta de uma variável aleátoria multidimensional. 
 
 $$\rho_{X,Y}=\frac{E[(X-E(X))(Y-E(Y))]}{\sqrt{Var(X)Var(Y)}}$$ 
 
-::: callout-warnig
-
+::: callout-warning
 ## Correlação
 
 A correlação mede o **GRAU DE ASSOCIAÇÃO LINEAR**. Associações não lineares não são capturadas pela correlação.
-
 :::
 
 
 ::: callout-note
-
 ## Lendo a Correlação
 
 A correlação $\rho_{X,Y}$ varia de -1 até 1. Sendo que:
@@ -332,19 +329,52 @@ pairs.panels(data)
 
 Existem outros métodos númericos que se constituem como alternativas adcionais para sintetizar os dados. Podemos dividir as medidas numericas em duas, temos as medidas de posíção e as de variabilidade.
 
-**Medidas de posição:** Média, Mediana, Moda Percentis e Quartis.
+**Medidas de posição:** 
 
-**Medidas de Variabilidade:** Amplitude, Amplitude interquartil, Variância, Desvio Padrão e Coeficiente de Variação.
+  * Média, 
+  * Mediana, 
+  * Moda,
+  * Percentis, 
+  * Quartis.
 
-**Medidas de associação entre duas variáveis:** Covariancia e o Coeficiente de Correlção.
+**Medidas de Variabilidade:** 
+
+  * Amplitude, 
+  * Amplitude interquartil,
+  * Variância, 
+  * Desvio Padrão e 
+  * Coeficiente de Variação.
+
+**Medidas de associação entre duas variáveis:** 
+  * Covariancia e 
+  * Coeficiente de Correlção.
 
 Vamos apresentar as formulas de algumas dessas principais medidas.
+
+
+```{r}
+final_fem_22 <- read.csv("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.csv", head=T ,sep=";")
+
+```
 
 **Media Amostral:**
 
 $$\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i$$
 
 
+```{r, warning=F}
+mean(final_fem_22$feminic_tx)
+```
+
+```{r, warning=F}
+library(kableExtra)
+
+mean_1<- aggregate(final_fem_22[4:17], list(final_fem_22$regiao), mean,  na.rm=T)
+
+t(mean_1) %>% 
+  kbl(digits = 2) %>%
+     kable_styling()
+```
 
 **Mediana:**
 
@@ -433,12 +463,6 @@ Máximo (Max): O maior valor observado na variável.
 
 Vamos calcular outras estatísticas
 
-```{r}
-
-load("dados.RData")
-
-
-```
 
 
 Medida de Associação entre duas variáveis:

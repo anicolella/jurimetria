@@ -592,6 +592,7 @@ library(reshape)
 final_fem_22 <- rename(final_fem_22, c(regiao.x="regiao"))
 
 save(final_fem_22, file = "dados.RData")
+write.table(final_fem_22, "C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.csv", sep=";")
 ```
 
 

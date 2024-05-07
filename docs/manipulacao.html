@@ -961,7 +961,8 @@ Cuidado ao tirar colunas
 <span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span>
 <span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>final_fem_22 <span class="ot">&lt;-</span> <span class="fu">rename</span>(final_fem_22, <span class="fu">c</span>(<span class="at">regiao.x=</span><span class="st">"regiao"</span>))</span>
 <span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(final_fem_22, <span class="at">file =</span> <span class="st">"dados.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(final_fem_22, <span class="at">file =</span> <span class="st">"dados.RData"</span>)</span>
+<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(final_fem_22, <span class="st">"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.csv"</span>, <span class="at">sep=</span><span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Selecionando Variáveis</strong>:</p>
 <p>Vamos selecionar as observações dos estados da região Norte e Nordeste:</p>

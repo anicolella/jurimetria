@@ -100,6 +100,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -271,12 +274,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#a-variável-aleatória" id="toc-a-variável-aleatória" class="nav-link" data-scroll-target="#a-variável-aleatória"><span class="header-section-number">6.2.1</span> A Variável Aleatória</a></li>
   <li><a href="#variáveis-aleatórias-bidimensionais" id="toc-variáveis-aleatórias-bidimensionais" class="nav-link" data-scroll-target="#variáveis-aleatórias-bidimensionais"><span class="header-section-number">6.2.2</span> Variáveis Aleatórias Bidimensionais</a></li>
   </ul></li>
-  <li><a href="#correlação" id="toc-correlação" class="nav-link" data-scroll-target="#correlação"><span class="header-section-number">6.3</span> Correlação</a></li>
-  <li><a href="#conceitos-básicos-inferência-estatística" id="toc-conceitos-básicos-inferência-estatística" class="nav-link" data-scroll-target="#conceitos-básicos-inferência-estatística"><span class="header-section-number">6.4</span> Conceitos Básicos Inferência Estatística</a>
+  <li><a href="#conceitos-básicos-inferência-estatística" id="toc-conceitos-básicos-inferência-estatística" class="nav-link" data-scroll-target="#conceitos-básicos-inferência-estatística"><span class="header-section-number">6.3</span> Conceitos Básicos Inferência Estatística</a>
   <ul class="collapse">
-  <li><a href="#população-amostra-parâmetros-e-estimadores" id="toc-população-amostra-parâmetros-e-estimadores" class="nav-link" data-scroll-target="#população-amostra-parâmetros-e-estimadores"><span class="header-section-number">6.4.1</span> População, Amostra, Parâmetros e Estimadores</a></li>
+  <li><a href="#população-amostra-parâmetros-e-estimadores" id="toc-população-amostra-parâmetros-e-estimadores" class="nav-link" data-scroll-target="#população-amostra-parâmetros-e-estimadores"><span class="header-section-number">6.3.1</span> População, Amostra, Parâmetros e Estimadores</a></li>
   </ul></li>
-  <li><a href="#estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra" id="toc-estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra" class="nav-link" data-scroll-target="#estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra"><span class="header-section-number">6.5</span> Estatisticas Descritivas: Medidas Numéricas a partir da amostra</a></li>
+  <li><a href="#estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra" id="toc-estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra" class="nav-link" data-scroll-target="#estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra"><span class="header-section-number">6.4</span> Estatisticas Descritivas: Medidas Numéricas a partir da amostra</a></li>
   </ul>
 </nav>
     </div>
@@ -617,13 +619,19 @@ Problema 3
 <p>Ela mede a variabilidade conjunta de uma variável aleátoria multidimensional. Como no caso da variância, ela sofre do efeito das escalas de medidas. Para corrigir dividimos pelos desvios padrões. Surge dessa maneira a medida de correlação.</p>
 <p><strong>Correlação</strong></p>
 <p><span class="math display">\[\rho_{X,Y}=\frac{E[(X-E(X))(Y-E(Y))]}{\sqrt{Var(X)Var(Y)}}\]</span></p>
-</section>
-</section>
-</section>
-<section id="correlação" class="level2 callout-warnig" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="correlação"><span class="header-section-number">6.3</span> Correlação</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Correlação
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>A correlação mede o <strong>GRAU DE ASSOCIAÇÃO LINEAR</strong>. Associações não lineares não são capturadas pela correlação.</p>
-</section>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -650,21 +658,184 @@ Lendo a Correlação
 </div>
 </div>
 </div>
-<section id="conceitos-básicos-inferência-estatística" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="conceitos-básicos-inferência-estatística"><span class="header-section-number">6.4</span> Conceitos Básicos Inferência Estatística</h2>
-<section id="população-amostra-parâmetros-e-estimadores" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="população-amostra-parâmetros-e-estimadores"><span class="header-section-number">6.4.1</span> População, Amostra, Parâmetros e Estimadores</h3>
 </section>
 </section>
-<section id="estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra"><span class="header-section-number">6.5</span> Estatisticas Descritivas: Medidas Numéricas a partir da amostra</h2>
+</section>
+<section id="conceitos-básicos-inferência-estatística" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="conceitos-básicos-inferência-estatística"><span class="header-section-number">6.3</span> Conceitos Básicos Inferência Estatística</h2>
+<section id="população-amostra-parâmetros-e-estimadores" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="população-amostra-parâmetros-e-estimadores"><span class="header-section-number">6.3.1</span> População, Amostra, Parâmetros e Estimadores</h3>
+</section>
+</section>
+<section id="estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra"><span class="header-section-number">6.4</span> Estatisticas Descritivas: Medidas Numéricas a partir da amostra</h2>
 <p>Existem outros métodos númericos que se constituem como alternativas adcionais para sintetizar os dados. Podemos dividir as medidas numericas em duas, temos as medidas de posíção e as de variabilidade.</p>
-<p><strong>Medidas de posição:</strong> Média, Mediana, Moda Percentis e Quartis.</p>
-<p><strong>Medidas de Variabilidade:</strong> Amplitude, Amplitude interquartil, Variância, Desvio Padrão e Coeficiente de Variação.</p>
-<p><strong>Medidas de associação entre duas variáveis:</strong> Covariancia e o Coeficiente de Correlção.</p>
+<p><strong>Medidas de posição:</strong></p>
+<ul>
+<li>Média,</li>
+<li>Mediana,</li>
+<li>Moda,</li>
+<li>Percentis,</li>
+<li>Quartis.</li>
+</ul>
+<p><strong>Medidas de Variabilidade:</strong></p>
+<ul>
+<li>Amplitude,</li>
+<li>Amplitude interquartil,</li>
+<li>Variância,</li>
+<li>Desvio Padrão e</li>
+<li>Coeficiente de Variação.</li>
+</ul>
+<p><strong>Medidas de associação entre duas variáveis:</strong> * Covariancia e * Coeficiente de Correlção.</p>
 <p>Vamos apresentar as formulas de algumas dessas principais medidas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>final_fem_22 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.csv"</span>, <span class="at">head=</span>T ,<span class="at">sep=</span><span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><strong>Media Amostral:</strong></p>
 <p><span class="math display">\[\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(final_fem_22<span class="sc">$</span>feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.651852</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>mean_1<span class="ot">&lt;-</span> <span class="fu">aggregate</span>(final_fem_22[<span class="dv">4</span><span class="sc">:</span><span class="dv">17</span>], <span class="fu">list</span>(final_fem_22<span class="sc">$</span>regiao), mean,  <span class="at">na.rm=</span>T)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(mean_1) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">kable_styling</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Group.1</td>
+<td style="text-align: left;">CO</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">NE</td>
+<td style="text-align: left;">S</td>
+<td style="text-align: left;">SD</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">homic_abs</td>
+<td style="text-align: left;">86.25000</td>
+<td style="text-align: left;">69.85714</td>
+<td style="text-align: left;">149.11111</td>
+<td style="text-align: left;">212.66667</td>
+<td style="text-align: left;">277.50000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">homic_tx</td>
+<td style="text-align: left;">4.250000</td>
+<td style="text-align: left;">6.785714</td>
+<td style="text-align: left;">4.355556</td>
+<td style="text-align: left;">4.000000</td>
+<td style="text-align: left;">3.300000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">feminic_abs</td>
+<td style="text-align: left;">40.50000</td>
+<td style="text-align: left;">18.57143</td>
+<td style="text-align: left;">43.55556</td>
+<td style="text-align: left;">81.00000</td>
+<td style="text-align: left;">127.50000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">feminic_tx</td>
+<td style="text-align: left;">2.100000</td>
+<td style="text-align: left;">1.871429</td>
+<td style="text-align: left;">1.422222</td>
+<td style="text-align: left;">1.600000</td>
+<td style="text-align: left;">1.375000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">part_feminic</td>
+<td style="text-align: left;">50.02500</td>
+<td style="text-align: left;">30.01429</td>
+<td style="text-align: left;">34.36667</td>
+<td style="text-align: left;">41.53333</td>
+<td style="text-align: left;">43.82500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">rendapc</td>
+<td style="text-align: left;">2011.250</td>
+<td style="text-align: left;">1175.286</td>
+<td style="text-align: left;">1053.222</td>
+<td style="text-align: left;">1983.667</td>
+<td style="text-align: left;">1842.750</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">total_abs</td>
+<td style="text-align: left;">126.75000</td>
+<td style="text-align: left;">88.42857</td>
+<td style="text-align: left;">192.66667</td>
+<td style="text-align: left;">293.66667</td>
+<td style="text-align: left;">405.00000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mais_50</td>
+<td style="text-align: left;">0.5000000</td>
+<td style="text-align: left;">0.1428571</td>
+<td style="text-align: left;">0.2222222</td>
+<td style="text-align: left;">0.3333333</td>
+<td style="text-align: left;">0.2500000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">t_homic_abs</td>
+<td style="text-align: left;">258.2500</td>
+<td style="text-align: left;">161.7143</td>
+<td style="text-align: left;">257.7778</td>
+<td style="text-align: left;">450.6667</td>
+<td style="text-align: left;">455.7500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">t_homic_tx</td>
+<td style="text-align: left;">13.375000</td>
+<td style="text-align: left;">24.657143</td>
+<td style="text-align: left;">9.311111</td>
+<td style="text-align: left;">8.966667</td>
+<td style="text-align: left;">8.875000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">t_feminic_abs</td>
+<td style="text-align: left;">126.33333</td>
+<td style="text-align: left;">50.28571</td>
+<td style="text-align: left;">85.11111</td>
+<td style="text-align: left;">169.66667</td>
+<td style="text-align: left;">185.66667</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">t_feminic_tx</td>
+<td style="text-align: left;">6.500000</td>
+<td style="text-align: left;">5.285714</td>
+<td style="text-align: left;">3.044444</td>
+<td style="text-align: left;">3.500000</td>
+<td style="text-align: left;">3.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">part_t_feminic</td>
+<td style="text-align: left;">32.67667</td>
+<td style="text-align: left;">26.44286</td>
+<td style="text-align: left;">25.72444</td>
+<td style="text-align: left;">25.98667</td>
+<td style="text-align: left;">26.50000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">t_total_abs</td>
+<td style="text-align: left;">387.6667</td>
+<td style="text-align: left;">212.0000</td>
+<td style="text-align: left;">342.8889</td>
+<td style="text-align: left;">620.3333</td>
+<td style="text-align: left;">660.3333</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
 <p><strong>Mediana:</strong></p>
 <p>Organize os dados em ordem crescente. a) Para um numero impar de observações a mediana é o valor que ocupa a posição central.</p>
 <ol start="2" type="a">
@@ -705,9 +876,6 @@ Lendo a Correlação
 <p>O r calcula essas estatisticas de maneira muito eficiente com apenas uma linha de comando.A função <code>summary()</code> em R fornece um resumo estatístico básico das variáveis numéricas presentes em um data frame. Ao aplicar <code>summary()</code> a um data frame, as seguintes estatísticas são calculadas para cada coluna numérica:</p>
 <p>Mínimo (Min): O menor valor observado na variável. 1º Quartil (Q1): O valor que separa os 25% inferiores dos dados. Mediana (50º Percentil): O valor que separa os 50% inferiores dos 50% superiores dos dados. Média (Mean): A média aritmética dos valores. 3º Quartil (Q3): O valor que separa os 75% inferiores dos dados. Máximo (Max): O maior valor observado na variável.</p>
 <p>Vamos calcular outras estatísticas</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"dados.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p>Medida de Associação entre duas variáveis:</p>
 <p>Covariância entre duas variáveis: A covariância entre duas variáveis X e Y é uma medida estatística que descreve como essas variáveis variam juntas. Em outras palavras, a covariância indica a tendência de X e Y de se moverem na mesma direção (covariância positiva) ou em direções opostas (covariância negativa).</p>
 <p><span class="math display">\[\text{Cov}(X, Y) = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})\]</span></p>
