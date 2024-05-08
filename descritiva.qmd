@@ -51,7 +51,7 @@ Existem dois sistemas que utilizamos para tomar decisão. O chamado **Sistema 1*
 
 Para o Sistema 1 usamos a nossa intuição que chamamos de Heurística. Vejamos um pouco mais sobre esse sistema.
 
-**Heurística**
+**HEURÍSTICA**
 
 São rotinas inconscientes ou atalhos que o nosso cérebro utiliza para lidar com a complexidade.
 
@@ -472,43 +472,168 @@ a)  Para um numero impar de observações a mediana é o valor que ocupa a posi�
 
 b)  para um número par de observações, a mediana é a média dos dois valores centrais.
 
+
+```{r, warning=F}
+median(final_fem_22$feminic_tx)
+```
+```{r, warning=F}
+
+fun1 <- function(x, na.rm = TRUE) c(media=mean(x, na.rm = TRUE), mediana=median(x, na.rm = TRUE))
+
+median_1 <- (sapply(final_fem_22[4:17], fun1))
+
+t(median_1) %>% 
+  kbl(digits = 2) %>%
+     kable_styling()
+
+```
+
+
 **MODA:**
 
 Moda é o valor que ocorre com mais frequência.
+
+```{r, warning=F}
+moda <- function(x, na.rm=T) {
+modal <- unique(x, na.rm=T)
+modal[which.max(tabulate(match(x, modal)))]
+}
+moda(final_fem_22$feminic_tx)
+```
+```{r, warning=F}
+
+fun1 <- function(x, na.rm = TRUE) c(media=mean(x, na.rm = TRUE), mediana=median(x, na.rm = TRUE), moda=moda(x))
+
+median_1 <- (sapply(final_fem_22[4:17], fun1))
+
+t(median_1) %>% 
+  kbl(digits = 2) %>%
+     kable_styling()
+
+```
 
 **PERCENTIL:**
 
 O p-esimo percentil é um valor tal que ao menos p por cento das observações são menores ou iguais à ele e pelo menos (100-p) por cento das observações são maiores ou iguais a esse valor.
 
-Etapas: para calcular o p-ésimo percentil
+*Etapas para calcular o p-ésimo percentil*
 
-Etapa 1. Organize os dados em ordem crescente. Etapa 2: Calcule um indice, $i$ tal que $$i = \frac{p}{100} \times n$$ onde $p$ é o percentil procurado
+**Etapa 1**: Organize os dados em ordem crescente. 
 
-Etapa 3: a) Se $i$ não for um número inteiro, arredondeo-o para cima. O próximo número inteiro maior que $i$ denota a posição do p-esimo percentil. b) Se $i$ for um número inteiro o p-esimo percentil será a média dos valores que o ocupam as posições $i$ e $i + 1$.
+**Etapa 2**: Calcule um indice, $i$ tal que $$i = \frac{p}{100} \times n$$ onde $p$ é o percentil procurado
+
+**Etapa 3**: 
+
+  a) Se $i$ não for um número inteiro, arredondeo-o para cima. O próximo número inteiro maior que $i$ denota a posição do p-esimo percentil. 
+  b) Se $i$ for um número inteiro o p-esimo percentil será a média dos valores que o ocupam as posições $i$ e $i + 1$.
+
+
+
+```{r, warning=F}
+
+quantile(final_fem_22$feminic_tx, probs = c(0.10,0.30,0.60,0.85), na.rm=T)
+
+```
 
 **QUARTIS:**
 
 Os quartis são medidas estatísticas que dividem um conjunto de dados ordenados em quatro partes iguais.
 
-Existem três quartis principais:
+O três quartis são:
 
-Primeiro Quartil (Q1): Representa o valor abaixo do qual está situada a primeira quarta parte (ou 25%) dos dados quando eles estão ordenados em ordem crescente. Matematicamente, o primeiro quartil é o valor que divide os dados em 25% (ou 0.25) abaixo e 75% (ou 0.75) acima desse ponto.
+**Primeiro Quartil (Q1)**: Representa o valor abaixo do qual está situada a primeira quarta parte (ou 25% inferiores) dos dados quando eles estão ordenados em ordem crescente. O primeiro quartil é o valor que divide os dados em 25% (ou 0.25) abaixo e 75% (ou 0.75) acima desse ponto.
 
-Segundo Quartil (Q2): Corresponde à mediana dos dados, dividindo o conjunto em duas metades iguais. É o valor que separa os 50% inferiores dos 50% superiores dos dados. O segundo quartil é frequentemente representado pela mediana.
+**Segundo Quartil (Q2)**: Corresponde à mediana dos dados, dividindo o conjunto em duas metades iguais. É o valor que separa os 50% inferiores dos 50% superiores dos dados. 
 
-Terceiro Quartil (Q3): Indica o valor abaixo do qual está situada a terceira quarta parte (ou 75%) dos dados quando eles estão ordenados. Assim como o primeiro quartil, o terceiro quartil divide os dados em 75% (ou 0.75) abaixo e 25% (ou 0.25) acima desse ponto
+**Terceiro Quartil (Q3)**: Indica o valor acima do qual está situada a terceira quarta parte (ou 25% superiores) dos dados quando eles estão ordenados. Assim como o primeiro quartil, o terceiro quartil divide os dados em 75% (ou 0.75) abaixo e 25% (ou 0.25) acima desse ponto
 
-![quartis](quartis.png)
+```{r, warning=F}
+
+quantile(final_fem_22$feminic_tx, na.rm=T)
+
+```
+
+**Boxplot** 
+
+O boxplot é um gráfico que traz muitas informações e pode ser visto como a distribuição de probabilidade dos dados. O box contém 50\% dos dados. O limite superior indica o percentil de 75\% (*Q*3) e o limite inferior indica o percentil de 25\% (*Q1*). A linha que corta o box indica a mediana, ou seja, *Q2*. Os bigodes são calculados com base na distância interquantílica, ou seja,
+
+*Limite inferior: Q1-1,5(Q3-Q1)*
+
+*Limite superior:Q3+1,5(Q3-Q1)* 
+
+Dados fora desses limites são classificados como suspeitos de serem outlier. Podemos observar a assimetria dos dados quando a mediana não está no meio da caixa, indicando maior densidade na menor distância entre os quartis Q1 ou Q3 e a mediana Q2. Vejamos agora o boxplot da taxa de feminicídio e fora da âncora cambial.
+
+
+```{r}
+boxplot(final_fem_22$feminic_tx,data=final_fem_22, main="Boxplot da taxa de feminicídio no Brasil, 2022", horizontal=TRUE,
+  xlab="", ylab="Tx de Feminicídio/100mil", col="steelblue")
+```
+```{r}
+library(ggplot2)
+p<-ggplot(final_fem_22, aes(y=feminic_tx)) + 
+  geom_boxplot(fill='steelblue')  +
+  coord_flip()
+p+labs(title="Tx Feminicídio por 100 mil no Brasil 2022",
+        x ="", y = "Tx Feminicídio")
+```
+O Violin Plot é muito parecido com o BoxPlot mas com a densidade de kernel rotacionada em cada um dos lados. Assim, indica a distribuição dos dados em cada ponto e vem anotado a mediana na forma de um ponto ou marca e um pequeno boxplot no centro do violin plot.
+
+
+
+```{r}
+#Binária para nordeste e norte 1 e demais regiões 0
+final_fem_22$N_NE<-0
+final_fem_22$N_NE[final_fem_22$regiao == "N" | final_fem_22$regiao == "NE"] <- 1
+
+table(final_fem_22$N_NE, final_fem_22$regiao)
+```
+
+```{r, warning=FALSE, message=FALSE}
+library(vioplot) 
+x1 <- final_fem_22$feminic_tx[final_fem_22$N_NE==1]
+x2 <- final_fem_22$feminic_tx[final_fem_22$N_NE==0]
+vioplot(x1, x2, names=c("Norte e Nordeste", "Demais regiões"), col=c("steelblue", "lightblue"), border="white" )
+title("Violin Plots da taxa de feminicídio por região do Brasil")
+```
+
+
+Aqui segue uma sugestão de plotar o histograma juntamente com o boxplot, possibilitando em um mesmo gráfico uma maior quantidade de observação. Veja abaixo:
+  
+  
+```{r, warning=FALSE}
+par(fig=c(0,0.6,0,0.6), new=TRUE)
+hist(final_fem_22$feminic_tx, main="", xlab="Taxa Feminicídio", ylab="Frequência", col="lightblue2")
+par(fig=c(0,0.6,0.15,0.9), new=TRUE)
+boxplot(final_fem_22$feminic_tx, horizontal=TRUE, axes=FALSE, col="navajowhite2")
+
+```
+
+ 
 
 **AMPLITUDE:**
 
+Amplitude é a diferença entre o valor mínimo e máximo de uma série de dados. 
+
 $$\text{Amplitude} = \text{Maior Valor} - \text{Menor Valor}$$
+
+```{r}
+min_max<-range(final_fem_22$feminic_tx)
+amp<-min_max[2]-min_max[1]
+amp
+```
 
 **AMPLITUDE INTERQUANTIL:**
 
 A amplitude interquartil é dada pela diferenca entre o terceiro ($Q_3$) e o primeiro quartil ($Q_1$).
 
 $$IQR = Q_3 - Q_1$$
+
+```{r}
+qs<-quantile(final_fem_22$feminic_tx, na.rm=T)
+iq<-qs[4]-qs[2]
+IQR(final_fem_22$feminic_tx)
+iq
+```
 
 ### Medidas de Variabilidade
 

@@ -389,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <p>Para o Sistema 1 usamos a nossa intuição que chamamos de Heurística. Vejamos um pouco mais sobre esse sistema.</p>
-<p><strong>Heurística</strong></p>
+<p><strong>HEURÍSTICA</strong></p>
 <p>São rotinas inconscientes ou atalhos que o nosso cérebro utiliza para lidar com a complexidade.</p>
 <ul>
 <li>Modelo/Regras Intuitivas.</li>
@@ -1004,30 +1004,350 @@ População
 <li><p>Para um numero impar de observações a mediana é o valor que ocupa a posição central.</p></li>
 <li><p>para um número par de observações, a mediana é a média dos dois valores centrais.</p></li>
 </ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(final_fem_22<span class="sc">$</span>feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fun1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="fu">c</span>(<span class="at">media=</span><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">mediana=</span><span class="fu">median</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>median_1 <span class="ot">&lt;-</span> (<span class="fu">sapply</span>(final_fem_22[<span class="dv">4</span><span class="sc">:</span><span class="dv">17</span>], fun1))</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(median_1) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">kable_styling</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">media</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">mediana</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">homic_abs</td>
+<td style="text-align: right;">145.33</td>
+<td style="text-align: right;">95.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">homic_tx</td>
+<td style="text-align: right;">4.77</td>
+<td style="text-align: right;">4.50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">feminic_abs</td>
+<td style="text-align: right;">53.22</td>
+<td style="text-align: right;">33.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">feminic_tx</td>
+<td style="text-align: right;">1.65</td>
+<td style="text-align: right;">1.50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">part_feminic</td>
+<td style="text-align: right;">37.76</td>
+<td style="text-align: right;">38.90</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rendapc</td>
+<td style="text-align: right;">1447.15</td>
+<td style="text-align: right;">1267.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">total_abs</td>
+<td style="text-align: right;">198.56</td>
+<td style="text-align: right;">128.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mais_50</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">t_homic_abs</td>
+<td style="text-align: right;">283.70</td>
+<td style="text-align: right;">264.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">t_homic_tx</td>
+<td style="text-align: right;">13.79</td>
+<td style="text-align: right;">10.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">t_feminic_abs</td>
+<td style="text-align: right;">102.52</td>
+<td style="text-align: right;">88.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">t_feminic_tx</td>
+<td style="text-align: right;">4.14</td>
+<td style="text-align: right;">3.60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">part_t_feminic</td>
+<td style="text-align: right;">26.88</td>
+<td style="text-align: right;">29.73</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">t_total_abs</td>
+<td style="text-align: right;">383.00</td>
+<td style="text-align: right;">377.00</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
 <p><strong>MODA:</strong></p>
 <p>Moda é o valor que ocorre com mais frequência.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>moda <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm=</span>T) {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>modal <span class="ot">&lt;-</span> <span class="fu">unique</span>(x, <span class="at">na.rm=</span>T)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>modal[<span class="fu">which.max</span>(<span class="fu">tabulate</span>(<span class="fu">match</span>(x, modal)))]</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">moda</span>(final_fem_22<span class="sc">$</span>feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fun1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="fu">c</span>(<span class="at">media=</span><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">mediana=</span><span class="fu">median</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">moda=</span><span class="fu">moda</span>(x))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>median_1 <span class="ot">&lt;-</span> (<span class="fu">sapply</span>(final_fem_22[<span class="dv">4</span><span class="sc">:</span><span class="dv">17</span>], fun1))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(median_1) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">kable_styling</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">media</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">mediana</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">moda</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">homic_abs</td>
+<td style="text-align: right;">145.33</td>
+<td style="text-align: right;">95.00</td>
+<td style="text-align: right;">22.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">homic_tx</td>
+<td style="text-align: right;">4.77</td>
+<td style="text-align: right;">4.50</td>
+<td style="text-align: right;">4.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">feminic_abs</td>
+<td style="text-align: right;">53.22</td>
+<td style="text-align: right;">33.00</td>
+<td style="text-align: right;">19.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">feminic_tx</td>
+<td style="text-align: right;">1.65</td>
+<td style="text-align: right;">1.50</td>
+<td style="text-align: right;">1.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">part_feminic</td>
+<td style="text-align: right;">37.76</td>
+<td style="text-align: right;">38.90</td>
+<td style="text-align: right;">50.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rendapc</td>
+<td style="text-align: right;">1447.15</td>
+<td style="text-align: right;">1267.00</td>
+<td style="text-align: right;">1010.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">total_abs</td>
+<td style="text-align: right;">198.56</td>
+<td style="text-align: right;">128.00</td>
+<td style="text-align: right;">112.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mais_50</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">t_homic_abs</td>
+<td style="text-align: right;">283.70</td>
+<td style="text-align: right;">264.00</td>
+<td style="text-align: right;">373.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">t_homic_tx</td>
+<td style="text-align: right;">13.79</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">4.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">t_feminic_abs</td>
+<td style="text-align: right;">102.52</td>
+<td style="text-align: right;">88.00</td>
+<td style="text-align: right;">54.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">t_feminic_tx</td>
+<td style="text-align: right;">4.14</td>
+<td style="text-align: right;">3.60</td>
+<td style="text-align: right;">2.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">part_t_feminic</td>
+<td style="text-align: right;">26.88</td>
+<td style="text-align: right;">29.73</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">t_total_abs</td>
+<td style="text-align: right;">383.00</td>
+<td style="text-align: right;">377.00</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
 <p><strong>PERCENTIL:</strong></p>
 <p>O p-esimo percentil é um valor tal que ao menos p por cento das observações são menores ou iguais à ele e pelo menos (100-p) por cento das observações são maiores ou iguais a esse valor.</p>
-<p>Etapas: para calcular o p-ésimo percentil</p>
-<p>Etapa 1. Organize os dados em ordem crescente. Etapa 2: Calcule um indice, <span class="math inline">\(i\)</span> tal que <span class="math display">\[i = \frac{p}{100} \times n\]</span> onde <span class="math inline">\(p\)</span> é o percentil procurado</p>
-<p>Etapa 3: a) Se <span class="math inline">\(i\)</span> não for um número inteiro, arredondeo-o para cima. O próximo número inteiro maior que <span class="math inline">\(i\)</span> denota a posição do p-esimo percentil. b) Se <span class="math inline">\(i\)</span> for um número inteiro o p-esimo percentil será a média dos valores que o ocupam as posições <span class="math inline">\(i\)</span> e <span class="math inline">\(i + 1\)</span>.</p>
+<p><em>Etapas para calcular o p-ésimo percentil</em></p>
+<p><strong>Etapa 1</strong>: Organize os dados em ordem crescente.</p>
+<p><strong>Etapa 2</strong>: Calcule um indice, <span class="math inline">\(i\)</span> tal que <span class="math display">\[i = \frac{p}{100} \times n\]</span> onde <span class="math inline">\(p\)</span> é o percentil procurado</p>
+<p><strong>Etapa 3</strong>:</p>
+<ol type="a">
+<li>Se <span class="math inline">\(i\)</span> não for um número inteiro, arredondeo-o para cima. O próximo número inteiro maior que <span class="math inline">\(i\)</span> denota a posição do p-esimo percentil.</li>
+<li>Se <span class="math inline">\(i\)</span> for um número inteiro o p-esimo percentil será a média dos valores que o ocupam as posições <span class="math inline">\(i\)</span> e <span class="math inline">\(i + 1\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.10</span>,<span class="fl">0.30</span>,<span class="fl">0.60</span>,<span class="fl">0.85</span>), <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 10%  30%  60%  85% 
+0.96 1.30 1.66 2.24 </code></pre>
+</div>
+</div>
 <p><strong>QUARTIS:</strong></p>
 <p>Os quartis são medidas estatísticas que dividem um conjunto de dados ordenados em quatro partes iguais.</p>
-<p>Existem três quartis principais:</p>
-<p>Primeiro Quartil (Q1): Representa o valor abaixo do qual está situada a primeira quarta parte (ou 25%) dos dados quando eles estão ordenados em ordem crescente. Matematicamente, o primeiro quartil é o valor que divide os dados em 25% (ou 0.25) abaixo e 75% (ou 0.75) acima desse ponto.</p>
-<p>Segundo Quartil (Q2): Corresponde à mediana dos dados, dividindo o conjunto em duas metades iguais. É o valor que separa os 50% inferiores dos 50% superiores dos dados. O segundo quartil é frequentemente representado pela mediana.</p>
-<p>Terceiro Quartil (Q3): Indica o valor abaixo do qual está situada a terceira quarta parte (ou 75%) dos dados quando eles estão ordenados. Assim como o primeiro quartil, o terceiro quartil divide os dados em 75% (ou 0.75) abaixo e 25% (ou 0.25) acima desse ponto</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="quartis.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">quartis</figcaption>
-</figure>
+<p>O três quartis são:</p>
+<p><strong>Primeiro Quartil (Q1)</strong>: Representa o valor abaixo do qual está situada a primeira quarta parte (ou 25% inferiores) dos dados quando eles estão ordenados em ordem crescente. O primeiro quartil é o valor que divide os dados em 25% (ou 0.25) abaixo e 75% (ou 0.75) acima desse ponto.</p>
+<p><strong>Segundo Quartil (Q2)</strong>: Corresponde à mediana dos dados, dividindo o conjunto em duas metades iguais. É o valor que separa os 50% inferiores dos 50% superiores dos dados.</p>
+<p><strong>Terceiro Quartil (Q3)</strong>: Indica o valor acima do qual está situada a terceira quarta parte (ou 25% superiores) dos dados quando eles estão ordenados. Assim como o primeiro quartil, o terceiro quartil divide os dados em 75% (ou 0.75) abaixo e 25% (ou 0.25) acima desse ponto</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  0%  25%  50%  75% 100% 
+0.60 1.30 1.50 1.95 3.10 </code></pre>
+</div>
+</div>
+<p><strong>Boxplot</strong></p>
+<p>O boxplot é um gráfico que traz muitas informações e pode ser visto como a distribuição de probabilidade dos dados. O box contém 50% dos dados. O limite superior indica o percentil de 75% (<em>Q</em>3) e o limite inferior indica o percentil de 25% (<em>Q1</em>). A linha que corta o box indica a mediana, ou seja, <em>Q2</em>. Os bigodes são calculados com base na distância interquantílica, ou seja,</p>
+<p><em>Limite inferior: Q1-1,5(Q3-Q1)</em></p>
+<p><em>Limite superior:Q3+1,5(Q3-Q1)</em></p>
+<p>Dados fora desses limites são classificados como suspeitos de serem outlier. Podemos observar a assimetria dos dados quando a mediana não está no meio da caixa, indicando maior densidade na menor distância entre os quartis Q1 ou Q3 e a mediana Q2. Vejamos agora o boxplot da taxa de feminicídio e fora da âncora cambial.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(final_fem_22<span class="sc">$</span>feminic_tx,<span class="at">data=</span>final_fem_22, <span class="at">main=</span><span class="st">"Boxplot da taxa de feminicídio no Brasil, 2022"</span>, <span class="at">horizontal=</span><span class="cn">TRUE</span>,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">"Tx de Feminicídio/100mil"</span>, <span class="at">col=</span><span class="st">"steelblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Anexando pacote: 'ggplot2'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Os seguintes objetos são mascarados por 'package:psych':
+
+    %+%, alpha</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span><span class="fu">ggplot</span>(final_fem_22, <span class="fu">aes</span>(<span class="at">y=</span>feminic_tx)) <span class="sc">+</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">'steelblue'</span>)  <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>p<span class="sc">+</span><span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Tx Feminicídio por 100 mil no Brasil 2022"</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span><span class="st">""</span>, <span class="at">y =</span> <span class="st">"Tx Feminicídio"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>O Violin Plot é muito parecido com o BoxPlot mas com a densidade de kernel rotacionada em cada um dos lados. Assim, indica a distribuição dos dados em cada ponto e vem anotado a mediana na forma de um ponto ou marca e um pequeno boxplot no centro do violin plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Binária para nordeste e norte 1 e demais regiões 0</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>final_fem_22<span class="sc">$</span>N_NE<span class="ot">&lt;-</span><span class="dv">0</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>final_fem_22<span class="sc">$</span>N_NE[final_fem_22<span class="sc">$</span>regiao <span class="sc">==</span> <span class="st">"N"</span> <span class="sc">|</span> final_fem_22<span class="sc">$</span>regiao <span class="sc">==</span> <span class="st">"NE"</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(final_fem_22<span class="sc">$</span>N_NE, final_fem_22<span class="sc">$</span>regiao)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   
+    CO N NE S SD
+  0  4 0  0 3  4
+  1  0 7  9 0  0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vioplot) </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> final_fem_22<span class="sc">$</span>feminic_tx[final_fem_22<span class="sc">$</span>N_NE<span class="sc">==</span><span class="dv">1</span>]</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> final_fem_22<span class="sc">$</span>feminic_tx[final_fem_22<span class="sc">$</span>N_NE<span class="sc">==</span><span class="dv">0</span>]</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">vioplot</span>(x1, x2, <span class="at">names=</span><span class="fu">c</span>(<span class="st">"Norte e Nordeste"</span>, <span class="st">"Demais regiões"</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">"steelblue"</span>, <span class="st">"lightblue"</span>), <span class="at">border=</span><span class="st">"white"</span> )</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">"Violin Plots da taxa de feminicídio por região do Brasil"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Aqui segue uma sugestão de plotar o histograma juntamente com o boxplot, possibilitando em um mesmo gráfico uma maior quantidade de observação. Veja abaixo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>,<span class="dv">0</span>,<span class="fl">0.6</span>), <span class="at">new=</span><span class="cn">TRUE</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">main=</span><span class="st">""</span>, <span class="at">xlab=</span><span class="st">"Taxa Feminicídio"</span>, <span class="at">ylab=</span><span class="st">"Frequência"</span>, <span class="at">col=</span><span class="st">"lightblue2"</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>,<span class="fl">0.15</span>,<span class="fl">0.9</span>), <span class="at">new=</span><span class="cn">TRUE</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">horizontal=</span><span class="cn">TRUE</span>, <span class="at">axes=</span><span class="cn">FALSE</span>, <span class="at">col=</span><span class="st">"navajowhite2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="descritiva_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 <p><strong>AMPLITUDE:</strong></p>
+<p>Amplitude é a diferença entre o valor mínimo e máximo de uma série de dados.</p>
 <p><span class="math display">\[\text{Amplitude} = \text{Maior Valor} - \text{Menor Valor}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>min_max<span class="ot">&lt;-</span><span class="fu">range</span>(final_fem_22<span class="sc">$</span>feminic_tx)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>amp<span class="ot">&lt;-</span>min_max[<span class="dv">2</span>]<span class="sc">-</span>min_max[<span class="dv">1</span>]</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>amp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.5</code></pre>
+</div>
+</div>
 <p><strong>AMPLITUDE INTERQUANTIL:</strong></p>
 <p>A amplitude interquartil é dada pela diferenca entre o terceiro (<span class="math inline">\(Q_3\)</span>) e o primeiro quartil (<span class="math inline">\(Q_1\)</span>).</p>
 <p><span class="math display">\[IQR = Q_3 - Q_1\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>qs<span class="ot">&lt;-</span><span class="fu">quantile</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">na.rm=</span>T)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>iq<span class="ot">&lt;-</span>qs[<span class="dv">4</span>]<span class="sc">-</span>qs[<span class="dv">2</span>]</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(final_fem_22<span class="sc">$</span>feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.65</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>iq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 75% 
+0.65 </code></pre>
+</div>
+</div>
 </section>
 <section id="medidas-de-variabilidade" class="level3" data-number="6.5.2">
 <h3 data-number="6.5.2" class="anchored" data-anchor-id="medidas-de-variabilidade"><span class="header-section-number">6.5.2</span> Medidas de Variabilidade</h3>
