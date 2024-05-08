@@ -1,9 +1,9 @@
 ---
 title: "Análise Descritiva"
-subtitle: "Introdução à Estatística"
+subtitle: "Uma Introdução à Estatística"
 author:
 - Alexandre Nicolella
-date: '2024'
+date: "2024"
 format: html
 ---
 
@@ -135,7 +135,7 @@ $$X=\text{Renda das mulheres que moram em Ribeirão Preto em determinado ano}$$ 
 
 A questão é: quais cores existem e quantas peças de cada cor temos? Para isso usamos um experimento
 
-**Experimento Aleatório**
+**EXPERIMENTO ALEATÓRIO**
 
 O experimento em ciências sociais aplicadas em geral está associada a observação sistemática de pessoas, cidades, empresas ou processos. A ideia é:
 
@@ -147,17 +147,17 @@ Se eu conseguir sortear de forma indefinida e na mesma condição as mulheres qu
 
 ![Renda pc das mulheres de Ribeirão Preto.](figuras\lego_org.jpg){width="50%"}
 
-**Espaço Amostral**
+**ESPAÇO AMOSTRAL**
 
 Agora conseguimos organizar os nossos resultados em um lugar chamado espaço amostral. Nele teremos todas as cores (azul, branca, amarela...) que podem acontecer e o número de peças de cada cor (a chance). Em outras palavras teremos todos os possíveis valores de $X$ e suas probabilidades.
 
-**Variável Aleatória**
+**VARIÁVEL ALEATÓRIA**
 
 Quanto representamos esse espaço amostral em formato de números é o que chamamos de Variável Aleatória (V.A.). A V.A. é a combinação de tudo que pode acontecer, ou seja, todas as rendas que existem associadas a probabilidade de cada uma das rendas acontecerem.
 
 Existem dois tipos principais de variáveis aleatórias: discretas e contínuas.
 
-**Variáveis Aleatórias Discretas**
+**VARIÁVEIS ALEATÓRIAS DISCRETAS**
 
 É um tipo de variável que conseguimos colocar em lista, seja finita ou infinita $x_1; x_2;...; x_n;...$ e associa-se a cada um dessses valores uma probabilidade $p(x_1); p(x_2);...; p(x_n);...$
 
@@ -176,7 +176,7 @@ plot(feminicidio,dbinom(feminicidio,size=20,prob=.3),
      lwd=3)
 ```
 
-**Variáveis Aleatórias Contínuas**
+**VARIÁVEIS ALEATÓRIAS CONTÍNUAS**
 
 Por outro lado, uma variável aleatória contínua pode assumir infinito valores dentro de um intervalo específico. Agora temos infinitas possibilidades de resultados para $X$ e agora associamos uma função $f(x)$ que irá descrever o comportamento da probabilidade.
 
@@ -202,7 +202,7 @@ lines(x=c(900,900),y=c(0,fdnorm[x==900]),lty=2, col="black")
 
 O fomato das distribuições vistas dependem principalmente de dois parâmetros: A esperança que é uma medida de centralidade e a variância que é uma medida de dispersão.
 
-**Esperança -** $E(X)$
+**ESPERANÇA** - $E(X)$
 
 É uma medida de centralidade da variável aleatória. É definida como a média ponderada de todos os possíveis resultados de $X$, onde os pesos são dados pelas probabilidades desses resultados ocorrerem. A esperança de $X$, $E(X)$, é calculada como:
 
@@ -214,13 +214,13 @@ $$E(X) = \int_{-\infty}^{\infty} x \cdot f(x)$$,
 
 para variáveis contínuas
 
-**Variância Populacional -** $Var(X)$
+**VARIÂNCIA POPULACIONAL** - $Var(X)$
 
 A variância é uma medida que captura como os dados populacionais se dispersão em relação a sua média (ou esperança).
 
 $$Var(X) =\frac{1}{N} \sum_{1}^{N} (X_i-E(X))^2$$ Ou podemos assim representar: $$\text{Var}(X) = E(X^2) - [E(X)]^2$$.
 
-**Desvio Padrão Populacional -** $DP(X)$
+**DESVIO PADRÃO POPULACIONAL** - $DP(X)$
 
 A variãncia é uma medida ao quadrado. Se estamos falando da renda seria uma medida da dispersão ao quadrado, ou seja, em $R\$^{2}$. Para retornar a unidade original usamos o desvio padrão que é:
 
@@ -245,7 +245,7 @@ Portanto, queremos observar duas características de forma simultânea das mulhe
 
 Apesar de termos coletados duas informações, temos na realidade três informações. A informação da renda, a informação do consumo alimentar e a informação de como renda e consumo alimentar interagem.
 
-**Visualização gráfica**
+**VISUALIZAÇÃO GRÁFICA**
 
 Vejamos agora um exemplo de variável aleaória bidimensional:
 
@@ -253,7 +253,7 @@ Vejamos agora um exemplo de variável aleaória bidimensional:
 
 Abaixo tem-se uma variável aleatória $(X,Y)$ com distribuição normal bivariada com a esperança de $X$ igual a 1, de $Y$ igual a 0, o desvio-padrões iguais a 3 e 2 respectivamente. Aqui consideremaos a correlação de 1 (veremos mais a frente esse conceito)
 
-```{r echo = TRUE, fig.cap= "Normal Bivariada",fig.height = 3.5, fig.width = 6}
+```{r echo = TRUE, fig.cap= "Normal Bivariada"}
 library(mnormt)
 
 #Para tornar reproduzível
@@ -279,22 +279,21 @@ Surge aqui um conceito importante que tenta medir como as características da po
 
 Duas medidas que tentam mensurar o "grau de associação" linear entre X e Y são:
 
-**Covariância**
+**COVARIÂNCIA**
 
 $$Cov(X,Y)=E[(X-E(X))(Y-E(Y))]$$
 
 Ela mede a variabilidade conjunta de uma variável aleátoria multidimensional. Como no caso da variância, ela sofre do efeito das escalas de medidas. Para corrigir dividimos pelos desvios padrões. Surge dessa maneira a medida de correlação.
 
-**Correlação**
+**CORRELAÇÃO**
 
-$$\rho_{X,Y}=\frac{E[(X-E(X))(Y-E(Y))]}{\sqrt{Var(X)Var(Y)}}$$ 
+$$\rho_{X,Y}=\frac{E[(X-E(X))(Y-E(Y))]}{\sqrt{Var(X)Var(Y)}}$$
 
 ::: callout-warning
 ## Correlação
 
 A correlação mede o **GRAU DE ASSOCIAÇÃO LINEAR**. Associações não lineares não são capturadas pela correlação.
 :::
-
 
 ::: callout-note
 ## Lendo a Correlação
@@ -304,12 +303,11 @@ A correlação $\rho_{X,Y}$ varia de -1 até 1. Sendo que:
 $\rho$ próximo a 1 e -1 indicam alto grau de linearidade e $\rho$ próximo a 0 indica ausência de relação linear - mas não diz nada sobre relações não-lineares.
 :::
 
-
-**Visualização gráfica**
+**VISUALIZAÇÃO GRÁFICA**
 
 Veja no gráfico abaixo que a variável 4 e 5 possuem correlação perfeita, igual a -1. E as variáveis 3 e 1 não possuem grau de associação linear, correlação próxima a 0.
 
-```{r echo = FALSE, fig.cap= "Gráfico de correlação para variáveis simuladas v1 a v5",fig.height = 5, fig.width = 5, fig.align = "center"}
+```{r echo = FALSE, fig.cap= "Gráfico de correlação para variáveis simuladas v1 a v5",fig.height = 6, fig.width = 6, fig.align = "center"}
 library(psych)
 data <- data.frame( var1 = 1:100 + rnorm(100,sd=20), v2 = 1:100 + rnorm(100,sd=27), v3 = rep(1, 100) + rnorm(100, sd = 1)) 
 data$v4 = data$var1 ** 2 
@@ -317,50 +315,140 @@ data$v5 = -(data$var1 ** 2)
 pairs.panels(data)
 ```
 
-
-
-
 ## Conceitos Básicos Inferência Estatística
+
+Dado a nossa pergunta ou problema, gostariamos de saber as carcateística de uma população.
+
+Entretantom um processo de levantamento de informações é em geral caro e em muitas situações é destrutivo. Em ciências sociais estamos interessados em características de pessoas, empresas, municípios, estados, países etc. Não é destrutivo mas é uma coleta cara. Por exemplo, o Censo demográfico de 2010 custou R\$ 1,3 bilhões, ou aproximadamente R\$ 2,2 bi em reais de 2020. O valor é de aproximadamente R\$ 35,00 por domicílio.
+
+Dessa forma nosso objetivo aqui é:
+
+::: callout-note
+## Objetivo
+
+A partir de uma amostra da população realizar inferência sobre toda a população
+:::
+
+### Exemplos do príncipio no dia a dia
+
+Pense nessas situações:
+
+-   Para medir a glicose muitos pacientes usam uma gota de sangue e um pequeno aparelho. A partir dele sabem quanto tem no corpo todo, basta uma gota para termos boa certeza de quanto é taxa de glicose!
+-   Para saber se a quantidade de sal está adequada em uma grande panela de arroz, basta uma pequena colher de chá para termos uma boa certeza!
+-   Abacaxis às vezes são vendidos em caminhões na rua. Quando paramos provamos e são doces. Compramos 4 por 10. Qual a certeza que esses que vc está levando estejam também doces? É diferente das situações anteriores?
+
+Com certeza vc deve ter pensado que essas situações tem grau de certeza variáveis. A diferença está em quão homogênea é a característica na população, o sal no arroz e a glicose no sangue devem ser muito bem distribuidas, ou seja, bem homogêneas. Já a doçura no abacaxi deve ter distribuição maior e provar apenas um abacaxi não nos dá uma ideia do todo.
+
+Esse é um erro muito comum, a partir de uma ou poucas observações dizer que o todo se comporta da mesma maneira, esse erro se agrava quando maior é a heterogeneidade!!!
 
 ### População, Amostra, Parâmetros e Estimadores
 
+### População e amostra
+
+```{mermaid}
+flowchart LR
+  A[POPULAÇÃO] --> B[Totalidade das observações sob Investigação]
+  A --> C[AMOSTRA]
+  C --> D[Subconjunto da População]
+```
+
+A definição da população depende da pergunta de pesquisa ou análise. Se queremos saber qual o salário médio dos empregados do setor industrial no estado de São Paulo para determinado ano, nossa população são todos os funcionários das indústrias instaladas no estado de São Paulo para esse ano. Se queremos os determinantes do desempenho escolar dos alunos do ensino fundamental no Brasil em 2019, nossa população será esse grupo de alunos nesse ano. Se quisermos avaliar o gasto municipal no ano anterior as eleições no Brasil, temos nossa população formada pelos municípios para o ano de análise.
+
+::: callout-tip
+## População
+
+Quem define a população é o objetivo do seu trabalho!! Ou seja, seu problema de pesquisa
+:::
+
+### Amostragem Aleatória Simples
+
+Existem várias maneiras de fazer uma análise aleatória, uma delas é a simples. Vejamos primeiro um processo de amostragem não aleatório e que possui tendenciosidade. A figura abaixo mostra esse processo\[\^7\]:
+
+![Um processo de amostragem viesádo. Fonte:Data Basecamp](figuras\bias.jpg){width="50%"}
+
+Observa-se que existe uma supervalorização do vermelho e uma subvalorização do azul. Chegariamos a conclusão, caso isso fosse uma pesquisa eleitoral, que o candidato vermelho, segunda amostra teria mais chance de ganhar e o azul quase nenhuma chance. O que não condiz com a população. Dizemos que temos uma amostra viesada ou tendenciosa.
+
+Um processo de amostragem aleatório requer que as características presentes na população estejam presentes na amostras e estejam balanceadas, ou seja, que a sua leitura represente bem o todo.
+
+## Estatística e Parâmetro
+
+```{mermaid}
+flowchart LR
+  A[PARÂMETRO] --> B[Medida que descreve uma característica da população]
+```
+
+Os parâmetros definem as características de uma população. Qual a renda média da população, qual o desemprego médio da população, qual o desempenho médio educacional, qual a expectativa de vida média na população etc. São características que em geral não observamos.
+
+Uma pergunta, qual o tempo médio que demora um processo de feminicídio? Perceba que mesmo características da população que conhecemos são de difíceis de conhecermos. Temos que nos valer de uma parte e tentar estimar o que seriam os valores dessas características.
+
+```{mermaid}
+flowchart LR
+  A[ESTATÍSTICA] --> B[Medida que descreve uma característica da amostra]
+```
+
+Sejam $x_1, x_2,..., x_{n}$ os valores medidos a cada para cada medição de $X$. Podemos definir uma estatística como:
+
+$$ t= H (x_1, x_2, ..., x_{n})$$
+
+Alguns exemplos de T:
+
+$$ \text{Média}: \ \overline{x}=\frac{\sum_{i=1}^{n} x_i}{n}$$
+
+$$ \text{Variância:} \ s^{2}= \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \overline{x})^{2} $$
+
+$$ x_{(1)}: Min\{x_1, ..., x_n\}$$
+
+
+Vejamos a tabela abaixo que já faz uma primeira associação entre estatística e parâmetro:
+
+| Parâmetro      |                   | Estatística    |                    |
+|----------------|-------------------|----------------|--------------------|
+| Esperança      | $E(X)=\mu$        | $\bar{X}$      | Média              |
+| Variância Pop. | $Var(X)=\sigma^2$ | $S^2;\sigma^2$ | Variância Amostral |
+| Mediana Pop.   | Md                | md             | Mediana Amostral   |
+| Proporção Pop. | p                 | $\hat{p}$      | Proporção Amostral |
+
+[Tabela 1 - Parâmetros populacionais e as Estatísticas associadas]{caption="TRUE"}
+
+Como regra geral, os parâmetros são representados por letras gregas e as estatística com letras do nosso alfabeto (latino) ou letra grega com com chapéu para indicar que é uma estatística.
 
 ## Estatisticas Descritivas: Medidas Numéricas a partir da amostra
 
 Existem outros métodos númericos que se constituem como alternativas adcionais para sintetizar os dados. Podemos dividir as medidas numericas em duas, temos as medidas de posíção e as de variabilidade.
 
-**Medidas de posição:** 
+**MEDIDAS DE POSIÇÃO:**
 
-  * Média, 
-  * Mediana, 
-  * Moda,
-  * Percentis, 
-  * Quartis.
+-   Média,
+-   Mediana,
+-   Moda,
+-   Percentis,
+-   Quartis.
 
-**Medidas de Variabilidade:** 
+**MEDIDAS DE VARIABILIDADE:**
 
-  * Amplitude, 
-  * Amplitude interquartil,
-  * Variância, 
-  * Desvio Padrão e 
-  * Coeficiente de Variação.
+-   Amplitude,
+-   Amplitude interquartil,
+-   Variância,
+-   Desvio Padrão e
+-   Coeficiente de Variação.
 
-**Medidas de associação entre duas variáveis:** 
-  * Covariancia e 
-  * Coeficiente de Correlção.
+**MEDIDAS DE ASSOCIAÇÃO:**
 
-Vamos apresentar as formulas de algumas dessas principais medidas.
+-   Covariancia e
+-   Coeficiente de Correlção.
 
+Vamos apresentar as fÓrmulas de algumas dessas principais medidas.
 
 ```{r}
 final_fem_22 <- read.csv("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.csv", head=T ,sep=";")
 
 ```
 
-**Media Amostral:**
+### Medidas de Posição:
+
+**MÉDIA AMOSTRAL:**
 
 $$\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i$$
-
 
 ```{r, warning=F}
 mean(final_fem_22$feminic_tx)
@@ -376,36 +464,35 @@ t(mean_1) %>%
      kable_styling()
 ```
 
-**Mediana:**
+**MEDIANA:**
 
 Organize os dados em ordem crescente.
-a) Para um numero impar de observações a mediana é o valor que ocupa a posição central.
 
-b) para um número par de observações, a mediana é a média dos dois valores centrais.
+a)  Para um numero impar de observações a mediana é o valor que ocupa a posição central.
 
-**Moda:**
+b)  para um número par de observações, a mediana é a média dos dois valores centrais.
+
+**MODA:**
+
 Moda é o valor que ocorre com mais frequência.
 
+**PERCENTIL:**
 
-**Percentil:**
 O p-esimo percentil é um valor tal que ao menos p por cento das observações são menores ou iguais à ele e pelo menos (100-p) por cento das observações são maiores ou iguais a esse valor.
 
 Etapas: para calcular o p-ésimo percentil
 
-Etapa 1. Organize os dados em ordem crescente.
-Etapa 2: Calcule um indice, $i$ tal que
-$$i = \frac{p}{100} \times n$$
-onde $p$ é o percentil procurado
+Etapa 1. Organize os dados em ordem crescente. Etapa 2: Calcule um indice, $i$ tal que $$i = \frac{p}{100} \times n$$ onde $p$ é o percentil procurado
 
-Etapa 3: a) Se $i$ não for um número inteiro, arredondeo-o para cima. O próximo número inteiro maior que $i$  denota a posição do p-esimo percentil. b) Se $i$ for um número inteiro o p-esimo percentil será a média dos valores que o ocupam as posições $i$ e $i + 1$.
+Etapa 3: a) Se $i$ não for um número inteiro, arredondeo-o para cima. O próximo número inteiro maior que $i$ denota a posição do p-esimo percentil. b) Se $i$ for um número inteiro o p-esimo percentil será a média dos valores que o ocupam as posições $i$ e $i + 1$.
 
-**Quartis**
+**QUARTIS:**
+
 Os quartis são medidas estatísticas que dividem um conjunto de dados ordenados em quatro partes iguais.
 
 Existem três quartis principais:
 
 Primeiro Quartil (Q1): Representa o valor abaixo do qual está situada a primeira quarta parte (ou 25%) dos dados quando eles estão ordenados em ordem crescente. Matematicamente, o primeiro quartil é o valor que divide os dados em 25% (ou 0.25) abaixo e 75% (ou 0.75) acima desse ponto.
-
 
 Segundo Quartil (Q2): Corresponde à mediana dos dados, dividindo o conjunto em duas metades iguais. É o valor que separa os 50% inferiores dos 50% superiores dos dados. O segundo quartil é frequentemente representado pela mediana.
 
@@ -413,39 +500,33 @@ Terceiro Quartil (Q3): Indica o valor abaixo do qual está situada a terceira qu
 
 ![quartis](quartis.png)
 
-
-**Amplitude:**
+**AMPLITUDE:**
 
 $$\text{Amplitude} = \text{Maior Valor} - \text{Menor Valor}$$
 
-**Amplitude interquartil:**
+**AMPLITUDE INTERQUANTIL:**
 
 A amplitude interquartil é dada pela diferenca entre o terceiro ($Q_3$) e o primeiro quartil ($Q_1$).
 
 $$IQR = Q_3 - Q_1$$
 
-
-**Medidas de Variabilidade**
+### Medidas de Variabilidade
 
 A variância amostral é uma medida estatística que indica o quão dispersos estão os dados em relação à média amostral. Em outras palavras, ela quantifica a extensão das diferenças individuais entre os valores observados e a média da amostra.
 
-
 A variância populacional é semelhante à variância amostral, mas é calculada utilizando todos os dados de uma população em vez de uma amostra. Ela descreve a dispersão dos dados em relação à média populacional.
 
-**Variancia Amostral**:
+**VARIÂNCIA E DESVIO PADRÃO AMOSTRAL**:
 
-$$s^2 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n-1}$$
-onde $\bar{x}$ é a média amostral.
-
+$$s^2 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n-1}$$ onde $\bar{x}$ é a média amostral.
 
 O **desvio padrão** é derivado da variância. Podemos qualcular essa estatistica da seguinte maneira:
-
 
 Desvio padrão amostral:
 
 $$s = \sqrt{s^2} = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n-1}}$$
 
-**Coeficiente de Varição**:
+**COEFICIENTE DE VARIAÇÃO**:
 
 O coeficiente de variação (CV) é uma medida de dispersão relativa que expressa a variabilidade dos dados como uma porcentagem da média.
 
@@ -453,33 +534,18 @@ $$\text{CV} = \left( \frac{\text{Desvio padrão}}{\text{Média}} \right) \times 
 
 O r calcula essas estatisticas de maneira muito eficiente com apenas uma linha de comando.A função `summary()` em R fornece um resumo estatístico básico das variáveis numéricas presentes em um data frame. Ao aplicar `summary()` a um data frame, as seguintes estatísticas são calculadas para cada coluna numérica:
 
-Mínimo (Min): O menor valor observado na variável.
-1º Quartil (Q1): O valor que separa os 25% inferiores dos dados.
-Mediana (50º Percentil): O valor que separa os 50% inferiores dos 50% superiores dos dados.
-Média (Mean): A média aritmética dos valores.
-3º Quartil (Q3): O valor que separa os 75% inferiores dos dados.
-Máximo (Max): O maior valor observado na variável.
+Mínimo (Min): O menor valor observado na variável. 1º Quartil (Q1): O valor que separa os 25% inferiores dos dados. Mediana (50º Percentil): O valor que separa os 50% inferiores dos 50% superiores dos dados. Média (Mean): A média aritmética dos valores. 3º Quartil (Q3): O valor que separa os 75% inferiores dos dados. Máximo (Max): O maior valor observado na variável.
 
+### Medidas de Associação
 
-Vamos calcular outras estatísticas
+**COVARIÂNCIA AMOSTRAL**
 
-
-
-Medida de Associação entre duas variáveis:
-
-Covariância entre duas variáveis: A covariância entre duas variáveis X e  Y é uma medida estatística que descreve como essas variáveis variam juntas. Em outras palavras, a covariância indica a tendência de X e Y de se moverem na mesma direção (covariância positiva) ou em direções opostas (covariância negativa).
+Covariância entre duas variáveis: A covariância entre duas variáveis X e Y é uma medida estatística que descreve como essas variáveis variam juntas. Em outras palavras, a covariância indica a tendência de X e Y de se moverem na mesma direção (covariância positiva) ou em direções opostas (covariância negativa).
 
 $$\text{Cov}(X, Y) = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})$$
 
-Coeficiente de Correlação: O coeficiente de correlação entre duas variáveis X e Y é uma medida estatística que descreve a força e a direção da relação linear entre essas variáveis. O coeficiente de correlação é frequentemente representado pelo coeficiente de correlação de Pearson, $r_{XY}$.
+**CORRELAÇÃO**
 
-$$r_{XY} = \frac{\text{Cov}(X, Y)}{s_X s_Y}$$
-O coeficiente de correlação de Pearson é uma medida amplamente utilizada para avaliar a relação linear entre variáveis, pois fornece uma interpretação padronizada da força e direção da relação, independentemente das unidades das variáveis.
+O coeficiente de correlação entre duas variáveis X e Y é uma medida estatística que descreve a força e a direção da relação linear entre essas variáveis. O coeficiente de correlação é frequentemente representado pelo coeficiente de correlação de Pearson, $r_{XY}$.
 
-
-
-
-
-
-
-
+$$r_{XY} = \frac{\text{Cov}(X, Y)}{s_X s_Y}$$ O coeficiente de correlação de Pearson é uma medida amplamente utilizada para avaliar a relação linear entre variáveis, pois fornece uma interpretação padronizada da força e direção da relação, independentemente das unidades das variáveis.
