@@ -1,6 +1,6 @@
 ---
-title: "Modelos Lineares"
-subtitle: "Aplicação a Pesquisa em Direito"
+title: "Modelos Avançados"
+subtitle: "Aplicação à Pesquisa em Direito"
 author:
 - Alexandre Nicolella e Felipe Bauer
 date: "2024"
