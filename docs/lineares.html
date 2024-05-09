@@ -213,71 +213,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#regressão-linear-simples---rls" id="toc-regressão-linear-simples---rls" class="nav-link active" data-scroll-target="#regressão-linear-simples---rls"><span class="header-section-number">7</span> Regressão Linear Simples - RLS</a>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">6.1</span> Introdução</a>
   <ul class="collapse">
-  <li><a href="#introdução" id="toc-introdução" class="nav-link" data-scroll-target="#introdução"><span class="header-section-number">7.1</span> Introdução</a>
+  <li><a href="#alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico" id="toc-alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico" class="nav-link" data-scroll-target="#alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico"><span class="header-section-number">6.1.1</span> Alguns Exemplos de Regressão Aplicados ao Contexto Jurídico:</a></li>
+  </ul></li>
+  <li><a href="#hipóteses-sobre-o-comportamento-do-termo-de-erro" id="toc-hipóteses-sobre-o-comportamento-do-termo-de-erro" class="nav-link" data-scroll-target="#hipóteses-sobre-o-comportamento-do-termo-de-erro"><span class="header-section-number">6.2</span> Hipóteses sobre o comportamento do Termo de Erro</a></li>
+  <li><a href="#estimação-dos-parâmetros-da-rls" id="toc-estimação-dos-parâmetros-da-rls" class="nav-link" data-scroll-target="#estimação-dos-parâmetros-da-rls"><span class="header-section-number">6.3</span> Estimação dos Parâmetros da RLS</a>
   <ul class="collapse">
-  <li><a href="#alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico" id="toc-alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico" class="nav-link" data-scroll-target="#alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico"><span class="header-section-number">7.1.1</span> Alguns Exemplos de Regressão Aplicados ao Contexto Jurídico:</a></li>
+  <li><a href="#aplicação---estimando-uma-regressão-linear-simples" id="toc-aplicação---estimando-uma-regressão-linear-simples" class="nav-link" data-scroll-target="#aplicação---estimando-uma-regressão-linear-simples"><span class="header-section-number">6.3.1</span> Aplicação - Estimando uma Regressão Linear Simples</a></li>
   </ul></li>
-  <li><a href="#hipóteses-sobre-o-comportamento-do-termo-de-erro" id="toc-hipóteses-sobre-o-comportamento-do-termo-de-erro" class="nav-link" data-scroll-target="#hipóteses-sobre-o-comportamento-do-termo-de-erro"><span class="header-section-number">7.2</span> Hipóteses sobre o comportamento do Termo de Erro</a></li>
-  <li><a href="#estimação-dos-parâmetros-da-rls" id="toc-estimação-dos-parâmetros-da-rls" class="nav-link" data-scroll-target="#estimação-dos-parâmetros-da-rls"><span class="header-section-number">7.3</span> Estimação dos Parâmetros da RLS</a>
+  <li><a href="#caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" id="toc-caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" class="nav-link" data-scroll-target="#caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados"><span class="header-section-number">6.4</span> Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados</a>
   <ul class="collapse">
-  <li><a href="#aplicação---estimando-uma-regressão-linear-simples" id="toc-aplicação---estimando-uma-regressão-linear-simples" class="nav-link" data-scroll-target="#aplicação---estimando-uma-regressão-linear-simples"><span class="header-section-number">7.3.1</span> Aplicação - Estimando uma Regressão Linear Simples</a></li>
+  <li><a href="#valores-estimados-e-resíduos" id="toc-valores-estimados-e-resíduos" class="nav-link" data-scroll-target="#valores-estimados-e-resíduos"><span class="header-section-number">6.4.1</span> Valores estimados e Resíduos</a></li>
+  <li><a href="#propriedades-algébricas-do-mqo" id="toc-propriedades-algébricas-do-mqo" class="nav-link" data-scroll-target="#propriedades-algébricas-do-mqo"><span class="header-section-number">6.4.2</span> Propriedades Algébricas do MQO</a></li>
+  <li><a href="#qualidade-do-ajuste" id="toc-qualidade-do-ajuste" class="nav-link" data-scroll-target="#qualidade-do-ajuste"><span class="header-section-number">6.4.3</span> Qualidade do Ajuste</a></li>
   </ul></li>
-  <li><a href="#caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" id="toc-caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" class="nav-link" data-scroll-target="#caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados"><span class="header-section-number">7.4</span> Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados</a>
-  <ul class="collapse">
-  <li><a href="#valores-estimados-e-resíduos" id="toc-valores-estimados-e-resíduos" class="nav-link" data-scroll-target="#valores-estimados-e-resíduos"><span class="header-section-number">7.4.1</span> Valores estimados e Resíduos</a></li>
-  <li><a href="#propriedades-algébricas-do-mqo" id="toc-propriedades-algébricas-do-mqo" class="nav-link" data-scroll-target="#propriedades-algébricas-do-mqo"><span class="header-section-number">7.4.2</span> Propriedades Algébricas do MQO</a></li>
-  <li><a href="#qualidade-do-ajuste" id="toc-qualidade-do-ajuste" class="nav-link" data-scroll-target="#qualidade-do-ajuste"><span class="header-section-number">7.4.3</span> Qualidade do Ajuste</a></li>
-  </ul></li>
-  <li><a href="#ausência-de-viés-e-variância-dos-estimadores-de-mqo" id="toc-ausência-de-viés-e-variância-dos-estimadores-de-mqo" class="nav-link" data-scroll-target="#ausência-de-viés-e-variância-dos-estimadores-de-mqo"><span class="header-section-number">7.5</span> Ausência de Viés e Variância dos Estimadores de MQO</a>
-  <ul class="collapse">
-  <li><a href="#ausencia-de-viés-em-mqo" id="toc-ausencia-de-viés-em-mqo" class="nav-link" data-scroll-target="#ausencia-de-viés-em-mqo"><span class="header-section-number">7.5.1</span> Ausencia de Viés em MQO</a></li>
-  <li><a href="#variância-dos-estimadores-de-mqo" id="toc-variância-dos-estimadores-de-mqo" class="nav-link" data-scroll-target="#variância-dos-estimadores-de-mqo"><span class="header-section-number">7.5.2</span> Variância dos estimadores de MQO</a></li>
-  <li><a href="#estimação-da-variância-do-erro" id="toc-estimação-da-variância-do-erro" class="nav-link" data-scroll-target="#estimação-da-variância-do-erro"><span class="header-section-number">7.5.3</span> Estimação da Variância do erro</a></li>
-  </ul></li>
-  <li><a href="#aplicação-de-rls---foco-no-erro-padrão-do-parametro-b1" id="toc-aplicação-de-rls---foco-no-erro-padrão-do-parametro-b1" class="nav-link" data-scroll-target="#aplicação-de-rls---foco-no-erro-padrão-do-parametro-b1"><span class="header-section-number">7.6</span> Aplicação de RLS - Foco no erro padrão do parametro b1</a></li>
-  </ul></li>
-  <li><a href="#regressão-linear-múltipla-rlm" id="toc-regressão-linear-múltipla-rlm" class="nav-link" data-scroll-target="#regressão-linear-múltipla-rlm"><span class="header-section-number">8</span> Regressão Linear Múltipla (RLM)</a>
-  <ul class="collapse">
-  <li><a href="#exemplos-de-regressão-multipla-no-contexto-jurídico" id="toc-exemplos-de-regressão-multipla-no-contexto-jurídico" class="nav-link" data-scroll-target="#exemplos-de-regressão-multipla-no-contexto-jurídico"><span class="header-section-number">8.1</span> Exemplos de Regressão Multipla no Contexto Jurídico</a></li>
-  <li><a href="#a-interpretação-da-equação-de-regressão-de-mqo" id="toc-a-interpretação-da-equação-de-regressão-de-mqo" class="nav-link" data-scroll-target="#a-interpretação-da-equação-de-regressão-de-mqo"><span class="header-section-number">8.2</span> A Interpretação da Equação de Regressão de MQO</a></li>
-  <li><a href="#estimação-dos-k-parametros-na-rlm" id="toc-estimação-dos-k-parametros-na-rlm" class="nav-link" data-scroll-target="#estimação-dos-k-parametros-na-rlm"><span class="header-section-number">8.3</span> Estimação dos k parametros na RLM</a>
-  <ul class="collapse">
-  <li><a href="#estimativas-de-mqo" id="toc-estimativas-de-mqo" class="nav-link" data-scroll-target="#estimativas-de-mqo"><span class="header-section-number">8.3.1</span> Estimativas de MQO</a></li>
-  </ul></li>
-  <li><a href="#qualidade-do-ajuste-na-regressão-linear-multipla" id="toc-qualidade-do-ajuste-na-regressão-linear-multipla" class="nav-link" data-scroll-target="#qualidade-do-ajuste-na-regressão-linear-multipla"><span class="header-section-number">8.4</span> Qualidade do Ajuste na Regressão Linear Multipla</a></li>
-  <li><a href="#valor-espererado-dos-estimadores-de-mqo" id="toc-valor-espererado-dos-estimadores-de-mqo" class="nav-link" data-scroll-target="#valor-espererado-dos-estimadores-de-mqo"><span class="header-section-number">8.5</span> Valor Espererado dos Estimadores de MQO</a></li>
-  <li><a href="#variância-dos-estimadores-de-mqo-1" id="toc-variância-dos-estimadores-de-mqo-1" class="nav-link" data-scroll-target="#variância-dos-estimadores-de-mqo-1"><span class="header-section-number">8.6</span> Variância dos Estimadores de MQO</a>
-  <ul class="collapse">
-  <li><a href="#eficiencia-de-mqo-o-teorema-de-gauss-markov" id="toc-eficiencia-de-mqo-o-teorema-de-gauss-markov" class="nav-link" data-scroll-target="#eficiencia-de-mqo-o-teorema-de-gauss-markov"><span class="header-section-number">8.6.1</span> Eficiencia de MQO: O Teorema de Gauss-Markov</a></li>
-  </ul></li>
-  <li><a href="#uso-de-variáveis-qualitativas-na-análise-de-rlm" id="toc-uso-de-variáveis-qualitativas-na-análise-de-rlm" class="nav-link" data-scroll-target="#uso-de-variáveis-qualitativas-na-análise-de-rlm"><span class="header-section-number">8.7</span> Uso de Variáveis Qualitativas na Análise de RLM</a>
-  <ul class="collapse">
-  <li><a href="#uma-única-variável-dummy-independente" id="toc-uma-única-variável-dummy-independente" class="nav-link" data-scroll-target="#uma-única-variável-dummy-independente"><span class="header-section-number">8.7.1</span> Uma única Variável Dummy Independente</a></li>
-  <li><a href="#o-uso-de-dummies-para-categorias-multiplas." id="toc-o-uso-de-dummies-para-categorias-multiplas." class="nav-link" data-scroll-target="#o-uso-de-dummies-para-categorias-multiplas."><span class="header-section-number">8.7.2</span> O uso de Dummies para categorias multiplas.</a></li>
-  <li><a href="#incorporando-informações-ordinais-com-o-uso-de-variáveis-dummy." id="toc-incorporando-informações-ordinais-com-o-uso-de-variáveis-dummy." class="nav-link" data-scroll-target="#incorporando-informações-ordinais-com-o-uso-de-variáveis-dummy."><span class="header-section-number">8.7.3</span> Incorporando Informações Ordinais com o uso de Variáveis Dummy.</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#teste-de-hipóteses-no-rlm" id="toc-teste-de-hipóteses-no-rlm" class="nav-link" data-scroll-target="#teste-de-hipóteses-no-rlm"><span class="header-section-number">9</span> Teste de Hipóteses no RLM</a>
-  <ul class="collapse">
-  <li><a href="#hipótese-de-normalidade" id="toc-hipótese-de-normalidade" class="nav-link" data-scroll-target="#hipótese-de-normalidade"><span class="header-section-number">9.1</span> Hipótese de Normalidade</a></li>
-  <li><a href="#teste-de-hipótese-sob-um-único-parametro" id="toc-teste-de-hipótese-sob-um-único-parametro" class="nav-link" data-scroll-target="#teste-de-hipótese-sob-um-único-parametro"><span class="header-section-number">9.2</span> Teste de Hipótese sob um Único Parametro</a>
-  <ul class="collapse">
-  <li><a href="#teste-contra-hipoteses-alternativas-unilaterais" id="toc-teste-contra-hipoteses-alternativas-unilaterais" class="nav-link" data-scroll-target="#teste-contra-hipoteses-alternativas-unilaterais"><span class="header-section-number">9.2.1</span> Teste contra Hipoteses Alternativas Unilaterais</a></li>
-  <li><a href="#teste-contra-hipoteses-alternativas-bilaterais" id="toc-teste-contra-hipoteses-alternativas-bilaterais" class="nav-link" data-scroll-target="#teste-contra-hipoteses-alternativas-bilaterais"><span class="header-section-number">9.2.2</span> Teste contra Hipoteses Alternativas Bilaterais</a></li>
-  <li><a href="#cálculos-dos-p-valores-dos-testes-t" id="toc-cálculos-dos-p-valores-dos-testes-t" class="nav-link" data-scroll-target="#cálculos-dos-p-valores-dos-testes-t"><span class="header-section-number">9.2.3</span> Cálculos dos p-valores dos Testes t</a></li>
-  <li><a href="#teste-de-restrições-de-lineares-múltiplas-o-teste-f" id="toc-teste-de-restrições-de-lineares-múltiplas-o-teste-f" class="nav-link" data-scroll-target="#teste-de-restrições-de-lineares-múltiplas-o-teste-f"><span class="header-section-number">9.2.4</span> Teste de Restrições de Lineares Múltiplas: O teste F</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#alguns-problemas-que-podem-surgir-na-análise-de-regressão-com-corte-transversa" id="toc-alguns-problemas-que-podem-surgir-na-análise-de-regressão-com-corte-transversa" class="nav-link" data-scroll-target="#alguns-problemas-que-podem-surgir-na-análise-de-regressão-com-corte-transversa"><span class="header-section-number">10</span> 5 - Alguns Problemas que podem surgir na Análise de Regressão com Corte Transversa</a>
-  <ul class="collapse">
-  <li><a href="#multicolinearidade-pefeita" id="toc-multicolinearidade-pefeita" class="nav-link" data-scroll-target="#multicolinearidade-pefeita"><span class="header-section-number">10.1</span> 5.1 - Multicolinearidade Pefeita</a></li>
-  <li><a href="#heteroscedasticidade" id="toc-heteroscedasticidade" class="nav-link" data-scroll-target="#heteroscedasticidade"><span class="header-section-number">10.2</span> Heteroscedasticidade</a></li>
-  <li><a href="#viés-de-variável-omitida-e-a-correlação-entre-as-variáveis-explicativas-e-o-termo-de-erro." id="toc-viés-de-variável-omitida-e-a-correlação-entre-as-variáveis-explicativas-e-o-termo-de-erro." class="nav-link" data-scroll-target="#viés-de-variável-omitida-e-a-correlação-entre-as-variáveis-explicativas-e-o-termo-de-erro."><span class="header-section-number">10.3</span> Viés de Variável Omitida e a Correlação entre as variáveis explicativas e o termo de Erro.</a></li>
-  </ul></li>
-  <li><a href="#modelos-com-variáveis-dependentes-qualitativasmodelo-de-probabilidade-linear-mpm-probit-e-logit." id="toc-modelos-com-variáveis-dependentes-qualitativasmodelo-de-probabilidade-linear-mpm-probit-e-logit." class="nav-link" data-scroll-target="#modelos-com-variáveis-dependentes-qualitativasmodelo-de-probabilidade-linear-mpm-probit-e-logit."><span class="header-section-number">11</span> Modelos com Variáveis Dependentes Qualitativas:Modelo de Probabilidade Linear (MPM), Probit e Logit.</a></li>
-  <li><a href="#modelos-de-contagem-e-duração-regressão-de-poisson-e-modelo-de-sobrevivência-de-cox." id="toc-modelos-de-contagem-e-duração-regressão-de-poisson-e-modelo-de-sobrevivência-de-cox." class="nav-link" data-scroll-target="#modelos-de-contagem-e-duração-regressão-de-poisson-e-modelo-de-sobrevivência-de-cox."><span class="header-section-number">12</span> Modelos de Contagem e Duração: Regressão de Poisson e Modelo de Sobrevivência de Cox.</a></li>
+  <li><a href="#unidade-de-medida-e-forma-funcional" id="toc-unidade-de-medida-e-forma-funcional" class="nav-link" data-scroll-target="#unidade-de-medida-e-forma-funcional"><span class="header-section-number">6.5</span> Unidade de Medida e Forma Funcional</a></li>
+  <li><a href="#incorporando-não-linearidades-nas-variáveis" id="toc-incorporando-não-linearidades-nas-variáveis" class="nav-link" data-scroll-target="#incorporando-não-linearidades-nas-variáveis"><span class="header-section-number">6.6</span> Incorporando não linearidades (nas variáveis!)</a></li>
   </ul>
 </nav>
     </div>
@@ -314,54 +266,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="regressão-linear-simples---rls" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Regressão Linear Simples - RLS</h1>
 <p>Vamos iniciar o estudo de modelos lineares começando pela Regresão Linear Simples (RLS). Mais específicamente, vamos estudar a RLS no contexto de dados de corte transversal. Tal abordagem, segmentada por tipos de dados, facilíta o entendimento das hipóteses do modelo.</p>
-<p>Entender como funciona o modelo RLS é a base para entender como funciona outras extensões desse tipo de modelo, tal como o modelo de regressão linear multipla (RLM), amplamente utilizado em trabalhos empíricos.</p>
 <p>Os conceitos estatísticos aplicados no estudo de RLS são os mesmos apresentados na seção anterior.</p>
-<p>O matérial desta seção é baseado na 4ed do livro de Jeffrey Wooldridge, Introdução à Econometria: Uma Abordagem Moderna, de 2013. Embora o título do livro remeta à econometria, os modelos apresentados no livro são aplicaveis à diversas Ciências Sociais, tais como o Direito, Ciência Política, Sociologia, Pscologia Empírica etc…</p>
-<p>A análise de Regressão é um instrumento poderoso para os centistas sociais. Grosso modo, como veremos abaixo, ela nos permite simular, ao menos parcialmente, aplicações de caráter quase experimental. Podemos verificar como determinadas variáveis importantes nas ciencias sociais interagem com outras variáveis, as vezes em uma relação de causa e efeito.</p>
-<section id="introdução" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">7.1</span> Introdução</h2>
-<p>Considere o modelo abaixo</p>
-<p><span class="math display">\[y = \beta_0 + \beta_1x + u \]</span> Nesta equação, <span class="math inline">\(y\)</span> é a variavel dependente ou também denominada de variável explicativa; <span class="math inline">\(x\)</span> é a variável explicativa e <span class="math inline">\(u\)</span> é o termo de erro. Essa equação é uma equação de <strong>regressão linear simples</strong>.</p>
-<p>Considere um exemplo mais concreto de uma equação de regressão linear simples. Sumponha que gostariamos de explicar a taxa de crimes nos bairros de uma cidade, dado os níveis de desemprego na localidade. Nosso modelo de regressão poderia ser específicado da seguinte maneira:</p>
-<p><span class="math display">\[crime_i = \beta_0 + \beta_1Desemprego_i + u\]</span> O subscrito <span class="math inline">\(i\)</span> se refere a um bairro hipotético da cidade. Note que nesse caso,<span class="math inline">\(i\)</span> é o subscrito que relaciona nossas unidades de observação (bairros). Nossas unidades de observação podem variar a depender do contexto em estudo: países, cidades, bairros, estados. No caso das aplicações em Jurimetria, por exemplo, podemos ter como unidade de observação varas onde tramitam os processos.</p>
-<p>Note que, novamente o termo de erro, <span class="math inline">\(u\)</span>, está presente na equação. O termo de erro, não observado, capta tudo aquilo que afeta <span class="math inline">\(crime\)</span>, mas que não estamos controlando. Adiante faremos hipóteses sobre as características de <span class="math inline">\(u\)</span> que irão nos auxiliar na analise da RLS.</p>
+<p>O matérial desta seção é baseado na 4ed do livro de Jeffrey Wooldridge, Introdução à Econometria: Uma Abordagem Moderna, de 2013. Embora o título do livro remeta à econometria, os modelos apresentados no livro são aplicaveis à diversas Ciências Sociais, tais como o Direito, Ciência Política, Sociologia, Psicologia Empírica etc…</p>
+<p>A análise de Regressão é um instrumento poderoso para os centistas sociais. Podemos verificar como determinadas variáveis importantes nas ciencias sociais interagem com outras, as vezes em uma relação de causa e efeito.</p>
+<p>Aqui também teremos que ter uma questão ou problema. Anteriormente gostariamos de entender o que estava acontecendo, qual a Renda pc das mulheres, qual a taxa de feminicídio… Agora queremos ir mais a fundo, porque determinados bairros tem mais crime do que outros? O que determina a renda pc de uma mulher?</p>
+<section id="introdução" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">6.1</span> Introdução</h2>
+<p>Começamos com o modelo mais geral da população:</p>
+<p><span class="math display">\[y = \beta_0 + \beta_1x + u \]</span></p>
+<p>Nesta equação, <span class="math inline">\(y\)</span> é a variavel dependente ou também denominada de variável explicativa; <span class="math inline">\(x\)</span> é a variável explicativa e <span class="math inline">\(u\)</span> é o termo de erro. Essa equação é uma equação de <strong>regressão linear simples</strong>.</p>
+<p><strong>Vejamos um exemlo</strong></p>
+<p>Gostariamos de explicar a taxa de crimes nos bairros de uma cidade e consideramos que os níveis de desemprego nas localidades são importantes. Nosso modelo de regressão poderia ser específicado da seguinte maneira:</p>
+<p><span class="math display">\[Crime_i = \beta_0 + \beta_1Desemprego_i + u\]</span></p>
+<p>O subscrito <span class="math inline">\(i\)</span> se refere a um bairro hipotético da cidade. Note que nesse caso,<span class="math inline">\(i\)</span> é o subscrito que relaciona nossas unidades de observação (bairros). Nossas unidades de observação podem variar a depender do contexto em estudo: países, cidades, bairros, estados, pessoas, processos, varas, tribunais….</p>
+<p>Note que, novamente o termo de erro, <span class="math inline">\(u\)</span>, está presente na equação. O termo de erro, não observado, capta tudo aquilo que afeta <span class="math inline">\(Crime\)</span>, mas que não estamos controlando, ou seja, que não é explicado pelo <span class="math inline">\(Desemprego\)</span>.</p>
 <p>Voltemos a equação básica:</p>
 <p><span class="math display">\[y = \beta_0 + \beta_1x + u \]</span></p>
-<p>Na analise de RLS estamos interessados nos parametros <span class="math inline">\(\beta_0\)</span> e sobretudo <span class="math inline">\(\beta_1\)</span>. A razão primordial para isso é que, tudo o mais constante, a relação acima aponta que</p>
-<p><span class="math display">\[\Delta y = \beta_1 \Delta x \]</span> , se <span class="math inline">\(\Delta u = 0\)</span></p>
+<p>Na analise de RLS estamos interessados nos parâmetros <span class="math inline">\(\beta_0\)</span> e sobretudo <span class="math inline">\(\beta_1\)</span>. A razão primordial para isso é que, tudo o mais constante, a relação acima aponta que</p>
+<p><span class="math display">\[\Delta y = \beta_1 \Delta x \]</span> , se <span class="math display">\[\Delta u = 0\]</span></p>
 <p>Isto é, se tudo o mais que afeta <span class="math inline">\(y\)</span> permanecer inalterado, uma variáção em <span class="math inline">\(x\)</span>, <span class="math inline">\(\Delta x\)</span>, terá um impacto de <span class="math inline">\(\beta_1 \Delta x\)</span> em <span class="math inline">\(y\)</span>. No exemplo da criminalidade, teremos que:</p>
 <p><span class="math display">\[\Delta crime = \beta_1 \Delta desemprego \]</span></p>
-<p>Por isso, quando conseguimos estimar os parêmetros <span class="math inline">\(\beta\)</span> estamos mais próximos de entender as relações entre <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> em nossas aplicações.</p>
+<p>Assim, o aumento o de 1 ponto no desemprego irá ter o efeito de <span class="math inline">\(\beta_1\)</span> unidades de crimes em média. Por isso, quando conseguimos estimar os parêmetros <span class="math inline">\(\beta\)</span> estamos mais próximos de entender as relações entre <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> em nossas aplicações.</p>
 <p>Cabe destacar algo bastante importante.As relações acima não encerram a questão da causalidade. Como podemos inferir um impacto causal do desemprego na criminalidade se estamos ignorando todos os demais fatores que ficaram de fora do modelo - fatores que são captados em <span class="math inline">\(u\)</span> não observados.</p>
-<p>Para avançarmos no que diz respeito a firmações de carater causais, precisamos fazer hipoteses sobre o comportamento de <span class="math inline">\(u\)</span>. Com isso estaremos mais perto de inferir causalidade.</p>
-<section id="alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico"><span class="header-section-number">7.1.1</span> Alguns Exemplos de Regressão Aplicados ao Contexto Jurídico:</h3>
+<section id="alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico"><span class="header-section-number">6.1.1</span> Alguns Exemplos de Regressão Aplicados ao Contexto Jurídico:</h3>
 <p>Considere os seguintes exemplos de RLS aplicadas ao contexto do Direito</p>
-<p><strong>Previsão de Sentenças com Base na Gravidade do Crime:</strong> Onde, a variável dependente e a Duração da Sentença, e a variável independente é a Gravidade do Crime, <span class="math inline">\(\beta_0\)</span>é o intercepto da regressão. <span class="math inline">\(\beta_1\)</span> é o coeficiente de regressão que representa como a gravidade do crime influência a duração da sentença, <span class="math inline">\(u\)</span> é o termo de erro.</p>
-<p><span class="math display">\[Dsent = \beta_0 + \beta_1{\text{Gravidade}} + u\]</span></p>
-<p><strong>Análise de Fatores que Influenciam o Tempo de Julgamento:</strong> Variável Independente (<span class="math inline">\(x\)</span>), Tipo de Processo (por exemplo, criminal, civil, administrativo). Variável Dependente (<span class="math inline">\(y\)</span>, Tempo de Duração do Processo. Objetivo: Identificar se o tipo de processo tem impacto no tempo que um caso leva para ser concluído.</p>
+<p><strong>Previsão de Sentenças com Base na Gravidade do Crime:</strong> Onde, a variável dependente e tamanho da pena, e a variável independente é a Gravidade do Crime, <span class="math inline">\(\beta_0\)</span>é o intercepto da regressão. <span class="math inline">\(\beta_1\)</span> é o coeficiente de regressão que representa como a gravidade do crime influência o tamanho da pena, <span class="math inline">\(u\)</span> é o termo de erro.</p>
+<p><span class="math display">\[Dpena = \beta_0 + \beta_1{\text{Gravidade}} + u\]</span></p>
+<p><strong>Análise de Fatores que Influenciam o Tempo de Julgamento:</strong> Variável Independente (<span class="math inline">\(x\)</span>), Tipo de Processo (por exemplo, criminal, civil, administrativo). Variável Dependente (<span class="math inline">\(y\)</span>), Tempo de Duração do Processo. Objetivo: Identificar se o tipo de processo tem impacto no tempo que um caso leva para ser concluído.</p>
 <p><span class="math display">\[Tempo = \beta_0 + \beta_1  Processo  + u\]</span></p>
 <p><strong>Previsão de Probabilidade de Recurso com Base em Decisões Anteriores:</strong> Variável Independente (<span class="math inline">\(x\)</span>): Resultado da Decisão Anterior (por exemplo, deferimento ou negação do recurso). Variável Dependente (<span class="math inline">\(y\)</span>): Probabilidade de Entrada com Recurso. Objetivo: Determinar a probabilidade de um recurso ser apresentado com base no resultado de decisões passadas.</p>
-<p><span class="math display">\[Resultado = \beta_0 + \beta_1 Resultado_{-1} + u \]</span> <strong>Análise de Relação entre Número de Testemunhas e Veredito:</strong> Variável Independente (<span class="math inline">\(x\)</span>): Número de Testemunhas. Variável Dependente (<span class="math inline">\(y\)</span>): Veredito (por exemplo, culpado ou inocente). Objetivo: Investigar se o número de testemunhas influencia o veredito</p>
+<p><span class="math display">\[Resultado = \beta_0 + \beta_1 Resultado_{-1} + u \]</span></p>
+<p><strong>Análise de Relação entre Número de Testemunhas e Veredito:</strong> Variável Independente (<span class="math inline">\(x\)</span>): Número de Testemunhas. Variável Dependente (<span class="math inline">\(y\)</span>): Veredito (por exemplo, culpado ou inocente). Objetivo: Investigar se o número de testemunhas influencia o veredito</p>
 <p><span class="math display">\[ Veredito = \beta_0 + \beta_1 Testemunhas + u \]</span></p>
 </section>
 </section>
-<section id="hipóteses-sobre-o-comportamento-do-termo-de-erro" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="hipóteses-sobre-o-comportamento-do-termo-de-erro"><span class="header-section-number">7.2</span> Hipóteses sobre o comportamento do Termo de Erro</h2>
+<section id="hipóteses-sobre-o-comportamento-do-termo-de-erro" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="hipóteses-sobre-o-comportamento-do-termo-de-erro"><span class="header-section-number">6.2</span> Hipóteses sobre o comportamento do Termo de Erro</h2>
 <p>Se especificamos o modelo com <span class="math inline">\(\beta_0\)</span>, podemos assumir que <span class="math inline">\(u\)</span>, tem média igual a zero. Em notação de esperança matematica essa hipotese equivale a:</p>
-<p><span class="math display">\[E(u) = 0\]</span> Note que, <span class="math inline">\(x\)</span> é <span class="math inline">\(u\)</span> são variaveis aleatórias, então então podemos definir a distribuição condicional de <span class="math inline">\(u\)</span> dado qualquer valor de <span class="math inline">\(x\)</span>. Especialmente, para qualquer valor de <span class="math inline">\(x\)</span> podemos obter o valor médio de <span class="math inline">\(u\)</span> para uma parte da populção com uma dado valor de <span class="math inline">\(x\)</span>.</p>
-<p>Com base nisso, podemos definir uma segunda hipotese sobre <span class="math inline">\(u\)</span>. Uma hipótese bastante forte, é a de que <span class="math inline">\(u\)</span> e <span class="math inline">\(x\)</span> são independentes. Tal hípótese é a hipótese crucial do modelo de RLS:</p>
+<p><span class="math display">\[E(u) = 0\]</span></p>
+<p>Podemos definir uma segunda hipotese sobre <span class="math inline">\(u\)</span>. Uma hipótese forte, é a de que <span class="math inline">\(u\)</span> e <span class="math inline">\(x\)</span> são independentes. Tal hípótese é a hipótese crucial do modelo de RLS:</p>
 <p><span class="math display">\[E(u|x) = 0\]</span></p>
-<p>Essa hipótese é denominada de hipótese de independência da média de <span class="math inline">\(x\)</span>.</p>
 <p>Justas as hipóteses de <span class="math inline">\(E(u) = 0\)</span> e <span class="math inline">\(E(u|x) = 0\)</span> são denominadas de hipotese de média condicional zero.</p>
-<p>Ao adcionarmos essas hipoteses em nosso arcabouço de estudo RLS, temos uma nova interpretação do parametro <span class="math inline">\(\beta_1\)</span> (focaremos mais neste parametro, visto que $ é em geral menos importante na maioria das aplicações de análise de regressão)</p>
-<p>Considere o modelo baixo padrão</p>
-<p><span class="math display">\[y = \beta_0 + \beta_1x + u\]</span> Aplicando o operador <span class="math inline">\(E( \cdot |x )\)</span>, obetmos</p>
-<p><span class="math display">\[ E( y |x ) = \beta_0 + \beta_1x \]</span> Assim, na equação acima, temos um aumento de uma unidade em <span class="math inline">\(x\)</span>, implica em um aumento no valor esperado (ou em média) de <span class="math inline">\(y\)</span> na magnitude de <span class="math inline">\(\beta_1\)</span>.</p>
-<p>Para todo <span class="math inline">\(x\)</span> a distribuição dos valores de <span class="math inline">\(y\)</span> estarão centratas ao redor da média condicional de <span class="math inline">\(y\)</span> dado <span class="math inline">\(x\)</span>, $ E( y |x )$. Lembre que a média é uma medida de tendencia central. Nesse sentido, a regressão linear simples calcula uma média condicional.</p>
+<p>Dessa forma, no nosso modelo inicial:</p>
+<p><span class="math display">\[y = \beta_0 + \beta_1x + u\]</span></p>
+<p>Aplicando o operador <span class="math inline">\(E( \cdot |x )\)</span>, obetmos</p>
+<p><span class="math display">\[ E( y |x ) = \beta_0 + \beta_1x \]</span></p>
+<p>Assim, na equação acima, temos um aumento de uma unidade em <span class="math inline">\(x\)</span>, implica em um aumento no valor esperado (ou em média) de <span class="math inline">\(y\)</span> na magnitude de <span class="math inline">\(\beta_1\)</span>.</p>
 <p>A equação acima, é caracterizada como <strong>função de regressão populacional</strong>. Essa função nos fornece a elação entre os diferentes níveis de<span class="math inline">\(x\)</span> é o nível médio de <span class="math inline">\(y\)</span>, isto é <span class="math inline">\(E( y |x )\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -370,433 +322,386 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>Agora, podemos voltar a nossa equação base e verificarmos o progresso feito no entendimento do modelo:</p>
-<p><span class="math display">\[y = \beta_0 + \beta_1x + u \]</span> <span class="math display">\[y = E( y |x ) + u \]</span> Na equação acima, <span class="math inline">\(E( y |x )\)</span> é chamada de parte sistematica de <span class="math inline">\(y\)</span>. Isto é, a parte sistematicamente explicada por <span class="math inline">\(x\)</span>. Já o termo de erro não observado, <span class="math inline">\(u\)</span> é a parte não sistematica de <span class="math inline">\(y\)</span>, não explicada por <span class="math inline">\(x\)</span>.</p>
+<p><span class="math display">\[y = \beta_0 + \beta_1x + u \]</span></p>
+<p><span class="math display">\[y = E( y |x ) + u \]</span></p>
+<p>Na equação acima, <span class="math inline">\(E( y |x )\)</span> é chamada de parte sistematica de <span class="math inline">\(y\)</span>. Isto é, a parte sistematicamente explicada por <span class="math inline">\(x\)</span>. Já o termo de erro não observado, <span class="math inline">\(u\)</span> é a parte não sistematica de <span class="math inline">\(y\)</span>, não explicada por <span class="math inline">\(x\)</span>.</p>
 </section>
-<section id="estimação-dos-parâmetros-da-rls" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="estimação-dos-parâmetros-da-rls"><span class="header-section-number">7.3</span> Estimação dos Parâmetros da RLS</h2>
+<section id="estimação-dos-parâmetros-da-rls" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="estimação-dos-parâmetros-da-rls"><span class="header-section-number">6.3</span> Estimação dos Parâmetros da RLS</h2>
 <p>Não conhecemos <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> queremos estimadores desses parametros: <span class="math inline">\(\hat{\beta_0}\)</span> e <span class="math inline">\(\hat{\beta_1}\)</span>.</p>
-<p>Suponha que tenhamos uma amostra aleatória da população: <span class="math inline">\(\{(x_i, y_i): i = 1, ..., n\}\)</span></p>
+<p>Suponha que tenhamos uma amostra aleatória da população: <span class="math inline">\(\{(x_i, y_i): i = 1, ..., n\}\)</span>. Poderia ser uma amostra de crimes e taxa de desemprego por bairros.</p>
 <p>Em nosso modelo base:</p>
 <p><span class="math display">\[y_i = \beta_0 + \beta_1x_i + u_i \]</span></p>
 <p>onde <span class="math inline">\(u_i\)</span> é o erro aleatório da <span class="math inline">\(i\)</span>-ésima observação.</p>
-<p>Como estimamos <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span>?</p>
-<p>Utilizando as hipoteses <span class="math inline">\(E(u) = 0\)</span> e <span class="math inline">\(E(u|x) = 0\)</span>, podemos utilizar aplicar um estimador de metodos dos momentos.</p>
-<p>Como <span class="math inline">\(x\)</span> e <span class="math inline">\(u\)</span> são não correlacionados (são independentes), a covariancia entre eles é 0, <span class="math inline">\(Cov(x,u) = 0\)</span>. Pode-se demostrar que</p>
-<p><span class="math display">\[Cov(x,u) = E(ux) - E(u)E(x)\]</span></p>
-<p>Mas como, por hipotese, <span class="math inline">\(E(u) = 0\)</span>, a equação anterior se reduz à</p>
-<p><span class="math display">\[Cov(x,u) = E(ux)\]</span> Assim, como <span class="math inline">\(Cov(x,u)\)</span> é <span class="math inline">\(0\)</span>, temos também que</p>
-<p><span class="math display">\[E(ux) = 0\]</span> Logo, temos que <span class="math display">\[E(u) = 0\]</span> e</p>
-<p><span class="math display">\[E(xu)=0\]</span> Essas duas ultimas igualdades, são denominadas <strong>condições de momentos populacionais</strong>. Elas são hipóteses feitas na população.</p>
-<p>Para aplicarmos o Método dos Momentos, precisamos igual as condições de momento populacionais as condições de momentos amostrais.</p>
-<p>Antes, vamos reescrever as condições populacionais.</p>
-<p>Como</p>
-<p><span class="math display">\[y = \beta_0 + \beta_1x + u \]</span></p>
-<p>Podemos isolar <span class="math inline">\(u\)</span> e obtermos</p>
-<p><span class="math display">\[ u  =  y - \beta_0  - \beta_1x \]</span> Com isso podemos reescrever as hipoteses <span class="math inline">\(E(u) = 0\)</span> e <span class="math inline">\(E(ux) = 0\)</span> reespectivamente como</p>
-<p><span class="math display">\[E( y - \beta_0  - \beta_1x) = 0\]</span></p>
-<p><span class="math display">\[E(x( y - \beta_0  - \beta_1x)) = 0\]</span> Os equivalentes amostrais serão dados por:</p>
-<p><span class="math display">\[n^{-1} \sum_{i=1}^{n} (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2 = 0\]</span> e</p>
-<p><span class="math display">\[ n^{-1} \sum_{i=1}^{n} x_i (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2 = 0\]</span></p>
-<p>As duas equações acima formam um sistema de 2 equações com 2 incognitas, <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span>. Com algumas manipilações algébricas é possível demostrar que, os valores de dos parâmetros <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> serão dados por:</p>
+<p><u><strong>Como estimamos</strong> <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span>?</u></p>
+<p>Após algum esforço algébrico, tem-se:</p>
 <p><span class="math display">\[\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}\]</span></p>
 <p>e</p>
 <p><span class="math display">\[\hat{\beta}_1 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n} (x_i - \bar{x})^2}\]</span></p>
-<p>Onde, {x} e {y} são as médias amostrais de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> respectivamente.</p>
-<p>Os estimadores <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span> são chamados de estimadores de Mínimos Quadrados Ordinários (MQO). Note que, entretanto, método de estimação para encontrarmos <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span>. Na verdade, pode-se mostrar que as estimativas do modelo de RLS serão equivalentes pelos dois métodos, dadas as hipoteses enunciadas anteriormente.</p>
-<p>A ideia é que os parametros que estimamos, <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span>, são os parametros que minimizam a soma dos quadrados das diferenças entre nossos <span class="math inline">\(y_i\)</span> obversados e seus <strong>valores preditos</strong> definidos como</p>
-<p><span class="math display">\[\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1x_i\]</span></p>
-<p>O raciocinio é o seguinte. Vamos definir a distancia entre <span class="math inline">\(y_i\)</span> é <span class="math inline">\(\hat{y}_i\)</span>, denominada de <strong>resíduo da equação</strong> como</p>
-<p><span class="math display">\[\hat{u_i} = \hat{y}- \hat{y}_i = y_i - \hat{\beta}_0 + \hat{\beta}_1x\]</span></p>
-<p>Note que em uma amostra de tamanho <span class="math inline">\(n\)</span>, teremos <span class="math inline">\(n\)</span> desses resíduos. Esconlhendo os parametros <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span> que minimizam a soma dos quadrados desses resíduos:</p>
-<p><span class="math display">\[\sum_{i=1}^{n} \hat{u}_i^2 = \sum_{i=1}^{n} (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2\]</span></p>
-<p>Formalmente a soma dos quadrados dos resíduos é uma função de <span class="math inline">\(\hat{\beta_0}\)</span> e <span class="math inline">\(\hat{\beta_1}\)</span>. Chamemos essa função de <span class="math inline">\(Q(\hat{\beta_0},\hat{\beta_1} )\)</span>:</p>
-<p><span class="math display">\[Q(\hat{\beta_0},\hat{\beta_1} ) = \sum_{i=1}^{n} (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2\]</span> Utilizando tecnicas de minimização do cálculo (foras do escopo deste curso), obteremos os valores de <span class="math inline">\(\hat{\beta_0}\)</span> e <span class="math inline">\(\hat{\beta_1}\)</span>:</p>
-<p><span class="math display">\[\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}\]</span></p>
-<p>e</p>
-<p><span class="math display">\[\hat{\beta}_1 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n} (x_i - \bar{x})^2}\]</span> Tal qual obtidos anteriormente.</p>
-<p>Independentemente do método escolido, conseguimos obter a <strong>Função de Regressão Amostral (FRA)</strong>, que é a versão estimada da <strong>Função de Regressão Populacional (FRP)</strong></p>
-<p>A FRP é fixa e desconhecida, a FRA varia de amostra para amostra.</p>
-<p>Formalmente, a FRA é dada por</p>
-<p><span class="math display">\[\hat{y}= \hat{\beta}_0 + \hat{\beta}_1x\]</span></p>
-<p>Como mencionado anteriormente, nosso interresse primordial reside em <span class="math inline">\(\hat{\beta}_1\)</span></p>
+<p>Onde, <span class="math inline">\(\bar{x}\)</span> e <span class="math inline">\(\bar{y}\)</span> são as médias amostrais de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> respectivamente.</p>
+<p>Os estimadores <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span> são chamados de estimadores de Mínimos Quadrados Ordinários (MQO).</p>
+<p>A ideia é que os parâmetros que estimamos, <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span>, são os parâmetros que minimizam a soma dos quadrados das diferenças entre nossos <span class="math inline">\(y_i\)</span> obversados e seus <strong>valores preditos</strong> definidos como</p>
+<p><span class="math display">\[y_i- \hat{y}_i =y_i -  \hat{\beta}_0 + \hat{\beta}_1x_i=u_i\]</span> Queremos minimizar o quadrado dessa diferença. Vejamos graficamente:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figuras\fittedvalue.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Valores Ajustados e Resíduos de MQO</figcaption>
 </figure>
 </div>
-<p>Note que conforme já comentado:</p>
-<p><span class="math display">\[\Delta \hat{y} = \hat{\beta}_1 \Delta x \]</span></p>
-<p>Isolando <span class="math inline">\(\hat{\beta_1}\)</span></p>
-<p><span class="math display">\[ \hat{\beta}_1  = \Delta \hat{y} /\Delta x \]</span></p>
-<p>Assim, uma variáção, <span class="math inline">\(\Delta\)</span>, em <span class="math inline">\(x\)</span>, nos permimite calcular o impacto em <span class="math inline">\(y\)</span>, medido dado por <span class="math inline">\(\hat{\beta}_1\)</span>.</p>
 <p>Antes de passarmos para o proxímo tópico de RLS, cabe mencionar uma nota sobre terminologia: quando estimamos equações de RLS do tipo <span class="math inline">\(y = \beta_0 + \beta_1 x + u\)</span>, dizemos que “<em>rodamos a regressão de</em> <span class="math inline">\(y\)</span> sobre <span class="math inline">\(x\)</span> !”</p>
-<section id="aplicação---estimando-uma-regressão-linear-simples" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="aplicação---estimando-uma-regressão-linear-simples"><span class="header-section-number">7.3.1</span> Aplicação - Estimando uma Regressão Linear Simples</h3>
+<section id="aplicação---estimando-uma-regressão-linear-simples" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="aplicação---estimando-uma-regressão-linear-simples"><span class="header-section-number">6.3.1</span> Aplicação - Estimando uma Regressão Linear Simples</h3>
+<p>Vamos utilizar aqui o nosso banco de dados anterior sobre feminicídio. É um banco com poucas obserações e possui fim didátco, apesar de serem dados reais.</p>
+<p>Uma questão incial é entender quem será <span class="math inline">\(Y\)</span> e quem será <span class="math inline">\(X\)</span>. Estamos querendo entender a taxa de feminicídio. A questão é, quais são seus determinantes? Aqui precisamos de alguma teoria…mas or hora, vamos ter como hipótese inicial que quanto maior a taxa de homícídio espera-se que em média a taxa de feminicídio aumente. :</p>
+<p><span class="math display">\[Feminc_{tx} = \beta_0 + \beta_1 Homici_{tx} + u\]</span></p>
+<p>Apesar de parecer “muito complicado” na teoria, na prática o <code>r</code> estima uma RLS em segundos. A função para estimar é a<code>lm</code>, ou linear model.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Aplicação da RLS - Método dos Mínimos Quadrados Ordinários</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Aplicação da RLS - Método dos Mínimos Quadrados Ordinários</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#carregando o pacote para ler arquivos em excel</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.Rdata"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Vamos chamar a partir de agora nosso banco de dados</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">&lt;-</span> final_fem_22 </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">##Função para rodar a regressão</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> dados, feminic_tx <span class="sc">~</span> homic_tx)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Essa função resume a regressão, ja testar a hipótese sobre o coeficiente e da outras estatisticas que abordaremos a seguir.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = feminic_tx ~ homic_tx, data = dados)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.28942 -0.30169  0.03482  0.30070  1.18192 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1.14673    0.28607   4.009 0.000485 ***
+homic_tx     0.10580    0.05503   1.923 0.065990 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.5882 on 25 degrees of freedom
+Multiple R-squared:  0.1288,    Adjusted R-squared:  0.09397 
+F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
+</div>
+</div>
+<section id="entendendo-os-resultados" class="level4" data-number="6.3.1.1">
+<h4 data-number="6.3.1.1" class="anchored" data-anchor-id="entendendo-os-resultados"><span class="header-section-number">6.3.1.1</span> Entendendo os Resultados</h4>
+<p><strong>1) Resíduos</strong> Residuals: apresenta a distribuição dos resíduos, observa-se que amediana dos resíduos está próxima a zero.</p>
+<p><strong>2)Coeficientes</strong> Em seguida, abaixo de <em>Coefficients</em> temos 5 colunas.</p>
+<p><em>Coluna 1</em>: Nome da variável</p>
+<p><em>Coluna 2</em>: Coeficiente estimado <span class="math inline">\(\hat{\beta_0}\)</span> o intercepto e <span class="math inline">\(\hat{\beta_1}\)</span> do termo da variável homicídio</p>
+<p><em>Coluna 3</em>: É o desvio padrão da estimativas de <span class="math inline">\(\beta\)</span></p>
+<p><em>Coluna 4</em>: É a estatistica t utilizada para fazer o teste de hipótese e neste caso, tem-se: <span class="math display">\[H_0:\beta_0=0\]</span> e <span class="math display">\[H_0:\beta_1=0\]</span></p>
+<p><em>Coluna 5</em>: É o p-valor, a probabilidade de encontrarmos valores mais extremos da estatística t. Os asteriscos indicam *** signicante a 0,1% ** a 1% * a 5% e <span class="math inline">\(.\)</span> a 10%.</p>
+<p><strong><u>Interpretando o Coeficiente</u></strong></p>
+<p>O coeficiente do intercepto nos diz que quando a taxa de homicídio for 0, ainda existira uma taxa de feminicídio de 1,4 pontos, <span class="math inline">\(\beta_0\)</span>, significante a 0,1%. E cada 1 ponto de aumento na taxa de homicídio, aumenta em 0,10 <span class="math inline">\(\beta_1\)</span> pontos a taxa de feminicídio, significante a 10%.</p>
+<p><strong>3) <span class="math inline">\(R^2\)</span></strong>: Em seguida temos o <span class="math inline">\(R^2\)</span> e <span class="math inline">\(R^2\)</span> ajustado. Essas estatísticas calculam quanto da variância da taxa de feminicídio pode ser explicada pela variância da taxa de homicídio. Quando estão próximos a 1 explicam muito, quanto estão próximos a 0 explicam pouco. No caso o nosso <span class="math inline">\(R^2\)</span> ficou baixo e portanto boa parte da variabilidade do feminicídio, não foi explicada pela taxa de homicídio.</p>
+<p><strong>4) Estaística F</strong>: E por fim a estatística F mostra o grau de ajustamento do modelo. Se ela for significativa diz que o modelo é bem ajustados aos dados. As variáveis explicativas incluídas são importantes para a explicação da taxa de feminicídio.</p>
+<p><strong>VISUALMENTE</strong></p>
+<p>Abaixo tem-se os dados utilizados e a nossa reta de regressão estimada acima. Veja como ela se ajusta a nuve de pontos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustando a reta de regessão.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(dados<span class="sc">$</span>homic_tx, dados<span class="sc">$</span>feminic_tx,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Taxa de Feminicídio vs.Tx de homicidio"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Taxa de Homicidio"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Taxa de Feminicídio"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>,          <span class="co"># Cor dos pontos</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,              <span class="co"># Forma dos pontos (círculos sólidos)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.0</span>,         <span class="co"># Tamanho dos pontos</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>     <span class="fu">abline</span>(modelo, <span class="at">col =</span> <span class="st">"lightsalmon3"</span>, <span class="at">lwd =</span> <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lineares_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 </section>
 </section>
-<section id="caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados"><span class="header-section-number">7.4</span> Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados</h2>
-<section id="valores-estimados-e-resíduos" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="valores-estimados-e-resíduos"><span class="header-section-number">7.4.1</span> Valores estimados e Resíduos</h3>
+</section>
+<section id="caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados"><span class="header-section-number">6.4</span> Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados</h2>
+<section id="valores-estimados-e-resíduos" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="valores-estimados-e-resíduos"><span class="header-section-number">6.4.1</span> Valores estimados e Resíduos</h3>
 <p>Uma vez estimados <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span> temos os valores ajustados ou também denominados de valores preditos ou <em>fitted values</em>.</p>
 <p>Para uma observação qualquer <span class="math inline">\(i\)</span>, seu valor estimado é:</p>
 <p><span class="math display">\[\hat{y}_i= \hat{\beta}_0 + \hat{\beta}_1x_i\]</span></p>
-<p>De maneira geral teremos a reta de regressão, dada por:</p>
-<p><span class="math display">\[\hat{y}= \hat{\beta}_0 + \hat{\beta}_1x\]</span></p>
 <p>Todos os valores <span class="math inline">\(\hat{y}\)</span> estarão sobre a reta de regressão.</p>
 <p>O resíduo, tal qual definido anteriormente, será a diferença entre o valor ajustado <span class="math inline">\(\hat{y}\)</span> e o verdadeiro <span class="math inline">\(y\)</span> em nosso banco de dados:</p>
 <p><span class="math display">\[\hat{u}_i = y_i - \hat{y}_i\]</span></p>
 <p>Se <span class="math inline">\(\hat{u_i} &gt; 0\)</span> a regressaõ subestima <span class="math inline">\(y_i\)</span>. Se <span class="math inline">\(\hat{u_i} &lt; 0\)</span> a reta superestima <span class="math inline">\(y_i\)</span>. O cenário ideal é quando <span class="math inline">\(\hat{u}_i= 0\)</span>, algo que quase nunca acontece.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Obtendo os residuos da regressão</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>resid <span class="ot">&lt;-</span> <span class="fu">residuals</span>(modelo)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a> k <span class="ot">&lt;-</span> <span class="fu">density</span>(resid)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(k, <span class="at">xlab=</span><span class="st">"Erro"</span>,<span class="at">main=</span><span class="st">"Densidade de Kernel para o erro"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polygon</span>(k, <span class="at">col=</span><span class="st">"burlywood3"</span>, <span class="at">border=</span><span class="st">"burlywood4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lineares_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
-<section id="propriedades-algébricas-do-mqo" class="level3" data-number="7.4.2">
-<h3 data-number="7.4.2" class="anchored" data-anchor-id="propriedades-algébricas-do-mqo"><span class="header-section-number">7.4.2</span> Propriedades Algébricas do MQO</h3>
+<section id="propriedades-algébricas-do-mqo" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="propriedades-algébricas-do-mqo"><span class="header-section-number">6.4.2</span> Propriedades Algébricas do MQO</h3>
 <ol type="1">
 <li>A Soma dos Resíduos é zero:</li>
 </ol>
 <p><span class="math display">\[\sum_{i=1}^{n} \hat{u}_i = 0\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Soma dos resíduos</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.881784e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#note que é um número praticamente igual a zero</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ol start="2" type="1">
 <li>A covariancia amostral entre a variavel explicativa e os resíduos é zero:</li>
 </ol>
 <p><span class="math display">\[\sum_{i=1}^{n} x_i \hat{u}_i = 0\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#obtendo a variável x</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> dados<span class="sc">$</span>homic_tx</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#somando com os residuos</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x<span class="sc">*</span>resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.298961e-14</code></pre>
+</div>
+</div>
 <ol start="3" type="1">
 <li><p>O ponto <span class="math inline">\((\bar{x},\bar{y})\)</span> sempre estará sob a reta de regressão.</p></li>
 <li><p>A média dos valores estimados, <span class="math inline">\(\bar{\hat{y}}\)</span> é igual a média dos valores observados <span class="math inline">\(\bar{y}\)</span>.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#y dos dados </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> dados<span class="sc">$</span>feminic_tx</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.651852</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#y estimado</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>y_hat <span class="ot">&lt;-</span> <span class="fu">fitted.values</span>(modelo)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y_hat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.651852</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)<span class="sc">==</span><span class="fu">mean</span>(y_hat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<ol start="5" type="1">
 <li><p>Note que as estimatvas de MQO decompõe <span class="math inline">\(y\)</span> em 2 partes: 1) os valores ajustados <span class="math inline">\(\hat{y}\)</span> e os resíduos <span class="math inline">\(\hat{u}\)</span>.</p></li>
 <li><p>Os valores de <span class="math inline">\(\hat{y}\)</span> e <span class="math inline">\(\hat{u}\)</span> são não correlacionados na amostra!</p></li>
 </ol>
 </section>
-<section id="qualidade-do-ajuste" class="level3" data-number="7.4.3">
-<h3 data-number="7.4.3" class="anchored" data-anchor-id="qualidade-do-ajuste"><span class="header-section-number">7.4.3</span> Qualidade do Ajuste</h3>
+<section id="qualidade-do-ajuste" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="qualidade-do-ajuste"><span class="header-section-number">6.4.3</span> Qualidade do Ajuste</h3>
 <p>Nesta seção vamos responder a seguinte questão: “<em>Quão bem</em> <span class="math inline">\(x\)</span> explica <span class="math inline">\(y\)</span> ?”</p>
 <p>Considere as seguintes definições</p>
 <p>Soma dos Quadrado Totais (SQT):</p>
 <p><span class="math display">\[\text{SQT} = \sum_{i=1}^{n} (y_i - \bar{y})^2\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular a média da variável dependente (feminic_tx)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>media_feminic_tx <span class="ot">&lt;-</span> <span class="fu">mean</span>(dados<span class="sc">$</span>feminic_tx)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular a Soma dos Quadrados Totais (SQT)</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>sqt <span class="ot">&lt;-</span> <span class="fu">sum</span>((dados<span class="sc">$</span>feminic_tx <span class="sc">-</span> media_feminic_tx)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>sqt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9.927407</code></pre>
+</div>
+</div>
 <p>Soma dos Quadrados Explicados (SQE):</p>
 <p><span class="math display">\[\text{SQE} = \sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular a Soma dos Quadrados Explicados (SQE)</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sqe <span class="ot">&lt;-</span> <span class="fu">sum</span>((y_hat <span class="sc">-</span> media_feminic_tx)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>sqe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.27879</code></pre>
+</div>
+</div>
 <p>Soma dos Quadrados dos Resíduos (SQR):</p>
-<p><span class="math display">\[\text{SQR} = \sum_{i=1}^{n} \hat{u}_i^2\]</span> Temos alguns resultados bem importantes. Note que, ao dividirmos <span class="math inline">\(SQT\)</span> por <span class="math inline">\(n-1\)</span>, teremos a variancia amostral de <span class="math inline">\(y\)</span>. Por sua vez, ao dividirmos <span class="math inline">\(SQE\)</span> por <span class="math inline">\(n-1\)</span>, termeos a variancia populacional de <span class="math inline">\(\hat{y}\)</span>.</p>
-<p>Entretanto, o resultado mais importante é o seguinte:</p>
-<p><span class="math display">\[SQT =  SQE + SQR\]</span> É apartir dessa iguadade que podemos mostrar algo sobre o ajuste dos MQO.</p>
+<p><span class="math display">\[\text{SQR} = \sum_{i=1}^{n} \hat{u}_i^2\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>residuos_quadrados <span class="ot">&lt;-</span> <span class="fu">residuals</span>(modelo)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sqr <span class="ot">&lt;-</span> <span class="fu">sum</span>(residuos_quadrados)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>sqr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.648617</code></pre>
+</div>
+</div>
+<p>O resultado mais importante é o seguinte:</p>
+<p><span class="math display">\[SQT =  SQE + SQR\]</span></p>
+<p>É apartir dessa iguadade que podemos mostrar algo sobre o ajuste dos MQO.</p>
 <p>Dívidindo ambos os lados por <span class="math inline">\(SQT\)</span> teremos</p>
-<p><span class="math display">\[1 = \frac{\text{SQE}}{\text{SQT}}  + \frac{\text{SQR}}{\text{SQT}}\]</span> Rearranjando os termos</p>
+<p><span class="math display">\[1 = \frac{\text{SQE}}{\text{SQT}}  + \frac{\text{SQR}}{\text{SQT}}\]</span></p>
+<p>Rearranjando os termos</p>
 <p><span class="math display">\[R^2 = \frac{\text{SQE}}{\text{SQT}} = 1 - \frac{\text{SQR}}{\text{SQT}}\]</span></p>
-<p>O <span class="math inline">\(R^2\)</span> é a porcentagem da variação de y que é explicada por <span class="math inline">\(x\)</span>. O valor de <span class="math inline">\(R^2\)</span> sempre estará na RLS entre <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span>.</p>
-<p>O nome <span class="math inline">\(R^2\)</span> advém do fato de que, pode ser mostrado que tal médida é equivalente ao quadrado do coeficiente de correlação entre <span class="math inline">\(\hat{y}\)</span> e <span class="math inline">\(y\)</span>.</p>
-</section>
-</section>
-<section id="ausência-de-viés-e-variância-dos-estimadores-de-mqo" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="ausência-de-viés-e-variância-dos-estimadores-de-mqo"><span class="header-section-number">7.5</span> Ausência de Viés e Variância dos Estimadores de MQO</h2>
-<section id="ausencia-de-viés-em-mqo" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="ausencia-de-viés-em-mqo"><span class="header-section-number">7.5.1</span> Ausencia de Viés em MQO</h3>
-<p>Um estimador não viésado (ou não tendêncioso) por definição, um estimador que em média “acerta” o verdadeiro valor do parâmetro estimado.</p>
-<p>Considere um estimador arbitrario <span class="math inline">\(\hat{\theta}\)</span>. Quando dezemos que <span class="math inline">\(\hat{\theta}\)</span> é não viesado, queremos dizer que</p>
-<p><span class="math display">\[E(\hat{\theta}) = \theta\]</span></p>
-<p>Será que os <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span> estimados pelo método do MQO são não viésados?</p>
-<p>Para responder a essa pergunta precisamos, mais uma vez, recorrer a novas hipoteses sobre os dados. Esse novo conjunto de hipoteses irão nos permitir verificarmos algumas <strong>propriedades estatísticas do método de MQO</strong>. A depender das hipóteses, umas mais fracas que outras, as propriedades podem mudar.</p>
-<p>A garantia da ausência de viés, em dados de corte transversal, requer quatro hipóteses:</p>
-<p><strong>1) Linearidade dos Parametros</strong>: No modelo Populacional a variavel dependente <span class="math inline">\(y\)</span> está relacionada a variável dependente <span class="math inline">\(x\)</span> e ao termo de erro <span class="math inline">\(u\)</span> como:</p>
-<p><span class="math display">\[y = \beta_0 + \beta_1x + u \]</span> Por exemplo no modelo <span class="math inline">\(y= \beta_0 + e^{\beta_1} + u\)</span>, não é linear no parametro <span class="math inline">\(\beta_1\)</span>.</p>
-<p><strong>2) Amostragem Aleatória:</strong> Usamos uma amostra aleatória de tamanho <span class="math inline">\(n\)</span>, <span class="math inline">\(\{(x_i, y_i): i = 1, 2, ..., n\}\)</span> proveniente de um modelo populacional.</p>
-<p><strong>3) Existe Variação Amostral em</strong> <span class="math inline">\(x\)</span>: Isto é, os valores de nossa variável explicativa não são todos iguais.</p>
-<p><strong>4) Independencia da Média:</strong> O termo de erro <span class="math inline">\(u\)</span> tem um valor esperado de zero, dado qualquer valor da variável explicativa.<span class="math display">\[E(u|x) = 0\]</span></p>
-<p>Dadas as hipóteses 1, 2, 3 e 4:</p>
-<p><span class="math display">\[E(\hat{\beta_1}) = \beta_1\]</span></p>
-<p>e</p>
-<p><span class="math display">\[E(\hat{\beta_0}) = \beta_0\]</span></p>
-<p>Portantos nossoa estimadores de MQO, são não viésados.</p>
-</section>
-<section id="variância-dos-estimadores-de-mqo" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="variância-dos-estimadores-de-mqo"><span class="header-section-number">7.5.2</span> Variância dos estimadores de MQO</h3>
-<p>Quão distantes em média <span class="math inline">\(\hat{\beta_0}\)</span> e <span class="math inline">\(\hat{\beta_1}\)</span> estão dos verdadeiros parâmetros? Saber disso nos permite escolher o melhor estimador entre todos os etimadores não viesados - ou ao menos entre uma ampla classe deles.</p>
-<p>Para obetermos expressões tratáveis das variâncias do MQO recorremos a mais uma hipótese.</p>
-<p><strong>5) Hipótese de Homoscedasticidade:</strong> O erro <span class="math inline">\(u\)</span> tem a mesma variâcia, dado qualquer valor da variável explicativa. Isto é,</p>
-<p><span class="math display">\[Var(u|x)=\sigma^2\]</span></p>
-<p>A variância de <span class="math inline">\(u\)</span> pode ser reescrita em termos de esperança:</p>
-<p><span class="math display">\[Var(u|x)= \sigma^2 = E(u^2|x) - [E(u|x)]^2\]</span></p>
-<p>Mas como temos por hipótese que <span class="math inline">\([E(u|x)]=0\)</span>, a hipótese de homoscedasticidade as vezes é representada como</p>
-<p><span class="math display">\[ E(u^2|x) = \sigma^2\]</span></p>
-<p>Note também, que como <span class="math inline">\(E(u)=0\)</span>, a variancia do erro, não condicional a <span class="math inline">\(x\)</span>, será dada por:</p>
-<p><span class="math display">\[\sigma^2=E(u^2)=Var(u)\]</span> Por isso chamamos <span class="math inline">\(\sigma^2\)</span> de <strong>variância do erro</strong>.</p>
-<p>Podemos “vizualizar” a hipótese de homoscedasticidade na figura abaixo:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figuras\homoscedastic.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Modelo de Regressão Sob Homoscedasticidade</figcaption>
-</figure>
-</div>
-<p>Apartir das hiopóteses 1,2,3,4 e 5 podemos progredir no entendimento dos MQO. Sob as hipoteses 1 - 5, as variancias de <span class="math inline">\(\hat{\beta_1}\)</span> e <span class="math inline">\(\hat{\beta_0}\)</span> são dadas por:</p>
-<p><span class="math display">\[\text{Var}(\hat{\beta}_1) = \frac{\sigma^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2}=\frac{\sigma^2}{\text{SST}_x}\]</span> e</p>
-<p><span class="math display">\[\text{Var}(\hat{\beta}_0) = \frac{\sigma^2n^{-1}\sum_{i=1}^{n} x_i^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2}\]</span></p>
-<p>Uma extenção da variância dos estimadores de MQO são seus desvios padrão definidos simplismente pela raiz quadrada da variância:</p>
-<p><span class="math display">\[ep(\hat{\beta}_0) = \sqrt{Var(\hat{\beta_0})}\]</span></p>
-<p>e</p>
-<p><span class="math display">\[ep(\hat{\beta}_1) = \sqrt{Var(\hat{\beta_1})} = \frac{\sigma}{\sqrt{SQT_x}}\]</span></p>
-</section>
-<section id="estimação-da-variância-do-erro" class="level3" data-number="7.5.3">
-<h3 data-number="7.5.3" class="anchored" data-anchor-id="estimação-da-variância-do-erro"><span class="header-section-number">7.5.3</span> Estimação da Variância do erro</h3>
-<p>Note que, nas formulas das variâncias e dos desvios-padrão, o que aparece explicitamente é o parâmetro populacional, <span class="math inline">\(\sigma^2\)</span> e <span class="math inline">\(\sigma\)</span>. Raramente conhecemos esses valores, logo as formulas derivadas acima terão pouca utilidade. Não obstante, caso encontremos um estimador para <span class="math inline">\(\sigma^2\)</span> e <span class="math inline">\(\sigma\)</span> podemos usar esse estimador.</p>
-<p>Podemos utilizar os resíduos para construir um estimador da variância dos erros. Lembre que o resíduos da <span class="math inline">\(i\)</span>-ésima observação do modelo é dado por:</p>
-<p><span class="math display">\[\hat{u_i} = y_i - \hat{y_i}\]</span> Pode-se demostrar que, um estimador não viesado de <span class="math inline">\(\sigma^2\)</span> será dado por:</p>
-<p><span class="math display">\[\hat{\sigma}^2=\frac{\sum_{i=1}^{n} \hat{u}_i^2}{n-2} = \frac{\text{SQR}}{n-2}\]</span></p>
-<p>Com <span class="math inline">\(\hat{\sigma}^2\)</span> em mãos, podemos reescrever os erros padrão dos estimadores de MQO:</p>
-<p><span class="math display">\[ep(\hat{\beta}_1) = \sqrt{Var(\hat{\beta_1})} = \frac{\hat{\sigma}^2}{\sqrt{SQT_x}}\]</span></p>
-<p>Os erros padrão são utilizados para calcularmos as estatísticas de teste e Intervalos de Confiança para as Estimativas. Mais a frente iremos nos concentar nessas questões.</p>
-</section>
-</section>
-<section id="aplicação-de-rls---foco-no-erro-padrão-do-parametro-b1" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="aplicação-de-rls---foco-no-erro-padrão-do-parametro-b1"><span class="header-section-number">7.6</span> Aplicação de RLS - Foco no erro padrão do parametro b1</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Aplicação do de RLS - Foco no erro padrão</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#r-quadrado do modelo</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>r_quadrado <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (sqr<span class="sc">/</span>sqt)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>r_quadrado</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1288141</code></pre>
 </div>
+</div>
+<p>Novamente, o <span class="math inline">\(R^2\)</span> é a porcentagem da variação de y que é explicada por <span class="math inline">\(x\)</span>. O valor de <span class="math inline">\(R^2\)</span> sempre estará na RLS entre <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span>.</p>
 </section>
 </section>
-<section id="regressão-linear-múltipla-rlm" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Regressão Linear Múltipla (RLM)</h1>
-<p>A RLM é uma extensão natural da RLS. Entretanto, ao invés de termos apenas uma variável explicativa podemos ter <span class="math inline">\(k\)</span> variáveis dependentes</p>
-<p><span class="math display">\[y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \ldots + \beta_k x_k + u\]</span> A hípótese fundamental é a de que:</p>
-<p><span class="math display">\[E(u|x_1, . . . ,x_k) = 0\]</span></p>
-<p>Qualquer problema que faça qualquer um dos <span class="math inline">\(x_1, ...., x_k\)</span> ser correlacionado com <span class="math inline">\(u\)</span> invalida a hipótese acima. Tal hipótese implica em não viés do MQO.</p>
-<section id="exemplos-de-regressão-multipla-no-contexto-jurídico" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="exemplos-de-regressão-multipla-no-contexto-jurídico"><span class="header-section-number">8.1</span> Exemplos de Regressão Multipla no Contexto Jurídico</h2>
-<p><strong>Determinação de Fatores que Afetam o Valor de Indenizações:</strong> Variáveis Independentes: Idade da Vítima, Gravidade do Dano, Jurisdição. Variável Dependente: Valor da Indenização.Objetivo: Analisar como a idade da vítima, a gravidade do dano e a jurisdição influenciam o valor das indenizações concedidas</p>
-<p><span class="math display">\[Indenização = \beta_0 + \beta_1 idade+ \beta_2 Gravidade + \beta_2 Jurisdisção + u\]</span></p>
-<p><strong>Análise de Variáveis que Influenciam Taxas de Condenação em Casos Criminais:</strong> Variáveis Independentes: Idade do Réu, Tipo de Crime, Local do Julgamento. Variável Dependente: Taxa de Condenação.Objetivo: Investigar como a idade do réu, o tipo de crime e o local do julgamento afetam a probabilidade de condenação.</p>
-<p><span class="math display">\[Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Local  + \beta_3  crime + u\]</span></p>
-<p><strong>nálise de Fatores que Influenciam a Taxa de Feminicídio:</strong> Variáveis Independentes (X): Taxa de Desemprego, Índice de Educação, Presença de Políticas de Proteção à Mulher. Variável Dependente (Y): Taxa de Feminicídio por 100.000 mulheres. Objetivo: Investigar como o desemprego, o nível de educação e a existência de políticas de proteção à mulher estão relacionados à taxa de feminicídio em diferentes regiões.</p>
-<p><span class="math display">\[Tx.feminicidio = \beta_0 + \beta_1 desemprego + \beta_2 educ + \beta_3 política + u \]</span></p>
+<section id="unidade-de-medida-e-forma-funcional" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="unidade-de-medida-e-forma-funcional"><span class="header-section-number">6.5</span> Unidade de Medida e Forma Funcional</h2>
+<p>Se a variável dependente é multiplicada por uma constante <span class="math inline">\(c\)</span>, então as estimativas do intercepto e da inclinação também serão multiplicadas por <span class="math inline">\(c\)</span></p>
+<p>Se a variável explicativa é multiplicada por uma contante <span class="math inline">\(c\)</span>, então o coeficiente de inclinação será dívido por <span class="math inline">\(c\)</span>. Nada acontece com o intercepto.</p>
+<p>Se a variável explicativa é dividida por uma constante <span class="math inline">\(c\)</span>, então o coeficiente de inclinação é multiplicado por <span class="math inline">\(c\)</span>. Nada acontece com a constante.</p>
+<p><strong>IMPORTANTE</strong>: O <span class="math inline">\(R^2\)</span> não depende das unidades de nossas variáveis.</p>
 </section>
-<section id="a-interpretação-da-equação-de-regressão-de-mqo" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="a-interpretação-da-equação-de-regressão-de-mqo"><span class="header-section-number">8.2</span> A Interpretação da Equação de Regressão de MQO</h2>
-<p>Tal qual no modelo de RLS, temos que:</p>
-<p><span class="math display">\[\Delta y = \beta_1 \Delta x_1 + \beta_2 \Delta x_2 + ...+\beta_k \Delta x_k\]</span></p>
-<p>O coefiente <span class="math inline">\(\beta_j\)</span>, com <span class="math inline">\(j=1,...k\)</span>, mede o efeito do incremento de uma unidade de <span class="math inline">\(x_j\)</span> em <span class="math inline">\(y\)</span>.</p>
-<p>Suponha que estejamos interessados no impacto de <span class="math inline">\(x_1\)</span>. Podemos fazer o seguinte exercício: Tudo o mais constante qual o impacto de <span class="math inline">\(x_1\)</span> em <span class="math inline">\(y\)</span>:</p>
-<p><span class="math display">\[\frac{\Delta y}{\Delta x} = \beta_1  \]</span></p>
-<p>Manter outros fatores fixos permite o cientista social, “mimetizar” um experimento, tal qual nas Ciências Naturasi. Obviamente, isso não tão simples assim. Entretanto, mater outros fatores fixos, e supondo que <span class="math display">\[E(u|x_1, . . . ,x_k) = 0\]</span> , nos aproxíma de afirmações de cunho causal.</p>
-</section>
-<section id="estimação-dos-k-parametros-na-rlm" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="estimação-dos-k-parametros-na-rlm"><span class="header-section-number">8.3</span> Estimação dos k parametros na RLM</h2>
-<section id="estimativas-de-mqo" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="estimativas-de-mqo"><span class="header-section-number">8.3.1</span> Estimativas de MQO</h3>
-<p>A mecânica para conseguirmos estimativas de <span class="math inline">\(\beta_j\)</span>, fica uma pouco mais complicada. Felizmente, os <em>softwares</em>, tais como o <em>R</em>, fornecem essas estimativas com muita facilidade. Não obstante, convêm apresentar uma abordagem para o calculo desses parâmetros. Utilizaremos álgebra de matrizes para mostrar um “algoritmo” para calcular esses <span class="math inline">\(\beta_j\)</span>. Em verdade, esse é o algoritmo utilizado pela função <code>lm()</code> do <em>R</em> no computo dos estimadores.</p>
-<p>Considere o modelo para a <span class="math inline">\(i\)</span>-ésima observação</p>
-<p><span class="math display">\[y_i = \beta_0 + \beta_1 x_{i1} + \beta_{i2} x_2 + \beta_{i3} x_3 + \ldots + \beta_k x_{ik} + u\]</span></p>
-<p>como temos <span class="math inline">\(n\)</span> observações (tamanho de nossa amostra), podemos organizar esses valores em vetores e matrizes.</p>
-<p>Para os valores de <span class="math inline">\(y\)</span> teremos</p>
-<p><span class="math display">\[
-\mathbf{y} = \begin{bmatrix}
-y_1 \\
-y_2 \\
-\vdots \\
-y_n
-\end{bmatrix}
-\]</span></p>
-<p>Os valores das variáves independentes <span class="math inline">\(X\)</span> podem ser organizados da seguinte maneira:</p>
-<p><span class="math display">\[\mathbf{X} = \begin{bmatrix}
-1 &amp; x_{11} &amp; \cdots &amp; x_{1k} \\
-1 &amp; x_{21} &amp; \cdots &amp; x_{2k} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-1 &amp; x_{n1} &amp; \cdots &amp; x_{nk}
-\end{bmatrix}\]</span></p>
-<p>Os <span class="math inline">\(\beta_j\)</span> são organizados da seguinte maneira:</p>
-<p><span class="math display">\[\boldsymbol{\beta} = \begin{bmatrix}
-\beta_0 \\
-\beta_1 \\
-\beta_2 \\
-\vdots \\
-\beta_p
-\end{bmatrix}\]</span></p>
-<p>Os erros <span class="math inline">\(u_i\)</span> serão armazenados da em um vetor coluna tambêm:</p>
-<p><span class="math display">\[\mathbf{u} = \begin{bmatrix}
-u_1 \\
-u_2 \\
-\vdots \\
-u_n
-\end{bmatrix}\]</span></p>
-<p>Apartir disso representamos o modelo de RLM da seguinte maneira:</p>
-<p><span class="math display">\[\mathbf{y} = \mathbf{X} \boldsymbol{\beta} + \mathbf{u}\]</span></p>
-<p>Queremos encontrar um estimador de <span class="math inline">\(\boldsymbol{\beta}\)</span>, que chamaremos de <span class="math inline">\(\boldsymbol{\hat{\beta}}\)</span>. Esse estimador sera dado por:</p>
-<p><span class="math display">\[\hat{\boldsymbol{\beta}} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}\]</span></p>
-<p>Onde <span class="math inline">\(\mathbf{X}^T\)</span> é a matriz transposta de <span class="math inline">\(\mathbf{X}\)</span>, e <span class="math inline">\((\mathbf{X}^T \mathbf{X})^{-1}\)</span> é a matriz inversa da seguinte multiplicação de matrizes, <span class="math inline">\((\mathbf{X}^T \mathbf{X})\)</span></p>
-<p>Esse vetor de estimativas irá nos fornecer os valores para os <span class="math inline">\(\beta_j\)</span>,com <span class="math inline">\(j=1,...,k\)</span>. Assim temos que:</p>
-<p><span class="math display">\[ \hat{\boldsymbol{\beta}} = \begin{bmatrix}
-\hat{\beta}_0 \\
-\hat{\beta}_1 \\
-\hat{\beta}_2 \\
-\vdots \\
-\hat{\beta}_k
-\end{bmatrix}\]</span></p>
-<p>Antes, de prosseguirmos cabe destacar que, embora não precisamos saber as formulas explicitas para dos <span class="math inline">\(\hat{\beta_j}\)</span>, as vezes isso nos ajuda a entender o funcionamento da regressão multipla e os efeitos parciais que os <span class="math inline">\(\beta_j\)</span> exercem sobre <span class="math inline">\(y\)</span>.</p>
-<p>Por exemplo, <span class="math inline">\(\hat{\beta_1}\)</span> pode ser representado da seguinte maneira no contexto da RLM:</p>
-<p><span class="math display">\[\hat{\beta}_1 = \frac{\sum_{i=1}^n \hat{r_{i1}} y_i}{\sum_{i=1}^n \hat{r_{i1}}^2}\]</span></p>
-<p>Onde <span class="math inline">\(r_{i1}\)</span> são os resíduos da regressão de <span class="math inline">\(x_1\)</span> sobre todas as demais variáveis do modelo <span class="math inline">\(x_2,...,x_k\)</span>. Nesse caso, podemos entender que $_1 $ mede o efeito de <span class="math inline">\(x_1\)</span> sobre <span class="math inline">\(y\)</span> após terem sido <em>parcializados</em> ou <em>descontados</em> os impactos de <span class="math inline">\(x_2,...,x_k\)</span>.</p>
-<p>Para um <span class="math inline">\(\beta_j\)</span> qualquer a interpretação é análoga.</p>
-<p><span class="math display">\[\hat{\beta}_j = \frac{\sum_{i=1}^n \hat{r_{ij}} y_i}{\sum_{i=1}^n \hat{r_{ij}}^2}\]</span></p>
-</section>
-</section>
-<section id="qualidade-do-ajuste-na-regressão-linear-multipla" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="qualidade-do-ajuste-na-regressão-linear-multipla"><span class="header-section-number">8.4</span> Qualidade do Ajuste na Regressão Linear Multipla</h2>
-<p>Tal qual na regressão linear simples, são válidas as seguintes relações:</p>
-<p>Soma dos Quadrado Totais (SQT):</p>
-<p><span class="math display">\[\text{SQT} = \sum_{i=1}^{n} (y_i - \bar{y})^2\]</span></p>
-<p>Soma dos Quadrados Explicados (SQE):</p>
-<p><span class="math display">\[\text{SQE} = \sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2\]</span></p>
-<p>Soma dos Quadrados dos Resíduos (SQR):</p>
-<p><span class="math display">\[\text{SQR} = \sum_{i=1}^{n} \hat{u}_i^2\]</span> Novamente podemos definir a qualidade do ajuste, medido pelo <span class="math inline">\(R^2\)</span>, como sendo igual à</p>
-<p><span class="math display">\[R^2 = \frac{\text{SQE}}{\text{SQT}} = 1 - \frac{\text{SQR}}{\text{SQT}}\]</span></p>
-<p>Explicitamente podemos escrever o <span class="math inline">\(R^2\)</span> tal como:</p>
-<p><span class="math display">\[R^2 =  \frac{[\sum_{i=1}^n (y_i - \bar{y}) ( \hat{y}_i - \bar{\hat{y}} )]^2}{[\sum_{i=1}^n (y_i - \bar{y})^2][\sum_{i=1}^n(\hat{y}-\bar{\hat{y}})^2]}\]</span></p>
-<p>Um fato importante sobre <span class="math inline">\(R^2\)</span> é que ele nunca diminui ao incluirmos variáveis no modelo. Isso decorre de propriedades algébricas desse indicador.Por isso, os softwares geralmente reportam uma outra estatística de ajuste o R-quadrado ajustado,<span class="math inline">\(\bar{R}^2\)</span>:</p>
-<p><span class="math display">\[\bar{R}^2 = 1 - \frac{(1 - R^2)(n - 1)}{n - k - 1}\]</span> O <span class="math inline">\(\bar{R}^2\)</span>, tal como expresso acima conta com a presença do <span class="math inline">\(R^2\)</span> original, mas note que, no denominador estamos dividindo por <span class="math inline">\(n-k-1\)</span>, onde <span class="math inline">\(n\)</span> é o tamanho da amostra em mãos, e <span class="math inline">\(k-1\)</span> se referem ao fato de termos <span class="math inline">\(k\)</span> variáveis explicativas e uma constante. Portanto, o <span class="math inline">\(\bar{R}^2\)</span>, impões uma penalidade à inclusão de variáveis independentes em um modelo de regressão.</p>
-<p>Cabe destacar que, diferente do <span class="math inline">\(R^2\)</span>, <span class="math inline">\(\bar{R}^2\)</span> pode ser negativo, indicando um ajuste bastante pobre do modelo.</p>
-<p>Não obstante, cabe destacar que um <span class="math inline">\(R^2\)</span> baixo não é definitivamente uma evidencia definitiva contra nosso modelo. Em ciências sociais em geral é bastante comum verificarmos <span class="math inline">\(R^2\)</span> relatvamente pequenos. Isso significa que, embora coletovamente as variáveis explicativas não expliquem muito das variações de <span class="math inline">\(y\)</span>, é possível que as estimativas de MQO sejam estimativas confiaveis dos efeitos parciais - tudo o mais constante - de cada <span class="math inline">\(x_j\)</span> sobre <span class="math inline">\(y\)</span>.</p>
-</section>
-<section id="valor-espererado-dos-estimadores-de-mqo" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="valor-espererado-dos-estimadores-de-mqo"><span class="header-section-number">8.5</span> Valor Espererado dos Estimadores de MQO</h2>
-<p>Quando analisamos a ausencia de viés nos estimadores do modelo de RLS, um invocamos um conjunto de hipóteses. Felizmente, na nalises de RLM tais hipoteses se mantém, bastando apenas algumas modificações para o contexto de mais variáveis explicativas. Abaixo vamos enunciar essas hipoteses que garantem o não viés dos <span class="math inline">\(\beta_j\)</span> estimados.</p>
-<p><strong>1) Linearidade dos Parametros</strong>: No modelo Populacional a variavel dependente <span class="math inline">\(y\)</span> está relacionada as variáveis independentes e ao termo de erro <span class="math inline">\(u\)</span> como:</p>
-<p><span class="math display">\[y = \beta_0 + \beta_1x_1 + ...+\beta_kx_k+u \]</span></p>
-<p><strong>2) Amostragem Aleatória:</strong> Usamos uma amostra aleatória de tamanho <span class="math inline">\(n\)</span>, <span class="math inline">\(\{(x_{i1},...,x_{ik}, y_i): i = 1, 2, ..., n\}\)</span> proveniente de um modelo populacional.</p>
-<p><strong>3) Colinearidade não Perfeita:</strong> Na amostra, e portanto na população, nehuma das variáveis explicativas são constantes e não há relações lineares extas entre as variáveis.Isto é, tais variáveis não são perfeitamente correlacionadas.</p>
-<p>***4) Independencia da Média:** O termo de erro <span class="math inline">\(u\)</span> tem um valor esperado de zero, dado qualquer valor da variável explicativa.</p>
-<p><span class="math display">\[E(u|x_1,...,x_k) = 0\]</span></p>
-<p>Essa é a propriedade mais importante. Tal hipótese é violada quando a forma funciinal das variáveis explicativas e da variável dependente está incorreta ou mal especificada.</p>
-<p>Qundo a hipótese se mantém, dizemos que as variáveis explicativas são exógenas.</p>
-<p>Dadas as hipóteses 1, 2, 3 e 4:</p>
-<p><span class="math display">\[E(\hat{\beta_j}) = \beta_j\]</span> Para <span class="math inline">\(j = 1,2,...,k\)</span>. Isto é, <span class="math inline">\(\hat{\beta_j}\)</span> são não viesados</p>
-</section>
-<section id="variância-dos-estimadores-de-mqo-1" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="variância-dos-estimadores-de-mqo-1"><span class="header-section-number">8.6</span> Variância dos Estimadores de MQO</h2>
-<p>Analogamente ao que foi feito no caso da regressão simples, para obtermos a variância dos <span class="math inline">\(\hat{\beta_j}\)</span> de MQO presisamos recorrer à mais uma hipótese. Tal hipótese é a de homoscedasticidade. Isto é, de que condicionadas as variáveis explicativas, a variância do termo de erro é constante para todas as observações.</p>
-<p><strong>5) Hipótese de Homoscedasticidade:</strong> O erro <span class="math inline">\(u\)</span> tem a mesma variâcia, dado qualquer valor das variáveis explicativas:</p>
-<p><span class="math display">\[Var(u|x_1,...,x_k)=\sigma^2\]</span></p>
-<p>Sob as hipóteses 1,2,3,4 e 5, a varincias de <span class="math inline">\(\hat{\beta_j}\)</span> e dada por:</p>
-<p><span class="math display">\[\text{Var}(\hat{\beta}_j) = \frac{\hat{\sigma}^2}{\sum_{i=1}^{n} (x_{ij} - \bar{x_j})^2(1-R^2_j)}=\frac{\hat\sigma^2}{\text{SQT}_j(1-R^2_j)}\]</span> Onde <span class="math inline">\(SQT_j\)</span> é a a variação amostral de <span class="math inline">\(x_j\)</span>e <span class="math inline">\(R^2_j\)</span> é o R-quadrado da regressão de <span class="math inline">\(x_j\)</span> sobre as outras variáveis explicativas.O termo <span class="math inline">\(\hat{\sigma}^2\)</span> é o estimador da variâcia do termo de erro <span class="math inline">\(u\)</span>, dado por:</p>
-<p><span class="math display">\[\hat{\sigma}^2=\frac{\sum_{i=1}^{n} \hat{u}_i^2}{n-k-1} = \frac{\text{SQR}}{n-k-1}\]</span> Onde <span class="math inline">\(n-k-1\)</span> são os graus de liberdade do problema de MQO: <span class="math inline">\(k\)</span> variáveis e uma constantante.</p>
-<section id="eficiencia-de-mqo-o-teorema-de-gauss-markov" class="level3" data-number="8.6.1">
-<h3 data-number="8.6.1" class="anchored" data-anchor-id="eficiencia-de-mqo-o-teorema-de-gauss-markov"><span class="header-section-number">8.6.1</span> Eficiencia de MQO: O Teorema de Gauss-Markov</h3>
-<p><strong>Teorema de Gauss-Markov:</strong>Sob as hipóteses 1,2,3,4 e 5 os estimadores <span class="math inline">\(\hat{\beta}_0,\hat{\beta}_1,...,\hat{\beta}_k\)</span> são os melhores estimadores lineares não viesados de <span class="math inline">\(\beta_1, \beta_2,...,\beta_k\)</span>.</p>
-<p>Se alguma das hipóteses falhar, o teorema não é mais válido.</p>
-<p>É o teorema de Gauss-Markov que justifica o uso do MQO para estimar modelos de Regressão Linear Múltipla.</p>
-</section>
-</section>
-<section id="uso-de-variáveis-qualitativas-na-análise-de-rlm" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="uso-de-variáveis-qualitativas-na-análise-de-rlm"><span class="header-section-number">8.7</span> Uso de Variáveis Qualitativas na Análise de RLM</h2>
-<p>Considere os exemplos mencionados anteriormente.</p>
-<p><strong>Determinação de Fatores que Afetam o Valor de Indenizações:</strong> Variáveis Independentes: Idade da Vítima, Gravidade do Dano, Jurisdição. Variável Dependente: Valor da Indenização.Objetivo: Analisar como a idade da vítima, a gravidade do dano e a jurisdição influenciam o valor das indenizações concedidas</p>
-<p><span class="math display">\[Indenização = \beta_0 + \beta_1 idade+ \beta_2 Gravidade + \beta_2 Jurisdisção + u\]</span></p>
-<p><strong>Análise de Variáveis que Influenciam Taxas de Condenação em Casos Criminais:</strong> Variáveis Independentes: Idade do Réu, Tipo de Crime, Local do Julgamento. Variável Dependente: Taxa de Condenação.Objetivo: Investigar como a idade do réu, o tipo de crime e o local do julgamento afetam a probabilidade de condenação.</p>
-<p><span class="math display">\[Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Local  + \beta_3  crime + u\]</span></p>
-<p><strong>nálise de Fatores que Influenciam a Taxa de Feminicídio:</strong> Variáveis Independentes (X): Taxa de Desemprego, Índice de Educação, Presença de Políticas de Proteção à Mulher. Variável Dependente (Y): Taxa de Feminicídio por 100.000 mulheres. Objetivo: Investigar como o desemprego, o nível de educação e a existência de políticas de proteção à mulher estão relacionados à taxa de feminicídio em diferentes regiões.</p>
-<p><span class="math display">\[Tx.feminicidio = \beta_0 + \beta_1 desemprego + \beta_2 educ + \beta_3 política + u \]</span></p>
-<p>Em todos esses exemplos temos o denominamos de <strong>variáveis qualitativas</strong>. No primeiro exemplo, gravidade e jurisdição não são quantificaveis. No segundo exemplo, o tipo de crime, e a localidade também não. Por fim, no último exemplo, a variável que indica ou não a presença de uma política pública de proteção a mulher também é qualitativa.</p>
-<p>Felizmente, isso não traz problemas adcionais a estimação de MQO. Pelo menos quando tais variáveis aparecem como variáveis explicativas. Mais a frente veremos o que acontece quando a variável dependente é do tipo qualitativa.</p>
-<p>Duas coisas mudam quando temos as variáveis qualitativas como regressores. Em primeiro lugar temos que organizar essas informações no banco de dados de modo coerente. Em sugundo lugar, a introdução de variáveis qualitativas muda a interpretação dos resultados.</p>
-<p>Fatores qualitativos geralmente aparecem na forma de informações binários, também denominadas,<em>dummy</em>.</p>
-<p>Variável Binária ou Dummy: É uma variável que assume o valor 1 se a “condição occorre” e 0 caso o contrario.</p>
-<p>Exemplos: O crime de feminicio ocorreu na região central? se sim, ela recebe o valor 1, se não recebe o valor 0. Podemos ter uma coluna em nosso banco de dados denominada centro, nas quais a linha recebe o valor 1 caso o crime tenha ocorrido, por exemplo, no centro e 0 caso o contrário.</p>
-<p>O crime foi considerado grave? Se sim, recebe o valor 1 se não recebe o valor 0.</p>
-<p>Suponha que queiramos investigar descriminação de gênero no mercado de trabalho. Se tivermos uma base de dados com informçoes sobre diversos individuos como anos de estudo, experiencia no mercado de trabalho. Podemos ter também uma variavel binaria que assume o valor 1 caso o individuo na amostra for do sexo feminino ou 0 caso o contrario.</p>
-<p>O mesmo pode acontecer com etnia. Podemos ter uma dummy que assuma o valor 1, caso o individuo seja autodeclarado não-branco e 0, caso o contrario.</p>
-<p>As observações que tiveram 1 como valor serão comparadas com aquelas observações que ficaram com o valor 0. Essas observações seriam nosso “grupo de comparação/grupo base”.</p>
-<p>Trabalhar com variáveis qualitativas é muito comum. Na maioria das vezes cabe ao pesquisador o julgamento de trabalhar com uma variável desse tipo.</p>
-<p>Utilizae 1 ou 0 é, de fato, um criterio arbitrario. Todavia, essa escolha reside justamente na vantagem de se capturar informações importantes que tornam a interpretação dos resultados mais simples.</p>
-<section id="uma-única-variável-dummy-independente" class="level3" data-number="8.7.1">
-<h3 data-number="8.7.1" class="anchored" data-anchor-id="uma-única-variável-dummy-independente"><span class="header-section-number">8.7.1</span> Uma única Variável Dummy Independente</h3>
-<p>A forma mais simples de incorporar uma variável qualitativa e simplismente adcionarmos ela na equação de regressão.</p>
-<p>Considere o exemplo prático. Queremos relacionar anos de estudo e salários. Obviamente, o exemplo é bastante simples, mas será útil para avaliarmos a questão.</p>
-<p><span class="math display">\[salario = \beta_0 + \delta_0 feminino + \beta_1 educ + \beta_3 experiencia + u \]</span> Nesse exemplo, estamos controlando educação e experiência. A variável feminino assume o valor 1, se o individuo for do sexo feminino e 0, caso o contrário, isto é, o indivíduo é um homem. Na equação <span class="math inline">\(\delta_0\)</span> mede a diferença no salario entre homems e mulheres, dado os mesmos anos de estudos e de experiencia, e evidentemente o mesmo <span class="math inline">\(u\)</span>.</p>
-<p>Assim, um indicio de discriminação de genero no mercado de trabalho, seria se encontracemos uma relação do tipo <span class="math inline">\(\delta_0 &lt; 0\)</span>.</p>
-<p>Isso deveria ser interpretado como a diferença da média condicional aos níveis de educação e experiencia, entre homens e mulheres.</p>
-<p>O uso de variáveis dummy pode ser interessante no contexto da análise de políticas públicas.</p>
-<p>Considere que tenhamos uma base de dados municipal com uma serie dados sobre crimes contra as mulheres. Suponha hipoteticamente que alguns bairros dessa cidade hipotética tenham alguma iniciativa ou política pública local de combate e prevenção desses crimes. Em um primeiro momento suponha que queremos avaliar se nesses bairros a taxa de crimes contra as mulheres é menor. Considere que temos dados sobre o nível educacional médio da população do bairro, a taxa de desemprego nesses bairros, e uma variável que assume o valor 1 se no bairro em questão existe alguma política pública como a mencionada.</p>
-<p>Considere a equação:</p>
-<p><span class="math display">\[Tx.feminicidio = \beta_0 + \beta_1 desemprego + \beta_2 educ + \beta_3 política + u \]</span> Nesse exemplo, se estimarmos um <span class="math inline">\(\beta_3 &lt; 0\)</span> teriamos evidências de que em bairros onde há a política pública em questão, a taxa de crimes contra as mulheres é menor. Claramente, estamos supondo que todas as hipoteses mencinadas anteriormente são validadas, de modo que temos estimadores não viesados. Se existir alguma variável omitida em <span class="math inline">\(u\)</span> ou correlação entre <span class="math inline">\(u\)</span> e as variáveis explicativas, sobretudo entre <span class="math inline">\(u\)</span> e nossa dummy de interesse, teremos um estimador viésado de <span class="math inline">\(\beta_3\)</span> e provavelmente dos demais coeficientes.</p>
-</section>
-<section id="o-uso-de-dummies-para-categorias-multiplas." class="level3" data-number="8.7.2">
-<h3 data-number="8.7.2" class="anchored" data-anchor-id="o-uso-de-dummies-para-categorias-multiplas."><span class="header-section-number">8.7.2</span> O uso de Dummies para categorias multiplas.</h3>
-<p>Considere a equação abaixo</p>
-<p><span class="math display">\[Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Local  + \beta_3  crime + u\]</span> Suponha que nossas unidades de observação sejam indivíduos na cidade de São Paulo. Suponha que o local, seja o local do crime e represente as cinco zonas da cidade de São Paulo. Da forma como esta na regressão teriamos de escolher apenas uma Zona para avaliar (assumindo o valor 1), e as demais seriam as categorias bases. Pode ser interessante, caso nosso interresse resida na região em questão. Não obstante, podemos avaliar mais categorias.</p>
-<p>Temos 5 zonas na cidade de São Paulo. Nesse caso, precisamos utilizar uma delas como grupo base. Supoha que tal zona seja o Centro. Nosso modelo fica da seguinte maneira</p>
-<p><span class="math display">\[Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Leste+  \beta_3 Sul +  \beta_4 Oeste   + \beta_5 Norte + \beta_6  crime + u\]</span></p>
-<p>O mesmo deve ocorrer no tipo de crime. Suponha que por algum motivo razoavel classificamos os crimes em 3 categorias 1, 2 e 3, e queremos utilizar a categoria 2 como grupo base. Nesse caso, apenas rodamos a regressão com os crimes do tipo 1 e 2 :</p>
-<p><span class="math display">\[Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Leste+  \beta_3 Sul +  \beta_3 Oeste   + \beta_5 Norte + \beta_6  crime1 + \beta_7  crime3 u\]</span></p>
-<p>O coeficiente estimado de <span class="math inline">\(\beta_3\)</span>, por exemplo, captaria a diferença média da taxa de condenação entre crimes que ocorrem na região Sul e o Centro da cidade de São Paulo, controlado para o mesmo tipo de crime e idade do indivíduo. Ja o coeficiente <span class="math inline">\(\beta_6\)</span> mediria a diferença de media entre a taxa de condenação para crimes do 1 e crimes do tipo 2, controlados pela localidade e idade do indivíduo.</p>
-</section>
-<section id="incorporando-informações-ordinais-com-o-uso-de-variáveis-dummy." class="level3" data-number="8.7.3">
-<h3 data-number="8.7.3" class="anchored" data-anchor-id="incorporando-informações-ordinais-com-o-uso-de-variáveis-dummy."><span class="header-section-number">8.7.3</span> Incorporando Informações Ordinais com o uso de Variáveis Dummy.</h3>
-<p><strong>Determinação de Fatores que Afetam o Valor de Indenizações:</strong> Variáveis Independentes: Idade da Vítima e Gravidade do Dano . Variável Dependente: Valor da Indenização.Objetivo: Analisar como a idade da vítima, a gravidade do dano influenciam o valor das indenizações concedidas.</p>
-<p><span class="math display">\[Indenização = \beta_0 + \beta_1 idade+ \beta_2 Gravidade  + u\]</span> Suponha que a gravidade varie em uma escala de 0 a 4. Uma posibilidade seria estimar a equação acima, tal qual específicada.</p>
-<p>Infelizmente, seria muito dificil interpretar um aumento de uma unidade na gravidade. Uma vez que a gravidade de um crime é medida de maneira ordinal. Por exemplo uma Gravidade de um crime classificada como 4 é maior que a Gravidade de um crime classificada como 3.</p>
-<p>Utilizando o que já aprendemos, podemos utilizar a categoria de gravidade=0 (não grave) como base de comparação. Nesse caso estimariamos a seguinte regressão:</p>
-<p><span class="math display">\[Indenização = \beta_0 + \beta_1 idade+ \beta_2 Grav1  ++ \beta_3 Grav2  ++ \beta_4 Grav3  ++ \beta_5 Grav4 + u\]</span> onde <span class="math inline">\(\beta_2\)</span> por exemplo, capta a diferença na indenização de uma crime de gravidade 1 em comparação de um crime com gravidade igual a 0.</p>
-</section>
-</section>
-</section>
-<section id="teste-de-hipóteses-no-rlm" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Teste de Hipóteses no RLM</h1>
-<section id="hipótese-de-normalidade" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="hipótese-de-normalidade"><span class="header-section-number">9.1</span> Hipótese de Normalidade</h2>
-</section>
-<section id="teste-de-hipótese-sob-um-único-parametro" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="teste-de-hipótese-sob-um-único-parametro"><span class="header-section-number">9.2</span> Teste de Hipótese sob um Único Parametro</h2>
-<section id="teste-contra-hipoteses-alternativas-unilaterais" class="level3" data-number="9.2.1">
-<h3 data-number="9.2.1" class="anchored" data-anchor-id="teste-contra-hipoteses-alternativas-unilaterais"><span class="header-section-number">9.2.1</span> Teste contra Hipoteses Alternativas Unilaterais</h3>
-</section>
-<section id="teste-contra-hipoteses-alternativas-bilaterais" class="level3" data-number="9.2.2">
-<h3 data-number="9.2.2" class="anchored" data-anchor-id="teste-contra-hipoteses-alternativas-bilaterais"><span class="header-section-number">9.2.2</span> Teste contra Hipoteses Alternativas Bilaterais</h3>
-</section>
-<section id="cálculos-dos-p-valores-dos-testes-t" class="level3" data-number="9.2.3">
-<h3 data-number="9.2.3" class="anchored" data-anchor-id="cálculos-dos-p-valores-dos-testes-t"><span class="header-section-number">9.2.3</span> Cálculos dos p-valores dos Testes t</h3>
-</section>
-<section id="teste-de-restrições-de-lineares-múltiplas-o-teste-f" class="level3" data-number="9.2.4">
-<h3 data-number="9.2.4" class="anchored" data-anchor-id="teste-de-restrições-de-lineares-múltiplas-o-teste-f"><span class="header-section-number">9.2.4</span> Teste de Restrições de Lineares Múltiplas: O teste F</h3>
-</section>
-</section>
-</section>
-<section id="alguns-problemas-que-podem-surgir-na-análise-de-regressão-com-corte-transversa" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> 5 - Alguns Problemas que podem surgir na Análise de Regressão com Corte Transversa</h1>
-<section id="multicolinearidade-pefeita" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="multicolinearidade-pefeita"><span class="header-section-number">10.1</span> 5.1 - Multicolinearidade Pefeita</h2>
-<p>A multicolinearidade é uma violação da hipótese 3. Nesse caso as variáveis ou alguma das variáveis podem ser escritas como uma combinação linear das demais. Esse é um caso extremo e que, no limite, não aparece com frequência nas aplicaçoes empíricas. Não obstante, uma multicolinearidade alta pode aparecer. Na presença de Multicolinearidade, nossos estimadores continuam sendo não viésados. Entretanto, a variância de <span class="math inline">\(\hat{\beta_j}\)</span> pode ficar muito elevada, prejudicando os procedimentos de inferência.</p>
-<p>Podemos ver isso ao avaliarmos a formula da variância de uma dado <span class="math inline">\(\hat{\beta_j}\)</span> estimado:</p>
-<p><span class="math display">\[\text{Var}(\hat{\beta}_j) = \frac{\hat{\sigma}^2}{\sum_{i=1}^{n} (x_{ij} - \bar{x_j})^2(1-R^2_j)}=\frac{\hat\sigma^2}{\text{SQT}_j(1-R^2_j)}\]</span></p>
-<p>Note que, se a relação linear entre os <span class="math inline">\(x_1,...,x_k\)</span> forem elevadas, o <span class="math inline">\(R^2_j\)</span> será alto. No limite, um <span class="math inline">\(R^2_j\)</span> proximo de faz o denominador da divisão acima ficar muito pequeno. Com um denominador pequeno a <span class="math inline">\(\text{Var}(\hat{\beta}_j)\)</span> fica muito alta. No caso em que há multicolinearidade perfeita, o <span class="math inline">\(R^2_j =1\)</span>. logo, a <span class="math inline">\(Var(\hat{\beta_j})\)</span> não estará nem mesmo definida (haverá um divisão por zero!).</p>
-<p>Na prática o problema da multicolinearidade não é uma unanimidade entre os autores. Muitos livros textos dedicam capítulos interios para tratar do problema, ao passo que outros autores a enxergam como uma mal menor.</p>
-<p>A razão de se enchergar a multicolinearidade como uma mal menor é o fato de que ao olharmos novamente para o denominador da variância de <span class="math inline">\(\beta_j\)</span>, veremos que a variância de <span class="math inline">\(\hat{\beta_j}\)</span> pode diminuir ao aumentarmos a Soma dos Quadrados dos Totais de <span class="math inline">\(x_j\)</span>, <span class="math inline">\(SQT_j\)</span>. Isso pode ser feito aumentando o tamanho da amostra, e por conseguinte a variabilidade dos valores de <span class="math inline">\(x_j\)</span>. Por isso alguns autores se referem de maneira satírica ao problema da multicolinearidade como o problema da <strong>micronumerosidade</strong>. A razão disso é que, muitas vezes, nossa variância é alta porque nossa amostra é muito pequena.</p>
-</section>
-<section id="heteroscedasticidade" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="heteroscedasticidade"><span class="header-section-number">10.2</span> Heteroscedasticidade</h2>
-<p>A heteroscedasticidade é a violação da hipótese de homoscedasticidade. Nesse caso, a variância do termo de erro <span class="math inline">\(u\)</span> deixa de ser constante. Logo cada observação passa a ter sua própria variância.</p>
-<p>Não entraremos nos detalhes técnicos de como resolver o problema. Felizmente, a heterocesdasticidade pode ser detectada e corrigida sem grandes problemas.</p>
-<p>A heteroscedasticidade, embora não interfira no viés das estimativas de MQO, interfere na variância. Quando ela esta presente nossos estimadores de MQO não serão mais eficientes. Isto é, MQO deixa de ter variância mínima. Com isso os erros padrão reportados pelo software estátistico serão problemáticos e todo nosso procedimento de inferência poderá estar comprometido.</p>
-<p>Uma saída é computar erros-padrão robustos para nossos estimadores. Tais erros padrão robustos à heteroscedasticidade são maiores que os erros padrão convencionais. Não obstante, podemos nos resguardar do problema da heteroscedasticidade.</p>
-<p>Vamos verificar isso com um exemplo:</p>
+<section id="incorporando-não-linearidades-nas-variáveis" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="incorporando-não-linearidades-nas-variáveis"><span class="header-section-number">6.6</span> Incorporando não linearidades (nas variáveis!)</h2>
+<p>Minha primeira tabela</p>
+<table class="table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Modelo</th>
+<th>Dependente</th>
+<th>Explicativa</th>
+<th>Interpretação de <span class="math inline">\(\beta_1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nivel-nível</td>
+<td><span class="math inline">\(y\)</span></td>
+<td><span class="math inline">\(x\)</span></td>
+<td><span class="math inline">\(\beta_1 \Delta x\)</span></td>
+</tr>
+<tr class="even">
+<td>Nível-Log</td>
+<td><span class="math inline">\(y\)</span></td>
+<td><span class="math inline">\(ln(x)\)</span></td>
+<td><span class="math inline">\((\beta_1/100)\%\)</span> <span class="math inline">\(\Delta x\)</span></td>
+</tr>
+<tr class="odd">
+<td>Log-Nível</td>
+<td><span class="math inline">\(ln(y)\)</span></td>
+<td><span class="math inline">\(x\)</span></td>
+<td><span class="math inline">\(\% \Delta y = (100 \beta_1) \Delta x\)</span></td>
+</tr>
+<tr class="even">
+<td>Log_log</td>
+<td><span class="math inline">\(ln(y)\)</span></td>
+<td><span class="math inline">\(ln(x)\)</span></td>
+<td><span class="math inline">\(\% \Delta y = \beta_1\% \Delta x\)</span></td>
+</tr>
+</tbody>
+</table>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Aplicação: Erros Padrão Robustos à Heteroscedasticidade</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Criando uma nova coluna para as variaveis em log</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>Lnfeminic_tx <span class="ot">&lt;-</span> <span class="fu">log</span>(dados<span class="sc">$</span>feminic_tx)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>Lnhomic_tx <span class="ot">&lt;-</span> <span class="fu">log</span>(dados<span class="sc">$</span>homic_tx)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  sigla  estados regiao homic_abs homic_tx feminic_abs feminic_tx part_feminic
+1    AC     Acre      N        22      5.3          11        2.6         50.0
+2    AL  Alagoas     NE        73      4.5          31        1.9         42.5
+3    AM Amazonas      N        88      4.5          21        1.1         23.9
+4    AP    Amapa      N        22      6.0           8        2.2         36.4
+5    BA    Bahia     NE       406      5.6         107        1.5         26.4
+6    CE    Ceara     NE       264      5.8          28        0.6         10.6
+  rendapc total_abs mais_50 t_homic_abs t_homic_tx t_feminic_abs t_feminic_tx
+1    1038        33       1         388       93.4            16          3.9
+2     935       104       0         160        9.8            54          3.3
+3     965       109       0          83        4.2            45          2.3
+4    1177        30       0          95       25.9            44         12.0
+5    1010       513       0         582        8.0           174          2.4
+6    1050       292       0         324        7.2           102          2.3
+  part_t_feminic t_total_abs Lnfeminic_tx Lnhomic_tx
+1           3.96         404   0.95551145   1.667707
+2          25.23         214   0.64185389   1.504077
+3          35.16         128   0.09531018   1.504077
+4          31.65         139   0.78845736   1.791759
+5          23.02         756   0.40546511   1.722767
+6          23.94         426  -0.51082562   1.757858</code></pre>
 </div>
-<p>Para detectar formalmente a heteroscedasticidade, podemos utilizar os seguintes testes: teste de Breusch-Pagan (BP) e o Teste de White.</p>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">####Teste de Breusch-Pagan para Heteroscedasticidade</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="do">#####Teste de White para a detecção de Heteroscedasticidade</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>nivel_log <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>dados, dados<span class="sc">$</span>feminic_tx <span class="sc">~</span> dados<span class="sc">$</span>Lnhomic_tx)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nivel_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = dados$feminic_tx ~ dados$Lnhomic_tx, data = dados)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.22125 -0.30962  0.04254  0.26055  1.12333 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)        0.7246     0.4453   1.627   0.1162  
+dados$Lnhomic_tx   0.6238     0.2901   2.150   0.0414 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.5789 on 25 degrees of freedom
+Multiple R-squared:  0.1561,    Adjusted R-squared:  0.1223 
+F-statistic: 4.624 on 1 and 25 DF,  p-value: 0.04138</code></pre>
 </div>
-</section>
-<section id="viés-de-variável-omitida-e-a-correlação-entre-as-variáveis-explicativas-e-o-termo-de-erro." class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="viés-de-variável-omitida-e-a-correlação-entre-as-variáveis-explicativas-e-o-termo-de-erro."><span class="header-section-number">10.3</span> Viés de Variável Omitida e a Correlação entre as variáveis explicativas e o termo de Erro.</h2>
-</section>
-</section>
-<section id="modelos-com-variáveis-dependentes-qualitativasmodelo-de-probabilidade-linear-mpm-probit-e-logit." class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Modelos com Variáveis Dependentes Qualitativas:Modelo de Probabilidade Linear (MPM), Probit e Logit.</h1>
-</section>
-<section id="modelos-de-contagem-e-duração-regressão-de-poisson-e-modelo-de-sobrevivência-de-cox." class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> Modelos de Contagem e Duração: Regressão de Poisson e Modelo de Sobrevivência de Cox.</h1>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>log_nivel <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>dados, dados<span class="sc">$</span>Lnfeminic_tx<span class="sc">~</span> dados<span class="sc">$</span>homic_tx)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(log_nivel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = dados$Lnfeminic_tx ~ dados$homic_tx, data = dados)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.99152 -0.15045  0.06957  0.23432  0.60212 
+
+Coefficients:
+               Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)     0.21824    0.18283   1.194    0.244
+dados$homic_tx  0.04525    0.03517   1.287    0.210
+
+Residual standard error: 0.3759 on 25 degrees of freedom
+Multiple R-squared:  0.0621,    Adjusted R-squared:  0.02458 
+F-statistic: 1.655 on 1 and 25 DF,  p-value: 0.21</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>log_log <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>dados, dados<span class="sc">$</span>Lnfeminic_tx<span class="sc">~</span> dados<span class="sc">$</span>Lnhomic_tx)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(log_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = dados$Lnfeminic_tx ~ dados$Lnhomic_tx, data = dados)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.02426 -0.16375  0.06636  0.21270  0.57211 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)      0.0009591  0.2848650   0.003    0.997
+dados$Lnhomic_tx 0.2915326  0.1855640   1.571    0.129
+
+Residual standard error: 0.3703 on 25 degrees of freedom
+Multiple R-squared:  0.08986,   Adjusted R-squared:  0.05345 
+F-statistic: 2.468 on 1 and 25 DF,  p-value: 0.1287</code></pre>
+</div>
+</div>
 
 
 </section>
