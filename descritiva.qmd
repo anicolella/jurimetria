@@ -412,6 +412,50 @@ Vejamos a tabela abaixo que já faz uma primeira associação entre estatística
 
 Como regra geral, os parâmetros são representados por letras gregas e as estatística com letras do nosso alfabeto (latino) ou letra grega com com chapéu para indicar que é uma estatística.
 
+
+**ESTIMADORES**
+Um estimador é uma estatística calculada a partir da amostra que é usada para estimar um parâmetro desconhecido da população. Nos permitem fazer inferências sobre os parâmetros com base nos dados amostrais. Por exemplo, a média amostral é um estimador da média populacional, e a proporção amostral é um estimador da proporção populacional.
+
+
+## Teste de Hipotese (Parâmetros).
+
+### Introdução ao Teste de Hipótese de Duas Populações (de Médias)
+
+O teste de hipótese é uma técnica estatística fundamental usada para tomar decisões baseadas em evidências amostrais. O teste de hipótese de duas populações é aplicado quando queremos comparar as médias de duas populações distintas e determinar se existe uma diferença estatisticamente significativa entre elas. Vamos explorar os principais conceitos deste teste:
+
+**Formulação das Hipóteses**
+
+No teste de hipótese de duas populações, formulamos duas hipóteses:
+
+- **Hipótese Nula ($H_0$)**: Esta é a hipótese inicial que assume que não há diferença entre as médias das duas populações. Geralmente, é representada como 
+
+$$H_0: \mu_1 = \mu_2$$, 
+
+onde $\mu_1$ e $\mu_2$ são as médias das duas populações.
+
+- **Hipótese Alternativa ($H_a$ ou $H_1$)**: Esta é a hipótese que queremos testar, indicando que há uma diferença significativa entre as médias das duas populações. Pode ser definida como: 
+$$H_a: \mu_1 > \mu_2$$ 
+ou 
+$$H_a: \mu_1 < \mu_2$$ 
+ou 
+
+$$H_a: \mu_1 \neq \mu_2$$.
+
+**Estatística do Teste**
+
+O teste de hipótese de duas populações geralmente envolve o cálculo de uma estatística de teste específica para comparar as médias das amostras das duas populações. Uma das estatísticas comuns é o teste t de Student, especialmente quando as variâncias populacionais são desconhecidas e podem ser diferentes entre as populações.
+
+**Decisão do Teste**
+
+Após calcular a estatística de teste, comparamos o valor observado da estatística com um valor crítico ou calculamos um valor p associado. O valor p é a probabilidade de obter uma estatística de teste tão extrema quanto a observada, assumindo que a hipótese nula seja verdadeira. Com base no valor p (geralmente comparado com um nível de significância pré-definido, como 0,05), tomamos uma decisão de rejeitar ou não rejeitar a hipótese nula.
+
+**Conclusão do Teste**
+
+A conclusão do teste de hipótese de duas populações nos permite determinar se há evidências estatísticas suficientes para rejeitar a hipótese nula em favor da hipótese alternativa. Essa decisão tem implicações importantes em áreas como pesquisa científica, análise de dados e tomada de decisões em negócios e saúde.
+
+
+
+
 ## Estatisticas Descritivas: Medidas Numéricas a partir da amostra
 
 Existem outros métodos númericos que se constituem como alternativas adcionais para sintetizar os dados. Podemos dividir as medidas numericas em duas, temos as medidas de posíção e as de variabilidade.
@@ -464,6 +508,8 @@ t(mean_1) %>%
      kable_styling()
 ```
 
+
+
 **MEDIANA:**
 
 Organize os dados em ordem crescente.
@@ -512,6 +558,110 @@ t(median_1) %>%
 
 ```
 
+#### Visualizando as medidas por categorias
+
+**Gráfico de Pizza**
+O gráfico de pizza indica as proporções de uma determinada variável de classe. aqui utilizamos a média do número de feminicídios absoluto por região.
+
+
+```{r}
+pie(mean_1$feminic_abs , labels = c("CO","N","NE","S","SD"), border="lightgray")
+```
+
+
+**Gráfico de Barra**
+
+Em geral a utilização do gráfico de barras está relacionado ao entendimento da frequência de valores associados a uma determinada categoria. Por exemplo, imagine que temos um banco de dados com as pessoas classificadas como: i)Não trabalha; ii)Trabalha e iii)Desempregado. Teríamos três categorias e a frequência de pessoas em cada categoria. Poderíamos ainda dividir essa categoria entre homens e mulheres. Essa é a utilização mais padrão do gráfico de barras. Vejamos alguns gráficos: 
+ 
+
+
+```{r}
+final_fem_22<- final_fem_22[order(-final_fem_22$feminic_tx),]
+
+barplot(final_fem_22$feminic_tx, main="Taxa de Feminicídio por Estado", 
+        names.arg=final_fem_22$estados,
+        col="salmon2",border="lightsalmon3",
+        las = 2, 
+        cex.names = 0.7,
+        xlab="", ylab="Tx. por 100 mil")
+```
+
+```{r}
+final_fem_22<- final_fem_22[order(-final_fem_22$part_feminic),]
+
+barplot(final_fem_22$part_feminic, main="Participação da Taxa de Feminicídio no Total por Estado", 
+        names.arg=final_fem_22$estados,
+        col="darkblue",border="steelblue",
+        las = 2, 
+        cex.names = 0.7,
+        xlab="", ylab="Tx. por 100 mil")
+```
+
+```{r}
+g_b1<- mean_1[c(1,5,13)]
+g_b1$tx_f <- "Feminicídio (tx)" 
+g_b1$tx_t_f <- "Tentativa de Fem. (tx)"
+g_b2<- g_b1[c(1,2,4)]
+names(g_b2)<-c("regiao", "taxa", "tipo")
+g_b3<- g_b1[c(1,3,5)]
+names(g_b3)<-c("regiao", "taxa", "tipo")
+g_barra1<-rbind(g_b2, g_b3)
+
+
+barplot(taxa ~ tipo + regiao, data = g_barra1, 
+        beside = T,
+        #legend.text = TRUE,
+        ylim = c(0,8),
+        ylab = "Taxa (100 mil mulheres)",
+        xlab = "Região",
+        col = c("lightsalmon3", "lightskyblue3"))
+
+# Adicionando a legenda
+legend("topright", title = "", legend = c("Feminicídio ", "Tentativa Feminicídio"), pch = 15 , box.lwd = 0,box.col = "white",bg = "white", col = c("lightsalmon3", "lightskyblue3")
+)
+
+# Incluindo o eixo x
+abline(h=0)
+```
+
+**Gráfico de Linha**
+
+O gráfico de linha ou pontos é muito utilizado para visualização da evolução de séries. É um gráfico que nos permite ver a evolução dos salários entre homens e mulheres, evolução dos preços dos alimentos, evolução do número de casos de feminicídio, evolução dos processos em determinada Vara.
+
+Nosso banco é uma fotografia e não uma evolução, o que torna esse tipo de visualização menos útil. Vejamos a participação de feminicídio por estado
+
+```{r}
+final_fem_22<- final_fem_22[order(-final_fem_22$total_abs),]
+
+plot(x=final_fem_22$total_abs, y=final_fem_22$t_feminic_tx,
+     type="b" , bty="l" , 
+     ylim=c(0,12),
+     col=rgb(0.2,0.4,0.1,0.7) , lwd=2 , pch=17,
+     main="Tentativa eFeminídio Taxa", 
+     xlab = "Total de Homicídios", ylab="Taxa / 100 mil "
+      )
+# Adicionando nova variável
+lines(x=final_fem_22$total_abs, y=final_fem_22$feminic_tx, col=rgb(0.8,0.4,0.1,0.7) , lwd=2 , pch=19 , type="b" )
+
+# Inserindo a Legenda
+
+legend("topright", 
+  legend = c("Tentativa", "Feminicídio"), 
+  col = c(rgb(0.2,0.4,0.1,0.7), 
+  rgb(0.8,0.4,0.1,0.7)), 
+  pch = c(17,19), 
+  bty = "n", 
+  pt.cex = 1, 
+  cex = 0.8, 
+  text.col = "black", 
+  horiz = F , 
+  inset = c(0.1, 0.1))
+
+```
+
+
+
+
 **PERCENTIL:**
 
 O p-esimo percentil é um valor tal que ao menos p por cento das observações são menores ou iguais à ele e pelo menos (100-p) por cento das observações são maiores ou iguais a esse valor.
@@ -552,64 +702,6 @@ O três quartis são:
 quantile(final_fem_22$feminic_tx, na.rm=T)
 
 ```
-
-**Boxplot** 
-
-O boxplot é um gráfico que traz muitas informações e pode ser visto como a distribuição de probabilidade dos dados. O box contém 50\% dos dados. O limite superior indica o percentil de 75\% (*Q*3) e o limite inferior indica o percentil de 25\% (*Q1*). A linha que corta o box indica a mediana, ou seja, *Q2*. Os bigodes são calculados com base na distância interquantílica, ou seja,
-
-*Limite inferior: Q1-1,5(Q3-Q1)*
-
-*Limite superior:Q3+1,5(Q3-Q1)* 
-
-Dados fora desses limites são classificados como suspeitos de serem outlier. Podemos observar a assimetria dos dados quando a mediana não está no meio da caixa, indicando maior densidade na menor distância entre os quartis Q1 ou Q3 e a mediana Q2. Vejamos agora o boxplot da taxa de feminicídio e fora da âncora cambial.
-
-
-```{r}
-boxplot(final_fem_22$feminic_tx,data=final_fem_22, main="Boxplot da taxa de feminicídio no Brasil, 2022", horizontal=TRUE,
-  xlab="", ylab="Tx de Feminicídio/100mil", col="steelblue")
-```
-```{r}
-library(ggplot2)
-p<-ggplot(final_fem_22, aes(y=feminic_tx)) + 
-  geom_boxplot(fill='steelblue')  +
-  coord_flip()
-p+labs(title="Tx Feminicídio por 100 mil no Brasil 2022",
-        x ="", y = "Tx Feminicídio")
-```
-O Violin Plot é muito parecido com o BoxPlot mas com a densidade de kernel rotacionada em cada um dos lados. Assim, indica a distribuição dos dados em cada ponto e vem anotado a mediana na forma de um ponto ou marca e um pequeno boxplot no centro do violin plot.
-
-
-
-```{r}
-#Binária para nordeste e norte 1 e demais regiões 0
-final_fem_22$N_NE<-0
-final_fem_22$N_NE[final_fem_22$regiao == "N" | final_fem_22$regiao == "NE"] <- 1
-
-table(final_fem_22$N_NE, final_fem_22$regiao)
-```
-
-```{r, warning=FALSE, message=FALSE}
-library(vioplot) 
-x1 <- final_fem_22$feminic_tx[final_fem_22$N_NE==1]
-x2 <- final_fem_22$feminic_tx[final_fem_22$N_NE==0]
-vioplot(x1, x2, names=c("Norte e Nordeste", "Demais regiões"), col=c("steelblue", "lightblue"), border="white" )
-title("Violin Plots da taxa de feminicídio por região do Brasil")
-```
-
-
-Aqui segue uma sugestão de plotar o histograma juntamente com o boxplot, possibilitando em um mesmo gráfico uma maior quantidade de observação. Veja abaixo:
-  
-  
-```{r, warning=FALSE}
-par(fig=c(0,0.6,0,0.6), new=TRUE)
-hist(final_fem_22$feminic_tx, main="", xlab="Taxa Feminicídio", ylab="Frequência", col="lightblue2")
-par(fig=c(0,0.6,0.15,0.9), new=TRUE)
-boxplot(final_fem_22$feminic_tx, horizontal=TRUE, axes=FALSE, col="navajowhite2")
-
-```
-
- 
-
 **AMPLITUDE:**
 
 Amplitude é a diferença entre o valor mínimo e máximo de uma série de dados. 
@@ -635,21 +727,175 @@ IQR(final_fem_22$feminic_tx)
 iq
 ```
 
+
+#### Visualizando a Distribuição dos Dados
+
+**Boxplot** 
+
+O boxplot é um gráfico que traz muitas informações e pode ser visto como a distribuição de probabilidade dos dados. O box contém 50\% dos dados. O limite superior indica o percentil de 75\% (*Q*3) e o limite inferior indica o percentil de 25\% (*Q1*). A linha que corta o box indica a mediana, ou seja, *Q2*. Os bigodes são calculados com base na distância interquantílica, ou seja,
+
+*Limite inferior: Q1-1,5(Q3-Q1)*
+
+*Limite superior:Q3+1,5(Q3-Q1)* 
+
+Dados fora desses limites são classificados como suspeitos de serem outlier. Podemos observar a assimetria dos dados quando a mediana não está no meio da caixa, indicando maior densidade na menor distância entre os quartis Q1 ou Q3 e a mediana Q2. Vejamos agora o boxplot da taxa de feminicídio e da taxa de feminicídio por região.
+
+
+```{r}
+boxplot(final_fem_22$feminic_tx,data=final_fem_22, main="Boxplot da taxa de feminicídio no Brasil, 2022", horizontal=TRUE,
+  xlab="", ylab="Tx de Feminicídio/100mil", col="steelblue")
+```
+```{r}
+boxplot(final_fem_22$feminic_tx~final_fem_22$regiao,data=final_fem_22, main="Boxplot da taxa de feminicídio no Brasil, 2022", horizontal=TRUE,
+  xlab="", ylab="Tx de Feminicídio/100mil", col="steelblue")
+
+```
+
+
+O Violin Plot é muito parecido com o BoxPlot mas com a densidade de kernel rotacionada em cada um dos lados. Assim, indica a distribuição dos dados em cada ponto e vem anotado a mediana na forma de um ponto ou marca e um pequeno boxplot no centro do violin plot.
+
+
+
+```{r}
+#Binária para nordeste e centro oeste 1 e demais regiões 0
+final_fem_22$N_NE_CO<-0
+final_fem_22$N_NE_CO[final_fem_22$regiao == "N" | final_fem_22$regiao == "NE" | final_fem_22$regiao == "CO"] <- 1
+
+table(final_fem_22$N_NE_CO, final_fem_22$regiao)
+```
+
+```{r, warning=FALSE, message=FALSE}
+library(vioplot) 
+x1 <- final_fem_22$feminic_tx[final_fem_22$N_NE_CO==1]
+x2 <- final_fem_22$feminic_tx[final_fem_22$N_NE_CO==0]
+vioplot(x1, x2, names=c("Norte, Nord. e C.Oeste", "Sul e Sudeste"), col=c("steelblue", "lightblue"), border="white" )
+title("Violin Plots da taxa de feminicídio por região do Brasil")
+```
+
+
+Aqui segue uma sugestão de plotar o histograma juntamente com o boxplot, possibilitando em um mesmo gráfico uma maior quantidade de observação. Veja abaixo:
+  
+  
+```{r, warning=FALSE}
+par(fig=c(0,0.6,0,0.6), new=TRUE)
+hist(final_fem_22$feminic_tx, main="", xlab="Taxa Feminicídio", ylab="Frequência", col="lightblue2")
+par(fig=c(0,0.6,0.15,0.9), new=TRUE)
+boxplot(final_fem_22$feminic_tx, horizontal=TRUE, axes=FALSE, col="navajowhite2")
+
+```
+
+ 
+**Gráfico de Densidade**
+
+Visualizar a distribuição empírica dos dados fornece uma grande quantidade de informação. Um gráfico básico em análise descritiva é o histograma, o qual fornece a distribuição de probabilidade empírica dos dados em um formato de barras. A área do histograma é igual a 1 e altura da sua barra da a densidade de observações em cada classe. 
+
+
+```{r,warnings=FALSE}
+  hist(final_fem_22$feminic_tx, 
+       breaks=8,  # número de barras do histograma
+       col="steelblue",  #cor do preenchimento
+       xlab="Taxa de Feminicídio",  # Títulos de eixos e gráfico
+       ylab="Frequência", 
+       main="Histograma da Taxa de Feminicídio")
+```
+
+
+Podemos plotar o histograma conjuntamente com um modelo de distribuição de probabilidade. Utilizaremos a distribuição normal com mesma esperança e desvio padrão. 
+
+
+```{r,warnings=FALSE}
+x <- final_fem_22$feminic_tx 
+h<-hist(x, breaks=8, col="steelblue",xlab="Taxa de Feminicídio", ylab="Frequência",
+        main="Histograma da taxa de feminicídio e a aproximação pela normal") 
+
+xfit<-seq(0,max(x),length=40) 
+yfit<-dnorm(xfit,mean=mean(x),sd=sd(x)) 
+yfit <- yfit*diff(h$mids[1:2])*length(x) 
+lines(xfit, yfit, col="lightsalmon", lwd=2)
+```
+
+
+Uma outra maneira de visualizar os dados é utilizando uma distribuição continua e não mais a discreta. Para isso, utiliza-se a densidade de Kernel para visualização da distribuição de probabilidade da taxa de feminicídio. Vejamos
+
+
+
+```{r}
+  k <- density(final_fem_22$feminic_tx)
+  plot(k, xlab="Taxa de Feminicídio",main="Densidade de Kernel para a taxa de feminicídio")
+  polygon(k, col="burlywood3", border="burlywood4")
+```
+
+
+Outra forma útil de visualizar os dados a é distribuição por classe, por exemplo distribuição de salários entre homens e mulheres, tempo do processo por vara, distribuição da taxa de feminicídio por regiaão. Vamos utilizar a densidade de Kernel para analisar a distribuição dos valores da taxa de feminicídio por região. Para isso precisa instalar o pacote `sm`.
+
+
+
+```{r,message=F}
+#install.packages("sm")
+library(sm)
+sm.density.compare(final_fem_22$feminic_tx, final_fem_22$N_NE_CO, xlab="Taxa de Feminicídio", lwd=c(3, 3),col=c('darkgreen', 'darkblue'))
+title(main="Comparação da taxa de feminicídio entre regiôes")
+
+legend("topright", c("S SD", "N NE CO"), xpd = TRUE, horiz = FALSE , bty = "n",  col=c('darkgreen', 'darkblue'), lwd=c(4, 4), cex = 0.6)
+```
+
+
 ### Medidas de Variabilidade
 
 A variância amostral é uma medida estatística que indica o quão dispersos estão os dados em relação à média amostral. Em outras palavras, ela quantifica a extensão das diferenças individuais entre os valores observados e a média da amostra.
 
 A variância populacional é semelhante à variância amostral, mas é calculada utilizando todos os dados de uma população em vez de uma amostra. Ela descreve a dispersão dos dados em relação à média populacional.
 
+
+
 **VARIÂNCIA E DESVIO PADRÃO AMOSTRAL**:
+
+Definimos a vriância amostral como: 
 
 $$s^2 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n-1}$$ onde $\bar{x}$ é a média amostral.
 
-O **desvio padrão** é derivado da variância. Podemos qualcular essa estatistica da seguinte maneira:
+Vejamos a variância da taxa de feminicídio e do femnicídio absoluto:
 
-Desvio padrão amostral:
+```{r}
+var(final_fem_22$feminic_tx, na.rm=T)
+
+var(final_fem_22$feminic_abs, na.rm=T)
+
+```
+
+
+O **Desvio padrão amostral** é derivado da variância. Podemos qualcular essa estatistica da seguinte maneira:
+
 
 $$s = \sqrt{s^2} = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n-1}}$$
+
+Para os nossos dados anteriores: 
+
+```{r}
+###Calculo do Desvio padrão
+
+#DP taxa de feminicidio
+sd(final_fem_22$feminic_tx, na.rm=T)
+
+#DP  Feminicidio absoluto
+sd(final_fem_22$feminic_abs, na.rm=T)
+
+
+```
+
+Vamos consolidar agora nossas estatísticas descritivas
+
+```{r, warning=F}
+
+fun1 <- function(x, na.rm = TRUE) c(media=mean(x, na.rm = TRUE), med=median(x, na.rm = TRUE), var=var(x, na.rm = TRUE), dp=sd(x, na.rm = TRUE))
+
+est_descrit <- (sapply(final_fem_22[4:17], fun1))
+
+t(est_descrit) %>% 
+  kbl(digits = 2) %>%
+     kable_styling()
+
+```
 
 **COEFICIENTE DE VARIAÇÃO**:
 
@@ -657,9 +903,28 @@ O coeficiente de variação (CV) é uma medida de dispersão relativa que expres
 
 $$\text{CV} = \left( \frac{\text{Desvio padrão}}{\text{Média}} \right) \times 100\%$$
 
-O r calcula essas estatisticas de maneira muito eficiente com apenas uma linha de comando.A função `summary()` em R fornece um resumo estatístico básico das variáveis numéricas presentes em um data frame. Ao aplicar `summary()` a um data frame, as seguintes estatísticas são calculadas para cada coluna numérica:
 
-Mínimo (Min): O menor valor observado na variável. 1º Quartil (Q1): O valor que separa os 25% inferiores dos dados. Mediana (50º Percentil): O valor que separa os 50% inferiores dos 50% superiores dos dados. Média (Mean): A média aritmética dos valores. 3º Quartil (Q3): O valor que separa os 75% inferiores dos dados. Máximo (Max): O maior valor observado na variável.
+```{r}
+
+# Vamos calcular o coeficiente de variacao
+
+# O R nao tem nehuma funçao para isso, mas podemos fazer isso rapidamente
+
+# Acessando os dados da variável
+feminic_abs <- final_fem_22$feminic_abs
+
+# Calcular a média da variável
+media_variavel <- mean(feminic_abs, na.rm = TRUE)
+
+# Calcular o desvio padrão da variável
+desvio_padrao_variavel <- sd(feminic_abs, na.rm = TRUE)
+
+# Calcular o coeficiente de variação
+coeficiente_variacao <- (desvio_padrao_variavel / media_variavel) * 100
+
+# Exibindo o coeficiente de variação
+print(coeficiente_variacao)
+```
 
 ### Medidas de Associação
 
@@ -669,8 +934,137 @@ Covariância entre duas variáveis: A covariância entre duas variáveis X e Y �
 
 $$\text{Cov}(X, Y) = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})$$
 
+
+```{r}
+ cov(final_fem_22$feminic_tx, final_fem_22$homic_tx)
+```
+
+
 **CORRELAÇÃO**
 
 O coeficiente de correlação entre duas variáveis X e Y é uma medida estatística que descreve a força e a direção da relação linear entre essas variáveis. O coeficiente de correlação é frequentemente representado pelo coeficiente de correlação de Pearson, $r_{XY}$.
 
 $$r_{XY} = \frac{\text{Cov}(X, Y)}{s_X s_Y}$$ O coeficiente de correlação de Pearson é uma medida amplamente utilizada para avaliar a relação linear entre variáveis, pois fornece uma interpretação padronizada da força e direção da relação, independentemente das unidades das variáveis.
+
+```{r}
+ cor(final_fem_22$feminic_tx, final_fem_22$homic_tx)
+
+```
+
+
+
+**Scatter plot**
+
+O Scatter plot é conhecido como o gráfico de dispersão. Ele relaciona duas ou três variáveis, ou seja, plota $X$ contra $Y$. Muito utilizado para ver o comportamento conjunto de duas séries. Observe que renda e a taxa de feminicídio não mostram um comportamento conjunto, estão dispersas. 
+
+```{r}
+
+##Dispersão entre renda per capita e a taxa de feminicidio
+plot(final_fem_22$rendapc, final_fem_22$feminic_tx,
+     main = "Taxa de Feminicídio vs. Renda Per Capita",
+     xlab = "Renda Per Capita",
+     ylab = "Taxa de Feminicídio",
+     col = "steelblue",          # Cor dos pontos
+     pch = 16,              # Forma dos pontos (círculos sólidos)
+     cex = 1.5              # Tamanho dos pontos
+)
+abline(lm(final_fem_22$feminic_tx~final_fem_22$rendapc), col="lightblue4", lwd=2)
+
+```
+
+Ao observar a taxa de homicídio e a taxa de feminicídio, estados com maior taxa de homicídio tendem a ter maior taxa de feminicídio. 
+
+```{r}
+
+##Dispersão entre renda per capita e a taxa de feminicidio
+plot(final_fem_22$homic_tx, final_fem_22$feminic_tx,
+     main = "Taxa de Feminicídio vs. Taxa de Homicidios",
+     xlab = "Taxa de Homicidio",
+     ylab = "Taxa de Feminicídio",
+     col = "lightgoldenrod3",          # Cor dos pontos
+     pch = 16,              # Forma dos pontos (círculos sólidos)
+     cex = 1.5              # Tamanho dos pontos
+)
+abline(lm(final_fem_22$feminic_tx~final_fem_22$homic_tx), col="lightblue4", lwd=2)
+```
+
+
+
+```{r,message=F, warning=F}
+library(corrgram)
+correl<- final_fem_22[c(5,7,8,9,13,15,16)]
+corrgram(correl, order=TRUE, lower.panel=panel.shade, upper.panel=panel.cor,  main="Correlação entre as diversas variáveis") 
+
+
+```
+
+
+### Teste de Hipótese
+
+Vamos testar a hipótese de que as taxas de feminicídio são iguais entre as regiões norte, nordeste e centro oeste e as regiões sul e sudeste. Vamos permitir que as variâncias sejam diferentes entre as duas regiões
+
+$$H_0: \mu_{N-NE-CO} = \mu_{S-SD}$$
+$$H_1: \mu_{N-NE-CO} \neq \mu_{S-SD}$$
+```{r}
+t.test(feminic_tx~N_NE_CO, data=final_fem_22) 
+```
+O teste mostra que não rejeitamos a hipótese nula de que as duas regiões possuem a mesma média de taxa de feminicídio. 
+
+Vejamos agora a renda per capita: 
+```{r}
+t.test(rendapc~N_NE_CO, data=final_fem_22) 
+```
+
+Observa-se que rejeita-se a hipótese nula, e há evidências de que a média da renda per capita entre as duas regiões são diferentes. 
+
+
+
+
+**GRÁFICOS COM GGPLOT2**
+
+  O pacote ggplot2 vem se consolidando como um dos pacotes mais usados para geração de gráficos. Ele tem algumas vantagens como:
+  
+  - Bastante flexível
+  - Poderoso
+  - Muito personalizável
+  - Bonito!
+
+Mas algumas coisas não deveriam ser feitas com ggplot, pois existem pacotes mais especializados:
+  
+  - Gráficos 3D (pacote rgl)
+  - Grafos (pacote igraph)
+  - Gráficos interativos (pacote ggvis)
+
+
+**A gramática dos gráficos**
+  
+  Para criarmos gráficos com ggplot,  utilizamos __blocos__ de sintaxe que vão sendo empilhados para criar o gráfico pretendido
+
+  Os blocos com os quais podemos trabalhar são:
+  
+  - Dados
+  - Mapeamento estético
+  - Objetos geométricos 
+  - Transformações estatíticas
+  - Escalas
+  - Sistema de coordenadas
+  - Ajustes de posição
+  
+
+
+## Histograma
+
+```{r, fig.width=6, fig.align='center',fig.height=3.5}
+library(ggplot2)
+
+p<-  ggplot(data=final_fem_22, aes(x = feminic_tx, y = after_stat(density))) + 
+  geom_histogram(bins=10, col="darkblue",fill=I("steelblue"))+
+  geom_vline(aes(xintercept = mean(feminic_tx)),  color = "lightsalmon3", linewidth = 1) +
+  geom_density(color = "darkgoldenrod", linewidth = 2)
+
+p + labs(title="Distrição da taxa de Feminicídio nos Estados", x="Taxa de Feminicídio", y="Densidade")
+```
+
+
+
+
