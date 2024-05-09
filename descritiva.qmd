@@ -2,7 +2,7 @@
 title: "Análise Descritiva"
 subtitle: "Uma Introdução à Estatística"
 author:
-- Alexandre Nicolella
+- Alexandre Nicolella e Felipe Bauer
 date: "2024"
 format: html
 ---

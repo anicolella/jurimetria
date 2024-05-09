@@ -1,13 +1,11 @@
 ---
 title: "Modelos Lineares"
 subtitle: "Aplicação a Pesquisa em Direito"
+author:
+- Alexandre Nicolella e Felipe Bauer
+date: "2024"
 format: html
-tbl-cap-location: top
-code-fold: false
-code-summary: "show the code"
 ---
-
-<!---- comentário é assim que faz ------->
 
 
 
