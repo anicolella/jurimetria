@@ -9,7 +9,7 @@
 <meta name="author" content="Alexandre Nicolella e Felipe Bauer">
 <meta name="dcterms.date" content="2023-12-31">
 
-<title>Jurimetria - 5&nbsp; Modelos Lineares</title>
+<title>Jurimetria - 6&nbsp; Modelos Lineares</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -141,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lineares.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lineares.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -181,20 +181,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">O Dplyr</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./descritiva.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lineares.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./outrosmodelos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelos Avançados</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelos Avançados</span></span></a>
   </div>
 </li>
     </ul>
@@ -207,23 +213,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">5.1</span> Introdução</a>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">6.1</span> Introdução</a>
   <ul class="collapse">
-  <li><a href="#alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico" id="toc-alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico" class="nav-link" data-scroll-target="#alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico"><span class="header-section-number">5.1.1</span> Alguns Exemplos de Regressão Aplicados ao Contexto Jurídico:</a></li>
+  <li><a href="#alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico" id="toc-alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico" class="nav-link" data-scroll-target="#alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico"><span class="header-section-number">6.1.1</span> Alguns Exemplos de Regressão Aplicados ao Contexto Jurídico:</a></li>
   </ul></li>
-  <li><a href="#hipóteses-sobre-o-comportamento-do-termo-de-erro" id="toc-hipóteses-sobre-o-comportamento-do-termo-de-erro" class="nav-link" data-scroll-target="#hipóteses-sobre-o-comportamento-do-termo-de-erro"><span class="header-section-number">5.2</span> Hipóteses sobre o comportamento do Termo de Erro</a></li>
-  <li><a href="#estimação-dos-parâmetros-da-rls" id="toc-estimação-dos-parâmetros-da-rls" class="nav-link" data-scroll-target="#estimação-dos-parâmetros-da-rls"><span class="header-section-number">5.3</span> Estimação dos Parâmetros da RLS</a>
+  <li><a href="#hipóteses-sobre-o-comportamento-do-termo-de-erro" id="toc-hipóteses-sobre-o-comportamento-do-termo-de-erro" class="nav-link" data-scroll-target="#hipóteses-sobre-o-comportamento-do-termo-de-erro"><span class="header-section-number">6.2</span> Hipóteses sobre o comportamento do Termo de Erro</a></li>
+  <li><a href="#estimação-dos-parâmetros-da-rls" id="toc-estimação-dos-parâmetros-da-rls" class="nav-link" data-scroll-target="#estimação-dos-parâmetros-da-rls"><span class="header-section-number">6.3</span> Estimação dos Parâmetros da RLS</a>
   <ul class="collapse">
-  <li><a href="#aplicação---estimando-uma-regressão-linear-simples" id="toc-aplicação---estimando-uma-regressão-linear-simples" class="nav-link" data-scroll-target="#aplicação---estimando-uma-regressão-linear-simples"><span class="header-section-number">5.3.1</span> Aplicação - Estimando uma Regressão Linear Simples</a></li>
+  <li><a href="#aplicação---estimando-uma-regressão-linear-simples" id="toc-aplicação---estimando-uma-regressão-linear-simples" class="nav-link" data-scroll-target="#aplicação---estimando-uma-regressão-linear-simples"><span class="header-section-number">6.3.1</span> Aplicação - Estimando uma Regressão Linear Simples</a></li>
   </ul></li>
-  <li><a href="#caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" id="toc-caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" class="nav-link" data-scroll-target="#caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados"><span class="header-section-number">5.4</span> Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados</a>
+  <li><a href="#caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" id="toc-caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" class="nav-link" data-scroll-target="#caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados"><span class="header-section-number">6.4</span> Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados</a>
   <ul class="collapse">
-  <li><a href="#valores-estimados-e-resíduos" id="toc-valores-estimados-e-resíduos" class="nav-link" data-scroll-target="#valores-estimados-e-resíduos"><span class="header-section-number">5.4.1</span> Valores estimados e Resíduos</a></li>
-  <li><a href="#propriedades-algébricas-do-mqo" id="toc-propriedades-algébricas-do-mqo" class="nav-link" data-scroll-target="#propriedades-algébricas-do-mqo"><span class="header-section-number">5.4.2</span> Propriedades Algébricas do MQO</a></li>
-  <li><a href="#qualidade-do-ajuste" id="toc-qualidade-do-ajuste" class="nav-link" data-scroll-target="#qualidade-do-ajuste"><span class="header-section-number">5.4.3</span> Qualidade do Ajuste</a></li>
+  <li><a href="#valores-estimados-e-resíduos" id="toc-valores-estimados-e-resíduos" class="nav-link" data-scroll-target="#valores-estimados-e-resíduos"><span class="header-section-number">6.4.1</span> Valores estimados e Resíduos</a></li>
+  <li><a href="#propriedades-algébricas-do-mqo" id="toc-propriedades-algébricas-do-mqo" class="nav-link" data-scroll-target="#propriedades-algébricas-do-mqo"><span class="header-section-number">6.4.2</span> Propriedades Algébricas do MQO</a></li>
+  <li><a href="#qualidade-do-ajuste" id="toc-qualidade-do-ajuste" class="nav-link" data-scroll-target="#qualidade-do-ajuste"><span class="header-section-number">6.4.3</span> Qualidade do Ajuste</a></li>
   </ul></li>
-  <li><a href="#unidade-de-medida-e-forma-funcional" id="toc-unidade-de-medida-e-forma-funcional" class="nav-link" data-scroll-target="#unidade-de-medida-e-forma-funcional"><span class="header-section-number">5.5</span> Unidade de Medida e Forma Funcional</a></li>
-  <li><a href="#incorporando-não-linearidades-nas-variáveis" id="toc-incorporando-não-linearidades-nas-variáveis" class="nav-link" data-scroll-target="#incorporando-não-linearidades-nas-variáveis"><span class="header-section-number">5.6</span> Incorporando não linearidades (nas variáveis!)</a></li>
+  <li><a href="#unidade-de-medida-e-forma-funcional" id="toc-unidade-de-medida-e-forma-funcional" class="nav-link" data-scroll-target="#unidade-de-medida-e-forma-funcional"><span class="header-section-number">6.5</span> Unidade de Medida e Forma Funcional</a></li>
+  <li><a href="#incorporando-não-linearidades-nas-variáveis" id="toc-incorporando-não-linearidades-nas-variáveis" class="nav-link" data-scroll-target="#incorporando-não-linearidades-nas-variáveis"><span class="header-section-number">6.6</span> Incorporando não linearidades (nas variáveis!)</a></li>
   </ul>
 </nav>
     </div>
@@ -232,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></h1>
 <p class="subtitle lead">Aplicação a Pesquisa em Direito</p>
 </div>
 
@@ -265,8 +271,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>O matérial desta seção é baseado na 4ed do livro de Jeffrey Wooldridge, Introdução à Econometria: Uma Abordagem Moderna, de 2013. Embora o título do livro remeta à econometria, os modelos apresentados no livro são aplicaveis à diversas Ciências Sociais, tais como o Direito, Ciência Política, Sociologia, Psicologia Empírica etc…</p>
 <p>A análise de Regressão é um instrumento poderoso para os centistas sociais. Podemos verificar como determinadas variáveis importantes nas ciencias sociais interagem com outras, as vezes em uma relação de causa e efeito.</p>
 <p>Aqui também teremos que ter uma questão ou problema. Anteriormente gostariamos de entender o que estava acontecendo, qual a Renda pc das mulheres, qual a taxa de feminicídio… Agora queremos ir mais a fundo, porque determinados bairros tem mais crime do que outros? O que determina a renda pc de uma mulher?</p>
-<section id="introdução" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">5.1</span> Introdução</h2>
+<section id="introdução" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">6.1</span> Introdução</h2>
 <p>Começamos com o modelo mais geral da população:</p>
 <p><span class="math display">\[y = \beta_0 + \beta_1x + u \]</span></p>
 <p>Nesta equação, <span class="math inline">\(y\)</span> é a variavel dependente ou também denominada de variável explicativa; <span class="math inline">\(x\)</span> é a variável explicativa e <span class="math inline">\(u\)</span> é o termo de erro. Essa equação é uma equação de <strong>regressão linear simples</strong>.</p>
@@ -283,8 +289,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[\Delta crime = \beta_1 \Delta desemprego \]</span></p>
 <p>Assim, o aumento o de 1 ponto no desemprego irá ter o efeito de <span class="math inline">\(\beta_1\)</span> unidades de crimes em média. Por isso, quando conseguimos estimar os parêmetros <span class="math inline">\(\beta\)</span> estamos mais próximos de entender as relações entre <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> em nossas aplicações.</p>
 <p>Cabe destacar algo bastante importante.As relações acima não encerram a questão da causalidade. Como podemos inferir um impacto causal do desemprego na criminalidade se estamos ignorando todos os demais fatores que ficaram de fora do modelo - fatores que são captados em <span class="math inline">\(u\)</span> não observados.</p>
-<section id="alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico"><span class="header-section-number">5.1.1</span> Alguns Exemplos de Regressão Aplicados ao Contexto Jurídico:</h3>
+<section id="alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico"><span class="header-section-number">6.1.1</span> Alguns Exemplos de Regressão Aplicados ao Contexto Jurídico:</h3>
 <p>Considere os seguintes exemplos de RLS aplicadas ao contexto do Direito</p>
 <p><strong>Previsão de Sentenças com Base na Gravidade do Crime:</strong> Onde, a variável dependente e tamanho da pena, e a variável independente é a Gravidade do Crime, <span class="math inline">\(\beta_0\)</span>é o intercepto da regressão. <span class="math inline">\(\beta_1\)</span> é o coeficiente de regressão que representa como a gravidade do crime influência o tamanho da pena, <span class="math inline">\(u\)</span> é o termo de erro.</p>
 <p><span class="math display">\[Dpena = \beta_0 + \beta_1{\text{Gravidade}} + u\]</span></p>
@@ -296,8 +302,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[ Veredito = \beta_0 + \beta_1 Testemunhas + u \]</span></p>
 </section>
 </section>
-<section id="hipóteses-sobre-o-comportamento-do-termo-de-erro" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="hipóteses-sobre-o-comportamento-do-termo-de-erro"><span class="header-section-number">5.2</span> Hipóteses sobre o comportamento do Termo de Erro</h2>
+<section id="hipóteses-sobre-o-comportamento-do-termo-de-erro" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="hipóteses-sobre-o-comportamento-do-termo-de-erro"><span class="header-section-number">6.2</span> Hipóteses sobre o comportamento do Termo de Erro</h2>
 <p>Se especificamos o modelo com <span class="math inline">\(\beta_0\)</span>, podemos assumir que <span class="math inline">\(u\)</span>, tem média igual a zero. Em notação de esperança matematica essa hipotese equivale a:</p>
 <p><span class="math display">\[E(u) = 0\]</span></p>
 <p>Podemos definir uma segunda hipotese sobre <span class="math inline">\(u\)</span>. Uma hipótese forte, é a de que <span class="math inline">\(u\)</span> e <span class="math inline">\(x\)</span> são independentes. Tal hípótese é a hipótese crucial do modelo de RLS:</p>
@@ -320,8 +326,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[y = E( y |x ) + u \]</span></p>
 <p>Na equação acima, <span class="math inline">\(E( y |x )\)</span> é chamada de parte sistematica de <span class="math inline">\(y\)</span>. Isto é, a parte sistematicamente explicada por <span class="math inline">\(x\)</span>. Já o termo de erro não observado, <span class="math inline">\(u\)</span> é a parte não sistematica de <span class="math inline">\(y\)</span>, não explicada por <span class="math inline">\(x\)</span>.</p>
 </section>
-<section id="estimação-dos-parâmetros-da-rls" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="estimação-dos-parâmetros-da-rls"><span class="header-section-number">5.3</span> Estimação dos Parâmetros da RLS</h2>
+<section id="estimação-dos-parâmetros-da-rls" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="estimação-dos-parâmetros-da-rls"><span class="header-section-number">6.3</span> Estimação dos Parâmetros da RLS</h2>
 <p>Não conhecemos <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> queremos estimadores desses parametros: <span class="math inline">\(\hat{\beta_0}\)</span> e <span class="math inline">\(\hat{\beta_1}\)</span>.</p>
 <p>Suponha que tenhamos uma amostra aleatória da população: <span class="math inline">\(\{(x_i, y_i): i = 1, ..., n\}\)</span>. Poderia ser uma amostra de crimes e taxa de desemprego por bairros.</p>
 <p>Em nosso modelo base:</p>
@@ -343,8 +349,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>Antes de passarmos para o proxímo tópico de RLS, cabe mencionar uma nota sobre terminologia: quando estimamos equações de RLS do tipo <span class="math inline">\(y = \beta_0 + \beta_1 x + u\)</span>, dizemos que “<em>rodamos a regressão de</em> <span class="math inline">\(y\)</span> sobre <span class="math inline">\(x\)</span> !”</p>
-<section id="aplicação---estimando-uma-regressão-linear-simples" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="aplicação---estimando-uma-regressão-linear-simples"><span class="header-section-number">5.3.1</span> Aplicação - Estimando uma Regressão Linear Simples</h3>
+<section id="aplicação---estimando-uma-regressão-linear-simples" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="aplicação---estimando-uma-regressão-linear-simples"><span class="header-section-number">6.3.1</span> Aplicação - Estimando uma Regressão Linear Simples</h3>
 <p>Vamos utilizar aqui o nosso banco de dados anterior sobre feminicídio. É um banco com poucas obserações e possui fim didátco, apesar de serem dados reais.</p>
 <p>Uma questão incial é entender quem será <span class="math inline">\(Y\)</span> e quem será <span class="math inline">\(X\)</span>. Estamos querendo entender a taxa de feminicídio. A questão é, quais são seus determinantes? Aqui precisamos de alguma teoria…mas or hora, vamos ter como hipótese inicial que quanto maior a taxa de homícídio espera-se que em média a taxa de feminicídio aumente. :</p>
 <p><span class="math display">\[Feminc_{tx} = \beta_0 + \beta_1 Homici_{tx} + u\]</span></p>
@@ -385,8 +391,8 @@ Multiple R-squared:  0.1288,    Adjusted R-squared:  0.09397
 F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 </div>
 </div>
-<section id="entendendo-os-resultados" class="level4" data-number="5.3.1.1">
-<h4 data-number="5.3.1.1" class="anchored" data-anchor-id="entendendo-os-resultados"><span class="header-section-number">5.3.1.1</span> Entendendo os Resultados</h4>
+<section id="entendendo-os-resultados" class="level4" data-number="6.3.1.1">
+<h4 data-number="6.3.1.1" class="anchored" data-anchor-id="entendendo-os-resultados"><span class="header-section-number">6.3.1.1</span> Entendendo os Resultados</h4>
 <p><strong>1) Resíduos</strong> Residuals: apresenta a distribuição dos resíduos, observa-se que amediana dos resíduos está próxima a zero.</p>
 <p><strong>2)Coeficientes</strong> Em seguida, abaixo de <em>Coefficients</em> temos 5 colunas.</p>
 <p><em>Coluna 1</em>: Nome da variável</p>
@@ -417,10 +423,10 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 </section>
 </section>
 </section>
-<section id="caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados"><span class="header-section-number">5.4</span> Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados</h2>
-<section id="valores-estimados-e-resíduos" class="level3" data-number="5.4.1">
-<h3 data-number="5.4.1" class="anchored" data-anchor-id="valores-estimados-e-resíduos"><span class="header-section-number">5.4.1</span> Valores estimados e Resíduos</h3>
+<section id="caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados"><span class="header-section-number">6.4</span> Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados</h2>
+<section id="valores-estimados-e-resíduos" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="valores-estimados-e-resíduos"><span class="header-section-number">6.4.1</span> Valores estimados e Resíduos</h3>
 <p>Uma vez estimados <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span> temos os valores ajustados ou também denominados de valores preditos ou <em>fitted values</em>.</p>
 <p>Para uma observação qualquer <span class="math inline">\(i\)</span>, seu valor estimado é:</p>
 <p><span class="math display">\[\hat{y}_i= \hat{\beta}_0 + \hat{\beta}_1x_i\]</span></p>
@@ -439,8 +445,8 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 </div>
 </div>
 </section>
-<section id="propriedades-algébricas-do-mqo" class="level3" data-number="5.4.2">
-<h3 data-number="5.4.2" class="anchored" data-anchor-id="propriedades-algébricas-do-mqo"><span class="header-section-number">5.4.2</span> Propriedades Algébricas do MQO</h3>
+<section id="propriedades-algébricas-do-mqo" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="propriedades-algébricas-do-mqo"><span class="header-section-number">6.4.2</span> Propriedades Algébricas do MQO</h3>
 <ol type="1">
 <li>A Soma dos Resíduos é zero:</li>
 </ol>
@@ -494,8 +500,8 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 <li><p>Os valores de <span class="math inline">\(\hat{y}\)</span> e <span class="math inline">\(\hat{u}\)</span> são não correlacionados na amostra!</p></li>
 </ol>
 </section>
-<section id="qualidade-do-ajuste" class="level3" data-number="5.4.3">
-<h3 data-number="5.4.3" class="anchored" data-anchor-id="qualidade-do-ajuste"><span class="header-section-number">5.4.3</span> Qualidade do Ajuste</h3>
+<section id="qualidade-do-ajuste" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="qualidade-do-ajuste"><span class="header-section-number">6.4.3</span> Qualidade do Ajuste</h3>
 <p>Nesta seção vamos responder a seguinte questão: “<em>Quão bem</em> <span class="math inline">\(x\)</span> explica <span class="math inline">\(y\)</span> ?”</p>
 <p>Considere as seguintes definições</p>
 <p>Soma dos Quadrado Totais (SQT):</p>
@@ -549,15 +555,15 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 <p>Novamente, o <span class="math inline">\(R^2\)</span> é a porcentagem da variação de y que é explicada por <span class="math inline">\(x\)</span>. O valor de <span class="math inline">\(R^2\)</span> sempre estará na RLS entre <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span>.</p>
 </section>
 </section>
-<section id="unidade-de-medida-e-forma-funcional" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="unidade-de-medida-e-forma-funcional"><span class="header-section-number">5.5</span> Unidade de Medida e Forma Funcional</h2>
+<section id="unidade-de-medida-e-forma-funcional" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="unidade-de-medida-e-forma-funcional"><span class="header-section-number">6.5</span> Unidade de Medida e Forma Funcional</h2>
 <p>Se a variável dependente é multiplicada por uma constante <span class="math inline">\(c\)</span>, então as estimativas do intercepto e da inclinação também serão multiplicadas por <span class="math inline">\(c\)</span></p>
 <p>Se a variável explicativa é multiplicada por uma contante <span class="math inline">\(c\)</span>, então o coeficiente de inclinação será dívido por <span class="math inline">\(c\)</span>. Nada acontece com o intercepto.</p>
 <p>Se a variável explicativa é dividida por uma constante <span class="math inline">\(c\)</span>, então o coeficiente de inclinação é multiplicado por <span class="math inline">\(c\)</span>. Nada acontece com a constante.</p>
 <p><strong>IMPORTANTE</strong>: O <span class="math inline">\(R^2\)</span> não depende das unidades de nossas variáveis.</p>
 </section>
-<section id="incorporando-não-linearidades-nas-variáveis" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="incorporando-não-linearidades-nas-variáveis"><span class="header-section-number">5.6</span> Incorporando não linearidades (nas variáveis!)</h2>
+<section id="incorporando-não-linearidades-nas-variáveis" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="incorporando-não-linearidades-nas-variáveis"><span class="header-section-number">6.6</span> Incorporando não linearidades (nas variáveis!)</h2>
 <p>Minha primeira tabela</p>
 <table class="table">
 <colgroup>
@@ -937,12 +943,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./descritiva.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./outrosmodelos.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelos Avançados</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelos Avançados</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

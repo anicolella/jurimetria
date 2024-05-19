@@ -32,6 +32,7 @@ book:
       - summary.qmd
       #- pesquisa.qmd
       - manipulacao.qmd
+      - dplyr.qmd
       - descritiva.qmd
       - lineares.qmd
       - outrosmodelos.qmd

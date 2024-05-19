@@ -9,7 +9,7 @@
 <meta name="author" content="Alexandre Nicolella e Felipe Bauer">
 <meta name="dcterms.date" content="2023-12-31">
 
-<title>Jurimetria - 4&nbsp; Análise Descritiva</title>
+<title>Jurimetria - 5&nbsp; Análise Descritiva</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./lineares.html" rel="next">
-<link href="./manipulacao.html" rel="prev">
+<link href="./dplyr.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -147,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./descritiva.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./descritiva.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -187,20 +187,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">O Dplyr</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./descritiva.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lineares.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./outrosmodelos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelos Avançados</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelos Avançados</span></span></a>
   </div>
 </li>
     </ul>
@@ -213,35 +219,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#porque-estudar-estatística" id="toc-porque-estudar-estatística" class="nav-link active" data-scroll-target="#porque-estudar-estatística"><span class="header-section-number">4.1</span> Porque Estudar Estatística?</a>
+  <li><a href="#porque-estudar-estatística" id="toc-porque-estudar-estatística" class="nav-link active" data-scroll-target="#porque-estudar-estatística"><span class="header-section-number">5.1</span> Porque Estudar Estatística?</a>
   <ul class="collapse">
-  <li><a href="#os-dois-sistemas-cognitivos" id="toc-os-dois-sistemas-cognitivos" class="nav-link" data-scroll-target="#os-dois-sistemas-cognitivos"><span class="header-section-number">4.1.1</span> Os dois sistemas cognitivos</a></li>
+  <li><a href="#os-dois-sistemas-cognitivos" id="toc-os-dois-sistemas-cognitivos" class="nav-link" data-scroll-target="#os-dois-sistemas-cognitivos"><span class="header-section-number">5.1.1</span> Os dois sistemas cognitivos</a></li>
   </ul></li>
-  <li><a href="#conceitos-básicos-de-estatística" id="toc-conceitos-básicos-de-estatística" class="nav-link" data-scroll-target="#conceitos-básicos-de-estatística"><span class="header-section-number">4.2</span> Conceitos Básicos de Estatística</a>
+  <li><a href="#conceitos-básicos-de-estatística" id="toc-conceitos-básicos-de-estatística" class="nav-link" data-scroll-target="#conceitos-básicos-de-estatística"><span class="header-section-number">5.2</span> Conceitos Básicos de Estatística</a>
   <ul class="collapse">
-  <li><a href="#a-variável-aleatória" id="toc-a-variável-aleatória" class="nav-link" data-scroll-target="#a-variável-aleatória"><span class="header-section-number">4.2.1</span> A Variável Aleatória</a></li>
-  <li><a href="#variáveis-aleatórias-bidimensionais" id="toc-variáveis-aleatórias-bidimensionais" class="nav-link" data-scroll-target="#variáveis-aleatórias-bidimensionais"><span class="header-section-number">4.2.2</span> Variáveis Aleatórias Bidimensionais</a></li>
+  <li><a href="#a-variável-aleatória" id="toc-a-variável-aleatória" class="nav-link" data-scroll-target="#a-variável-aleatória"><span class="header-section-number">5.2.1</span> A Variável Aleatória</a></li>
+  <li><a href="#variáveis-aleatórias-bidimensionais" id="toc-variáveis-aleatórias-bidimensionais" class="nav-link" data-scroll-target="#variáveis-aleatórias-bidimensionais"><span class="header-section-number">5.2.2</span> Variáveis Aleatórias Bidimensionais</a></li>
   </ul></li>
-  <li><a href="#conceitos-básicos-inferência-estatística" id="toc-conceitos-básicos-inferência-estatística" class="nav-link" data-scroll-target="#conceitos-básicos-inferência-estatística"><span class="header-section-number">4.3</span> Conceitos Básicos Inferência Estatística</a>
+  <li><a href="#conceitos-básicos-inferência-estatística" id="toc-conceitos-básicos-inferência-estatística" class="nav-link" data-scroll-target="#conceitos-básicos-inferência-estatística"><span class="header-section-number">5.3</span> Conceitos Básicos Inferência Estatística</a>
   <ul class="collapse">
-  <li><a href="#exemplos-do-príncipio-no-dia-a-dia" id="toc-exemplos-do-príncipio-no-dia-a-dia" class="nav-link" data-scroll-target="#exemplos-do-príncipio-no-dia-a-dia"><span class="header-section-number">4.3.1</span> Exemplos do príncipio no dia a dia</a></li>
-  <li><a href="#população-amostra-parâmetros-e-estimadores" id="toc-população-amostra-parâmetros-e-estimadores" class="nav-link" data-scroll-target="#população-amostra-parâmetros-e-estimadores"><span class="header-section-number">4.3.2</span> População, Amostra, Parâmetros e Estimadores</a></li>
-  <li><a href="#população-e-amostra" id="toc-população-e-amostra" class="nav-link" data-scroll-target="#população-e-amostra"><span class="header-section-number">4.3.3</span> População e amostra</a></li>
-  <li><a href="#amostragem-aleatória-simples" id="toc-amostragem-aleatória-simples" class="nav-link" data-scroll-target="#amostragem-aleatória-simples"><span class="header-section-number">4.3.4</span> Amostragem Aleatória Simples</a></li>
+  <li><a href="#exemplos-do-príncipio-no-dia-a-dia" id="toc-exemplos-do-príncipio-no-dia-a-dia" class="nav-link" data-scroll-target="#exemplos-do-príncipio-no-dia-a-dia"><span class="header-section-number">5.3.1</span> Exemplos do príncipio no dia a dia</a></li>
+  <li><a href="#população-amostra-parâmetros-e-estimadores" id="toc-população-amostra-parâmetros-e-estimadores" class="nav-link" data-scroll-target="#população-amostra-parâmetros-e-estimadores"><span class="header-section-number">5.3.2</span> População, Amostra, Parâmetros e Estimadores</a></li>
+  <li><a href="#população-e-amostra" id="toc-população-e-amostra" class="nav-link" data-scroll-target="#população-e-amostra"><span class="header-section-number">5.3.3</span> População e amostra</a></li>
+  <li><a href="#amostragem-aleatória-simples" id="toc-amostragem-aleatória-simples" class="nav-link" data-scroll-target="#amostragem-aleatória-simples"><span class="header-section-number">5.3.4</span> Amostragem Aleatória Simples</a></li>
   </ul></li>
-  <li><a href="#estatística-e-parâmetro" id="toc-estatística-e-parâmetro" class="nav-link" data-scroll-target="#estatística-e-parâmetro"><span class="header-section-number">4.4</span> Estatística e Parâmetro</a></li>
-  <li><a href="#teste-de-hipotese-parâmetros." id="toc-teste-de-hipotese-parâmetros." class="nav-link" data-scroll-target="#teste-de-hipotese-parâmetros."><span class="header-section-number">4.5</span> Teste de Hipotese (Parâmetros).</a>
+  <li><a href="#estatística-e-parâmetro" id="toc-estatística-e-parâmetro" class="nav-link" data-scroll-target="#estatística-e-parâmetro"><span class="header-section-number">5.4</span> Estatística e Parâmetro</a></li>
+  <li><a href="#teste-de-hipotese-parâmetros." id="toc-teste-de-hipotese-parâmetros." class="nav-link" data-scroll-target="#teste-de-hipotese-parâmetros."><span class="header-section-number">5.5</span> Teste de Hipotese (Parâmetros).</a>
   <ul class="collapse">
-  <li><a href="#introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" id="toc-introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" class="nav-link" data-scroll-target="#introdução-ao-teste-de-hipótese-de-duas-populações-de-médias"><span class="header-section-number">4.5.1</span> Introdução ao Teste de Hipótese de Duas Populações (de Médias)</a></li>
+  <li><a href="#introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" id="toc-introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" class="nav-link" data-scroll-target="#introdução-ao-teste-de-hipótese-de-duas-populações-de-médias"><span class="header-section-number">5.5.1</span> Introdução ao Teste de Hipótese de Duas Populações (de Médias)</a></li>
   </ul></li>
-  <li><a href="#estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra" id="toc-estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra" class="nav-link" data-scroll-target="#estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra"><span class="header-section-number">4.6</span> Estatisticas Descritivas: Medidas Numéricas a partir da amostra</a>
+  <li><a href="#estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra" id="toc-estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra" class="nav-link" data-scroll-target="#estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra"><span class="header-section-number">5.6</span> Estatisticas Descritivas: Medidas Numéricas a partir da amostra</a>
   <ul class="collapse">
-  <li><a href="#medidas-de-posição" id="toc-medidas-de-posição" class="nav-link" data-scroll-target="#medidas-de-posição"><span class="header-section-number">4.6.1</span> Medidas de Posição:</a></li>
-  <li><a href="#medidas-de-variabilidade" id="toc-medidas-de-variabilidade" class="nav-link" data-scroll-target="#medidas-de-variabilidade"><span class="header-section-number">4.6.2</span> Medidas de Variabilidade</a></li>
-  <li><a href="#medidas-de-associação" id="toc-medidas-de-associação" class="nav-link" data-scroll-target="#medidas-de-associação"><span class="header-section-number">4.6.3</span> Medidas de Associação</a></li>
-  <li><a href="#teste-de-hipótese" id="toc-teste-de-hipótese" class="nav-link" data-scroll-target="#teste-de-hipótese"><span class="header-section-number">4.6.4</span> Teste de Hipótese</a></li>
+  <li><a href="#medidas-de-posição" id="toc-medidas-de-posição" class="nav-link" data-scroll-target="#medidas-de-posição"><span class="header-section-number">5.6.1</span> Medidas de Posição:</a></li>
+  <li><a href="#medidas-de-variabilidade" id="toc-medidas-de-variabilidade" class="nav-link" data-scroll-target="#medidas-de-variabilidade"><span class="header-section-number">5.6.2</span> Medidas de Variabilidade</a></li>
+  <li><a href="#medidas-de-associação" id="toc-medidas-de-associação" class="nav-link" data-scroll-target="#medidas-de-associação"><span class="header-section-number">5.6.3</span> Medidas de Associação</a></li>
+  <li><a href="#teste-de-hipótese" id="toc-teste-de-hipótese" class="nav-link" data-scroll-target="#teste-de-hipótese"><span class="header-section-number">5.6.4</span> Teste de Hipótese</a></li>
   </ul></li>
-  <li><a href="#histograma" id="toc-histograma" class="nav-link" data-scroll-target="#histograma"><span class="header-section-number">4.7</span> Histograma</a></li>
+  <li><a href="#histograma" id="toc-histograma" class="nav-link" data-scroll-target="#histograma"><span class="header-section-number">5.7</span> Histograma</a></li>
   </ul>
 </nav>
     </div>
@@ -250,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></h1>
 <p class="subtitle lead">Uma Introdução à Estatística</p>
 </div>
 
@@ -278,8 +284,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="porque-estudar-estatística" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="porque-estudar-estatística"><span class="header-section-number">4.1</span> Porque Estudar Estatística?</h2>
+<section id="porque-estudar-estatística" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="porque-estudar-estatística"><span class="header-section-number">5.1</span> Porque Estudar Estatística?</h2>
 <p>Podemos dizer que a existência da estatística e de outras ciências está conectada a existência de problemas. Não somente a ciência mas o nosso trabalho está conectado a superação de problemas cotidianos. Tomar decisão é o dia a dia do gestor.</p>
 <p>Segundo Popper “we study not disciplines, but problems. Often, problems transcend the boundaries of a particular discipline”</p>
 <p>A questão central é: Como solucionamos os problemas? Utilizamos a melhor estratégia? A solução foi boa?</p>
@@ -295,8 +301,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="os-dois-sistemas-cognitivos" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="os-dois-sistemas-cognitivos"><span class="header-section-number">4.1.1</span> Os dois sistemas cognitivos</h3>
+<section id="os-dois-sistemas-cognitivos" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="os-dois-sistemas-cognitivos"><span class="header-section-number">5.1.1</span> Os dois sistemas cognitivos</h3>
 <p>Os livros abaixo são boas referências sobre a tomada de decisão.</p>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -382,8 +388,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Nosso objetivo é explorar nessa seção a análise descritiva. Chamado hoje no <em>Business Intelligence</em>, que e uma das áreas do <em>Data Science</em>.</p>
 </section>
 </section>
-<section id="conceitos-básicos-de-estatística" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="conceitos-básicos-de-estatística"><span class="header-section-number">4.2</span> Conceitos Básicos de Estatística</h2>
+<section id="conceitos-básicos-de-estatística" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="conceitos-básicos-de-estatística"><span class="header-section-number">5.2</span> Conceitos Básicos de Estatística</h2>
 <p>Novamente começamos com um problema e esse definirá a nossa análise. Vejamos alguns problemas que poderiam nos interessar…</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -427,8 +433,8 @@ Problema 3
 <p><strong>Problema</strong>: <u>Quantas mulheres serão alvos dessa política?</u></p>
 </div>
 </div>
-<section id="a-variável-aleatória" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="a-variável-aleatória"><span class="header-section-number">4.2.1</span> A Variável Aleatória</h3>
+<section id="a-variável-aleatória" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="a-variável-aleatória"><span class="header-section-number">5.2.1</span> A Variável Aleatória</h3>
 <p>O problema nos define a população que estou interessado. Vamos seguir, a princípio, com o nosso probelma 1 para definirmos alguns conceitos importantes.</p>
 <p><strong>No problema 1</strong>: me interessa compreender a renda das mulheres que moram em Ribeirão Preto em dado ano. Para ficar simples vamos abreviar o que nos interessa</p>
 <p><span class="math display">\[X=\text{Renda das mulheres que moram em Ribeirão Preto em determinado ano}\]</span> Agora posso utilizar o X no lugar do nome. Olhando para a população e pensando que cada nível de renda pode ser representada por uma cor, teremos a seguinte imagem pouco de como a renda se distribui nessa população:</p>
@@ -505,8 +511,8 @@ Problema 3
 </div>
 </div>
 </div>
-<section id="esperança-e-variância" class="level4" data-number="4.2.1.1">
-<h4 data-number="4.2.1.1" class="anchored" data-anchor-id="esperança-e-variância"><span class="header-section-number">4.2.1.1</span> Esperança e Variância</h4>
+<section id="esperança-e-variância" class="level4" data-number="5.2.1.1">
+<h4 data-number="5.2.1.1" class="anchored" data-anchor-id="esperança-e-variância"><span class="header-section-number">5.2.1.1</span> Esperança e Variância</h4>
 <p>O fomato das distribuições vistas dependem principalmente de dois parâmetros: A esperança que é uma medida de centralidade e a variância que é uma medida de dispersão.</p>
 <p><strong>ESPERANÇA</strong> - <span class="math inline">\(E(X)\)</span></p>
 <p>É uma medida de centralidade da variável aleatória. É definida como a média ponderada de todos os possíveis resultados de <span class="math inline">\(X\)</span>, onde os pesos são dados pelas probabilidades desses resultados ocorrerem. A esperança de <span class="math inline">\(X\)</span>, <span class="math inline">\(E(X)\)</span>, é calculada como:</p>
@@ -538,8 +544,8 @@ Problema 3
 </div>
 </section>
 </section>
-<section id="variáveis-aleatórias-bidimensionais" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="variáveis-aleatórias-bidimensionais"><span class="header-section-number">4.2.2</span> Variáveis Aleatórias Bidimensionais</h3>
+<section id="variáveis-aleatórias-bidimensionais" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="variáveis-aleatórias-bidimensionais"><span class="header-section-number">5.2.2</span> Variáveis Aleatórias Bidimensionais</h3>
 <p>Muito provavelmente nos interessa observar mais de uma característica de um experimento. Por exemplo, não somente a renda das mulheres em Ribeirão Preto nos interessa, mas o seu consumo alimentar também julgamos importante para o projeto.</p>
 <p>Portanto, queremos observar duas características de forma simultânea das mulheres: sua renda e seu consumo alimentar. Ou seja, duas características simultaneamente do mesmo experimento <span class="math inline">\(\epsilon\)</span> que foi observar as mulheres no município.</p>
 <p>Apesar de termos coletados duas informações, temos na realidade três informações. A informação da renda, a informação do consumo alimentar e a informação de como renda e consumo alimentar interagem.</p>
@@ -574,8 +580,8 @@ Problema 3
 </div>
 <p>Surge aqui um conceito importante que tenta medir como as características da população se relacionam - uma medida do relacionamento. Assim:</p>
 <p><u>O que acontece com o consumo de alimentos quando a renda das mulheres sobem?</u></p>
-<section id="covariância-e-correlação" class="level4" data-number="4.2.2.1">
-<h4 data-number="4.2.2.1" class="anchored" data-anchor-id="covariância-e-correlação"><span class="header-section-number">4.2.2.1</span> Covariância e Correlação</h4>
+<section id="covariância-e-correlação" class="level4" data-number="5.2.2.1">
+<h4 data-number="5.2.2.1" class="anchored" data-anchor-id="covariância-e-correlação"><span class="header-section-number">5.2.2.1</span> Covariância e Correlação</h4>
 <p>Duas medidas que tentam mensurar o “grau de associação” linear entre X e Y são:</p>
 <p><strong>COVARIÂNCIA</strong></p>
 <p><span class="math display">\[Cov(X,Y)=E[(X-E(X))(Y-E(Y))]\]</span></p>
@@ -624,8 +630,8 @@ Lendo a Correlação
 </section>
 </section>
 </section>
-<section id="conceitos-básicos-inferência-estatística" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="conceitos-básicos-inferência-estatística"><span class="header-section-number">4.3</span> Conceitos Básicos Inferência Estatística</h2>
+<section id="conceitos-básicos-inferência-estatística" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="conceitos-básicos-inferência-estatística"><span class="header-section-number">5.3</span> Conceitos Básicos Inferência Estatística</h2>
 <p>Dado a nossa pergunta ou problema, gostariamos de saber as carcateística de uma população.</p>
 <p>Entretantom um processo de levantamento de informações é em geral caro e em muitas situações é destrutivo. Em ciências sociais estamos interessados em características de pessoas, empresas, municípios, estados, países etc. Não é destrutivo mas é uma coleta cara. Por exemplo, o Censo demográfico de 2010 custou R$ 1,3 bilhões, ou aproximadamente R$ 2,2 bi em reais de 2020. O valor é de aproximadamente R$ 35,00 por domicílio.</p>
 <p>Dessa forma nosso objetivo aqui é:</p>
@@ -642,8 +648,8 @@ Objetivo
 <p>A partir de uma amostra da população realizar inferência sobre toda a população</p>
 </div>
 </div>
-<section id="exemplos-do-príncipio-no-dia-a-dia" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="exemplos-do-príncipio-no-dia-a-dia"><span class="header-section-number">4.3.1</span> Exemplos do príncipio no dia a dia</h3>
+<section id="exemplos-do-príncipio-no-dia-a-dia" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="exemplos-do-príncipio-no-dia-a-dia"><span class="header-section-number">5.3.1</span> Exemplos do príncipio no dia a dia</h3>
 <p>Pense nessas situações:</p>
 <ul>
 <li>Para medir a glicose muitos pacientes usam uma gota de sangue e um pequeno aparelho. A partir dele sabem quanto tem no corpo todo, basta uma gota para termos boa certeza de quanto é taxa de glicose!</li>
@@ -653,11 +659,11 @@ Objetivo
 <p>Com certeza vc deve ter pensado que essas situações tem grau de certeza variáveis. A diferença está em quão homogênea é a característica na população, o sal no arroz e a glicose no sangue devem ser muito bem distribuidas, ou seja, bem homogêneas. Já a doçura no abacaxi deve ter distribuição maior e provar apenas um abacaxi não nos dá uma ideia do todo.</p>
 <p>Esse é um erro muito comum, a partir de uma ou poucas observações dizer que o todo se comporta da mesma maneira, esse erro se agrava quando maior é a heterogeneidade!!!</p>
 </section>
-<section id="população-amostra-parâmetros-e-estimadores" class="level3" data-number="4.3.2">
-<h3 data-number="4.3.2" class="anchored" data-anchor-id="população-amostra-parâmetros-e-estimadores"><span class="header-section-number">4.3.2</span> População, Amostra, Parâmetros e Estimadores</h3>
+<section id="população-amostra-parâmetros-e-estimadores" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="população-amostra-parâmetros-e-estimadores"><span class="header-section-number">5.3.2</span> População, Amostra, Parâmetros e Estimadores</h3>
 </section>
-<section id="população-e-amostra" class="level3" data-number="4.3.3">
-<h3 data-number="4.3.3" class="anchored" data-anchor-id="população-e-amostra"><span class="header-section-number">4.3.3</span> População e amostra</h3>
+<section id="população-e-amostra" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="população-e-amostra"><span class="header-section-number">5.3.3</span> População e amostra</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -686,8 +692,8 @@ População
 </div>
 </div>
 </section>
-<section id="amostragem-aleatória-simples" class="level3" data-number="4.3.4">
-<h3 data-number="4.3.4" class="anchored" data-anchor-id="amostragem-aleatória-simples"><span class="header-section-number">4.3.4</span> Amostragem Aleatória Simples</h3>
+<section id="amostragem-aleatória-simples" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="amostragem-aleatória-simples"><span class="header-section-number">5.3.4</span> Amostragem Aleatória Simples</h3>
 <p>Existem várias maneiras de fazer uma análise aleatória, uma delas é a simples. Vejamos primeiro um processo de amostragem não aleatório e que possui tendenciosidade. A figura abaixo mostra esse processo[^7]:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -699,8 +705,8 @@ População
 <p>Um processo de amostragem aleatório requer que as características presentes na população estejam presentes na amostras e estejam balanceadas, ou seja, que a sua leitura represente bem o todo.</p>
 </section>
 </section>
-<section id="estatística-e-parâmetro" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="estatística-e-parâmetro"><span class="header-section-number">4.4</span> Estatística e Parâmetro</h2>
+<section id="estatística-e-parâmetro" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="estatística-e-parâmetro"><span class="header-section-number">5.4</span> Estatística e Parâmetro</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -778,10 +784,10 @@ População
 <p>Como regra geral, os parâmetros são representados por letras gregas e as estatística com letras do nosso alfabeto (latino) ou letra grega com com chapéu para indicar que é uma estatística.</p>
 <p><strong>ESTIMADORES</strong> Um estimador é uma estatística calculada a partir da amostra que é usada para estimar um parâmetro desconhecido da população. Nos permitem fazer inferências sobre os parâmetros com base nos dados amostrais. Por exemplo, a média amostral é um estimador da média populacional, e a proporção amostral é um estimador da proporção populacional.</p>
 </section>
-<section id="teste-de-hipotese-parâmetros." class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="teste-de-hipotese-parâmetros."><span class="header-section-number">4.5</span> Teste de Hipotese (Parâmetros).</h2>
-<section id="introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="introdução-ao-teste-de-hipótese-de-duas-populações-de-médias"><span class="header-section-number">4.5.1</span> Introdução ao Teste de Hipótese de Duas Populações (de Médias)</h3>
+<section id="teste-de-hipotese-parâmetros." class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="teste-de-hipotese-parâmetros."><span class="header-section-number">5.5</span> Teste de Hipotese (Parâmetros).</h2>
+<section id="introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="introdução-ao-teste-de-hipótese-de-duas-populações-de-médias"><span class="header-section-number">5.5.1</span> Introdução ao Teste de Hipótese de Duas Populações (de Médias)</h3>
 <p>O teste de hipótese é uma técnica estatística fundamental usada para tomar decisões baseadas em evidências amostrais. O teste de hipótese de duas populações é aplicado quando queremos comparar as médias de duas populações distintas e determinar se existe uma diferença estatisticamente significativa entre elas. Vamos explorar os principais conceitos deste teste:</p>
 <p><strong>Formulação das Hipóteses</strong></p>
 <p>No teste de hipótese de duas populações, formulamos duas hipóteses:</p>
@@ -802,8 +808,8 @@ População
 <p>A conclusão do teste de hipótese de duas populações nos permite determinar se há evidências estatísticas suficientes para rejeitar a hipótese nula em favor da hipótese alternativa. Essa decisão tem implicações importantes em áreas como pesquisa científica, análise de dados e tomada de decisões em negócios e saúde.</p>
 </section>
 </section>
-<section id="estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra"><span class="header-section-number">4.6</span> Estatisticas Descritivas: Medidas Numéricas a partir da amostra</h2>
+<section id="estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="estatisticas-descritivas-medidas-numéricas-a-partir-da-amostra"><span class="header-section-number">5.6</span> Estatisticas Descritivas: Medidas Numéricas a partir da amostra</h2>
 <p>Existem outros métodos númericos que se constituem como alternativas adcionais para sintetizar os dados. Podemos dividir as medidas numericas em duas, temos as medidas de posíção e as de variabilidade.</p>
 <p><strong>MEDIDAS DE POSIÇÃO:</strong></p>
 <ul>
@@ -830,8 +836,8 @@ População
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>final_fem_22 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.csv"</span>, <span class="at">head=</span>T ,<span class="at">sep=</span><span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="medidas-de-posição" class="level3" data-number="4.6.1">
-<h3 data-number="4.6.1" class="anchored" data-anchor-id="medidas-de-posição"><span class="header-section-number">4.6.1</span> Medidas de Posição:</h3>
+<section id="medidas-de-posição" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="medidas-de-posição"><span class="header-section-number">5.6.1</span> Medidas de Posição:</h3>
 <p><strong>MÉDIA AMOSTRAL:</strong></p>
 <p><span class="math display">\[\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i\]</span></p>
 <div class="cell">
@@ -1204,8 +1210,8 @@ População
 
 </div>
 </div>
-<section id="visualizando-as-medidas-por-categorias" class="level4" data-number="4.6.1.1">
-<h4 data-number="4.6.1.1" class="anchored" data-anchor-id="visualizando-as-medidas-por-categorias"><span class="header-section-number">4.6.1.1</span> Visualizando as medidas por categorias</h4>
+<section id="visualizando-as-medidas-por-categorias" class="level4" data-number="5.6.1.1">
+<h4 data-number="5.6.1.1" class="anchored" data-anchor-id="visualizando-as-medidas-por-categorias"><span class="header-section-number">5.6.1.1</span> Visualizando as medidas por categorias</h4>
 <p><strong>Gráfico de Pizza</strong> O gráfico de pizza indica as proporções de uma determinada variável de classe. aqui utilizamos a média do número de feminicídios absoluto por região.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(mean_1<span class="sc">$</span>feminic_abs , <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"CO"</span>,<span class="st">"N"</span>,<span class="st">"NE"</span>,<span class="st">"S"</span>,<span class="st">"SD"</span>), <span class="at">border=</span><span class="st">"lightgray"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1361,8 +1367,8 @@ População
 </div>
 </div>
 </section>
-<section id="visualizando-a-distribuição-dos-dados" class="level4" data-number="4.6.1.2">
-<h4 data-number="4.6.1.2" class="anchored" data-anchor-id="visualizando-a-distribuição-dos-dados"><span class="header-section-number">4.6.1.2</span> Visualizando a Distribuição dos Dados</h4>
+<section id="visualizando-a-distribuição-dos-dados" class="level4" data-number="5.6.1.2">
+<h4 data-number="5.6.1.2" class="anchored" data-anchor-id="visualizando-a-distribuição-dos-dados"><span class="header-section-number">5.6.1.2</span> Visualizando a Distribuição dos Dados</h4>
 <p><strong>Boxplot</strong></p>
 <p>O boxplot é um gráfico que traz muitas informações e pode ser visto como a distribuição de probabilidade dos dados. O box contém 50% dos dados. O limite superior indica o percentil de 75% (<em>Q</em>3) e o limite inferior indica o percentil de 25% (<em>Q1</em>). A linha que corta o box indica a mediana, ou seja, <em>Q2</em>. Os bigodes são calculados com base na distância interquantílica, ou seja,</p>
 <p><em>Limite inferior: Q1-1,5(Q3-Q1)</em></p>
@@ -1466,8 +1472,8 @@ População
 </div>
 </section>
 </section>
-<section id="medidas-de-variabilidade" class="level3" data-number="4.6.2">
-<h3 data-number="4.6.2" class="anchored" data-anchor-id="medidas-de-variabilidade"><span class="header-section-number">4.6.2</span> Medidas de Variabilidade</h3>
+<section id="medidas-de-variabilidade" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="medidas-de-variabilidade"><span class="header-section-number">5.6.2</span> Medidas de Variabilidade</h3>
 <p>A variância amostral é uma medida estatística que indica o quão dispersos estão os dados em relação à média amostral. Em outras palavras, ela quantifica a extensão das diferenças individuais entre os valores observados e a média da amostra.</p>
 <p>A variância populacional é semelhante à variância amostral, mas é calculada utilizando todos os dados de uma população em vez de uma amostra. Ela descreve a dispersão dos dados em relação à média populacional.</p>
 <p><strong>VARIÂNCIA E DESVIO PADRÃO AMOSTRAL</strong>:</p>
@@ -1653,8 +1659,8 @@ População
 </div>
 </div>
 </section>
-<section id="medidas-de-associação" class="level3" data-number="4.6.3">
-<h3 data-number="4.6.3" class="anchored" data-anchor-id="medidas-de-associação"><span class="header-section-number">4.6.3</span> Medidas de Associação</h3>
+<section id="medidas-de-associação" class="level3" data-number="5.6.3">
+<h3 data-number="5.6.3" class="anchored" data-anchor-id="medidas-de-associação"><span class="header-section-number">5.6.3</span> Medidas de Associação</h3>
 <p><strong>COVARIÂNCIA AMOSTRAL</strong></p>
 <p>Covariância entre duas variáveis: A covariância entre duas variáveis X e Y é uma medida estatística que descreve como essas variáveis variam juntas. Em outras palavras, a covariância indica a tendência de X e Y de se moverem na mesma direção (covariância positiva) ou em direções opostas (covariância negativa).</p>
 <p><span class="math display">\[\text{Cov}(X, Y) = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})\]</span></p>
@@ -1715,8 +1721,8 @@ População
 </div>
 </div>
 </section>
-<section id="teste-de-hipótese" class="level3" data-number="4.6.4">
-<h3 data-number="4.6.4" class="anchored" data-anchor-id="teste-de-hipótese"><span class="header-section-number">4.6.4</span> Teste de Hipótese</h3>
+<section id="teste-de-hipótese" class="level3" data-number="5.6.4">
+<h3 data-number="5.6.4" class="anchored" data-anchor-id="teste-de-hipótese"><span class="header-section-number">5.6.4</span> Teste de Hipótese</h3>
 <p>Vamos testar a hipótese de que as taxas de feminicídio são iguais entre as regiões norte, nordeste e centro oeste e as regiões sul e sudeste. Vamos permitir que as variâncias sejam diferentes entre as duas regiões</p>
 <p><span class="math display">\[H_0: \mu_{N-NE-CO} = \mu_{S-SD}\]</span> <span class="math display">\[H_1: \mu_{N-NE-CO} \neq \mu_{S-SD}\]</span></p>
 <div class="cell">
@@ -1782,8 +1788,8 @@ mean in group 0 mean in group 1
 </ul>
 </section>
 </section>
-<section id="histograma" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="histograma"><span class="header-section-number">4.7</span> Histograma</h2>
+<section id="histograma" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="histograma"><span class="header-section-number">5.7</span> Histograma</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -2049,13 +2055,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./manipulacao.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Maipulando os Dados</span></span>
+      <a href="./dplyr.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">O Dplyr</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./lineares.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
