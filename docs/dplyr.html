@@ -211,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r" id="toc-tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r" class="nav-link active" data-scroll-target="#tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r"><span class="header-section-number">4.1</span> Tutorial sobre o Uso do dplyr para Manipulação de Dados no R**</a>
+  <li><a href="#tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r" id="toc-tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r" class="nav-link active" data-scroll-target="#tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r"><span class="header-section-number">4.1</span> Tutorial sobre o Uso do dplyr para Manipulação de Dados no R</a>
   <ul class="collapse">
   <li><a href="#introdução-ao-dplyr" id="toc-introdução-ao-dplyr" class="nav-link" data-scroll-target="#introdução-ao-dplyr"><span class="header-section-number">4.1.1</span> Introdução ao dplyr:</a></li>
   <li><a href="#instalação-e-carregamento" id="toc-instalação-e-carregamento" class="nav-link" data-scroll-target="#instalação-e-carregamento"><span class="header-section-number">4.1.2</span> Instalação e Carregamento:</a></li>
@@ -256,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <section id="tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r"><span class="header-section-number">4.1</span> Tutorial sobre o Uso do dplyr para Manipulação de Dados no R**</h2>
+<h2 data-number="4.1" class="anchored" data-anchor-id="tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r"><span class="header-section-number">4.1</span> Tutorial sobre o Uso do dplyr para Manipulação de Dados no R</h2>
 <p>Essa seção é uma criação mesclando o que foi explicado em aula, o Chat GPT e um pouco da nossa organização.</p>
 <section id="introdução-ao-dplyr" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="introdução-ao-dplyr"><span class="header-section-number">4.1.1</span> Introdução ao dplyr:</h3>
@@ -292,12 +292,16 @@ Anexando pacote: 'dplyr'</code></pre>
 <ol type="1">
 <li><strong><code>filter()</code>:</strong> Esta função é usada para filtrar linhas com base em condições específicas. No R: <code>dados_filtrados &lt;- filter(dados, condição)</code>.</li>
 </ol>
-<p>Ver também as seleções com escopo <code>filter_all()</code>, <code>filter_if()</code> e <code>filter_at()</code> e as seguintes funções: <code>starts_with()</code>, <code>ends_with()</code>, <code>contains()</code> e <code>matches()</code></p>
+<ul>
+<li>Ver também as seleções com escopo <code>filter_all()</code>, <code>filter_if()</code> e <code>filter_at()</code> e as seguintes funções: <code>starts_with()</code>, <code>ends_with()</code>, <code>contains()</code> e <code>matches()</code></li>
+</ul>
 <ol start="2" type="1">
 <li><strong><code>select()</code>:</strong> Esta função é usada para selecionar colunas específicas do conjunto de dados. No R: <code>colunas_selecionadas &lt;- select(dados, coluna1, coluna2)</code>.</li>
 </ol>
-<p>Ver também <code>select_all()</code>, <code>select_if()</code> and <code>select_at()</code> e as seguintes funções <code>starts_with()</code>, <code>ends_with()</code>, <code>contains()</code>. <code>matches()</code> e <code>num_range()</code></p>
-<ol start="3" type="1">
+<ul>
+<li>Ver também <code>select_all()</code>, <code>select_if()</code> and <code>select_at()</code> e as seguintes funções <code>starts_with()</code>, <code>ends_with()</code>, <code>contains()</code>. <code>matches()</code> e <code>num_range()</code></li>
+</ul>
+<ol start="2" type="1">
 <li><p><strong><code>arrange()</code>:</strong> Esta função é usada para reordenar linhas com base em uma ou mais variáveis.No R: <code>dados_ordenados &lt;- arrange(dados, variável)</code></p></li>
 <li><p><strong><code>mutate()</code>:</strong> Esta função é usada para criar ou modificar colunas dentro do conjunto de dados. No R: <code>dados_modificados &lt;- mutate(dados, nova_coluna = cálculo)</code></p></li>
 <li><p><strong><code>group_by()</code> e <code>summarize()</code>:</strong> Essas funções são usadas em conjunto para agrupar dados com base em uma variável e, em seguida, resumi-los. No R: <code>dados_agrupados &lt;- group_by(dados, variável)</code>e <code>resumo &lt;- summarize(dados_agrupados, estatística_resumo = função(variável))</code></p></li>

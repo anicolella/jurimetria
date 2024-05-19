@@ -169,9 +169,9 @@ summary(modelo)
 
 #### Entendendo os Resultados
 
-**1) Resíduos** Residuals: apresenta a  distribuição dos resíduos, observa-se que amediana dos resíduos está próxima a zero.
+**1. Resíduos** Residuals: apresenta a  distribuição dos resíduos, observa-se que amediana dos resíduos está próxima a zero.
 
-**2)Coeficientes** Em seguida, abaixo de *Coefficients* temos 5 colunas.
+**2.Coeficientes** Em seguida, abaixo de *Coefficients* temos 5 colunas.
 
 *Coluna 1*: Nome da variável
 
@@ -187,9 +187,9 @@ summary(modelo)
 
 O coeficiente do intercepto nos diz que quando a taxa de homicídio for 0, ainda existira uma taxa de feminicídio de 1,4 pontos, $\beta_0$, significante a 0,1%. E cada 1 ponto de aumento na taxa de homicídio, aumenta em 0,10 $\beta_1$ pontos a taxa de feminicídio, significante a 10%.
 
-**3) $R^2$**: Em seguida temos o $R^2$ e $R^2$ ajustado. Essas estatísticas calculam quanto da variância da taxa de feminicídio pode ser explicada pela variância da taxa de homicídio. Quando estão próximos a 1 explicam muito, quanto estão próximos a 0 explicam pouco. No caso o nosso $R^2$ ficou baixo e portanto boa parte da variabilidade do feminicídio, não foi explicada pela taxa de homicídio. 
+**3. $R^2$**: Em seguida temos o $R^2$ e $R^2$ ajustado. Essas estatísticas calculam quanto da variância da taxa de feminicídio pode ser explicada pela variância da taxa de homicídio. Quando estão próximos a 1 explicam muito, quanto estão próximos a 0 explicam pouco. No caso o nosso $R^2$ ficou baixo e portanto boa parte da variabilidade do feminicídio, não foi explicada pela taxa de homicídio. 
 
-**4) Estaística F**: E por fim a estatística F mostra o grau de ajustamento do modelo. Se ela for significativa diz que o modelo é bem ajustados aos dados. As variáveis explicativas incluídas são importantes para a explicação da taxa de feminicídio.
+**4. Estaística F**: E por fim a estatística F mostra o grau de ajustamento do modelo. Se ela for significativa diz que o modelo é bem ajustados aos dados. As variáveis explicativas incluídas são importantes para a explicação da taxa de feminicídio.
 
 
 **VISUALMENTE**
@@ -358,17 +358,70 @@ Novamente, o $R^2$ é a porcentagem da variação de y que é explicada por $x$.
 
 ## Unidade de Medida e Forma Funcional
 
-Se a variável dependente é multiplicada por uma constante $c$, então as estimativas do intercepto e da inclinação também serão multiplicadas por $c$
+### Unidade de Medida
 
-Se a variável explicativa é multiplicada por uma contante $c$, então o coeficiente de inclinação será dívido por $c$. Nada acontece com o intercepto.
+Vejamos o efeito de unidade de medidas na nossa regressão. 
 
-Se a variável explicativa é dividida por uma constante $c$, então o coeficiente de inclinação é multiplicado por $c$. Nada acontece com a constante.
+  1. Se a variável dependente ($Y$) é multiplicada por uma constante $c$, então as estimativas do intercepto e da inclinação também serão multiplicadas por $c$. Vamos multiplicar por 10 e ver o que acontece:
 
-**IMPORTANTE**: O $R^2$ não depende das unidades de nossas variáveis.
+```{r warning=FALSE}
+library(dplyr)
+dados <- dados |> 
+  mutate(feminic_tx10 =feminic_tx*10 )
+
+modelo1 <- lm(data = dados, feminic_tx10 ~ homic_tx)
+
+summary(modelo)$coefficients
+
+summary(modelo1)$coefficients
+
+```
+
+  2. Se a variável explicativa ($X$) é multiplicada por uma contante $c$, então o coeficiente de inclinação será dívido por $c$. Nada acontece com o intercepto. Vamos multiplicar agora a taxa de homicídio por 10
+
+```{r}
+dados <- dados |> 
+  mutate(homic_tx10 =homic_tx*10 )
+
+modelo2 <- lm(data = dados, feminic_tx ~ homic_tx10)
+
+summary(modelo)$coefficients
+
+summary(modelo2)$coefficients
+
+```
+
+
+
+  3. Se a variável explicativa ($X$) é dividida por uma constante $c$, então o coeficiente de inclinação é multiplicado por $c$. Nada acontece com a constante.
+
+
+```{r}
+dados <- dados |> 
+  mutate(homic_tx_10 =homic_tx/10 )
+
+modelo3 <- lm(data = dados, feminic_tx ~ homic_tx_10)
+
+summary(modelo)$coefficients
+
+summary(modelo3)$coefficients
+
+```
+
+::: callout-note
+## Importante
+
+O $R^2$ e os testes de hipótese não depende das unidades de nossas variáveis.
+:::
+
+
+
 
 ## Incorporando não linearidades (nas variáveis!)
 
-Minha primeira tabela
+Vamos agora incorporar a não linearidade nas variáveis e ver como fica a sua interpretação. Aabaixo tem-se uma tabela para interpretar os coeficientes e será explicada nos exemplos abaxo. 
+
+
 
 | Modelo | Dependente |  Explicativa | Interpretação de $\beta_1$     |
 |--------------------|--------------|--------------|------------------|
@@ -377,28 +430,72 @@ Minha primeira tabela
 | Log-Nível   | $ln(y)$ | $x$ | $\% \Delta y = (100 \beta_1) \Delta x$ |
 | Log_log     | $ln(y)$ | $ln(x)$ | $\% \Delta y = \beta_1\% \Delta x$  |
 
-```{r}
 
-#Criando uma nova coluna para as variaveis em log
+
+### Modelo Nível-Nível
+
+Esse é o modelo que fizemos anteriormente e nos diz que uma variação absoluta em $X$ terá um efeito de $\beta$ em Y. 
+
+
+```{r}
+modelo_nn<- lm(data=dados, dados$feminic_tx ~ dados$homic_tx)
+summary(modelo_nn)$coefficients
+```
+O aumento de uma unidade na taxa de homicídio aumenta em 0,1058 a taxa de feminicídio. 
+
+
+
+### Modelo Nível-log
+
+Primeiramente vamos criar as variáveis em ln:
+
+```{r}
 dados$Lnfeminic_tx <- log(dados$feminic_tx)
 dados$Lnhomic_tx <- log(dados$homic_tx)
 
-
-head(dados)
 ```
+
+O modelo Nível-Log considerá $Y$ no nível e $X$ no log. As variações relativas de $X$ implicam em variações absolutas constantes em $Y$.
+
+
+```{r}
+modelo_nl<- lm(data=dados, dados$feminic_tx ~ dados$Lnhomic_tx)
+summary(modelo_nl)$coefficients
+```
+
+A variação relativa de 1\% na taxa de homicídio ($X$), aumenta a taxa de feminicídio em 0,00623 $(\beta_1/100)\%$ 
+
+
+
+### Modelo Log-Nível
+
+Nesse modelo $Y$ está em log e $X$ em nível. Variações absolutas em $X$ implicam em variações exponenciais de $Y$.
 
 ```{r}
 
-nivel_log <- lm(data=dados, dados$feminic_tx ~ dados$Lnhomic_tx)
-summary(nivel_log)
-
-log_nivel <- lm(data=dados, dados$Lnfeminic_tx~ dados$homic_tx)
-summary(log_nivel)
-
-log_log <- lm(data=dados, dados$Lnfeminic_tx~ dados$Lnhomic_tx)
-summary(log_log)
+modelo_ln<- lm(data=dados, dados$Lnfeminic_tx~ dados$homic_tx)
+summary(modelo_ln)$coefficients
 
 ```
 
 
+
+Para cada incremento aicional da taxa de homicídio, tem-se um incremento de 4,5\% na taxa de feminicídio $\% \Delta y = (100 \beta_1) \Delta x$. 
+
+
+
+### Modelo Log-Log
+
+Nesse modelo tanto $X$ como $Y$ estão em log. Variaões relativas em $X$ implicam em varições relativas em $Y$
+
+
+
+```{r}
+modelo_ll <- lm(data=dados, dados$Lnfeminic_tx~ dados$Lnhomic_tx)
+summary(modelo_ll)$coefficients
+
+```
+
+
+Um aumento de 1\% percentual nos homicídios aumenta em 0,29\% a taxa de feminicídio nos estados brasileiros.
 

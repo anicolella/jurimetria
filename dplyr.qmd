@@ -7,10 +7,9 @@ date: "2024"
 format: html
 ---
 
-## Tutorial sobre o Uso do dplyr para Manipulação de Dados no R**
+## Tutorial sobre o Uso do dplyr para Manipulação de Dados no R
 
-Essa seção é uma criação mesclando o que foi explicado em aula, o Chat GPT e um pouco da nossa organização. 
-
+Essa seção é uma criação mesclando o que foi explicado em aula, o Chat GPT e um pouco da nossa organização.
 
 ### Introdução ao dplyr:
 
@@ -32,21 +31,19 @@ library(dplyr)
 
 ### Visão Geral das Funções:
 
-1. **`filter()`:** Esta função é usada para filtrar linhas com base em condições específicas. No R: `dados_filtrados <- filter(dados, condição)`. 
+1.  **`filter()`:** Esta função é usada para filtrar linhas com base em condições específicas. No R: `dados_filtrados <- filter(dados, condição)`.
 
-Ver também as seleções com escopo  `filter_all()`, `filter_if()` e `filter_at()`  e as seguintes funções: `starts_with()`, `ends_with()`, `contains()` e  `matches()`
+-   Ver também as seleções com escopo `filter_all()`, `filter_if()` e `filter_at()` e as seguintes funções: `starts_with()`, `ends_with()`, `contains()` e `matches()`
 
-2. **`select()`:** Esta função é usada para selecionar colunas específicas do conjunto de dados. No R: `colunas_selecionadas <- select(dados, coluna1, coluna2)`. 
+2.  **`select()`:** Esta função é usada para selecionar colunas específicas do conjunto de dados. No R: `colunas_selecionadas <- select(dados, coluna1, coluna2)`.
 
-Ver também `select_all()`, `select_if()` and `select_at()` e as seguintes funções `starts_with()`, `ends_with()`, `contains()`. `matches()` e `num_range()` 
+-  Ver também `select_all()`, `select_if()` and `select_at()` e as seguintes funções `starts_with()`, `ends_with()`, `contains()`. `matches()` e `num_range()`
 
+2.  **`arrange()`:** Esta função é usada para reordenar linhas com base em uma ou mais variáveis.No R: `dados_ordenados <- arrange(dados, variável)`
 
-3. **`arrange()`:** Esta função é usada para reordenar linhas com base em uma ou mais variáveis.No R: `dados_ordenados <- arrange(dados, variável)` 
+3.  **`mutate()`:** Esta função é usada para criar ou modificar colunas dentro do conjunto de dados. No R: `dados_modificados <- mutate(dados, nova_coluna = cálculo)`
 
-4. **`mutate()`:** Esta função é usada para criar ou modificar colunas dentro do conjunto de dados. No R: `dados_modificados <- mutate(dados, nova_coluna = cálculo)`
-
-5. **`group_by()` e `summarize()`:**  Essas funções são usadas em conjunto para agrupar dados com base em uma variável e, em seguida, resumi-los. No R: `dados_agrupados <- group_by(dados, variável)`e `resumo <- summarize(dados_agrupados, estatística_resumo = função(variável))`
-
+4.  **`group_by()` e `summarize()`:** Essas funções são usadas em conjunto para agrupar dados com base em uma variável e, em seguida, resumi-los. No R: `dados_agrupados <- group_by(dados, variável)`e `resumo <- summarize(dados_agrupados, estatística_resumo = função(variável))`
 
 ### Operador pipe
 
@@ -77,11 +74,9 @@ O operador pipe torna o código mais legível e fácil de entender, pois as oper
 
 Usar o pipe evita a necessidade de criar variáveis intermediárias para armazenar resultados parciais, o que economiza espaço na memória e torna o código mais eficiente.
 
-
-
 ### Utilizando as funções e o pipe
 
-Continuaremos a utilizar o mesmo banco de dados sobre feminicídio da seção de manipulação. 
+Continuaremos a utilizar o mesmo banco de dados sobre feminicídio da seção de manipulação.
 
 ```{r}
 final_fem_22 <- read.csv("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.csv", head=T ,sep=";")
@@ -92,38 +87,37 @@ final_fem_22 <- read.csv("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/j
 
 Utilizamos os símbolos lógicos para utilizar a função `filter`:
 
-  * `==` Igual a
-  * `!=` Não é igual a
-  * `<` Menor que
-  * `<=` Menor igual que
-  * `>` Maior que
-  * `>=` Maior igual que
-  * `!` NÃO Lógico
-  * `&` E Lógico
-  * `|` OU Lógico
-  * `%in%` Verifica se um valor está em uma matriz de vários valores
-  * `is.na()` Checa se um valor e N.A.
+-   `==` Igual a
+-   `!=` Não é igual a
+-   `<` Menor que
+-   `<=` Menor igual que
+-   `>` Maior que
+-   `>=` Maior igual que
+-   `!` NÃO Lógico
+-   `&` E Lógico
+-   `|` OU Lógico
+-   `%in%` Verifica se um valor está em uma matriz de vários valores
+-   `is.na()` Checa se um valor e N.A.
 
-Vamos filtrar o conjunto de dados para incluir apenas estados que possuem pparticipação da taxa de feminicídio acima de 50\% :
+Vamos filtrar o conjunto de dados para incluir apenas estados que possuem pparticipação da taxa de feminicídio acima de 50% :
 
 ```{r}
 part50_mais <- filter(final_fem_22, part_feminic >= 50)
 ```
 
-Podemos ter multiplos critérios. Utilizando participação acima de 50 e região norte. 
+Podemos ter multiplos critérios. Utilizando participação acima de 50 e região norte.
 
 ```{r}
 part50_mais_reg <- final_fem_22 |> 
   filter(part_feminic >=50 , regiao=="N")
 ```
 
-Podemos selecionar os estados da região sul ou da região sudeste para compor o nosso banco selecionado.  
+Podemos selecionar os estados da região sul ou da região sudeste para compor o nosso banco selecionado.
 
 ```{r}
 regiao1 <- final_fem_22 |> 
   filter(regiao=="S" | regiao=="SD")
 ```
-
 
 ```{r}
 regiao2<- final_fem_22 |> 
@@ -137,9 +131,6 @@ região3 <- final_fem_22 |>
   filter(regiao!="N")
 ```
 
-
-
-
 **2. Selecionando Colunas:**
 
 Vamos agora montar um banco apenas as colunas de tx de feminicídio e tx de tentativa de feminicídio:
@@ -147,19 +138,23 @@ Vamos agora montar um banco apenas as colunas de tx de feminicídio e tx de tent
 ```{r}
 tx_f <- select(final_fem_22, sigla, feminic_tx, t_feminic_tx)
 ```
-ou 
+
+ou
+
 ```{r}
 tx_f2 <- final_fem_22 |> 
   select(sigla, feminic_tx, t_feminic_tx)
-```  
+```
 
-Como temos a sigla dos estados vamos retirar a coluna com os nomes do estados 
+Como temos a sigla dos estados vamos retirar a coluna com os nomes do estados
+
 ```{r}
 sem_nome <- final_fem_22 |> 
   select(-estados)
 ```
 
-Ou podemos tirar o eatdo indicando a sua posição. Ele está na coluna 2 do banco. 
+Ou podemos tirar o eatdo indicando a sua posição. Ele está na coluna 2 do banco.
+
 ```{r}
 sem_nome1 <- final_fem_22 |> 
   select(-2)
@@ -172,9 +167,7 @@ tx_f3 <- final_fem_22 |>
   select(Estados=estados, Taxa_Fem=feminic_tx)
 ```
 
-
-**3. Mudando o nome**
-Podemos mudar o nome das variáveis do banco da seguinte forma: 
+**3. Mudando o nome** Podemos mudar o nome das variáveis do banco da seguinte forma:
 
 ```{r}
 mud_nomes <- final_fem_22 |> 
@@ -182,15 +175,14 @@ mud_nomes <- final_fem_22 |>
   rename(Estados=estados, Taxa_Fem=feminic_tx)
 ```
 
+**4. Mudando Posição da Coluna**
 
-**4. Mudando Posição da Coluna**  
-
-Podemos reoarganizar as colunas nos bancos. Vamos deixar asvariáveis de feminicídio todas junta 
+Podemos reoarganizar as colunas nos bancos. Vamos deixar asvariáveis de feminicídio todas junta
 
 ```{r}
 reord1 <- final_fem_22 |> 
   select(sigla, estados, regiao, feminic_abs, feminic_tx, t_feminic_abs, t_feminic_tx,everything())
-```  
+```
 
 Ou podemos usar a função `relocate`para deixar a participação do feminicídio e da tentativa de feminicídio todas juntas.
 
@@ -198,7 +190,6 @@ Ou podemos usar a função `relocate`para deixar a participação do feminicídi
 reord2 <- final_fem_22 |> 
   relocate(part_feminic,.after=t_feminic_tx)
 ```
-
 
 **5. Ordenando Dados:**
 
@@ -208,7 +199,7 @@ Vamos ordenar os estado em ordem crescente da taxa de feminicídio:
 ordenado1 <- arrange(final_fem_22, feminic_tx)
 ```
 
-Podemos ordenar o *data frame* por duas variáveis. Vamos ordenar primeiro por região e depois por taxa de feminicídio.  
+Podemos ordenar o *data frame* por duas variáveis. Vamos ordenar primeiro por região e depois por taxa de feminicídio.
 
 ```{r}
 estado_feminic <- final_fem_22 |> 
@@ -222,8 +213,6 @@ estado_feminic1 <- final_fem_22 |>
   arrange(regiao,desc(feminic_tx))
 ```
 
-
-
 **4. Mutando Dados:**
 
 Vamos adicionar uma nova coluna ao conjunto de dados representando do total de tentativas de feminicídio, quantas efetivamente terminam em feminicídio. Para isso vamos dividir o feminicídio pelo total de tentativa e feminicídio. :
@@ -234,17 +223,13 @@ final_fem_22_1 <- final_fem_22 |>
 
 ```
 
-
-
-Agora vamos criar uma variável bnária que será igual a 1 se o homicídio efetivado for maior que 0,30. 
+Agora vamos criar uma variável bnária que será igual a 1 se o homicídio efetivado for maior que 0,30.
 
 ```{r}
 final_fem_22_1 <- final_fem_22_1 |>  
   mutate(homi_efet_alto = case_when(homic_efetivado >=0.3 ~ 1,
                              homic_efetivado <0.3 ~ 0))
 ```
-
-
 
 Abaixo tem-se algumas funções importantes para texto e datas
 
@@ -268,7 +253,6 @@ metadados <- metadados |>
 
 ```
 
-
 **5. Agrupando e Resumindo Dados:**
 
 Vamos agrupar os feminicídios por região e calcular a taxa média por região:
@@ -282,8 +266,7 @@ feminic_agrupado <- final_fem_22 |>
            )
 ```
 
-
-Temos várias estatísticas que podem ser utilizadas: 
+Temos várias estatísticas que podem ser utilizadas:
 
 ```{r}
 sumario<- final_fem_22 |> 
@@ -293,7 +276,7 @@ sumario<- final_fem_22 |>
             )
 ```
 
-Podemos contar variáveis categóricas ou mesmo binárias. Vamos contar os estados que tiveram taxa de participação do feminicídio acima de 50\%. 
+Podemos contar variáveis categóricas ou mesmo binárias. Vamos contar os estados que tiveram taxa de participação do feminicídio acima de 50%.
 
 ```{r}
 alta_part <- final_fem_22 |> 
@@ -306,6 +289,5 @@ Contando alta participação do feminicídio por Região
 reg_alt_part <- final_fem_22 |> 
   count(regiao, mais_50, sort=FALSE)
 ```
-
 
 Este tutorial forneceu uma visão geral de funções do `dplyr`. Dominando essas funções, você estará equipado para manipular e analisar conjuntos de dados de forma eficiente no R, facilitando seus fluxos de trabalho de análise de dados. Experimente essas funções em seus próprios conjuntos de dados para explorar seu potencial total.
