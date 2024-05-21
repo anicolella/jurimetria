@@ -95,7 +95,7 @@ Assim, na equação acima, temos um aumento de uma unidade em $x$, implica em um
 
 A equação acima, é caracterizada como **função de regressão populacional**. Essa função nos fornece a elação entre os diferentes níveis de$x$ é o nível médio de $y$, isto é $E( y |x )$.
 
-![Função de Regressão Populacional](figuras\modelpop.png)
+![Função de Regressão Populacional, fonte: Anderson David R., Sweeney Dennis J., Williams Thomas A. (2019), Statistics for Business & Economics, Cengage Learning; 14th edition](figuras\modelpop.png)
 
 Agora, podemos voltar a nossa equação base e verificarmos o progresso feito no entendimento do modelo:
 
@@ -498,4 +498,374 @@ summary(modelo_ll)$coefficients
 
 
 Um aumento de 1\% percentual nos homicídios aumenta em 0,29\% a taxa de feminicídio nos estados brasileiros.
+
+
+##  Regressão Linear Múltipla (RLM)
+
+A RLM é uma extensão natural da RLS. Entretanto, ao invés de termos apenas uma variável explicativa podemos ter $k$ variáveis dependentes
+
+$$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \ldots + \beta_k x_k + u$$ A hípótese fundamental é a de que:
+
+$$E(u|x_1, . . . ,x_k) = 0$$
+
+Problemas que façam com que um dos $x_1, ...., x_k$ ser correlacionado com $u$,  invalida a hipótese acima. Tal hipótese implica em não viés do MQO.
+
+###  Exemplos de Regressão Multipla no Contexto Jurídico
+
+**Determinação de Fatores que Afetam o Valor de Indenizações:** 
+
+Variáveis Independentes: Idade da Vítima, Gravidade do Dano, Jurisdição. Variável Dependente: Valor da Indenização.Objetivo: Analisar como a idade da vítima, a gravidade do dano e a jurisdição influenciam o valor das indenizações concedidas
+
+$$Indenização = \beta_0 + \beta_1 idade+ \beta_2 Gravidade + \beta_2 Jurisdisção + u$$
+
+**Análise de Variáveis que Influenciam Taxas de Condenação em Casos Criminais:** 
+
+Variáveis Independentes: Idade do Réu, Tipo de Crime, Local do Julgamento. Variável Dependente: Taxa de Condenação.Objetivo: Investigar como a idade do réu, o tipo de crime e o local do julgamento afetam a probabilidade de condenação.
+
+$$Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Local  + \beta_3  crime + u$$
+
+**Análise de Fatores que Influenciam a Taxa de Feminicídio:** 
+
+Variáveis Independentes (X): Taxa de Desemprego, Índice de Educação, Presença de Políticas de Proteção à Mulher. Variável Dependente (Y): Taxa de Feminicídio por 100.000 mulheres. Objetivo: Investigar como o desemprego, o nível de educação e a existência de políticas de proteção à mulher estão relacionados à taxa de feminicídio em diferentes regiões.
+
+$$Tx.feminicidio = \beta_0 + \beta_1 desemprego + \beta_2 educ + \beta_3 política + u $$
+
+### A Interpretação da Equação de Regressão de MQO
+
+Tal qual no modelo de RLS, temos que:
+
+$$\Delta y = \beta_1 \Delta x_1 + \beta_2 \Delta x_2 + ...+\beta_k \Delta x_k$$
+
+O coefiente $\beta_j$, com $j=1,...k$, mede o efeito do incremento de uma unidade de $x_j$ em $y$. Isso continua com a mesma interpretação para modelos que usam o log. 
+
+Suponha que estejamos interessados no impacto de $x_1$. Podemos fazer o seguinte exercício: Tudo o mais constante qual o impacto de $x_1$ em $y$:
+
+$$\frac{\Delta y}{\Delta x} = \beta_1 $$
+
+Manter outros fatores fixos permite o cientista social, "mimetizar" um experimento, tal qual nas Ciências Naturais. Obviamente, isso não é tão simples assim. Entretanto, manter outros fatores fixos, e supondo que $$E(u|x_1, . . . ,x_k) = 0$$ , nos aproxíma de afirmações de cunho causal.
+
+## Estimação dos k parametros na RLM
+
+###  Estimadores de MQO
+
+A mecânica para conseguirmos estimativas de $\beta_j$, fica uma pouco mais complicada. Felizmente, os *softwares*, tais como o *R*, fornecem essas estimativas com muita facilidade. Não obstante, convêm apresentar uma abordagem para o calculo desses parâmetros. Utilizaremos álgebra de matrizes para mostrar um "algoritmo" para calcular esses $\beta_j$. Em verdade, esse é o algoritmo utilizado pela função `lm()` do *R* no computo dos estimadores.
+
+Considere o modelo para a $i$-ésima observação
+
+$$y_i = \beta_0 + \beta_1 x_{i1} + \beta_{2} x_{i2} + \beta_{3} x_{i3} + \ldots + \beta_k x_{ik} + u$$
+
+como temos $n$ observações (tamanho de nossa amostra), podemos organizar esses valores em vetores e matrizes.
+
+
+Assim, representamos o modelo de RLM da seguinte maneira:
+
+$$\mathbf{y} = \mathbf{X} \boldsymbol{\beta} + \mathbf{u}$$
+
+Queremos encontrar um estimador de $\boldsymbol{\beta}$, que chamaremos de $\boldsymbol{\hat{\beta}}$. Esse estimador sera dado por:
+
+$$\hat{\boldsymbol{\beta}} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}$$
+
+Onde $\mathbf{X}^T$ é a matriz transposta de $\mathbf{X}$, e $(\mathbf{X}^T \mathbf{X})^{-1}$ é a matriz inversa da seguinte multiplicação de matrizes, $(\mathbf{X}^T \mathbf{X})$
+
+Esse vetor de estimativas irá nos fornecer os valores para os $\beta_j$,com $j=1,...,k$. 
+
+
+###  Estimativas de MQO
+
+Vamos analisar o efeito da taxa de homicídio e da renda per capita sobre a taxa de feminicídio. Ou seja:
+
+$$Feminic_i = \beta_0 + \beta_1 Homic_{i} + \beta_{2} Rendapc_i  + u$$
+
+```{r}
+### Estimando uma regressão Linear Multipla
+
+rlm <- lm(data = dados, feminic_tx ~ homic_tx + rendapc)
+
+summary(rlm)
+
+```
+
+
+A leitura dos resultados é análoga ao que já fizemos anteriormente. O aumento de uma unidade na taxa de homicídio aumenta em 0,11 a taxa de feminicídio e é significante a 10\%. Entretanto, não há evidências de que a renda pc tem efeito sobre a taxa de feminicídio. Assim, estados mais violentos tendem a ter mais feminicídios. Entretanto, estados mais pobres e mais ricos possuem taxas similares de feminicídio. 
+
+
+
+### Qualidade do Ajuste na Regressão Linear Multipla
+
+
+Um fato importante sobre $R^2$ é que ele nunca diminui ao incluirmos variáveis no modelo. Isso decorre de propriedades algébricas desse indicador. Em nosso exemplo:
+
+ * **Modelo somente com Homicídio**: $R^2=0,12$ 
+ * **Modelo com Homicídio e Renda**: $R^2=0,14$
+ 
+ Veja que o $R^2$ aumentou ao incluir a renda pc.  
+ 
+Por isso, os softwares geralmente reportam uma outra estatística de ajuste o R-quadrado ajustado,$\bar{R}^2$:
+
+
+
+$$\bar{R}^2 = 1 - \frac{(1 - R^2)(n - 1)}{n - k - 1}$$
+
+O $\bar{R}^2$, tal como expresso acima conta com a presença do $R^2$ original, mas note que, no denominador estamos dividindo por $n-k-1$, onde $n$ é o tamanho da amostra em mãos, e $k-1$ se referem ao fato de termos $k$ variáveis explicativas e uma constante. Portanto, o $\bar{R}^2$, impões uma penalidade à inclusão de variáveis independentes em um modelo de regressão.No nosso modelo:
+
+
+ * **Modelo somente com Homicídio**: $R^2=0,12$ e $R^2_{ajust}= 0,094$
+ * **Modelo com Homicídio e Renda**: $R^2=0,14$ e $R^2_{ajust}= 0,069$
+ 
+
+Podemos notar que a inclusão da renda pc contribui muito pouco para a explicação do modelo mas mas prejudicou as estimativas (menor grau de liberdade. dessa forma observa-se que o $R^2_{ajust}$ ficou menor. 
+
+Não obstante, cabe destacar que um $R^2$ baixo não é uma evidencia definitiva contra nosso modelo. Em ciências sociais é comum verificarmos $R^2$ relatvamente pequenos. Isso significa que, embora coletivamente as variáveis explicativas não expliquem muito das variações de $y$, é possível que as estimativas de MQO sejam efeitos parciais confiáveis- tudo o mais constante - de cada $x_j$ sobre $y$.
+
+
+
+
+### Uso de Variáveis Qualitativas na Análise de RLM 
+
+O uso de variáveis binárias é a alternativa para utilizarmos variáveis qualitativas (discretas ou categóricas) no modelo de regressão. Dessa forma, variáveis que possuem categorias (homem/mulher; regiões, típo de homicídio). Considere os exemplos mencionados anteriormente.
+
+* **Determinação de Fatores que Afetam o Valor de Indenizações:** 
+  + *Variáveis Independentes*: Idade da Vítima, Gravidade do Dano, Jurisdição. 
+  + *Variável Dependente*: Valor da Indenização.
+  + *Objetivo*: Analisar como a idade da vítima, a gravidade do dano e a jurisdição influenciam o valor das indenizações concedidas
+
+$$Indenização = \beta_0 + \beta_1 idade+ \beta_2 Gravidade + \beta_2 Jurisdisção + u$$
+
+* **Análise de Variáveis que Influenciam Taxas de Condenação em Casos Criminais:**
+  + *Variáveis Independentes*: Idade do Réu, Tipo de Crime, Local do Julgamento. 
+  + *Variável Dependente*: Taxa de Condenação.
+  + *Objetivo*: Investigar como a idade do réu, o tipo de crime e o local do julgamento afetam a probabilidade de condenação.
+
+$$Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Local  + \beta_3  crime + u$$
+
+  * **Análise de Fatores que Influenciam a Taxa de Feminicídio:** 
+    + *Variáveis Independentes* $(X)$: Taxa de Desemprego, Índice de Educação, Presença de Políticas de Proteção à Mulher. 
+    + *Variável Dependente* $(Y)$: Taxa de Feminicídio por 100.000 mulheres. 
+    + *Objetivo*: Investigar como o desemprego, o nível de educação e a existência de políticas de proteção à mulher estão relacionados à taxa de feminicídio em diferentes regiões.
+
+$$Tx.feminicidio = \beta_0 + \beta_1 desemprego + \beta_2 educ + \beta_3 política + u $$
+
+Em todos esses exemplos temos o que denominamos de **variáveis qualitativas**. No primeiro exemplo, gravidade e jurisdição não são quantificaveis. No segundo exemplo, o tipo de crime, e a localidade. Por fim, no último exemplo, a variável que indica ou não a presença de uma política pública de proteção a mulher também é qualitativa. 
+
+Felizmente, isso não traz problemas adcionais a estimação de MQO. Pelo menos quando tais variáveis aparecem como variáveis explicativas. Mais a frente veremos o que acontece quando a variável dependente é do tipo qualitativa.
+
+Duas coisas mudam quando temos as variáveis qualitativas como regressores. Em primeiro lugar temos que organizar essas informações no banco de dados de modo coerente. Em segundo lugar, a introdução de variáveis qualitativas muda a interpretação dos resultados.
+
+Fatores qualitativos geralmente aparecem na forma de informações binárias, também denominadas,*dummy*.
+
+
+::: callout-note
+## Variável Binária ou Dummy:
+
+É uma variável que assume o valor 1 se a "condição occorre" e 0 caso o contrário.
+:::
+ 
+
+
+
+[**Exemplos:**]{.underline}
+
+**O crime de feminicídio ocorreu na região central?** 
+
+  * se sim, ela recebe o valor 1, 
+  * se não ocorreu a variável recebe o valor 0. 
+  
+  Nesse caso teremos uma coluna em nosso banco de dados denominada centro, nas quais a linha recebe o valor 1 caso o crime tenha ocorrido no centro e 0 caso o contrário.
+
+**O crime foi considerado grave?** 
+  
+  * Se sim, recebe o valor 1, 
+  * caso contráriorecebe o valor 0.
+
+
+
+
+**Outras binárias....**
+
+  * 1 se mulher e 0 se for homem.
+  * 1 se for autodeclarado não-branco e 0 se for branco
+  * 1 se trabalha e 0 se não trabalha
+  * 1 se feminicídio e 0 se não for feminicídio. 
+
+
+Utilizar 1 ou 0 é, de fato, um criterio arbitrario, mas essa escolha reside justamente na vantagem de se capturar informações importantes que tornam a interpretação dos resultados mais simples.
+
+As observações que tiveram 1 como valor serão comparadas com aquelas observações que ficaram com o valor 0. Essas observações seriam nosso "grupo de comparação/grupo base". 
+
+
+
+
+
+####  Uma única Variável Dummy Independente
+
+A forma mais simples de incorporar uma variável qualitativa e simplismente adcionarmos ela na equação de regressão. 
+
+Considere o exemplo prático retirado do livro do Wooldridge. Queremos relacionar anos de estudo e salários. Obviamente, o exemplo é bastante simples, mas será útil para avaliarmos a questão.
+
+
+$$salarioh = \beta_0 + \delta_0 feminino + \beta_1 educ + \beta_3 exper + \beta_4perm + u $$
+Nesse exemplo, estamos tentando entender os determinantes do salário. O salário pode ser explicado pela educação, experência, tempo no cargo e pelo fato de ser mulher. A variável feminino assume o valor 1, se o individuo for do sexo feminino e 0, caso o contrário. Na equação $\delta_0$ mede a diferença no salário entre homems e mulheres, dado os mesmos anos de estudos, experiência e tempo no cargo, e evidentemente o mesmo $u$.
+
+```{r}
+
+data(wage1, package= "wooldridge")
+
+wage_f<-lm(wage ~ female+educ+exper+tenure, data=wage1)
+summary(wage_f)
+
+```
+
+O coeficiente estimado para a binária que identifica mulheres foi de -1,81 e significativa a 1\%. Isso indica que em média, uma mulher ganha menos US$ 1,81 por hora do que um homem com a mesma educação, experiência e tempo no cargo. Veja a figura abaixo ela mostra o efeito da binária feminina. Note que para um mesmo níve de escolaridade e o salário do homem é maior do que o salário da mulher. A dummy "desloca" o intercepto 
+
+
+![Variáveis binárias graficamente, fonte: SEmantic Scholar](figuras\dummy1.png)
+
+
+
+Podemos utilizar a binária para ver o efeito da experiência para homens e para mulheres. Podemos fazer isso criando uma variável que é a multiplicação entre experiência e feminino. Vejamos: 
+
+```{r}
+
+wage1$exp_f<-wage1$exper*wage1$female
+
+
+wage_f_2<-lm(wage ~ educ+female+ exper+exp_f+tenure, data=wage1)
+summary(wage_f_2)
+mean(wage1$wage)
+```
+
+Nesse novo modelo temos agora a binária de mulher, female, que mostra que o fato de ser mulher diminui o salário em -US\$0,88. Veja que a média de salário é de US\$ 5,9. A queda representa 15\% a menos em relação ao homem. 
+
+Com relação a multiplicação pela experiência, podemos assim analisar. Como a variável é 0 para homem, o efeito da experiência para os homens é o próprio coeficiente,  exper. Para cada ano a mais de experiência o salário do homem aumenta em US\$ 0,057. Para as mulheres é a soma do coeficiente, exper + exp_f. Para cada ao a mais da experência da mulher o mercado paga US$0,001 . Isso está representado no gráfico abaixo.
+
+
+![Variáveis binárias multiplicativas graficamente, fonte: University of Washington](figuras\dummy2.png)
+
+
+### O uso de Dummies para categorias multiplas  e Interação entre a dummy e a variável dependente
+
+Considere a equação abaixo
+
+$$log(salarioh) = \beta_0 + \beta_1  hcasado  +  \beta_2 mcasadas  + \beta_3 msolteiras + educ + exper + (exper)^2 u$$
+Note que, definimos uma dummy para cada grupo e o o grupo de comparação é o conunto de homens solteiros.As estimativas das dummies acima irão captar a diferença proporcional nos salarios-horas relativamente aos homens solteiros.
+
+```{r}
+###Aplicação de RLM multiplas dummies
+
+data(wage1, package="wooldridge")
+ols.dummy <- lm(log(wage)~ married*female+
+     educ+ exper  +I(exper^2)+tenure+I(tenure^2),
+   data=wage1)
+
+summary(ols.dummy)
+
+
+
+```
+Com base nas estimativas, verificamos que os homens casados ganham cerca de 21,3\% mais que os homens solteiros, mantendo fixas educaçao, experiência e permanência. Uma mulher casada, no entanto, ganharia, em média, cerca de 30\% menos que um homem solteiro controlando por todas as demais características do banco de dados.
+
+
+
+
+### Incorporando Informações Ordinais com o uso de Variáveis Dummy.
+
+```{r}
+#Efeito da Classificação das faculdades de direito sobre salarios iniciais
+
+data(lawsch85, package="wooldridge")
+
+# Define os pontos de corte para rankear as faculdades
+cutpts <- c(0,10,25,40,60,100,175)
+
+# criando uma varaiavel factor para ranquear as escolas
+ lawsch85$rankcat <- cut(lawsch85$rank, cutpts)
+ 
+# Escolhendo a categoria de referencia
+lawsch85$rankcat <- relevel(lawsch85$rankcat,"(100,175]")
+
+
+#rodando a regressão
+res <- lm(log(salary)~rankcat+LSAT+GPA+log(libvol)+log(cost), data=lawsch85)
+summary(res)
+
+```
+Vemos imediatamente que todas as variáveis fictícias que definem as diferentes classificações são estatisticamente significativas. A estimativa de classificação (60.100] significa que, mantendo LSAT, GPA, libvol (volume na biblioteca) e custo fixos, o salário médio em uma faculdade de direito classificada entre 61 e 100 é cerca de 13,2% maior do que em uma faculdade de direito classificada abaixo de 100. A diferença entre uma escola top 10 e uma escola abaixo de 100 é bastante grande.
+
+
+# Teste de Hipóteses no RLM
+## Hipótese de Normalidade
+Para realizarmos procedimentos de inferência sobre os parâmetros estimados do modelo adotamos a hipótese de normalidade.
+
+6) **Hipótese de Normalidade do erro:** O termo de erro $u$ é independente das variáveis explicativas com média zero e variância dada por $\sigma^2$.
+
+Com as hipoteses anteriores mais a hipótese de normalidade, pode-se demostrar que os parâmetros estimados $\hat{\beta_j}$ são normalmente distibuídos com média dada por $\beta_j$ e variância dada por $Var(\hat{\beta_j})$.
+
+Note que, os parâmetros são variáveis aleatórias normalmente distribuídas. Com isso, podemos usar a distribuição normal padrão para calcular as estatísticas de teste, bem como a distribuição $t$.
+
+Isto é
+
+$$\frac{(\hat{\beta_j} - \beta_j)}{ep(\hat{\beta_j})} \sim N(0,1) $$
+
+ou
+
+
+$$\frac{(\hat{\beta_j} - \beta_j)}{ep(\hat{\beta_j})} \sim t_{n-k-1} $$
+
+## Teste de Hipótese sob um Único Parametro
+ 
+Na maior parte do tempo testamos hipóteses do tipo 
+
+$$H_0: \hat{\beta_j}=0$$
+Nesse caso a estatística usada no teste será do tipo
+
+$$t_{\hat{\beta_j}} \equiv \frac{\hat{\beta_j}}{ep(\hat{\beta_j})}$$
+
+
+###  Teste contra Hipoteses Alternativas Unilaterais
+
+Podemos testar a hipótese de que um dado parâmetro $j$ seja zero, contra uma alternativa unilateral de que $\beta_j > 0$
+
+Formalmente, a hípotese alternativa é 
+
+$$H_1:  \beta_j > 0$$
+Dado um nível de segnificancia adequado rejeitamos a hipotese nula se 
+
+$$t_{\hat{\beta_j}}  > t_c$$
+
+Onde $t_c$ é o valor crítico do teste.
+
+![Teste Unicaldal](thunical.png)
+Oviamente, podemos ter o caso onde
+
+$$H_1 = \beta < 0$$
+e a regra de rejeição será 
+
+$$t_{\hat{\beta_j}} < - t_c$$
+![Teste Unicaldal](thunical2.png)
+
+
+###  Teste contra Hipoteses Alternativas Bilaterais
+Pode ser o caso onde testa-se $H_0$ contra
+
+$$H_1: \beta_j \neq 0$$
+Nesse caso a região de regeição é dada por:
+
+$$|t_{\hat{\beta_j}}|  > t_c$$
+![Teste Unicaldal](thbicaldal.png)
+###  Cálculos dos p-valores dos Testes t
+
+Dado o valor observado de $t_c$ qual é o menor nível de significancia ao qual a hipótese nula é rejeitada? esse nível é denominado de **p-valor** do teste de hipótese.
+
+###  Teste de Restrições de Lineares Múltiplas: O teste F
+
+Após o uso da função `summary` nota-se que o r também reporta uma estatística denominada de F. Essa estatistica tal qual reportada pelo software testa a seguinte hipótese.
+
+$$H_0:\beta_1=...=\beta_k=0$$
+contra 
+
+$$H_1: H_0\text{ é falsa}$$
+Essa estatistica de teste é dada por:
+
+$$F = \frac{R^2/k}{(1-R^2)/n-k-1}$$
+Pode ser mostrado que $F \sim F_{q,n-k-1}$.
 
