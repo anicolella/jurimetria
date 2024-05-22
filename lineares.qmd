@@ -139,6 +139,35 @@ $$y_i- \hat{y}_i =y_i -  \hat{\beta}_0 + \hat{\beta}_1x_i=u_i$$ Queremos minimiz
 
 Antes de passarmos para o proxímo tópico de RLS, cabe mencionar uma nota sobre terminologia: quando estimamos equações de RLS do tipo $y = \beta_0 + \beta_1 x + u$, dizemos que "*rodamos a regressão de* $y$ sobre $x$ !"
 
+
+
+
+### Teste de Hipótese sob um Único Parametro
+ 
+Agora precisamos testar se nossa estimativa é estatisticamente igual a zero ou se ela é diferente de zero. Há evidências que a nossa variável $X$ afeta a nossa variável $Y$ na população? Na maior parte do tempo testamos hipóteses do tipo 
+
+$$H_0: {\beta_j}=0$$
+Na hipótese principal testamos a situação que $X$ não afeta $Y$. Na hipótese alternativa: 
+
+$$H_1: \beta_j \neq 0$$
+
+Testamos a hipótese que $X$ afeta $Y$ nessa população. Graficamente temos a figura abaixo. 
+
+
+![Teste de hipótese, Fonte:CUEMATH ](figuras\thbicaudal.png)
+
+ **Estatística de Teste**: 
+
+Este é um valor calculado a partir dos dados da amostra que é usado para avaliar a probabilidade de observar tal valor se a hipótese nula fosse verdadeira. Ele que vai dizer se estamos na área amarela ou azul da figura acima. 
+
+#### Valor-p: 
+
+**O valor-p** é a probabilidade de observar uma estatística de teste tão extrema quanto, ou mais extrema do que, aquela calculada a partir dos dados da amostra, sob a suposição de que a hipótese nula seja verdadeira. Em outras palavras, mede quão provável é obter os resultados observados se a hipótese nula for correta.
+
+**Interpretação**: Um valor-p pequeno (tipicamente menor que um nível de significância predefinido, comumente 0,05) sugere que os dados observados são improváveis de ter ocorrido se a hipótese nula fosse verdadeira. Portanto, fornece evidências contra a hipótese nula, e os pesquisadores podem rejeitar a hipótese nula em favor da hipótese alternativa. Por outro lado, um valor-p grande indica que os dados observados são consistentes com a hipótese nula, e há evidências insuficientes para rejeitá-la.
+
+
+
 ### Aplicação - Estimando uma Regressão Linear Simples
 
 Vamos utilizar aqui o nosso banco de dados anterior sobre feminicídio. É um banco com poucas obserações e possui fim didátco, apesar de serem dados reais.
@@ -189,7 +218,13 @@ O coeficiente do intercepto nos diz que quando a taxa de homicídio for 0, ainda
 
 **3. $R^2$**: Em seguida temos o $R^2$ e $R^2$ ajustado. Essas estatísticas calculam quanto da variância da taxa de feminicídio pode ser explicada pela variância da taxa de homicídio. Quando estão próximos a 1 explicam muito, quanto estão próximos a 0 explicam pouco. No caso o nosso $R^2$ ficou baixo e portanto boa parte da variabilidade do feminicídio, não foi explicada pela taxa de homicídio. 
 
-**4. Estaística F**: E por fim a estatística F mostra o grau de ajustamento do modelo. Se ela for significativa diz que o modelo é bem ajustados aos dados. As variáveis explicativas incluídas são importantes para a explicação da taxa de feminicídio.
+**4. Estaística F**: E por fim a estatística F mostra o grau de ajustamento do modelo. Se ela for significativa diz que o modelo é bem ajustados aos dados. As variáveis explicativas incluídas são importantes para a explicação da taxa de feminicídio.Essa estatistica testa a seguinte hipótese.
+
+$$H_0:\beta_1=...=\beta_k=0$$
+contra 
+
+$$H_1: H_0\text{ é falsa}$$
+
 
 
 **VISUALMENTE**
@@ -746,126 +781,120 @@ Com relação a multiplicação pela experiência, podemos assim analisar. Como 
 
 Considere a equação abaixo
 
-$$log(salarioh) = \beta_0 + \beta_1  hcasado  +  \beta_2 mcasadas  + \beta_3 msolteiras + educ + exper + (exper)^2 u$$
+$$log(salarioh) = \beta_0 + \beta_1  hsolteiro  +  \beta_2 mcasadas  + \beta_3 msolteiras + \beta_4educ + \beta_5exper + \beta_6exper^2 + u$$
 Note que, definimos uma dummy para cada grupo e o o grupo de comparação é o conunto de homens solteiros.As estimativas das dummies acima irão captar a diferença proporcional nos salarios-horas relativamente aos homens solteiros.
 
 ```{r}
 ###Aplicação de RLM multiplas dummies
 
 data(wage1, package="wooldridge")
-ols.dummy <- lm(log(wage)~ married*female+
-     educ+ exper  +I(exper^2)+tenure+I(tenure^2),
-   data=wage1)
 
-summary(ols.dummy)
+
+### criando as variáveis
+library("dplyr")
+
+wage1 <- wage1 %>%
+  mutate(hcasado = ifelse(female==0 & married==1, 1, 0))
+
+wage1 <- wage1 %>%
+  mutate(mcasada = ifelse(female==1 & married==1, 1, 0))
+
+wage1 <- wage1 %>%
+  mutate(msolteira = ifelse(female==1 & married==0, 1, 0))
+
+wage1 <- wage1 %>%
+  mutate(hsolteiro = ifelse(female==0 & married==0, 1, 0))
+
+
+status_civ <- lm(log(wage)~  hsolteiro + msolteira + mcasada + educ+ exper  +I(exper^2)+tenure, data=wage1)
+
+summary(status_civ)
 
 
 
 ```
-Com base nas estimativas, verificamos que os homens casados ganham cerca de 21,3\% mais que os homens solteiros, mantendo fixas educaçao, experiência e permanência. Uma mulher casada, no entanto, ganharia, em média, cerca de 30\% menos que um homem solteiro controlando por todas as demais características do banco de dados.
+Como temos um modelos log-nível, a interpretação é dada por $\% \Delta y = (100 \beta_1) \Delta x$. Com base nas estimativas, verificamos que com relação aos homens casados:
+  
+  * *Homens solteiros* recebem cerca de 22\% a menos. 
+  * *Mulheres solteiras* recebem 32,6\% a menos. 
+  * *Mulheres csadas* recebem 41,5\% a menos.
+  
+  Mantendo fixas educaçao, experiência e tempo no emprego. 
 
 
+**Variáveis ao Quadrado: interpretando**
+
+Note que temos uma nova variável a experência ao quadrado. A variável ao quadrado tenta capturar a seguinte ideia: se cada ano a mais de experiência sempre gera a mesmo incremento de salário, ou se o indivíduo recebe cada vez menos por cada ano a mais de experiência. Temos agora uma mudança de interpretação 
+
+$$\frac{\% \Delta y }{\Delta x}= 100\beta_5 +200\beta_6exper  $$
+
+Temos com base nas estimatvas: 
+
+$$\frac{\% \Delta y }{\Delta x}= 100\times0,0297 +200\times -0,000592 \times exper  $$
+
+$$\frac{\% \Delta y }{\Delta x}= 2,97 -0,118 \times exper  $$
+Vamos pensar em uma pessoa que tem 0 anos de experiência e adquire um ano. Logo:
+
+$$\frac{\% \Delta y }{1}= 2,97 -0,118 \times 1 = 2,85\% $$
+Ela ira receber 2,85\% a mais de salário devido a essa experiência adquirida. Vejamos agora uma pessoa com 9 anos e adquire mais um ano, vai para 10. Logo
+
+$$\frac{\% \Delta y }{1}= 2,97 -0,118 \times 10 = 1,79\% $$
+Esse ano a mais agora adicionou apenas 1,79\% no seu salário. Para finalizar vejamos de 24 para 25 anos de experiência
+
+$$\frac{\% \Delta y }{1}= 2,97 -0,118 \times 25 = 0,02\% $$
+Adiciona praticamente zero. E a partir desse ponto a adição será negativa, mais experiência terá menor salário. Assim
+
+$$ 2,97 -0,118 \times exper = 0 \implies exper=\frac{2,97}{0,118}=25,16 $$
+O salário vai aumentando até chegar a experiência de 25 anos, depois desse ponto o mercado tende a penalizar com salários enores quem tem mais experiência. 
 
 
 ### Incorporando Informações Ordinais com o uso de Variáveis Dummy.
 
+Vamos agora entender a criação de binárias para variáveis com várias categorias. Uma variável com categoria tradicional é a região onde mora o indivíduo. Podemos ver isso no nosso banco anterior chamado `dados`:
+
 ```{r}
-#Efeito da Classificação das faculdades de direito sobre salarios iniciais
+table(dados$regiao)
+```
 
-data(lawsch85, package="wooldridge")
-
-# Define os pontos de corte para rankear as faculdades
-cutpts <- c(0,10,25,40,60,100,175)
-
-# criando uma varaiavel factor para ranquear as escolas
- lawsch85$rankcat <- cut(lawsch85$rank, cutpts)
- 
-# Escolhendo a categoria de referencia
-lawsch85$rankcat <- relevel(lawsch85$rankcat,"(100,175]")
+Nesse caso eu teria que escolher uma região de comparação, por exemplo Sudeste e criar uma binária para o CO, uma para o N, uma para o NE e uma para o S. Veja o exemplo abaixo. 
 
 
-#rodando a regressão
-res <- lm(log(salary)~rankcat+LSAT+GPA+log(libvol)+log(cost), data=lawsch85)
-summary(res)
+```{r}
+
+### criando as variáveis
+library("dplyr")
+
+dados <- dados %>%
+  mutate(CO = ifelse(regiao=="CO", 1, 0))
+
+dados <- dados %>%
+  mutate(NE = ifelse(regiao=="NE", 1, 0))
+
+dados <- dados %>%
+  mutate(N = ifelse(regiao=="N", 1, 0))
+
+dados <- dados %>%
+  mutate(S = ifelse(regiao=="S", 1, 0))
 
 ```
-Vemos imediatamente que todas as variáveis fictícias que definem as diferentes classificações são estatisticamente significativas. A estimativa de classificação (60.100] significa que, mantendo LSAT, GPA, libvol (volume na biblioteca) e custo fixos, o salário médio em uma faculdade de direito classificada entre 61 e 100 é cerca de 13,2% maior do que em uma faculdade de direito classificada abaixo de 100. A diferença entre uma escola top 10 e uma escola abaixo de 100 é bastante grande.
 
 
-# Teste de Hipóteses no RLM
-## Hipótese de Normalidade
-Para realizarmos procedimentos de inferência sobre os parâmetros estimados do modelo adotamos a hipótese de normalidade.
-
-6) **Hipótese de Normalidade do erro:** O termo de erro $u$ é independente das variáveis explicativas com média zero e variância dada por $\sigma^2$.
-
-Com as hipoteses anteriores mais a hipótese de normalidade, pode-se demostrar que os parâmetros estimados $\hat{\beta_j}$ são normalmente distibuídos com média dada por $\beta_j$ e variância dada por $Var(\hat{\beta_j})$.
-
-Note que, os parâmetros são variáveis aleatórias normalmente distribuídas. Com isso, podemos usar a distribuição normal padrão para calcular as estatísticas de teste, bem como a distribuição $t$.
-
-Isto é
-
-$$\frac{(\hat{\beta_j} - \beta_j)}{ep(\hat{\beta_j})} \sim N(0,1) $$
-
-ou
+Como esse banco é pequeno, vamos retomar o banco o Wooldridge `wage1`. Neste banco já está criada a variável de região sendo a região leste a de comparação. Vamos adicionar então a região, sul, norte e oeste. 
 
 
-$$\frac{(\hat{\beta_j} - \beta_j)}{ep(\hat{\beta_j})} \sim t_{n-k-1} $$
 
-## Teste de Hipótese sob um Único Parametro
- 
-Na maior parte do tempo testamos hipóteses do tipo 
+```{r}
 
-$$H_0: \hat{\beta_j}=0$$
-Nesse caso a estatística usada no teste será do tipo
+reg_salar <- lm(log(wage)~  northcen + west+ south + female+ educ+ exper +tenure, data=wage1)
 
-$$t_{\hat{\beta_j}} \equiv \frac{\hat{\beta_j}}{ep(\hat{\beta_j})}$$
+summary(reg_salar)
 
-
-###  Teste contra Hipoteses Alternativas Unilaterais
-
-Podemos testar a hipótese de que um dado parâmetro $j$ seja zero, contra uma alternativa unilateral de que $\beta_j > 0$
-
-Formalmente, a hípotese alternativa é 
-
-$$H_1:  \beta_j > 0$$
-Dado um nível de segnificancia adequado rejeitamos a hipotese nula se 
-
-$$t_{\hat{\beta_j}}  > t_c$$
-
-Onde $t_c$ é o valor crítico do teste.
-
-![Teste Unicaldal](thunical.png)
-Oviamente, podemos ter o caso onde
-
-$$H_1 = \beta < 0$$
-e a regra de rejeição será 
-
-$$t_{\hat{\beta_j}} < - t_c$$
-![Teste Unicaldal](thunical2.png)
+```
+Observa-se no modelo acima que não  diferenças regionais importantes nos salários, quando controlamos para mulheres, educação, experiência e tempo no trabalho. 
 
 
-###  Teste contra Hipoteses Alternativas Bilaterais
-Pode ser o caso onde testa-se $H_0$ contra
 
-$$H_1: \beta_j \neq 0$$
-Nesse caso a região de regeição é dada por:
 
-$$|t_{\hat{\beta_j}}|  > t_c$$
-![Teste Unicaldal](thbicaldal.png)
-###  Cálculos dos p-valores dos Testes t
 
-Dado o valor observado de $t_c$ qual é o menor nível de significancia ao qual a hipótese nula é rejeitada? esse nível é denominado de **p-valor** do teste de hipótese.
 
-###  Teste de Restrições de Lineares Múltiplas: O teste F
-
-Após o uso da função `summary` nota-se que o r também reporta uma estatística denominada de F. Essa estatistica tal qual reportada pelo software testa a seguinte hipótese.
-
-$$H_0:\beta_1=...=\beta_k=0$$
-contra 
-
-$$H_1: H_0\text{ é falsa}$$
-Essa estatistica de teste é dada por:
-
-$$F = \frac{R^2/k}{(1-R^2)/n-k-1}$$
-Pode ser mostrado que $F \sim F_{q,n-k-1}$.
 

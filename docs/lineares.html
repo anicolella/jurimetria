@@ -220,7 +220,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#hipóteses-sobre-o-comportamento-do-termo-de-erro" id="toc-hipóteses-sobre-o-comportamento-do-termo-de-erro" class="nav-link" data-scroll-target="#hipóteses-sobre-o-comportamento-do-termo-de-erro"><span class="header-section-number">6.2</span> Hipóteses sobre o comportamento do Termo de Erro</a></li>
   <li><a href="#estimação-dos-parâmetros-da-rls" id="toc-estimação-dos-parâmetros-da-rls" class="nav-link" data-scroll-target="#estimação-dos-parâmetros-da-rls"><span class="header-section-number">6.3</span> Estimação dos Parâmetros da RLS</a>
   <ul class="collapse">
-  <li><a href="#aplicação---estimando-uma-regressão-linear-simples" id="toc-aplicação---estimando-uma-regressão-linear-simples" class="nav-link" data-scroll-target="#aplicação---estimando-uma-regressão-linear-simples"><span class="header-section-number">6.3.1</span> Aplicação - Estimando uma Regressão Linear Simples</a></li>
+  <li><a href="#teste-de-hipótese-sob-um-único-parametro" id="toc-teste-de-hipótese-sob-um-único-parametro" class="nav-link" data-scroll-target="#teste-de-hipótese-sob-um-único-parametro"><span class="header-section-number">6.3.1</span> Teste de Hipótese sob um Único Parametro</a></li>
+  <li><a href="#aplicação---estimando-uma-regressão-linear-simples" id="toc-aplicação---estimando-uma-regressão-linear-simples" class="nav-link" data-scroll-target="#aplicação---estimando-uma-regressão-linear-simples"><span class="header-section-number">6.3.2</span> Aplicação - Estimando uma Regressão Linear Simples</a></li>
   </ul></li>
   <li><a href="#caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" id="toc-caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" class="nav-link" data-scroll-target="#caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados"><span class="header-section-number">6.4</span> Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados</a>
   <ul class="collapse">
@@ -252,16 +253,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#uso-de-variáveis-qualitativas-na-análise-de-rlm" id="toc-uso-de-variáveis-qualitativas-na-análise-de-rlm" class="nav-link" data-scroll-target="#uso-de-variáveis-qualitativas-na-análise-de-rlm"><span class="header-section-number">6.8.4</span> Uso de Variáveis Qualitativas na Análise de RLM</a></li>
   <li><a href="#o-uso-de-dummies-para-categorias-multiplas-e-interação-entre-a-dummy-e-a-variável-dependente" id="toc-o-uso-de-dummies-para-categorias-multiplas-e-interação-entre-a-dummy-e-a-variável-dependente" class="nav-link" data-scroll-target="#o-uso-de-dummies-para-categorias-multiplas-e-interação-entre-a-dummy-e-a-variável-dependente"><span class="header-section-number">6.8.5</span> O uso de Dummies para categorias multiplas e Interação entre a dummy e a variável dependente</a></li>
   <li><a href="#incorporando-informações-ordinais-com-o-uso-de-variáveis-dummy." id="toc-incorporando-informações-ordinais-com-o-uso-de-variáveis-dummy." class="nav-link" data-scroll-target="#incorporando-informações-ordinais-com-o-uso-de-variáveis-dummy."><span class="header-section-number">6.8.6</span> Incorporando Informações Ordinais com o uso de Variáveis Dummy.</a></li>
-  </ul></li>
-  <li><a href="#teste-de-hipóteses-no-rlm" id="toc-teste-de-hipóteses-no-rlm" class="nav-link" data-scroll-target="#teste-de-hipóteses-no-rlm"><span class="header-section-number">7</span> Teste de Hipóteses no RLM</a>
-  <ul class="collapse">
-  <li><a href="#hipótese-de-normalidade" id="toc-hipótese-de-normalidade" class="nav-link" data-scroll-target="#hipótese-de-normalidade"><span class="header-section-number">7.1</span> Hipótese de Normalidade</a></li>
-  <li><a href="#teste-de-hipótese-sob-um-único-parametro" id="toc-teste-de-hipótese-sob-um-único-parametro" class="nav-link" data-scroll-target="#teste-de-hipótese-sob-um-único-parametro"><span class="header-section-number">7.2</span> Teste de Hipótese sob um Único Parametro</a>
-  <ul class="collapse">
-  <li><a href="#teste-contra-hipoteses-alternativas-unilaterais" id="toc-teste-contra-hipoteses-alternativas-unilaterais" class="nav-link" data-scroll-target="#teste-contra-hipoteses-alternativas-unilaterais"><span class="header-section-number">7.2.1</span> Teste contra Hipoteses Alternativas Unilaterais</a></li>
-  <li><a href="#teste-contra-hipoteses-alternativas-bilaterais" id="toc-teste-contra-hipoteses-alternativas-bilaterais" class="nav-link" data-scroll-target="#teste-contra-hipoteses-alternativas-bilaterais"><span class="header-section-number">7.2.2</span> Teste contra Hipoteses Alternativas Bilaterais</a></li>
-  <li><a href="#teste-de-restrições-de-lineares-múltiplas-o-teste-f" id="toc-teste-de-restrições-de-lineares-múltiplas-o-teste-f" class="nav-link" data-scroll-target="#teste-de-restrições-de-lineares-múltiplas-o-teste-f"><span class="header-section-number">7.2.3</span> Teste de Restrições de Lineares Múltiplas: O teste F</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -382,8 +373,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>Antes de passarmos para o proxímo tópico de RLS, cabe mencionar uma nota sobre terminologia: quando estimamos equações de RLS do tipo <span class="math inline">\(y = \beta_0 + \beta_1 x + u\)</span>, dizemos que “<em>rodamos a regressão de</em> <span class="math inline">\(y\)</span> sobre <span class="math inline">\(x\)</span> !”</p>
-<section id="aplicação---estimando-uma-regressão-linear-simples" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="aplicação---estimando-uma-regressão-linear-simples"><span class="header-section-number">6.3.1</span> Aplicação - Estimando uma Regressão Linear Simples</h3>
+<section id="teste-de-hipótese-sob-um-único-parametro" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="teste-de-hipótese-sob-um-único-parametro"><span class="header-section-number">6.3.1</span> Teste de Hipótese sob um Único Parametro</h3>
+<p>Agora precisamos testar se nossa estimativa é estatisticamente igual a zero ou se ela é diferente de zero. Há evidências que a nossa variável <span class="math inline">\(X\)</span> afeta a nossa variável <span class="math inline">\(Y\)</span> na população? Na maior parte do tempo testamos hipóteses do tipo</p>
+<p><span class="math display">\[H_0: {\beta_j}=0\]</span> Na hipótese principal testamos a situação que <span class="math inline">\(X\)</span> não afeta <span class="math inline">\(Y\)</span>. Na hipótese alternativa:</p>
+<p><span class="math display">\[H_1: \beta_j \neq 0\]</span></p>
+<p>Testamos a hipótese que <span class="math inline">\(X\)</span> afeta <span class="math inline">\(Y\)</span> nessa população. Graficamente temos a figura abaixo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras\thbicaudal.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Teste de hipótese, Fonte:CUEMATH</figcaption>
+</figure>
+</div>
+<p><strong>Estatística de Teste</strong>:</p>
+<p>Este é um valor calculado a partir dos dados da amostra que é usado para avaliar a probabilidade de observar tal valor se a hipótese nula fosse verdadeira. Ele que vai dizer se estamos na área amarela ou azul da figura acima.</p>
+<section id="valor-p" class="level4" data-number="6.3.1.1">
+<h4 data-number="6.3.1.1" class="anchored" data-anchor-id="valor-p"><span class="header-section-number">6.3.1.1</span> Valor-p:</h4>
+<p><strong>O valor-p</strong> é a probabilidade de observar uma estatística de teste tão extrema quanto, ou mais extrema do que, aquela calculada a partir dos dados da amostra, sob a suposição de que a hipótese nula seja verdadeira. Em outras palavras, mede quão provável é obter os resultados observados se a hipótese nula for correta.</p>
+<p><strong>Interpretação</strong>: Um valor-p pequeno (tipicamente menor que um nível de significância predefinido, comumente 0,05) sugere que os dados observados são improváveis de ter ocorrido se a hipótese nula fosse verdadeira. Portanto, fornece evidências contra a hipótese nula, e os pesquisadores podem rejeitar a hipótese nula em favor da hipótese alternativa. Por outro lado, um valor-p grande indica que os dados observados são consistentes com a hipótese nula, e há evidências insuficientes para rejeitá-la.</p>
+</section>
+</section>
+<section id="aplicação---estimando-uma-regressão-linear-simples" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="aplicação---estimando-uma-regressão-linear-simples"><span class="header-section-number">6.3.2</span> Aplicação - Estimando uma Regressão Linear Simples</h3>
 <p>Vamos utilizar aqui o nosso banco de dados anterior sobre feminicídio. É um banco com poucas obserações e possui fim didátco, apesar de serem dados reais.</p>
 <p>Uma questão incial é entender quem será <span class="math inline">\(Y\)</span> e quem será <span class="math inline">\(X\)</span>. Estamos querendo entender a taxa de feminicídio. A questão é, quais são seus determinantes? Aqui precisamos de alguma teoria…mas or hora, vamos ter como hipótese inicial que quanto maior a taxa de homícídio espera-se que em média a taxa de feminicídio aumente. :</p>
 <p><span class="math display">\[Feminc_{tx} = \beta_0 + \beta_1 Homici_{tx} + u\]</span></p>
@@ -424,8 +435,8 @@ Multiple R-squared:  0.1288,    Adjusted R-squared:  0.09397
 F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 </div>
 </div>
-<section id="entendendo-os-resultados" class="level4" data-number="6.3.1.1">
-<h4 data-number="6.3.1.1" class="anchored" data-anchor-id="entendendo-os-resultados"><span class="header-section-number">6.3.1.1</span> Entendendo os Resultados</h4>
+<section id="entendendo-os-resultados" class="level4" data-number="6.3.2.1">
+<h4 data-number="6.3.2.1" class="anchored" data-anchor-id="entendendo-os-resultados"><span class="header-section-number">6.3.2.1</span> Entendendo os Resultados</h4>
 <p><strong>1. Resíduos</strong> Residuals: apresenta a distribuição dos resíduos, observa-se que amediana dos resíduos está próxima a zero.</p>
 <p><strong>2.Coeficientes</strong> Em seguida, abaixo de <em>Coefficients</em> temos 5 colunas.</p>
 <p><em>Coluna 1</em>: Nome da variável</p>
@@ -436,7 +447,9 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 <p><strong><u>Interpretando o Coeficiente</u></strong></p>
 <p>O coeficiente do intercepto nos diz que quando a taxa de homicídio for 0, ainda existira uma taxa de feminicídio de 1,4 pontos, <span class="math inline">\(\beta_0\)</span>, significante a 0,1%. E cada 1 ponto de aumento na taxa de homicídio, aumenta em 0,10 <span class="math inline">\(\beta_1\)</span> pontos a taxa de feminicídio, significante a 10%.</p>
 <p><strong>3. <span class="math inline">\(R^2\)</span></strong>: Em seguida temos o <span class="math inline">\(R^2\)</span> e <span class="math inline">\(R^2\)</span> ajustado. Essas estatísticas calculam quanto da variância da taxa de feminicídio pode ser explicada pela variância da taxa de homicídio. Quando estão próximos a 1 explicam muito, quanto estão próximos a 0 explicam pouco. No caso o nosso <span class="math inline">\(R^2\)</span> ficou baixo e portanto boa parte da variabilidade do feminicídio, não foi explicada pela taxa de homicídio.</p>
-<p><strong>4. Estaística F</strong>: E por fim a estatística F mostra o grau de ajustamento do modelo. Se ela for significativa diz que o modelo é bem ajustados aos dados. As variáveis explicativas incluídas são importantes para a explicação da taxa de feminicídio.</p>
+<p><strong>4. Estaística F</strong>: E por fim a estatística F mostra o grau de ajustamento do modelo. Se ela for significativa diz que o modelo é bem ajustados aos dados. As variáveis explicativas incluídas são importantes para a explicação da taxa de feminicídio.Essa estatistica testa a seguinte hipótese.</p>
+<p><span class="math display">\[H_0:\beta_1=...=\beta_k=0\]</span> contra</p>
+<p><span class="math display">\[H_1: H_0\text{ é falsa}\]</span></p>
 <p><strong>VISUALMENTE</strong></p>
 <p>Abaixo tem-se os dados utilizados e a nossa reta de regressão estimada acima. Veja como ela se ajusta a nuve de pontos.</p>
 <div class="cell">
@@ -1049,148 +1062,142 @@ F-statistic: 62.04 on 5 and 520 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="o-uso-de-dummies-para-categorias-multiplas-e-interação-entre-a-dummy-e-a-variável-dependente" class="level3" data-number="6.8.5">
 <h3 data-number="6.8.5" class="anchored" data-anchor-id="o-uso-de-dummies-para-categorias-multiplas-e-interação-entre-a-dummy-e-a-variável-dependente"><span class="header-section-number">6.8.5</span> O uso de Dummies para categorias multiplas e Interação entre a dummy e a variável dependente</h3>
 <p>Considere a equação abaixo</p>
-<p><span class="math display">\[log(salarioh) = \beta_0 + \beta_1  hcasado  +  \beta_2 mcasadas  + \beta_3 msolteiras + educ + exper + (exper)^2 u\]</span> Note que, definimos uma dummy para cada grupo e o o grupo de comparação é o conunto de homens solteiros.As estimativas das dummies acima irão captar a diferença proporcional nos salarios-horas relativamente aos homens solteiros.</p>
+<p><span class="math display">\[log(salarioh) = \beta_0 + \beta_1  hsolteiro  +  \beta_2 mcasadas  + \beta_3 msolteiras + \beta_4educ + \beta_5exper + \beta_6exper^2 + u\]</span> Note que, definimos uma dummy para cada grupo e o o grupo de comparação é o conunto de homens solteiros.As estimativas das dummies acima irão captar a diferença proporcional nos salarios-horas relativamente aos homens solteiros.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Aplicação de RLM multiplas dummies</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(wage1, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>ols.dummy <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(wage)<span class="sc">~</span> married<span class="sc">*</span>female<span class="sc">+</span></span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>     educ<span class="sc">+</span> exper  <span class="sc">+</span><span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span>tenure<span class="sc">+</span><span class="fu">I</span>(tenure<span class="sc">^</span><span class="dv">2</span>),</span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">data=</span>wage1)</span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ols.dummy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="do">### criando as variáveis</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>wage1 <span class="ot">&lt;-</span> wage1 <span class="sc">%&gt;%</span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hcasado =</span> <span class="fu">ifelse</span>(female<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> married<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>wage1 <span class="ot">&lt;-</span> wage1 <span class="sc">%&gt;%</span></span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mcasada =</span> <span class="fu">ifelse</span>(female<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> married<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>wage1 <span class="ot">&lt;-</span> wage1 <span class="sc">%&gt;%</span></span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">msolteira =</span> <span class="fu">ifelse</span>(female<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> married<span class="sc">==</span><span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a>wage1 <span class="ot">&lt;-</span> wage1 <span class="sc">%&gt;%</span></span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hsolteiro =</span> <span class="fu">ifelse</span>(female<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> married<span class="sc">==</span><span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a>status_civ <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(wage)<span class="sc">~</span>  hsolteiro <span class="sc">+</span> msolteira <span class="sc">+</span> mcasada <span class="sc">+</span> educ<span class="sc">+</span> exper  <span class="sc">+</span><span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span>tenure, <span class="at">data=</span>wage1)</span>
+<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(status_civ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = log(wage) ~ married * female + educ + exper + I(exper^2) + 
-    tenure + I(tenure^2), data = wage1)
+lm(formula = log(wage) ~ hsolteiro + msolteira + mcasada + educ + 
+    exper + I(exper^2) + tenure, data = wage1)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--1.89697 -0.24060 -0.02689  0.23144  1.09197 
+-1.89832 -0.24486 -0.03093  0.23483  1.11291 
 
 Coefficients:
-                 Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)     0.3213781  0.1000090   3.213 0.001393 ** 
-married         0.2126757  0.0553572   3.842 0.000137 ***
-female         -0.1103502  0.0557421  -1.980 0.048272 *  
-educ            0.0789103  0.0066945  11.787  &lt; 2e-16 ***
-exper           0.0268006  0.0052428   5.112 4.50e-07 ***
-I(exper^2)     -0.0005352  0.0001104  -4.847 1.66e-06 ***
-tenure          0.0290875  0.0067620   4.302 2.03e-05 ***
-I(tenure^2)    -0.0005331  0.0002312  -2.306 0.021531 *  
-married:female -0.3005931  0.0717669  -4.188 3.30e-05 ***
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  0.5370094  0.1070982   5.014 7.33e-07 ***
+hsolteiro   -0.2196913  0.0555033  -3.958 8.61e-05 ***
+msolteira   -0.3266998  0.0502974  -6.495 1.95e-10 ***
+mcasada     -0.4146530  0.0459328  -9.027  &lt; 2e-16 ***
+educ         0.0795322  0.0067169  11.841  &lt; 2e-16 ***
+exper        0.0297116  0.0051097   5.815 1.06e-08 ***
+I(exper^2)  -0.0005919  0.0001081  -5.475 6.84e-08 ***
+tenure       0.0149328  0.0028460   5.247 2.26e-07 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.3933 on 517 degrees of freedom
-Multiple R-squared:  0.4609,    Adjusted R-squared:  0.4525 
-F-statistic: 55.25 on 8 and 517 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 0.3949 on 518 degrees of freedom
+Multiple R-squared:  0.4553,    Adjusted R-squared:  0.448 
+F-statistic: 61.86 on 7 and 518 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Com base nas estimativas, verificamos que os homens casados ganham cerca de 21,3% mais que os homens solteiros, mantendo fixas educaçao, experiência e permanência. Uma mulher casada, no entanto, ganharia, em média, cerca de 30% menos que um homem solteiro controlando por todas as demais características do banco de dados.</p>
+<p>Como temos um modelos log-nível, a interpretação é dada por <span class="math inline">\(\% \Delta y = (100 \beta_1) \Delta x\)</span>. Com base nas estimativas, verificamos que com relação aos homens casados:</p>
+<ul>
+<li><em>Homens solteiros</em> recebem cerca de 22% a menos.</li>
+<li><em>Mulheres solteiras</em> recebem 32,6% a menos.</li>
+<li><em>Mulheres csadas</em> recebem 41,5% a menos.</li>
+</ul>
+<p>Mantendo fixas educaçao, experiência e tempo no emprego.</p>
+<p><strong>Variáveis ao Quadrado: interpretando</strong></p>
+<p>Note que temos uma nova variável a experência ao quadrado. A variável ao quadrado tenta capturar a seguinte ideia: se cada ano a mais de experiência sempre gera a mesmo incremento de salário, ou se o indivíduo recebe cada vez menos por cada ano a mais de experiência. Temos agora uma mudança de interpretação</p>
+<p><span class="math display">\[\frac{\% \Delta y }{\Delta x}= 100\beta_5 +200\beta_6exper  \]</span></p>
+<p>Temos com base nas estimatvas:</p>
+<p><span class="math display">\[\frac{\% \Delta y }{\Delta x}= 100\times0,0297 +200\times -0,000592 \times exper  \]</span></p>
+<p><span class="math display">\[\frac{\% \Delta y }{\Delta x}= 2,97 -0,118 \times exper  \]</span> Vamos pensar em uma pessoa que tem 0 anos de experiência e adquire um ano. Logo:</p>
+<p><span class="math display">\[\frac{\% \Delta y }{1}= 2,97 -0,118 \times 1 = 2,85\% \]</span> Ela ira receber 2,85% a mais de salário devido a essa experiência adquirida. Vejamos agora uma pessoa com 9 anos e adquire mais um ano, vai para 10. Logo</p>
+<p><span class="math display">\[\frac{\% \Delta y }{1}= 2,97 -0,118 \times 10 = 1,79\% \]</span> Esse ano a mais agora adicionou apenas 1,79% no seu salário. Para finalizar vejamos de 24 para 25 anos de experiência</p>
+<p><span class="math display">\[\frac{\% \Delta y }{1}= 2,97 -0,118 \times 25 = 0,02\% \]</span> Adiciona praticamente zero. E a partir desse ponto a adição será negativa, mais experiência terá menor salário. Assim</p>
+<p><span class="math display">\[ 2,97 -0,118 \times exper = 0 \implies exper=\frac{2,97}{0,118}=25,16 \]</span> O salário vai aumentando até chegar a experiência de 25 anos, depois desse ponto o mercado tende a penalizar com salários enores quem tem mais experiência.</p>
 </section>
 <section id="incorporando-informações-ordinais-com-o-uso-de-variáveis-dummy." class="level3" data-number="6.8.6">
 <h3 data-number="6.8.6" class="anchored" data-anchor-id="incorporando-informações-ordinais-com-o-uso-de-variáveis-dummy."><span class="header-section-number">6.8.6</span> Incorporando Informações Ordinais com o uso de Variáveis Dummy.</h3>
+<p>Vamos agora entender a criação de binárias para variáveis com várias categorias. Uma variável com categoria tradicional é a região onde mora o indivíduo. Podemos ver isso no nosso banco anterior chamado <code>dados</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Efeito da Classificação das faculdades de direito sobre salarios iniciais</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lawsch85, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define os pontos de corte para rankear as faculdades</span></span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>cutpts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">100</span>,<span class="dv">175</span>)</span>
-<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="co"># criando uma varaiavel factor para ranquear as escolas</span></span>
-<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a> lawsch85<span class="sc">$</span>rankcat <span class="ot">&lt;-</span> <span class="fu">cut</span>(lawsch85<span class="sc">$</span>rank, cutpts)</span>
-<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Escolhendo a categoria de referencia</span></span>
-<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>lawsch85<span class="sc">$</span>rankcat <span class="ot">&lt;-</span> <span class="fu">relevel</span>(lawsch85<span class="sc">$</span>rankcat,<span class="st">"(100,175]"</span>)</span>
-<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a><span class="co">#rodando a regressão</span></span>
-<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(salary)<span class="sc">~</span>rankcat<span class="sc">+</span>LSAT<span class="sc">+</span>GPA<span class="sc">+</span><span class="fu">log</span>(libvol)<span class="sc">+</span><span class="fu">log</span>(cost), <span class="at">data=</span>lawsch85)</span>
-<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dados<span class="sc">$</span>regiao)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+CO  N NE  S SD 
+ 4  7  9  3  4 </code></pre>
+</div>
+</div>
+<p>Nesse caso eu teria que escolher uma região de comparação, por exemplo Sudeste e criar uma binária para o CO, uma para o N, uma para o NE e uma para o S. Veja o exemplo abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="do">### criando as variáveis</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">CO =</span> <span class="fu">ifelse</span>(regiao<span class="sc">==</span><span class="st">"CO"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NE =</span> <span class="fu">ifelse</span>(regiao<span class="sc">==</span><span class="st">"NE"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N =</span> <span class="fu">ifelse</span>(regiao<span class="sc">==</span><span class="st">"N"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">S =</span> <span class="fu">ifelse</span>(regiao<span class="sc">==</span><span class="st">"S"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Como esse banco é pequeno, vamos retomar o banco o Wooldridge <code>wage1</code>. Neste banco já está criada a variável de região sendo a região leste a de comparação. Vamos adicionar então a região, sul, norte e oeste.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>reg_salar <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(wage)<span class="sc">~</span>  northcen <span class="sc">+</span> west<span class="sc">+</span> south <span class="sc">+</span> female<span class="sc">+</span> educ<span class="sc">+</span> exper <span class="sc">+</span>tenure, <span class="at">data=</span>wage1)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg_salar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = log(salary) ~ rankcat + LSAT + GPA + log(libvol) + 
-    log(cost), data = lawsch85)
+lm(formula = log(wage) ~ northcen + west + south + female + educ + 
+    exper + tenure, data = wage1)
 
 Residuals:
-      Min        1Q    Median        3Q       Max 
--0.294888 -0.039691 -0.001682  0.043888  0.277497 
+     Min       1Q   Median       3Q      Max 
+-2.01490 -0.25600 -0.02259  0.25361  1.30569 
 
 Coefficients:
-                 Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)     9.1652952  0.4114243  22.277  &lt; 2e-16 ***
-rankcat(0,10]   0.6995659  0.0534919  13.078  &lt; 2e-16 ***
-rankcat(10,25]  0.5935434  0.0394400  15.049  &lt; 2e-16 ***
-rankcat(25,40]  0.3750763  0.0340812  11.005  &lt; 2e-16 ***
-rankcat(40,60]  0.2628191  0.0279621   9.399 3.18e-16 ***
-rankcat(60,100] 0.1315950  0.0210419   6.254 5.71e-09 ***
-LSAT            0.0056908  0.0030630   1.858   0.0655 .  
-GPA             0.0137255  0.0741919   0.185   0.8535    
-log(libvol)     0.0363619  0.0260165   1.398   0.1647    
-log(cost)       0.0008412  0.0251360   0.033   0.9734    
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  0.534853   0.108019   4.951 9.98e-07 ***
+northcen    -0.064811   0.052512  -1.234  0.21768    
+west         0.078528   0.058211   1.349  0.17792    
+south       -0.061050   0.049041  -1.245  0.21374    
+female      -0.306808   0.037148  -8.259 1.23e-15 ***
+educ         0.086823   0.006943  12.504  &lt; 2e-16 ***
+exper        0.004808   0.001622   2.963  0.00318 ** 
+tenure       0.017148   0.002968   5.777 1.31e-08 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.08564 on 126 degrees of freedom
-  (20 observations deleted due to missingness)
-Multiple R-squared:  0.9109,    Adjusted R-squared:  0.9046 
-F-statistic: 143.2 on 9 and 126 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 0.4137 on 518 degrees of freedom
+Multiple R-squared:  0.4022,    Adjusted R-squared:  0.3941 
+F-statistic: 49.79 on 7 and 518 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Vemos imediatamente que todas as variáveis fictícias que definem as diferentes classificações são estatisticamente significativas. A estimativa de classificação (60.100] significa que, mantendo LSAT, GPA, libvol (volume na biblioteca) e custo fixos, o salário médio em uma faculdade de direito classificada entre 61 e 100 é cerca de 13,2% maior do que em uma faculdade de direito classificada abaixo de 100. A diferença entre uma escola top 10 e uma escola abaixo de 100 é bastante grande.</p>
-</section>
-</section>
-<section id="teste-de-hipóteses-no-rlm" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Teste de Hipóteses no RLM</h1>
-<section id="hipótese-de-normalidade" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="hipótese-de-normalidade"><span class="header-section-number">7.1</span> Hipótese de Normalidade</h2>
-<p>Para realizarmos procedimentos de inferência sobre os parâmetros estimados do modelo adotamos a hipótese de normalidade.</p>
-<ol start="6" type="1">
-<li><strong>Hipótese de Normalidade do erro:</strong> O termo de erro <span class="math inline">\(u\)</span> é independente das variáveis explicativas com média zero e variância dada por <span class="math inline">\(\sigma^2\)</span>.</li>
-</ol>
-<p>Com as hipoteses anteriores mais a hipótese de normalidade, pode-se demostrar que os parâmetros estimados <span class="math inline">\(\hat{\beta_j}\)</span> são normalmente distibuídos com média dada por <span class="math inline">\(\beta_j\)</span> e variância dada por <span class="math inline">\(Var(\hat{\beta_j})\)</span>.</p>
-<p>Note que, os parâmetros são variáveis aleatórias normalmente distribuídas. Com isso, podemos usar a distribuição normal padrão para calcular as estatísticas de teste, bem como a distribuição <span class="math inline">\(t\)</span>.</p>
-<p>Isto é</p>
-<p><span class="math display">\[\frac{(\hat{\beta_j} - \beta_j)}{ep(\hat{\beta_j})} \sim N(0,1) \]</span></p>
-<p>ou</p>
-<p><span class="math display">\[\frac{(\hat{\beta_j} - \beta_j)}{ep(\hat{\beta_j})} \sim t_{n-k-1} \]</span></p>
-</section>
-<section id="teste-de-hipótese-sob-um-único-parametro" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="teste-de-hipótese-sob-um-único-parametro"><span class="header-section-number">7.2</span> Teste de Hipótese sob um Único Parametro</h2>
-<p>Na maior parte do tempo testamos hipóteses do tipo</p>
-<p><span class="math display">\[H_0: \hat{\beta_j}=0\]</span> Nesse caso a estatística usada no teste será do tipo</p>
-<p><span class="math display">\[t_{\hat{\beta_j}} \equiv \frac{\hat{\beta_j}}{ep(\hat{\beta_j})}\]</span></p>
-<section id="teste-contra-hipoteses-alternativas-unilaterais" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="teste-contra-hipoteses-alternativas-unilaterais"><span class="header-section-number">7.2.1</span> Teste contra Hipoteses Alternativas Unilaterais</h3>
-<p>Podemos testar a hipótese de que um dado parâmetro <span class="math inline">\(j\)</span> seja zero, contra uma alternativa unilateral de que <span class="math inline">\(\beta_j &gt; 0\)</span></p>
-<p>Formalmente, a hípotese alternativa é</p>
-<p><span class="math display">\[H_1:  \beta_j &gt; 0\]</span> Dado um nível de segnificancia adequado rejeitamos a hipotese nula se</p>
-<p><span class="math display">\[t_{\hat{\beta_j}}  &gt; t_c\]</span></p>
-<p>Onde <span class="math inline">\(t_c\)</span> é o valor crítico do teste.</p>
-<p><img src="thunical.png" class="img-fluid" alt="Teste Unicaldal"> Oviamente, podemos ter o caso onde</p>
-<p><span class="math display">\[H_1 = \beta &lt; 0\]</span> e a regra de rejeição será</p>
-<p><span class="math display">\[t_{\hat{\beta_j}} &lt; - t_c\]</span> <img src="thunical2.png" class="img-fluid" alt="Teste Unicaldal"></p>
-</section>
-<section id="teste-contra-hipoteses-alternativas-bilaterais" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="teste-contra-hipoteses-alternativas-bilaterais"><span class="header-section-number">7.2.2</span> Teste contra Hipoteses Alternativas Bilaterais</h3>
-<p>Pode ser o caso onde testa-se <span class="math inline">\(H_0\)</span> contra</p>
-<p><span class="math display">\[H_1: \beta_j \neq 0\]</span> Nesse caso a região de regeição é dada por:</p>
-<p><span class="math display">\[|t_{\hat{\beta_j}}|  &gt; t_c\]</span> <img src="thbicaldal.png" class="img-fluid" alt="Teste Unicaldal"> ### Cálculos dos p-valores dos Testes t</p>
-<p>Dado o valor observado de <span class="math inline">\(t_c\)</span> qual é o menor nível de significancia ao qual a hipótese nula é rejeitada? esse nível é denominado de <strong>p-valor</strong> do teste de hipótese.</p>
-</section>
-<section id="teste-de-restrições-de-lineares-múltiplas-o-teste-f" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="teste-de-restrições-de-lineares-múltiplas-o-teste-f"><span class="header-section-number">7.2.3</span> Teste de Restrições de Lineares Múltiplas: O teste F</h3>
-<p>Após o uso da função <code>summary</code> nota-se que o r também reporta uma estatística denominada de F. Essa estatistica tal qual reportada pelo software testa a seguinte hipótese.</p>
-<p><span class="math display">\[H_0:\beta_1=...=\beta_k=0\]</span> contra</p>
-<p><span class="math display">\[H_1: H_0\text{ é falsa}\]</span> Essa estatistica de teste é dada por:</p>
-<p><span class="math display">\[F = \frac{R^2/k}{(1-R^2)/n-k-1}\]</span> Pode ser mostrado que <span class="math inline">\(F \sim F_{q,n-k-1}\)</span>.</p>
+<p>Observa-se no modelo acima que não diferenças regionais importantes nos salários, quando controlamos para mulheres, educação, experiência e tempo no trabalho.</p>
 
 
-</section>
 </section>
 </section>
 
