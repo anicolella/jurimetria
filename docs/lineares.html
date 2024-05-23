@@ -305,30 +305,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="7.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">7.1</span> Introdução</h2>
 <p>Começamos com o modelo mais geral da população:</p>
 <p><span class="math display">\[y = \beta_0 + \beta_1x + u \]</span></p>
-<p>Nesta equação, <span class="math inline">\(y\)</span> é a variavel dependente ou também denominada de variável explicativa; <span class="math inline">\(x\)</span> é a variável explicativa e <span class="math inline">\(u\)</span> é o termo de erro. Essa equação é uma equação de <strong>regressão linear simples</strong>.</p>
-<p><strong>Vejamos um exemlo</strong></p>
+<p>Nesta equação, <span class="math inline">\(y\)</span> é a variavel dependente ou também denominada de variável explicada; <span class="math inline">\(x\)</span> é a variável explicativa e <span class="math inline">\(u\)</span> é o termo de erro. Essa equação é uma equação de <strong>regressão linear simples</strong>.</p>
+<p><strong>Vejamos um exemplo</strong></p>
 <p>Gostariamos de explicar a taxa de crimes nos bairros de uma cidade e consideramos que os níveis de desemprego nas localidades são importantes. Nosso modelo de regressão poderia ser específicado da seguinte maneira:</p>
 <p><span class="math display">\[Crime_i = \beta_0 + \beta_1Desemprego_i + u\]</span></p>
-<p>O subscrito <span class="math inline">\(i\)</span> se refere a um bairro hipotético da cidade. Note que nesse caso,<span class="math inline">\(i\)</span> é o subscrito que relaciona nossas unidades de observação (bairros). Nossas unidades de observação podem variar a depender do contexto em estudo: países, cidades, bairros, estados, pessoas, processos, varas, tribunais….</p>
+<p>O subscrito <span class="math inline">\(i\)</span> se refere a um bairro hipotético da cidade. Note que nesse caso, <span class="math inline">\(i\)</span> é o subscrito que relaciona nossas unidades de observação (bairros). Nossas unidades de observação podem variar a depender do contexto em estudo: países, cidades, bairros, estados, pessoas, processos, varas, tribunais….</p>
 <p>Note que, novamente o termo de erro, <span class="math inline">\(u\)</span>, está presente na equação. O termo de erro, não observado, capta tudo aquilo que afeta <span class="math inline">\(Crime\)</span>, mas que não estamos controlando, ou seja, que não é explicado pelo <span class="math inline">\(Desemprego\)</span>.</p>
 <p>Voltemos a equação básica:</p>
 <p><span class="math display">\[y = \beta_0 + \beta_1x + u \]</span></p>
-<p>Na analise de RLS estamos interessados nos parâmetros <span class="math inline">\(\beta_0\)</span> e sobretudo <span class="math inline">\(\beta_1\)</span>. A razão primordial para isso é que, tudo o mais constante, a relação acima aponta que</p>
+<p>Na análise de RLS estamos interessados nos parâmetros <span class="math inline">\(\beta_0\)</span> e sobretudo <span class="math inline">\(\beta_1\)</span>. A razão primordial para isso é que, tudo o mais constante, a relação acima aponta que</p>
 <p><span class="math display">\[\Delta y = \beta_1 \Delta x \]</span> , se <span class="math display">\[\Delta u = 0\]</span></p>
 <p>Isto é, se tudo o mais que afeta <span class="math inline">\(y\)</span> permanecer inalterado, uma variáção em <span class="math inline">\(x\)</span>, <span class="math inline">\(\Delta x\)</span>, terá um impacto de <span class="math inline">\(\beta_1 \Delta x\)</span> em <span class="math inline">\(y\)</span>. No exemplo da criminalidade, teremos que:</p>
 <p><span class="math display">\[\Delta crime = \beta_1 \Delta desemprego \]</span></p>
-<p>Assim, o aumento o de 1 ponto no desemprego irá ter o efeito de <span class="math inline">\(\beta_1\)</span> unidades de crimes em média. Por isso, quando conseguimos estimar os parêmetros <span class="math inline">\(\beta\)</span> estamos mais próximos de entender as relações entre <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> em nossas aplicações.</p>
+<p>Assim, o aumento de 1 ponto no desemprego irá ter o efeito de <span class="math inline">\(\beta_1\)</span> unidades de crimes em média. Por isso, quando conseguimos estimar os parêmetros <span class="math inline">\(\beta\)</span> estamos mais próximos de entender as relações entre <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> em nossas aplicações.</p>
 <p>Cabe destacar algo bastante importante.As relações acima não encerram a questão da causalidade. Como podemos inferir um impacto causal do desemprego na criminalidade se estamos ignorando todos os demais fatores que ficaram de fora do modelo - fatores que são captados em <span class="math inline">\(u\)</span> não observados.</p>
 <section id="alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico" class="level3" data-number="7.1.1">
 <h3 data-number="7.1.1" class="anchored" data-anchor-id="alguns-exemplos-de-regressão-aplicados-ao-contexto-jurídico"><span class="header-section-number">7.1.1</span> Alguns Exemplos de Regressão Aplicados ao Contexto Jurídico:</h3>
 <p>Considere os seguintes exemplos de RLS aplicadas ao contexto do Direito</p>
-<p><strong>Previsão de Sentenças com Base na Gravidade do Crime:</strong> Onde, a variável dependente e tamanho da pena, e a variável independente é a Gravidade do Crime, <span class="math inline">\(\beta_0\)</span>é o intercepto da regressão. <span class="math inline">\(\beta_1\)</span> é o coeficiente de regressão que representa como a gravidade do crime influência o tamanho da pena, <span class="math inline">\(u\)</span> é o termo de erro.</p>
+<p><u><strong>Previsão de Sentenças com Base na Gravidade do Crime:</strong></u></p>
+<ul>
+<li><strong>Variável dependente <span class="math inline">\((Y)\)</span></strong>: Tamanho da pena,</li>
+<li><strong>Variável independente<span class="math inline">\((X)\)</span></strong>: Gravidade do Crime,</li>
+<li><strong>Objetivo</strong>: Identificar se a gravidade do crime tem influência sobre tamanho da pena.</li>
+</ul>
+<p>Nesse exemplo <span class="math inline">\(\beta_0\)</span> é o intercepto da regressão e <span class="math inline">\(\beta_1\)</span> o coeficiente de regressão que representa como a gravidade do crime influência o tamanho da pena, <span class="math inline">\(u\)</span> é o termo de erro.</p>
 <p><span class="math display">\[Dpena = \beta_0 + \beta_1{\text{Gravidade}} + u\]</span></p>
-<p><strong>Análise de Fatores que Influenciam o Tempo de Julgamento:</strong> Variável Independente (<span class="math inline">\(x\)</span>), Tipo de Processo (por exemplo, criminal, civil, administrativo). Variável Dependente (<span class="math inline">\(y\)</span>), Tempo de Duração do Processo. Objetivo: Identificar se o tipo de processo tem impacto no tempo que um caso leva para ser concluído.</p>
+<p><u><strong>Análise de Fatores que Influenciam o Tempo de Julgamento:</strong></u></p>
+<ul>
+<li><strong>Variável Dependente (<span class="math inline">\(Y\)</span>)</strong>: Tempo de Duração do Processo</li>
+<li><strong>Variável Independente (<span class="math inline">\(x\)</span>)</strong>, Tipo de Processo (por exemplo, criminal, civil, administrativo).</li>
+<li><strong>Objetivo</strong>: Identificar se o tipo de processo tem impacto no tempo que um caso leva para ser concluído.</li>
+</ul>
 <p><span class="math display">\[Tempo = \beta_0 + \beta_1  Processo  + u\]</span></p>
-<p><strong>Previsão de Probabilidade de Recurso com Base em Decisões Anteriores:</strong> Variável Independente (<span class="math inline">\(x\)</span>): Resultado da Decisão Anterior (por exemplo, deferimento ou negação do recurso). Variável Dependente (<span class="math inline">\(y\)</span>): Probabilidade de Entrada com Recurso. Objetivo: Determinar a probabilidade de um recurso ser apresentado com base no resultado de decisões passadas.</p>
+<p><u><strong>Previsão de Probabilidade de Recurso com Base em Decisões Anteriores:</strong></u></p>
+<ul>
+<li><strong>Variável Dependente (<span class="math inline">\(Y\)</span>)</strong>: Probabilidade de Entrada com Recurso</li>
+<li><strong>Variável Independente (<span class="math inline">\(X\)</span>)</strong>: Resultado da Decisão Anterior (por exemplo, deferimento ou negação do recurso).</li>
+<li><strong>Objetivo</strong>: Determinar a probabilidade de um recurso ser apresentado com base no resultado de decisões passadas.</li>
+</ul>
 <p><span class="math display">\[Resultado = \beta_0 + \beta_1 Resultado_{-1} + u \]</span></p>
-<p><strong>Análise de Relação entre Número de Testemunhas e Veredito:</strong> Variável Independente (<span class="math inline">\(x\)</span>): Número de Testemunhas. Variável Dependente (<span class="math inline">\(y\)</span>): Veredito (por exemplo, culpado ou inocente). Objetivo: Investigar se o número de testemunhas influencia o veredito</p>
+<p><u><strong>Análise de Relação entre Número de Testemunhas e Veredito:</strong></u></p>
+<ul>
+<li><strong>Variável Dependente (<span class="math inline">\(Y\)</span>)</strong>: Veredito (por exemplo, culpado ou inocente)</li>
+<li><strong>Variável Independente (<span class="math inline">\(X\)</span>)</strong>: Número de Testemunhas.</li>
+<li><strong>Objetivo</strong>: Investigar se o número de testemunhas influencia o veredito</li>
+</ul>
 <p><span class="math display">\[ Veredito = \beta_0 + \beta_1 Testemunhas + u \]</span></p>
 </section>
 </section>

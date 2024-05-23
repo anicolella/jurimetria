@@ -23,15 +23,15 @@ Começamos com o modelo mais geral da população:
 
 $$y = \beta_0 + \beta_1x + u $$
 
-Nesta equação, $y$ é a variavel dependente ou também denominada de variável explicativa; $x$ é a variável explicativa e $u$ é o termo de erro. Essa equação é uma equação de **regressão linear simples**.
+Nesta equação, $y$ é a variavel dependente ou também denominada de variável explicada; $x$ é a variável explicativa e $u$ é o termo de erro. Essa equação é uma equação de **regressão linear simples**.
 
-**Vejamos um exemlo**
+**Vejamos um exemplo**
 
 Gostariamos de explicar a taxa de crimes nos bairros de uma cidade e consideramos que os níveis de desemprego nas localidades são importantes. Nosso modelo de regressão poderia ser específicado da seguinte maneira:
 
 $$Crime_i = \beta_0 + \beta_1Desemprego_i + u$$
 
-O subscrito $i$ se refere a um bairro hipotético da cidade. Note que nesse caso,$i$ é o subscrito que relaciona nossas unidades de observação (bairros). Nossas unidades de observação podem variar a depender do contexto em estudo: países, cidades, bairros, estados, pessoas, processos, varas, tribunais....
+O subscrito $i$ se refere a um bairro hipotético da cidade. Note que nesse caso, $i$ é o subscrito que relaciona nossas unidades de observação (bairros). Nossas unidades de observação podem variar a depender do contexto em estudo: países, cidades, bairros, estados, pessoas, processos, varas, tribunais....
 
 Note que, novamente o termo de erro, $u$, está presente na equação. O termo de erro, não observado, capta tudo aquilo que afeta $Crime$, mas que não estamos controlando, ou seja, que não é explicado pelo $Desemprego$.
 
@@ -39,7 +39,7 @@ Voltemos a equação básica:
 
 $$y = \beta_0 + \beta_1x + u $$
 
-Na analise de RLS estamos interessados nos parâmetros $\beta_0$ e sobretudo $\beta_1$. A razão primordial para isso é que, tudo o mais constante, a relação acima aponta que
+Na análise de RLS estamos interessados nos parâmetros $\beta_0$ e sobretudo $\beta_1$. A razão primordial para isso é que, tudo o mais constante, a relação acima aponta que
 
 $$\Delta y = \beta_1 \Delta x $$ , se $$\Delta u = 0$$
 
@@ -47,7 +47,7 @@ Isto é, se tudo o mais que afeta $y$ permanecer inalterado, uma variáção em 
 
 $$\Delta crime = \beta_1 \Delta desemprego $$
 
-Assim, o aumento o de 1 ponto no desemprego irá ter o efeito de $\beta_1$ unidades de crimes em média. Por isso, quando conseguimos estimar os parêmetros $\beta$ estamos mais próximos de entender as relações entre $x$ e $y$ em nossas aplicações.
+Assim, o aumento de 1 ponto no desemprego irá ter o efeito de $\beta_1$ unidades de crimes em média. Por isso, quando conseguimos estimar os parêmetros $\beta$ estamos mais próximos de entender as relações entre $x$ e $y$ em nossas aplicações.
 
 Cabe destacar algo bastante importante.As relações acima não encerram a questão da causalidade. Como podemos inferir um impacto causal do desemprego na criminalidade se estamos ignorando todos os demais fatores que ficaram de fora do modelo - fatores que são captados em $u$ não observados.
 
@@ -55,25 +55,43 @@ Cabe destacar algo bastante importante.As relações acima não encerram a quest
 
 Considere os seguintes exemplos de RLS aplicadas ao contexto do Direito
 
-**Previsão de Sentenças com Base na Gravidade do Crime:** Onde, a variável dependente e tamanho da pena, e a variável independente é a Gravidade do Crime, $\beta_0$é o intercepto da regressão. $\beta_1$ é o coeficiente de regressão que representa como a gravidade do crime influência o tamanho da pena, $u$ é o termo de erro.
+[**Previsão de Sentenças com Base na Gravidade do Crime:**]{.underline}
+ 
+  * **Variável dependente $(Y)$**: Tamanho da pena, 
+  * **Variável independente$(X)$**:  Gravidade do Crime, 
+  * **Objetivo**: Identificar se a gravidade do crime tem influência sobre tamanho da pena.
+  
+  Nesse exemplo $\beta_0$ é o intercepto da regressão e $\beta_1$ o coeficiente de regressão que representa como a gravidade do crime influência o tamanho da pena, $u$ é o termo de erro.
 
 $$Dpena = \beta_0 + \beta_1{\text{Gravidade}} + u$$
 
-**Análise de Fatores que Influenciam o Tempo de Julgamento:** Variável Independente ($x$), Tipo de Processo (por exemplo, criminal, civil, administrativo). Variável Dependente ($y$), Tempo de Duração do Processo. Objetivo: Identificar se o tipo de processo tem impacto no tempo que um caso leva para ser concluído.
+[**Análise de Fatores que Influenciam o Tempo de Julgamento:**]{.underline} 
+ 
+  * **Variável Dependente ($Y$)**: Tempo de Duração do Processo 
+  * **Variável Independente ($x$)**, Tipo de Processo (por exemplo, criminal, civil, administrativo).
+  * **Objetivo**: Identificar se o tipo de processo tem impacto no tempo que um caso leva para ser concluído.
 
 $$Tempo = \beta_0 + \beta_1  Processo  + u$$
 
-**Previsão de Probabilidade de Recurso com Base em Decisões Anteriores:** Variável Independente ($x$): Resultado da Decisão Anterior (por exemplo, deferimento ou negação do recurso). Variável Dependente ($y$): Probabilidade de Entrada com Recurso. Objetivo: Determinar a probabilidade de um recurso ser apresentado com base no resultado de decisões passadas.
+[**Previsão de Probabilidade de Recurso com Base em Decisões Anteriores:**]{.underline} 
+
+  * **Variável Dependente ($Y$)**: Probabilidade de Entrada com Recurso
+  * **Variável Independente ($X$)**: Resultado da Decisão Anterior (por exemplo, deferimento ou negação do recurso). 
+  * **Objetivo**: Determinar a probabilidade de um recurso ser apresentado com base no resultado de decisões passadas.
 
 $$Resultado = \beta_0 + \beta_1 Resultado_{-1} + u $$
 
-**Análise de Relação entre Número de Testemunhas e Veredito:** Variável Independente ($x$): Número de Testemunhas. Variável Dependente ($y$): Veredito (por exemplo, culpado ou inocente). Objetivo: Investigar se o número de testemunhas influencia o veredito
+[**Análise de Relação entre Número de Testemunhas e Veredito:**]{.underline} 
+
+  * **Variável Dependente ($Y$)**: Veredito (por exemplo, culpado ou inocente)
+  * **Variável Independente ($X$)**: Número de Testemunhas. 
+  * **Objetivo**: Investigar se o número de testemunhas influencia o veredito
 
 $$ Veredito = \beta_0 + \beta_1 Testemunhas + u $$
 
 ## Hipóteses sobre o comportamento do Termo de Erro
 
-Se especificamos o modelo com $\beta_0$, podemos assumir que $u$, tem média igual a zero. Em notação de esperança matematica essa hipotese equivale a:
+Se especificamos o modelo com $\beta_0$, podemos assumir que $u$, tem média igual a zero. Em notação de esperança matemática essa hipótese equivale a:
 
 $$E(u) = 0$$
 
@@ -87,13 +105,13 @@ Dessa forma, no nosso modelo inicial:
 
 $$y = \beta_0 + \beta_1x + u$$
 
-Aplicando o operador $E( \cdot |x )$, obetmos
+Aplicando o operador $E( \cdot |x )$, obtemos
 
 $$ E( y |x ) = \beta_0 + \beta_1x $$
 
 Assim, na equação acima, temos um aumento de uma unidade em $x$, implica em um aumento no valor esperado (ou em média) de $y$ na magnitude de $\beta_1$.
 
-A equação acima, é caracterizada como **função de regressão populacional**. Essa função nos fornece a elação entre os diferentes níveis de$x$ é o nível médio de $y$, isto é $E( y |x )$.
+A equação acima, é caracterizada como **função de regressão populacional**. Essa função nos fornece a relação entre os diferentes níveis de $x$ é o nível médio de $y$, isto é $E( y |x )$.
 
 ![Função de Regressão Populacional, fonte: Anderson David R., Sweeney Dennis J., Williams Thomas A. (2019), Statistics for Business & Economics, Cengage Learning; 14th edition](figuras\modelpop.png)
 
@@ -103,7 +121,8 @@ $$y = \beta_0 + \beta_1x + u $$
 
 $$y = E( y |x ) + u $$
 
-Na equação acima, $E( y |x )$ é chamada de parte sistematica de $y$. Isto é, a parte sistematicamente explicada por $x$. Já o termo de erro não observado, $u$ é a parte não sistematica de $y$, não explicada por $x$.
+Na equação acima, $E( y |x )$ é chamada de parte sistemática de $y$. Isto é, a parte sistematicamente explicada por $x$. Já o termo de erro não observado, $u$ é a parte não sistemática de $y$, não explicada por $x$.
+
 
 ## Estimação dos Parâmetros da RLS
 
@@ -127,13 +146,15 @@ e
 
 $$\hat{\beta}_1 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n} (x_i - \bar{x})^2}$$
 
-Onde, $\bar{x}$ e $\bar{y}$ são as médias amostrais de $x$ e $y$ respectivamente.
+Onde, $\bar{x}$ e $\bar{y}$ são as médias amostrais de $X_i$ e $Y_i$, respectivamente.
 
 Os estimadores $\hat{\beta}_0$ e $\hat{\beta}_1$ são chamados de estimadores de Mínimos Quadrados Ordinários (MQO).
 
-A ideia é que os parâmetros que estimamos, $\hat{\beta}_0$ e $\hat{\beta}_1$, são os parâmetros que minimizam a soma dos quadrados das diferenças entre nossos $y_i$ obversados e seus **valores preditos** definidos como
+A ideia é que os parâmetros que estimamos, $\hat{\beta}_0$ e $\hat{\beta}_1$, são os parâmetros que minimizam a soma dos quadrados das diferenças entre nossos $y_i$ observados e seus **valores preditos** definidos como
 
-$$y_i- \hat{y}_i =y_i -  \hat{\beta}_0 + \hat{\beta}_1x_i=u_i$$ Queremos minimizar o quadrado dessa diferença. Vejamos graficamente:
+$$y_i- \hat{y}_i =y_i -  \hat{\beta}_0 + \hat{\beta}_1x_i=u_i$$ 
+
+Queremos minimizar o quadrado dessa diferença. Vejamos graficamente:
 
 ![Valores Ajustados e Resíduos de MQO](figuras\fittedvalue.png)
 
@@ -144,27 +165,32 @@ Antes de passarmos para o proxímo tópico de RLS, cabe mencionar uma nota sobre
 
 ### Teste de Hipótese sob um Único Parametro
  
-Agora precisamos testar se nossa estimativa é estatisticamente igual a zero ou se ela é diferente de zero. Há evidências que a nossa variável $X$ afeta a nossa variável $Y$ na população? Na maior parte do tempo testamos hipóteses do tipo 
+Agora precisamos testar se nossa estimativa é estatisticamente igual a zero ou se ela é diferente de zero. 
+
+*Há evidências que a nossa variável $X$ afeta a nossa variável $Y$ na população?*
+
+Na maior parte do tempo testamos hipóteses do tipo 
 
 $$H_0: {\beta_j}=0$$
-Na hipótese principal testamos a situação que $X$ não afeta $Y$. Na hipótese alternativa: 
+Na hipótese principal testamos a situação que $X$ não afeta $Y$ na população sob análise. Na hipótese alternativa: 
 
 $$H_1: \beta_j \neq 0$$
 
-Testamos a hipótese que $X$ afeta $Y$ nessa população. Graficamente temos a figura abaixo. 
+Testamos a hipótese que $X$ afeta $Y$ nessa população. Graficamente temos a figura abaixo onde a média populacional é igual a 0: 
 
 
 ![Teste de hipótese, Fonte:CUEMATH ](figuras\thbicaudal.png)
 
- **Estatística de Teste**: 
+**Estatística de Teste**: 
 
-Este é um valor calculado a partir dos dados da amostra que é usado para avaliar a probabilidade de observar tal valor se a hipótese nula fosse verdadeira. Ele que vai dizer se estamos na área amarela ou azul da figura acima. 
+Este é um valor calculado a partir dos dados da amostra que é usado para avaliar a probabilidade de observar tal valor se a hipótese nula fosse verdadeira ($H_0: {\beta_j}=0$). Ele que vai dizer se estamos na área amarela ou azul da figura acima. 
+
 
 #### Valor-p: 
 
 **O valor-p** é a probabilidade de observar uma estatística de teste tão extrema quanto, ou mais extrema do que, aquela calculada a partir dos dados da amostra, sob a suposição de que a hipótese nula seja verdadeira. Em outras palavras, mede quão provável é obter os resultados observados se a hipótese nula for correta.
 
-**Interpretação**: Um valor-p pequeno (tipicamente menor que um nível de significância predefinido, comumente 0,05) sugere que os dados observados são improváveis de ter ocorrido se a hipótese nula fosse verdadeira. Portanto, fornece evidências contra a hipótese nula, e os pesquisadores podem rejeitar a hipótese nula em favor da hipótese alternativa. Por outro lado, um valor-p grande indica que os dados observados são consistentes com a hipótese nula, e há evidências insuficientes para rejeitá-la.
+**Interpretação**: Um valor-p pequeno (tipicamente menor que um nível de significância predefinido, comumente 0,05) sugere que os dados observados são improváveis de ter ocorrido se a hipótese nula fosse verdadeira. Portanto, fornece evidências contra a hipótese nula, e os pesquisadores podem rejeitar a hipótese nula em favor da hipótese alternativa. Por outro lado, um valor-p grande indica que os dados observados são consistentes com a hipótese nula, e as evidências evidências são insuficientes para rejeitá-la.
 
 
 
@@ -172,11 +198,11 @@ Este é um valor calculado a partir dos dados da amostra que é usado para avali
 
 Vamos utilizar aqui o nosso banco de dados anterior sobre feminicídio. É um banco com poucas obserações e possui fim didátco, apesar de serem dados reais.
 
-Uma questão incial é entender quem será $Y$ e quem será $X$. Estamos querendo entender a taxa de feminicídio. A questão é, quais são seus determinantes? Aqui precisamos de alguma teoria...mas or hora, vamos ter como hipótese inicial que quanto maior a taxa de homícídio espera-se que em média a taxa de feminicídio aumente. :
+Uma questão incial é entender quem será $Y$ e quem será $X$. Estamos querendo entender a taxa de feminicídio. A questão é, quais são seus determinantes? Aqui precisamos de alguma teoria...mas por hora, vamos ter como hipótese inicial que quanto maior a taxa de homícídio (ou maior a violência no estado) espera-se que em média a taxa de feminicídio aumente:
 
 $$Feminc_{tx} = \beta_0 + \beta_1 Homici_{tx} + u$$
 
-Apesar de parecer "muito complicado" na teoria, na prática o `r` estima uma RLS em segundos. A função para estimar é a`lm`, ou linear model.
+Apesar de parecer "muito complicado" na teoria, na prática o `R` estima uma RLS em segundos. A função para estimar é a`lm`, ou linear model.
 
 ```{r}
 ### Aplicação da RLS - Método dos Mínimos Quadrados Ordinários
