@@ -10,7 +10,7 @@ format: html
 
 ## Introdução
 
-Vamos aqui importar os dados de arquivos compartilhados o Google Drive. Vamos usar aqui arquivos que não precisam de autenticação. São aqueles que *" qualquer um com o link"*  podem acessar. Para isso terá que utilizar o pacote `googledrive`. 
+Vamos aqui importar os dados de arquivos compartilhados o Google Drive. Vamos usar arquivos que não precisam de autenticação. São aqueles que *" qualquer um com o link"*  podem acessar. Para isso terá que utilizar o pacote `googledrive`. 
 
 ### Encontrando o ID
 
