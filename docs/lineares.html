@@ -827,14 +827,26 @@ dados$Lnhomic_tx 0.2915325798   0.185564 1.571062163 0.1287399</code></pre>
 <p>Problemas que façam com que um dos <span class="math inline">\(x_1, ...., x_k\)</span> ser correlacionado com <span class="math inline">\(u\)</span>, invalida a hipótese acima. Tal hipótese implica em não viés do MQO.</p>
 <section id="exemplos-de-regressão-multipla-no-contexto-jurídico" class="level3" data-number="7.7.1">
 <h3 data-number="7.7.1" class="anchored" data-anchor-id="exemplos-de-regressão-multipla-no-contexto-jurídico"><span class="header-section-number">7.7.1</span> Exemplos de Regressão Multipla no Contexto Jurídico</h3>
-<p><strong>Determinação de Fatores que Afetam o Valor de Indenizações:</strong></p>
-<p>Variáveis Independentes: Idade da Vítima, Gravidade do Dano, Jurisdição. Variável Dependente: Valor da Indenização.Objetivo: Analisar como a idade da vítima, a gravidade do dano e a jurisdição influenciam o valor das indenizações concedidas</p>
+<p>[<strong>Determinação de Fatores que Afetam o Valor de Indenizações:</strong>] {.underline}</p>
+<ul>
+<li><strong>Variável Dependente (<span class="math inline">\(Y\)</span>)</strong>: Valor da Indenização.</li>
+<li><strong>Variáveis Independentes (<span class="math inline">\(X\)</span>)</strong>: Idade da Vítima, Gravidade do Dano, Jurisdição.</li>
+<li><strong>Objetivo</strong>: Analisar como a idade da vítima, a gravidade do dano e a jurisdição influenciam o valor das indenizações concedidas</li>
+</ul>
 <p><span class="math display">\[Indenização = \beta_0 + \beta_1 idade+ \beta_2 Gravidade + \beta_2 Jurisdisção + u\]</span></p>
-<p><strong>Análise de Variáveis que Influenciam Taxas de Condenação em Casos Criminais:</strong></p>
-<p>Variáveis Independentes: Idade do Réu, Tipo de Crime, Local do Julgamento. Variável Dependente: Taxa de Condenação.Objetivo: Investigar como a idade do réu, o tipo de crime e o local do julgamento afetam a probabilidade de condenação.</p>
+<p><u><strong>Análise de Variáveis que Influenciam Taxas de Condenação em Casos Criminais:</strong></u></p>
+<ul>
+<li><strong>Variável Dependente (<span class="math inline">\(Y\)</span>)</strong>: Taxa de Condenação.</li>
+<li><strong>Variáveis Independentes(<span class="math inline">\(X\)</span>)</strong>: Idade do Réu, Tipo de Crime, Local do Julgamento.</li>
+<li><strong>Objetivo</strong>: Investigar como a idade do réu, o tipo de crime e o local do julgamento afetam a probabilidade de condenação.</li>
+</ul>
 <p><span class="math display">\[Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Local  + \beta_3  crime + u\]</span></p>
-<p><strong>Análise de Fatores que Influenciam a Taxa de Feminicídio:</strong></p>
-<p>Variáveis Independentes (X): Taxa de Desemprego, Índice de Educação, Presença de Políticas de Proteção à Mulher. Variável Dependente (Y): Taxa de Feminicídio por 100.000 mulheres. Objetivo: Investigar como o desemprego, o nível de educação e a existência de políticas de proteção à mulher estão relacionados à taxa de feminicídio em diferentes regiões.</p>
+<p><u><strong>Análise de Fatores que Influenciam a Taxa de Feminicídio:</strong></u></p>
+<ul>
+<li><strong>Variável Dependente (<span class="math inline">\(Y\)</span>)</strong>: Taxa de Feminicídio por 100.000 mulheres</li>
+<li><strong>Variáveis Independentes (<span class="math inline">\(X\)</span>)</strong>: Taxa de Desemprego, Índice de Educação, Presença de Políticas de Proteção à Mulher.</li>
+<li><strong>Objetivo</strong>: Investigar como o desemprego, o nível de educação e a existência de políticas de proteção à mulher estão relacionados à taxa de feminicídio em diferentes regiões.</li>
+</ul>
 <p><span class="math display">\[Tx.feminicidio = \beta_0 + \beta_1 desemprego + \beta_2 educ + \beta_3 política + u \]</span></p>
 </section>
 <section id="a-interpretação-da-equação-de-regressão-de-mqo" class="level3" data-number="7.7.2">
@@ -844,23 +856,23 @@ dados$Lnhomic_tx 0.2915325798   0.185564 1.571062163 0.1287399</code></pre>
 <p>O coefiente <span class="math inline">\(\beta_j\)</span>, com <span class="math inline">\(j=1,...k\)</span>, mede o efeito do incremento de uma unidade de <span class="math inline">\(x_j\)</span> em <span class="math inline">\(y\)</span>. Isso continua com a mesma interpretação para modelos que usam o log.</p>
 <p>Suponha que estejamos interessados no impacto de <span class="math inline">\(x_1\)</span>. Podemos fazer o seguinte exercício: Tudo o mais constante qual o impacto de <span class="math inline">\(x_1\)</span> em <span class="math inline">\(y\)</span>:</p>
 <p><span class="math display">\[\frac{\Delta y}{\Delta x} = \beta_1 \]</span></p>
-<p>Manter outros fatores fixos permite o cientista social, “mimetizar” um experimento, tal qual nas Ciências Naturais. Obviamente, isso não é tão simples assim. Entretanto, manter outros fatores fixos, e supondo que <span class="math display">\[E(u|x_1, . . . ,x_k) = 0\]</span> , nos aproxíma de afirmações de cunho causal.</p>
+<p>Manter outros fatores fixos permite o cientista social, “mimetizar” um experimento, o qual é muito utilizado nas Ciências Naturais. Obviamente, isso não é tão simples assim. Entretanto, manter outros fatores fixos, e supondo que <span class="math display">\[E(u|x_1, . . . ,x_k) = 0\]</span> , nos aproxíma de afirmações de cunho causal.</p>
 </section>
 </section>
 <section id="estimação-dos-k-parametros-na-rlm" class="level2" data-number="7.8">
 <h2 data-number="7.8" class="anchored" data-anchor-id="estimação-dos-k-parametros-na-rlm"><span class="header-section-number">7.8</span> Estimação dos k parametros na RLM</h2>
 <section id="estimadores-de-mqo" class="level3" data-number="7.8.1">
 <h3 data-number="7.8.1" class="anchored" data-anchor-id="estimadores-de-mqo"><span class="header-section-number">7.8.1</span> Estimadores de MQO</h3>
-<p>A mecânica para conseguirmos estimativas de <span class="math inline">\(\beta_j\)</span>, fica uma pouco mais complicada. Felizmente, os <em>softwares</em>, tais como o <em>R</em>, fornecem essas estimativas com muita facilidade. Não obstante, convêm apresentar uma abordagem para o calculo desses parâmetros. Utilizaremos álgebra de matrizes para mostrar um “algoritmo” para calcular esses <span class="math inline">\(\beta_j\)</span>. Em verdade, esse é o algoritmo utilizado pela função <code>lm()</code> do <em>R</em> no computo dos estimadores.</p>
+<p>A mecânica para conseguirmos estimativas de <span class="math inline">\(\beta_j\)</span>, fica uma pouco mais complicada. Felizmente, os <em>softwares</em>, tais como o <code>R</code>, fornecem essas estimativas com muita facilidade. Não obstante, convêm apresentar uma abordagem para o cálculo desses parâmetros. Utilizaremos álgebra de matrizes para mostrar um “algoritmo” para calcular esses <span class="math inline">\(\beta_j\)</span>. Em verdade, esse é o algoritmo utilizado pela função <code>lm()</code> do <code>R</code> no computo dos estimadores.</p>
 <p>Considere o modelo para a <span class="math inline">\(i\)</span>-ésima observação</p>
 <p><span class="math display">\[y_i = \beta_0 + \beta_1 x_{i1} + \beta_{2} x_{i2} + \beta_{3} x_{i3} + \ldots + \beta_k x_{ik} + u\]</span></p>
 <p>como temos <span class="math inline">\(n\)</span> observações (tamanho de nossa amostra), podemos organizar esses valores em vetores e matrizes.</p>
 <p>Assim, representamos o modelo de RLM da seguinte maneira:</p>
-<p><span class="math display">\[\mathbf{y} = \mathbf{X} \boldsymbol{\beta} + \mathbf{u}\]</span></p>
+<p><span class="math display">\[\mathbf{Y} = \mathbf{X} \boldsymbol{\beta} + \mathbf{u}\]</span></p>
 <p>Queremos encontrar um estimador de <span class="math inline">\(\boldsymbol{\beta}\)</span>, que chamaremos de <span class="math inline">\(\boldsymbol{\hat{\beta}}\)</span>. Esse estimador sera dado por:</p>
 <p><span class="math display">\[\hat{\boldsymbol{\beta}} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}\]</span></p>
 <p>Onde <span class="math inline">\(\mathbf{X}^T\)</span> é a matriz transposta de <span class="math inline">\(\mathbf{X}\)</span>, e <span class="math inline">\((\mathbf{X}^T \mathbf{X})^{-1}\)</span> é a matriz inversa da seguinte multiplicação de matrizes, <span class="math inline">\((\mathbf{X}^T \mathbf{X})\)</span></p>
-<p>Esse vetor de estimativas irá nos fornecer os valores para os <span class="math inline">\(\beta_j\)</span>,com <span class="math inline">\(j=1,...,k\)</span>.</p>
+<p>Esse vetor de estimativas irá nos fornecer os valores para os <span class="math inline">\(\beta_j\)</span>, com <span class="math inline">\(j=1,...,k\)</span>.</p>
 </section>
 <section id="estimativas-de-mqo" class="level3" data-number="7.8.2">
 <h3 data-number="7.8.2" class="anchored" data-anchor-id="estimativas-de-mqo"><span class="header-section-number">7.8.2</span> Estimativas de MQO</h3>
@@ -894,7 +906,8 @@ Multiple R-squared:  0.1408,    Adjusted R-squared:  0.06921
 F-statistic: 1.967 on 2 and 24 DF,  p-value: 0.1618</code></pre>
 </div>
 </div>
-<p>A leitura dos resultados é análoga ao que já fizemos anteriormente. O aumento de uma unidade na taxa de homicídio aumenta em 0,11 a taxa de feminicídio e é significante a 10%. Entretanto, não há evidências de que a renda pc tem efeito sobre a taxa de feminicídio. Assim, estados mais violentos tendem a ter mais feminicídios. Entretanto, estados mais pobres e mais ricos possuem taxas similares de feminicídio.</p>
+<p>A leitura dos resultados é análoga ao que já fizemos anteriormente. O aumento de uma unidade na taxa de homicídio aumenta em 0,11 a taxa de feminicídio e é significante a 10%. Veja o p-valor de 0.059. Entretanto, não há evidências de que a renda pc tem efeito sobre a taxa de feminicídio.</p>
+<p>Assim, estados mais violentos tendem a ter mais feminicídios. Entretanto, estados mais pobres e mais ricos possuem taxas similares de feminicídio.</p>
 </section>
 <section id="qualidade-do-ajuste-na-regressão-linear-multipla" class="level3" data-number="7.8.3">
 <h3 data-number="7.8.3" class="anchored" data-anchor-id="qualidade-do-ajuste-na-regressão-linear-multipla"><span class="header-section-number">7.8.3</span> Qualidade do Ajuste na Regressão Linear Multipla</h3>
@@ -904,49 +917,47 @@ F-statistic: 1.967 on 2 and 24 DF,  p-value: 0.1618</code></pre>
 <li><strong>Modelo com Homicídio e Renda</strong>: <span class="math inline">\(R^2=0,14\)</span></li>
 </ul>
 <p>Veja que o <span class="math inline">\(R^2\)</span> aumentou ao incluir a renda pc.</p>
-<p>Por isso, os softwares geralmente reportam uma outra estatística de ajuste o R-quadrado ajustado,<span class="math inline">\(\bar{R}^2\)</span>:</p>
+<p>Por isso, os softwares geralmente reportam uma outra estatística de ajuste o R-quadrado ajustado, <span class="math inline">\(\bar{R}^2\)</span>:</p>
 <p><span class="math display">\[\bar{R}^2 = 1 - \frac{(1 - R^2)(n - 1)}{n - k - 1}\]</span></p>
-<p>O <span class="math inline">\(\bar{R}^2\)</span>, tal como expresso acima conta com a presença do <span class="math inline">\(R^2\)</span> original, mas note que, no denominador estamos dividindo por <span class="math inline">\(n-k-1\)</span>, onde <span class="math inline">\(n\)</span> é o tamanho da amostra em mãos, e <span class="math inline">\(k-1\)</span> se referem ao fato de termos <span class="math inline">\(k\)</span> variáveis explicativas e uma constante. Portanto, o <span class="math inline">\(\bar{R}^2\)</span>, impões uma penalidade à inclusão de variáveis independentes em um modelo de regressão.No nosso modelo:</p>
+<p>O <span class="math inline">\(\bar{R}^2\)</span>, tal como expresso acima conta com a presença do <span class="math inline">\(R^2\)</span> original, mas note que, no denominador estamos dividindo por <span class="math inline">\(n-k-1\)</span>, onde <span class="math inline">\(n\)</span> é o tamanho da amostra em mãos, e <span class="math inline">\(k-1\)</span> se referem ao fato de termos <span class="math inline">\(k\)</span> variáveis explicativas e uma constante. Portanto, o <span class="math inline">\(\bar{R}^2\)</span>, impões uma penalidade à inclusão de variáveis independentes em um modelo de regressão. No nosso modelo:</p>
 <ul>
-<li><strong>Modelo somente com Homicídio</strong>: <span class="math inline">\(R^2=0,12\)</span> e <span class="math inline">\(R^2_{ajust}= 0,094\)</span></li>
-<li><strong>Modelo com Homicídio e Renda</strong>: <span class="math inline">\(R^2=0,14\)</span> e <span class="math inline">\(R^2_{ajust}= 0,069\)</span></li>
+<li><strong>Modelo somente com Homicídio</strong>: <span class="math inline">\(R^2=0,12\)</span> e <span class="math inline">\(\bar{R}^2= 0,094\)</span></li>
+<li><strong>Modelo com Homicídio e Renda</strong>: <span class="math inline">\(R^2=0,14\)</span> e <span class="math inline">\(\bar{R}^2= 0,069\)</span></li>
 </ul>
-<p>Podemos notar que a inclusão da renda pc contribui muito pouco para a explicação do modelo mas mas prejudicou as estimativas (menor grau de liberdade. dessa forma observa-se que o <span class="math inline">\(R^2_{ajust}\)</span> ficou menor.</p>
-<p>Não obstante, cabe destacar que um <span class="math inline">\(R^2\)</span> baixo não é uma evidencia definitiva contra nosso modelo. Em ciências sociais é comum verificarmos <span class="math inline">\(R^2\)</span> relatvamente pequenos. Isso significa que, embora coletivamente as variáveis explicativas não expliquem muito das variações de <span class="math inline">\(y\)</span>, é possível que as estimativas de MQO sejam efeitos parciais confiáveis- tudo o mais constante - de cada <span class="math inline">\(x_j\)</span> sobre <span class="math inline">\(y\)</span>.</p>
+<p>Podemos notar que a inclusão da renda pc contribui muito pouco para a explicação do modelo mas prejudicou as estimativas (menor grau de liberdade). Dessa forma observa-se que o <span class="math inline">\(R^2_{ajust}\)</span> ou <span class="math inline">\(\bar{R}^2\)</span> ficou menor.</p>
+<p>Não obstante, cabe destacar que um <span class="math inline">\(R^2\)</span> baixo não é uma evidencia definitiva contra nosso modelo. Em ciências sociais é comum verificarmos <span class="math inline">\(R^2\)</span> relatvamente pequenos. Isso significa que, embora coletivamente as variáveis explicativas não expliquem muito das variações de <span class="math inline">\(Y\)</span>, é possível que as estimativas de MQO sejam efeitos parciais confiáveis- tudo o mais constante - de cada <span class="math inline">\(X_j\)</span> sobre <span class="math inline">\(Y\)</span>.</p>
 </section>
 <section id="uso-de-variáveis-qualitativas-na-análise-de-rlm" class="level3" data-number="7.8.4">
 <h3 data-number="7.8.4" class="anchored" data-anchor-id="uso-de-variáveis-qualitativas-na-análise-de-rlm"><span class="header-section-number">7.8.4</span> Uso de Variáveis Qualitativas na Análise de RLM</h3>
 <p>O uso de variáveis binárias é a alternativa para utilizarmos variáveis qualitativas (discretas ou categóricas) no modelo de regressão. Dessa forma, variáveis que possuem categorias (homem/mulher; regiões, típo de homicídio). Considere os exemplos mencionados anteriormente.</p>
+<p><u><strong>Determinação de Fatores que Afetam o Valor de Indenizações:</strong></u></p>
 <ul>
-<li><strong>Determinação de Fatores que Afetam o Valor de Indenizações:</strong>
-<ul>
-<li><em>Variáveis Independentes</em>: Idade da Vítima, Gravidade do Dano, Jurisdição.</li>
-<li><em>Variável Dependente</em>: Valor da Indenização.</li>
-<li><em>Objetivo</em>: Analisar como a idade da vítima, a gravidade do dano e a jurisdição influenciam o valor das indenizações concedidas</li>
-</ul></li>
+<li><strong>Variável Dependente <span class="math inline">\((Y)\)</span></strong>: Valor da Indenização.</li>
+<li><strong>Variáveis Independentes <span class="math inline">\((X)\)</span></strong>: Idade da Vítima, Gravidade do Dano, Jurisdição.</li>
+<li><strong>Objetivo</strong>: Analisar como a idade da vítima, a gravidade do dano e a jurisdição influenciam o valor das indenizações concedidas</li>
 </ul>
 <p><span class="math display">\[Indenização = \beta_0 + \beta_1 idade+ \beta_2 Gravidade + \beta_2 Jurisdisção + u\]</span></p>
+<p><u><strong>Análise de Variáveis que Influenciam Taxas de Condenação em Casos Criminais:</strong></u></p>
 <ul>
-<li><strong>Análise de Variáveis que Influenciam Taxas de Condenação em Casos Criminais:</strong>
-<ul>
-<li><em>Variáveis Independentes</em>: Idade do Réu, Tipo de Crime, Local do Julgamento.</li>
-<li><em>Variável Dependente</em>: Taxa de Condenação.</li>
-<li><em>Objetivo</em>: Investigar como a idade do réu, o tipo de crime e o local do julgamento afetam a probabilidade de condenação.</li>
-</ul></li>
+<li><strong>Variável Dependente <span class="math inline">\((Y)\)</span></strong>: Taxa de Condenação.</li>
+<li><strong>Variáveis Independentes <span class="math inline">\((X)\)</span></strong>: Idade do Réu, Tipo de Crime, Local do Julgamento.</li>
+<li><strong>Objetivo</strong>: Investigar como a idade do réu, o tipo de crime e o local do julgamento afetam a probabilidade de condenação.</li>
 </ul>
 <p><span class="math display">\[Tx.Condenação = \beta_0 + \beta_1  idade  +  \beta_2 Local  + \beta_3  crime + u\]</span></p>
+<p><u><strong>Análise de Fatores que Influenciam a Taxa de Feminicídio:</strong></u></p>
 <ul>
-<li><strong>Análise de Fatores que Influenciam a Taxa de Feminicídio:</strong>
-<ul>
-<li><em>Variáveis Independentes</em> <span class="math inline">\((X)\)</span>: Taxa de Desemprego, Índice de Educação, Presença de Políticas de Proteção à Mulher.</li>
-<li><em>Variável Dependente</em> <span class="math inline">\((Y)\)</span>: Taxa de Feminicídio por 100.000 mulheres.</li>
-<li><em>Objetivo</em>: Investigar como o desemprego, o nível de educação e a existência de políticas de proteção à mulher estão relacionados à taxa de feminicídio em diferentes regiões.</li>
-</ul></li>
+<li><strong>Variável Dependente <span class="math inline">\((Y)\)</span></strong>: Taxa de Feminicídio por 100.000 mulheres.</li>
+<li><strong>Variáveis Independentes <span class="math inline">\((X)\)</span></strong>: Taxa de Desemprego, Índice de Educação, Presença de Políticas de Proteção à Mulher.</li>
+<li><strong>Objetivo</strong>: Investigar como o desemprego, o nível de educação e a existência de políticas de proteção à mulher estão relacionados à taxa de feminicídio em diferentes regiões.</li>
 </ul>
 <p><span class="math display">\[Tx.feminicidio = \beta_0 + \beta_1 desemprego + \beta_2 educ + \beta_3 política + u \]</span></p>
 <p>Em todos esses exemplos temos o que denominamos de <strong>variáveis qualitativas</strong>. No primeiro exemplo, gravidade e jurisdição não são quantificaveis. No segundo exemplo, o tipo de crime, e a localidade. Por fim, no último exemplo, a variável que indica ou não a presença de uma política pública de proteção a mulher também é qualitativa.</p>
 <p>Felizmente, isso não traz problemas adcionais a estimação de MQO. Pelo menos quando tais variáveis aparecem como variáveis explicativas. Mais a frente veremos o que acontece quando a variável dependente é do tipo qualitativa.</p>
-<p>Duas coisas mudam quando temos as variáveis qualitativas como regressores. Em primeiro lugar temos que organizar essas informações no banco de dados de modo coerente. Em segundo lugar, a introdução de variáveis qualitativas muda a interpretação dos resultados.</p>
+<p>Duas coisas mudam quando temos as variáveis qualitativas como regressores:</p>
+<ol type="1">
+<li>Em primeiro lugar temos que organizar essas informações no banco de dados de modo coerente.</li>
+<li>Em segundo lugar, a introdução de variáveis qualitativas muda a interpretação dos resultados.</li>
+</ol>
 <p>Fatores qualitativos geralmente aparecem na forma de informações binárias, também denominadas,<em>dummy</em>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -958,18 +969,15 @@ Variável Binária ou Dummy:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>É uma variável que assume o valor 1 se a “condição occorre” e 0 caso o contrário.</p>
+<p>É uma variável que assume o valor 1 se a “<u>condição occorre</u>” e 0 caso o contrário.</p>
 </div>
 </div>
 <p><u><strong>Exemplos:</strong></u></p>
-<p><strong>O crime de feminicídio ocorreu na região central?</strong></p>
-<ul>
-<li>se sim, ela recebe o valor 1,</li>
-<li>se não ocorreu a variável recebe o valor 0.</li>
-</ul>
-<p>Nesse caso teremos uma coluna em nosso banco de dados denominada centro, nas quais a linha recebe o valor 1 caso o crime tenha ocorrido no centro e 0 caso o contrário.</p>
+<p><strong>O crime de feminicídio ocorreu na região central?</strong> * <em>Variável Binária</em>: <code>crime_centro</code> (exemplo de nome) * se sim, ela recebe o valor 1, * se não ocorreu a variável recebe o valor 0.</p>
+<p>Nesse caso teremos uma coluna em nosso banco de dados denominada <code>crime_centro</code>, na qual a linha recebe o valor 1 caso o crime tenha ocorrido no centro e 0 caso o contrário.</p>
 <p><strong>O crime foi considerado grave?</strong></p>
 <ul>
+<li><em>Variável Binária</em>: <code>cri_grav</code> (exemplo de nome)</li>
 <li>Se sim, recebe o valor 1,</li>
 <li>caso contráriorecebe o valor 0.</li>
 </ul>
@@ -980,13 +988,13 @@ Variável Binária ou Dummy:
 <li>1 se trabalha e 0 se não trabalha</li>
 <li>1 se feminicídio e 0 se não for feminicídio.</li>
 </ul>
-<p>Utilizar 1 ou 0 é, de fato, um criterio arbitrario, mas essa escolha reside justamente na vantagem de se capturar informações importantes que tornam a interpretação dos resultados mais simples.</p>
-<p>As observações que tiveram 1 como valor serão comparadas com aquelas observações que ficaram com o valor 0. Essas observações seriam nosso “grupo de comparação/grupo base”.</p>
+<p>Utilizar 1 ou 0 é, de fato, um criterio arbitrário, mas essa escolha reside justamente na vantagem de se capturar informações importantes que tornam a interpretação dos resultados mais simples.</p>
+<p>As observações que receberam 1 como valor serão comparadas com aquelas observações que ficaram com o valor 0. Essas observações seriam nosso “grupo de comparação/grupo base”.</p>
 <section id="uma-única-variável-dummy-independente" class="level4" data-number="7.8.4.1">
 <h4 data-number="7.8.4.1" class="anchored" data-anchor-id="uma-única-variável-dummy-independente"><span class="header-section-number">7.8.4.1</span> Uma única Variável Dummy Independente</h4>
-<p>A forma mais simples de incorporar uma variável qualitativa e simplismente adcionarmos ela na equação de regressão.</p>
-<p>Considere o exemplo prático retirado do livro do Wooldridge. Queremos relacionar anos de estudo e salários. Obviamente, o exemplo é bastante simples, mas será útil para avaliarmos a questão.</p>
-<p><span class="math display">\[salarioh = \beta_0 + \delta_0 feminino + \beta_1 educ + \beta_3 exper + \beta_4perm + u \]</span> Nesse exemplo, estamos tentando entender os determinantes do salário. O salário pode ser explicado pela educação, experência, tempo no cargo e pelo fato de ser mulher. A variável feminino assume o valor 1, se o individuo for do sexo feminino e 0, caso o contrário. Na equação <span class="math inline">\(\delta_0\)</span> mede a diferença no salário entre homems e mulheres, dado os mesmos anos de estudos, experiência e tempo no cargo, e evidentemente o mesmo <span class="math inline">\(u\)</span>.</p>
+<p>A forma mais simples de incorporar uma variável qualitativa e simplismente adicionarmos a variável binária na equação de regressão.</p>
+<p>Considere o exemplo prático retirado do livro do Wooldridge. Queremos entender os determinantes dos salários. Obviamente, o exemplo é bastante simples, mas será útil para avaliarmos a questão.</p>
+<p><span class="math display">\[salario_h = \beta_0 + \delta_0 feminino + \beta_1 educ + \beta_3 exper + \beta_4perm + u \]</span> Nesse exemplo, estamos tentando entender os quais os fatores que afetam os salários dos indivíduos. O salário pode ser explicado pela educação, experência, tempo no cargo e pelo fato de ser mulher. A variável feminino assume o valor 1, se o individuo for do sexo feminino e 0, caso o contrário. Na equação <span class="math inline">\(\delta_0\)</span> mede a diferença no salário entre homems e mulheres, dado os mesmos anos de estudos, experiência e tempo no cargo, e evidentemente o mesmo <span class="math inline">\(u\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(wage1, <span class="at">package=</span> <span class="st">"wooldridge"</span>)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1016,7 +1024,8 @@ Multiple R-squared:  0.3635,    Adjusted R-squared:  0.3587
 F-statistic:  74.4 on 4 and 521 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>O coeficiente estimado para a binária que identifica mulheres foi de -1,81 e significativa a 1%. Isso indica que em média, uma mulher ganha menos US$ 1,81 por hora do que um homem com a mesma educação, experiência e tempo no cargo. Veja a figura abaixo ela mostra o efeito da binária feminina. Note que para um mesmo níve de escolaridade e o salário do homem é maior do que o salário da mulher. A dummy “desloca” o intercepto</p>
+<p>O coeficiente estimado para a binária que identifica mulheres foi de -1,81 e significativa a 1%. Isso indica que em média, uma mulher ganha menos US$ 1,81 por hora do que um homem com a mesma educação, experiência e tempo no cargo.</p>
+<p>Veja a figura abaixo ela mostra o efeito da binária feminina. Note que para um mesmo nível de escolaridade, o salário do homem é maior do que o salário da mulher. A dummy “desloca” o intercepto</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figuras\dummy1.png" class="img-fluid figure-img"></p>
@@ -1071,8 +1080,9 @@ F-statistic: 62.04 on 5 and 520 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 <section id="o-uso-de-dummies-para-categorias-multiplas-e-interação-entre-a-dummy-e-a-variável-dependente" class="level3" data-number="7.8.5">
 <h3 data-number="7.8.5" class="anchored" data-anchor-id="o-uso-de-dummies-para-categorias-multiplas-e-interação-entre-a-dummy-e-a-variável-dependente"><span class="header-section-number">7.8.5</span> O uso de Dummies para categorias multiplas e Interação entre a dummy e a variável dependente</h3>
-<p>Considere a equação abaixo</p>
-<p><span class="math display">\[log(salarioh) = \beta_0 + \beta_1  hsolteiro  +  \beta_2 mcasadas  + \beta_3 msolteiras + \beta_4educ + \beta_5exper + \beta_6exper^2 + u\]</span> Note que, definimos uma dummy para cada grupo e o o grupo de comparação é o conunto de homens solteiros.As estimativas das dummies acima irão captar a diferença proporcional nos salarios-horas relativamente aos homens solteiros.</p>
+<p>Considere a equação abaixo considerando o mesmo banco de dados anterior:</p>
+<p><span class="math display">\[log(salarioh) = \beta_0 + \beta_1  hsolteiro  +  \beta_2 mcasadas  + \beta_3 msolteiras + \beta_4educ + \beta_5exper + \beta_6exper^2 + u\]</span> Agora vamos dividir entre homens e mulheres, casadas(os) solteiras(os). Note que definimos uma dummy para cada grupo e o grupo de comparação utilizaremos o grupo de homens casados.</p>
+<p>As estimativas das dummies acima irão captar para cada grupo a diferença proporcional nos salarios-horas relativamente aos homens casados.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Aplicação de RLM multiplas dummies</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1130,23 +1140,23 @@ F-statistic: 61.86 on 7 and 518 DF,  p-value: &lt; 2.2e-16</code></pre>
 <ul>
 <li><em>Homens solteiros</em> recebem cerca de 22% a menos.</li>
 <li><em>Mulheres solteiras</em> recebem 32,6% a menos.</li>
-<li><em>Mulheres csadas</em> recebem 41,5% a menos.</li>
+<li><em>Mulheres casadas</em> recebem 41,5% a menos.</li>
 </ul>
 <p>Mantendo fixas educaçao, experiência e tempo no emprego.</p>
 <p><strong>Variáveis ao Quadrado: interpretando</strong></p>
-<p>Note que temos uma nova variável a experência ao quadrado. A variável ao quadrado tenta capturar a seguinte ideia: se cada ano a mais de experiência sempre gera a mesmo incremento de salário, ou se o indivíduo recebe cada vez menos por cada ano a mais de experiência. Temos agora uma mudança de interpretação</p>
+<p>Note que temos uma nova variável, a experência, ao quadrado. A variável ao quadrado tenta capturar a seguinte ideia: se cada ano a mais de experiência sempre gera o mesmo incremento de salário, ou se o recebe cada vez menos por cada ano a mais de experiência. Temos agora uma mudança de interpretação</p>
 <p><span class="math display">\[\frac{\% \Delta y }{\Delta x}= 100\beta_5 +200\beta_6exper  \]</span></p>
-<p>Temos com base nas estimatvas:</p>
-<p><span class="math display">\[\frac{\% \Delta y }{\Delta x}= 100\times0,0297 +200\times -0,000592 \times exper  \]</span></p>
+<p>Com base nas estimatvas:</p>
+<p><span class="math display">\[\frac{\% \Delta y }{\Delta x}= 100\times0,0297 +200\times -0,000592 \times exper\]</span></p>
 <p><span class="math display">\[\frac{\% \Delta y }{\Delta x}= 2,97 -0,118 \times exper  \]</span> Vamos pensar em uma pessoa que tem 0 anos de experiência e adquire um ano. Logo:</p>
 <p><span class="math display">\[\frac{\% \Delta y }{1}= 2,97 -0,118 \times 1 = 2,85\% \]</span> Ela ira receber 2,85% a mais de salário devido a essa experiência adquirida. Vejamos agora uma pessoa com 9 anos e adquire mais um ano, vai para 10. Logo</p>
 <p><span class="math display">\[\frac{\% \Delta y }{1}= 2,97 -0,118 \times 10 = 1,79\% \]</span> Esse ano a mais agora adicionou apenas 1,79% no seu salário. Para finalizar vejamos de 24 para 25 anos de experiência</p>
-<p><span class="math display">\[\frac{\% \Delta y }{1}= 2,97 -0,118 \times 25 = 0,02\% \]</span> Adiciona praticamente zero. E a partir desse ponto a adição será negativa, mais experiência terá menor salário. Assim</p>
-<p><span class="math display">\[ 2,97 -0,118 \times exper = 0 \implies exper=\frac{2,97}{0,118}=25,16 \]</span> O salário vai aumentando até chegar a experiência de 25 anos, depois desse ponto o mercado tende a penalizar com salários enores quem tem mais experiência.</p>
+<p><span class="math display">\[\frac{\% \Delta y }{1}= 2,97 -0,118 \times 25 = 0,02\% \]</span> Adiciona praticamente zero. E a partir desse ponto a adição será negativa, mais experiência terá menor salário. Assim o ponto de mudança será:</p>
+<p><span class="math display">\[ 2,97 -0,118 \times exper = 0 \implies exper=\frac{2,97}{0,118}=25,16 \]</span> O salário vai aumentando até chegar a experiência de 25 anos, depois desse ponto o mercado tende a penalizar com salários menores quem tem mais experiência.</p>
 </section>
 <section id="incorporando-informações-ordinais-com-o-uso-de-variáveis-dummy." class="level3" data-number="7.8.6">
 <h3 data-number="7.8.6" class="anchored" data-anchor-id="incorporando-informações-ordinais-com-o-uso-de-variáveis-dummy."><span class="header-section-number">7.8.6</span> Incorporando Informações Ordinais com o uso de Variáveis Dummy.</h3>
-<p>Vamos agora entender a criação de binárias para variáveis com várias categorias. Uma variável com categoria tradicional é a região onde mora o indivíduo. Podemos ver isso no nosso banco anterior chamado <code>dados</code>:</p>
+<p>Vamos agora entender a criação de binárias para variáveis com várias categorias. Um exemplo clássico de variável com diversas categorias é a região onde mora o indivíduo. Podemos ver isso no nosso banco anterior chamado <code>dados</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dados<span class="sc">$</span>regiao)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1155,7 +1165,7 @@ CO  N NE  S SD
  4  7  9  3  4 </code></pre>
 </div>
 </div>
-<p>Nesse caso eu teria que escolher uma região de comparação, por exemplo Sudeste e criar uma binária para o CO, uma para o N, uma para o NE e uma para o S. Veja o exemplo abaixo.</p>
+<p>Temos que escolher uma região de comparação, por exemplo Sudeste. Assim, pode-se criar uma binária para o CO, uma para o N, uma para o NE e uma para o S. Veja o exemplo abaixo.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="do">### criando as variáveis</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span>
@@ -1172,7 +1182,7 @@ CO  N NE  S SD
 <span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
 <span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">S =</span> <span class="fu">ifelse</span>(regiao<span class="sc">==</span><span class="st">"S"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Como esse banco é pequeno, vamos retomar o banco o Wooldridge <code>wage1</code>. Neste banco já está criada a variável de região sendo a região leste a de comparação. Vamos adicionar então a região, sul, norte e oeste.</p>
+<p>Como esse banco é muito pequeno, vamos retomar o banco o Wooldridge <code>wage1</code>. Neste banco já está criada a variável de região sendo a região leste a de comparação. Vamos adicionar na regressão as regiões, sul, centro-norte e oeste.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>reg_salar <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(wage)<span class="sc">~</span>  northcen <span class="sc">+</span> west<span class="sc">+</span> south <span class="sc">+</span> female<span class="sc">+</span> educ<span class="sc">+</span> exper <span class="sc">+</span>tenure, <span class="at">data=</span>wage1)</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1205,7 +1215,7 @@ Multiple R-squared:  0.4022,    Adjusted R-squared:  0.3941
 F-statistic: 49.79 on 7 and 518 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Observa-se no modelo acima que não diferenças regionais importantes nos salários, quando controlamos para mulheres, educação, experiência e tempo no trabalho.</p>
+<p>Observa-se no modelo acima que não há diferenças regionais importantes nos salários, quando controlamos para mulheres, educação, experiência e tempo no trabalho.</p>
 
 
 </section>
