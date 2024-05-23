@@ -481,12 +481,15 @@ Existem outros métodos númericos que se constituem como alternativas adcionais
 -   Covariancia e
 -   Coeficiente de Correlção.
 
-Vamos apresentar as fÓrmulas de algumas dessas principais medidas.
+Vamos apresentar as fórmulas de algumas dessas principais medidas.
 
 ```{r}
 final_fem_22 <- read.csv("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.csv", head=T ,sep=";")
 
 ```
+
+
+
 
 ### Medidas de Posição:
 

@@ -375,6 +375,8 @@ Além desses, o R é capaz de trabalhar com SQL, SAS, SPSS, Excel entre outros.
 O R usa o formato americano de separação numérica. Usa ponto ao invés da vírgula para separar a unidade dos decimais. No Brasil usamos a vírgula. Isso sempre gera conflito. No seu csv evite usar acentos nas palavras e use ponto como separados dos decimais e não use separador dos milhares. Exemplo: 12500.97
 :::
 
+
+
 ### Exportanto os Dados
 
 Podemos exportar os dados em diferentes formatos. Alguns exemplos são csv, texto delimitado, excel, stata. Vejamos em csv:

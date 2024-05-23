@@ -1,0 +1,78 @@
+---
+title: "Google Drive"
+subtitle: "Importanto os dados"
+author:
+- Alexandre Nicolella
+date: "2024"
+format: html
+---
+
+
+## Introdução
+
+Vamos aqui importar os dados de arquivos compartilhados o Google Drive. Vamos usar aqui arquivos que não precisam de autenticação. São aqueles que *" qualquer um com o link"*  podem acessar. Para isso terá que utilizar o pacote `googledrive`. 
+
+### Encontrando o ID
+
+Primeiramente precisa ter acesso ao link de compartilhamento. Vejamos o link de compartilhamento do arquivo `cjpg.rds`
+
+`https://drive.google.com/file/d/1vs4hH1xgYl0YzSb2uWeH0gBMh8E5QPL2/view?usp=drive_link`
+
+O **ID** é a seguinte parte do endereço: `1vs4hH1xgYl0YzSb2uWeH0gBMh8E5QPL2`
+
+Com esse string podemos fazer o download do arquivo
+
+
+
+### Fazendo o download
+
+Primeiramente vamos excluir a autenticação com o comando `drive_deauth()`. Poderá checar a exclusão com o comando `drive_user()`, ele mostrará que não existe usuário logado ou autenticado. 
+
+Depois indicaremos o caminho do arquivo no google drive e com o caminho indicado ele fará o download na pasta do seu computador indicada na parte superior da aba *Console*. Depois é só fazer a leitura para transformar o arquivo em `.Rdata`. Vejamos:
+
+
+
+```{r, warning=FALSE, eval=FALSE}
+
+library(googledrive)
+
+             
+drive_deauth()    # retira a autenticação
+drive_user()      #verifica se existe usuário logado
+cjpg_public <-  drive_get(as_id("1vs4hH1xgYl0YzSb2uWeH0gBMh8E5QPL2"))   # Obtem o endereço do arquivo
+drive_download(cjpg_public, overwrite = TRUE)    # faz o download do arquivo na pasta de trabalho
+
+
+cjpg<-readRDS("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/cjpg.rds")   # faz a leitura do arquivo - colocar o endereço do seu computador
+```
+
+
+Podemos importar outros arquivos agora:
+
+
+```{r, warning=FALSE, eval=FALSE}
+
+# IMPORTANTO: final_fem_22
+library(googledrive)
+drive_deauth()    
+drive_user()      
+
+final_fem_public <-  drive_get(as_id("1_GxL3EFsE2JU-39muO_ELoz-kx4-hEpO"))   
+drive_download(final_fem_public, overwrite = TRUE)   
+
+final_fem_22 <- read.csv("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.csv", head=T ,sep=";")
+
+
+# IMPORTANTO: cpopg_metadados
+
+cpopg_public <-  drive_get(as_id("1mtLng43ZAf-sygUjjcaqRaNhuXKC7ol_"))   
+drive_download(cpopg_public, overwrite = TRUE)   
+
+library("readxl")
+
+cpopg <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/cpopg_metadados.xlsx")
+
+```
+
+
+
