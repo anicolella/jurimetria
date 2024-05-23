@@ -1663,9 +1663,14 @@ População
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 91.36854</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>((<span class="fu">sd</span>(final_fem_22<span class="sc">$</span>t_feminic_abs, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">/</span> <span class="fu">mean</span>(final_fem_22<span class="sc">$</span>t_feminic_abs, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 73.59146</code></pre>
+</div>
 </div>
 <p>Para entendermos vamos supor que existam duas variáveis com mesmo desvio padrão, igual a 10. A primeira terá média de 10 e a segunda de 20, vejamos a diferença no coeficiente de variação.</p>
-<p><span class="math inline">\(\text{CV} X_2=\frac{10}}{10} \times 100\% = 100%\)</span> e <span class="math inline">\(\text{CV} X_2 =\frac{10}}{20} \times 100\%= 50%\)</span></p>
+<p><span class="math inline">\(\text{CV}_{X_1}=\frac{10}{10}.100=100\%\)</span> e <span class="math inline">\(\text{CV}_{X_2}=\frac{10}{20}.100=50\%\)</span></p>
+<p>A variabilidade relativa é menor para a segunda variável. No exemplo acima a taxa de feminicídio tem uma variabilidade relativa maior (91%) do que a tentativa de feminicídio (74%) entre os Estados Brasileiros.</p>
 </section>
 <section id="medidas-de-associação" class="level3" data-number="6.6.3">
 <h3 data-number="6.6.3" class="anchored" data-anchor-id="medidas-de-associação"><span class="header-section-number">6.6.3</span> Medidas de Associação</h3>
@@ -1673,7 +1678,7 @@ População
 <p>Covariância entre duas variáveis: A covariância entre duas variáveis X e Y é uma medida estatística que descreve como essas variáveis variam juntas. Em outras palavras, a covariância indica a tendência de X e Y de se moverem na mesma direção (covariância positiva) ou em direções opostas (covariância negativa).</p>
 <p><span class="math display">\[\text{Cov}(X, Y) = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">cov</span>(final_fem_22<span class="sc">$</span>feminic_tx, final_fem_22<span class="sc">$</span>homic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">cov</span>(final_fem_22<span class="sc">$</span>feminic_tx, final_fem_22<span class="sc">$</span>homic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4648575</code></pre>
 </div>
@@ -1682,7 +1687,7 @@ População
 <p>O coeficiente de correlação entre duas variáveis X e Y é uma medida estatística que descreve a força e a direção da relação linear entre essas variáveis. O coeficiente de correlação é frequentemente representado pelo coeficiente de correlação de Pearson, <span class="math inline">\(r_{XY}\)</span>.</p>
 <p><span class="math display">\[r_{XY} = \frac{\text{Cov}(X, Y)}{s_X s_Y}\]</span> O coeficiente de correlação de Pearson é uma medida amplamente utilizada para avaliar a relação linear entre variáveis, pois fornece uma interpretação padronizada da força e direção da relação, independentemente das unidades das variáveis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">cor</span>(final_fem_22<span class="sc">$</span>feminic_tx, final_fem_22<span class="sc">$</span>homic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">cor</span>(final_fem_22<span class="sc">$</span>feminic_tx, final_fem_22<span class="sc">$</span>homic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3589068</code></pre>
 </div>
@@ -1690,40 +1695,40 @@ População
 <p><strong>Scatter plot</strong></p>
 <p>O Scatter plot é conhecido como o gráfico de dispersão. Ele relaciona duas ou três variáveis, ou seja, plota <span class="math inline">\(X\)</span> contra <span class="math inline">\(Y\)</span>. Muito utilizado para ver o comportamento conjunto de duas séries. Observe que renda e a taxa de feminicídio não mostram um comportamento conjunto, estão dispersas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Dispersão entre renda per capita e a taxa de feminicidio</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(final_fem_22<span class="sc">$</span>rendapc, final_fem_22<span class="sc">$</span>feminic_tx,</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Taxa de Feminicídio vs. Renda Per Capita"</span>,</span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Renda Per Capita"</span>,</span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Taxa de Feminicídio"</span>,</span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>,          <span class="co"># Cor dos pontos</span></span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,              <span class="co"># Forma dos pontos (círculos sólidos)</span></span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.5</span>              <span class="co"># Tamanho dos pontos</span></span>
-<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(final_fem_22<span class="sc">$</span>feminic_tx<span class="sc">~</span>final_fem_22<span class="sc">$</span>rendapc), <span class="at">col=</span><span class="st">"lightblue4"</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Dispersão entre renda per capita e a taxa de feminicidio</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(final_fem_22<span class="sc">$</span>rendapc, final_fem_22<span class="sc">$</span>feminic_tx,</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Taxa de Feminicídio vs. Renda Per Capita"</span>,</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Renda Per Capita"</span>,</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Taxa de Feminicídio"</span>,</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"steelblue"</span>,          <span class="co"># Cor dos pontos</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,              <span class="co"># Forma dos pontos (círculos sólidos)</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.5</span>              <span class="co"># Tamanho dos pontos</span></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(final_fem_22<span class="sc">$</span>feminic_tx<span class="sc">~</span>final_fem_22<span class="sc">$</span>rendapc), <span class="at">col=</span><span class="st">"lightblue4"</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="descritiva_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Ao observar a taxa de homicídio e a taxa de feminicídio, estados com maior taxa de homicídio tendem a ter maior taxa de feminicídio.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Dispersão entre renda per capita e a taxa de feminicidio</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(final_fem_22<span class="sc">$</span>homic_tx, final_fem_22<span class="sc">$</span>feminic_tx,</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Taxa de Feminicídio vs. Taxa de Homicidios"</span>,</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Taxa de Homicidio"</span>,</span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Taxa de Feminicídio"</span>,</span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightgoldenrod3"</span>,          <span class="co"># Cor dos pontos</span></span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,              <span class="co"># Forma dos pontos (círculos sólidos)</span></span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.5</span>              <span class="co"># Tamanho dos pontos</span></span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(final_fem_22<span class="sc">$</span>feminic_tx<span class="sc">~</span>final_fem_22<span class="sc">$</span>homic_tx), <span class="at">col=</span><span class="st">"lightblue4"</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Dispersão entre renda per capita e a taxa de feminicidio</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(final_fem_22<span class="sc">$</span>homic_tx, final_fem_22<span class="sc">$</span>feminic_tx,</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Taxa de Feminicídio vs. Taxa de Homicidios"</span>,</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Taxa de Homicidio"</span>,</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Taxa de Feminicídio"</span>,</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightgoldenrod3"</span>,          <span class="co"># Cor dos pontos</span></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,              <span class="co"># Forma dos pontos (círculos sólidos)</span></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.5</span>              <span class="co"># Tamanho dos pontos</span></span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(final_fem_22<span class="sc">$</span>feminic_tx<span class="sc">~</span>final_fem_22<span class="sc">$</span>homic_tx), <span class="at">col=</span><span class="st">"lightblue4"</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="descritiva_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrgram)</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>correl<span class="ot">&lt;-</span> final_fem_22[<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">16</span>)]</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">corrgram</span>(correl, <span class="at">order=</span><span class="cn">TRUE</span>, <span class="at">lower.panel=</span>panel.shade, <span class="at">upper.panel=</span>panel.cor,  <span class="at">main=</span><span class="st">"Correlação entre as diversas variáveis"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrgram)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>correl<span class="ot">&lt;-</span> final_fem_22[<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">16</span>)]</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">corrgram</span>(correl, <span class="at">order=</span><span class="cn">TRUE</span>, <span class="at">lower.panel=</span>panel.shade, <span class="at">upper.panel=</span>panel.cor,  <span class="at">main=</span><span class="st">"Correlação entre as diversas variáveis"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="descritiva_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -1734,7 +1739,7 @@ População
 <p>Vamos testar a hipótese de que as taxas de feminicídio são iguais entre as regiões norte, nordeste e centro oeste e as regiões sul e sudeste. Vamos permitir que as variâncias sejam diferentes entre as duas regiões</p>
 <p><span class="math display">\[H_0: \mu_{N-NE-CO} = \mu_{S-SD}\]</span> <span class="math display">\[H_1: \mu_{N-NE-CO} \neq \mu_{S-SD}\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(feminic_tx<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(feminic_tx<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -1752,7 +1757,7 @@ mean in group 0 mean in group 1
 <p>O teste mostra que não rejeitamos a hipótese nula de que as duas regiões possuem a mesma média de taxa de feminicídio.</p>
 <p>Vejamos agora a renda per capita:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(rendapc<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(rendapc<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -1799,7 +1804,7 @@ mean in group 0 mean in group 1
 <section id="histograma" class="level2" data-number="6.7">
 <h2 data-number="6.7" class="anchored" data-anchor-id="histograma"><span class="header-section-number">6.7</span> Histograma</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Anexando pacote: 'ggplot2'</code></pre>
@@ -1809,12 +1814,12 @@ Anexando pacote: 'ggplot2'</code></pre>
 
     %+%, alpha</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span>  <span class="fu">ggplot</span>(<span class="at">data=</span>final_fem_22, <span class="fu">aes</span>(<span class="at">x =</span> feminic_tx, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span> </span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">10</span>, <span class="at">col=</span><span class="st">"darkblue"</span>,<span class="at">fill=</span><span class="fu">I</span>(<span class="st">"steelblue"</span>))<span class="sc">+</span></span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(feminic_tx)),  <span class="at">color =</span> <span class="st">"lightsalmon3"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"darkgoldenrod"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>)</span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Distrição da taxa de Feminicídio nos Estados"</span>, <span class="at">x=</span><span class="st">"Taxa de Feminicídio"</span>, <span class="at">y=</span><span class="st">"Densidade"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span>  <span class="fu">ggplot</span>(<span class="at">data=</span>final_fem_22, <span class="fu">aes</span>(<span class="at">x =</span> feminic_tx, <span class="at">y =</span> <span class="fu">after_stat</span>(density))) <span class="sc">+</span> </span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">10</span>, <span class="at">col=</span><span class="st">"darkblue"</span>,<span class="at">fill=</span><span class="fu">I</span>(<span class="st">"steelblue"</span>))<span class="sc">+</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(feminic_tx)),  <span class="at">color =</span> <span class="st">"lightsalmon3"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"darkgoldenrod"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>)</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Distribuição da taxa de Feminicídio nos Estados"</span>, <span class="at">x=</span><span class="st">"Taxa de Feminicídio"</span>, <span class="at">y=</span><span class="st">"Densidade"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
