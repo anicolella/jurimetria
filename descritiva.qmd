@@ -281,13 +281,13 @@ Duas medidas que tentam mensurar o "grau de associação" linear entre X e Y sã
 
 **COVARIÂNCIA**
 
-$$Cov(X,Y)=E[(X-E(X))(Y-E(Y))]$$
+$$Cov(X,Y)=E[(X-E(X))(Y-E(Y))]= E(X.Y)-E(X).E(Y)$$
 
 Ela mede a variabilidade conjunta de uma variável aleátoria multidimensional. Como no caso da variância, ela sofre do efeito das escalas de medidas. Para corrigir dividimos pelos desvios padrões. Surge dessa maneira a medida de correlação.
 
 **CORRELAÇÃO**
 
-$$\rho_{X,Y}=\frac{E[(X-E(X))(Y-E(Y))]}{\sqrt{Var(X)Var(Y)}}$$
+$$\rho_{X,Y}=\frac{E[(X-E(X))(Y-E(Y))]}{\sqrt{Var(X)Var(Y)}}=\frac{Cov(X,Y)}{DP(X).DP(Y)}$$
 
 ::: callout-warning
 ## Correlação
@@ -564,11 +564,13 @@ t(median_1) %>%
 #### Visualizando as medidas por categorias
 
 **Gráfico de Pizza**
-O gráfico de pizza indica as proporções de uma determinada variável de classe. aqui utilizamos a média do número de feminicídios absoluto por região.
+
+O gráfico de pizza indica as proporções de uma determinada variável de classe. Aqui utilizamos a média do número de feminicídios absoluto por região.
 
 
 ```{r}
-pie(mean_1$feminic_abs , labels = c("CO","N","NE","S","SD"), border="lightgray")
+pie(mean_1$feminic_abs , main = "Média Feminicídio por Região", 
+    labels = c("CO","N","NE","S","SD"), border="lightgray")
 ```
 
 
@@ -783,7 +785,7 @@ Aqui segue uma sugestão de plotar o histograma juntamente com o boxplot, possib
 par(fig=c(0,0.6,0,0.6), new=TRUE)
 hist(final_fem_22$feminic_tx, main="", xlab="Taxa Feminicídio", ylab="Frequência", col="lightblue2")
 par(fig=c(0,0.6,0.15,0.9), new=TRUE)
-boxplot(final_fem_22$feminic_tx, horizontal=TRUE, axes=FALSE, col="navajowhite2")
+boxplot(final_fem_22$feminic_tx, main="Taxa de Feminicídio", horizontal=TRUE, axes=FALSE, col="navajowhite2")
 
 ```
 
@@ -875,12 +877,11 @@ $$s = \sqrt{s^2} = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n-1}}$$
 Para os nossos dados anteriores: 
 
 ```{r}
-###Calculo do Desvio padrão
 
-#DP taxa de feminicidio
+# Tx Feminicídio
 sd(final_fem_22$feminic_tx, na.rm=T)
 
-#DP  Feminicidio absoluto
+#Feminicídio Absoluto
 sd(final_fem_22$feminic_abs, na.rm=T)
 
 
@@ -927,7 +928,15 @@ coeficiente_variacao <- (desvio_padrao_variavel / media_variavel) * 100
 
 # Exibindo o coeficiente de variação
 print(coeficiente_variacao)
+print((sd(final_fem_22$t_feminic_abs, na.rm = TRUE)/ mean(final_fem_22$t_feminic_abs, na.rm = TRUE)) * 100)
 ```
+
+Para entendermos vamos supor que existam duas variáveis com mesmo desvio padrão, igual a 10. A primeira terá média de 10 e a segunda de 20, vejamos a diferença no coeficiente de variação. 
+
+$\text{CV}_{X_1}=\frac{10}{10}.100=100\%$ e $\text{CV}_{X_2}=\frac{10}{20}.100=50\%$
+
+A variabilidade relativa é menor para a segunda variável. No exemplo acima a taxa de feminicídio tem uma variabilidade relativa maior (91\%) do que a tentativa de feminicídio (74\%) entre os Estados Brasileiros. 
+
 
 ### Medidas de Associação
 
@@ -1065,7 +1074,7 @@ p<-  ggplot(data=final_fem_22, aes(x = feminic_tx, y = after_stat(density))) +
   geom_vline(aes(xintercept = mean(feminic_tx)),  color = "lightsalmon3", linewidth = 1) +
   geom_density(color = "darkgoldenrod", linewidth = 2)
 
-p + labs(title="Distrição da taxa de Feminicídio nos Estados", x="Taxa de Feminicídio", y="Densidade")
+p + labs(title="Distribuição da taxa de Feminicídio nos Estados", x="Taxa de Feminicídio", y="Densidade")
 ```
 
 

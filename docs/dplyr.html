@@ -9,7 +9,7 @@
 <meta name="author" content="José Jesus, Alexandre Nicolella e GPT">
 <meta name="dcterms.date" content="2023-12-31">
 
-<title>Jurimetria - 4&nbsp; O Dplyr</title>
+<title>Jurimetria - 5&nbsp; O Dplyr</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./descritiva.html" rel="next">
-<link href="./manipulacao.html" rel="prev">
+<link href="./googledrive.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -139,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dplyr.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">O Dplyr</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dplyr.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">O Dplyr</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -179,26 +179,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./googledrive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Google Drive</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./dplyr.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">O Dplyr</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">O Dplyr</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./descritiva.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lineares.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./outrosmodelos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelos Avançados</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modelos Avançados</span></span></a>
   </div>
 </li>
     </ul>
@@ -211,13 +217,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r" id="toc-tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r" class="nav-link active" data-scroll-target="#tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r"><span class="header-section-number">4.1</span> Tutorial sobre o Uso do dplyr para Manipulação de Dados no R</a>
+  <li><a href="#tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r" id="toc-tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r" class="nav-link active" data-scroll-target="#tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r"><span class="header-section-number">5.1</span> Tutorial sobre o Uso do dplyr para Manipulação de Dados no R</a>
   <ul class="collapse">
-  <li><a href="#introdução-ao-dplyr" id="toc-introdução-ao-dplyr" class="nav-link" data-scroll-target="#introdução-ao-dplyr"><span class="header-section-number">4.1.1</span> Introdução ao dplyr:</a></li>
-  <li><a href="#instalação-e-carregamento" id="toc-instalação-e-carregamento" class="nav-link" data-scroll-target="#instalação-e-carregamento"><span class="header-section-number">4.1.2</span> Instalação e Carregamento:</a></li>
-  <li><a href="#visão-geral-das-funções" id="toc-visão-geral-das-funções" class="nav-link" data-scroll-target="#visão-geral-das-funções"><span class="header-section-number">4.1.3</span> Visão Geral das Funções:</a></li>
-  <li><a href="#operador-pipe" id="toc-operador-pipe" class="nav-link" data-scroll-target="#operador-pipe"><span class="header-section-number">4.1.4</span> Operador pipe</a></li>
-  <li><a href="#utilizando-as-funções-e-o-pipe" id="toc-utilizando-as-funções-e-o-pipe" class="nav-link" data-scroll-target="#utilizando-as-funções-e-o-pipe"><span class="header-section-number">4.1.5</span> Utilizando as funções e o pipe</a></li>
+  <li><a href="#introdução-ao-dplyr" id="toc-introdução-ao-dplyr" class="nav-link" data-scroll-target="#introdução-ao-dplyr"><span class="header-section-number">5.1.1</span> Introdução ao dplyr:</a></li>
+  <li><a href="#instalação-e-carregamento" id="toc-instalação-e-carregamento" class="nav-link" data-scroll-target="#instalação-e-carregamento"><span class="header-section-number">5.1.2</span> Instalação e Carregamento:</a></li>
+  <li><a href="#visão-geral-das-funções" id="toc-visão-geral-das-funções" class="nav-link" data-scroll-target="#visão-geral-das-funções"><span class="header-section-number">5.1.3</span> Visão Geral das Funções:</a></li>
+  <li><a href="#operador-pipe" id="toc-operador-pipe" class="nav-link" data-scroll-target="#operador-pipe"><span class="header-section-number">5.1.4</span> Operador pipe</a></li>
+  <li><a href="#utilizando-as-funções-e-o-pipe" id="toc-utilizando-as-funções-e-o-pipe" class="nav-link" data-scroll-target="#utilizando-as-funções-e-o-pipe"><span class="header-section-number">5.1.5</span> Utilizando as funções e o pipe</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -227,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">O Dplyr</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">O Dplyr</span></h1>
 <p class="subtitle lead">Manipulando dados de forma eficiente</p>
 </div>
 
@@ -255,15 +261,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r"><span class="header-section-number">4.1</span> Tutorial sobre o Uso do dplyr para Manipulação de Dados no R</h2>
+<section id="tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="tutorial-sobre-o-uso-do-dplyr-para-manipulação-de-dados-no-r"><span class="header-section-number">5.1</span> Tutorial sobre o Uso do dplyr para Manipulação de Dados no R</h2>
 <p>Essa seção é uma criação mesclando o que foi explicado em aula, o Chat GPT e um pouco da nossa organização.</p>
-<section id="introdução-ao-dplyr" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="introdução-ao-dplyr"><span class="header-section-number">4.1.1</span> Introdução ao dplyr:</h3>
+<section id="introdução-ao-dplyr" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="introdução-ao-dplyr"><span class="header-section-number">5.1.1</span> Introdução ao dplyr:</h3>
 <p>O <code>dplyr</code> é um poderoso pacote do R projetado para tarefas de manipulação de dados. Ele fornece um conjunto consistente de funções que ajudam a simplificar o processo de manipulação de dados, tornando-o mais intuitivo e eficiente. Neste tutorial, vamos nos aprofundar em cada função fornecida pelo <code>dplyr</code>, juntamente com exemplos.</p>
 </section>
-<section id="instalação-e-carregamento" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="instalação-e-carregamento"><span class="header-section-number">4.1.2</span> Instalação e Carregamento:</h3>
+<section id="instalação-e-carregamento" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="instalação-e-carregamento"><span class="header-section-number">5.1.2</span> Instalação e Carregamento:</h3>
 <p>Antes de mergulharmos no <code>dplyr</code>, assegure-se de tê-lo instalado executando:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -271,24 +277,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Em seguida, carregue o pacote em sua sessão R:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Anexando pacote: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Os seguintes objetos são mascarados por 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Os seguintes objetos são mascarados por 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
 </div>
 </section>
-<section id="visão-geral-das-funções" class="level3" data-number="4.1.3">
-<h3 data-number="4.1.3" class="anchored" data-anchor-id="visão-geral-das-funções"><span class="header-section-number">4.1.3</span> Visão Geral das Funções:</h3>
+<section id="visão-geral-das-funções" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="visão-geral-das-funções"><span class="header-section-number">5.1.3</span> Visão Geral das Funções:</h3>
 <ol type="1">
 <li><strong><code>filter()</code>:</strong> Esta função é usada para filtrar linhas com base em condições específicas. No R: <code>dados_filtrados &lt;- filter(dados, condição)</code>.</li>
 </ol>
@@ -307,31 +299,31 @@ Anexando pacote: 'dplyr'</code></pre>
 <li><p><strong><code>group_by()</code> e <code>summarize()</code>:</strong> Essas funções são usadas em conjunto para agrupar dados com base em uma variável e, em seguida, resumi-los. No R: <code>dados_agrupados &lt;- group_by(dados, variável)</code>e <code>resumo &lt;- summarize(dados_agrupados, estatística_resumo = função(variável))</code></p></li>
 </ol>
 </section>
-<section id="operador-pipe" class="level3" data-number="4.1.4">
-<h3 data-number="4.1.4" class="anchored" data-anchor-id="operador-pipe"><span class="header-section-number">4.1.4</span> Operador pipe</h3>
+<section id="operador-pipe" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="operador-pipe"><span class="header-section-number">5.1.4</span> Operador pipe</h3>
 <p>O operador pipe (<code>%&gt;%</code>) é uma ferramenta poderosa em R, especialmente quando combinada com o pacote <code>dplyr</code>. Ele permite encadear várias operações de forma mais legível e eficiente, evitando a necessidade de criar variáveis intermediárias. Vamos explicar o uso do pipe em conjunto com o <code>dplyr</code>.</p>
 <p><strong>1. Encadeamento de Operações:</strong></p>
 <p>Sem o pipe, para aplicar várias funções consecutivas a um conjunto de dados, você teria que criar variáveis intermediárias ou aninhar as funções, tornando o código menos legível. Por exemplo, para filtrar dados e depois selecionar colunas usando <code>dplyr</code>, você pode fazer:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dados_filtrados <span class="ot">&lt;-</span> <span class="fu">filter</span>(dados, condicao)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>colunas_selecionadas <span class="ot">&lt;-</span> <span class="fu">select</span>(dados_filtrados, coluna1, coluna2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dados_filtrados <span class="ot">&lt;-</span> <span class="fu">filter</span>(dados, condicao)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>colunas_selecionadas <span class="ot">&lt;-</span> <span class="fu">select</span>(dados_filtrados, coluna1, coluna2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Com o pipe, você pode encadear essas operações de forma mais concisa:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(condicao) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coluna1, coluna2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(condicao) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coluna1, coluna2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>2. Melhora a Legibilidade do Código:</strong></p>
 <p>O operador pipe torna o código mais legível e fácil de entender, pois as operações são executadas sequencialmente da esquerda para a direita. Isso facilita a compreensão do fluxo de dados e das transformações aplicadas.</p>
 <p><strong>3. Evita a Criação de Variáveis Intermediárias:</strong></p>
 <p>Usar o pipe evita a necessidade de criar variáveis intermediárias para armazenar resultados parciais, o que economiza espaço na memória e torna o código mais eficiente.</p>
 </section>
-<section id="utilizando-as-funções-e-o-pipe" class="level3" data-number="4.1.5">
-<h3 data-number="4.1.5" class="anchored" data-anchor-id="utilizando-as-funções-e-o-pipe"><span class="header-section-number">4.1.5</span> Utilizando as funções e o pipe</h3>
+<section id="utilizando-as-funções-e-o-pipe" class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5" class="anchored" data-anchor-id="utilizando-as-funções-e-o-pipe"><span class="header-section-number">5.1.5</span> Utilizando as funções e o pipe</h3>
 <p>Continuaremos a utilizar o mesmo banco de dados sobre feminicídio da seção de manipulação.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>final_fem_22 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.csv"</span>, <span class="at">head=</span>T ,<span class="at">sep=</span><span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>final_fem_22 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.csv"</span>, <span class="at">head=</span>T ,<span class="at">sep=</span><span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1. Filtrando Dados:</strong></p>
 <p>Utilizamos os símbolos lógicos para utilizar a função <code>filter</code>:</p>
@@ -350,141 +342,141 @@ Anexando pacote: 'dplyr'</code></pre>
 </ul>
 <p>Vamos filtrar o conjunto de dados para incluir apenas estados que possuem pparticipação da taxa de feminicídio acima de 50% :</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>part50_mais <span class="ot">&lt;-</span> <span class="fu">filter</span>(final_fem_22, part_feminic <span class="sc">&gt;=</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>part50_mais <span class="ot">&lt;-</span> <span class="fu">filter</span>(final_fem_22, part_feminic <span class="sc">&gt;=</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Podemos ter multiplos critérios. Utilizando participação acima de 50 e região norte.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>part50_mais_reg <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(part_feminic <span class="sc">&gt;=</span><span class="dv">50</span> , regiao<span class="sc">==</span><span class="st">"N"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>part50_mais_reg <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(part_feminic <span class="sc">&gt;=</span><span class="dv">50</span> , regiao<span class="sc">==</span><span class="st">"N"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Podemos selecionar os estados da região sul ou da região sudeste para compor o nosso banco selecionado.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>regiao1 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(regiao<span class="sc">==</span><span class="st">"S"</span> <span class="sc">|</span> regiao<span class="sc">==</span><span class="st">"SD"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>regiao1 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(regiao<span class="sc">==</span><span class="st">"S"</span> <span class="sc">|</span> regiao<span class="sc">==</span><span class="st">"SD"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>regiao2<span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(regiao <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'S'</span>, <span class="st">'SD'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>regiao2<span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(regiao <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'S'</span>, <span class="st">'SD'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ou ter um banco sem a região norte</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>região3 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(regiao<span class="sc">!=</span><span class="st">"N"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>região3 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(regiao<span class="sc">!=</span><span class="st">"N"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>2. Selecionando Colunas:</strong></p>
 <p>Vamos agora montar um banco apenas as colunas de tx de feminicídio e tx de tentativa de feminicídio:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tx_f <span class="ot">&lt;-</span> <span class="fu">select</span>(final_fem_22, sigla, feminic_tx, t_feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tx_f <span class="ot">&lt;-</span> <span class="fu">select</span>(final_fem_22, sigla, feminic_tx, t_feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>ou</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tx_f2 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sigla, feminic_tx, t_feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tx_f2 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sigla, feminic_tx, t_feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Como temos a sigla dos estados vamos retirar a coluna com os nomes do estados</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sem_nome <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>estados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sem_nome <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>estados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ou podemos tirar o eatdo indicando a sua posição. Ele está na coluna 2 do banco.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sem_nome1 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sem_nome1 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Podemos selecionar renomeando o nome da coluna. Selecionamos feminicídio por estado</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tx_f3 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">Estados=</span>estados, <span class="at">Taxa_Fem=</span>feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tx_f3 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">Estados=</span>estados, <span class="at">Taxa_Fem=</span>feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>3. Mudando o nome</strong> Podemos mudar o nome das variáveis do banco da seguinte forma:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mud_nomes <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(estados, feminic_tx) <span class="sc">|&gt;</span> </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Estados=</span>estados, <span class="at">Taxa_Fem=</span>feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mud_nomes <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(estados, feminic_tx) <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Estados=</span>estados, <span class="at">Taxa_Fem=</span>feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>4. Mudando Posição da Coluna</strong></p>
 <p>Podemos reoarganizar as colunas nos bancos. Vamos deixar asvariáveis de feminicídio todas junta</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>reord1 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sigla, estados, regiao, feminic_abs, feminic_tx, t_feminic_abs, t_feminic_tx,<span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>reord1 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sigla, estados, regiao, feminic_abs, feminic_tx, t_feminic_abs, t_feminic_tx,<span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ou podemos usar a função <code>relocate</code>para deixar a participação do feminicídio e da tentativa de feminicídio todas juntas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>reord2 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(part_feminic,<span class="at">.after=</span>t_feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>reord2 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(part_feminic,<span class="at">.after=</span>t_feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>5. Ordenando Dados:</strong></p>
 <p>Vamos ordenar os estado em ordem crescente da taxa de feminicídio:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ordenado1 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(final_fem_22, feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ordenado1 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(final_fem_22, feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Podemos ordenar o <em>data frame</em> por duas variáveis. Vamos ordenar primeiro por região e depois por taxa de feminicídio.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>estado_feminic <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(regiao,feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>estado_feminic <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(regiao,feminic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ou podemos fazer de forma descendente</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>estado_feminic1 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(regiao,<span class="fu">desc</span>(feminic_tx))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>estado_feminic1 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(regiao,<span class="fu">desc</span>(feminic_tx))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>4. Mutando Dados:</strong></p>
 <p>Vamos adicionar uma nova coluna ao conjunto de dados representando do total de tentativas de feminicídio, quantas efetivamente terminam em feminicídio. Para isso vamos dividir o feminicídio pelo total de tentativa e feminicídio. :</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>final_fem_22_1 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">feminic_efetivado =</span>(feminic_abs<span class="sc">/</span>(feminic_abs<span class="sc">+</span>t_feminic_abs)),  <span class="at">homic_efetivado =</span>(total_abs<span class="sc">/</span>(total_abs<span class="sc">+</span>t_total_abs)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>final_fem_22_1 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">feminic_efetivado =</span>(feminic_abs<span class="sc">/</span>(feminic_abs<span class="sc">+</span>t_feminic_abs)),  <span class="at">homic_efetivado =</span>(total_abs<span class="sc">/</span>(total_abs<span class="sc">+</span>t_total_abs)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Agora vamos criar uma variável bnária que será igual a 1 se o homicídio efetivado for maior que 0,30.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>final_fem_22_1 <span class="ot">&lt;-</span> final_fem_22_1 <span class="sc">|&gt;</span>  </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">homi_efet_alto =</span> <span class="fu">case_when</span>(homic_efetivado <span class="sc">&gt;=</span><span class="fl">0.3</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                             homic_efetivado <span class="sc">&lt;</span><span class="fl">0.3</span> <span class="sc">~</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>final_fem_22_1 <span class="ot">&lt;-</span> final_fem_22_1 <span class="sc">|&gt;</span>  </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">homi_efet_alto =</span> <span class="fu">case_when</span>(homic_efetivado <span class="sc">&gt;=</span><span class="fl">0.3</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                             homic_efetivado <span class="sc">&lt;</span><span class="fl">0.3</span> <span class="sc">~</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Abaixo tem-se algumas funções importantes para texto e datas</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>d4 <span class="ot">&lt;-</span> cjpg <span class="sc">|&gt;</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(processo) <span class="sc">|&gt;</span> </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">seq=</span><span class="fu">str_sub</span>(processo,<span class="dv">1</span>,<span class="dv">7</span>),</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">digito=</span><span class="fu">str_sub</span>(processo,<span class="dv">8</span>,<span class="dv">9</span>),</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">ano=</span><span class="fu">str_sub</span>(processo,<span class="dv">10</span>,<span class="dv">13</span>),</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">segmento=</span><span class="fu">str_sub</span>(processo,<span class="dv">14</span>),</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">tribunal=</span><span class="fu">str_sub</span>(processo,<span class="dv">15</span>,<span class="dv">16</span>),</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">distribuidor=</span><span class="fu">str_sub</span>(processo,<span class="dv">17</span>,<span class="dv">20</span>))</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>d5 <span class="ot">&lt;-</span> cjpg <span class="sc">|&gt;</span></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ano=</span><span class="fu">year</span>(disponibilizacao),</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">mes=</span><span class="fu">month</span>(disponibilizacao,<span class="at">abbr =</span> <span class="cn">FALSE</span>,<span class="at">label=</span><span class="cn">TRUE</span>),</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">dia=</span><span class="fu">wday</span>(disponibilizacao,<span class="at">abbr =</span> <span class="cn">FALSE</span>,<span class="at">label=</span><span class="cn">TRUE</span>))</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>metadados <span class="ot">&lt;-</span> metadados <span class="sc">|&gt;</span> </span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">valor_da_acao=</span>tjsp<span class="sc">::</span><span class="fu">numero</span>(valor_da_acao))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>d4 <span class="ot">&lt;-</span> cjpg <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(processo) <span class="sc">|&gt;</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">seq=</span><span class="fu">str_sub</span>(processo,<span class="dv">1</span>,<span class="dv">7</span>),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">digito=</span><span class="fu">str_sub</span>(processo,<span class="dv">8</span>,<span class="dv">9</span>),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">ano=</span><span class="fu">str_sub</span>(processo,<span class="dv">10</span>,<span class="dv">13</span>),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">segmento=</span><span class="fu">str_sub</span>(processo,<span class="dv">14</span>),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">tribunal=</span><span class="fu">str_sub</span>(processo,<span class="dv">15</span>,<span class="dv">16</span>),</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">distribuidor=</span><span class="fu">str_sub</span>(processo,<span class="dv">17</span>,<span class="dv">20</span>))</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>d5 <span class="ot">&lt;-</span> cjpg <span class="sc">|&gt;</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ano=</span><span class="fu">year</span>(disponibilizacao),</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">mes=</span><span class="fu">month</span>(disponibilizacao,<span class="at">abbr =</span> <span class="cn">FALSE</span>,<span class="at">label=</span><span class="cn">TRUE</span>),</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">dia=</span><span class="fu">wday</span>(disponibilizacao,<span class="at">abbr =</span> <span class="cn">FALSE</span>,<span class="at">label=</span><span class="cn">TRUE</span>))</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>metadados <span class="ot">&lt;-</span> metadados <span class="sc">|&gt;</span> </span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">valor_da_acao=</span>tjsp<span class="sc">::</span><span class="fu">numero</span>(valor_da_acao))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>5. Agrupando e Resumindo Dados:</strong></p>
 <p>Vamos agrupar os feminicídios por região e calcular a taxa média por região:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>feminic_agrupado <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(regiao) <span class="sc">|&gt;</span> </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">summarize</span>(média<span class="at">_feminic =</span> <span class="fu">mean</span>(feminic_tx), </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">DP_feminic=</span><span class="fu">sd</span>(feminic_tx,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>           )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>feminic_agrupado <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(regiao) <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">summarize</span>(média<span class="at">_feminic =</span> <span class="fu">mean</span>(feminic_tx), </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">DP_feminic=</span><span class="fu">sd</span>(feminic_tx,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>           )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Temos várias estatísticas que podem ser utilizadas:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sumario<span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">media=</span><span class="fu">mean</span>(feminic_tx,<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">soma=</span><span class="fu">sum</span>(feminic_tx,<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Desvio_p=</span><span class="fu">sd</span>(feminic_tx,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>            )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sumario<span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">media=</span><span class="fu">mean</span>(feminic_tx,<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">soma=</span><span class="fu">sum</span>(feminic_tx,<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Desvio_p=</span><span class="fu">sd</span>(feminic_tx,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>            )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Podemos contar variáveis categóricas ou mesmo binárias. Vamos contar os estados que tiveram taxa de participação do feminicídio acima de 50%.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>alta_part <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(mais_50,<span class="at">sort=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>alta_part <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(mais_50,<span class="at">sort=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Contando alta participação do feminicídio por Região</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>reg_alt_part <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(regiao, mais_50, <span class="at">sort=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>reg_alt_part <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(regiao, mais_50, <span class="at">sort=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Este tutorial forneceu uma visão geral de funções do <code>dplyr</code>. Dominando essas funções, você estará equipado para manipular e analisar conjuntos de dados de forma eficiente no R, facilitando seus fluxos de trabalho de análise de dados. Experimente essas funções em seus próprios conjuntos de dados para explorar seu potencial total.</p>
 
@@ -728,13 +720,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./manipulacao.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Maipulando os Dados</span></span>
+      <a href="./googledrive.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Google Drive</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./descritiva.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

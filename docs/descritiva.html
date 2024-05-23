@@ -590,10 +590,10 @@ Problema 3
 <h4 data-number="6.2.2.1" class="anchored" data-anchor-id="covariância-e-correlação"><span class="header-section-number">6.2.2.1</span> Covariância e Correlação</h4>
 <p>Duas medidas que tentam mensurar o “grau de associação” linear entre X e Y são:</p>
 <p><strong>COVARIÂNCIA</strong></p>
-<p><span class="math display">\[Cov(X,Y)=E[(X-E(X))(Y-E(Y))]\]</span></p>
+<p><span class="math display">\[Cov(X,Y)=E[(X-E(X))(Y-E(Y))]= E(X.Y)-E(X).E(Y)\]</span></p>
 <p>Ela mede a variabilidade conjunta de uma variável aleátoria multidimensional. Como no caso da variância, ela sofre do efeito das escalas de medidas. Para corrigir dividimos pelos desvios padrões. Surge dessa maneira a medida de correlação.</p>
 <p><strong>CORRELAÇÃO</strong></p>
-<p><span class="math display">\[\rho_{X,Y}=\frac{E[(X-E(X))(Y-E(Y))]}{\sqrt{Var(X)Var(Y)}}\]</span></p>
+<p><span class="math display">\[\rho_{X,Y}=\frac{E[(X-E(X))(Y-E(Y))]}{\sqrt{Var(X)Var(Y)}}=\frac{Cov(X,Y)}{DP(X).DP(Y)}\]</span></p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1218,9 +1218,11 @@ População
 </div>
 <section id="visualizando-as-medidas-por-categorias" class="level4" data-number="6.6.1.1">
 <h4 data-number="6.6.1.1" class="anchored" data-anchor-id="visualizando-as-medidas-por-categorias"><span class="header-section-number">6.6.1.1</span> Visualizando as medidas por categorias</h4>
-<p><strong>Gráfico de Pizza</strong> O gráfico de pizza indica as proporções de uma determinada variável de classe. aqui utilizamos a média do número de feminicídios absoluto por região.</p>
+<p><strong>Gráfico de Pizza</strong></p>
+<p>O gráfico de pizza indica as proporções de uma determinada variável de classe. Aqui utilizamos a média do número de feminicídios absoluto por região.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(mean_1<span class="sc">$</span>feminic_abs , <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"CO"</span>,<span class="st">"N"</span>,<span class="st">"NE"</span>,<span class="st">"S"</span>,<span class="st">"SD"</span>), <span class="at">border=</span><span class="st">"lightgray"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(mean_1<span class="sc">$</span>feminic_abs , <span class="at">main =</span> <span class="st">"Média Feminicídio por Região"</span>, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"CO"</span>,<span class="st">"N"</span>,<span class="st">"NE"</span>,<span class="st">"S"</span>,<span class="st">"SD"</span>), <span class="at">border=</span><span class="st">"lightgray"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="descritiva_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -1423,7 +1425,7 @@ População
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>,<span class="dv">0</span>,<span class="fl">0.6</span>), <span class="at">new=</span><span class="cn">TRUE</span>)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">main=</span><span class="st">""</span>, <span class="at">xlab=</span><span class="st">"Taxa Feminicídio"</span>, <span class="at">ylab=</span><span class="st">"Frequência"</span>, <span class="at">col=</span><span class="st">"lightblue2"</span>)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">fig=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>,<span class="fl">0.15</span>,<span class="fl">0.9</span>), <span class="at">new=</span><span class="cn">TRUE</span>)</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">horizontal=</span><span class="cn">TRUE</span>, <span class="at">axes=</span><span class="cn">FALSE</span>, <span class="at">col=</span><span class="st">"navajowhite2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">main=</span><span class="st">"Taxa de Feminicídio"</span>, <span class="at">horizontal=</span><span class="cn">TRUE</span>, <span class="at">axes=</span><span class="cn">FALSE</span>, <span class="at">col=</span><span class="st">"navajowhite2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="descritiva_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -1500,14 +1502,12 @@ População
 <p><span class="math display">\[s = \sqrt{s^2} = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n-1}}\]</span></p>
 <p>Para os nossos dados anteriores:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Calculo do Desvio padrão</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co">#DP taxa de feminicidio</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tx Feminicídio</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6179186</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#DP  Feminicidio absoluto</span></span>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Feminicídio Absoluto</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(final_fem_22<span class="sc">$</span>feminic_abs, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 48.62837</code></pre>
@@ -1664,6 +1664,8 @@ População
 <pre><code>[1] 91.36854</code></pre>
 </div>
 </div>
+<p>Para entendermos vamos supor que existam duas variáveis com mesmo desvio padrão, igual a 10. A primeira terá média de 10 e a segunda de 20, vejamos a diferença no coeficiente de variação.</p>
+<p><span class="math inline">\(\text{CV} X_2=\frac{10}}{10} \times 100\% = 100%\)</span> e <span class="math inline">\(\text{CV} X_2 =\frac{10}}{20} \times 100\%= 50%\)</span></p>
 </section>
 <section id="medidas-de-associação" class="level3" data-number="6.6.3">
 <h3 data-number="6.6.3" class="anchored" data-anchor-id="medidas-de-associação"><span class="header-section-number">6.6.3</span> Medidas de Associação</h3>

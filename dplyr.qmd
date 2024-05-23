@@ -25,7 +25,7 @@ install.packages("dplyr")
 
 Em seguida, carregue o pacote em sua sessão R:
 
-```{r eval=TRUE}
+```{r ,eval=TRUE, warning=FALSE, message=FALSE}
 library(dplyr)
 ```
 
