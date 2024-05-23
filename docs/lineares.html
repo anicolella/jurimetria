@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" id="toc-caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" class="nav-link" data-scroll-target="#caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados"><span class="header-section-number">7.4</span> Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados</a>
   <ul class="collapse">
-  <li><a href="#valores-estimados-e-resíduos" id="toc-valores-estimados-e-resíduos" class="nav-link" data-scroll-target="#valores-estimados-e-resíduos"><span class="header-section-number">7.4.1</span> Valores estimados e Resíduos</a></li>
+  <li><a href="#valores-estimados-e-resíduos" id="toc-valores-estimados-e-resíduos" class="nav-link" data-scroll-target="#valores-estimados-e-resíduos"><span class="header-section-number">7.4.1</span> Valores Estimados e Resíduos</a></li>
   <li><a href="#propriedades-algébricas-do-mqo" id="toc-propriedades-algébricas-do-mqo" class="nav-link" data-scroll-target="#propriedades-algébricas-do-mqo"><span class="header-section-number">7.4.2</span> Propriedades Algébricas do MQO</a></li>
   <li><a href="#qualidade-do-ajuste" id="toc-qualidade-do-ajuste" class="nav-link" data-scroll-target="#qualidade-do-ajuste"><span class="header-section-number">7.4.3</span> Qualidade do Ajuste</a></li>
   </ul></li>
@@ -355,17 +355,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="hipóteses-sobre-o-comportamento-do-termo-de-erro" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="hipóteses-sobre-o-comportamento-do-termo-de-erro"><span class="header-section-number">7.2</span> Hipóteses sobre o comportamento do Termo de Erro</h2>
-<p>Se especificamos o modelo com <span class="math inline">\(\beta_0\)</span>, podemos assumir que <span class="math inline">\(u\)</span>, tem média igual a zero. Em notação de esperança matematica essa hipotese equivale a:</p>
+<p>Se especificamos o modelo com <span class="math inline">\(\beta_0\)</span>, podemos assumir que <span class="math inline">\(u\)</span>, tem média igual a zero. Em notação de esperança matemática essa hipótese equivale a:</p>
 <p><span class="math display">\[E(u) = 0\]</span></p>
 <p>Podemos definir uma segunda hipotese sobre <span class="math inline">\(u\)</span>. Uma hipótese forte, é a de que <span class="math inline">\(u\)</span> e <span class="math inline">\(x\)</span> são independentes. Tal hípótese é a hipótese crucial do modelo de RLS:</p>
 <p><span class="math display">\[E(u|x) = 0\]</span></p>
 <p>Justas as hipóteses de <span class="math inline">\(E(u) = 0\)</span> e <span class="math inline">\(E(u|x) = 0\)</span> são denominadas de hipotese de média condicional zero.</p>
 <p>Dessa forma, no nosso modelo inicial:</p>
 <p><span class="math display">\[y = \beta_0 + \beta_1x + u\]</span></p>
-<p>Aplicando o operador <span class="math inline">\(E( \cdot |x )\)</span>, obetmos</p>
+<p>Aplicando o operador <span class="math inline">\(E( \cdot |x )\)</span>, obtemos</p>
 <p><span class="math display">\[ E( y |x ) = \beta_0 + \beta_1x \]</span></p>
 <p>Assim, na equação acima, temos um aumento de uma unidade em <span class="math inline">\(x\)</span>, implica em um aumento no valor esperado (ou em média) de <span class="math inline">\(y\)</span> na magnitude de <span class="math inline">\(\beta_1\)</span>.</p>
-<p>A equação acima, é caracterizada como <strong>função de regressão populacional</strong>. Essa função nos fornece a elação entre os diferentes níveis de<span class="math inline">\(x\)</span> é o nível médio de <span class="math inline">\(y\)</span>, isto é <span class="math inline">\(E( y |x )\)</span>.</p>
+<p>A equação acima, é caracterizada como <strong>função de regressão populacional</strong>. Essa função nos fornece a relação entre os diferentes níveis de <span class="math inline">\(x\)</span> é o nível médio de <span class="math inline">\(y\)</span>, isto é <span class="math inline">\(E( y |x )\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figuras\modelpop.png" class="img-fluid figure-img"></p>
@@ -375,7 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Agora, podemos voltar a nossa equação base e verificarmos o progresso feito no entendimento do modelo:</p>
 <p><span class="math display">\[y = \beta_0 + \beta_1x + u \]</span></p>
 <p><span class="math display">\[y = E( y |x ) + u \]</span></p>
-<p>Na equação acima, <span class="math inline">\(E( y |x )\)</span> é chamada de parte sistematica de <span class="math inline">\(y\)</span>. Isto é, a parte sistematicamente explicada por <span class="math inline">\(x\)</span>. Já o termo de erro não observado, <span class="math inline">\(u\)</span> é a parte não sistematica de <span class="math inline">\(y\)</span>, não explicada por <span class="math inline">\(x\)</span>.</p>
+<p>Na equação acima, <span class="math inline">\(E( y |x )\)</span> é chamada de parte sistemática de <span class="math inline">\(y\)</span>. Isto é, a parte sistematicamente explicada por <span class="math inline">\(x\)</span>. Já o termo de erro não observado, <span class="math inline">\(u\)</span> é a parte não sistemática de <span class="math inline">\(y\)</span>, não explicada por <span class="math inline">\(x\)</span>.</p>
 </section>
 <section id="estimação-dos-parâmetros-da-rls" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="estimação-dos-parâmetros-da-rls"><span class="header-section-number">7.3</span> Estimação dos Parâmetros da RLS</h2>
@@ -389,10 +389,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}\]</span></p>
 <p>e</p>
 <p><span class="math display">\[\hat{\beta}_1 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n} (x_i - \bar{x})^2}\]</span></p>
-<p>Onde, <span class="math inline">\(\bar{x}\)</span> e <span class="math inline">\(\bar{y}\)</span> são as médias amostrais de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> respectivamente.</p>
+<p>Onde, <span class="math inline">\(\bar{x}\)</span> e <span class="math inline">\(\bar{y}\)</span> são as médias amostrais de <span class="math inline">\(X_i\)</span> e <span class="math inline">\(Y_i\)</span>, respectivamente.</p>
 <p>Os estimadores <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span> são chamados de estimadores de Mínimos Quadrados Ordinários (MQO).</p>
-<p>A ideia é que os parâmetros que estimamos, <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span>, são os parâmetros que minimizam a soma dos quadrados das diferenças entre nossos <span class="math inline">\(y_i\)</span> obversados e seus <strong>valores preditos</strong> definidos como</p>
-<p><span class="math display">\[y_i- \hat{y}_i =y_i -  \hat{\beta}_0 + \hat{\beta}_1x_i=u_i\]</span> Queremos minimizar o quadrado dessa diferença. Vejamos graficamente:</p>
+<p>A ideia é que os parâmetros que estimamos, <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span>, são os parâmetros que minimizam a soma dos quadrados das diferenças entre nossos <span class="math inline">\(y_i\)</span> observados e seus <strong>valores preditos</strong> definidos como</p>
+<p><span class="math display">\[y_i- \hat{y}_i =y_i -  \hat{\beta}_0 + \hat{\beta}_1x_i=u_i\]</span></p>
+<p>Queremos minimizar o quadrado dessa diferença. Vejamos graficamente:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figuras\fittedvalue.png" class="img-fluid figure-img"></p>
@@ -402,10 +403,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Antes de passarmos para o proxímo tópico de RLS, cabe mencionar uma nota sobre terminologia: quando estimamos equações de RLS do tipo <span class="math inline">\(y = \beta_0 + \beta_1 x + u\)</span>, dizemos que “<em>rodamos a regressão de</em> <span class="math inline">\(y\)</span> sobre <span class="math inline">\(x\)</span> !”</p>
 <section id="teste-de-hipótese-sob-um-único-parametro" class="level3" data-number="7.3.1">
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="teste-de-hipótese-sob-um-único-parametro"><span class="header-section-number">7.3.1</span> Teste de Hipótese sob um Único Parametro</h3>
-<p>Agora precisamos testar se nossa estimativa é estatisticamente igual a zero ou se ela é diferente de zero. Há evidências que a nossa variável <span class="math inline">\(X\)</span> afeta a nossa variável <span class="math inline">\(Y\)</span> na população? Na maior parte do tempo testamos hipóteses do tipo</p>
-<p><span class="math display">\[H_0: {\beta_j}=0\]</span> Na hipótese principal testamos a situação que <span class="math inline">\(X\)</span> não afeta <span class="math inline">\(Y\)</span>. Na hipótese alternativa:</p>
+<p>Agora precisamos testar se nossa estimativa é estatisticamente igual a zero ou se ela é diferente de zero.</p>
+<p><em>Há evidências que a nossa variável <span class="math inline">\(X\)</span> afeta a nossa variável <span class="math inline">\(Y\)</span> na população?</em></p>
+<p>Na maior parte do tempo testamos hipóteses do tipo</p>
+<p><span class="math display">\[H_0: {\beta_j}=0\]</span> Na hipótese principal testamos a situação que <span class="math inline">\(X\)</span> não afeta <span class="math inline">\(Y\)</span> na população sob análise. Na hipótese alternativa:</p>
 <p><span class="math display">\[H_1: \beta_j \neq 0\]</span></p>
-<p>Testamos a hipótese que <span class="math inline">\(X\)</span> afeta <span class="math inline">\(Y\)</span> nessa população. Graficamente temos a figura abaixo.</p>
+<p>Testamos a hipótese que <span class="math inline">\(X\)</span> afeta <span class="math inline">\(Y\)</span> nessa população. Graficamente temos a figura abaixo onde a média populacional é igual a 0:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figuras\thbicaudal.png" class="img-fluid figure-img"></p>
@@ -413,19 +416,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p><strong>Estatística de Teste</strong>:</p>
-<p>Este é um valor calculado a partir dos dados da amostra que é usado para avaliar a probabilidade de observar tal valor se a hipótese nula fosse verdadeira. Ele que vai dizer se estamos na área amarela ou azul da figura acima.</p>
+<p>Este é um valor calculado a partir dos dados da amostra que é usado para avaliar a probabilidade de observar tal valor se a hipótese nula fosse verdadeira (<span class="math inline">\(H_0: {\beta_j}=0\)</span>). Ele que vai dizer se estamos na área amarela ou azul da figura acima.</p>
 <section id="valor-p" class="level4" data-number="7.3.1.1">
 <h4 data-number="7.3.1.1" class="anchored" data-anchor-id="valor-p"><span class="header-section-number">7.3.1.1</span> Valor-p:</h4>
 <p><strong>O valor-p</strong> é a probabilidade de observar uma estatística de teste tão extrema quanto, ou mais extrema do que, aquela calculada a partir dos dados da amostra, sob a suposição de que a hipótese nula seja verdadeira. Em outras palavras, mede quão provável é obter os resultados observados se a hipótese nula for correta.</p>
-<p><strong>Interpretação</strong>: Um valor-p pequeno (tipicamente menor que um nível de significância predefinido, comumente 0,05) sugere que os dados observados são improváveis de ter ocorrido se a hipótese nula fosse verdadeira. Portanto, fornece evidências contra a hipótese nula, e os pesquisadores podem rejeitar a hipótese nula em favor da hipótese alternativa. Por outro lado, um valor-p grande indica que os dados observados são consistentes com a hipótese nula, e há evidências insuficientes para rejeitá-la.</p>
+<p><strong>Interpretação</strong>: Um valor-p pequeno (tipicamente menor que um nível de significância predefinido, comumente 0,05) sugere que os dados observados são improváveis de ter ocorrido se a hipótese nula fosse verdadeira. Portanto, fornece evidências contra a hipótese nula, e os pesquisadores podem rejeitar a hipótese nula em favor da hipótese alternativa. Por outro lado, um valor-p grande indica que os dados observados são consistentes com a hipótese nula, e as evidências evidências são insuficientes para rejeitá-la.</p>
 </section>
 </section>
 <section id="aplicação---estimando-uma-regressão-linear-simples" class="level3" data-number="7.3.2">
 <h3 data-number="7.3.2" class="anchored" data-anchor-id="aplicação---estimando-uma-regressão-linear-simples"><span class="header-section-number">7.3.2</span> Aplicação - Estimando uma Regressão Linear Simples</h3>
 <p>Vamos utilizar aqui o nosso banco de dados anterior sobre feminicídio. É um banco com poucas obserações e possui fim didátco, apesar de serem dados reais.</p>
-<p>Uma questão incial é entender quem será <span class="math inline">\(Y\)</span> e quem será <span class="math inline">\(X\)</span>. Estamos querendo entender a taxa de feminicídio. A questão é, quais são seus determinantes? Aqui precisamos de alguma teoria…mas or hora, vamos ter como hipótese inicial que quanto maior a taxa de homícídio espera-se que em média a taxa de feminicídio aumente. :</p>
+<p>Uma questão incial é entender quem será <span class="math inline">\(Y\)</span> e quem será <span class="math inline">\(X\)</span>. Estamos querendo entender a taxa de feminicídio. A questão é, quais são seus determinantes? Aqui precisamos de alguma teoria…mas por hora, vamos ter como hipótese inicial que quanto maior a taxa de homícídio (ou maior a violência no estado) espera-se que em média a taxa de feminicídio aumente:</p>
 <p><span class="math display">\[Feminc_{tx} = \beta_0 + \beta_1 Homici_{tx} + u\]</span></p>
-<p>Apesar de parecer “muito complicado” na teoria, na prática o <code>r</code> estima uma RLS em segundos. A função para estimar é a<code>lm</code>, ou linear model.</p>
+<p>Apesar de parecer “muito complicado” na teoria, na prática o <code>R</code> estima uma RLS em segundos. A função para estimar é a<code>lm</code>, ou linear model.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Aplicação da RLS - Método dos Mínimos Quadrados Ordinários</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -464,17 +467,17 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 </div>
 <section id="entendendo-os-resultados" class="level4" data-number="7.3.2.1">
 <h4 data-number="7.3.2.1" class="anchored" data-anchor-id="entendendo-os-resultados"><span class="header-section-number">7.3.2.1</span> Entendendo os Resultados</h4>
-<p><strong>1. Resíduos</strong> Residuals: apresenta a distribuição dos resíduos, observa-se que amediana dos resíduos está próxima a zero.</p>
-<p><strong>2.Coeficientes</strong> Em seguida, abaixo de <em>Coefficients</em> temos 5 colunas.</p>
+<p><strong>1. Resíduos</strong> (<em>Residuals</em>): apresenta a distribuição dos resíduos, observa-se que amediana dos resíduos está próxima a zero.</p>
+<p><strong>2.Coeficientes</strong> Em seguida, abaixo tem-se <em>Coefficients</em> com 5 colunas.</p>
 <p><em>Coluna 1</em>: Nome da variável</p>
 <p><em>Coluna 2</em>: Coeficiente estimado <span class="math inline">\(\hat{\beta_0}\)</span> o intercepto e <span class="math inline">\(\hat{\beta_1}\)</span> do termo da variável homicídio</p>
 <p><em>Coluna 3</em>: É o desvio padrão da estimativas de <span class="math inline">\(\beta\)</span></p>
-<p><em>Coluna 4</em>: É a estatistica t utilizada para fazer o teste de hipótese e neste caso, tem-se: <span class="math display">\[H_0:\beta_0=0\]</span> e <span class="math display">\[H_0:\beta_1=0\]</span></p>
-<p><em>Coluna 5</em>: É o p-valor, a probabilidade de encontrarmos valores mais extremos da estatística t. Os asteriscos indicam *** signicante a 0,1% ** a 1% * a 5% e <span class="math inline">\(.\)</span> a 10%.</p>
+<p><em>Coluna 4</em>: É a estatistica <code>t</code> utilizada para fazer o teste de hipótese e neste caso, tem-se: <span class="math display">\[H_0:\beta_0=0\]</span> e <span class="math display">\[H_0:\beta_1=0\]</span></p>
+<p><em>Coluna 5</em>: É o p-valor, a probabilidade de encontrarmos valores mais extremos da estatística t. Os asteriscos indicam *** signicante a 0,1%; ** a 1%; * a 5%; e <span class="math inline">\(.\)</span> a 10%.</p>
 <p><strong><u>Interpretando o Coeficiente</u></strong></p>
-<p>O coeficiente do intercepto nos diz que quando a taxa de homicídio for 0, ainda existira uma taxa de feminicídio de 1,4 pontos, <span class="math inline">\(\beta_0\)</span>, significante a 0,1%. E cada 1 ponto de aumento na taxa de homicídio, aumenta em 0,10 <span class="math inline">\(\beta_1\)</span> pontos a taxa de feminicídio, significante a 10%.</p>
+<p>O coeficiente do intercepto nos diz que quando a taxa de homicídio for 0, ainda existira uma taxa de feminicídio de 1,4 pontos (<span class="math inline">\(\beta_0\)</span>), sendo significante a 0,1%. E cada 1 ponto de aumento na taxa de homicídio, aumenta em 0,106 (<span class="math inline">\(\beta_1\)</span>) pontos a taxa de feminicídio, significante a 10%.</p>
 <p><strong>3. <span class="math inline">\(R^2\)</span></strong>: Em seguida temos o <span class="math inline">\(R^2\)</span> e <span class="math inline">\(R^2\)</span> ajustado. Essas estatísticas calculam quanto da variância da taxa de feminicídio pode ser explicada pela variância da taxa de homicídio. Quando estão próximos a 1 explicam muito, quanto estão próximos a 0 explicam pouco. No caso o nosso <span class="math inline">\(R^2\)</span> ficou baixo e portanto boa parte da variabilidade do feminicídio, não foi explicada pela taxa de homicídio.</p>
-<p><strong>4. Estaística F</strong>: E por fim a estatística F mostra o grau de ajustamento do modelo. Se ela for significativa diz que o modelo é bem ajustados aos dados. As variáveis explicativas incluídas são importantes para a explicação da taxa de feminicídio.Essa estatistica testa a seguinte hipótese.</p>
+<p><strong>4. Estaística F</strong>: E por fim a estatística F mostra o grau de ajustamento do modelo. Se ela for significativa diz que o modelo é bem ajustados aos dados. As variáveis explicativas incluídas são importantes para a explicação da taxa de feminicídio.Essa estatística testa a seguinte hipótese.</p>
 <p><span class="math display">\[H_0:\beta_1=...=\beta_k=0\]</span> contra</p>
 <p><span class="math display">\[H_1: H_0\text{ é falsa}\]</span></p>
 <p><strong>VISUALMENTE</strong></p>
@@ -499,14 +502,14 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 <section id="caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="caracteristicas-do-método-dos-mínimos-quadrados-ordinários-em-determinadas-amostras-de-dados"><span class="header-section-number">7.4</span> Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados</h2>
 <section id="valores-estimados-e-resíduos" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="valores-estimados-e-resíduos"><span class="header-section-number">7.4.1</span> Valores estimados e Resíduos</h3>
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="valores-estimados-e-resíduos"><span class="header-section-number">7.4.1</span> Valores Estimados e Resíduos</h3>
 <p>Uma vez estimados <span class="math inline">\(\hat{\beta}_0\)</span> e <span class="math inline">\(\hat{\beta}_1\)</span> temos os valores ajustados ou também denominados de valores preditos ou <em>fitted values</em>.</p>
 <p>Para uma observação qualquer <span class="math inline">\(i\)</span>, seu valor estimado é:</p>
 <p><span class="math display">\[\hat{y}_i= \hat{\beta}_0 + \hat{\beta}_1x_i\]</span></p>
 <p>Todos os valores <span class="math inline">\(\hat{y}\)</span> estarão sobre a reta de regressão.</p>
 <p>O resíduo, tal qual definido anteriormente, será a diferença entre o valor ajustado <span class="math inline">\(\hat{y}\)</span> e o verdadeiro <span class="math inline">\(y\)</span> em nosso banco de dados:</p>
 <p><span class="math display">\[\hat{u}_i = y_i - \hat{y}_i\]</span></p>
-<p>Se <span class="math inline">\(\hat{u_i} &gt; 0\)</span> a regressaõ subestima <span class="math inline">\(y_i\)</span>. Se <span class="math inline">\(\hat{u_i} &lt; 0\)</span> a reta superestima <span class="math inline">\(y_i\)</span>. O cenário ideal é quando <span class="math inline">\(\hat{u}_i= 0\)</span>, algo que quase nunca acontece.</p>
+<p>Se <span class="math inline">\(\hat{u_i} &gt; 0\)</span> a regressão subestima <span class="math inline">\(y_i\)</span>. Se <span class="math inline">\(\hat{u_i} &lt; 0\)</span> a reta superestima <span class="math inline">\(y_i\)</span>. O cenário ideal é quando <span class="math inline">\(\hat{u}_i= 0\)</span>, algo que quase nunca acontece.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Obtendo os residuos da regressão</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>resid <span class="ot">&lt;-</span> <span class="fu">residuals</span>(modelo)</span>
@@ -525,23 +528,21 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 </ol>
 <p><span class="math display">\[\sum_{i=1}^{n} \hat{u}_i = 0\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Soma dos resíduos</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8.881784e-16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#note que é um número praticamente igual a zero</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li>A covariancia amostral entre a variavel explicativa e os resíduos é zero:</li>
 </ol>
 <p><span class="math display">\[\sum_{i=1}^{n} x_i \hat{u}_i = 0\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#obtendo a variável x</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> dados<span class="sc">$</span>homic_tx</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#somando com os residuos</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x<span class="sc">*</span>resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#obtendo a variável x</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> dados<span class="sc">$</span>homic_tx</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#somando com os residuos</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x<span class="sc">*</span>resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.298961e-14</code></pre>
 </div>
@@ -551,19 +552,19 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 <li><p>A média dos valores estimados, <span class="math inline">\(\bar{\hat{y}}\)</span> é igual a média dos valores observados <span class="math inline">\(\bar{y}\)</span>.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#y dos dados </span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> dados<span class="sc">$</span>feminic_tx</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#y dos dados </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> dados<span class="sc">$</span>feminic_tx</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.651852</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#y estimado</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>y_hat <span class="ot">&lt;-</span> <span class="fu">fitted.values</span>(modelo)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y_hat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#y estimado</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y_hat <span class="ot">&lt;-</span> <span class="fu">fitted.values</span>(modelo)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y_hat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.651852</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)<span class="sc">==</span><span class="fu">mean</span>(y_hat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)<span class="sc">==</span><span class="fu">mean</span>(y_hat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -580,12 +581,12 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 <p>Soma dos Quadrado Totais (SQT):</p>
 <p><span class="math display">\[\text{SQT} = \sum_{i=1}^{n} (y_i - \bar{y})^2\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular a média da variável dependente (feminic_tx)</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>media_feminic_tx <span class="ot">&lt;-</span> <span class="fu">mean</span>(dados<span class="sc">$</span>feminic_tx)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular a Soma dos Quadrados Totais (SQT)</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>sqt <span class="ot">&lt;-</span> <span class="fu">sum</span>((dados<span class="sc">$</span>feminic_tx <span class="sc">-</span> media_feminic_tx)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>sqt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular a média da variável dependente (feminic_tx)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>media_feminic_tx <span class="ot">&lt;-</span> <span class="fu">mean</span>(dados<span class="sc">$</span>feminic_tx)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular a Soma dos Quadrados Totais (SQT)</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>sqt <span class="ot">&lt;-</span> <span class="fu">sum</span>((dados<span class="sc">$</span>feminic_tx <span class="sc">-</span> media_feminic_tx)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>sqt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9.927407</code></pre>
 </div>
@@ -593,9 +594,9 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 <p>Soma dos Quadrados Explicados (SQE):</p>
 <p><span class="math display">\[\text{SQE} = \sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular a Soma dos Quadrados Explicados (SQE)</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sqe <span class="ot">&lt;-</span> <span class="fu">sum</span>((y_hat <span class="sc">-</span> media_feminic_tx)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>sqe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular a Soma dos Quadrados Explicados (SQE)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>sqe <span class="ot">&lt;-</span> <span class="fu">sum</span>((y_hat <span class="sc">-</span> media_feminic_tx)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>sqe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.27879</code></pre>
 </div>
@@ -603,9 +604,9 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 <p>Soma dos Quadrados dos Resíduos (SQR):</p>
 <p><span class="math display">\[\text{SQR} = \sum_{i=1}^{n} \hat{u}_i^2\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>residuos_quadrados <span class="ot">&lt;-</span> <span class="fu">residuals</span>(modelo)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sqr <span class="ot">&lt;-</span> <span class="fu">sum</span>(residuos_quadrados)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>sqr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>residuos_quadrados <span class="ot">&lt;-</span> <span class="fu">residuals</span>(modelo)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>sqr <span class="ot">&lt;-</span> <span class="fu">sum</span>(residuos_quadrados)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>sqr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8.648617</code></pre>
 </div>
@@ -618,9 +619,9 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 <p>Rearranjando os termos</p>
 <p><span class="math display">\[R^2 = \frac{\text{SQE}}{\text{SQT}} = 1 - \frac{\text{SQR}}{\text{SQT}}\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#r-quadrado do modelo</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>r_quadrado <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (sqr<span class="sc">/</span>sqt)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>r_quadrado</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#r-quadrado do modelo</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>r_quadrado <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (sqr<span class="sc">/</span>sqt)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>r_quadrado</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1288141</code></pre>
 </div>
@@ -632,60 +633,42 @@ F-statistic: 3.697 on 1 and 25 DF,  p-value: 0.06599</code></pre>
 <h2 data-number="7.5" class="anchored" data-anchor-id="unidade-de-medida-e-forma-funcional"><span class="header-section-number">7.5</span> Unidade de Medida e Forma Funcional</h2>
 <section id="unidade-de-medida" class="level3" data-number="7.5.1">
 <h3 data-number="7.5.1" class="anchored" data-anchor-id="unidade-de-medida"><span class="header-section-number">7.5.1</span> Unidade de Medida</h3>
-<p>Vejamos o efeito de unidade de medidas na nossa regressão.</p>
-<ol type="1">
-<li>Se a variável dependente (<span class="math inline">\(Y\)</span>) é multiplicada por uma constante <span class="math inline">\(c\)</span>, então as estimativas do intercepto e da inclinação também serão multiplicadas por <span class="math inline">\(c\)</span>. Vamos multiplicar por 10 e ver o que acontece:</li>
-</ol>
+<p>Vejamos o efeito de mudanças na unidade de medida das variáveis na nossa regressão.</p>
+<p><strong>1.</strong> Se a variável dependente (<span class="math inline">\(Y\)</span>) é multiplicada por uma constante <span class="math inline">\(c\)</span>, então as estimativas do intercepto e da inclinação também serão multiplicadas por <span class="math inline">\(c\)</span>. Vamos multiplicar por 10 e ver o que acontece:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Anexando pacote: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Os seguintes objetos são mascarados por 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Os seguintes objetos são mascarados por 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">feminic_tx10 =</span>feminic_tx<span class="sc">*</span><span class="dv">10</span> )</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>modelo1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> dados, feminic_tx10 <span class="sc">~</span> homic_tx)</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">feminic_tx10 =</span>feminic_tx<span class="sc">*</span><span class="dv">10</span> )</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>modelo1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> dados, feminic_tx10 <span class="sc">~</span> homic_tx)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Estimate Std. Error  t value     Pr(&gt;|t|)
 (Intercept) 1.146731 0.28607061 4.008560 0.0004846694
 homic_tx    0.105805 0.05503129 1.922633 0.0659903845</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo1)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo1)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Estimate Std. Error  t value     Pr(&gt;|t|)
 (Intercept) 11.46731  2.8607061 4.008560 0.0004846694
 homic_tx     1.05805  0.5503129 1.922633 0.0659903845</code></pre>
 </div>
 </div>
-<ol start="2" type="1">
-<li>Se a variável explicativa (<span class="math inline">\(X\)</span>) é multiplicada por uma contante <span class="math inline">\(c\)</span>, então o coeficiente de inclinação será dívido por <span class="math inline">\(c\)</span>. Nada acontece com o intercepto. Vamos multiplicar agora a taxa de homicídio por 10</li>
-</ol>
+<p><strong>2.</strong> Se a variável explicativa (<span class="math inline">\(X\)</span>) é multiplicada por uma contante <span class="math inline">\(c\)</span>, então o coeficiente de inclinação será dívido por <span class="math inline">\(c\)</span>. Nada acontece com o intercepto. Vamos multiplicar agora a taxa de homicídio por 10</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">homic_tx10 =</span>homic_tx<span class="sc">*</span><span class="dv">10</span> )</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>modelo2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> dados, feminic_tx <span class="sc">~</span> homic_tx10)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">homic_tx10 =</span>homic_tx<span class="sc">*</span><span class="dv">10</span> )</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>modelo2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> dados, feminic_tx <span class="sc">~</span> homic_tx10)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Estimate Std. Error  t value     Pr(&gt;|t|)
 (Intercept) 1.146731 0.28607061 4.008560 0.0004846694
 homic_tx    0.105805 0.05503129 1.922633 0.0659903845</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo2)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo2)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Estimate  Std. Error  t value     Pr(&gt;|t|)
 (Intercept) 1.1467311 0.286070605 4.008560 0.0004846694
@@ -696,18 +679,18 @@ homic_tx10  0.0105805 0.005503129 1.922633 0.0659903845</code></pre>
 <li>Se a variável explicativa (<span class="math inline">\(X\)</span>) é dividida por uma constante <span class="math inline">\(c\)</span>, então o coeficiente de inclinação é multiplicado por <span class="math inline">\(c\)</span>. Nada acontece com a constante.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">homic_tx_10 =</span>homic_tx<span class="sc">/</span><span class="dv">10</span> )</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>modelo3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> dados, feminic_tx <span class="sc">~</span> homic_tx_10)</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">homic_tx_10 =</span>homic_tx<span class="sc">/</span><span class="dv">10</span> )</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>modelo3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> dados, feminic_tx <span class="sc">~</span> homic_tx_10)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Estimate Std. Error  t value     Pr(&gt;|t|)
 (Intercept) 1.146731 0.28607061 4.008560 0.0004846694
 homic_tx    0.105805 0.05503129 1.922633 0.0659903845</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo3)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo3)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Estimate Std. Error  t value     Pr(&gt;|t|)
 (Intercept) 1.146731  0.2860706 4.008560 0.0004846694
@@ -731,7 +714,7 @@ Importante
 </section>
 <section id="incorporando-não-linearidades-nas-variáveis" class="level2" data-number="7.6">
 <h2 data-number="7.6" class="anchored" data-anchor-id="incorporando-não-linearidades-nas-variáveis"><span class="header-section-number">7.6</span> Incorporando não linearidades (nas variáveis!)</h2>
-<p>Vamos agora incorporar a não linearidade nas variáveis e ver como fica a sua interpretação. Aabaixo tem-se uma tabela para interpretar os coeficientes e será explicada nos exemplos abaxo.</p>
+<p>Vamos agora incorporar a não linearidade nas variáveis e ver como fica a sua interpretação. Abaixo tem-se uma tabela para interpretar os coeficientes e será explicada nos exemplos mais abaixo.</p>
 <table class="table">
 <colgroup>
 <col style="width: 30%">
@@ -778,8 +761,8 @@ Importante
 <h3 data-number="7.6.1" class="anchored" data-anchor-id="modelo-nível-nível"><span class="header-section-number">7.6.1</span> Modelo Nível-Nível</h3>
 <p>Esse é o modelo que fizemos anteriormente e nos diz que uma variação absoluta em <span class="math inline">\(X\)</span> terá um efeito de <span class="math inline">\(\beta\)</span> em Y.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>modelo_nn<span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>dados, dados<span class="sc">$</span>feminic_tx <span class="sc">~</span> dados<span class="sc">$</span>homic_tx)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_nn)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>modelo_nn<span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>dados, dados<span class="sc">$</span>feminic_tx <span class="sc">~</span> dados<span class="sc">$</span>homic_tx)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_nn)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               Estimate Std. Error  t value     Pr(&gt;|t|)
 (Intercept)    1.146731 0.28607061 4.008560 0.0004846694
@@ -792,27 +775,27 @@ dados$homic_tx 0.105805 0.05503129 1.922633 0.0659903845</code></pre>
 <h3 data-number="7.6.2" class="anchored" data-anchor-id="modelo-nível-log"><span class="header-section-number">7.6.2</span> Modelo Nível-log</h3>
 <p>Primeiramente vamos criar as variáveis em ln:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>Lnfeminic_tx <span class="ot">&lt;-</span> <span class="fu">log</span>(dados<span class="sc">$</span>feminic_tx)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>Lnhomic_tx <span class="ot">&lt;-</span> <span class="fu">log</span>(dados<span class="sc">$</span>homic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>Lnfeminic_tx <span class="ot">&lt;-</span> <span class="fu">log</span>(dados<span class="sc">$</span>feminic_tx)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>Lnhomic_tx <span class="ot">&lt;-</span> <span class="fu">log</span>(dados<span class="sc">$</span>homic_tx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>O modelo Nível-Log considerá <span class="math inline">\(Y\)</span> no nível e <span class="math inline">\(X\)</span> no log. As variações relativas de <span class="math inline">\(X\)</span> implicam em variações absolutas constantes em <span class="math inline">\(Y\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>modelo_nl<span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>dados, dados<span class="sc">$</span>feminic_tx <span class="sc">~</span> dados<span class="sc">$</span>Lnhomic_tx)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_nl)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>modelo_nl<span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>dados, dados<span class="sc">$</span>feminic_tx <span class="sc">~</span> dados<span class="sc">$</span>Lnhomic_tx)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_nl)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                  Estimate Std. Error  t value   Pr(&gt;|t|)
 (Intercept)      0.7246404  0.4453288 1.627203 0.11623380
 dados$Lnhomic_tx 0.6238311  0.2900917 2.150462 0.04138118</code></pre>
 </div>
 </div>
-<p>A variação relativa de 1% na taxa de homicídio (<span class="math inline">\(X\)</span>), aumenta a taxa de feminicídio em 0,00623 <span class="math inline">\((\beta_1/100)\%\)</span></p>
+<p>A variação relativa de 1% na taxa de homicídio (<span class="math inline">\(X\)</span>), aumenta a taxa de feminicídio em 0,00623 <span class="math inline">\((\beta_1/100)\)</span></p>
 </section>
 <section id="modelo-log-nível" class="level3" data-number="7.6.3">
 <h3 data-number="7.6.3" class="anchored" data-anchor-id="modelo-log-nível"><span class="header-section-number">7.6.3</span> Modelo Log-Nível</h3>
 <p>Nesse modelo <span class="math inline">\(Y\)</span> está em log e <span class="math inline">\(X\)</span> em nível. Variações absolutas em <span class="math inline">\(X\)</span> implicam em variações exponenciais de <span class="math inline">\(Y\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>modelo_ln<span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>dados, dados<span class="sc">$</span>Lnfeminic_tx<span class="sc">~</span> dados<span class="sc">$</span>homic_tx)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_ln)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>modelo_ln<span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>dados, dados<span class="sc">$</span>Lnfeminic_tx<span class="sc">~</span> dados<span class="sc">$</span>homic_tx)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_ln)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 Estimate Std. Error  t value  Pr(&gt;|t|)
 (Intercept)    0.21824231 0.18282873 1.193698 0.2438007
@@ -823,10 +806,10 @@ dados$homic_tx 0.04525001 0.03517069 1.286583 0.2100267</code></pre>
 </section>
 <section id="modelo-log-log" class="level3" data-number="7.6.4">
 <h3 data-number="7.6.4" class="anchored" data-anchor-id="modelo-log-log"><span class="header-section-number">7.6.4</span> Modelo Log-Log</h3>
-<p>Nesse modelo tanto <span class="math inline">\(X\)</span> como <span class="math inline">\(Y\)</span> estão em log. Variaões relativas em <span class="math inline">\(X\)</span> implicam em varições relativas em <span class="math inline">\(Y\)</span></p>
+<p>Nesse modelo tanto <span class="math inline">\(X\)</span> como <span class="math inline">\(Y\)</span> estão em log. Variações relativas em <span class="math inline">\(X\)</span> implicam em variações relativas em <span class="math inline">\(Y\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>modelo_ll <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>dados, dados<span class="sc">$</span>Lnfeminic_tx<span class="sc">~</span> dados<span class="sc">$</span>Lnhomic_tx)</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_ll)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>modelo_ll <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data=</span>dados, dados<span class="sc">$</span>Lnfeminic_tx<span class="sc">~</span> dados<span class="sc">$</span>Lnhomic_tx)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_ll)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     Estimate Std. Error     t value  Pr(&gt;|t|)
 (Intercept)      0.0009590929   0.284865 0.003366832 0.9973404
@@ -884,11 +867,11 @@ dados$Lnhomic_tx 0.2915325798   0.185564 1.571062163 0.1287399</code></pre>
 <p>Vamos analisar o efeito da taxa de homicídio e da renda per capita sobre a taxa de feminicídio. Ou seja:</p>
 <p><span class="math display">\[Feminic_i = \beta_0 + \beta_1 Homic_{i} + \beta_{2} Rendapc_i  + u\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Estimando uma regressão Linear Multipla</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>rlm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> dados, feminic_tx <span class="sc">~</span> homic_tx <span class="sc">+</span> rendapc)</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rlm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Estimando uma regressão Linear Multipla</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>rlm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> dados, feminic_tx <span class="sc">~</span> homic_tx <span class="sc">+</span> rendapc)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rlm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1005,10 +988,10 @@ Variável Binária ou Dummy:
 <p>Considere o exemplo prático retirado do livro do Wooldridge. Queremos relacionar anos de estudo e salários. Obviamente, o exemplo é bastante simples, mas será útil para avaliarmos a questão.</p>
 <p><span class="math display">\[salarioh = \beta_0 + \delta_0 feminino + \beta_1 educ + \beta_3 exper + \beta_4perm + u \]</span> Nesse exemplo, estamos tentando entender os determinantes do salário. O salário pode ser explicado pela educação, experência, tempo no cargo e pelo fato de ser mulher. A variável feminino assume o valor 1, se o individuo for do sexo feminino e 0, caso o contrário. Na equação <span class="math inline">\(\delta_0\)</span> mede a diferença no salário entre homems e mulheres, dado os mesmos anos de estudos, experiência e tempo no cargo, e evidentemente o mesmo <span class="math inline">\(u\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(wage1, <span class="at">package=</span> <span class="st">"wooldridge"</span>)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>wage_f<span class="ot">&lt;-</span><span class="fu">lm</span>(wage <span class="sc">~</span> female<span class="sc">+</span>educ<span class="sc">+</span>exper<span class="sc">+</span>tenure, <span class="at">data=</span>wage1)</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wage_f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(wage1, <span class="at">package=</span> <span class="st">"wooldridge"</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>wage_f<span class="ot">&lt;-</span><span class="fu">lm</span>(wage <span class="sc">~</span> female<span class="sc">+</span>educ<span class="sc">+</span>exper<span class="sc">+</span>tenure, <span class="at">data=</span>wage1)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wage_f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1042,11 +1025,11 @@ F-statistic:  74.4 on 4 and 521 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>Podemos utilizar a binária para ver o efeito da experiência para homens e para mulheres. Podemos fazer isso criando uma variável que é a multiplicação entre experiência e feminino. Vejamos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>wage1<span class="sc">$</span>exp_f<span class="ot">&lt;-</span>wage1<span class="sc">$</span>exper<span class="sc">*</span>wage1<span class="sc">$</span>female</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>wage_f_2<span class="ot">&lt;-</span><span class="fu">lm</span>(wage <span class="sc">~</span> educ<span class="sc">+</span>female<span class="sc">+</span> exper<span class="sc">+</span>exp_f<span class="sc">+</span>tenure, <span class="at">data=</span>wage1)</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wage_f_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>wage1<span class="sc">$</span>exp_f<span class="ot">&lt;-</span>wage1<span class="sc">$</span>exper<span class="sc">*</span>wage1<span class="sc">$</span>female</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>wage_f_2<span class="ot">&lt;-</span><span class="fu">lm</span>(wage <span class="sc">~</span> educ<span class="sc">+</span>female<span class="sc">+</span> exper<span class="sc">+</span>exp_f<span class="sc">+</span>tenure, <span class="at">data=</span>wage1)</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wage_f_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1071,7 +1054,7 @@ Residual standard error: 2.937 on 520 degrees of freedom
 Multiple R-squared:  0.3737,    Adjusted R-squared:  0.3676 
 F-statistic: 62.04 on 5 and 520 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(wage1<span class="sc">$</span>wage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(wage1<span class="sc">$</span>wage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.896103</code></pre>
 </div>
@@ -1091,30 +1074,30 @@ F-statistic: 62.04 on 5 and 520 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Considere a equação abaixo</p>
 <p><span class="math display">\[log(salarioh) = \beta_0 + \beta_1  hsolteiro  +  \beta_2 mcasadas  + \beta_3 msolteiras + \beta_4educ + \beta_5exper + \beta_6exper^2 + u\]</span> Note que, definimos uma dummy para cada grupo e o o grupo de comparação é o conunto de homens solteiros.As estimativas das dummies acima irão captar a diferença proporcional nos salarios-horas relativamente aos homens solteiros.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Aplicação de RLM multiplas dummies</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(wage1, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="do">### criando as variáveis</span></span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span>
-<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>wage1 <span class="ot">&lt;-</span> wage1 <span class="sc">%&gt;%</span></span>
-<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hcasado =</span> <span class="fu">ifelse</span>(female<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> married<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>wage1 <span class="ot">&lt;-</span> wage1 <span class="sc">%&gt;%</span></span>
-<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mcasada =</span> <span class="fu">ifelse</span>(female<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> married<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>wage1 <span class="ot">&lt;-</span> wage1 <span class="sc">%&gt;%</span></span>
-<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">msolteira =</span> <span class="fu">ifelse</span>(female<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> married<span class="sc">==</span><span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a>wage1 <span class="ot">&lt;-</span> wage1 <span class="sc">%&gt;%</span></span>
-<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hsolteiro =</span> <span class="fu">ifelse</span>(female<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> married<span class="sc">==</span><span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a>status_civ <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(wage)<span class="sc">~</span>  hsolteiro <span class="sc">+</span> msolteira <span class="sc">+</span> mcasada <span class="sc">+</span> educ<span class="sc">+</span> exper  <span class="sc">+</span><span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span>tenure, <span class="at">data=</span>wage1)</span>
-<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(status_civ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Aplicação de RLM multiplas dummies</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(wage1, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="do">### criando as variáveis</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>wage1 <span class="ot">&lt;-</span> wage1 <span class="sc">%&gt;%</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hcasado =</span> <span class="fu">ifelse</span>(female<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> married<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>wage1 <span class="ot">&lt;-</span> wage1 <span class="sc">%&gt;%</span></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mcasada =</span> <span class="fu">ifelse</span>(female<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> married<span class="sc">==</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>wage1 <span class="ot">&lt;-</span> wage1 <span class="sc">%&gt;%</span></span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">msolteira =</span> <span class="fu">ifelse</span>(female<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> married<span class="sc">==</span><span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>wage1 <span class="ot">&lt;-</span> wage1 <span class="sc">%&gt;%</span></span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hsolteiro =</span> <span class="fu">ifelse</span>(female<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> married<span class="sc">==</span><span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a>status_civ <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(wage)<span class="sc">~</span>  hsolteiro <span class="sc">+</span> msolteira <span class="sc">+</span> mcasada <span class="sc">+</span> educ<span class="sc">+</span> exper  <span class="sc">+</span><span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span>tenure, <span class="at">data=</span>wage1)</span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(status_civ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -1165,7 +1148,7 @@ F-statistic: 61.86 on 7 and 518 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h3 data-number="7.8.6" class="anchored" data-anchor-id="incorporando-informações-ordinais-com-o-uso-de-variáveis-dummy."><span class="header-section-number">7.8.6</span> Incorporando Informações Ordinais com o uso de Variáveis Dummy.</h3>
 <p>Vamos agora entender a criação de binárias para variáveis com várias categorias. Uma variável com categoria tradicional é a região onde mora o indivíduo. Podemos ver isso no nosso banco anterior chamado <code>dados</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dados<span class="sc">$</span>regiao)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dados<span class="sc">$</span>regiao)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 CO  N NE  S SD 
@@ -1174,26 +1157,26 @@ CO  N NE  S SD
 </div>
 <p>Nesse caso eu teria que escolher uma região de comparação, por exemplo Sudeste e criar uma binária para o CO, uma para o N, uma para o NE e uma para o S. Veja o exemplo abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="do">### criando as variáveis</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">CO =</span> <span class="fu">ifelse</span>(regiao<span class="sc">==</span><span class="st">"CO"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
-<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NE =</span> <span class="fu">ifelse</span>(regiao<span class="sc">==</span><span class="st">"NE"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
-<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N =</span> <span class="fu">ifelse</span>(regiao<span class="sc">==</span><span class="st">"N"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
-<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">S =</span> <span class="fu">ifelse</span>(regiao<span class="sc">==</span><span class="st">"S"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="do">### criando as variáveis</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">CO =</span> <span class="fu">ifelse</span>(regiao<span class="sc">==</span><span class="st">"CO"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NE =</span> <span class="fu">ifelse</span>(regiao<span class="sc">==</span><span class="st">"NE"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N =</span> <span class="fu">ifelse</span>(regiao<span class="sc">==</span><span class="st">"N"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">S =</span> <span class="fu">ifelse</span>(regiao<span class="sc">==</span><span class="st">"S"</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Como esse banco é pequeno, vamos retomar o banco o Wooldridge <code>wage1</code>. Neste banco já está criada a variável de região sendo a região leste a de comparação. Vamos adicionar então a região, sul, norte e oeste.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>reg_salar <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(wage)<span class="sc">~</span>  northcen <span class="sc">+</span> west<span class="sc">+</span> south <span class="sc">+</span> female<span class="sc">+</span> educ<span class="sc">+</span> exper <span class="sc">+</span>tenure, <span class="at">data=</span>wage1)</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg_salar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>reg_salar <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(wage)<span class="sc">~</span>  northcen <span class="sc">+</span> west<span class="sc">+</span> south <span class="sc">+</span> female<span class="sc">+</span> educ<span class="sc">+</span> exper <span class="sc">+</span>tenure, <span class="at">data=</span>wage1)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg_salar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:

@@ -224,9 +224,9 @@ summary(modelo)
 
 #### Entendendo os Resultados
 
-**1. Resíduos** Residuals: apresenta a  distribuição dos resíduos, observa-se que amediana dos resíduos está próxima a zero.
+**1. Resíduos** (*Residuals*): apresenta a  distribuição dos resíduos, observa-se que amediana dos resíduos está próxima a zero.
 
-**2.Coeficientes** Em seguida, abaixo de *Coefficients* temos 5 colunas.
+**2.Coeficientes** Em seguida, abaixo tem-se *Coefficients* com 5 colunas.
 
 *Coluna 1*: Nome da variável
 
@@ -234,17 +234,17 @@ summary(modelo)
 
 *Coluna 3*: É o desvio padrão da estimativas de $\beta$
 
-*Coluna 4*: É a estatistica t utilizada para fazer o teste de hipótese e neste caso, tem-se: $$H_0:\beta_0=0$$ e $$H_0:\beta_1=0$$
+*Coluna 4*: É a estatistica `t` utilizada para fazer o teste de hipótese e neste caso, tem-se: $$H_0:\beta_0=0$$ e $$H_0:\beta_1=0$$
 
-*Coluna 5*: É o p-valor, a probabilidade de encontrarmos valores mais extremos da estatística t. Os asteriscos indicam \*\*\* signicante a 0,1% \*\* a 1% \* a 5% e $.$ a 10%.
+*Coluna 5*: É o p-valor, a probabilidade de encontrarmos valores mais extremos da estatística t. Os asteriscos indicam \*\*\* signicante a 0,1%; \*\* a 1%; \* a 5%; e $.$ a 10%.
 
 **[Interpretando o Coeficiente]{.underline}**
 
-O coeficiente do intercepto nos diz que quando a taxa de homicídio for 0, ainda existira uma taxa de feminicídio de 1,4 pontos, $\beta_0$, significante a 0,1%. E cada 1 ponto de aumento na taxa de homicídio, aumenta em 0,10 $\beta_1$ pontos a taxa de feminicídio, significante a 10%.
+O coeficiente do intercepto nos diz que quando a taxa de homicídio for 0, ainda existira uma taxa de feminicídio de 1,4 pontos  ($\beta_0$), sendo significante a 0,1%. E cada 1 ponto de aumento na taxa de homicídio, aumenta em 0,106 ($\beta_1$) pontos a taxa de feminicídio, significante a 10%.
 
 **3. $R^2$**: Em seguida temos o $R^2$ e $R^2$ ajustado. Essas estatísticas calculam quanto da variância da taxa de feminicídio pode ser explicada pela variância da taxa de homicídio. Quando estão próximos a 1 explicam muito, quanto estão próximos a 0 explicam pouco. No caso o nosso $R^2$ ficou baixo e portanto boa parte da variabilidade do feminicídio, não foi explicada pela taxa de homicídio. 
 
-**4. Estaística F**: E por fim a estatística F mostra o grau de ajustamento do modelo. Se ela for significativa diz que o modelo é bem ajustados aos dados. As variáveis explicativas incluídas são importantes para a explicação da taxa de feminicídio.Essa estatistica testa a seguinte hipótese.
+**4. Estaística F**: E por fim a estatística F mostra o grau de ajustamento do modelo. Se ela for significativa diz que o modelo é bem ajustados aos dados. As variáveis explicativas incluídas são importantes para a explicação da taxa de feminicídio.Essa estatística testa a seguinte hipótese.
 
 $$H_0:\beta_1=...=\beta_k=0$$
 contra 
@@ -273,7 +273,7 @@ Abaixo tem-se os dados utilizados e a nossa reta de regressão estimada acima. V
 
 ## Caracteristicas do Método dos Mínimos Quadrados Ordinários em Determinadas Amostras de Dados
 
-### Valores estimados e Resíduos
+### Valores Estimados e Resíduos
 
 Uma vez estimados $\hat{\beta}_0$ e $\hat{\beta}_1$ temos os valores ajustados ou também denominados de valores preditos ou *fitted values*.
 
@@ -287,7 +287,7 @@ O resíduo, tal qual definido anteriormente, será a diferença entre o valor aj
 
 $$\hat{u}_i = y_i - \hat{y}_i$$
 
-Se $\hat{u_i} > 0$ a regressaõ subestima $y_i$. Se $\hat{u_i} < 0$ a reta superestima $y_i$. O cenário ideal é quando $\hat{u}_i= 0$, algo que quase nunca acontece.
+Se $\hat{u_i} > 0$ a regressão subestima $y_i$. Se $\hat{u_i} < 0$ a reta superestima $y_i$. O cenário ideal é quando $\hat{u}_i= 0$, algo que quase nunca acontece.
 
 ```{r}
 ##Obtendo os residuos da regressão
@@ -299,15 +299,14 @@ resid <- residuals(modelo)
 
 ### Propriedades Algébricas do MQO
 
-(1) A Soma dos Resíduos é zero:
+(1) A Soma dos Resíduos é zero: 
 
 $$\sum_{i=1}^{n} \hat{u}_i = 0$$
 
 ```{r}
 
-###Soma dos resíduos
 sum(resid)
-#note que é um número praticamente igual a zero
+
 
 ```
 
@@ -421,11 +420,11 @@ Novamente, o $R^2$ é a porcentagem da variação de y que é explicada por $x$.
 
 ### Unidade de Medida
 
-Vejamos o efeito de unidade de medidas na nossa regressão. 
+Vejamos o efeito de mudanças na unidade de medida das variáveis na nossa regressão. 
 
-  1. Se a variável dependente ($Y$) é multiplicada por uma constante $c$, então as estimativas do intercepto e da inclinação também serão multiplicadas por $c$. Vamos multiplicar por 10 e ver o que acontece:
+  **1.** Se a variável dependente ($Y$) é multiplicada por uma constante $c$, então as estimativas do intercepto e da inclinação também serão multiplicadas por $c$. Vamos multiplicar por 10 e ver o que acontece:
 
-```{r warning=FALSE}
+```{r, warning=FALSE, message=FALSE}
 library(dplyr)
 dados <- dados |> 
   mutate(feminic_tx10 =feminic_tx*10 )
@@ -438,7 +437,7 @@ summary(modelo1)$coefficients
 
 ```
 
-  2. Se a variável explicativa ($X$) é multiplicada por uma contante $c$, então o coeficiente de inclinação será dívido por $c$. Nada acontece com o intercepto. Vamos multiplicar agora a taxa de homicídio por 10
+  **2.** Se a variável explicativa ($X$) é multiplicada por uma contante $c$, então o coeficiente de inclinação será dívido por $c$. Nada acontece com o intercepto. Vamos multiplicar agora a taxa de homicídio por 10
 
 ```{r}
 dados <- dados |> 
@@ -480,7 +479,7 @@ O $R^2$ e os testes de hipótese não depende das unidades de nossas variáveis.
 
 ## Incorporando não linearidades (nas variáveis!)
 
-Vamos agora incorporar a não linearidade nas variáveis e ver como fica a sua interpretação. Aabaixo tem-se uma tabela para interpretar os coeficientes e será explicada nos exemplos abaxo. 
+Vamos agora incorporar a não linearidade nas variáveis e ver como fica a sua interpretação. Abaixo tem-se uma tabela para interpretar os coeficientes e será explicada nos exemplos mais abaixo. 
 
 
 
@@ -524,7 +523,7 @@ modelo_nl<- lm(data=dados, dados$feminic_tx ~ dados$Lnhomic_tx)
 summary(modelo_nl)$coefficients
 ```
 
-A variação relativa de 1\% na taxa de homicídio ($X$), aumenta a taxa de feminicídio em 0,00623 $(\beta_1/100)\%$ 
+A variação relativa de 1\% na taxa de homicídio ($X$), aumenta a taxa de feminicídio em 0,00623 $(\beta_1/100)$ 
 
 
 
@@ -547,7 +546,7 @@ Para cada incremento aicional da taxa de homicídio, tem-se um incremento de 4,5
 
 ### Modelo Log-Log
 
-Nesse modelo tanto $X$ como $Y$ estão em log. Variaões relativas em $X$ implicam em varições relativas em $Y$
+Nesse modelo tanto $X$ como $Y$ estão em log. Variações relativas em $X$ implicam em variações relativas em $Y$
 
 
 
