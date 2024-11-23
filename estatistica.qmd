@@ -1,0 +1,454 @@
+---
+title: "Uma Introdução à Estatística"
+subtitle: "Conceitos Inciciais"
+author:
+- Alexandre Nicolella e Felipe Bauer
+date: "2024"
+format: html
+---
+
+## Porque Estudar Estatística?
+
+Podemos dizer que a existência da estatística e de outras ciências está conectada a existência de problemas. Não somente a ciência mas o nosso trabalho está conectado a superação de problemas cotidianos. Tomar decisão é o dia a dia do gestor.
+
+Segundo Popper "we study not disciplines, but problems. Often, problems transcend the boundaries of a particular discipline"
+
+A questão central é: Como solucionamos os problemas? Utilizamos a melhor estratégia? A solução foi boa?
+
+```{mermaid}
+flowchart LR
+  A[PROBLEMA] --> B[Estratégia de Decisão]
+  B --> C{Solução é BOA?}
+```
+
+### Os dois sistemas cognitivos
+
+Os livros abaixo são boas referências sobre a tomada de decisão.
+
+::: {layout="[30,-40,30]"}
+![Rápido e Devagar: Duas Formas de Pensar](figuras\kahneman.jpg){width="10%"}
+
+![Processo Decisório](figuras\bazerman.jpg){width="10%"}
+:::
+
+Existem dois sistemas que utilizamos para tomar decisão. O chamado **Sistema 1** e o chamado **Sistema 2**. Segue uma breve descrição de cada um:
+
+**Sistema 1**:
+
+-   Intuitivo, rápido, automático, sem esforço, implícito e emocional
+    -   Pressa,
+    -   Falta de tempo,
+    -   Problemas menos importante
+    -   Mais Falhas/Erros
+
+**Sistema 2**
+
+-   Raciocíonio lento, consciente, esforçado, explícito, lógico
+    -   Requer tempo,
+    -   Mais recursos
+    -   Problemas mais importante
+    -   Menos Falhas
+
+Para o Sistema 1 usamos a nossa intuição que chamamos de Heurística. Vejamos um pouco mais sobre esse sistema.
+
+**HEURÍSTICA**
+
+São rotinas inconscientes ou atalhos que o nosso cérebro utiliza para lidar com a complexidade.
+
+-   Modelo/Regras Intuitivas.
+-   Próprio do Sistema 1.
+-   Apesar de processo sofisticado, são passíveis de falhas. Intuição falha
+
+[**Um Exemplo**]{.underline}
+
+Veja a figura abaixo retirada do livro do Bazerman.Responda rápido.
+
+**Qual delas tem o tampo mais quadrado?**
+
+![Bazerman: Exemplo das mesas](figuras\mesa.jpg){width="80%"}
+
+Se você achou que é a segunda mesa, você está alinhado com a grande maioria. Nesse caso você usou o seu sistema 1
+
+Vamos repitir a pergunta:
+
+**Qual delas tem o tampo mais quadrado?**
+
+Agora use uma régua para medir as mesas. Usamos aqui o sistema 2. Mais tempo e recursos são utlizados. Qual mesa agora você considera mais quadrada? Mudou sua opinião?
+
+Com a régua vemos que as mesas são iguais. Isso mostra que a nossa intuição **FALHA**.
+
+**Tipos de Heurísticas**
+
+-   **Heurística da disponibilidade**: Usamos o que está mais próximo na memória para calcular a probabilidade.
+
+-   **Heurística da representatividade**: Buscamos aquilo que reforça o padrão.
+
+-   **Heurística da hipótese positiva**: Assumimos que uma determinada hipótese é verdadeira e não olhamos o contrafactual.
+
+-   **Heurística do afeto**: Decisão considera o emocional. Seu humor afetam as decisões.
+
+Para contornar os problemas da intuição e seus viéses na tomada de decisão o primeiro passo é compreender que eles existem e estarmos alerta. E para problemas maiores o uso do sistema 2 torna-se relevante.
+
+Uma das principais ferramentas do sistema 2 é a Estatística. Com os avanços computacionais essa ciência tem se destacado como um dos elementos centrais do *data science*. Abaixo a figura resume as diversas áreas de desenvolvimento da análise de dados, obviamente não exaustiva:
+
+![Bazerman: mesas](figuras\analisedados.jpg){width="80%"}
+
+Nosso objetivo é explorar nessa seção a análise descritiva. Chamado hoje no *Business Intelligence*, que e uma das áreas do *Data Science*.
+
+## Conceitos Básicos de Estatística
+
+Novamente começamos com um problema e esse definirá a nossa análise. Vejamos alguns problemas que poderiam nos interessar...
+
+::: callout-note
+## Problema 1
+
+O prefeito de Ribeirão Preto vai lançar uma política que fornece vouchers de alimentação para mulheres que estão em situação de pobreza.
+
+**Problema**: [Qual o valor que devo reservar ao programa? Quantas mulheres serão atendidas?]{.underline}
+:::
+
+::: callout-note
+## Problema 2
+
+O TJSP vai lançar um programa para reduzir o tempo médio em processos de feminicídio.
+
+**Problema**: [Qual o tempo médio de um processo de feminicídio?]{.underline}
+:::
+
+::: callout-note
+## Problema 3
+
+O O governo federal vai lançar um programa para capacitar mulheres que estão fora do mercado de trabalho.
+
+**Problema**: [Quantas mulheres serão alvos dessa política?]{.underline}
+:::
+
+### A Variável Aleatória
+
+O problema nos define a população que estou interessado. Vamos seguir, a princípio, com o nosso probelma 1 para definirmos alguns conceitos importantes.
+
+**No problema 1**: me interessa compreender a renda das mulheres que moram em Ribeirão Preto em dado ano. Para ficar simples vamos abreviar o que nos interessa
+
+$$X=\text{Renda das mulheres que moram em Ribeirão Preto em determinado ano}$$ Agora posso utilizar o X no lugar do nome. Olhando para a população e pensando que cada nível de renda pode ser representada por uma cor, teremos a seguinte imagem pouco de como a renda se distribui nessa população:
+
+![Renda pc das mulheres de Ribeirão Preto.](figuras\lego.jpg){width="50%"}
+
+A questão é: quais cores existem e quantas peças de cada cor temos? Para isso usamos um experimento
+
+**EXPERIMENTO ALEATÓRIO**
+
+O experimento em ciências sociais aplicadas em geral está associada a observação sistemática de pessoas, cidades, empresas ou processos. A ideia é:
+
+-   Sortear pessoas e observar a sua caracteristica de forma indefinida e sempre na mesma condição.\
+-   Não consigo dizer o que vai sair no próximo sorteio, apenas consigo descrever os resultados possíveis
+-   Se repetir o experimento um número grande de vezes uma regularidade aparece.
+
+Se eu conseguir sortear de forma indefinida e na mesma condição as mulheres que moram em Ribeirão Preto e perguntar sobre a sua renda. Eu consigo reorganizar a figura acima da seguinte forma:
+
+![Renda pc das mulheres de Ribeirão Preto.](figuras\lego_org.jpg){width="50%"}
+
+**ESPAÇO AMOSTRAL**
+
+Agora conseguimos organizar os nossos resultados em um lugar chamado espaço amostral. Nele teremos todas as cores (azul, branca, amarela...) que podem acontecer e o número de peças de cada cor (a chance). Em outras palavras teremos todos os possíveis valores de $X$ e suas probabilidades.
+
+**VARIÁVEL ALEATÓRIA**
+
+Quanto representamos esse espaço amostral em formato de números é o que chamamos de Variável Aleatória (V.A.). A V.A. é a combinação de tudo que pode acontecer, ou seja, todas as rendas que existem associadas a probabilidade de cada uma das rendas acontecerem.
+
+Existem dois tipos principais de variáveis aleatórias: discretas e contínuas.
+
+**VARIÁVEIS ALEATÓRIAS DISCRETAS**
+
+É um tipo de variável que conseguimos colocar em lista, seja finita ou infinita $x_1; x_2;...; x_n;...$ e associa-se a cada um dessses valores uma probabilidade $p(x_1); p(x_2);...; p(x_n);...$
+
+Podemos pensar aqui se a pessoa é casada, solteira, divorciada, viúva ou outra condição. Se no processo classificamos como homicídio ou feminicídio, se mora na área urbana ou rural...
+
+Na figura abaixo iremos coletar de 20 processos de homicídio e gostariamos de saber quando é classificado como feminicídio e quanto é classificado como homicídio (p=0,3).
+
+```{r echo = TRUE, fig.cap= "Distribuição Normal",fig.height = 3.5, fig.width = 5}
+feminicidio <- 0:20
+
+plot(feminicidio,dbinom(feminicidio,size=20,prob=.3),
+     type='h',
+     main='Distribuição Binomial (n=20, p=0.3)',
+     ylab='Probabilidade',
+     xlab ='Feminicídio',
+     lwd=3)
+```
+
+**VARIÁVEIS ALEATÓRIAS CONTÍNUAS**
+
+Por outro lado, uma variável aleatória contínua pode assumir infinito valores dentro de um intervalo específico. Agora temos infinitas possibilidades de resultados para $X$ e agora associamos uma função $f(x)$ que irá descrever o comportamento da probabilidade.
+
+Por exemplo, a altura de uma pessoa, a sua renda, a sua idade, o tempo que demora um processo.
+
+Abaixo temos uma representação de uma distriuição continua da renda das mulheres em Ribeirão Preto, chamada distribuição normal:
+
+```{r echo = TRUE, fig.cap= "Distribuição Normal",fig.height = 3.5, fig.width = 5}
+rm(list = ls(all.names = TRUE)) #will clear all objects includes hidden objects.
+x<-seq(700,1300,1)
+fdnorm<-dnorm(x = x, mean = 1000, sd=100)  
+fdanorm<-pnorm(q = x, mean = 1000, sd=100)
+curve(dnorm(x,1000,100),xlim=c(700,1300),main='',xaxt="n",xlab="Renda pc Mulheres", ylab="f(x)",col="darkblue",cex.axis=0.65, cex.lab=0.8) 
+axis(1,at=c(900, 1000, 1100),labels =
+       c("-DP(X)","E(x)","DP(x)"),cex.axis=0.65, cex.lab=0.8) 
+lines(x=c(1000,1000),y=c(0,fdnorm[x==1000]),lty=2, col="black") 
+lines(x=c(1100,1100),y=c(0,fdnorm[x==1100]),lty=2, col="black")
+lines(x=c(900,900),y=c(0,fdnorm[x==900]),lty=2, col="black")
+
+```
+
+#### Esperança e Variância
+
+O fomato das distribuições vistas dependem principalmente de dois parâmetros: A esperança que é uma medida de centralidade e a variância que é uma medida de dispersão.
+
+**ESPERANÇA** - $E(X)$
+
+É uma medida de centralidade da variável aleatória. É definida como a média ponderada de todos os possíveis resultados de $X$, onde os pesos são dados pelas probabilidades desses resultados ocorrerem. A esperança de $X$, $E(X)$, é calculada como:
+
+$$E(X) = \sum_{x} x \cdot P(X = x)$$
+
+para variáveis discretas.
+
+$$E(X) = \int_{-\infty}^{\infty} x \cdot f(x)$$,
+
+para variáveis contínuas
+
+**VARIÂNCIA POPULACIONAL** - $Var(X)$
+
+A variância é uma medida que captura como os dados populacionais se dispersão em relação a sua média (ou esperança).
+
+$$Var(X) =\frac{1}{N} \sum_{1}^{N} (X_i-E(X))^2$$ Ou podemos assim representar: $$\text{Var}(X) = E(X^2) - [E(X)]^2$$.
+
+**DESVIO PADRÃO POPULACIONAL** - $DP(X)$
+
+A variãncia é uma medida ao quadrado. Se estamos falando da renda seria uma medida da dispersão ao quadrado, ou seja, em $R\$^{2}$. Para retornar a unidade original usamos o desvio padrão que é:
+
+$$DP(X)=\sqrt{Var(X)}$$
+
+Vejamos o que acontece quando mudamos a esperança e o desvio padrão. No gráfico em azul temos a esperança igual a 10 e devio padrão de 2,5. No gráfico em vermelho temos esperança de 20 e desvio padrão de 10. E no grafico em verde temos esperança de 10 e desvio padrão de 1. Nota-se que quanto menor o desvio padrão mais concentrados são os valores que podem acontecer.
+
+```{r echo = TRUE, fig.cap= "Médias e desvios distintos entre distribuições",fig.height = 3.5, fig.width = 6}
+curve(dnorm(x,mean=10,sd=sqrt(2.5)),xlim=c(0,30),ylim=c(0.0,0.4),xaxs="i",yaxs="i",ylab="", col="darkblue") 
+par(new=T)
+curve(dnorm(x,mean=20,sd=sqrt(10)),xlim=c(0,30),ylim=c(0.0,0.4),xaxs="i",yaxs="i",ylab="", col="darkred") 
+par(new=T)
+curve(dnorm(x,mean=20,sd=sqrt(1)),xlim=c(0,30),ylim=c(0.0,0.4),xaxs="i",yaxs="i",ylab="", col="darkgreen") 
+
+```
+
+### Variáveis Aleatórias Bidimensionais
+
+Muito provavelmente nos interessa observar mais de uma característica de um experimento. Por exemplo, não somente a renda das mulheres em Ribeirão Preto nos interessa, mas o seu consumo alimentar também julgamos importante para o projeto.
+
+Portanto, queremos observar duas características de forma simultânea das mulheres: sua renda e seu consumo alimentar. Ou seja, duas características simultaneamente do mesmo experimento $\epsilon$ que foi observar as mulheres no município.
+
+Apesar de termos coletados duas informações, temos na realidade três informações. A informação da renda, a informação do consumo alimentar e a informação de como renda e consumo alimentar interagem.
+
+**VISUALIZAÇÃO GRÁFICA**
+
+Vejamos agora um exemplo de variável aleaória bidimensional:
+
+**Normal Bivariada**:
+
+Abaixo tem-se uma variável aleatória $(X,Y)$ com distribuição normal bivariada com a esperança de $X$ igual a 1, de $Y$ igual a 0, o desvio-padrões iguais a 3 e 2 respectivamente. Aqui consideremaos a correlação de 1 (veremos mais a frente esse conceito)
+
+```{r echo = TRUE, fig.cap= "Normal Bivariada"}
+library(mnormt)
+
+#Para tornar reproduzível
+set.seed(0)
+
+#cCriando a normal bivariada
+x     <- seq(-3, 3, 0.1) 
+y     <- seq(-3, 3, 0.1)
+mu    <- c(1, 0)
+sigma <- matrix(c(3, 1, 1, 2), nrow=2)
+f     <- function(x, y) dmnorm(cbind(x, y), mu, sigma)
+z     <- outer(x, y, f)
+
+#Criando um gráfico de superfície
+persp(x, y, z, theta=-30, phi=25, expand=0.6, ticktype='detailed')
+```
+
+Surge aqui um conceito importante que tenta medir como as características da população se relacionam - uma medida do relacionamento. Assim:
+
+[O que acontece com o consumo de alimentos quando a renda das mulheres sobem?]{.underline}
+
+#### Covariância e Correlação
+
+Duas medidas que tentam mensurar o "grau de associação" linear entre X e Y são:
+
+**COVARIÂNCIA**
+
+$$Cov(X,Y)=E[(X-E(X))(Y-E(Y))]= E(X.Y)-E(X).E(Y)$$
+
+Ela mede a variabilidade conjunta de uma variável aleátoria multidimensional. Como no caso da variância, ela sofre do efeito das escalas de medidas. Para corrigir dividimos pelos desvios padrões. Surge dessa maneira a medida de correlação.
+
+**CORRELAÇÃO**
+
+$$\rho_{X,Y}=\frac{E[(X-E(X))(Y-E(Y))]}{\sqrt{Var(X)Var(Y)}}=\frac{Cov(X,Y)}{DP(X).DP(Y)}$$
+
+::: callout-warning
+## Correlação
+
+A correlação mede o **GRAU DE ASSOCIAÇÃO LINEAR**. Associações não lineares não são capturadas pela correlação.
+:::
+
+::: callout-note
+## Lendo a Correlação
+
+A correlação $\rho_{X,Y}$ varia de -1 até 1. Sendo que:
+
+$\rho$ próximo a 1 e -1 indicam alto grau de linearidade e $\rho$ próximo a 0 indica ausência de relação linear - mas não diz nada sobre relações não-lineares.
+:::
+
+**VISUALIZAÇÃO GRÁFICA**
+
+Veja no gráfico abaixo que a variável 4 e 5 possuem correlação perfeita, igual a -1. E as variáveis 3 e 1 não possuem grau de associação linear, correlação próxima a 0.
+
+```{r echo = FALSE, fig.cap= "Gráfico de correlação para variáveis simuladas v1 a v5",fig.height = 6, fig.width = 6, fig.align = "center"}
+library(psych)
+data <- data.frame( var1 = 1:100 + rnorm(100,sd=20), v2 = 1:100 + rnorm(100,sd=27), v3 = rep(1, 100) + rnorm(100, sd = 1)) 
+data$v4 = data$var1 ** 2 
+data$v5 = -(data$var1 ** 2) 
+pairs.panels(data)
+```
+
+## Conceitos Básicos Inferência Estatística
+
+Dado a nossa pergunta ou problema, gostariamos de saber as carcateística de uma população.
+
+Entretantom um processo de levantamento de informações é em geral caro e em muitas situações é destrutivo. Em ciências sociais estamos interessados em características de pessoas, empresas, municípios, estados, países etc. Não é destrutivo mas é uma coleta cara. Por exemplo, o Censo demográfico de 2010 custou R\$ 1,3 bilhões, ou aproximadamente R\$ 2,2 bi em reais de 2020. O valor é de aproximadamente R\$ 35,00 por domicílio.
+
+Dessa forma nosso objetivo aqui é:
+
+::: callout-note
+## Objetivo
+
+A partir de uma amostra da população realizar inferência sobre toda a população
+:::
+
+### Exemplos do príncipio no dia a dia
+
+Pense nessas situações:
+
+-   Para medir a glicose muitos pacientes usam uma gota de sangue e um pequeno aparelho. A partir dele sabem quanto tem no corpo todo, basta uma gota para termos boa certeza de quanto é taxa de glicose!
+-   Para saber se a quantidade de sal está adequada em uma grande panela de arroz, basta uma pequena colher de chá para termos uma boa certeza!
+-   Abacaxis às vezes são vendidos em caminhões na rua. Quando paramos provamos e são doces. Compramos 4 por 10. Qual a certeza que esses que vc está levando estejam também doces? É diferente das situações anteriores?
+
+Com certeza vc deve ter pensado que essas situações tem grau de certeza variáveis. A diferença está em quão homogênea é a característica na população, o sal no arroz e a glicose no sangue devem ser muito bem distribuidas, ou seja, bem homogêneas. Já a doçura no abacaxi deve ter distribuição maior e provar apenas um abacaxi não nos dá uma ideia do todo.
+
+Esse é um erro muito comum, a partir de uma ou poucas observações dizer que o todo se comporta da mesma maneira, esse erro se agrava quando maior é a heterogeneidade!!!
+
+### População, Amostra, Parâmetros e Estimadores
+
+### População e amostra
+
+```{mermaid}
+flowchart LR
+  A[POPULAÇÃO] --> B[Totalidade das observações sob Investigação]
+  A --> C[AMOSTRA]
+  C --> D[Subconjunto da População]
+```
+
+A definição da população depende da pergunta de pesquisa ou análise. Se queremos saber qual o salário médio dos empregados do setor industrial no estado de São Paulo para determinado ano, nossa população são todos os funcionários das indústrias instaladas no estado de São Paulo para esse ano. Se queremos os determinantes do desempenho escolar dos alunos do ensino fundamental no Brasil em 2019, nossa população será esse grupo de alunos nesse ano. Se quisermos avaliar o gasto municipal no ano anterior as eleições no Brasil, temos nossa população formada pelos municípios para o ano de análise.
+
+::: callout-tip
+## População
+
+Quem define a população é o objetivo do seu trabalho!! Ou seja, seu problema de pesquisa
+:::
+
+### Amostragem Aleatória Simples
+
+Existem várias maneiras de fazer uma análise aleatória, uma delas é a simples. Vejamos primeiro um processo de amostragem não aleatório e que possui tendenciosidade. A figura abaixo mostra esse processo\[\^7\]:
+
+![Um processo de amostragem viesádo. Fonte:Data Basecamp](figuras\bias.jpg){width="50%"}
+
+Observa-se que existe uma supervalorização do vermelho e uma subvalorização do azul. Chegariamos a conclusão, caso isso fosse uma pesquisa eleitoral, que o candidato vermelho, segunda amostra teria mais chance de ganhar e o azul quase nenhuma chance. O que não condiz com a população. Dizemos que temos uma amostra viesada ou tendenciosa.
+
+Um processo de amostragem aleatório requer que as características presentes na população estejam presentes na amostras e estejam balanceadas, ou seja, que a sua leitura represente bem o todo.
+
+## Estatística e Parâmetro
+
+```{mermaid}
+flowchart LR
+  A[PARÂMETRO] --> B[Medida que descreve uma característica da população]
+```
+
+Os parâmetros definem as características de uma população. Qual a renda média da população, qual o desemprego médio da população, qual o desempenho médio educacional, qual a expectativa de vida média na população etc. São características que em geral não observamos.
+
+Uma pergunta, qual o tempo médio que demora um processo de feminicídio? Perceba que mesmo características da população que conhecemos são de difíceis de conhecermos. Temos que nos valer de uma parte e tentar estimar o que seriam os valores dessas características.
+
+```{mermaid}
+flowchart LR
+  A[ESTATÍSTICA] --> B[Medida que descreve uma característica da amostra]
+```
+
+Sejam $x_1, x_2,..., x_{n}$ os valores medidos a cada para cada medição de $X$. Podemos definir uma estatística como:
+
+$$ t= H (x_1, x_2, ..., x_{n})$$
+
+Alguns exemplos de T:
+
+$$ \text{Média}: \ \overline{x}=\frac{\sum_{i=1}^{n} x_i}{n}$$
+
+$$ \text{Variância:} \ s^{2}= \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \overline{x})^{2} $$
+
+$$ x_{(1)}: Min\{x_1, ..., x_n\}$$
+
+
+Vejamos a tabela abaixo que já faz uma primeira associação entre estatística e parâmetro:
+
+| Parâmetro      |                   | Estatística    |                    |
+|----------------|-------------------|----------------|--------------------|
+| Esperança      | $E(X)=\mu$        | $\bar{X}$      | Média              |
+| Variância Pop. | $Var(X)=\sigma^2$ | $S^2;\sigma^2$ | Variância Amostral |
+| Mediana Pop.   | Md                | md             | Mediana Amostral   |
+| Proporção Pop. | p                 | $\hat{p}$      | Proporção Amostral |
+
+[Tabela 1 - Parâmetros populacionais e as Estatísticas associadas]{caption="TRUE"}
+
+Como regra geral, os parâmetros são representados por letras gregas e as estatística com letras do nosso alfabeto (latino) ou letra grega com com chapéu para indicar que é uma estatística.
+
+
+**ESTIMADORES**
+Um estimador é uma estatística calculada a partir da amostra que é usada para estimar um parâmetro desconhecido da população. Nos permitem fazer inferências sobre os parâmetros com base nos dados amostrais. Por exemplo, a média amostral é um estimador da média populacional, e a proporção amostral é um estimador da proporção populacional.
+
+
+## Teste de Hipotese (Parâmetros).
+
+### Introdução ao Teste de Hipótese de Duas Populações (de Médias)
+
+O teste de hipótese é uma técnica estatística fundamental usada para tomar decisões baseadas em evidências amostrais. O teste de hipótese de duas populações é aplicado quando queremos comparar as médias de duas populações distintas e determinar se existe uma diferença estatisticamente significativa entre elas. Vamos explorar os principais conceitos deste teste:
+
+**Formulação das Hipóteses**
+
+No teste de hipótese de duas populações, formulamos duas hipóteses:
+
+- **Hipótese Nula ($H_0$)**: Esta é a hipótese inicial que assume que não há diferença entre as médias das duas populações. Geralmente, é representada como 
+
+$$H_0: \mu_1 = \mu_2$$, 
+
+onde $\mu_1$ e $\mu_2$ são as médias das duas populações.
+
+- **Hipótese Alternativa ($H_a$ ou $H_1$)**: Esta é a hipótese que queremos testar, indicando que há uma diferença significativa entre as médias das duas populações. Pode ser definida como: 
+$$H_a: \mu_1 > \mu_2$$ 
+ou 
+$$H_a: \mu_1 < \mu_2$$ 
+ou 
+
+$$H_a: \mu_1 \neq \mu_2$$.
+
+**Estatística do Teste**
+
+O teste de hipótese de duas populações geralmente envolve o cálculo de uma estatística de teste específica para comparar as médias das amostras das duas populações. Uma das estatísticas comuns é o teste t de Student, especialmente quando as variâncias populacionais são desconhecidas e podem ser diferentes entre as populações.
+
+**Decisão do Teste**
+
+Após calcular a estatística de teste, comparamos o valor observado da estatística com um valor crítico ou calculamos um valor p associado. O valor p é a probabilidade de obter uma estatística de teste tão extrema quanto a observada, assumindo que a hipótese nula seja verdadeira. Com base no valor p (geralmente comparado com um nível de significância pré-definido, como 0,05), tomamos uma decisão de rejeitar ou não rejeitar a hipótese nula.
+
+**Conclusão do Teste**
+
+A conclusão do teste de hipótese de duas populações nos permite determinar se há evidências estatísticas suficientes para rejeitar a hipótese nula em favor da hipótese alternativa. Essa decisão tem implicações importantes em áreas como pesquisa científica, análise de dados e tomada de decisões em negócios e saúde.
