@@ -35,6 +35,7 @@ book:
       - googledrive.qmd
       - dplyr.qmd
       - descritiva.qmd
+      - estatistica.qmd
       - lineares.qmd
       - outrosmodelos.qmd
       #- aprendizado.qmd
