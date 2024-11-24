@@ -627,7 +627,7 @@ sd(final_fem_22$feminic_abs, na.rm=T)
 
 ```
 
-Vamos consolidar agora nossas estatísticas descritivas
+Vamos consolidar agora nossas estatísticas descritivas em uma tabela:
 
 ```{r, warning=F}
 
