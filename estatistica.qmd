@@ -452,3 +452,28 @@ Após calcular a estatística de teste, comparamos o valor observado da estatís
 **Conclusão do Teste**
 
 A conclusão do teste de hipótese de duas populações nos permite determinar se há evidências estatísticas suficientes para rejeitar a hipótese nula em favor da hipótese alternativa. Essa decisão tem implicações importantes em áreas como pesquisa científica, análise de dados e tomada de decisões em negócios e saúde.
+
+
+
+### Aplicação Teste de Hipótese
+
+Vamos testar a hipótese de que as taxas de feminicídio são iguais entre as regiões norte, nordeste e centro oeste e as regiões sul e sudeste. Vamos permitir que as variâncias sejam diferentes entre as duas regiões
+
+$$H_0: \mu_{N-NE-CO} = \mu_{S-SD}$$ $$H_1: \mu_{N-NE-CO} \neq \mu_{S-SD}$$
+
+```{r}
+#carregando o pacote para ler arquivos em excel
+load("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.Rdata")
+t.test(feminic_tx~N_NE_CO, data=final_fem_22) 
+```
+
+O teste mostra que não rejeitamos a hipótese nula de que as duas regiões possuem a mesma média de taxa de feminicídio.
+
+Vejamos agora a renda per capita:
+
+```{r}
+t.test(rendapc~N_NE_CO, data=final_fem_22) 
+```
+
+Observa-se que rejeita-se a hipótese nula, e há evidências de que a média da renda per capita entre as duas regiões são diferentes.
+

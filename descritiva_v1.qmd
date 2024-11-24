@@ -924,40 +924,49 @@ $$r_{XY} = \frac{\text{Cov}(X, Y)}{s_X s_Y}$$ O coeficiente de correlação de P
 
 ```
 
+
+
+#### Visualizando a Associação
+
 **Scatter plot**
 
-O Scatter plot é conhecido como o gráfico de dispersão. Ele relaciona duas ou três variáveis, ou seja, plota $X$ contra $Y$. Muito utilizado para ver o comportamento conjunto de duas séries. Observe que renda e a taxa de feminicídio não mostram um comportamento conjunto, estão dispersas.
+O Scatter plot é conhecido como o gráfico de dispersão. Ele relaciona duas ou três variáveis, ou seja, plota $X$ contra $Y$. Muito utilizado para ver o comportamento conjunto de duas séries. 
 
-```{r}
+Como já visto que renda pc e a taxa de feminicídio não mostram um comportamento conjunto: 
 
-##Dispersão entre renda per capita e a taxa de feminicidio
-plot(final_fem_22$rendapc, final_fem_22$feminic_tx,
-     main = "Taxa de Feminicídio vs. Renda Per Capita",
-     xlab = "Renda Per Capita",
-     ylab = "Taxa de Feminicídio",
-     col = "steelblue",          # Cor dos pontos
-     pch = 16,              # Forma dos pontos (círculos sólidos)
-     cex = 1.5              # Tamanho dos pontos
-)
-abline(lm(final_fem_22$feminic_tx~final_fem_22$rendapc), col="lightblue4", lwd=2)
-
+```{r message=FALSE, warning=FALSE}
+ggplot(data = final_fem_22, aes(x = rendapc, y = feminic_tx))+
+geom_point(color="#6e94bd", size=3, alpha=0.7,  shape=17) +
+  scale_y_continuous(limits = c(0, 5)) +
+geom_smooth(method = "lm", se=TRUE , color="orange")+
+labs(title="Renda pc e taxa de Feminicídios por Estado", x="Renda pc", y="Tx 100 mil")+
+theme_bw()
 ```
 
-Ao observar a taxa de homicídio e a taxa de feminicídio, estados com maior taxa de homicídio tendem a ter maior taxa de feminicídio.
+Ao observar o homicídio absoluto e o feminicídio absoluto, estados com maiores números de homicídio tendem a ter maior número de feminicídios.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
+# Primeiro vou fzer a correlação
+correl1<-cor(final_fem_22$part_feminic, final_fem_22$homic_tx)
 
-##Dispersão entre renda per capita e a taxa de feminicidio
-plot(final_fem_22$homic_tx, final_fem_22$feminic_tx,
-     main = "Taxa de Feminicídio vs. Taxa de Homicidios",
-     xlab = "Taxa de Homicidio",
-     ylab = "Taxa de Feminicídio",
-     col = "lightgoldenrod3",          # Cor dos pontos
-     pch = 16,              # Forma dos pontos (círculos sólidos)
-     cex = 1.5              # Tamanho dos pontos
-)
-abline(lm(final_fem_22$feminic_tx~final_fem_22$homic_tx), col="lightblue4", lwd=2)
+#Depois montamos o Gráfico e anotamos a correlação no gráfico
+ggplot(data = final_fem_22, aes(x = part_feminic, y = homic_tx))+
+geom_point(color="#6e94bd", size=3, alpha=0.7,  shape=17) +
+geom_smooth(method = "lm", se=TRUE , color="orange")+
+labs(title="Taxa de Homicídio por 100 mil mulheres e a Participação do Feminicídio",
+     x="Participação do Feminicídio", 
+     y="Taxa de Homicídio")+
+annotate(
+    "text", 
+    x=40, y=9,
+    label = paste("Correlação: ", round(correl1, 2)), 
+    color = "#6e94bd", size = 4, hjust = 0
+  ) +
+  theme_bw()
 ```
+
+
+
 
 ```{r,message=F, warning=F}
 library(corrgram)
@@ -966,24 +975,28 @@ corrgram(correl, order=TRUE, lower.panel=panel.shade, upper.panel=panel.cor,  ma
 
 
 ```
-
-### Teste de Hipótese
-
-Vamos testar a hipótese de que as taxas de feminicídio são iguais entre as regiões norte, nordeste e centro oeste e as regiões sul e sudeste. Vamos permitir que as variâncias sejam diferentes entre as duas regiões
-
-$$H_0: \mu_{N-NE-CO} = \mu_{S-SD}$$ $$H_1: \mu_{N-NE-CO} \neq \mu_{S-SD}$$
-
-```{r}
-t.test(feminic_tx~N_NE_CO, data=final_fem_22) 
+```{r message=FALSE, warning=FALSE}
+#install.packages("ggcorrplot")
+library(ggcorrplot)
+correl2<- round(cor(final_fem_22[c(5:9, 12)]),2)
+ggcorrplot(correl2, hc.order = TRUE, type = "lower",        # Matriz de correlação, coloca de forma ordenada e inferior
+           lab = TRUE, lab_size = 3, lab_col = "#616161",   #  mostra os valores tamanho 4
+           outline.col = "white",
+           ggtheme = ggplot2::theme_minimal,
+           colors = c("#6D9EC1", "white", "#c2986f"))+     # cores utilizadas
+# Colocando nomes  
+  labs(title = "Correlação entre as Diversas Variáveis")+   # Título
+#Trocando os nomes das variáveis
+  scale_y_discrete(labels = c("Feminic. Abs.", "Part. Feminic.", "Renda pc",  # Nomes no eixo X
+                              "Taxa Homic.", "Homic. Abs.")) +  
+  scale_x_discrete(labels = c("Part. Feminic.", "Renda pc", 
+                              "Taxa Homic.", "Homic. Abs.", "Taxa Feminic."))  # Nomes no eixo Y
 ```
 
-O teste mostra que não rejeitamos a hipótese nula de que as duas regiões possuem a mesma média de taxa de feminicídio.
 
-Vejamos agora a renda per capita:
+
+Salvando nosso banco para a próxima seção
 
 ```{r}
-t.test(rendapc~N_NE_CO, data=final_fem_22) 
+save(final_fem_22, file = "final_fem_22.RData")
 ```
-
-Observa-se que rejeita-se a hipótese nula, e há evidências de que a média da renda per capita entre as duas regiões são diferentes.
-

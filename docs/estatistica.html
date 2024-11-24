@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./lineares.html" rel="next">
-<link href="./descritiva.html" rel="prev">
+<link href="./descritiva_v1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -231,7 +231,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descritiva.html" class="sidebar-item-text sidebar-link">
+  <a href="./descritiva_v1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span></a>
   </div>
 </li>
@@ -283,6 +283,7 @@ window.Quarto = {
   <li><a href="#teste-de-hipotese-parâmetros." id="toc-teste-de-hipotese-parâmetros." class="nav-link" data-scroll-target="#teste-de-hipotese-parâmetros."><span class="header-section-number">7.5</span> Teste de Hipotese (Parâmetros).</a>
   <ul class="collapse">
   <li><a href="#introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" id="toc-introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" class="nav-link" data-scroll-target="#introdução-ao-teste-de-hipótese-de-duas-populações-de-médias"><span class="header-section-number">7.5.1</span> Introdução ao Teste de Hipótese de Duas Populações (de Médias)</a></li>
+  <li><a href="#aplicação-teste-de-hipótese" id="toc-aplicação-teste-de-hipótese" class="nav-link" data-scroll-target="#aplicação-teste-de-hipótese"><span class="header-section-number">7.5.2</span> Aplicação Teste de Hipótese</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -858,6 +859,48 @@ População
 <p>Após calcular a estatística de teste, comparamos o valor observado da estatística com um valor crítico ou calculamos um valor p associado. O valor p é a probabilidade de obter uma estatística de teste tão extrema quanto a observada, assumindo que a hipótese nula seja verdadeira. Com base no valor p (geralmente comparado com um nível de significância pré-definido, como 0,05), tomamos uma decisão de rejeitar ou não rejeitar a hipótese nula.</p>
 <p><strong>Conclusão do Teste</strong></p>
 <p>A conclusão do teste de hipótese de duas populações nos permite determinar se há evidências estatísticas suficientes para rejeitar a hipótese nula em favor da hipótese alternativa. Essa decisão tem implicações importantes em áreas como pesquisa científica, análise de dados e tomada de decisões em negócios e saúde.</p>
+</section>
+<section id="aplicação-teste-de-hipótese" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="aplicação-teste-de-hipótese"><span class="header-section-number">7.5.2</span> Aplicação Teste de Hipótese</h3>
+<p>Vamos testar a hipótese de que as taxas de feminicídio são iguais entre as regiões norte, nordeste e centro oeste e as regiões sul e sudeste. Vamos permitir que as variâncias sejam diferentes entre as duas regiões</p>
+<p><span class="math display">\[H_0: \mu_{N-NE-CO} = \mu_{S-SD}\]</span> <span class="math display">\[H_1: \mu_{N-NE-CO} \neq \mu_{S-SD}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#carregando o pacote para ler arquivos em excel</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.Rdata"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(feminic_tx<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  feminic_tx by N_NE_CO
+t = -1.2049, df = 20.949, p-value = 0.2417
+alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+95 percent confidence interval:
+ -0.6640345  0.1768916
+sample estimates:
+mean in group 0 mean in group 1 
+       1.471429        1.715000 </code></pre>
+</div>
+</div>
+<p>O teste mostra que não rejeitamos a hipótese nula de que as duas regiões possuem a mesma média de taxa de feminicídio.</p>
+<p>Vejamos agora a renda per capita:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(rendapc<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  rendapc by N_NE_CO
+t = 4.6401, df = 22.301, p-value = 0.0001225
+alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+95 percent confidence interval:
+ 340.6685 890.5172
+sample estimates:
+mean in group 0 mean in group 1 
+       1903.143        1287.550 </code></pre>
+</div>
+</div>
+<p>Observa-se que rejeita-se a hipótese nula, e há evidências de que a média da renda per capita entre as duas regiões são diferentes.</p>
 
 
 </section>
@@ -1286,7 +1329,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./descritiva.html" class="pagination-link" aria-label="Análise Descritiva">
+      <a href="./descritiva_v1.html" class="pagination-link" aria-label="Análise Descritiva">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span>
       </a>          
   </div>
