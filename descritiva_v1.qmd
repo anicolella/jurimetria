@@ -930,7 +930,7 @@ $$r_{XY} = \frac{\text{Cov}(X, Y)}{s_X s_Y}$$ O coeficiente de correlação de P
 
 **Scatter Plot**
 
-O Scatter plot é conhecido como o gráfico de dispersão. Ele relaciona duas ou três variáveis, ou seja, plota $X$ contra $Y$. Muito utilizado para ver o comportamento conjunto de duas séries. 
+O Scatter Plot é conhecido como o gráfico de dispersão. Ele relaciona duas ou três variáveis, ou seja, plota $X$ contra $Y$. Muito utilizado para ver o comportamento conjunto de duas séries. 
 
 Como já visto que renda pc e a taxa de feminicídio não mostram um comportamento conjunto: 
 
@@ -942,6 +942,7 @@ geom_smooth(method = "lm", se=TRUE , color="orange")+
 labs(title="Renda pc e taxa de Feminicídios por Estado", x="Renda pc", y="Tx 100 mil")+
 theme_bw()
 ```
+
 
 Ao observar o homicídio absoluto e o feminicídio absoluto, estados com maiores números de homicídio tendem a ter maior número de feminicídios.
 
@@ -964,6 +965,7 @@ annotate(
   ) +
   theme_bw()
 ```
+
 
 
 
