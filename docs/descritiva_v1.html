@@ -1977,16 +1977,11 @@ Veja a Resposta
 </div>
 <section id="visualizando-a-associação" class="level4" data-number="6.5.0.1">
 <h4 data-number="6.5.0.1" class="anchored" data-anchor-id="visualizando-a-associação"><span class="header-section-number">6.5.0.1</span> Visualizando a Associação</h4>
-<p><strong>Scatter Plot</strong></p>
-<p>O Scatter Plot é conhecido como o gráfico de dispersão. Ele relaciona duas ou três variáveis, ou seja, plota <span class="math inline">\(X\)</span> contra <span class="math inline">\(Y\)</span>. Muito utilizado para ver o comportamento conjunto de duas séries.</p>
-<p>Como já visto que renda pc e a taxa de feminicídio não mostram um comportamento conjunto:</p>
+<p><strong>Correlograma</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> final_fem_22, <span class="fu">aes</span>(<span class="at">x =</span> rendapc, <span class="at">y =</span> feminic_tx))<span class="sc">+</span></span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"#6e94bd"</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">alpha=</span><span class="fl">0.7</span>,  <span class="at">shape=</span><span class="dv">17</span>) <span class="sc">+</span></span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>)) <span class="sc">+</span></span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span><span class="cn">TRUE</span> , <span class="at">color=</span><span class="st">"orange"</span>)<span class="sc">+</span></span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Renda pc e taxa de Feminicídios por Estado"</span>, <span class="at">x=</span><span class="st">"Renda pc"</span>, <span class="at">y=</span><span class="st">"Tx 100 mil"</span>)<span class="sc">+</span></span>
-<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrgram)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>correl<span class="ot">&lt;-</span> final_fem_22[<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">16</span>)]</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">corrgram</span>(correl, <span class="at">order=</span><span class="cn">TRUE</span>, <span class="at">lower.panel=</span>panel.shade, <span class="at">upper.panel=</span>panel.cor,  <span class="at">main=</span><span class="st">"Correlação entre as diversas variáveis"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1995,25 +1990,22 @@ Veja a Resposta
 </div>
 </div>
 </div>
-<p>Ao observar o homicídio absoluto e o feminicídio absoluto, estados com maiores números de homicídio tendem a ter maior número de feminicídios.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Primeiro vou fzer a correlação</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>correl1<span class="ot">&lt;-</span><span class="fu">cor</span>(final_fem_22<span class="sc">$</span>part_feminic, final_fem_22<span class="sc">$</span>homic_tx)</span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Depois montamos o Gráfico e anotamos a correlação no gráfico</span></span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> final_fem_22, <span class="fu">aes</span>(<span class="at">x =</span> part_feminic, <span class="at">y =</span> homic_tx))<span class="sc">+</span></span>
-<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"#6e94bd"</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">alpha=</span><span class="fl">0.7</span>,  <span class="at">shape=</span><span class="dv">17</span>) <span class="sc">+</span></span>
-<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span><span class="cn">TRUE</span> , <span class="at">color=</span><span class="st">"orange"</span>)<span class="sc">+</span></span>
-<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Taxa de Homicídio por 100 mil mulheres e a Participação do Feminicídio"</span>,</span>
-<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">x=</span><span class="st">"Participação do Feminicídio"</span>, </span>
-<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">y=</span><span class="st">"Taxa de Homicídio"</span>)<span class="sc">+</span></span>
-<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="fu">annotate</span>(</span>
-<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"text"</span>, </span>
-<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x=</span><span class="dv">40</span>, <span class="at">y=</span><span class="dv">9</span>,</span>
-<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"Correlação: "</span>, <span class="fu">round</span>(correl1, <span class="dv">2</span>)), </span>
-<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"#6e94bd"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">hjust =</span> <span class="dv">0</span></span>
-<span id="cb73-16"><a href="#cb73-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb73-17"><a href="#cb73-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("ggcorrplot")</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>correl2<span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cor</span>(final_fem_22[<span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">12</span>)]),<span class="dv">2</span>)</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(correl2, <span class="at">hc.order =</span> <span class="cn">TRUE</span>, <span class="at">type =</span> <span class="st">"lower"</span>,        <span class="co"># Matriz de correlação, coloca de forma ordenada e inferior</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">lab =</span> <span class="cn">TRUE</span>, <span class="at">lab_size =</span> <span class="dv">3</span>, <span class="at">lab_col =</span> <span class="st">"#616161"</span>,   <span class="co">#  mostra os valores tamanho 4</span></span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">outline.col =</span> <span class="st">"white"</span>,</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">ggtheme =</span> ggplot2<span class="sc">::</span>theme_minimal,</span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#6D9EC1"</span>, <span class="st">"white"</span>, <span class="st">"#c2986f"</span>))<span class="sc">+</span>     <span class="co"># cores utilizadas</span></span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Colocando nomes  </span></span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Correlação entre as Diversas Variáveis"</span>)<span class="sc">+</span>   <span class="co"># Título</span></span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Trocando os nomes das variáveis</span></span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Feminic. Abs."</span>, <span class="st">"Part. Feminic."</span>, <span class="st">"Renda pc"</span>,  <span class="co"># Nomes no eixo X</span></span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Taxa Homic."</span>, <span class="st">"Homic. Abs."</span>)) <span class="sc">+</span>  </span>
+<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Part. Feminic."</span>, <span class="st">"Renda pc"</span>, </span>
+<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Taxa Homic."</span>, <span class="st">"Homic. Abs."</span>, <span class="st">"Taxa Feminic."</span>))  <span class="co"># Nomes no eixo Y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2022,45 +2014,9 @@ Veja a Resposta
 </div>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrgram)</span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>correl<span class="ot">&lt;-</span> final_fem_22[<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">16</span>)]</span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">corrgram</span>(correl, <span class="at">order=</span><span class="cn">TRUE</span>, <span class="at">lower.panel=</span>panel.shade, <span class="at">upper.panel=</span>panel.cor,  <span class="at">main=</span><span class="st">"Correlação entre as diversas variáveis"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="descritiva_v1_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("ggcorrplot")</span></span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>correl2<span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cor</span>(final_fem_22[<span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">9</span>, <span class="dv">12</span>)]),<span class="dv">2</span>)</span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(correl2, <span class="at">hc.order =</span> <span class="cn">TRUE</span>, <span class="at">type =</span> <span class="st">"lower"</span>,        <span class="co"># Matriz de correlação, coloca de forma ordenada e inferior</span></span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">lab =</span> <span class="cn">TRUE</span>, <span class="at">lab_size =</span> <span class="dv">3</span>, <span class="at">lab_col =</span> <span class="st">"#616161"</span>,   <span class="co">#  mostra os valores tamanho 4</span></span>
-<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">outline.col =</span> <span class="st">"white"</span>,</span>
-<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">ggtheme =</span> ggplot2<span class="sc">::</span>theme_minimal,</span>
-<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#6D9EC1"</span>, <span class="st">"white"</span>, <span class="st">"#c2986f"</span>))<span class="sc">+</span>     <span class="co"># cores utilizadas</span></span>
-<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Colocando nomes  </span></span>
-<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Correlação entre as Diversas Variáveis"</span>)<span class="sc">+</span>   <span class="co"># Título</span></span>
-<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Trocando os nomes das variáveis</span></span>
-<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Feminic. Abs."</span>, <span class="st">"Part. Feminic."</span>, <span class="st">"Renda pc"</span>,  <span class="co"># Nomes no eixo X</span></span>
-<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Taxa Homic."</span>, <span class="st">"Homic. Abs."</span>)) <span class="sc">+</span>  </span>
-<span id="cb75-14"><a href="#cb75-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Part. Feminic."</span>, <span class="st">"Renda pc"</span>, </span>
-<span id="cb75-15"><a href="#cb75-15" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Taxa Homic."</span>, <span class="st">"Homic. Abs."</span>, <span class="st">"Taxa Feminic."</span>))  <span class="co"># Nomes no eixo Y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="descritiva_v1_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
 <p>Salvando nosso banco para a próxima seção</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(final_fem_22, <span class="at">file =</span> <span class="st">"final_fem_22.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(final_fem_22, <span class="at">file =</span> <span class="st">"final_fem_22.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
