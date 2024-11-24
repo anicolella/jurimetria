@@ -34,7 +34,7 @@ book:
       - manipulacao.qmd
       - googledrive.qmd
       - dplyr.qmd
-      - descritiva.qmd
+      - descritiva_v1.qmd
       - estatistica.qmd
       - lineares.qmd
       - outrosmodelos.qmd
