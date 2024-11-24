@@ -928,7 +928,7 @@ $$r_{XY} = \frac{\text{Cov}(X, Y)}{s_X s_Y}$$ O coeficiente de correlação de P
 
 #### Visualizando a Associação
 
-**Scatter plot**
+**Scatter Plot**
 
 O Scatter plot é conhecido como o gráfico de dispersão. Ele relaciona duas ou três variáveis, ou seja, plota $X$ contra $Y$. Muito utilizado para ver o comportamento conjunto de duas séries. 
 
