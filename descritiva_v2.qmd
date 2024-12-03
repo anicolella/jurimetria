@@ -87,6 +87,18 @@ final_fem_22 <- read.csv("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/j
 
 ```
 
+ou 
+
+```{r eval=FALSE}
+
+install.packages("remotes") # baixar o pacote devtools
+remotes::install_github("jjesusfilho/cursoESMP") # baixar o pacote deste curso
+library(cursoESMP) # carregar o pacote deste curso
+final_fem_22<-cursoESMP::final_fem_22
+
+```
+```
+
 Visualizando as primeiras 10 linhas do banco de dados:
 
 ```{r, warning=F}
