@@ -2,8 +2,8 @@
 title: "O Dplyr"
 subtitle: "Manipulando dados de forma eficiente"
 author:
-- José Jesus, Alexandre Nicolella e GPT
-date: "2024"
+- José Jesus, Alexandre Nicolella
+date: "03/12/2024"
 format: html
 ---
 
@@ -153,7 +153,7 @@ sem_nome <- final_fem_22 |>
   select(-estados)
 ```
 
-Ou podemos tirar o eatdo indicando a sua posição. Ele está na coluna 2 do banco.
+Ou podemos tirar o estado indicando a sua posição. Ele está na coluna 2 do banco.
 
 ```{r}
 sem_nome1 <- final_fem_22 |> 
@@ -219,7 +219,7 @@ Vamos adicionar uma nova coluna ao conjunto de dados representando do total de t
 
 ```{r}
 final_fem_22_1 <- final_fem_22 |> 
-  mutate(feminic_efetivado =(feminic_abs/(feminic_abs+t_feminic_abs)),  homic_efetivado =(total_abs/(total_abs+t_total_abs)) )
+  mutate(feminic_efetivado =(feminic_abs/(feminic_abs+t_feminic_abs)),  homic_efetivado =(homic_abs/(homic_abs+t_homic_abs)) )
 
 ```
 

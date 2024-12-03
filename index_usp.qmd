@@ -1,0 +1,15 @@
+# Prefácio
+
+## **Nossa Motivação:**
+
+Esse curso foi criado pensando em profissionais com formação em direito, estatística, tecnologia da informação e demais profissionais que atuam tanto no judiciário quanto em tribunais administrativos. A ideia é colocar juntas diversas visões sobre um mesmo problema para buscarmos soluções mais criativas e eficicientes para as desigualdades nacionais.
+
+## **Nosso Objetivo**:
+
+É oferecer aos participantes uma abordagem probabilística do direito aplicado, tendo como foco os casos práticos e discutindo questões relativas ao direito e desigualdades. Especificamente, objetiva-se ensinar um conjunto de métodos quantitativos e oferecer ferramentas para coleta, transformação e análise de dados jurídicos disponibilizados nas páginas dos tribunais de justiça.
+
+## **Nosso Problema**:
+
+Teremos como tema de fundo nesse curso os processos de homicídio feminino. Especificamente queremos compreender qual o perfil e os determinantes do feminicidio no Estado de São Paulo.
+
+

@@ -1,15 +1,13 @@
 # Prefácio
 
-## **Nossa Motivação:**
+## **Motivação**
 
-Esse curso foi criado pensando em profissionais com formação em direito, estatística, tecnologia da informação e demais profissionais que atuam tanto no judiciário quanto em tribunais administrativos. A ideia é colocar juntas diversas visões sobre um mesmo problema para buscarmos soluções mais criativas e eficicientes para as desigualdades nacionais.
+Este  *Curso de Extensão em Jurimetria* foi desenvolvido para a Escola Superior do Ministério Público (ESMP), com o objetivo de integrar abordagens jurídicas e analíticas. Nossa proposta é explorar  a estruturação de informações em direito e como métodos quantitativos podem ampliar a compreensão e análise das questões de jurídicas, fornecendo uma fonte de informação robusta e estratégica para melhor tomada de decisão.
 
-## **Nosso Objetivo**:
+## **Objetivo**
 
-É oferecer aos participantes uma abordagem probabilística do direito aplicado, tendo como foco os casos práticos e discutindo questões relativas ao direito e desigualdades. Especificamente, objetiva-se ensinar um conjunto de métodos quantitativos e oferecer ferramentas para coleta, transformação e análise de dados jurídicos disponibilizados nas páginas dos tribunais de justiça.
+Capacitar os participantes no uso de ferramentas e métodos quantitativos aplicados ao direito, com ênfase em casos práticos. O curso abordará desde a coleta e transformação de dados jurídicos até a análise probabilística e modelos, auxiliando os participantes a interpretar padrões e tendências a partir de informações extraídas de tribunais e demais fontes públicas.
 
-## **Nosso Problema**:
+## **Abordagem**
 
-Teremos como tema de fundo nesse curso os processos de homicídio feminino. Especificamente queremos compreender qual o perfil e os determinantes do feminicidio no Estado de São Paulo.
-
-
+Adotaremos uma metodologia prática, utilizando casos reais para demonstrar como os métodos quantitativos podem ser aplicados a diferentes áreas do direito. O foco será em capacitar os participantes a desenvolver análises fundamentadas que contribuam para decisões mais eficientes e justas.

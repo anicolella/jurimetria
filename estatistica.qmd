@@ -2,8 +2,8 @@
 title: "Uma Introdução à Estatística"
 subtitle: "Conceitos Inciciais"
 author:
-- Alexandre Nicolella e Felipe Bauer
-date: "2024"
+- Alexandre Nicolella
+date: "03/12/2024"
 format: html
 ---
 
@@ -26,9 +26,9 @@ flowchart LR
 Os livros abaixo são boas referências sobre a tomada de decisão.
 
 ::: {layout="[30,-40,30]"}
-![Rápido e Devagar: Duas Formas de Pensar](figuras\kahneman.jpg){width="10%"}
+[![Kahneman: Rápido e Devagar- Duas Formas de Pensar](figuras\kahneman.jpg){width="50%"}](https://a.co/d/ilbbxRJ)
 
-![Processo Decisório](figuras\bazerman.jpg){width="10%"}
+[![Bazerman e Moore: Processo Decisório](figuras\bazerman.jpg){width="50%"}](https://a.co/d/iy4MURf)
 :::
 
 Existem dois sistemas que utilizamos para tomar decisão. O chamado **Sistema 1** e o chamado **Sistema 2**. Segue uma breve descrição de cada um:

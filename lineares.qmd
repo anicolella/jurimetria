@@ -2,8 +2,8 @@
 title: "Modelos Lineares"
 subtitle: "Aplicação a Pesquisa em Direito"
 author:
-- Alexandre Nicolella e Felipe Bauer
-date: "2024"
+- Alexandre Nicolella
+date: "03/12/2024"
 format: html
 ---
 

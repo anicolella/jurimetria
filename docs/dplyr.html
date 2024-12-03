@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="José Jesus, Alexandre Nicolella e GPT">
-<meta name="dcterms.date" content="2023-12-31">
+<meta name="author" content="José Jesus, Alexandre Nicolella">
+<meta name="dcterms.date" content="2024-03-12">
 
 <title>5&nbsp; O Dplyr – Jurimetria</title>
 <style>
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./descritiva_v1.html" rel="next">
+<link href="./descritiva_v2.html" rel="next">
 <link href="./googledrive.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -176,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Sumário do Curso</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Sumário do Curso ESMP</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -199,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descritiva_v1.html" class="sidebar-item-text sidebar-link">
+  <a href="./descritiva_v2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span></a>
   </div>
 </li>
@@ -258,14 +258,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>José Jesus, Alexandre Nicolella e GPT </p>
+             <p>José Jesus, Alexandre Nicolella </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 31, 2023</p>
+      <p class="date">March 12, 2024</p>
     </div>
   </div>
   
@@ -394,7 +394,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sem_nome <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>estados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Ou podemos tirar o eatdo indicando a sua posição. Ele está na coluna 2 do banco.</p>
+<p>Ou podemos tirar o estado indicando a sua posição. Ele está na coluna 2 do banco.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sem_nome1 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -440,7 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Vamos adicionar uma nova coluna ao conjunto de dados representando do total de tentativas de feminicídio, quantas efetivamente terminam em feminicídio. Para isso vamos dividir o feminicídio pelo total de tentativa e feminicídio. :</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>final_fem_22_1 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">|&gt;</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">feminic_efetivado =</span>(feminic_abs<span class="sc">/</span>(feminic_abs<span class="sc">+</span>t_feminic_abs)),  <span class="at">homic_efetivado =</span>(total_abs<span class="sc">/</span>(total_abs<span class="sc">+</span>t_total_abs)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">feminic_efetivado =</span>(feminic_abs<span class="sc">/</span>(feminic_abs<span class="sc">+</span>t_feminic_abs)),  <span class="at">homic_efetivado =</span>(homic_abs<span class="sc">/</span>(homic_abs<span class="sc">+</span>t_homic_abs)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Agora vamos criar uma variável bnária que será igual a 1 se o homicídio efetivado for maior que 0,30.</p>
 <div class="cell">
@@ -928,7 +928,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./descritiva_v1.html" class="pagination-link" aria-label="Análise Descritiva">
+      <a href="./descritiva_v2.html" class="pagination-link" aria-label="Análise Descritiva">
         <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

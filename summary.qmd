@@ -1,25 +1,121 @@
-# Sumário do Curso
+# Sumário do Curso ESMP
 
 ## **Resumo**:
 
-A pesquisa no direito e a ciência de dados: introdução, relevância e experiências; Coleta, transformação e estruturação de dados processuais com R; Estatística descritiva; Aprendizado estatístico (regressão linear, regressão logística); Aprendizado estatístico (*machine learning*); Interpretação dos resultados e elaboração de relatório.
+Esta é a página de apoio do Professor Alexandre Nicolella ao curso de Curso de Extensão em Jurimetria da Escola Superior do Ministério Público (ESMP). O objetivo é fornecer conceito de pesquisa no direito e a ciência de dados passando por temas como coleta, transformação e estruturação de dados processuais com R; Estatística descritiva; Aprendizado estatístico (regressão linear, regressão logística, *machine learning* entre outros); Interpretação dos resultados e elaboração de relatório.
 
 ## **Plano detalhado das aulas:**
 
-1.  A pesquisa no direito e a ciência de dados: introdução, relevância e experiências - 25/04
 
-2.  Coleta, transformação e estruturação de dados processuais com R - 02/05
+Os professores do curso são:
 
-3.  Coleta, transformação e estruturação de dados processuais com R - 09/05
+```{r echo=FALSE}
+tibble::tibble(
+  `Professor` = c(
+    "Alexandre Chibebe Nicolella",
+    "José de Jesus Filho",
+    "Ricardo Feliz Okamoto"
+  ),
+  `Email` = c(
+    "nicolella@usp.br",
+    "jose.filho@mpsp.mp.br; jjfilho@pucsp.br",
+    "ric.feliz@gmail.com"
+  )
+) |>
+  knitr::kable()
+```
 
-4.  Análise descritiva e visualização de dados processuais - 16/05
+O cronograma das aulas segue abaixo: 
 
-5.  Modelos lineares aplicados a pesquisa em direito -- regressão linear - 23/05
+### Módulo I (2024)
+```{r echo=FALSE}
+aulas_2024 <- tibble::tibble(
+  aula = 1:9,
+  dt = c(
+    seq.Date(lubridate::dmy("08/10/2024"), lubridate::dmy("03/12/2024"), by = "week")
+  ) |> format("%d/%m/%Y"),
+  conteudo = c(
+    "Introdução à jurimetria",
+    "Desenho de pesquisa",
+    "Análise de viabilidade e Listagem de processos",
+    "Estruturação de dados I (base R e dplyr)",
+    "Estruturação de dados II (lubridate e stringr)",
+    "Estruturação de dados III (iteração com purrr)",
+    "Estruturação de dados IV (LLMs e prompt engineering)",
+    "Visualização de dados I (estatística básica e ggplot2)",
+    "Visualização de dados II (estatística básica e ggplot2)"
+  ),
+  professor = c("R", "A", "J", "R", "R", "J", "J", "A", "A") 
+) |> 
+  dplyr::mutate(
+    professor = dplyr::case_when(
+      professor == "A" ~ "Alexandre Chibebe Nicolella",
+    professor == "J" ~ "José de Jesus Filho",
+    professor == "R" ~ "Ricardo Feliz Okamoto"
+    )
+  ) 
 
-6.  Modelos para diferentes tipos de estrutura de dados e variáveis. - 06/06
+aulas_2024 |>
+  knitr::kable(
+    col.names = c("Aula", "Data", "Conteúdo", "Professor")
+  )
+  # kableExtra::add_header_above(
+  #   c("Módulo I (2024)" = 4)
+  # )
+```
 
-7.  Aprendizado estatístico (*machine learning*) - 13/06
+### Módulo II (2025)
+```{r echo=FALSE}
+aulas_2025 <- tibble::tibble(
+  aula = 10:20,
+  dt = c(
+    seq.Date(lubridate::dmy("18/02/2025"), lubridate::dmy("25/02/2025"), by = "week"),
+    seq.Date(lubridate::dmy("11/03/2025"), lubridate::dmy("06/05/2025"), by = "week")
+  ) |> format("%d/%m/%Y"),
+  conteudo = c(
+    "Introdução à Probabilidade",
+    "Variável Aleatória e Tipos de Variáveis",
+    "Teste de Hipótese - leitura de resultados e interpretação",
+    "Regressão linear - intuição",
+    "Regressão logística",
+    "Análise da taxa de vitória e o Teorema de Priest & Klein",
+    "Análise de sobrevivência",
+    "Changepoint detection / Quebra Estrutural",
+    "Resultados",
+    "Estudos de caso I",
+    "Estudos de caso II"
+  ),
+  professor = c("A", "A", "A", "A", "J", "R", "J", "R", "R", "J", "R") 
+) |> 
+  dplyr::mutate(
+    professor = dplyr::case_when(
+      professor == "A" ~ "Alexandre Chibebe Nicolella",
+    professor == "J" ~ "José de Jesus Filho",
+    professor == "R" ~ "Ricardo Feliz Okamoto"
+    )
+  )
 
-8.  Aprendizado estatístico (*machine learning*) - 20/06
+aulas_2025 |>
+  knitr::kable(
+    col.names = c("Aula", "Data", "Conteúdo", "Professor")
+  )
+  # kableExtra::add_header_above(
+  #   c("Módulo II (2025)" = 4)
+  # )
+```
 
-9.  Interpretação dos resultados e elaboração do relatório - 27/06
+
+
+
+# Instalação do Pacote
+
+Para instalar este pacote no seu R, siga as instruções abaixo. 
+
+```{r}
+#| echo: true
+#| eval: false
+
+install.packages("remotes") # baixar o pacote devtools
+remotes::install_github("jjesusfilho/cursoESMP") # baixar o pacote deste curso
+```
+

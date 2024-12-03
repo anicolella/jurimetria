@@ -3,7 +3,7 @@ title: "Análise Descritiva"
 subtitle: "Tirando Informação dos Dados"
 author:
 - Alexandre Nicolella
-date: "2024"
+date: "03/12/2024"
 format: html
 ---
 

@@ -3,14 +3,13 @@ title: "Google Drive"
 subtitle: "Importanto os dados"
 author:
 - Alexandre Nicolella
-date: "2024"
+date: "03/12/2024"
 format: html
 ---
 
-
 ## Introdução
 
-Vamos aqui importar os dados de arquivos compartilhados o Google Drive. Vamos usar arquivos que não precisam de autenticação. São aqueles que *" qualquer um com o link"*  podem acessar. Para isso terá que utilizar o pacote `googledrive`. 
+Vamos aqui importar os dados de arquivos compartilhados o Google Drive. Vamos usar arquivos que não precisam de autenticação. São aqueles que *" qualquer um com o link"* podem acessar. Para isso terá que utilizar o pacote `googledrive`.
 
 ### Encontrando o ID
 
@@ -22,15 +21,11 @@ O **ID** é a seguinte parte do endereço: `1vs4hH1xgYl0YzSb2uWeH0gBMh8E5QPL2`
 
 Com esse string podemos fazer o download do arquivo
 
-
-
 ### Fazendo o download
 
-Primeiramente vamos excluir a autenticação com o comando `drive_deauth()`. Poderá checar a exclusão com o comando `drive_user()`, ele mostrará que não existe usuário logado ou autenticado. 
+Primeiramente vamos excluir a autenticação com o comando `drive_deauth()`. Poderá checar a exclusão com o comando `drive_user()`, ele mostrará que não existe usuário logado ou autenticado.
 
 Depois indicaremos o caminho do arquivo no google drive e com o caminho indicado ele fará o download na pasta do seu computador indicada na parte superior da aba *Console*. Depois é só fazer a leitura para transformar o arquivo em `.Rdata`. Vejamos:
-
-
 
 ```{r, warning=FALSE, eval=FALSE}
 
@@ -46,9 +41,7 @@ drive_download(cjpg_public, overwrite = TRUE)    # faz o download do arquivo na 
 cjpg<-readRDS("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/cjpg.rds")   # faz a leitura do arquivo - colocar o endereço do seu computador
 ```
 
-
 Podemos importar outros arquivos agora:
-
 
 ```{r, warning=FALSE, eval=FALSE}
 
@@ -73,6 +66,3 @@ library("readxl")
 cpopg <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/cpopg_metadados.xlsx")
 
 ```
-
-
-
