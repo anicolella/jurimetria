@@ -97,11 +97,11 @@ library(cursoESMP) # carregar o pacote deste curso
 final_fem_22<-cursoESMP::final_fem_22
 
 ```
-```
+
 
 Visualizando as primeiras 10 linhas do banco de dados:
 
-```{r, warning=F}
+```{r warning=FALSE, message=FALSE}
 library(kableExtra)
 
 final_fem_22 |> 
@@ -110,7 +110,9 @@ final_fem_22 |>
      kable_styling()
 ```
 
+
 ::: {.callout-note appearance="simple" collapse="true" title="Descrição do Banco de Dados"}
+
 1.  **homic_abs**: Número absoluto de homicídios feminínos registrados em 2022.
 
 2.  **homic_tx**: Taxa de homicídios feminino 100 mil mulheres.
@@ -134,7 +136,9 @@ final_fem_22 |>
 11. **t_feminic_tx**: Taxa de tentativa de feminicídios por 100 mil mulheres.
 
 12. **part_t_feminic**: Participação percentual da tentativa de feminicídios em relação ao total de tentativas de homicídios femininos.
+
 :::
+
 
 ### Gráficos no R
 
