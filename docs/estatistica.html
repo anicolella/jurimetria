@@ -282,8 +282,13 @@ window.Quarto = {
   <li><a href="#estatística-e-parâmetro" id="toc-estatística-e-parâmetro" class="nav-link" data-scroll-target="#estatística-e-parâmetro"><span class="header-section-number">7.4</span> Estatística e Parâmetro</a></li>
   <li><a href="#teste-de-hipotese-parâmetros." id="toc-teste-de-hipotese-parâmetros." class="nav-link" data-scroll-target="#teste-de-hipotese-parâmetros."><span class="header-section-number">7.5</span> Teste de Hipotese (Parâmetros).</a>
   <ul class="collapse">
-  <li><a href="#introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" id="toc-introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" class="nav-link" data-scroll-target="#introdução-ao-teste-de-hipótese-de-duas-populações-de-médias"><span class="header-section-number">7.5.1</span> Introdução ao Teste de Hipótese de Duas Populações (de Médias)</a></li>
-  <li><a href="#aplicação-teste-de-hipótese" id="toc-aplicação-teste-de-hipótese" class="nav-link" data-scroll-target="#aplicação-teste-de-hipótese"><span class="header-section-number">7.5.2</span> Aplicação Teste de Hipótese</a></li>
+  <li><a href="#construíndo-a-hipótese-nula" id="toc-construíndo-a-hipótese-nula" class="nav-link" data-scroll-target="#construíndo-a-hipótese-nula"><span class="header-section-number">7.5.1</span> Construíndo a Hipótese Nula</a></li>
+  <li><a href="#o-teste-estatístico" id="toc-o-teste-estatístico" class="nav-link" data-scroll-target="#o-teste-estatístico"><span class="header-section-number">7.5.2</span> O Teste Estatístico</a></li>
+  <li><a href="#erro-tipo-i-ei-e-erro-tipo-ii-eii" id="toc-erro-tipo-i-ei-e-erro-tipo-ii-eii" class="nav-link" data-scroll-target="#erro-tipo-i-ei-e-erro-tipo-ii-eii"><span class="header-section-number">7.5.3</span> Erro Tipo I (EI) e Erro Tipo II (EII)</a></li>
+  <li><a href="#procedimento-geral-do-teste-de-hipótese" id="toc-procedimento-geral-do-teste-de-hipótese" class="nav-link" data-scroll-target="#procedimento-geral-do-teste-de-hipótese"><span class="header-section-number">7.5.4</span> Procedimento Geral do Teste de Hipótese</a></li>
+  <li><a href="#os-cinco-passos-para-a-contrução-do-teste-de-hipótese" id="toc-os-cinco-passos-para-a-contrução-do-teste-de-hipótese" class="nav-link" data-scroll-target="#os-cinco-passos-para-a-contrução-do-teste-de-hipótese"><span class="header-section-number">7.5.5</span> Os Cinco passos para a contrução do teste de hipótese</a></li>
+  <li><a href="#introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" id="toc-introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" class="nav-link" data-scroll-target="#introdução-ao-teste-de-hipótese-de-duas-populações-de-médias"><span class="header-section-number">7.5.6</span> Introdução ao Teste de Hipótese de Duas Populações (de Médias)</a></li>
+  <li><a href="#aplicação-teste-de-hipótese" id="toc-aplicação-teste-de-hipótese" class="nav-link" data-scroll-target="#aplicação-teste-de-hipótese"><span class="header-section-number">7.5.7</span> Aplicação Teste de Hipótese</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -426,7 +431,7 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figuras\analisedados.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Bazerman: mesas</figcaption>
+<figcaption>Fluxograma da Análise de Dados</figcaption>
 </figure>
 </div>
 <p>Nosso objetivo é explorar nessa seção a análise descritiva. Chamado hoje no <em>Business Intelligence</em>, que e uma das áreas do <em>Data Science</em>.</p>
@@ -839,8 +844,304 @@ População
 </section>
 <section id="teste-de-hipotese-parâmetros." class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="teste-de-hipotese-parâmetros."><span class="header-section-number">7.5</span> Teste de Hipotese (Parâmetros).</h2>
-<section id="introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="introdução-ao-teste-de-hipótese-de-duas-populações-de-médias"><span class="header-section-number">7.5.1</span> Introdução ao Teste de Hipótese de Duas Populações (de Médias)</h3>
+<p>Algumas vezes gostariamos de testar se uma teoria é verossímil com a realidade ou mesmo testar teorias diferentes e verificar qual seria a mais plausível com base na realidade.</p>
+<p>Dessa forma, gostariamos de testar se uma sobre a população é mais plausível, ou seja, se os dados amostrais trazem evidências que apoiam ou não essa hipótese. Por exemplo:</p>
+<ul>
+<li>Verificar se um determinado medicamento não tem efeito sobre a mortalidade causada por um determinado virus ou se possui efeito.</li>
+<li>Verificar se a quantidade de gordura anunciado pelo fabricante de um produto realmente está correta ou é maior.</li>
+<li>Se a afirmativa de um canditado de que possui a maioria dos votos é verdadeira ou é menor.</li>
+<li>Verificar se as rendas entre duas comunidades são as mesmas para podermos lançar uma política de apoio</li>
+<li>Verifcar se uma política do aumento do recurso as empresas não afeta falência ou se tem efeito.</li>
+<li>se o tempo médio de encaminhamento e deferimento de medida protetiva de urgência é menor do que 48 horas em casos de violência doméstica e familiar contra a mulher.</li>
+</ul>
+<p>Aqui faremos algo muito parecido a presunção de inocência, assumimos que a pessoa ou empresa é “inocente”.</p>
+<ul>
+<li>O medicamento não tem efeito,</li>
+<li>O teor de gordura está certo,</li>
+<li>O candidato tem maioria,</li>
+<li>As comunidades possuem a mesma renda,</li>
+<li>O recurso financeiro não afeta o número de falências</li>
+<li>O deferimento ocorre em até 48h.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="A Intuição">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A Intuição
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Partimos da premissa de que a hipótese inicial é a correta e tentamos verificar com os fatos (dados amostrais) se essa hipótese colocada é verossímil.</p>
+</div>
+</div>
+<section id="construíndo-a-hipótese-nula" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="construíndo-a-hipótese-nula"><span class="header-section-number">7.5.1</span> Construíndo a Hipótese Nula</h3>
+<p>Imaginemos o seguinte caso. Um estudo sobre a eficiência do Judiciário sugere que a duração média de um determinado tipo de processo na Justiça Federal é de <strong>600 dias</strong>. No entanto, advogados e operadores do direito argumentam que, na prática, esse tempo pode ser maior devido a atrasos processuais e recursos frequentes. A questão é: a estimativa oficial está correta ou os operadores do direito têm razão?</p>
+<p>Dessa forma, temos duas hipóteses distintas:</p>
+<ul>
+<li>A primeira afirma que o tempo médio de duração do processo, <span class="math inline">\(\mu\)</span>, é de <strong>600 dias</strong>,</li>
+<li>A segunda sugere que a duração real é superior a <strong>600 dias</strong>.</li>
+</ul>
+<p>Vamos assumir que a estimativa oficial está correta até que se prove o contrário, e chamaremos essa afirmativa de <strong>hipótese nula</strong> (<span class="math inline">\(H_0\)</span>):</p>
+<p><span class="math display">\[H_0: \quad \mu = 600 \text{ dias}\]</span></p>
+<p>Já a hipótese alternativa (<span class="math inline">\(H_1\)</span>), que representa a teoria concorrente dos operadores do direito, sugere que a média real de duração do processo é maior:</p>
+<p><span class="math display">\[ H_1: \quad \mu &gt; 600 \text{ dias}\]</span></p>
+<p>Nosso problema, então, é decidir se devemos <strong>aceitar ou rejeitar a hipótese nula</strong> <span class="math inline">\(H_0\)</span> — de que o tempo médio é de <strong>600 dias</strong> — em favor da hipótese alternativa <span class="math inline">\(H_1\)</span>, que afirma que os processos, na realidade, levam <strong>mais tempo</strong> para serem concluídos.</p>
+<p>Juntas:<br>
+<span class="math display">\[H_0: \quad \mu = 600\]</span> <span class="math display">\[H_1: \quad \mu &gt; 600\]</span></p>
+<p>Esse modelo pode ser aplicado utilizando dados reais de processos judiciais para verificar se a alegação dos operadores do direito se sustenta estatisticamente.</p>
+</section>
+<section id="o-teste-estatístico" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="o-teste-estatístico"><span class="header-section-number">7.5.2</span> O Teste Estatístico</h3>
+<p><em>Qual dessas duas hipóteses é mais plausível?</em></p>
+<p>Para isso devemos nos valer de um processo de amostragem, onde faremos <span class="math inline">\(n\)</span> medições do tempo médio dos processos (que chamaremos de X), <span class="math inline">\(X_1, X_2, ..., X_n\)</span>, e obteremos os valores em dias do tempo médio de cada processo amostrado <span class="math inline">\(x_1, x_2,...x_n\)</span>.</p>
+<p>Com base na amostra devemos realizar algum tipo de cálculo que nos permite inferir se rejeitamos ou não <span class="math inline">\(H_0\)</span>, se é plausível ou não a hipótese colocada. Isso é o que chamamos de teste estatístico:</p>
+<p><span class="math display">\[T = h(X_1,X_2, . . .,X_n)\]</span></p>
+<p>Decidindo qual o <span class="math inline">\(T\)</span> utilizar - a função <span class="math inline">\(h\)</span> que será aplicado aos valores da amostra - devemos compreender qual é a distribuição dessa estatística sob a condição de que a hipótese <span class="math inline">\(H_0\)</span> for a verdadeira.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="A Intuição">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A Intuição
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Queremos aqui saber se a amostra tivesse sido extraída de contratos com esperança do tempo de duração , <span class="math inline">\(\mathbb{E(X)}\)</span>, de 600 dias, quais seriam os valores típicos para a distribuição do estimador T? Dessa forma, podemos comparar esses valores típicos com o que obtivemos no processo de amostragem.</p>
+</div>
+</div>
+<p>Vejamos no nosso exemplo, gostariamos de verificar a hipótese de que a esperança do tempo médio, <span class="math inline">\(\mu\)</span> é de 600 dias. Como já vimos uma boa alternativa de teste estatístico poderia ser a média, <span class="math inline">\(\bar{X}\)</span>. Assim o teste estatístico seria:</p>
+<p><span class="math display">\[\bar{X} = \frac{\sum_i^n(X_i)}{n}\]</span></p>
+<p>Com base na amostra observada <span class="math inline">\(x_1, x_2, ..., x_3\)</span> poderiamos obter a estimativa do tempo médio, ou seja, <span class="math inline">\(\bar{x}\)</span>. Como saber se essa média calculada nos traz mais evidência a favor de <span class="math inline">\(H_0\)</span> ou <span class="math inline">\(H_1\)</span>? Veja a Figura abaixo para pensarmos no problema.</p>
+<p>A figura considera o estimador <span class="math inline">\(\bar{X}\)</span>. A esquerda temos os valores do estimador que atestam que a hipótese <span class="math inline">\(H_0\)</span> é a mais plausível, quando mais próxima a estimativa de 600 maior evidência que <span class="math inline">\(H_0\)</span> é verdadeira. Ao caminhar para a direita, os valores do estimador se distanciam de 600, e mais evidência de que <span class="math inline">\(H_0\)</span> não é plausível.</p>
+<p>Dessa forma, precisamos de um ponto no qual (interrogação na figura) onde valores menores do estimador são favoráveis a hipótese nula e valores maiores são mais favoráveis a hipótese alternativa. Por exemplo, se no nosso processo de amostragem obtivemos a estimativa de <span class="math inline">\(\bar{x}=700\)</span>, isso é mais favorável a <span class="math inline">\(H_0\)</span> ou <span class="math inline">\(H_1\)</span>?</p>
+<center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras\testehipot1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Teste de Hipótese - intuição </figcaption>
+</figure>
+</div>
+</center>
+<p>Para saber qual seriam os valores típicos do estimador <span class="math inline">\(\bar{X}\)</span> sob <span class="math inline">\(H_0\)</span> imagine que a população <span class="math inline">\(X\)</span> seja <span class="math inline">\(N(600,100^2)\)</span>, ou seja, tem esperança 600 e desvio padrão populacional de 100. Essa é a afirmação da Justiça Federal, ou seja, nosso <span class="math inline">\(H_0\)</span>.</p>
+<p>Já sabemos que um processo de amostragem cada uma das <span class="math inline">\(n\)</span> medições <span class="math inline">\(X_1, X_2, ...,X_n\)</span> possuem a mesma distribuição de <span class="math inline">\(X\)</span>. E também sabemos por definição que o estimador <span class="math inline">\(\bar{X}\)</span> terá uma distribuição:</p>
+<p><span class="math display">\[N(600,\frac{100^2}{n})\]</span>.</p>
+<p>Supondo que retiramos uma amostra de 25 processos, logo os valores típicos do estimador sob <span class="math inline">\(H_0\)</span> são <span class="math inline">\(N(600,\frac{100^2}{25})\)</span>. Vejamos abaixo a simulação do estimador <span class="math inline">\(\bar{X}\)</span>, os valores típicos para esse caso, e onde se encontra o valor de 700.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">500</span>,<span class="dv">700</span>,<span class="fl">0.1</span>) </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fdnorm<span class="ot">&lt;-</span><span class="fu">dnorm</span>(<span class="at">x =</span> x, <span class="at">mean =</span> <span class="dv">600</span>, <span class="at">sd=</span><span class="dv">20</span>)   </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>regiao<span class="ot">=</span><span class="fu">seq</span>(<span class="dv">560</span>,<span class="dv">640</span>,<span class="fl">0.01</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>cord.x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">min</span>(regiao),regiao,<span class="fu">max</span>(regiao))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>cord.y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">dnorm</span>(regiao,<span class="at">mean=</span><span class="dv">600</span>, <span class="at">sd=</span><span class="dv">20</span>),<span class="dv">0</span>) </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x,<span class="dv">600</span>,<span class="dv">20</span>),<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">500</span>,<span class="dv">700</span>),<span class="at">xlab=</span><span class="fu">expression</span>(<span class="fu">bar</span>(x)),<span class="at">type=</span><span class="st">"l"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">"steelblue4"</span>,<span class="at">lwd=</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"f("</span>, <span class="fu">bar</span>(x),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">")"</span>)),<span class="at">xaxt=</span><span class="st">"n"</span>,<span class="at">cex.axis=</span><span class="fl">0.65</span>, <span class="at">cex.lab=</span><span class="fl">0.8</span> ) </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="at">at=</span><span class="fu">c</span>(<span class="dv">500</span>,<span class="dv">540</span>,<span class="dv">560</span>,<span class="dv">580</span>, <span class="dv">600</span>, <span class="dv">620</span>, <span class="dv">640</span>,<span class="dv">660</span>, <span class="dv">700</span>),<span class="at">labels =</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>       <span class="fu">c</span>(<span class="dv">500</span>,<span class="dv">540</span>,<span class="dv">560</span>,<span class="dv">580</span>, <span class="dv">600</span>, <span class="dv">620</span>, <span class="dv">640</span>,<span class="dv">660</span>, <span class="dv">700</span>),<span class="at">cex.axis=</span><span class="fl">0.7</span>, <span class="at">cex.lab=</span><span class="fl">0.8</span>) </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(cord.x,cord.y,<span class="at">col=</span><span class="st">'lightgray'</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">600</span>, <span class="at">col=</span><span class="st">"steelblue4"</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">602</span>, <span class="fl">0.001</span>, <span class="fu">expression</span>(mu))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="estatistica_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Valores típicos da distribuiçao da média sob H0</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>No centro temos a <span class="math inline">\(E(\bar{X})=\mu=600\)</span>. Observamos que para o tamanho amostral que retiramos e sob <span class="math inline">\(H_0\)</span> os valores típicos oscilam mais ou menos entre 560 e 640 - dois desvios padrão para cima e para baixo (lembrem-se que nesse intervalo temos mais de 95% das observaçoes).</p>
+<p>Quanto retiramos a amostra e calculamos o valor da média obtivemos <span class="math inline">\(\bar{x}=700\)</span>. Observe no gráfico acima onde está o valor de 700, muita a frente e notamos claramente que a probabilidade de obtermos esse valor de média com uma amostra retirada da população <span class="math inline">\(N(600,100^2)\)</span>, é praticamente 0.</p>
+<p>Portanto, existem evidências de que essa amostra não veio de uma população conforme descrita pela Justiça Federal e sim de processos com tempo médio (esperança) maior do que 600. Portanto, dizemos que rejeitamos <span class="math inline">\(H_0\)</span>.</p>
+</section>
+<section id="erro-tipo-i-ei-e-erro-tipo-ii-eii" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="erro-tipo-i-ei-e-erro-tipo-ii-eii"><span class="header-section-number">7.5.3</span> Erro Tipo I (EI) e Erro Tipo II (EII)</h3>
+<p>Aqui precisamos distinguir duas ideias, a primeiro é a existência da verdadeira população e a segunda é o que achamos ser a verdadeira população com base na análise que fizemos. Aqui surge o que chamamos de erro estatístico. Não temos como fugir dele, somente controlá-lo. Vejamos a tabela abaixo que resume as possibilidades:</p>
+<div id="tab-erro">
+<table class="caption-top table">
+<caption>Tipos de Erros em Estatística, EI e EII.</caption>
+<thead>
+<tr class="header">
+<th>A Decisão</th>
+<th>(<span class="math inline">\(H_0\)</span>) é verdadeiro</th>
+<th>(<span class="math inline">\(H_1\)</span>) é verdadeiro</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rejeitar (<span class="math inline">\(H_0\)</span>)</td>
+<td>Erro Tipo I (EI)</td>
+<td>Correto</td>
+</tr>
+<tr class="even">
+<td>Não Rejeitar (<span class="math inline">\(H_0\)</span>)</td>
+<td>Correto</td>
+<td>Erro Tipo II (EII)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Observe que a nossa decisão pode incorrer em dois erros diversos.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Erro Tipo I e Erro Tipo II">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Erro Tipo I e Erro Tipo II
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Erro Tipo I e Erro Tipo II</strong></p>
+<p><em>Erro Tipo I (EI)</em>: ocorre quando “indevidamente” rejeitamemos <span class="math inline">\(H_0\)</span>. Nesse caso <span class="math inline">\(H_0\)</span> era verdadeira e rejeitamos.\</p>
+<p><em>Erro Tipo II (EII)</em>: ocorre quando “indevidamente” não rejeitamos <span class="math inline">\(H_0\)</span>. Nesse caso não rejeitamos <span class="math inline">\(H_0\)</span> e na verdade <span class="math inline">\(H_1\)</span> é verdadeira.</p>
+</div>
+</div>
+<p>O primeiro erro é o chamado na literatura médica de falso negativo, ou seja, classifica a pessoa não portadora da doença (negativa) e na verdade ela possui.</p>
+<p>O segundo tipo é o falso positivo, onde classifica-se a pessoa com a doença quando na realidade ela não possui.</p>
+<p>Nosso desafio agora é estabelecer um critério de decisão, o ponto a partir do qual dizemos que <span class="math inline">\(H_0\)</span> não parece mais provável (Figura Teste de Hipótese - Intuição). Essa chamaremos de região crítica ou de rejeição.</p>
+<ul>
+<li>EI <span class="math inline">\((\alpha)\)</span>- Dizer que o tempo médio é maior que 600, quando na realizadade ela é de 600.</li>
+<li>EII <span class="math inline">\((\beta)\)</span>- Dizer que tempo médio é de 600 quando na realidade ela é maior do que 600.</li>
+</ul>
+<p>Vamos retomar o nosso exemplo. Foi retirada uma amostra de <span class="math inline">\(n=25\)</span> processos e por definição a distribuição de <span class="math inline">\(\bar{X}\)</span> sob <span class="math inline">\(H_0\)</span> será <span class="math inline">\(N(600,\frac{100^2}{25})\)</span>. A hipótese a ser testada será:</p>
+<p><span class="math display">\[H_0: \qquad \mu=600\]</span> <span class="math display">\[H_1: \qquad \mu&gt;600\]</span></p>
+<p>Uma maneira de acharmos o valor a partir do qual teremos a região crítica ou de rejeição, seria controlar o Erro Tipo I <span class="math inline">\((\alpha)\)</span>. Podemos dizer que gostariamos de cometer o Erro Tipo I em apenas 5% dos casos.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Erro Estatístico">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Erro Estatístico
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A chance de retirarmos um amostra e o valor da estimativa ser maior que o valor de decisão é de 5% dos casos, os outros 95% sempre cairão na área de aceitação.</p>
+</div>
+</div>
+<p><span class="math display">\[P(Z_{\bar{X}} \geq z_c|H_0)=0.05= \alpha\]</span> Olhando a tabela temos:</p>
+<p><span class="math display">\[P(Z_{\bar{X}} \geq 1.65|H_0)=0.05= \alpha\]</span> <span class="math display">\[z_c =\frac{\bar{X}+600}{100/5}\]</span> <span class="math display">\[1.65 = \frac{\bar{X}+600}{20}\]</span> <span class="math display">\[\bar{X}=600+1.65*20=633\]</span></p>
+<p>Portanto,</p>
+<p><span class="math display">\[P(\bar{X}\geq 633|H_0)=0.05= \alpha\]</span></p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Tabela Normal">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tabela Normal
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figuras\normal.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Tabela da Norma Padrão </figcaption>
+</figure>
+</div>
+</center>
+</div>
+</div>
+</div>
+<p>Logo, temos agora uma regra de decisão que tenta controlar o Erro Tipo I. A nossa regra de decisão agora é rejeitar <span class="math inline">\(H_0\)</span> toda vez que o valor calculado da estimativa de <span class="math inline">\(\bar{X}\)</span> for maior do que 633 e aceitar quando for menor. Assim nossa região crítica será:</p>
+<p><span class="math display">\[RC =\{\bar{x} \in \mathbb{R} | \bar{x} \geq 633\}\]</span></p>
+<p>Isso implica que a probabilidade de rejeitarmos <span class="math inline">\(H_0\)</span> (de que o tempomédio não é de 600), e na verdade ela ser de 600 é de 5%.</p>
+<p>Vejamos o gráfico:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">500</span>,<span class="dv">700</span>,<span class="fl">0.1</span>) </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fdnorm<span class="ot">&lt;-</span><span class="fu">dnorm</span>(<span class="at">x =</span> x, <span class="at">mean =</span> <span class="dv">600</span>, <span class="at">sd=</span><span class="dv">20</span>)  </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>fdnorm1<span class="ot">&lt;-</span><span class="fu">dnorm</span>(<span class="at">x =</span> x, <span class="at">mean =</span> <span class="dv">660</span>, <span class="at">sd=</span><span class="dv">20</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>regiao<span class="ot">=</span><span class="fu">seq</span>(<span class="dv">633</span>,<span class="dv">700</span>,<span class="fl">0.01</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>cord.x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">min</span>(regiao),regiao,<span class="fu">max</span>(regiao))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>cord.y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">dnorm</span>(regiao,<span class="at">mean=</span><span class="dv">600</span>, <span class="at">sd=</span><span class="dv">20</span>),<span class="dv">0</span>) </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x,<span class="dv">600</span>,<span class="dv">20</span>),<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">500</span>,<span class="dv">700</span>),<span class="at">xlab=</span><span class="fu">expression</span>(<span class="fu">bar</span>(x)),<span class="at">type=</span><span class="st">"l"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">"steelblue4"</span>,<span class="at">lwd=</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"f("</span>, <span class="fu">bar</span>(x),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">")"</span>)),<span class="at">xaxt=</span><span class="st">"n"</span>,<span class="at">cex.axis=</span><span class="fl">0.65</span>, <span class="at">cex.lab=</span><span class="fl">0.8</span> ) </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="at">at=</span><span class="fu">c</span>(<span class="dv">500</span>,<span class="dv">540</span>,<span class="dv">560</span>,<span class="dv">580</span>, <span class="dv">600</span>, <span class="dv">620</span>, <span class="dv">633</span>,<span class="dv">660</span>, <span class="dv">700</span>),<span class="at">labels =</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>       <span class="fu">c</span>(<span class="dv">500</span>,<span class="dv">540</span>,<span class="dv">560</span>,<span class="dv">580</span>, <span class="dv">600</span>, <span class="dv">620</span>, <span class="dv">633</span>,<span class="dv">660</span>, <span class="dv">700</span>),<span class="at">cex.axis=</span><span class="fl">0.7</span>, <span class="at">cex.lab=</span><span class="fl">0.8</span>) </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(cord.x,cord.y,<span class="at">col=</span><span class="st">'wheat4'</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">633</span>, <span class="at">col=</span><span class="st">"steelblue4"</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">600</span>, <span class="fl">0.001</span>, <span class="fu">expression</span>(mu))</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">660</span>, <span class="fl">0.005</span>, <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"EI="</span>, alpha, <span class="st">"=0.05"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="estatistica_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Erro Tipo I e a Região Crítica</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Em cinza tem-se a região crítica descrita acima. Logo todos os valores calculados de <span class="math inline">\(\bar{X}\)</span> que cairem acima de 633, dizemos que rejeitamos <span class="math inline">\(H_0\)</span>. Entretanto, percebam que poderiam fazer parte desta distribuição, apesar da chance ser pequena, 5%.</p>
+<p>Como não sabemos a distribuição sob <span class="math inline">\(H_1\)</span> não conseguimos calcular a probabilidade de não rejeitar <span class="math inline">\(H_0\)</span> e na verdade ela pertencer a distribuição de <span class="math inline">\(H_1\)</span>.</p>
+</section>
+<section id="procedimento-geral-do-teste-de-hipótese" class="level3" data-number="7.5.4">
+<h3 data-number="7.5.4" class="anchored" data-anchor-id="procedimento-geral-do-teste-de-hipótese"><span class="header-section-number">7.5.4</span> Procedimento Geral do Teste de Hipótese</h3>
+<section id="teste-para-um-parâmetro-populacional" class="level4" data-number="7.5.4.1">
+<h4 data-number="7.5.4.1" class="anchored" data-anchor-id="teste-para-um-parâmetro-populacional"><span class="header-section-number">7.5.4.1</span> Teste para um parâmetro populacional</h4>
+<p>Temos interesse em uma característica da população. Como vimos por exemplo, o tempo médio de um processo <span class="math inline">\(X\)</span>, ou mais especificamente na sua esperança <span class="math inline">\(E(X)=\mu\)</span>. Contruímos o teste sobre o parâmetro, podendo ser unicaudal ou bicaudal.</p>
+<p><strong>Hipótese Bicaudal</strong>:</p>
+<p>O teste bilateral ou bicaudal podemos observar valores maiores ou menores em relação a hipótese nula. Assim não temos nenhum conhecimento que nos permita dizer que podemos ter valores somente maiores ou somente menores. Temos a seguinte formulação geral:</p>
+<p><span class="math display">\[H_0: \qquad \theta=\theta_0\]</span></p>
+<p><span class="math display">\[H_1: \qquad \theta \neq \theta_0\]</span></p>
+<p><strong>Nível de significância</strong></p>
+<p>Retomando o nosso exemplo, ao rejeitarmos <span class="math inline">\(H_0\)</span> podemos cometer o erro de dizer que o tempo médio é maior que 600 dias, mas na realidade o tempo era efetivamente 600 dias.</p>
+<p>Tentamos controlar esse tipo de erro que é o nosso Erro Tipo I (EI). Temos que definir qual seria o tamanho desse erro, 10%, 5%, 1% etc. Esse percentual é o que chamamos de nível de significância. Quem define esse tamanho é o pesquisador e em geral, em ciência sociais, utilizamos os níveis acima.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Nível de Signficãncia">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nível de Signficãncia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Nível de Significância</strong>:É a probabilidade máxima aceitável de cometer o erro tipo I e chamamos de <span class="math inline">\(\alpha\)</span>, sendo um valor entre <span class="math inline">\(0&lt;\alpha&lt;1\)</span></p>
+</div>
+</div>
+<p>Dessa forma, faremos o teste de hipótese para o parâmetro <span class="math inline">\(\theta\)</span> ao nível de significância de <span class="math inline">\(\alpha\)</span>. No nosso caso dizemos que iremos testar se o tempo médio dos processos é de 600, <span class="math inline">\(H_0: \mu=600\)</span>, ao nível de 5% de significância.</p>
+<p><strong>Valor Crítico e Região Crítica</strong></p>
+<p>Com base no nível de significância conseguiremos estabelecer qual é o valor crítico e qual seria a região de rejeição. Para o nosso caso encontramos o valor crítico de 633 e a nossa região foi estabelecida como <span class="math inline">\(RC =\{\bar{x} \in R | \bar{x} \geq 633\}\)</span>. Conforme calculamos anteiormente.</p>
+<p>Assim, de forma geral tem-se:</p>
+<p><span class="math display">\[RC =\{T \in C| H_0\}\]</span> <span class="math display">\[P(T \in C|H_0)\leq\alpha\]</span></p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Teste Unilateral e Bilateral">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Teste Unilateral e Bilateral
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A região critica depende do teste estatístico escolhido e se a hipótese é unilateral, ou seja, apenas de um lado da distribuição ou bilateral, os dois lados da distribuição. No caso unilateral utilizamos o nível de siginifcância, <span class="math inline">\(\alpha\)</span>, todo de um lado apenas. Se for o teste bilateral dividimos o nível de significância, ou seja, utilizamos<span class="math inline">\(\alpha /2\)</span>, metade para cada lado.</p>
+</div>
+</div>
+<p><strong>O Teste de Hipótese</strong></p>
+<p>Fazemos nosso processo de amostragem e obtemos o valor do teste estatístico. Se o valor do teste ficar fora da região crítica dizemos que não rejeitamos <span class="math inline">\(H_0\)</span>. Para o nosso caso, que não existe evidências de que o tempo médio dos processos é maior do 600 dias.</p>
+<p>Caso o teste estatítico produza uma estimativa na região crítica, rejeitamos <span class="math inline">\(H_0\)</span>, há evidências de que o tempo médio é maior do que aquela postulada pela Justiça Federal.</p>
+</section>
+</section>
+<section id="os-cinco-passos-para-a-contrução-do-teste-de-hipótese" class="level3" data-number="7.5.5">
+<h3 data-number="7.5.5" class="anchored" data-anchor-id="os-cinco-passos-para-a-contrução-do-teste-de-hipótese"><span class="header-section-number">7.5.5</span> Os Cinco passos para a contrução do teste de hipótese</h3>
+<ul>
+<li>Estabeleça as hipótese nula <span class="math inline">\(H_0\)</span> e a hipótese alternativa <span class="math inline">\(H_1\)</span></li>
+<li>Defina qual estimador do parâmetro populacional <span class="math inline">\(\theta\)</span> que será usado para testar <span class="math inline">\(H_0\)</span>: média, desvio padrão amostral, proporção amostral etc</li>
+<li>Defina o nível de significância - <span class="math inline">\(\alpha\)</span> e estabeleça qual o valor e a região crítica.</li>
+<li>Calcule a estimativa do teste estatístico.</li>
+<li>Se não pertencer a Região Crítica não rejeitamos <span class="math inline">\(H_0\)</span>, caso contrário rejeitamos a hipótese nula <span class="math inline">\(H_0\)</span>.</li>
+</ul>
+</section>
+<section id="introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" class="level3" data-number="7.5.6">
+<h3 data-number="7.5.6" class="anchored" data-anchor-id="introdução-ao-teste-de-hipótese-de-duas-populações-de-médias"><span class="header-section-number">7.5.6</span> Introdução ao Teste de Hipótese de Duas Populações (de Médias)</h3>
 <p>O teste de hipótese é uma técnica estatística fundamental usada para tomar decisões baseadas em evidências amostrais. O teste de hipótese de duas populações é aplicado quando queremos comparar as médias de duas populações distintas e determinar se existe uma diferença estatisticamente significativa entre elas. Vamos explorar os principais conceitos deste teste:</p>
 <p><strong>Formulação das Hipóteses</strong></p>
 <p>No teste de hipótese de duas populações, formulamos duas hipóteses:</p>
@@ -860,14 +1161,15 @@ População
 <p><strong>Conclusão do Teste</strong></p>
 <p>A conclusão do teste de hipótese de duas populações nos permite determinar se há evidências estatísticas suficientes para rejeitar a hipótese nula em favor da hipótese alternativa. Essa decisão tem implicações importantes em áreas como pesquisa científica, análise de dados e tomada de decisões em negócios e saúde.</p>
 </section>
-<section id="aplicação-teste-de-hipótese" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="aplicação-teste-de-hipótese"><span class="header-section-number">7.5.2</span> Aplicação Teste de Hipótese</h3>
+<section id="aplicação-teste-de-hipótese" class="level3" data-number="7.5.7">
+<h3 data-number="7.5.7" class="anchored" data-anchor-id="aplicação-teste-de-hipótese"><span class="header-section-number">7.5.7</span> Aplicação Teste de Hipótese</h3>
+<p><strong>Diferença de Médias</strong></p>
 <p>Vamos testar a hipótese de que as taxas de feminicídio são iguais entre as regiões norte, nordeste e centro oeste e as regiões sul e sudeste. Vamos permitir que as variâncias sejam diferentes entre as duas regiões</p>
 <p><span class="math display">\[H_0: \mu_{N-NE-CO} = \mu_{S-SD}\]</span> <span class="math display">\[H_1: \mu_{N-NE-CO} \neq \mu_{S-SD}\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#carregando o pacote para ler arquivos em excel</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.Rdata"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(feminic_tx<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#carregando o pacote para ler arquivos em excel</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.Rdata"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(feminic_tx<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -885,7 +1187,7 @@ mean in group 0 mean in group 1
 <p>O teste mostra que não rejeitamos a hipótese nula de que as duas regiões possuem a mesma média de taxa de feminicídio.</p>
 <p>Vejamos agora a renda per capita:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(rendapc<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(rendapc<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -901,6 +1203,58 @@ mean in group 0 mean in group 1
 </div>
 </div>
 <p>Observa-se que rejeita-se a hipótese nula, e há evidências de que a média da renda per capita entre as duas regiões são diferentes.</p>
+<p><strong>Teste sobre o Parâmetro</strong></p>
+<p>Vamos testar se a média da taxa de feminicídio nos estados brasileiros é igual a 2 assassinatos por 100 mil mulheres. Conforme anunciado por um portal de notícias.</p>
+<p><span class="math display">\[H_0: \mu = 2\]</span> <span class="math display">\[H_1:\mu \neq 2 \]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">mu=</span><span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  final_fem_22$feminic_tx
+t = -2.9276, df = 26, p-value = 0.007011
+alternative hypothesis: true mean is not equal to 2
+95 percent confidence interval:
+ 1.407411 1.896292
+sample estimates:
+mean of x 
+ 1.651852 </code></pre>
+</div>
+</div>
+<p>Podemos testar também a seguinte hipótese:</p>
+<p><span class="math display">\[H_0: \mu = 2\]</span> <span class="math display">\[H_1:\mu &lt; 2 \]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">mu =</span> <span class="dv">2</span>, <span class="at">alternative =</span> <span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  final_fem_22$feminic_tx
+t = -2.9276, df = 26, p-value = 0.003505
+alternative hypothesis: true mean is less than 2
+95 percent confidence interval:
+     -Inf 1.854681
+sample estimates:
+mean of x 
+ 1.651852 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Esse aqui é para a direita</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">mu =</span> <span class="dv">2</span>, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  final_fem_22$feminic_tx
+t = -2.9276, df = 26, p-value = 0.9965
+alternative hypothesis: true mean is greater than 2
+95 percent confidence interval:
+ 1.449022      Inf
+sample estimates:
+mean of x 
+ 1.651852 </code></pre>
+</div>
+</div>
 
 
 </section>
