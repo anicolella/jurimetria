@@ -107,6 +107,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -288,7 +292,7 @@ window.Quarto = {
   <li><a href="#procedimento-geral-do-teste-de-hipótese" id="toc-procedimento-geral-do-teste-de-hipótese" class="nav-link" data-scroll-target="#procedimento-geral-do-teste-de-hipótese"><span class="header-section-number">7.5.4</span> Procedimento Geral do Teste de Hipótese</a></li>
   <li><a href="#os-cinco-passos-para-a-contrução-do-teste-de-hipótese" id="toc-os-cinco-passos-para-a-contrução-do-teste-de-hipótese" class="nav-link" data-scroll-target="#os-cinco-passos-para-a-contrução-do-teste-de-hipótese"><span class="header-section-number">7.5.5</span> Os Cinco passos para a contrução do teste de hipótese</a></li>
   <li><a href="#introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" id="toc-introdução-ao-teste-de-hipótese-de-duas-populações-de-médias" class="nav-link" data-scroll-target="#introdução-ao-teste-de-hipótese-de-duas-populações-de-médias"><span class="header-section-number">7.5.6</span> Introdução ao Teste de Hipótese de Duas Populações (de Médias)</a></li>
-  <li><a href="#aplicação-teste-de-hipótese" id="toc-aplicação-teste-de-hipótese" class="nav-link" data-scroll-target="#aplicação-teste-de-hipótese"><span class="header-section-number">7.5.7</span> Aplicação Teste de Hipótese</a></li>
+  <li><a href="#aplicação-prática-sobre-teste-de-hipótese" id="toc-aplicação-prática-sobre-teste-de-hipótese" class="nav-link" data-scroll-target="#aplicação-prática-sobre-teste-de-hipótese"><span class="header-section-number">7.5.7</span> Aplicação Prática sobre Teste de Hipótese</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1161,53 +1165,191 @@ Teste Unilateral e Bilateral
 <p><strong>Conclusão do Teste</strong></p>
 <p>A conclusão do teste de hipótese de duas populações nos permite determinar se há evidências estatísticas suficientes para rejeitar a hipótese nula em favor da hipótese alternativa. Essa decisão tem implicações importantes em áreas como pesquisa científica, análise de dados e tomada de decisões em negócios e saúde.</p>
 </section>
-<section id="aplicação-teste-de-hipótese" class="level3" data-number="7.5.7">
-<h3 data-number="7.5.7" class="anchored" data-anchor-id="aplicação-teste-de-hipótese"><span class="header-section-number">7.5.7</span> Aplicação Teste de Hipótese</h3>
-<p><strong>Diferença de Médias</strong></p>
-<p>Vamos testar a hipótese de que as taxas de feminicídio são iguais entre as regiões norte, nordeste e centro oeste e as regiões sul e sudeste. Vamos permitir que as variâncias sejam diferentes entre as duas regiões</p>
-<p><span class="math display">\[H_0: \mu_{N-NE-CO} = \mu_{S-SD}\]</span> <span class="math display">\[H_1: \mu_{N-NE-CO} \neq \mu_{S-SD}\]</span></p>
+<section id="aplicação-prática-sobre-teste-de-hipótese" class="level3" data-number="7.5.7">
+<h3 data-number="7.5.7" class="anchored" data-anchor-id="aplicação-prática-sobre-teste-de-hipótese"><span class="header-section-number">7.5.7</span> Aplicação Prática sobre Teste de Hipótese</h3>
+<p>Essa seção tem o objetivo de aplicar o Teste de Hipótese utilizando o R. Vamos utilizar nosso banco de dados sobre feminicídio. E vamos criar uma variável que identifica se pertence as regiões norte, nordeste e centro oeste ou as regiões sul e sudeste.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#carregando o pacote para ler arquivos em excel</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.Rdata"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(feminic_tx<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  feminic_tx by N_NE_CO
-t = -1.2049, df = 20.949, p-value = 0.2417
-alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
-95 percent confidence interval:
- -0.6640345  0.1768916
-sample estimates:
-mean in group 0 mean in group 1 
-       1.471429        1.715000 </code></pre>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando a Binária que indica a região N, NE e CO</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>final_fem_22 <span class="ot">&lt;-</span> final_fem_22 <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N_NE_CO =</span> <span class="fu">case_when</span>(</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    regiao <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"NE"</span>, <span class="st">"CO"</span>) <span class="sc">~</span> <span class="dv">1</span>,  <span class="co"># Regiões N, NE e CO recebem 1</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">0</span>                             <span class="co"># Demais regiões recebem 0</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>O teste mostra que não rejeitamos a hipótese nula de que as duas regiões possuem a mesma média de taxa de feminicídio.</p>
-<p>Vejamos agora a renda per capita:</p>
+<p>Vamos olhar as médias entra as regiões norte, nordeste e centro oeste e as regiões sul e sudeste.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(rendapc<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>mean_1<span class="ot">&lt;-</span> <span class="fu">aggregate</span>(final_fem_22[<span class="dv">4</span><span class="sc">:</span><span class="dv">15</span>], <span class="fu">list</span>(final_fem_22<span class="sc">$</span>N_NE_CO), mean,  <span class="at">na.rm=</span>T)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(mean_1) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">kable_styling</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Group.1</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">homic_abs</td>
+<td style="text-align: right;">249.71</td>
+<td style="text-align: right;">108.80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">homic_tx</td>
+<td style="text-align: right;">3.60</td>
+<td style="text-align: right;">5.18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">feminic_abs</td>
+<td style="text-align: right;">107.57</td>
+<td style="text-align: right;">34.20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">feminic_tx</td>
+<td style="text-align: right;">1.47</td>
+<td style="text-align: right;">1.72</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">part_feminic</td>
+<td style="text-align: right;">42.84</td>
+<td style="text-align: right;">35.98</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">rendapc</td>
+<td style="text-align: right;">1903.14</td>
+<td style="text-align: right;">1287.55</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mais_50</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">0.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">t_homic_abs</td>
+<td style="text-align: right;">453.57</td>
+<td style="text-align: right;">224.25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">t_homic_tx</td>
+<td style="text-align: right;">8.91</td>
+<td style="text-align: right;">15.50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">t_feminic_abs</td>
+<td style="text-align: right;">177.67</td>
+<td style="text-align: right;">78.79</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">t_feminic_tx</td>
+<td style="text-align: right;">3.25</td>
+<td style="text-align: right;">4.42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">part_t_feminic</td>
+<td style="text-align: right;">26.24</td>
+<td style="text-align: right;">27.09</td>
+</tr>
+</tbody>
+</table>
 
-data:  rendapc by N_NE_CO
-t = 4.6401, df = 22.301, p-value = 0.0001225
-alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
-95 percent confidence interval:
- 340.6685 890.5172
-sample estimates:
-mean in group 0 mean in group 1 
-       1903.143        1287.550 </code></pre>
+
 </div>
 </div>
-<p>Observa-se que rejeita-se a hipótese nula, e há evidências de que a média da renda per capita entre as duas regiões são diferentes.</p>
+<p>Pode-se observar que existem em todas as variáveis existem diferenças entre as duas regiões. A questão é: Essas diferenças são estatisticamente significativas?</p>
+<p>Aproveitando um gráfico anterior que fizemos, vamos olhar a distribuição das taxas de feminicídio entre as regiões.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(final_fem_22, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(N_NE_CO, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Sul e Sudeste"</span>, <span class="st">"Norte, Nord. e C.Oeste"</span>)),  <span class="co"># Transformando em fatores</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">y =</span> feminic_tx, <span class="at">fill =</span> <span class="fu">factor</span>(N_NE_CO))) <span class="sc">+</span>                                   <span class="co"># Taxa de Feminicídio por Fator</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span>                                                        <span class="co"># Cria o gráfico de violino</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"steelblue"</span>)) <span class="sc">+</span>                                           <span class="co"># Cor das violas</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span><span class="st">"median"</span>, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">shape=</span><span class="dv">19</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">"darkorange"</span>  ) <span class="sc">+</span>                <span class="co"># Vamos colocar o ponto mediana</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribuição da taxa de feminicídio por região do Brasil"</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Região"</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Taxa de Feminicídio (por 100 mil)"</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Região"</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),              <span class="co"># Centraliza o título</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),                                         <span class="co"># Ajusta o tamanho dos rótulos no eixo X</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),                                         <span class="co"># Ajusta o tamanho dos rótulos no eixo Y</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estatistica_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Observa-se diferença entre as duas regiões, mas será que as médias são estatisticamente diferentes? Para isso temos que utilizar o Teste de Hipótese.</p>
+<p><strong>Relembrando os Passos</strong></p>
+<p>O teste de hipótese segue um processo estruturado de cinco etapas:</p>
+<ul>
+<li><p><strong>Definir as Hipóteses</strong> – Comece formulando a hipótese nula (<span class="math inline">\(H_0\)</span>) e a hipótese alternativa (<span class="math inline">\(H_1\)</span>). Em geral, a hipótese nula representa a ausência de efeito ou diferença, enquanto a hipótese alternativa sugere a existência de um efeito ou diferença.</p></li>
+<li><p><strong>Defina o Estimador</strong> - Defina qual estimador vai utilizar para inferir sobre o parâmetro populacional <span class="math inline">\(\theta\)</span>, o qual será usado para testar <span class="math inline">\(H_0\)</span>: média, desvio padrão amostral, proporção amostral etc</p></li>
+<li><p><strong>Estabelecer os Critérios de Decisão</strong> – Defina o nível de significância (<span class="math inline">\(\alpha\)</span>), que representa a probabilidade de rejeitar a hipótese nula quando ela é verdadeira (Erro Tipo I). Valores comuns de (<span class="math inline">\(\alpha\)</span>) são 0,05 (5%) e 0,01 (1%).</p></li>
+<li><p><strong>Analisar os Dados da Amostra</strong> – Calcule o teste estatístico com base nos dados amostrais. Esse teste estatístico vai ser utilizado para a comparação com os valores típicos que poderiam acontecer se a amostra tivesse vindo de <span class="math inline">\(H_0\)</span>.</p></li>
+<li><p><strong>Tomar uma Decisão e Interpretar os Resultados</strong> – Compare o valor calculado no teste com o valor crítico ou utilize o p-valor. Se o p-valor for menor que o nível de significância <span class="math inline">\(\alpha\)</span>, rejeita-se a hipótese nula em favor da hipótese alternativa. Caso contrário, não há evidências suficientes para rejeitar a hipótese nula, indicando que o efeito não é estatisticamente significativo.</p></li>
+</ul>
+<p><strong>Teste de Hipótese no R</strong></p>
+<p>A função <code>t.test()</code> no R possui vários argumentos importantes para a realização do teste t.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span>),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">conf.level =</span> <span class="fl">0.95</span>, …)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Abaixo estão os principais:</p>
+<ul>
+<li><strong><code>x</code>, <code>y</code></strong>: As duas amostras de dados a serem comparadas.<br>
+</li>
+<li><strong><code>alternative</code></strong>: Define a hipótese alternativa do teste (exemplo: <code>"two.sided"</code>, <code>"greater"</code>, <code>"less"</code>).<br>
+</li>
+<li><strong><code>mu</code></strong>: Especifica um valor de referência para a média populacional no teste.<br>
+</li>
+<li><strong><code>paired</code></strong>: Indica se o teste t deve ser pareado (<code>TRUE</code>) ou não pareado (<code>FALSE</code>).<br>
+</li>
+<li><strong><code>var.equal</code></strong>: Especifica se as variâncias das amostras devem ser assumidas como iguais (<code>TRUE</code>) ou não (<code>FALSE</code>).<br>
+</li>
+<li><strong><code>conf.level</code></strong>: Define o nível de confiança do intervalo (padrão de 95%).</li>
+</ul>
+<p>Esses parâmetros permitem personalizar o teste conforme a necessidade da análise estatística.</p>
 <p><strong>Teste sobre o Parâmetro</strong></p>
-<p>Vamos testar se a média da taxa de feminicídio nos estados brasileiros é igual a 2 assassinatos por 100 mil mulheres. Conforme anunciado por um portal de notícias.</p>
+<p>Uma reportagem em um portal de notícias indicou que a média da taxa de feminicídio nos estados brasileiros é igual a 2 assassinatos por 100 mil mulheres. Com base nos dados que coletamos gostaríamos de saber se eles carregam evidências favoráveis ou contra ao artigo.</p>
+<ul>
+<li><u>Definir as Hipóteses</u></li>
+</ul>
 <p><span class="math display">\[H_0: \mu = 2\]</span> <span class="math display">\[H_1:\mu \neq 2 \]</span></p>
+<ul>
+<li><u>Defina o Estimador</u></li>
+</ul>
+<p>Vamos utilizar a Média Amostral, <span class="math inline">\(\bar{X}\)</span>, para testar a hipótese nula <span class="math inline">\(H_0\)</span>.</p>
+<ul>
+<li><u>Estabelecer os Critérios de Decisão</u></li>
+</ul>
+<p>Vamos adotar <span class="math inline">\(\alpha= 0,05\)</span> (5%).</p>
+<ul>
+<li><u>Analisar os Dados da Amostra</u></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">mu=</span><span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x=</span>final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">"two.sided"</span>),</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">2</span>, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -1222,10 +1364,27 @@ mean of x
  1.651852 </code></pre>
 </div>
 </div>
-<p>Podemos testar também a seguinte hipótese:</p>
-<p><span class="math display">\[H_0: \mu = 2\]</span> <span class="math display">\[H_1:\mu &lt; 2 \]</span></p>
+<ul>
+<li><u>Tomar uma Decisão e Interpretar os Resultados</u></li>
+</ul>
+<p>Entendendo o resultado do teste:</p>
+<p><strong><code>One Sample t-test</code></strong>: Teste de uma amostra -&gt; taxa de feminicídio</p>
+<p><strong><code>data:  final_fem_22$feminic_tx</code></strong>: Indica a variável que utilizou</p>
+<p><strong><code>t = -2.9276, df = 26, p-value = 0.007011</code></strong>: O valor do teste t, o grau de liberdade e o p-valor</p>
+<p><strong><code>alternative hypothesis: true mean is not equal to 2</code></strong>: A hipótese alternativa é que a média não é igual a 2</p>
+<p><strong><code>95 percent confidence interval: 1.407411 1.896292</code></strong> : O intervalo de confiança de 95% para a média, indicando que a verdadeira média populacional está nesse intervalo.</p>
+<p><strong><code>sample estimates: mean of x  = 1.651852</code></strong>: A média amostral é de 1.65, a qual é a estimativa da verdadeira média populacional.</p>
+<p>Como o p-valor foi menor que o nível de significância <span class="math inline">\(\alpha\)</span>, rejeita-se a hipótese nula em favor da hipótese alternativa. Há evidências de que a média nacional é menor do que 2.</p>
+<p><strong>Teste Unicaudal</strong></p>
+<p>Podemos testar também a seguinte hipótese com nível de significância de 1%:</p>
+<p><span class="math display">\[H_0: \mu = 2\]</span> <span class="math display">\[H_1:\mu &lt; 2 \]</span> No R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">mu =</span> <span class="dv">2</span>, <span class="at">alternative =</span> <span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x=</span>final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">"less"</span>),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">2</span>, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">conf.level =</span> <span class="fl">0.99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -1233,28 +1392,89 @@ mean of x
 data:  final_fem_22$feminic_tx
 t = -2.9276, df = 26, p-value = 0.003505
 alternative hypothesis: true mean is less than 2
-95 percent confidence interval:
-     -Inf 1.854681
+99 percent confidence interval:
+     -Inf 1.946607
 sample estimates:
 mean of x 
  1.651852 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Esse aqui é para a direita</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(final_fem_22<span class="sc">$</span>feminic_tx, <span class="at">mu =</span> <span class="dv">2</span>, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Novamente como o p-valor foi menor que o nível de significância <span class="math inline">\(\alpha\)</span>, rejeita-se a hipótese nula em favor da hipótese alternativa. Há evidências de que a média nacional é menor do que 2.</p>
+<p><strong>Teste para Diferença de Médias</strong></p>
+<ul>
+<li><u>Taxa de Feminicídio</u></li>
+</ul>
+<p>Vamos testar a hipótese de que as taxas de feminicídio são iguais entre as regiões norte, nordeste e centro oeste e as regiões sul e sudeste. Vamos permitir que as variâncias sejam diferentes entre as duas regiões</p>
+<p><span class="math display">\[H_0: \mu_{N-NE-CO} = \mu_{S-SD}\]</span> <span class="math display">\[H_1: \mu_{N-NE-CO} \neq \mu_{S-SD}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(feminic_tx<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">"two.sided"</span>),</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-    One Sample t-test
+    Welch Two Sample t-test
 
-data:  final_fem_22$feminic_tx
-t = -2.9276, df = 26, p-value = 0.9965
-alternative hypothesis: true mean is greater than 2
+data:  feminic_tx by N_NE_CO
+t = -1.2049, df = 20.949, p-value = 0.2417
+alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
 95 percent confidence interval:
- 1.449022      Inf
+ -0.6640345  0.1768916
 sample estimates:
-mean of x 
- 1.651852 </code></pre>
+mean in group 0 mean in group 1 
+       1.471429        1.715000 </code></pre>
 </div>
 </div>
+<p>Como o p-valor foi maior que o nível de significância <span class="math inline">\(\alpha\)</span>, não rejeita-se a hipótese nula. Não há evidências de que as regiões possuem taxas diferentes de feminicídio.</p>
+<ul>
+<li><u>Renda pc</u></li>
+</ul>
+<p>Vejamos agora a renda per capita a 1% de significância :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(rendapc<span class="sc">~</span>N_NE_CO, <span class="at">data=</span>final_fem_22,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">"two.sided"</span>),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">conf.level =</span> <span class="fl">0.99</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  rendapc by N_NE_CO
+t = 4.6401, df = 22.301, p-value = 0.0001225
+alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+99 percent confidence interval:
+ 242.1018 989.0840
+sample estimates:
+mean in group 0 mean in group 1 
+       1903.143        1287.550 </code></pre>
+</div>
+</div>
+<p>Observa-se que rejeita-se a hipótese nula, e há evidências de que a média da renda per capita entre as duas regiões são diferentes.</p>
+<p><strong>Amostras Pareada</strong></p>
+<p>Vamos testar a diferença de média entre amostra pareadas. A amostra pareada é quando temos o mesmo indivíduo observado duas vezes. Vamos testar se existe diferença entre a participação do feminicídio sobre os homicídios e a participação da tentativa de feminicídio sobre as tentativas de feminicídio feminino.</p>
+<p><span class="math display">\[H_0: \mu_{part-feminic} = \mu_{part-t-feminic}\]</span> <span class="math display">\[H_1: \mu_{part-feminic} \neq \mu_{part-t-feminic}\]</span></p>
+<p>Utilizando a média amostral para testar a hipótese nula <span class="math inline">\(H_0\)</span> e considerando um nível de significância de 95%. No R temos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x=</span>final_fem_22<span class="sc">$</span>part_feminic, <span class="at">y=</span>final_fem_22<span class="sc">$</span>part_t_feminic,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">"two.sided"</span>),</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  final_fem_22$part_feminic and final_fem_22$part_t_feminic
+t = 3.457, df = 24, p-value = 0.002049
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+  4.105405 16.269795
+sample estimates:
+mean difference 
+        10.1876 </code></pre>
+</div>
+</div>
+<p>Como o p-valor foi menor que o nível de significância <span class="math inline">\(\alpha\)</span>, rejeita-se a hipótese nula em favor da hipótese alternativa. Há evidências de que a média da participação do feminicídio é maior do que a média da participação da tentativa de feminicídio. A estimativa dessa diferença é de 10 pontos percentuais a mais para participação do feminicídio.</p>
 
 
 </section>
