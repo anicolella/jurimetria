@@ -6,4 +6,4 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-O objetivo do curso será
+[Site](https://anicolella.github.io/jurimetria/)
