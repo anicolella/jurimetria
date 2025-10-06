@@ -160,7 +160,9 @@ Um gráfico no ggplot2 é construído combinando os seguintes elementos:
 5.  **Facetamento** (facet): Divide os dados em subconjuntos para gerar gráficos separados.
 6.  **Tema** (theme): Personaliza detalhes visuais, como fontes e cores de fundo.
 
-Clique abaixo para ver alguns tipos de gráficos que podem ser criados com o ggplot2: ::: {.callout-note appearance="simple" collapse=true title="Veja aqui Algumas Possibilidades de Camadas"}
+Clique abaixo para ver alguns tipos de gráficos que podem ser criados com o ggplot2: 
+
+::: {.callout-note appearance="simple" collapse=true title="Veja aqui Algumas Possibilidades de Camadas"}
 
 -   `geom_area()`: cria um gráfico de área.\
 -   `geom_density()`: cria um gráfico de densidade de kernel.\

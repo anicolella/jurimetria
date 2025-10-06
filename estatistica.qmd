@@ -222,7 +222,7 @@ $$Var(X) =\frac{1}{N} \sum_{1}^{N} (X_i-E(X))^2$$ Ou podemos assim representar: 
 
 **DESVIO PADRÃO POPULACIONAL** - $DP(X)$
 
-A variãncia é uma medida ao quadrado. Se estamos falando da renda seria uma medida da dispersão ao quadrado, ou seja, em $R\$^{2}$. Para retornar a unidade original usamos o desvio padrão que é:
+A variância é uma medida ao quadrado. Se estamos falando da renda seria uma medida da dispersão ao quadrado, ou seja, em $R\$^{2}$. Para retornar a unidade original usamos o desvio padrão que é:
 
 $$DP(X)=\sqrt{Var(X)}$$
 

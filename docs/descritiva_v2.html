@@ -652,7 +652,19 @@ Descrição do Banco de Dados
 <li><strong>Facetamento</strong> (facet): Divide os dados em subconjuntos para gerar gráficos separados.</li>
 <li><strong>Tema</strong> (theme): Personaliza detalhes visuais, como fontes e cores de fundo.</li>
 </ol>
-<p>Clique abaixo para ver alguns tipos de gráficos que podem ser criados com o ggplot2: ::: {.callout-note appearance=“simple” collapse=true title=“Veja aqui Algumas Possibilidades de Camadas”}</p>
+<p>Clique abaixo para ver alguns tipos de gráficos que podem ser criados com o ggplot2:</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Veja aqui Algumas Possibilidades de Camadas">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Veja aqui Algumas Possibilidades de Camadas
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
 <li><code>geom_area()</code>: cria um gráfico de área.<br>
 </li>
@@ -670,7 +682,9 @@ Descrição do Banco de Dados
 </li>
 <li><code>geom_bar()</code>: cria um gráfico de barras.</li>
 </ul>
-<p>:::</p>
+</div>
+</div>
+</div>
 <p>Vejamos um exemplo inicial de um gráfico da taxa de homicídio feminino e a taxa de feminicídio por Estado no Brasil</p>
 <p>Primeiro, definindo os dados que serão utilizados e os eixos x e y, vejamos o que ocorre:</p>
 <div class="cell">
@@ -735,7 +749,7 @@ Descrição do Banco de Dados
 </div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled" title="Clique aqui para ver os `shapes` disponíveis">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -744,7 +758,7 @@ Clique aqui para ver os <code>shapes</code> disponíveis
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>shape = 0</strong>: quadrado<br>
@@ -1231,7 +1245,7 @@ Exercício
 </div>
 </div>
 <div class="callout callout-style-simple callout-warning callout-titled" title="Veja a Resposta">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1240,7 +1254,7 @@ Veja a Resposta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>RESPOSTA</strong>: Participação é uma variável disecreta do tipo 0 ou 1 (binárias) que indica se a taxa de feminicídio é maior que 50%.</p>
 <div class="cell">
@@ -1418,7 +1432,7 @@ Exercício
 </div>
 </div>
 <div class="callout callout-style-simple callout-warning callout-titled" title="Veja a Resposta">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1427,7 +1441,7 @@ Veja a Resposta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>RESPOSTA</strong>: Renda e taxa de feminicídio são variáveis continuas. O ideal seria utilizar um gráfico de dispersão para verificar a relação entre essas variáveis.</p>
 <div class="cell">
@@ -1901,7 +1915,7 @@ Exercício
 </div>
 </div>
 <div class="callout callout-style-simple callout-warning callout-titled" title="Veja a Resposta">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1910,7 +1924,7 @@ Veja a Resposta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>RESPOSTA</strong>: Aqui segue uma sugestão de plotar a densidade juntamente com o boxplot, possibilitando em um mesmo gráfico uma maior quantidade de observação. Veja abaixo:</p>
 <div class="cell">
