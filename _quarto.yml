@@ -24,11 +24,16 @@ book:
     search: true
   image: logo_fdrp.png
   page-navigation: true
-  author: "Alexandre Nicolella"
-  date: "03/12/2024"
+  author:
+  - name: "Alexandre Nicolella"
+    affiliation: "Unversidade de São Paulo (USP)"
+  - name: "José de Jesus Filho"
+    affiliation: "PUC/SP"
+  date: "06/10/2025"
   chapters:
       - index.qmd
       #- intro.qmd
+      - autores.qmd
       - summary.qmd
       #- pesquisa.qmd
       - manipulacao.qmd

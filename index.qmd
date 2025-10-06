@@ -2,12 +2,28 @@
 
 ## **Motivação**
 
-Este  *Curso de Extensão em Jurimetria* foi desenvolvido para a Escola Superior do Ministério Público (ESMP), com o objetivo de integrar abordagens jurídicas e analíticas. Nossa proposta é explorar  a estruturação de informações em direito e como métodos quantitativos podem ampliar a compreensão e análise das questões de jurídicas, fornecendo uma fonte de informação robusta e estratégica para melhor tomada de decisão.
+Acreditamos que a jurimetria é fundamental para a construção de um sistema de Justiça mais eficiente, transparente e orientado por evidências. Ela permite transformar a forma como o Direito é praticado, tornando operadores mais conscientes e capazes de lidar com um mundo em que dados e tecnologia assumem papel central nas decisões.
+
+A jurimetria e a inteligência artificial aplicadas ao Direito contribuem decisivamente para melhorar a atuação institucional, desde a formulação de políticas públicas até a condução de processos e a gestão estratégica de casos. Elas ajudam a compreender padrões, prever resultados, priorizar recursos e tornar o trabalho jurídico mais objetivo e fundamentado.
+
+
+## **A quem se Destina**
+
+Este  *Curso de Extensão em Jurimetria* foi desenvolvido em parceria com a Escola Superior da Magistratura Tocantinense (ESMAT), com especial foco os membros e servidores do Tribunal de Justiça de Tocantins.  
+
 
 ## **Objetivo**
 
-Capacitar os participantes no uso de ferramentas e métodos quantitativos aplicados ao direito, com ênfase em casos práticos. O curso abordará desde a coleta e transformação de dados jurídicos até a análise probabilística e modelos, auxiliando os participantes a interpretar padrões e tendências a partir de informações extraídas de tribunais e demais fontes públicas.
+O curso tem como objetivo proporcionar aos membros e servidores do TJTO a formação necessária para compreender e aplicar os fundamentos e as práticas iniciais da jurimetria e da inteligência artificial aplicada ao Direito. Busca-se capacitar os participantes a percorrer o ciclo jurimétrico completo, desde a formulação da pergunta de pesquisa até a apresentação dos resultados, por meio de atividades que envolvem desenho de pesquisa, coleta e listagem de processos, estruturação, limpeza e organização de dados, além da visualização inicial das informações e aplicação de modelos estatísticos.
+
+ 
 
 ## **Abordagem**
 
-Adotaremos uma metodologia prática, utilizando casos reais para demonstrar como os métodos quantitativos podem ser aplicados a diferentes áreas do direito. O foco será em capacitar os participantes a desenvolver análises fundamentadas que contribuam para decisões mais eficientes e justas.
+O curso adotará uma abordagem essencialmente prática, baseada em casos reais e na metodologia de aprendizagem baseada em casos reais. A proposta é que os participantes desenvolvam seus próprios estudos a partir de questões-problema selecionadas, estruturando e analisando dados reais sob orientação dos docentes.
+
+Além da fundamentação teórica oferecida pelo professor, as atividades serão organizadas para que os participantes aprendam por meio da elaboração e resolução de um caso concreto, percorrendo o ciclo jurimétrico completo, da formulação da pergunta de pesquisa à visualização, análise e apresentação dos resultados.
+
+O curso enfatiza a integração entre Direito, Estatística e Computação, com o objetivo de capacitar os participantes a aplicar métodos quantitativos na análise jurídica e a desenvolver interpretações que contribuam para decisões mais eficientes e justas.
+
+A etapa inicial, realizada em formato on-line, será voltada à introdução das ferramentas e à formação dos grupos de trabalho. Em seguida, as aulas presenciais se concentrarão no desenvolvimento prático dos projetos, culminando na apresentação final das análises produzidas pelos alunos.

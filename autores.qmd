@@ -1,0 +1,46 @@
+# Sobre os Autores
+
+
+
+
+
+::: {.container style="display: flex; flex-direction: column; gap: 2rem;"}
+
+::: {.autor style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;"}
+
+
+::: {.bio}
+## **Alexandre Nicolella**
+
+![](figuras\alexandre.jpg){width=140px height=140px style="border-radius: 50%; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.15);"} 
+
+Professor de Economia da FEA-RP/USP, com formação em Economia Aplicada e experiência em microeconometria, avaliação de projetos e análise de dados,  com forte ênfase em métodos quantitativos e modelagem estatística voltados à tomada de decisão em políticas públicas e gestão. Atua em pesquisa e ensino de econometria e análise de dados, com histórico de projetos financiados por organismos nacionais e internacionais 
+
+
+📘 [Currículo Lattes](https://lattes.cnpq.br/1375868138002604) • 
+
+
+🔗 [ORCID](https://orcid.org/0000-0002-1006-6527)
+:::
+:::
+
+---
+
+::: {.autor style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;"}
+
+
+
+::: {.bio}
+## **José de Jesus Filho**
+
+![](figuras\jjesus.jpg){width=140px height=140px style="border-radius: 50%; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.15);"} 
+
+Cientista de dados e especialista em jurimetria, atua no desenvolvimento de ferramentas em R para extração e organização de dados judiciais e na aplicação de métodos estatísticos ao contencioso. É autor do pacote tjsp (R) para coleta e organização de processos e decisões do TJSP, com documentação pública e citação formal do projeto; também ministra cursos e publica tutoriais práticos sobre raspagem, estruturação e análise de dados judiciais (tempo de processo, análises de sobrevivência, etc.). Além do trabalho técnico, participa de eventos da Associação Brasileira de Jurimetria (ABJ) apresentando aplicações de aprendizado estatístico, PLN e sistemas distribuídos em dados judiciais
+.  
+📘 [Currículo Lattes](https://lattes.cnpq.br/YYYYYYYYY) • 
+
+🔗 [LinkedIn](https://linkedin.com/in/XXXX)
+:::
+:::
+
+:::
