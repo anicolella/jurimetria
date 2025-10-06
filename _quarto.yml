@@ -3,8 +3,8 @@ project:
   output-dir: docs
 
 book:
-  title: "Jurimetria"
-  subtitle: "Compreendendo as Desigualdades"
+  title: "Estruturação e Análise de Dados Jurídicos"
+  subtitle: "Fundamentos de Jurimetria e IA"
   navbar:
     background: "#283747"
     search: true
