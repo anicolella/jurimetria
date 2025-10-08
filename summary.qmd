@@ -2,6 +2,8 @@
 
 Esta é a página de apoio do Professor Alexandre Nicolella e Jose de Jesus Filho ao curso de Curso de Extensão em Jurimetria da Escola Superior da Magistratura Tocantinense (ESMAT).
 
+
+
 ## **Motivação**:
 
 O curso tem como propósito introduzir os participantes aos conceitos fundamentais de jurimetria e de inteligência artificial aplicada ao Direito, oferecendo uma formação integrada entre teoria e prática. A proposta parte da compreensão de como métodos quantitativos e computacionais podem apoiar a análise jurídica, aprimorando a tomada de decisão e promovendo maior eficiência e transparência no sistema de Justiça.
@@ -9,6 +11,7 @@ O curso tem como propósito introduzir os participantes aos conceitos fundamenta
 A motivação central é capacitar os alunos a desenvolver uma visão empírica do Direito, a partir de atividades que envolvem o desenho de pesquisa e a definição de hipóteses, o planejamento de estratégias de coleta e listagem de processos, e a estruturação, limpeza e organização de bases de dados jurídicas.
 
 Durante o curso, serão exploradas ferramentas e pacotes da linguagem R voltados à manipulação e à visualização de dados jurídicos, com aplicação prática em exemplos reais do Tribunal de Justiça do Tocantins (TJTO). A combinação entre conceitos teóricos, prática orientada por problemas e uso de dados reais visa proporcionar uma formação sólida e aplicada, aproximando os participantes dos desafios contemporâneos da jurimetria e da análise de dados no Direito.
+
 
 
 ## **Objetivo**:
@@ -21,7 +24,7 @@ Durante o curso, serão exploradas ferramentas e pacotes da linguagem R voltados
 
 
 
-## **Plano detalhado das aulas:**
+## **Professores**
 
 
 Os professores do curso são:
@@ -44,48 +47,48 @@ tibble::tibble(
 
 # O Cronograma das Aulas: 
 
-## Etapa Online: Fundamentos e Conceitos (15 horas síncronas)
+## Etapa Online: Fundamentos e Conceitos (6 horas síncronas)
 
-Nesta fase, os participantes terão contato com os **conceitos fundamentais de jurimetria e inteligência artificial aplicada ao Direito**.  
-O enfoque será teórico, preparando o terreno para a etapa prática.  
+Nesta fase, os participantes terão contato com os **conceitos fundamentais de jurimetria** e **inteligência artificial aplicada ao Direito**. O enfoque será teórico, preparando o terreno para a etapa prática.  
 
-### Aula 01 - Introdução à Jurimetria
+### Aula 01 - Introdução ao Desenho de Pesquisa e à Jurimetria 
 - Conceito de jurimetria e a interdisciplinaridade necessária (Direito, Computação e Estatística)  
 - Jurimetria e inteligência artificial aplicada ao Direito  
-- Exemplos práticos de jurimetria  
-
-### Aula 02 - Desenho de Pesquisa
+- Exemplos práticos de jurimetria 
 - Pergunta de pesquisa  
 - Formulação da hipótese  
 - Operacionalização de conceitos  
 - Inferência causal  
 
-### Aula 03 - Análise de Viabilidade e Listagem de Processos
+### Aula 02 - Análise de Viabilidade e Listagem de Processos
 - Análise de viabilidade  
 - Escopo de pesquisa: pesquisa prospectiva vs. retrospectiva (resultado, tempo e distribuição)  
 - Sistemas de listagem (CJ e CPO)  
 - Introdução ao pacote `tjsp`  
 
-### Aula 04 - Estruturação de Dados I
+
+
+## Etapa Presencial: Aplicação Prática no Tocantins (24 horas)
+
+Realizada no Tocantins, esta etapa é dividida em duas partes. Na primeira, os participantes terão noções de ciência de dados para  coletar, organizar, estruturar e analisar dados de processos judiciais, com duração de um dia de oito horas.
+
+
+### Aula 03 - Estruturação de Dados I
 - Introdução ao `dplyr`  
 - Tratamento de datas com `lubridate`  
 - Tratamento de texto com `stringr`  
 - Iteração com `purrr`  
 
-### Aula 05 - Estruturação de Dados II
+### Aula 04 - Estruturação de Dados II
 - Introdução aos Large Language Models (LLMs)  
 - Engenharia de prompt  
 
-### Aula 06 - Visualização de Dados
+### Aula 05 - Visualização de Dados
 - Noções básicas de estatística  
 - Introdução ao `ggplot2`  
 
----
 
-## Etapa Presencial: Aplicação Prática no Tocantins (15 horas)
-
-Realizada no **Tocantins**, esta etapa será totalmente prática e orientada a resultados.  
-Os participantes serão organizados em **grupos de trabalho por tema**, e cada grupo desenvolverá um **projeto jurimétrico completo**, percorrendo as seguintes etapas:
+A segunda fase, com duração de 16 horas, divididas em dois dias, será   totalmente prática e  orientada a resultados. Os participantes serão organizados em grupos de trabalho por tema, e cada grupo desenvolverá um projeto jurimétrico completo, percorrendo as seguintes etapas:
 
 1. Definição de uma pergunta de pesquisa aplicada ao contexto do TJTO.  
 2. Coleta de dados judiciais relevantes.  
@@ -95,37 +98,40 @@ Os participantes serão organizados em **grupos de trabalho por tema**, e cada g
 
 Ao final do módulo, os participantes terão vivenciado o **ciclo completo da jurimetria**, desde a formulação inicial até a comunicação dos resultados, combinando competências jurídicas, estatísticas e computacionais.
 
----
+
+
 
 ## Método de Trabalho
 
 ### Divisão do Curso em Módulos e Formatos
 
-**Online (15h, síncrono):**
+**Online (6h, síncrono):**
 - Desenvolvimento dos conceitos centrais de forma teórica  
 - Discussão de fundamentos, referências e boas práticas  
 - Interação por meio de exercícios guiados e debates curtos  
 
-**Presencial (15h, em Tocantins):**
-- Aplicação prática do conhecimento adquirido  
-- Formação de grupos de trabalho por tema/problema  
-- Cada grupo seguirá o ciclo da pergunta à análise dos resultados  
+**Presencial (8h, em Tocantins) - PARTE I:**
+- Estruturação de dados  
+- Análise Estatística Descritiva  
+- Visulaização  
 
-### Ciclo de Trabalho em Grupo
+
+**Presencial (24h, em Tocantins) - PARTE II:**
+
 1. **Definição do problema ou pergunta de pesquisa:** cada grupo escolhe um tema específico a partir dos conceitos apresentados.  
 2. **Coleta e organização de dados/informações:** orientação sobre como levantar dados relevantes para a análise.  
 3. **Análise e interpretação dos resultados:** uso das ferramentas e métodos aprendidos na parte online.  
 4. **Apresentação e discussão dos resultados:** compartilhamento das conclusões e lições aprendidas.  
 
 ### Integração Teoria e Prática
-O método garante que os conceitos vistos online sejam aplicados de forma concreta.  
+O método garante que os conceitos vistos online e presencialmente sejam aplicados de forma concreta.  
 A interação presencial reforça o aprendizado ativo e colaborativo.  
 
 ### Feedback e Aprimoramento
 - Avaliação contínua do progresso dos grupos.  
 - Discussões coletivas para melhorar abordagens e resultados.  
 
----
+
 
 ## Infraestrutura e Dados
 
@@ -150,7 +156,7 @@ Os dados utilizados no curso serão fornecidos pelo **TJTO**, diretamente ou via
 - Sistemas de backup configurados para evitar perda de dados.  
 - Garantia de que os participantes possam salvar e recuperar seus projetos com segurança.  
 
----
+
 
 ## Resultados Esperados
 
@@ -174,7 +180,7 @@ Os dados utilizados no curso serão fornecidos pelo **TJTO**, diretamente ou via
 - Feedback detalhado sobre os trabalhos dos grupos.  
 - Incentivo à reflexão sobre processos e resultados, promovendo aprimoramento contínuo.  
 
----
+
 
 ## Bibliografia
 
@@ -196,22 +202,3 @@ WOOLDRIDGE, Jeffrey M. *Introductory Econometrics: A Modern Approach.* South Wes
 KILLICK, Rebecca; ECKLEY, Idris A. *changepoint: An R Package for Changepoint Analysis.* *Journal of Statistical Software*, 58(3), 1–19, 2014. DOI: [10.18637/jss.v058.i03](https://doi.org/10.18637/jss.v058.i03).  
 TOOMET, Ott; HENNINGSEN, Arne. *Sample Selection Models in R: Package sampleSelection.* *Journal of Statistical Software*, 27(7), 1–23, 2008. DOI: [10.18637/jss.v027.i07](https://doi.org/10.18637/jss.v027.i07).  
 TRUONGA, Charles; OUDRE, Laurent; VAYATIS, Nicolas. *Selective Review of Offline Change Point Detection Methods.* *Signal Processing*, 167, 2020.  
-
-
-
-
-
-
-
-# Instalação do Pacote
-
-Para instalar este pacote no seu R, siga as instruções abaixo. 
-
-```{r}
-#| echo: true
-#| eval: false
-
-install.packages("remotes") # baixar o pacote devtools
-remotes::install_github("jjesusfilho/cursoESMP") # baixar o pacote deste curso
-```
-
