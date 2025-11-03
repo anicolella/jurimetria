@@ -20,7 +20,7 @@ O curso tem como objetivo proporcionar aos membros e servidores do TJTO a forma�
 
 ## **Abordagem**
 
-O curso adotará uma abordagem essencialmente prática, baseada em casos reais e na metodologia de aprendizagem baseada em casos reais. A proposta é que os participantes desenvolvam seus próprios estudos a partir de questões-problema selecionadas, estruturando e analisando dados reais sob orientação dos docentes.
+O curso adotará uma abordagem essencialmente prática, baseada em casos reais e na metodologia de aprendizagem baseada em casos empíricos. A proposta é que os participantes desenvolvam seus próprios estudos a partir de questões-problema selecionadas, estruturando e analisando dados reais sob orientação dos docentes.
 
 Além da fundamentação teórica oferecida pelo professor, as atividades serão organizadas para que os participantes aprendam por meio da elaboração e resolução de um caso concreto, percorrendo o ciclo jurimétrico completo, da formulação da pergunta de pesquisa à visualização, análise e apresentação dos resultados.
 
