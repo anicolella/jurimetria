@@ -35,11 +35,11 @@ book:
       #- intro.qmd
       - autores.qmd
       - summary.qmd
+      - desenho_jurimetria.qmd
       #- pesquisa.qmd
       - manipulacao.qmd
       - googledrive.qmd
       - dplyr.qmd
-      - desenho_jurimetria.qmd
       - descritiva_v2.qmd
       - estatistica.qmd
       - lineares.qmd
