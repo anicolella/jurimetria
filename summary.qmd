@@ -17,6 +17,7 @@ Durante o curso, serão exploradas ferramentas e pacotes da linguagem R voltados
 ## **Objetivo**:
 
  O objetivo é fornecer aos participantes competências necessárias para:
+
   - Formular e estruturar pesquisas empíricas no Direito.
   - Extrair e organizar dados processuais de forma sistemática.
   - Aplicar ferramentas estatísticas e computacionais básicas para análise inicial de dados jurídicos.
@@ -87,14 +88,22 @@ Nosso foco será a análise empírica dos processos de homicídio doloso de comp
 - Tratamento de datas com `lubridate`  
 - Tratamento de texto com `stringr`  
 - Iteração com `purrr`  
+- Introdução aos Large Language Models (LLMs)  
+- Engenharia de prompt
+- Noções básicas de estatística  
+- Introdução ao `ggplot2` 
 
 ### Aula 04 - Estruturação de Dados II
-- Introdução aos Large Language Models (LLMs)  
-- Engenharia de prompt  
+- Definind a pergunta do grupo.  
+- Coleta de dados relevantes.  
+- Estruturação, organização e limpeza das bases.
+- Teorias necessárias para análise
 
 ### Aula 05 - Visualização de Dados
-- Noções básicas de estatística  
-- Introdução ao `ggplot2`  
+- Estruturação, organização e limpeza das bases.  
+- Análise exploratória e visualização de resultados.  
+- Apresentação final dos achados. 
+- Teorias necessárias para análise
 
 
 A segunda fase, com duração de 16 horas, divididas em dois dias, será   totalmente prática e  orientada a resultados. Os participantes serão organizados em grupos de trabalho por tema, e cada grupo desenvolverá um projeto jurimétrico completo realacionado ao tempo do processo, percorrendo as seguintes etapas:
@@ -115,11 +124,13 @@ Ao final do módulo, os participantes terão vivenciado o **ciclo completo da ju
 ### Divisão do Curso em Módulos e Formatos
 
 **Online (6h, síncrono):**
+
 - Desenvolvimento dos conceitos centrais de forma teórica  
 - Discussão de fundamentos, referências e boas práticas  
 - Interação por meio de exercícios guiados e debates curtos  
 
 **Presencial (8h, em Tocantins) - PARTE I:**
+
 - Estruturação de dados  
 - Análise Estatística Descritiva  
 - Visulaização  
