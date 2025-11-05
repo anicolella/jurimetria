@@ -1,0 +1,186 @@
+# Perfil da Turma
+
+Primeiramente, vamos coletar as informações do perfil da turma a partir do arquivo compartilhado do Google Forms.
+Para isso, utilizaremos a função `drive_download()` do pacote `googledrive`, que permite baixar o arquivo diretamente do Google Drive para o ambiente de trabalho do R. Esse procedimento garante que os dados utilizados nas análises estejam sempre sincronizados com a planilha mais recente do formulário.
+
+```{r, warning=FALSE, eval=FALSE}
+
+# IMPORTANDO: perfil da turma
+library(googledrive)
+drive_deauth()    
+drive_user()      
+
+perfil_final <-  drive_get(as_id("1y3qeje5BR6h9mRMWKQoIFAFvwCan3mEn"))   
+drive_download(perfil_final, 
+               path = "C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx",
+               overwrite = TRUE)
+
+library("readxl")
+
+perfil_turma <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx")
+
+
+```
+
+## Formação Principal
+
+A análise da formação dos participantes revela uma predominância de profissionais do **Direito**, que representam aproximadamente **53% da turma**. Em seguida, destacam-se aqueles com formação em **Ciência da Computação (25%)** e **Administração (7%)**. Essa composição evidencia o caráter interdisciplinar do grupo, reunindo formações jurídicas e técnico-analíticas, sendo esse um aspecto fundamental para o desenvolvimento da Jurimetria, que integra métodos estatísticos e ciência de dados à prática jurídica.
+
+```{r, warning=FALSE, eval=TRUE,  message=FALSE}
+#| code-fold: true
+#| code-summary: "📊 Ver código para o gráfico de Formação Principal"
+
+# Pacotes necessários
+packages <- c("tidyverse", "readxl", "scales")
+installed <- packages %in% rownames(installed.packages())
+if (any(!installed)) install.packages(packages[!installed])
+library(tidyverse)
+library(readxl)
+library(scales)
+
+# Gráfico para Formação Pirncipal (valores absolutos)
+perfil_turma <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx")
+dados_form_princ <- perfil_turma %>%
+  filter(!is.na(form_principal)) %>%
+  group_by(valor = form_principal) %>%
+  summarise(n = n(), .groups = "drop")
+
+ggplot(dados_form_princ, aes(x = reorder(valor, -n), y = n, fill = valor)) +          # Ordem decrescente
+  geom_col(show.legend = FALSE, fill = "#3f566f", alpha=0.7, color = "#4c5471") + # Adiciona as barras, cor das barras, transparencia
+  geom_text(aes(label = n), vjust = -0.3, size = 3) +
+  labs(
+    title = "Distribuição da Formação dos Participantes",
+    x = "Formação Principal",
+    y = "Frequência (n)") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+## Tem Familiaridade com Métodos Quantitativos?
+
+Observa-se que 71% dos participantes possuem conhecimento básico de métodos quantitativos, enquanto 18% têm familiaridade intermediária e 11% se consideram avançados nessa área. Essa distribuição indica que a maioria dos participantes está em um nível inicial de compreensão de métodos quantitativos, o que ressalta a importância do curso para aprimorar e avançar nessas habilidades essenciais para a análise de dados no contexto jurídico.
+
+```{r, warning=FALSE, eval=TRUE,  message=FALSE}
+#| code-fold: true
+#| code-summary: "📊 Ver código para o gráfico de Familiaridade com M.Q."
+
+
+# Gráfico para Familiaridade com M.Q. (valores absolutos)
+perfil_turma <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx")
+dados_fam_mq <- perfil_turma %>%
+  filter(!is.na(fam_mq)) %>%
+  group_by(valor = fam_mq) %>%
+  summarise(n = n(), .groups = "drop")
+
+ggplot(dados_fam_mq, aes(x = reorder(valor, -n), y = n, fill = valor)) +          # Ordem decrescente
+  geom_col(show.legend = FALSE, fill = "#3f566f", alpha=0.7, color = "#4c5471") + # Adiciona as barras, cor das barras, transparencia
+  geom_text(aes(label = n), vjust = -0.3, size = 3) +
+  labs(
+    title = "Distribuição da Familiaridade com Métodos Quantitativos",
+    x = "Como Considera sua Familiaridade com MQ?",
+    y = "Frequência (n)") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+
+## Tem Familiaridade com Programação?
+Observa-se que 46% dos participantes são familiarizados com planilhas eletrônicas e 25% não possuem nenhum contato. O Uso de planilha apesar da sua importância, não nos ajuda no desenvolvimento de habilidades de programação mais avançadas, que são essenciais para a análise de grandes volumes de dados e automação de processos no contexto jurídico. 25% dos participantes já tiveram contao com ferramentas que serão importantes para o curso, R e Python. Apenas 1 participante indicou uso regular de programação. Essa distribuição destaca a necessidade de fortalecer as competências em programação entre os participantes, visando capacitá-los para lidar com desafios das análises jurimétricas.
+
+
+```{r, warning=FALSE, eval=TRUE,  message=FALSE}
+#| code-fold: true
+#| code-summary: "📊 Ver código para o gráfico de Formação Principal"
+
+
+# Gráfico para Formação Pirncipal (valores absolutos)
+perfil_turma <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx")
+dados_fam_programa <- perfil_turma %>%
+  filter(!is.na(fam_programa)) %>%
+  group_by(valor = fam_programa) %>%
+  summarise(n = n(), .groups = "drop")
+
+ggplot(dados_fam_programa, aes(x = reorder(valor, -n), y = n, fill = valor)) +          # Ordem decrescente
+  geom_col(show.legend = FALSE, fill = "#3f566f", alpha=0.7, color = "#4c5471") + # Adiciona as barras, cor das barras, transparencia
+  geom_text(aes(label = n), vjust = -0.3, size = 3) +
+  labs(
+    title = "Distribuição da Familiaridade com Programação",
+    x = "Como Considera sua Familiaridade com Programação?",
+    y = "Frequência (n)") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+## Conhece as Linguagens de Programação Necessárias?
+ Com base na informações fornecidas, observa-se que 61% dos participantes não tiveram contato prévio com linguagens de programação como R ou Python. Por outro lado, 35% indicaram ter tido algum contato com R ou Python e 1 participante em outras linguagens de programação. Essa distribuição sugere que a maioria dos participantes está em um estágio inicial em relação ao uso dessas ferramentas, o que reforça a importância do curso para capacitá-los no uso de linguagens de programação essenciais para a análise de dados no contexto jurídico.
+
+```{r, warning=FALSE, eval=TRUE,  message=FALSE}
+#| code-fold: true
+#| code-summary: "📊 Ver código para o gráfico de Contato com Linguagens de Programação"
+
+
+# Gráfico para Contato com Linguagens de Programação (valores absolutos)
+perfil_turma <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx")
+dados_contato_com <- perfil_turma %>%
+  filter(!is.na(contato_com)) %>%
+  group_by(valor = contato_com) %>%
+  summarise(n = n(), .groups = "drop")
+
+ggplot(dados_contato_com, aes(x = reorder(valor, -n), y = n, fill = valor)) +          # Ordem decrescente
+  geom_col(show.legend = FALSE, fill = "#3f566f", alpha=0.7, color = "#4c5471") + # Adiciona as barras, cor das barras, transparencia
+  geom_text(aes(label = n), vjust = -0.3, size = 3) +
+  labs(
+    title = "Já teve Contato com as Linguagens R, Python ou Outra?",
+    x = "Ja tive contato com:",
+    y = "Frequência (n)") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+## Trabalha com Inteligência Artificial?
+
+A maioria indica não ter conhecimento ou pouco contato (57%) com ferramentas de inteligência artificial. Cerca de 40% utiliza algumas vezes e apenas 1 participante indica uso regular. Essa distribuição sugere que muitos participantes ainda estão em estágios iniciais de familiaridade com IA, reforçando a necessidade de aprendizado para atingir uma estruturação mais robusta de banco de dados para jurimetria.
+
+```{r, warning=FALSE, eval=TRUE,  message=FALSE}
+#| code-fold: true
+#| code-summary: "📊 Ver código para o gráfico de Uso da IA"
+
+
+# Gráfico para Uso da IA (valores absolutos)
+perfil_turma <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx")
+dados_trab_ia <- perfil_turma %>%
+  filter(!is.na(trab_ia)) %>%
+  group_by(valor = trab_ia) %>%
+  summarise(n = n(), .groups = "drop")
+
+ggplot(dados_trab_ia, aes(x = reorder(valor, -n), y = n, fill = valor)) +          # Ordem decrescente
+  geom_col(show.legend = FALSE, fill = "#3f566f", alpha=0.7, color = "#4c5471") + # Adiciona as barras, cor das barras, transparencia
+  geom_text(aes(label = n), vjust = -0.3, size = 3) +
+  labs(
+    title = "Distribuição da FreqUencia de Uso da Inteligência Artificial",
+    x = "Com que Frequência usa a IA?",
+    y = "Frequência (n)") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+
+
+## Expectativas
+
+O quadro abaixo mostra uma análise das expectativas dos participantes em relação ao curso. Gestão de processo, aprendizado técnico em estatística e ciência de dados, e a integração entre Direito e Dados (Jurimetria) são as áreas mais mencionadas.
+
+| Categoria | Descrição | Exemplos |
+|---------------------|--------------------------|--------------------------|
+| **Gestão processual baseada em dados** | Uso de indicadores e evidências para aperfeiçoar a gestão institucional. | “Compreender melhor a necessidade de medir indicadores processuais.” |
+| **Aprendizado técnico em estatística e ciência de dados** | Domínio de ferramentas, modelagem e visualização de dados. | “Aprofundar conceitos de estatística inferencial e mineração de dados.” |
+| **Integração Direito + Dados (Jurimetria)** | Aplicar raciocínio empírico e quantitativo ao campo jurídico. | “Aplicar estatística e ciência de dados ao Direito.” |
+| **Pesquisa empírica e inovação** | Aplicar técnicas de dados a projetos científicos e institucionais. | “Formulação de pesquisas empíricas.” |
+| **Tomada de decisão e estratégia baseada em evidências** | Apoiar decisões e planejamento institucional. | “Transformar dados em informação útil para nortear decisões.” |
+| **Governança e estruturação de dados** | Fortalecer a cultura e gestão de dados no TJTO. | “Contribuir na estruturação do setor de dados.” |
+| **Inteligência Artificial e análise preditiva** | Interesse em IA e uso de algoritmos no Judiciário. | “IA como instrumento de combate ao racismo algorítmico.” |
