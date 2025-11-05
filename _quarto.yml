@@ -35,6 +35,7 @@ book:
       #- intro.qmd
       - autores.qmd
       - summary.qmd
+      - perfil.qmd
       - desenho_jurimetria.qmd
       #- pesquisa.qmd
       - manipulacao.qmd
