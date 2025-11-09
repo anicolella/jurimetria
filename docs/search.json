@@ -26,7 +26,7 @@
     "href": "priest_klein.html",
     "title": "6  Seleção de disputas para o litígio",
     "section": "",
-    "text": "7 Introdução\nO estudo clássico The Selection of Disputes for Litigation, de George L. Priest e Benjamin Klein (1984), marcou a análise econômica do direito ao propor uma teoria para explicar por que apenas uma pequena parte dos conflitos sociais chega, de fato, a julgamento — e por que os casos julgados não são representativos do universo total de disputas.\nA intuição central altera a leitura das estatísticas judiciais: o que vemos nas decisões publicadas é apenas o “topo do iceberg”; a maioria dos conflitos termina em acordo, desistência ou outras formas de composição.",
+    "text": "6.1 Introdução\nO estudo clássico The Selection of Disputes for Litigation, de George L. Priest e Benjamin Klein (1984), marcou a análise econômica do direito ao propor uma teoria para explicar por que apenas uma pequena parte dos conflitos sociais chega, de fato, a julgamento — e por que os casos julgados não são representativos do universo total de disputas.\nA intuição central altera a leitura das estatísticas judiciais: o que vemos nas decisões publicadas é apenas o “topo do iceberg”; a maioria dos conflitos termina em acordo, desistência ou outras formas de composição.",
     "crumbs": [
       "Home",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
@@ -250,6 +250,116 @@
     "crumbs": [
       "Home",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Google Drive</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#o-problema-da-seleção-dos-litígios",
+    "href": "priest_klein.html#o-problema-da-seleção-dos-litígios",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.2 O problema da seleção dos litígios",
+    "text": "6.2 O problema da seleção dos litígios\nApenas uma fração mínima das disputas chega a julgamento. A maioria termina antes — por acordo, mediação ou desistência. Assim, analisar apenas decisões judiciais cria uma visão distorcida: as sentenças representam o “topo do iceberg”.\nAntes de Priest e Klein, supunha-se que os casos julgados eram representativos do universo de litígios. O modelo deles refuta essa ideia: os casos são selecionados racionalmente pelas partes, não sorteados aleatoriamente.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#antecedentes-e-limitações",
+    "href": "priest_klein.html#antecedentes-e-limitações",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.3 Antecedentes e limitações",
+    "text": "6.3 Antecedentes e limitações\nEntre os precursores: - Karl Llewellyn, que via os casos litigados como “patológicos”; - William Whitford, que tentou coletar todos os casos de um tipo de litígio; - Landes & Posner, que formularam modelos de custo-benefício mas presumindo seleção aleatória.\nPriest e Klein, ao contrário, argumentam que a decisão de litigar é racional e estratégica, determinada por expectativas e custos.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#o-modelo-de-seleção",
+    "href": "priest_klein.html#o-modelo-de-seleção",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.4 O modelo de seleção",
+    "text": "6.4 O modelo de seleção\n\n6.4.1 Intuição básica\nCada disputa possui um valor “verdadeiro” \\((Y')\\), que reflete o grau de responsabilidade do réu diante de um padrão decisório \\((Y^*)\\). Assim:\n\nSe \\((Y' &gt; Y^*)\\), o autor deveria vencer;\nSe \\((Y' &lt; Y^*)\\), o réu deveria vencer.\n\nAs partes, porém, não conhecem \\((Y')\\) com precisão. Cada uma forma uma estimativa imperfeita, com erro:\n\\[\nY_{p} = Y' + \\varepsilon_{p}\n\\]\n\\[\nY_{d} = Y' + \\varepsilon_{d}\n\\]\nonde:\n\n\\((Y_{p})\\) é a estimativa do autor;\n\\((Y_{d})\\) é a estimativa do réu;\n\\((\\varepsilon_{p})\\) e \\((\\varepsilon_{d})\\) são erros de previsão.\n\nA partir dessas estimativas, cada parte calcula uma probabilidade subjetiva de vitória, \\((P_{p})\\) e \\((P_{d})\\).\n\n\n6.4.2 Condição para o litígio\nUm caso segue a julgamento apenas se a diferença entre as probabilidades esperadas for suficiente para compensar os custos do litígio:\n\\[\nP_{p} - P_{d} &gt; D\n\\]\nem que \\((D)\\) representa o diferencial entre os custos de litigar e os custos de negociar.\nQuando essa diferença é pequena, o acordo é racional; quando é grande, o caso vai a julgamento.\n\n\n6.4.3 O efeito da incerteza\nCasos “claros” — com alto consenso sobre quem vencerá — são resolvidos por acordo.\nOs casos que chegam ao tribunal são aqueles em torno do limiar de incerteza, próximos de \\((Y^*)\\).\nLogo, os julgamentos tendem a envolver casos difíceis, e as vitórias se distribuem quase igualmente entre autor e réu.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#a-regra-dos-50",
+    "href": "priest_klein.html#a-regra-dos-50",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.5 A regra dos 50%",
+    "text": "6.5 A regra dos 50%\nA consequência mais conhecida do modelo é o equilíbrio estatístico de aproximadamente 50%.\nQuanto mais precisas forem as informações das partes:\n\nMenor será o número de casos julgados;\nMais próxima de 50% será a taxa de vitórias dos autores.\n\nIsso não significa justiça perfeita, mas sim um equilíbrio de seleção: as partes só levam a julgamento os casos mais incertos, que tendem a se dividir igualmente em resultados favoráveis a cada lado.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#implicações-teóricas",
+    "href": "priest_klein.html#implicações-teóricas",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.6 Implicações teóricas",
+    "text": "6.6 Implicações teóricas\n\nViés de amostragem – as decisões judiciais não representam o universo completo de disputas;\n\nLimite das estatísticas – taxas de sucesso não medem imparcialidade judicial;\n\nAprendizado – após mudanças legais, as taxas de vitória oscilam, mas convergem a 50%;\n\nCustos e incentivos – quanto maior o custo de litigar, menor o número de julgamentos e mais forte o equilíbrio.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#evidências-empíricas",
+    "href": "priest_klein.html#evidências-empíricas",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.7 Evidências empíricas",
+    "text": "6.7 Evidências empíricas\nEstudos de vinte anos em Cook County (Illinois) mostraram taxas de vitória próximas de 50% em várias categorias (indenizações, responsabilidade médica, etc.).\nOutras pesquisas confirmaram o padrão: a proporção de vitórias é estável ao longo do tempo, sugerindo que reflete o processo de seleção, e não o mérito substantivo.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#críticas-e-limitações",
+    "href": "priest_klein.html#críticas-e-limitações",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.8 Críticas e limitações",
+    "text": "6.8 Críticas e limitações\n\nRacionalidade e informação: o modelo assume simetria informacional e racionalidade perfeita, raramente verificadas;\n\nPoder econômico: ignora diferenças de recursos e capacidade de suportar risco;\n\nFatores psicológicos e simbólicos: desconsidera motivações não econômicas;\n\nLitigância repetitiva: não explica bem comportamentos estratégicos de grandes agentes.\n\nMesmo assim, o modelo fornece uma base teórica poderosa para compreender o funcionamento estatístico do sistema judicial.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#relevância-contemporânea-e-jurimetria",
+    "href": "priest_klein.html#relevância-contemporânea-e-jurimetria",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.9 Relevância contemporânea e jurimetria",
+    "text": "6.9 Relevância contemporânea e jurimetria\nA teoria de Priest & Klein tornou-se essencial para a jurimetria e a IA aplicada ao direito.\nAo analisar grandes bases de dados judiciais, deve-se reconhecer que as decisões publicadas são uma amostra enviesada.\nModelos de previsão baseados apenas em julgamentos podem amplificar esse viés se não corrigirem o processo de seleção.\nFerramentas como modelos de seleção de Heckman, propensity score matching ou dados sobre acordos e desistências ajudam a ajustar as estimativas empíricas.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#conclusão",
+    "href": "priest_klein.html#conclusão",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.10 Conclusão",
+    "text": "6.10 Conclusão\nO modelo de Priest & Klein revela que o equilíbrio de 50% nas vitórias judiciais não expressa imparcialidade perfeita, mas sim o produto da seleção racional dos casos que chegam a julgamento.\nCompreender essa lógica é fundamental para estudos empíricos, políticas de acesso à justiça e modelos de IA jurídica.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#referências",
+    "href": "priest_klein.html#referências",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.11 Referências",
+    "text": "6.11 Referências\n\nPriest, G. L., & Klein, B. (1984). The Selection of Disputes for Litigation. Journal of Legal Studies, 13(1), 1–55.\n\nLandes, W., & Posner, R. (1973). The Economic Structure of Tort Law.\n\nLlewellyn, K. (1960). The Common Law Tradition: Deciding Appeals.\n\nWhitford, W. (1968). Strict Products Liability and the Automobile Industry: Much Ado About Nothing. Wisconsin Law Review, 83–125.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
     ]
   }
 ]
