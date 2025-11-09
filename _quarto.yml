@@ -37,6 +37,7 @@ book:
       - summary.qmd
       - perfil.qmd
       - desenho_jurimetria.qmd
+      - priest_klein.qmd
       #- pesquisa.qmd
       - manipulacao.qmd
       - googledrive.qmd
