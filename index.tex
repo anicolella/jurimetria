@@ -839,6 +839,263 @@ Processing}, 167, 2020.
 
 \bookmarksetup{startatroot}
 
+\chapter{Perfil da Turma}\label{perfil-da-turma}
+
+Primeiramente, vamos coletar as informações do perfil da turma a partir
+do arquivo compartilhado do Google Forms. Para isso, utilizaremos a
+função \texttt{drive\_download()} do pacote \texttt{googledrive}, que
+permite baixar o arquivo diretamente do Google Drive para o ambiente de
+trabalho do R. Esse procedimento garante que os dados utilizados nas
+análises estejam sempre sincronizados com a planilha mais recente do
+formulário.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# IMPORTANDO: perfil da turma}
+\FunctionTok{library}\NormalTok{(googledrive)}
+\FunctionTok{drive\_deauth}\NormalTok{()    }
+\FunctionTok{drive\_user}\NormalTok{()      }
+
+\NormalTok{perfil\_final }\OtherTok{\textless{}{-}}  \FunctionTok{drive\_get}\NormalTok{(}\FunctionTok{as\_id}\NormalTok{(}\StringTok{"1y3qeje5BR6h9mRMWKQoIFAFvwCan3mEn"}\NormalTok{))   }
+\FunctionTok{drive\_download}\NormalTok{(perfil\_final, }
+               \AttributeTok{path =} \StringTok{"perfil\_final.xlsx"}\NormalTok{,}
+               \AttributeTok{overwrite =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{library}\NormalTok{(}\StringTok{"readxl"}\NormalTok{)}
+
+\NormalTok{perfil\_turma }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"perfil\_final.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Formação Principal}\label{formauxe7uxe3o-principal}
+
+A análise da formação dos participantes revela uma predominância de
+profissionais do \textbf{Direito}, que representam aproximadamente
+\textbf{53\% da turma}. Em seguida, destacam-se aqueles com formação em
+\textbf{Ciência da Computação (25\%)} e \textbf{Administração (7\%)}.
+Essa composição evidencia o caráter interdisciplinar do grupo, reunindo
+formações jurídicas e técnico-analíticas, sendo esse um aspecto
+fundamental para o desenvolvimento da Jurimetria, que integra métodos
+estatísticos e ciência de dados à prática jurídica.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Pacotes necessários}
+\NormalTok{packages }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{, }\StringTok{"readxl"}\NormalTok{, }\StringTok{"scales"}\NormalTok{)}
+\NormalTok{installed }\OtherTok{\textless{}{-}}\NormalTok{ packages }\SpecialCharTok{\%in\%} \FunctionTok{rownames}\NormalTok{(}\FunctionTok{installed.packages}\NormalTok{())}
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{any}\NormalTok{(}\SpecialCharTok{!}\NormalTok{installed)) }\FunctionTok{install.packages}\NormalTok{(packages[}\SpecialCharTok{!}\NormalTok{installed])}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(readxl)}
+\FunctionTok{library}\NormalTok{(scales)}
+
+\CommentTok{\# Gráfico para Formação Pirncipal (valores absolutos)}
+\NormalTok{perfil\_turma }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"perfil\_final.xlsx"}\NormalTok{)}
+\NormalTok{dados\_form\_princ }\OtherTok{\textless{}{-}}\NormalTok{ perfil\_turma }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(form\_principal)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(}\AttributeTok{valor =}\NormalTok{ form\_principal) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{n}\NormalTok{(), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(dados\_form\_princ, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(valor, }\SpecialCharTok{{-}}\NormalTok{n), }\AttributeTok{y =}\NormalTok{ n, }\AttributeTok{fill =}\NormalTok{ valor)) }\SpecialCharTok{+}          \CommentTok{\# Ordem decrescente}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{fill =} \StringTok{"\#3f566f"}\NormalTok{, }\AttributeTok{alpha=}\FloatTok{0.7}\NormalTok{, }\AttributeTok{color =} \StringTok{"\#4c5471"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Adiciona as barras, cor das barras, transparencia}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ n), }\AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.3}\NormalTok{, }\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Distribuição da Formação dos Participantes"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Formação Principal"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Frequência (n)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{perfil_files/figure-pdf/unnamed-chunk-2-1.pdf}}
+
+\section{Tem Familiaridade com Métodos
+Quantitativos?}\label{tem-familiaridade-com-muxe9todos-quantitativos}
+
+Observa-se que 71\% dos participantes possuem conhecimento básico de
+métodos quantitativos, enquanto 18\% têm familiaridade intermediária e
+11\% se consideram avançados nessa área. Essa distribuição indica que a
+maioria dos participantes está em um nível inicial de compreensão de
+métodos quantitativos, o que ressalta a importância do curso para
+aprimorar e avançar nessas habilidades essenciais para a análise de
+dados no contexto jurídico.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Gráfico para Familiaridade com M.Q. (valores absolutos)}
+\NormalTok{perfil\_turma }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"perfil\_final.xlsx"}\NormalTok{)}
+\NormalTok{dados\_fam\_mq }\OtherTok{\textless{}{-}}\NormalTok{ perfil\_turma }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(fam\_mq)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(}\AttributeTok{valor =}\NormalTok{ fam\_mq) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{n}\NormalTok{(), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(dados\_fam\_mq, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(valor, }\SpecialCharTok{{-}}\NormalTok{n), }\AttributeTok{y =}\NormalTok{ n, }\AttributeTok{fill =}\NormalTok{ valor)) }\SpecialCharTok{+}          \CommentTok{\# Ordem decrescente}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{fill =} \StringTok{"\#3f566f"}\NormalTok{, }\AttributeTok{alpha=}\FloatTok{0.7}\NormalTok{, }\AttributeTok{color =} \StringTok{"\#4c5471"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Adiciona as barras, cor das barras, transparencia}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ n), }\AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.3}\NormalTok{, }\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Distribuição da Familiaridade com Métodos Quantitativos"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Como Considera sua Familiaridade com MQ?"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Frequência (n)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{perfil_files/figure-pdf/unnamed-chunk-3-1.pdf}}
+
+\section{Tem Familiaridade com
+Programação?}\label{tem-familiaridade-com-programauxe7uxe3o}
+
+Observa-se que 46\% dos participantes são familiarizados com planilhas
+eletrônicas e 25\% não possuem nenhum contato. O Uso de planilha apesar
+da sua importância, não nos ajuda no desenvolvimento de habilidades de
+programação mais avançadas, que são essenciais para a análise de grandes
+volumes de dados e automação de processos no contexto jurídico. 25\% dos
+participantes já tiveram contao com ferramentas que serão importantes
+para o curso, R e Python. Apenas 1 participante indicou uso regular de
+programação. Essa distribuição destaca a necessidade de fortalecer as
+competências em programação entre os participantes, visando capacitá-los
+para lidar com desafios das análises jurimétricas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Gráfico para Formação Pirncipal (valores absolutos)}
+\NormalTok{perfil\_turma }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"perfil\_final.xlsx"}\NormalTok{)}
+\NormalTok{dados\_fam\_programa }\OtherTok{\textless{}{-}}\NormalTok{ perfil\_turma }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(fam\_programa)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(}\AttributeTok{valor =}\NormalTok{ fam\_programa) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{n}\NormalTok{(), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(dados\_fam\_programa, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(valor, }\SpecialCharTok{{-}}\NormalTok{n), }\AttributeTok{y =}\NormalTok{ n, }\AttributeTok{fill =}\NormalTok{ valor)) }\SpecialCharTok{+}          \CommentTok{\# Ordem decrescente}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{fill =} \StringTok{"\#3f566f"}\NormalTok{, }\AttributeTok{alpha=}\FloatTok{0.7}\NormalTok{, }\AttributeTok{color =} \StringTok{"\#4c5471"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Adiciona as barras, cor das barras, transparencia}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ n), }\AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.3}\NormalTok{, }\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Distribuição da Familiaridade com Programação"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Como Considera sua Familiaridade com Programação?"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Frequência (n)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{perfil_files/figure-pdf/unnamed-chunk-4-1.pdf}}
+
+\section{Conhece as Linguagens de Programação
+Necessárias?}\label{conhece-as-linguagens-de-programauxe7uxe3o-necessuxe1rias}
+
+Com base na informações fornecidas, observa-se que 61\% dos
+participantes não tiveram contato prévio com linguagens de programação
+como R ou Python. Por outro lado, 35\% indicaram ter tido algum contato
+com R ou Python e 1 participante em outras linguagens de programação.
+Essa distribuição sugere que a maioria dos participantes está em um
+estágio inicial em relação ao uso dessas ferramentas, o que reforça a
+importância do curso para capacitá-los no uso de linguagens de
+programação essenciais para a análise de dados no contexto jurídico.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Gráfico para Contato com Linguagens de Programação (valores absolutos)}
+\NormalTok{perfil\_turma }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"perfil\_final.xlsx"}\NormalTok{)}
+\NormalTok{dados\_contato\_com }\OtherTok{\textless{}{-}}\NormalTok{ perfil\_turma }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(contato\_com)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(}\AttributeTok{valor =}\NormalTok{ contato\_com) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{n}\NormalTok{(), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(dados\_contato\_com, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(valor, }\SpecialCharTok{{-}}\NormalTok{n), }\AttributeTok{y =}\NormalTok{ n, }\AttributeTok{fill =}\NormalTok{ valor)) }\SpecialCharTok{+}          \CommentTok{\# Ordem decrescente}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{fill =} \StringTok{"\#3f566f"}\NormalTok{, }\AttributeTok{alpha=}\FloatTok{0.7}\NormalTok{, }\AttributeTok{color =} \StringTok{"\#4c5471"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Adiciona as barras, cor das barras, transparencia}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ n), }\AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.3}\NormalTok{, }\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Já teve Contato com as Linguagens R, Python ou Outra?"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Ja tive contato com:"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Frequência (n)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{perfil_files/figure-pdf/unnamed-chunk-5-1.pdf}}
+
+\section{Trabalha com Inteligência
+Artificial?}\label{trabalha-com-inteliguxeancia-artificial}
+
+A maioria indica não ter conhecimento ou pouco contato (57\%) com
+ferramentas de inteligência artificial. Cerca de 40\% utiliza algumas
+vezes e apenas 1 participante indica uso regular. Essa distribuição
+sugere que muitos participantes ainda estão em estágios iniciais de
+familiaridade com IA, reforçando a necessidade de aprendizado para
+atingir uma estruturação mais robusta de banco de dados para jurimetria.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Gráfico para Uso da IA (valores absolutos)}
+\NormalTok{perfil\_turma }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"perfil\_final.xlsx"}\NormalTok{)}
+\NormalTok{dados\_trab\_ia }\OtherTok{\textless{}{-}}\NormalTok{ perfil\_turma }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(trab\_ia)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(}\AttributeTok{valor =}\NormalTok{ trab\_ia) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{n}\NormalTok{(), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(dados\_trab\_ia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(valor, }\SpecialCharTok{{-}}\NormalTok{n), }\AttributeTok{y =}\NormalTok{ n, }\AttributeTok{fill =}\NormalTok{ valor)) }\SpecialCharTok{+}          \CommentTok{\# Ordem decrescente}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{fill =} \StringTok{"\#3f566f"}\NormalTok{, }\AttributeTok{alpha=}\FloatTok{0.7}\NormalTok{, }\AttributeTok{color =} \StringTok{"\#4c5471"}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Adiciona as barras, cor das barras, transparencia}
+  \FunctionTok{geom\_text}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{ n), }\AttributeTok{vjust =} \SpecialCharTok{{-}}\FloatTok{0.3}\NormalTok{, }\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Distribuição da FreqUencia de Uso da Inteligência Artificial"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Com que Frequência usa a IA?"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Frequência (n)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{perfil_files/figure-pdf/unnamed-chunk-6-1.pdf}}
+
+\section{Expectativas}\label{expectativas}
+
+O quadro abaixo mostra uma análise das expectativas dos participantes em
+relação ao curso. Gestão de processo, aprendizado técnico em estatística
+e ciência de dados, e a integração entre Direito e Dados (Jurimetria)
+são as áreas mais mencionadas.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2877}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3562}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3562}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Categoria
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Descrição
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Exemplos
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Gestão processual baseada em dados} & Uso de indicadores e
+evidências para aperfeiçoar a gestão institucional. & ``Compreender
+melhor a necessidade de medir indicadores processuais.'' \\
+\textbf{Aprendizado técnico em estatística e ciência de dados} & Domínio
+de ferramentas, modelagem e visualização de dados. & ``Aprofundar
+conceitos de estatística inferencial e mineração de dados.'' \\
+\textbf{Integração Direito + Dados (Jurimetria)} & Aplicar raciocínio
+empírico e quantitativo ao campo jurídico. & ``Aplicar estatística e
+ciência de dados ao Direito.'' \\
+\textbf{Pesquisa empírica e inovação} & Aplicar técnicas de dados a
+projetos científicos e institucionais. & ``Formulação de pesquisas
+empíricas.'' \\
+\textbf{Tomada de decisão e estratégia baseada em evidências} & Apoiar
+decisões e planejamento institucional. & ``Transformar dados em
+informação útil para nortear decisões.'' \\
+\textbf{Governança e estruturação de dados} & Fortalecer a cultura e
+gestão de dados no TJTO. & ``Contribuir na estruturação do setor de
+dados.'' \\
+\textbf{Inteligência Artificial e análise preditiva} & Interesse em IA e
+uso de algoritmos no Judiciário. & ``IA como instrumento de combate ao
+racismo algorítmico.'' \\
+\end{longtable}
+
+\bookmarksetup{startatroot}
+
 \chapter{Introdução ao Desenho de Pesquisa e à
 Jurimetria}\label{introduuxe7uxe3o-ao-desenho-de-pesquisa-e-uxe0-jurimetria}
 
@@ -982,7 +1239,7 @@ indevida. A invocação do termo ``científico'' muitas vezes é empregada
 para \textbf{atribuir credibilidade a afirmações infundadas}, criando
 uma aparência de legitimidade sem o devido rigor metodológico.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Credibilidade Fake}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Credibilidade Fake}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 Nada confere mais autoridade a uma alegação do que a sugestão de que ela
 foi ``comprovada cientificamente'' ou ``baseada em evidências
@@ -1028,7 +1285,7 @@ explicações podem ser plausíveis ou devem ser descartadas.
 
 \pandocbounded{\includegraphics[keepaspectratio]{figuras0/observation.png}}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nem sempre a observação é simples ou direta.}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nem sempre a observação é simples ou direta.}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 O processo de observar pode ser limitado por dados insuficientes ou
 difíceis de acessar. É importante reconhecer essas dificuldades e
@@ -1121,7 +1378,7 @@ Robert-Fleury}
 
 \end{figure}%
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{História Explicativa}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{História Explicativa}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 Portanto, a primeira etapa na tentativa de dar \textbf{sentido a um
 conjunto de fatos} intrigantes é propor o que poderíamos chamar de uma
@@ -1143,7 +1400,7 @@ doenças.
 
 \subsubsection{CUIDADO}\label{cuidado}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Importante}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Importante}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 É comum ouvirmos \textbf{``isso é apenas uma teoria''}, como se fosse
 uma opinião. No entanto, na ciência, uma teoria é uma explicação
@@ -1162,7 +1419,7 @@ a 20\% da população. Esses dados nos convidam a construir hipóteses que
 expliquem o fenômeno, mesmo que provisoriamente. O objetivo não é
 acertar, mas exercitar o raciocínio explicativo.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Fatos e Observações}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Fatos e Observações}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 Segundo a pesquisa Vigitel do Ministério da Saúde, para população acima
 de 18 anos o percentual de pessoas com obesidade subiu de 11,8\% em 2006
@@ -1188,7 +1445,7 @@ seguimos na direção certa; se não, a hipótese precisa ser revisada.
 
 \pandocbounded{\includegraphics[keepaspectratio]{figuras0/test.png}}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Fácil Falar Difícil Fazer}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-important-color!10!white, bottomtitle=1mm, colframe=quarto-callout-important-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-important-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-important-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Fácil Falar Difícil Fazer}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 Apesar da simplicidade do método científico em teoria, sua aplicação
 prática exige cuidado e rigor.
@@ -1306,7 +1563,7 @@ tratamento, compostos por indivíduos que apresentam, ou não, o efeito
 analisado. O desafio é identificar, de forma cuidadosa, os diferentes
 níveis do fator potencial de causa entre esses grupos.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Explicando com Exemplo}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, colframe=quarto-callout-tip-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-tip-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Explicando com Exemplo}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 Efeitos do chumbo em crianças. Pesquisa com 4.000 crianças de 4 e 15
 anos entre 1999 e 2002. Incluiu 135 crianças com transtorno de déficit
@@ -1348,7 +1605,7 @@ retrospectivos. Ou seja TDAH -\textgreater{} Chumbo\ldots.
   hiperatividade.
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Cuidado}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Cuidado}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 Apesar de crianças com TDAH terem ``quatro vezes mais chance'' de ter
 níveis elevados de chumbo no sangue.
@@ -1732,7 +1989,7 @@ Um bom projeto articula essas etapas de forma coerente, garantindo que
 cada decisão metodológica esteja alinhada com o problema inicial e a
 pergunta de pesquisa.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Exemplo}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Exemplo}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 \begin{itemize}
 \tightlist
@@ -2001,7 +2258,7 @@ escrever a palavra idade.
 
 Cada uma delas representa variáveis diferentes.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{DICA}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, colframe=quarto-callout-tip-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-tip-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{DICA}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 Sempre utilize as suas variáveis em minúsculo. Adote isso como regra
 geral.
@@ -2029,7 +2286,7 @@ algumas opções:
   separa os dois nomes por uma letra maiúscula.
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{DICA}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, colframe=quarto-callout-tip-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-tip-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{DICA}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 Adote uma regra de criação para você e evite mudar. Crie nomes pequenos
 e significativos. Nunca inicie uma variável com número.
@@ -2525,7 +2782,7 @@ Para leitura de arquivos em Stata terá que utilizar o pacote
 Além desses, o R é capaz de trabalhar com SQL, SAS, SPSS, Excel entre
 outros.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Cuidado com o Ponto}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Cuidado com o Ponto}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 O R usa o formato americano de separação numérica. Usa ponto ao invés da
 vírgula para separar a unidade dos decimais. No Brasil usamos a vírgula.
@@ -2630,7 +2887,7 @@ esse não é número e sim um valor missing da seguinte maneira:
 Todos os valores que forem 99 serão exluídos e a celula ficará com um
 \emph{NA}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Dados Missing}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Dados Missing}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 Doois pontos importantes, dados missing não é 0 e nunca devem ser
 substituídos por 0. Pois 0 é um valor e missing é que não sabemos. Outro
@@ -2898,7 +3155,7 @@ estado.y, vamos manter apenas uma e trocar o seu nome. O comando
 \end{Highlighting}
 \end{Shaded}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Cuidado ao tirar colunas}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Cuidado ao tirar colunas}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 Se fizermos o comando de tirar colunas no mesmo \emph{data frame}, ao
 rodar novamente ele continuará sempre tirando a coluna indicada. O ideal
@@ -3713,7 +3970,7 @@ MA & Maranhao & NE & 127 & 3.7 & 69 & 2.0 & 54.3 & 814 & 1 & 264 & 7.7 & 106 & 3
 \end{tabular}
 \end{table}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, left=2mm, bottomrule=.15mm, breakable, leftrule=.75mm, arc=.35mm, opacityback=0, rightrule=.15mm, toprule=.15mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, opacityback=0, colback=white, toprule=.15mm, colframe=quarto-callout-note-color-frame, left=2mm, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, breakable]
 \begin{minipage}[t]{5.5mm}
 \textcolor{quarto-callout-note-color}{\faInfo}
 \end{minipage}%
@@ -3815,7 +4072,7 @@ Um gráfico no ggplot2 é construído combinando os seguintes elementos:
 Clique abaixo para ver alguns tipos de gráficos que podem ser criados
 com o ggplot2:
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, left=2mm, bottomrule=.15mm, breakable, leftrule=.75mm, arc=.35mm, opacityback=0, rightrule=.15mm, toprule=.15mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, opacityback=0, colback=white, toprule=.15mm, colframe=quarto-callout-note-color-frame, left=2mm, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, breakable]
 \begin{minipage}[t]{5.5mm}
 \textcolor{quarto-callout-note-color}{\faInfo}
 \end{minipage}%
@@ -3912,7 +4169,7 @@ Podemos mudar o tamanho \texttt{size}, a transparência com
 
 \pandocbounded{\includegraphics[keepaspectratio]{descritiva_v2_files/figure-pdf/unnamed-chunk-8-1.pdf}}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, left=2mm, bottomrule=.15mm, breakable, leftrule=.75mm, arc=.35mm, opacityback=0, rightrule=.15mm, toprule=.15mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, opacityback=0, colback=white, toprule=.15mm, colframe=quarto-callout-note-color-frame, left=2mm, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, breakable]
 \begin{minipage}[t]{5.5mm}
 \textcolor{quarto-callout-note-color}{\faInfo}
 \end{minipage}%
@@ -4276,14 +4533,14 @@ região.
 
 \pandocbounded{\includegraphics[keepaspectratio]{descritiva_v2_files/figure-pdf/unnamed-chunk-19-1.pdf}}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Exercício}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, colframe=quarto-callout-tip-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-tip-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Exercício}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 \textbf{PERGUNTA}: Qual a proporção de estados que possuem taxas de
 feminicídio acima de 50\%?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, left=2mm, bottomrule=.15mm, breakable, leftrule=.75mm, arc=.35mm, opacityback=0, rightrule=.15mm, toprule=.15mm, colframe=quarto-callout-warning-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, opacityback=0, colback=white, toprule=.15mm, colframe=quarto-callout-warning-color-frame, left=2mm, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, breakable]
 \begin{minipage}[t]{5.5mm}
 \textcolor{quarto-callout-warning-color}{\faExclamationTriangle}
 \end{minipage}%
@@ -4481,14 +4738,14 @@ com o aumento do número total Homicídios Femininos.
 
 \pandocbounded{\includegraphics[keepaspectratio]{descritiva_v2_files/figure-pdf/unnamed-chunk-26-1.pdf}}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Exercício}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, colframe=quarto-callout-tip-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-tip-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Exercício}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 \textbf{PERGUNTA}: Será que quanto maior for a renda per capita, menor
 será a taxa de feminicídio?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, left=2mm, bottomrule=.15mm, breakable, leftrule=.75mm, arc=.35mm, opacityback=0, rightrule=.15mm, toprule=.15mm, colframe=quarto-callout-warning-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, opacityback=0, colback=white, toprule=.15mm, colframe=quarto-callout-warning-color-frame, left=2mm, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, breakable]
 \begin{minipage}[t]{5.5mm}
 \textcolor{quarto-callout-warning-color}{\faExclamationTriangle}
 \end{minipage}%
@@ -5038,7 +5295,7 @@ precisa instalar o pacote \texttt{sm}.
 
 \pandocbounded{\includegraphics[keepaspectratio]{descritiva_v2_files/figure-pdf/unnamed-chunk-43-1.pdf}}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Exercício}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, colframe=quarto-callout-tip-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-tip-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Exercício}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 \textbf{PERGUNTA}: Gostaria de ter uma distribuição das Tentativa de
 Feminicídio por Estado mostrando os quartis, mediana e média.
@@ -5047,7 +5304,7 @@ Dica: Utlizar a densidade e o boxplot?
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, left=2mm, bottomrule=.15mm, breakable, leftrule=.75mm, arc=.35mm, opacityback=0, rightrule=.15mm, toprule=.15mm, colframe=quarto-callout-warning-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, opacityback=0, colback=white, toprule=.15mm, colframe=quarto-callout-warning-color-frame, left=2mm, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, breakable]
 \begin{minipage}[t]{5.5mm}
 \textcolor{quarto-callout-warning-color}{\faExclamationTriangle}
 \end{minipage}%
@@ -5449,7 +5706,7 @@ Estatística}\label{conceitos-buxe1sicos-de-estatuxedstica}
 Novamente começamos com um problema e esse definirá a nossa análise.
 Vejamos alguns problemas que poderiam nos interessar\ldots{}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Problema 1}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Problema 1}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 O prefeito de Ribeirão Preto vai lançar uma política que fornece
 vouchers de alimentação para mulheres que estão em situação de pobreza.
@@ -5459,7 +5716,7 @@ Quantas mulheres serão atendidas?}
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Problema 2}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Problema 2}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 O TJSP vai lançar um programa para reduzir o tempo médio em processos de
 feminicídio.
@@ -5469,7 +5726,7 @@ feminicídio?}
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Problema 3}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Problema 3}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 O O governo federal vai lançar um programa para capacitar mulheres que
 estão fora do mercado de trabalho.
@@ -5781,14 +6038,14 @@ dessa maneira a medida de correlação.
 
 \[\rho_{X,Y}=\frac{E[(X-E(X))(Y-E(Y))]}{\sqrt{Var(X)Var(Y)}}=\frac{Cov(X,Y)}{DP(X).DP(Y)}\]
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Correlação}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Correlação}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 A correlação mede o \textbf{GRAU DE ASSOCIAÇÃO LINEAR}. Associações não
 lineares não são capturadas pela correlação.
 
 \end{tcolorbox}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Lendo a Correlação}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Lendo a Correlação}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 A correlação \(\rho_{X,Y}\) varia de -1 até 1. Sendo que:
 
@@ -5834,7 +6091,7 @@ aproximadamente R\$ 35,00 por domicílio.
 
 Dessa forma nosso objetivo aqui é:
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Objetivo}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Objetivo}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 A partir de uma amostra da população realizar inferência sobre toda a
 população
@@ -5890,7 +6147,7 @@ de alunos nesse ano. Se quisermos avaliar o gasto municipal no ano
 anterior as eleições no Brasil, temos nossa população formada pelos
 municípios para o ano de análise.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{População}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, bottomtitle=1mm, colframe=quarto-callout-tip-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-tip-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{População}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 Quem define a população é o objetivo do seu trabalho!! Ou seja, seu
 problema de pesquisa
@@ -6046,7 +6303,7 @@ a pessoa ou empresa é ``inocente''.
   O deferimento ocorre em até 48h.
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{A Intuição}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{A Intuição}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 Partimos da premissa de que a hipótese inicial é a correta e tentamos
 verificar com os fatos (dados amostrais) se essa hipótese colocada é
@@ -6119,7 +6376,7 @@ Decidindo qual o \(T\) utilizar - a função \(h\) que será aplicado aos
 valores da amostra - devemos compreender qual é a distribuição dessa
 estatística sob a condição de que a hipótese \(H_0\) for a verdadeira.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{A Intuição}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{A Intuição}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 Queremos aqui saber se a amostra tivesse sido extraída de contratos com
 esperança do tempo de duração , \(\mathbb{E(X)}\), de 600 dias, quais
@@ -6251,7 +6508,7 @@ Não Rejeitar (\(H_0\)) & Correto & Erro Tipo II (EII) \\
 
 Observe que a nossa decisão pode incorrer em dois erros diversos.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Erro Tipo I e Erro Tipo II}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Erro Tipo I e Erro Tipo II}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 \textbf{Erro Tipo I e Erro Tipo II}
 
@@ -6297,7 +6554,7 @@ crítica ou de rejeição, seria controlar o Erro Tipo I \((\alpha)\).
 Podemos dizer que gostariamos de cometer o Erro Tipo I em apenas 5\% dos
 casos.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Erro Estatístico}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Erro Estatístico}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 A chance de retirarmos um amostra e o valor da estimativa ser maior que
 o valor de decisão é de 5\% dos casos, os outros 95\% sempre cairão na
@@ -6315,7 +6572,7 @@ Portanto,
 
 \[P(\bar{X}\geq 633|H_0)=0.05= \alpha\]
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, left=2mm, bottomrule=.15mm, breakable, leftrule=.75mm, arc=.35mm, opacityback=0, rightrule=.15mm, toprule=.15mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, opacityback=0, colback=white, toprule=.15mm, colframe=quarto-callout-note-color-frame, left=2mm, arc=.35mm, bottomrule=.15mm, leftrule=.75mm, breakable]
 \begin{minipage}[t]{5.5mm}
 \textcolor{quarto-callout-note-color}{\faInfo}
 \end{minipage}%
@@ -6421,7 +6678,7 @@ Esse percentual é o que chamamos de nível de significância. Quem define
 esse tamanho é o pesquisador e em geral, em ciência sociais, utilizamos
 os níveis acima.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nível de Signficãncia}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nível de Signficãncia}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 \textbf{Nível de Significância}:É a probabilidade máxima aceitável de
 cometer o erro tipo I e chamamos de \(\alpha\), sendo um valor entre
@@ -6446,7 +6703,7 @@ Assim, de forma geral tem-se:
 
 \[RC =\{T \in C| H_0\}\] \[P(T \in C|H_0)\leq\alpha\]
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Teste Unilateral e Bilateral}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, bottomtitle=1mm, colframe=quarto-callout-warning-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-warning-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Teste Unilateral e Bilateral}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 A região critica depende do teste estatístico escolhido e se a hipótese
 é unilateral, ou seja, apenas de um lado da distribuição ou bilateral,
@@ -7793,7 +8050,7 @@ homic_tx    0.105805 0.05503129 1.922633 0.0659903845
 homic_tx_10 1.058050  0.5503129 1.922633 0.0659903845
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Importante}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Importante}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 O \(R^2\) e os testes de hipótese não depende das unidades de nossas
 variáveis.
@@ -8251,7 +8508,7 @@ regressores:
 Fatores qualitativos geralmente aparecem na forma de informações
 binárias, também denominadas,\emph{dummy}.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, left=2mm, bottomrule=.15mm, rightrule=.15mm, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Variável Binária ou Dummy:}, colback=white, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, breakable, leftrule=.75mm, titlerule=0mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, toprule=.15mm, leftrule=.75mm, left=2mm, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, opacitybacktitle=0.6, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Variável Binária ou Dummy:}, bottomrule=.15mm, rightrule=.15mm, arc=.35mm]
 
 É uma variável que assume o valor 1 se a ``\ul{condição occorre}'' e 0
 caso o contrário.

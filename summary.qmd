@@ -2,8 +2,6 @@
 
 Esta é a página de apoio do Professor Alexandre Nicolella e Jose de Jesus Filho ao curso de Curso de Extensão em Jurimetria da Escola Superior da Magistratura Tocantinense (ESMAT).
 
-
-
 ## **Motivação**:
 
 O curso tem como propósito introduzir os participantes aos conceitos fundamentais de jurimetria e de inteligência artificial aplicada ao Direito, oferecendo uma formação integrada entre teoria e prática. A proposta parte da compreensão de como métodos quantitativos e computacionais podem apoiar a análise jurídica, aprimorando a tomada de decisão e promovendo maior eficiência e transparência no sistema de Justiça.
@@ -12,21 +10,16 @@ A motivação central é capacitar os alunos a desenvolver uma visão empírica 
 
 Durante o curso, serão exploradas ferramentas e pacotes da linguagem R voltados à manipulação e à visualização de dados jurídicos, com aplicação prática em exemplos reais do Tribunal de Justiça do Tocantins (TJTO). A combinação entre conceitos teóricos, prática orientada por problemas e uso de dados reais visa proporcionar uma formação sólida e aplicada, aproximando os participantes dos desafios contemporâneos da jurimetria e da análise de dados no Direito.
 
-
-
 ## **Objetivo**:
 
- O objetivo é fornecer aos participantes competências necessárias para:
+O objetivo é fornecer aos participantes competências necessárias para:
 
-  - Formular e estruturar pesquisas empíricas no Direito.
-  - Extrair e organizar dados processuais de forma sistemática.
-  - Aplicar ferramentas estatísticas e computacionais básicas para análise inicial de dados jurídicos.
-  - Criar visualizações que traduzam informações complexas em resultados claros e objetivos.
-
-
+-   Formular e estruturar pesquisas empíricas no Direito.
+-   Extrair e organizar dados processuais de forma sistemática.
+-   Aplicar ferramentas estatísticas e computacionais básicas para análise inicial de dados jurídicos.
+-   Criar visualizações que traduzam informações complexas em resultados claros e objetivos.
 
 ## **Professores**
-
 
 Os professores do curso são:
 
@@ -46,78 +39,76 @@ tibble::tibble(
   knitr::kable()
 ```
 
-# O Cronograma das Aulas: 
+# O Cronograma das Aulas:
 
 ## Etapa Online: Fundamentos e Conceitos (6 horas síncronas)
 
-Nesta fase, os participantes terão contato com os **conceitos fundamentais de jurimetria** e **inteligência artificial aplicada ao Direito**. O enfoque será teórico, preparando o terreno para a etapa prática.  
+Nesta fase, os participantes terão contato com os **conceitos fundamentais de jurimetria** e **inteligência artificial aplicada ao Direito**. O enfoque será teórico, preparando o terreno para a etapa prática.
 
-### Aula 01 - Introdução ao Desenho de Pesquisa e à Jurimetria 
-- Pergunta de pesquisa  
-- Formulação da hipótese  
-- Operacionalização de conceitos  
-- Inferência causal  
-- Conceito de jurimetria e a interdisciplinaridade necessária (Direito, Computação e Estatística)  
-- Jurimetria e inteligência artificial aplicada ao Direito  
-- Exemplos práticos de jurimetria 
+### Aula 01 - Introdução ao Desenho de Pesquisa e à Jurimetria
+
+-   Pergunta de pesquisa\
+-   Formulação da hipótese\
+-   Operacionalização de conceitos\
+-   Inferência causal\
+-   Conceito de jurimetria e a interdisciplinaridade necessária (Direito, Computação e Estatística)\
+-   Jurimetria e inteligência artificial aplicada ao Direito\
+-   Exemplos práticos de jurimetria
 
 ### Aula 02 - Desafios da Jurimetria, Análise de Viabilidade e Listagem de Processos
-- Grandes desafios da jurimetria aplicada ao Direito
-  - Limites teóricos: Teoremas de Pristin Klein e Gallam evidenciam.
-  - Problema de seleção: Nem todos os conflitos chegam aos tribunais
-  - Natureza dos dados: Bases judiciais são administrativas
-  - Desafio metodológico: Modelar viéses e lacunas.
-  - Boas práticas: Validação jurídica e transparência analítica.
-- Análise de viabilidade  
-- Escopo de pesquisa: pesquisa prospectiva vs. retrospectiva (resultado, tempo e distribuição)  
-- Sistemas de listagem (CJ e CPO)  
- 
 
-
+-   Grandes desafios da jurimetria aplicada ao Direito
+    -   Limites teóricos: Teoremas de Pristin Klein e Gallam evidenciam.
+    -   Problema de seleção: Nem todos os conflitos chegam aos tribunais
+    -   Natureza dos dados: Bases judiciais são administrativas
+    -   Desafio metodológico: Modelar viéses e lacunas.
+    -   Boas práticas: Validação jurídica e transparência analítica.
+-   Análise de viabilidade\
+-   Escopo de pesquisa: pesquisa prospectiva vs. retrospectiva (resultado, tempo e distribuição)\
+-   Sistemas de listagem (CJ e CPO)
 
 ## Etapa Presencial: Aplicação Prática no Tocantins (24 horas)
 
-Realizada no Tocantins, esta etapa é dividida em duas partes. Na primeira, os participantes terão noções de ciência de dados para  coletar, organizar, estruturar e analisar dados de processos judiciais, com duração de um dia de oito horas. 
+Realizada no Tocantins, esta etapa é dividida em duas partes. Na primeira, os participantes terão noções de ciência de dados para coletar, organizar, estruturar e analisar dados de processos judiciais, com duração de um dia de oito horas.
 
 ### Nosso Caso de Estudo
+
 Nosso foco será a análise empírica dos processos de homicídio doloso de competência do Tribunal do Júri, com ênfase no tempo de tramitação, nas fases processuais e na identificação de eventuais gargalos procedimentais. Busca-se compreender os fatores que influenciam a duração dos feitos e suas implicações para a garantia da duração razoável do processo.
 
-
 ### Aula 03 - Estruturação de Dados I
-- Introdução ao `dplyr`  
-- Tratamento de datas com `lubridate`  
-- Tratamento de texto com `stringr`  
-- Iteração com `purrr`  
-- Introdução aos Large Language Models (LLMs)  
-- Engenharia de prompt
-- Noções básicas de estatística  
-- Introdução ao `ggplot2` 
+
+-   Introdução ao `dplyr`\
+-   Tratamento de datas com `lubridate`\
+-   Tratamento de texto com `stringr`\
+-   Iteração com `purrr`\
+-   Introdução aos Large Language Models (LLMs)\
+-   Engenharia de prompt
+-   Noções básicas de estatística\
+-   Introdução ao `ggplot2`
 
 ### Aula 04 - Estruturação de Dados II
-- Definind a pergunta do grupo.  
-- Coleta de dados relevantes.  
-- Estruturação, organização e limpeza das bases.
-- Teorias necessárias para análise
+
+-   Definind a pergunta do grupo.\
+-   Coleta de dados relevantes.\
+-   Estruturação, organização e limpeza das bases.
+-   Teorias necessárias para análise
 
 ### Aula 05 - Visualização de Dados
-- Estruturação, organização e limpeza das bases.  
-- Análise exploratória e visualização de resultados.  
-- Apresentação final dos achados. 
-- Teorias necessárias para análise
 
+-   Estruturação, organização e limpeza das bases.\
+-   Análise exploratória e visualização de resultados.\
+-   Apresentação final dos achados.
+-   Teorias necessárias para análise
 
-A segunda fase, com duração de 16 horas, divididas em dois dias, será   totalmente prática e  orientada a resultados. Os participantes serão organizados em grupos de trabalho por tema, e cada grupo desenvolverá um projeto jurimétrico completo realacionado ao tempo do processo, percorrendo as seguintes etapas:
+A segunda fase, com duração de 16 horas, divididas em dois dias, será totalmente prática e orientada a resultados. Os participantes serão organizados em grupos de trabalho por tema, e cada grupo desenvolverá um projeto jurimétrico completo realacionado ao tempo do processo, percorrendo as seguintes etapas:
 
-1. Definição de uma pergunta de pesquisa aplicada ao contexto do TJTO.  
-2. Coleta de dados judiciais relevantes.  
-3. Estruturação, organização e limpeza das bases.  
-4. Análise exploratória e visualização de resultados.  
-5. Apresentação final dos achados.  
+1.  Definição de uma pergunta de pesquisa aplicada ao contexto do TJTO.\
+2.  Coleta de dados judiciais relevantes.\
+3.  Estruturação, organização e limpeza das bases.\
+4.  Análise exploratória e visualização de resultados.\
+5.  Apresentação final dos achados.
 
 Ao final do módulo, os participantes terão vivenciado o **ciclo completo da jurimetria**, desde a formulação inicial até a comunicação dos resultados, combinando competências jurídicas, estatísticas e computacionais.
-
-
-
 
 ## Método de Trabalho
 
@@ -125,107 +116,112 @@ Ao final do módulo, os participantes terão vivenciado o **ciclo completo da ju
 
 **Online (6h, síncrono):**
 
-- Desenvolvimento dos conceitos centrais de forma teórica  
-- Discussão de fundamentos, referências e boas práticas  
-- Interação por meio de exercícios guiados e debates curtos  
+-   Desenvolvimento dos conceitos centrais de forma teórica\
+-   Discussão de fundamentos, referências e boas práticas\
+-   Interação por meio de exercícios guiados e debates curtos
 
 **Presencial (8h, em Tocantins) - PARTE I:**
 
-- Estruturação de dados  
-- Análise Estatística Descritiva  
-- Visulaização  
-
+-   Estruturação de dados\
+-   Análise Estatística Descritiva\
+-   Visulaização
 
 **Presencial (24h, em Tocantins) - PARTE II:**
 
-1. **Definição do problema ou pergunta de pesquisa:** cada grupo escolhe um tema específico a partir dos conceitos apresentados.  
-2. **Coleta e organização de dados/informações:** orientação sobre como levantar dados relevantes para a análise.  
-3. **Análise e interpretação dos resultados:** uso das ferramentas e métodos aprendidos na parte online e presencial.  
-4. **Apresentação e discussão dos resultados:** compartilhamento das conclusões e lições aprendidas.  
+1.  **Definição do problema ou pergunta de pesquisa:** cada grupo escolhe um tema específico a partir dos conceitos apresentados.\
+2.  **Coleta e organização de dados/informações:** orientação sobre como levantar dados relevantes para a análise.\
+3.  **Análise e interpretação dos resultados:** uso das ferramentas e métodos aprendidos na parte online e presencial.\
+4.  **Apresentação e discussão dos resultados:** compartilhamento das conclusões e lições aprendidas.
 
 ### Integração Teoria e Prática
-O método garante que os conceitos vistos online e presencialmente sejam aplicados de forma concreta.  
-A interação presencial reforça o aprendizado ativo e colaborativo.  
+
+O método garante que os conceitos vistos online e presencialmente sejam aplicados de forma concreta.\
+A interação presencial reforça o aprendizado ativo e colaborativo.
 
 ### Comunicação e Colaboração
-- Uso da ferramenta de grupo do whatsapp para agilizar as respostas de dúvidas e organização dos grupos/trabalhos.
-- Responder aos questionários enviados via Google Forms. [Perfil](https://docs.google.com/forms/d/e/1FAIpQLSf4KQam4J-Yf24ofwL1thVBoqjwjNVUEGHOIGI2dqVEFMpefw/viewform?usp=dialog)
-- Teremos um drive do curso para compartilhamento de materiais: [Drive do Curso](https://drive.google.com/drive/folders/1G42Ewa_4QDMsoCcIENDF0pQHAp6G_qaO)
 
+-   Uso da ferramenta de grupo do whatsapp para agilizar as respostas de dúvidas e organização dos grupos/trabalhos.
+-   Responder aos questionários enviados via Google Forms. [Perfil](https://docs.google.com/forms/d/e/1FAIpQLSf4KQam4J-Yf24ofwL1thVBoqjwjNVUEGHOIGI2dqVEFMpefw/viewform?usp=dialog)
+-   Teremos um drive do curso para compartilhamento de materiais: [Drive do Curso](https://drive.google.com/drive/folders/1G42Ewa_4QDMsoCcIENDF0pQHAp6G_qaO)
 
 ### Feedback e Aprimoramento
-- Avaliação contínua do progresso dos grupos.  
-- Discussões coletivas para melhorar abordagens e resultados.  
 
-
+-   Avaliação contínua do progresso dos grupos.\
+-   Discussões coletivas para melhorar abordagens e resultados.
 
 ## Infraestrutura e Dados
 
 ### Dados
-Os dados utilizados no curso serão fornecidos pelo **TJTO**, diretamente ou via uso de **API** para acesso à informação.  
+
+Os dados utilizados no curso serão fornecidos pelo **TJTO**, diretamente ou via uso de **API** para acesso à informação.
 
 ### Computadores e Rede
-- Cada participante terá acesso a um computador individual.  
-- Todos os computadores estarão conectados à internet de alta velocidade.  
+
+-   Cada participante terá acesso a um computador individual.\
+-   Todos os computadores estarão conectados à internet de alta velocidade.
 
 ### Softwares e Ferramentas
-- `R` (versão mais recente) pré-instalado em todas as máquinas.
-- `Positron` (preferencialmente) ou`RStudio` como ambiente de desenvolvimento integrado (IDE).  
-- Instalação de *packages* adicionais conforme necessidade dos exercícios.  
-- Outros softwares de apoio poderão ser instalados mediante solicitação.  
+
+-   `R` (versão mais recente) pré-instalado em todas as máquinas.
+-   `Positron` (preferencialmente) ou`RStudio` como ambiente de desenvolvimento integrado (IDE).\
+-   Instalação de *packages* adicionais conforme necessidade dos exercícios.\
+-   Outros softwares de apoio poderão ser instalados mediante solicitação.
 
 ### Ambiente de Trabalho
-- Espaço preparado para trabalho em grupo e colaboração.  
-- Projetor e quadro branco disponíveis.  
-- Suporte técnico para instalação de pacotes e resolução de problemas.  
+
+-   Espaço preparado para trabalho em grupo e colaboração.\
+-   Projetor e quadro branco disponíveis.\
+-   Suporte técnico para instalação de pacotes e resolução de problemas.
 
 ### Segurança e Backup
-- Sistemas de backup configurados para evitar perda de dados.  
-- Garantia de que os participantes possam salvar e recuperar seus projetos com segurança.  
 
-
+-   Sistemas de backup configurados para evitar perda de dados.\
+-   Garantia de que os participantes possam salvar e recuperar seus projetos com segurança.
 
 ## Resultados Esperados
 
 ### Aprendizado Conceitual
-- Compreensão dos fundamentos, metodologias e boas práticas do tema.  
-- Capacidade de aplicar conceitos teóricos em situações reais.  
+
+-   Compreensão dos fundamentos, metodologias e boas práticas do tema.\
+-   Capacidade de aplicar conceitos teóricos em situações reais.
 
 ### Habilidades Práticas
-- Desenvolvimento da análise de dados e interpretação de resultados utilizando R.  
-- Experiência em trabalho colaborativo, da definição do problema à apresentação de soluções.  
+
+-   Desenvolvimento da análise de dados e interpretação de resultados utilizando R.\
+-   Experiência em trabalho colaborativo, da definição do problema à apresentação de soluções.
 
 ### Produção de Resultados Concretos
-- Cada grupo produzirá relatórios ou apresentações com análise detalhada de seu tema.  
-- Discussão coletiva dos resultados, promovendo aprendizado entre todos.  
+
+-   Cada grupo produzirá relatórios ou apresentações com análise detalhada de seu tema.\
+-   Discussão coletiva dos resultados, promovendo aprendizado entre todos.
 
 ### Fortalecimento da Capacidade Analítica
-- Habilidade de formular perguntas relevantes, organizar dados, aplicar métodos e tirar conclusões consistentes.  
-- Preparação para aplicar o conhecimento em projetos profissionais ou acadêmicos.  
+
+-   Habilidade de formular perguntas relevantes, organizar dados, aplicar métodos e tirar conclusões consistentes.\
+-   Preparação para aplicar o conhecimento em projetos profissionais ou acadêmicos.
 
 ### Feedback e Melhoria Contínua
-- Feedback detalhado sobre os trabalhos dos grupos.  
-- Incentivo à reflexão sobre processos e resultados, promovendo aprimoramento contínuo.  
 
-
+-   Feedback detalhado sobre os trabalhos dos grupos.\
+-   Incentivo à reflexão sobre processos e resultados, promovendo aprimoramento contínuo.
 
 ## Bibliografia
 
-AGRESTI, Alan; FINLAY, Barbara. *Métodos Estatísticos para as Ciências Sociais.* São Paulo: Tenso, 2017.  
-AMINIKHANGHAHI, Samaneh; COOK, Daniel J. *A Survey of Methods for Time Series Change Point Detection.* *Knowl Inf Syst*, v. 51, p. 339–367, 2017. DOI: 10.1007/s10115-016-0987-z.  
-ENDERS, Craig. *Applied Missing Data Analysis.* New York: The Guilford Press, 2022.  
-EPSTEIN, Lee; KING, Gary. *As Regras de Inferência.* São Paulo: Direito GV, 2013.  
-GALANTER, Marc. *Why the ‘Haves’ Come Out Ahead: Speculations on the Limit of Social Change.* *Law and Society Review*, v. 9:1, 1974.  
-HILBE, Joseph. *Practical Guide for Logistic Regression.* Chapman and Hall/CRC, 2018.  
-KELLSTEDT, Paul M.; WHITTEN, Guy D. *Fundamentos da Pesquisa em Ciência Política.* São Paulo: Blucher, 2014.  
-KING, Gary; KEOHANE, Roberto; VERBA, Sidney. *Designing Social Inquiry: Scientific Inference for Qualitative Methods.* 2021.  
-LEE, Alex Yoon-Ho; KLERMAN, Daniel M. *The Priest-Klein Hypotheses: Proofs and Generality.* *International Review of Law and Economics*, v. 59, 2016.  
-MOORE, Dirk F. *Applied Survival Analysis Using R.* Switzerland: Springer, 2016.  
-MORETTIN, Wilton de O.; BUSSAB, Pedro A. *Estatística Básica.* São Paulo: Saraiva, 2021.  
-PRIEST, George L.; KLEIN, Benjamin. *The Selection of Disputes for Litigation.* *Journal of Legal Studies*, v. XIII, jan. 1984.  
-SILVA, Glauco. *Desenho de Pesquisa.* São Paulo: ENAP, 2018.  
-STOCK, James H.; WATSON, Mark W. *Introduction to Econometrics.* London: Pearson, 2020.  
-WOOLDRIDGE, Jeffrey M. *Introductory Econometrics: A Modern Approach.* South Western Educational Publishing, 2012.  
-KILLICK, Rebecca; ECKLEY, Idris A. *changepoint: An R Package for Changepoint Analysis.* *Journal of Statistical Software*, 58(3), 1–19, 2014. DOI: [10.18637/jss.v058.i03](https://doi.org/10.18637/jss.v058.i03).  
-TOOMET, Ott; HENNINGSEN, Arne. *Sample Selection Models in R: Package sampleSelection.* *Journal of Statistical Software*, 27(7), 1–23, 2008. DOI: [10.18637/jss.v027.i07](https://doi.org/10.18637/jss.v027.i07).  
-TRUONGA, Charles; OUDRE, Laurent; VAYATIS, Nicolas. *Selective Review of Offline Change Point Detection Methods.* *Signal Processing*, 167, 2020.  
+AGRESTI, Alan; FINLAY, Barbara. *Métodos Estatísticos para as Ciências Sociais.* São Paulo: Tenso, 2017.\
+AMINIKHANGHAHI, Samaneh; COOK, Daniel J. *A Survey of Methods for Time Series Change Point Detection.* *Knowl Inf Syst*, v. 51, p. 339–367, 2017. DOI: 10.1007/s10115-016-0987-z.\
+ENDERS, Craig. *Applied Missing Data Analysis.* New York: The Guilford Press, 2022.\
+EPSTEIN, Lee; KING, Gary. *As Regras de Inferência.* São Paulo: Direito GV, 2013.\
+GALANTER, Marc. *Why the ‘Haves’ Come Out Ahead: Speculations on the Limit of Social Change.* *Law and Society Review*, v. 9:1, 1974.\
+HILBE, Joseph. *Practical Guide for Logistic Regression.* Chapman and Hall/CRC, 2018.\
+KELLSTEDT, Paul M.; WHITTEN, Guy D. *Fundamentos da Pesquisa em Ciência Política.* São Paulo: Blucher, 2014.\
+KING, Gary; KEOHANE, Roberto; VERBA, Sidney. *Designing Social Inquiry: Scientific Inference for Qualitative Methods.* 2021.\
+LEE, Alex Yoon-Ho; KLERMAN, Daniel M. *The Priest-Klein Hypotheses: Proofs and Generality.* *International Review of Law and Economics*, v. 59, 2016.\
+MOORE, Dirk F. *Applied Survival Analysis Using R.* Switzerland: Springer, 2016.\
+MORETTIN, Wilton de O.; BUSSAB, Pedro A. *Estatística Básica.* São Paulo: Saraiva, 2021.\
+PRIEST, George L.; KLEIN, Benjamin. *The Selection of Disputes for Litigation.* *Journal of Legal Studies*, v. XIII, jan. 1984.\
+SILVA, Glauco. *Desenho de Pesquisa.* São Paulo: ENAP, 2018.\
+STOCK, James H.; WATSON, Mark W. *Introduction to Econometrics.* London: Pearson, 2020.\
+WOOLDRIDGE, Jeffrey M. *Introductory Econometrics: A Modern Approach.* South Western Educational Publishing, 2012.\
+KILLICK, Rebecca; ECKLEY, Idris A. *changepoint: An R Package for Changepoint Analysis.* *Journal of Statistical Software*, 58(3), 1–19, 2014. DOI: [10.18637/jss.v058.i03](https://doi.org/10.18637/jss.v058.i03).\
+TOOMET, Ott; HENNINGSEN, Arne. *Sample Selection Models in R: Package sampleSelection.* *Journal of Statistical Software*, 27(7), 1–23, 2008. DOI: [10.18637/jss.v027.i07](https://doi.org/10.18637/jss.v027.i07).\
+TRUONGA, Charles; OUDRE, Laurent; VAYATIS, Nicolas. *Selective Review of Offline Change Point Detection Methods.* *Signal Processing*, 167, 2020.

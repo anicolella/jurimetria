@@ -12,12 +12,12 @@ drive_user()
 
 perfil_final <-  drive_get(as_id("1y3qeje5BR6h9mRMWKQoIFAFvwCan3mEn"))   
 drive_download(perfil_final, 
-               path = "C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx",
+               path = "perfil_final.xlsx",
                overwrite = TRUE)
 
 library("readxl")
 
-perfil_turma <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx")
+perfil_turma <- read_excel("perfil_final.xlsx")
 
 
 ```
@@ -39,7 +39,7 @@ library(readxl)
 library(scales)
 
 # Gráfico para Formação Pirncipal (valores absolutos)
-perfil_turma <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx")
+perfil_turma <- read_excel("perfil_final.xlsx")
 dados_form_princ <- perfil_turma %>%
   filter(!is.na(form_principal)) %>%
   group_by(valor = form_principal) %>%
@@ -67,7 +67,7 @@ Observa-se que 71% dos participantes possuem conhecimento básico de métodos qu
 
 
 # Gráfico para Familiaridade com M.Q. (valores absolutos)
-perfil_turma <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx")
+perfil_turma <- read_excel("perfil_final.xlsx")
 dados_fam_mq <- perfil_turma %>%
   filter(!is.na(fam_mq)) %>%
   group_by(valor = fam_mq) %>%
@@ -96,7 +96,7 @@ Observa-se que 46% dos participantes são familiarizados com planilhas eletrôni
 
 
 # Gráfico para Formação Pirncipal (valores absolutos)
-perfil_turma <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx")
+perfil_turma <- read_excel("perfil_final.xlsx")
 dados_fam_programa <- perfil_turma %>%
   filter(!is.na(fam_programa)) %>%
   group_by(valor = fam_programa) %>%
@@ -123,7 +123,7 @@ ggplot(dados_fam_programa, aes(x = reorder(valor, -n), y = n, fill = valor)) +  
 
 
 # Gráfico para Contato com Linguagens de Programação (valores absolutos)
-perfil_turma <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx")
+perfil_turma <- read_excel("perfil_final.xlsx")
 dados_contato_com <- perfil_turma %>%
   filter(!is.na(contato_com)) %>%
   group_by(valor = contato_com) %>%
@@ -151,7 +151,7 @@ A maioria indica não ter conhecimento ou pouco contato (57%) com ferramentas de
 
 
 # Gráfico para Uso da IA (valores absolutos)
-perfil_turma <- read_excel("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/perfil_final.xlsx")
+perfil_turma <- read_excel("perfil_final.xlsx")
 dados_trab_ia <- perfil_turma %>%
   filter(!is.na(trab_ia)) %>%
   group_by(valor = trab_ia) %>%
