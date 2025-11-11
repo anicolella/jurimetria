@@ -123,13 +123,14 @@ O O governo federal vai lançar um programa para capacitar mulheres que estão f
 **Problema**: [Quantas mulheres serão alvos dessa política?]{.underline}
 :::
 
-### A Variável Aleatória
+### A População e suas Características 
 
-O problema nos define a população que estou interessado. Vamos seguir, a princípio, com o nosso probelma 1 para definirmos alguns conceitos importantes.
+
+O **problema** nos define a **população** que estou interessado. Vamos seguir, a princípio, com o nosso probelma 1 para definirmos alguns conceitos importantes.
 
 **No problema 1**: me interessa compreender a renda das mulheres que moram em Ribeirão Preto em dado ano. Para ficar simples vamos abreviar o que nos interessa
 
-$$X=\text{Renda das mulheres que moram em Ribeirão Preto em determinado ano}$$ Agora posso utilizar o X no lugar do nome. Olhando para a população e pensando que cada nível de renda pode ser representada por uma cor, teremos a seguinte imagem pouco de como a renda se distribui nessa população:
+$$X=\text{Renda das mulheres que moram em Ribeirão Preto em determinado ano}$$ Agora posso utilizar o **X** no lugar do nome. Olhando para a população e pensando que cada nível de renda pode ser representada por uma cor, teremos a seguinte imagem pouco de como a renda se distribui nessa população:
 
 ![Renda pc das mulheres de Ribeirão Preto.](figuras\lego.jpg){width="50%"}
 
@@ -153,7 +154,7 @@ Agora conseguimos organizar os nossos resultados em um lugar chamado espaço amo
 
 **VARIÁVEL ALEATÓRIA**
 
-Quanto representamos esse espaço amostral em formato de números é o que chamamos de Variável Aleatória (V.A.). A V.A. é a combinação de tudo que pode acontecer, ou seja, todas as rendas que existem associadas a probabilidade de cada uma das rendas acontecerem.
+Quanto representamos esse espaço amostral em formato de números é o que chamamos de Variável Aleatória (V.A.). A V.A. é a **combinação de tudo que pode acontecer**, ou seja, todas as rendas que existem **associadas a probabilidade** de cada uma das rendas acontecerem.
 
 Existem dois tipos principais de variáveis aleatórias: discretas e contínuas.
 
@@ -161,7 +162,7 @@ Existem dois tipos principais de variáveis aleatórias: discretas e contínuas.
 
 É um tipo de variável que conseguimos colocar em lista, seja finita ou infinita $x_1; x_2;...; x_n;...$ e associa-se a cada um dessses valores uma probabilidade $p(x_1); p(x_2);...; p(x_n);...$
 
-Podemos pensar aqui se a pessoa é casada, solteira, divorciada, viúva ou outra condição. Se no processo classificamos como homicídio ou feminicídio, se mora na área urbana ou rural...
+Podemos pensar aqui se a pessoa é casada, solteira, divorciada, viúva ou outra condição. Se no processo classificamos como homicídio ou feminicídio, se é procedente ou improcedente, se mora na área urbana ou rural...
 
 Na figura abaixo iremos coletar de 20 processos de homicídio e gostariamos de saber quando é classificado como feminicídio e quanto é classificado como homicídio (p=0,3).
 
@@ -178,9 +179,9 @@ plot(feminicidio,dbinom(feminicidio,size=20,prob=.3),
 
 **VARIÁVEIS ALEATÓRIAS CONTÍNUAS**
 
-Por outro lado, uma variável aleatória contínua pode assumir infinito valores dentro de um intervalo específico. Agora temos infinitas possibilidades de resultados para $X$ e agora associamos uma função $f(x)$ que irá descrever o comportamento da probabilidade.
+Por outro lado, uma variável aleatória contínua pode assumir infinito valores dentro de um intervalo específico. Agora temos infinitas possibilidades de resultados para $X$ e agora associamos uma **função $f(x)$ que irá descrever o comportamento da probabilidade**.
 
-Por exemplo, a altura de uma pessoa, a sua renda, a sua idade, o tempo que demora um processo.
+Por exemplo, a altura de uma pessoa, a sua renda, a sua idade, o **tempo que demora um processo**.
 
 Abaixo temos uma representação de uma distriuição continua da renda das mulheres em Ribeirão Preto, chamada distribuição normal:
 
@@ -200,33 +201,65 @@ lines(x=c(900,900),y=c(0,fdnorm[x==900]),lty=2, col="black")
 
 #### Esperança e Variância
 
-O fomato das distribuições vistas dependem principalmente de dois parâmetros: A esperança que é uma medida de centralidade e a variância que é uma medida de dispersão.
+O formato das distribuições vistas dependem principalmente de dois parâmetros: A **esperança** (média ponderada) que é uma medida de centralidade e a **variância** que é uma medida de dispersão.
 
 **ESPERANÇA** - $E(X)$
 
-É uma medida de centralidade da variável aleatória. É definida como a média ponderada de todos os possíveis resultados de $X$, onde os pesos são dados pelas probabilidades desses resultados ocorrerem. A esperança de $X$, $E(X)$, é calculada como:
+A **esperança** de uma variável aleatória ou média populacional representa o valor médio que se **espera observar** se o fenômeno fosse repetido muitas vezes sob as mesmas condições.
+Em outras palavras, é uma medida de tendência central que indica para onde os **resultados tendem a convergir** (a média). É definida como a média ponderada de todos os possíveis resultados de $X$, onde os pesos são dados pelas probabilidades desses resultados ocorrerem. 
+
+- Qual o tempo médio de um processo de homicídio até a sentença? 
+- Qual a a média de procedência de processos relacionados à violência contra a mulher? 
+
+::: {.callout-note title="Definição Formal" appearance="simple" collapse="true"}
+A esperança de $X$, $E(X)$, é calculada como:
 
 $$E(X) = \sum_{x} x \cdot P(X = x)$$
 
 para variáveis discretas.
 
-$$E(X) = \int_{-\infty}^{\infty} x \cdot f(x)$$,
+$$E(X) = \int_{-\infty}^{\infty} x \cdot f(x)$$
 
 para variáveis contínuas
+:::
+
 
 **VARIÂNCIA POPULACIONAL** - $Var(X)$
 
-A variância é uma medida que captura como os dados populacionais se dispersão em relação a sua média (ou esperança).
+A **variância** é uma medida que captura como os dados populacionais se **dispersão em relação a sua média** (ou esperança). Suponha que conhecemos o tempo de tramitação de processos judiciais. A Variância é uma medida que nos ajuda a entender o **quão espalhados estão os tempos de cada processo em relação ao tempo médio**. Como não importa se durou mais ou menos que a média, usamos a medida do **desvio ao quadrado**!
 
-$$Var(X) =\frac{1}{N} \sum_{1}^{N} (X_i-E(X))^2$$ Ou podemos assim representar: $$\text{Var}(X) = E(X^2) - [E(X)]^2$$.
+
+::: {.callout-note title="Definição Formal" appearance="simple" collapse="true"}
+A Variância é uma medida de desvio em relação a média, ao quadrado, definida como:
+
+$$Var(X) =\frac{1}{N} \sum_{1}^{N} (X_i-E(X))^2$$ 
+
+Ou podemos assim representar:
+
+$$\text{Var}(X) = E(X^2) - [E(X)]^2$$
+
+:::
 
 **DESVIO PADRÃO POPULACIONAL** - $DP(X)$
 
-A variância é uma medida ao quadrado. Se estamos falando da renda seria uma medida da dispersão ao quadrado, ou seja, em $R\$^{2}$. Para retornar a unidade original usamos o desvio padrão que é:
+A variância é uma medida ao quadrado. Se estamos falando da renda seria uma medida da dispersão ao quadrado, ou seja, em $R\$^{2}$, se for o tempo, $T^{2}$. Para retornar a unidade original usamos a raiz quadrada da variância, que chamamos de desvio padrão.
+
+::: {.callout-note title="Definição Formal" appearance="simple" collapse="true"}
+O desvio padrão é a raiz quadrada da variância:
 
 $$DP(X)=\sqrt{Var(X)}$$
 
-Vejamos o que acontece quando mudamos a esperança e o desvio padrão. No gráfico em azul temos a esperança igual a 10 e devio padrão de 2,5. No gráfico em vermelho temos esperança de 20 e desvio padrão de 10. E no grafico em verde temos esperança de 10 e desvio padrão de 1. Nota-se que quanto menor o desvio padrão mais concentrados são os valores que podem acontecer.
+:::
+
+**EXEMPLO**
+
+Vejamos o que acontece quando mudamos a esperança e o desvio padrão. 
+
+- No gráfico em azul temos a esperança igual a 10 e devio padrão de 2,5. 
+- No gráfico em vermelho temos esperança de 20 e desvio padrão de 10. 
+- E no grafico em verde temos esperança de 10 e desvio padrão de 1. 
+
+Nota-se que quanto menor o desvio padrão mais concentrados são os valores que podem acontecer.
 
 ```{r echo = TRUE, fig.cap= "Médias e desvios distintos entre distribuições",fig.height = 3.5, fig.width = 6}
 curve(dnorm(x,mean=10,sd=sqrt(2.5)),xlim=c(0,30),ylim=c(0.0,0.4),xaxs="i",yaxs="i",ylab="", col="darkblue") 
@@ -281,13 +314,38 @@ Duas medidas que tentam mensurar o "grau de associação" linear entre X e Y sã
 
 **COVARIÂNCIA**
 
+A **covariância** mede como duas variáveis se **movem conjuntamente**.
+Quando **uma aumenta** e a outra **tende a aumentar** também, a **covariância é positiva**. Quando **uma cresce** e a outra **tende a diminuir**, a **covariância é negativa**.
+Em outras palavras, ela indica o sentido da associação entre as variáveis, se caminham na mesma direção ou em direções opostas.
+
+Por exemplo, podemos observar a covariância entre renda e consumo: quando a renda aumenta, o consumo normalmente também aumenta, indicando uma covariância positiva.
+
+Entretanto, a covariância é expressa nas unidades originais das variáveis (por exemplo, em reais e porcentagem), o que dificulta a comparação entre diferentes pares de variáveis.
+
+
+::: {.callout-note title="Definição Formal" appearance="simple" collapse="true"}
+A covariância pode ser assim medida: 
+
 $$Cov(X,Y)=E[(X-E(X))(Y-E(Y))]= E(X.Y)-E(X).E(Y)$$
 
-Ela mede a variabilidade conjunta de uma variável aleátoria multidimensional. Como no caso da variância, ela sofre do efeito das escalas de medidas. Para corrigir dividimos pelos desvios padrões. Surge dessa maneira a medida de correlação.
+:::
+
 
 **CORRELAÇÃO**
 
+Para contornar o problema das diferentes unidades de medida, utilizamos a **correlação**, que é uma versão **padronizada da covariância**.  Isto é, a covariância é **dividida pelo desvios padrões** das variáveis envolvidas.
+Ela mede a força e direção da **relação linear** entre duas variáveis, mas varia sempre entre –1 e 1, sem unidade de medida. Assim, uma correlação próxima de **1** indica associação positiva perfeita, **–1** associação negativa perfeita, e **0** ausência de relação linear.
+
+
+::: {.callout-note title="Definição Formal" appearance="simple" collapse="true"}
+A correlação pode ser assim medida: 
+
 $$\rho_{X,Y}=\frac{E[(X-E(X))(Y-E(Y))]}{\sqrt{Var(X)Var(Y)}}=\frac{Cov(X,Y)}{DP(X).DP(Y)}$$
+
+:::
+
+**Atenção**
+
 
 ::: callout-warning
 ## Correlação
@@ -296,7 +354,7 @@ A correlação mede o **GRAU DE ASSOCIAÇÃO LINEAR**. Associações não linear
 :::
 
 ::: callout-note
-## Lendo a Correlação
+## Interpretando a Correlação
 
 A correlação $\rho_{X,Y}$ varia de -1 até 1. Sendo que:
 
@@ -314,6 +372,7 @@ data$v4 = data$var1 ** 2
 data$v5 = -(data$var1 ** 2) 
 pairs.panels(data)
 ```
+
 
 ## Conceitos Básicos Inferência Estatística
 

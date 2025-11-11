@@ -299,7 +299,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#conceitos-básicos-de-estatística" id="toc-conceitos-básicos-de-estatística" class="nav-link" data-scroll-target="#conceitos-básicos-de-estatística"><span class="header-section-number">11.2</span> Conceitos Básicos de Estatística</a>
   <ul class="collapse">
-  <li><a href="#a-variável-aleatória" id="toc-a-variável-aleatória" class="nav-link" data-scroll-target="#a-variável-aleatória"><span class="header-section-number">11.2.1</span> A Variável Aleatória</a></li>
+  <li><a href="#a-população-e-suas-características" id="toc-a-população-e-suas-características" class="nav-link" data-scroll-target="#a-população-e-suas-características"><span class="header-section-number">11.2.1</span> A População e suas Características</a></li>
   <li><a href="#variáveis-aleatórias-bidimensionais" id="toc-variáveis-aleatórias-bidimensionais" class="nav-link" data-scroll-target="#variáveis-aleatórias-bidimensionais"><span class="header-section-number">11.2.2</span> Variáveis Aleatórias Bidimensionais</a></li>
   </ul></li>
   <li><a href="#conceitos-básicos-inferência-estatística" id="toc-conceitos-básicos-inferência-estatística" class="nav-link" data-scroll-target="#conceitos-básicos-inferência-estatística"><span class="header-section-number">11.3</span> Conceitos Básicos Inferência Estatística</a>
@@ -509,11 +509,11 @@ Problema 3
 <p><strong>Problema</strong>: <u>Quantas mulheres serão alvos dessa política?</u></p>
 </div>
 </div>
-<section id="a-variável-aleatória" class="level3" data-number="11.2.1">
-<h3 data-number="11.2.1" class="anchored" data-anchor-id="a-variável-aleatória"><span class="header-section-number">11.2.1</span> A Variável Aleatória</h3>
-<p>O problema nos define a população que estou interessado. Vamos seguir, a princípio, com o nosso probelma 1 para definirmos alguns conceitos importantes.</p>
+<section id="a-população-e-suas-características" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="a-população-e-suas-características"><span class="header-section-number">11.2.1</span> A População e suas Características</h3>
+<p>O <strong>problema</strong> nos define a <strong>população</strong> que estou interessado. Vamos seguir, a princípio, com o nosso probelma 1 para definirmos alguns conceitos importantes.</p>
 <p><strong>No problema 1</strong>: me interessa compreender a renda das mulheres que moram em Ribeirão Preto em dado ano. Para ficar simples vamos abreviar o que nos interessa</p>
-<p><span class="math display">\[X=\text{Renda das mulheres que moram em Ribeirão Preto em determinado ano}\]</span> Agora posso utilizar o X no lugar do nome. Olhando para a população e pensando que cada nível de renda pode ser representada por uma cor, teremos a seguinte imagem pouco de como a renda se distribui nessa população:</p>
+<p><span class="math display">\[X=\text{Renda das mulheres que moram em Ribeirão Preto em determinado ano}\]</span> Agora posso utilizar o <strong>X</strong> no lugar do nome. Olhando para a população e pensando que cada nível de renda pode ser representada por uma cor, teremos a seguinte imagem pouco de como a renda se distribui nessa população:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figuras\lego.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
@@ -539,11 +539,11 @@ Problema 3
 <p><strong>ESPAÇO AMOSTRAL</strong></p>
 <p>Agora conseguimos organizar os nossos resultados em um lugar chamado espaço amostral. Nele teremos todas as cores (azul, branca, amarela…) que podem acontecer e o número de peças de cada cor (a chance). Em outras palavras teremos todos os possíveis valores de <span class="math inline">\(X\)</span> e suas probabilidades.</p>
 <p><strong>VARIÁVEL ALEATÓRIA</strong></p>
-<p>Quanto representamos esse espaço amostral em formato de números é o que chamamos de Variável Aleatória (V.A.). A V.A. é a combinação de tudo que pode acontecer, ou seja, todas as rendas que existem associadas a probabilidade de cada uma das rendas acontecerem.</p>
+<p>Quanto representamos esse espaço amostral em formato de números é o que chamamos de Variável Aleatória (V.A.). A V.A. é a <strong>combinação de tudo que pode acontecer</strong>, ou seja, todas as rendas que existem <strong>associadas a probabilidade</strong> de cada uma das rendas acontecerem.</p>
 <p>Existem dois tipos principais de variáveis aleatórias: discretas e contínuas.</p>
 <p><strong>VARIÁVEIS ALEATÓRIAS DISCRETAS</strong></p>
 <p>É um tipo de variável que conseguimos colocar em lista, seja finita ou infinita <span class="math inline">\(x_1; x_2;...; x_n;...\)</span> e associa-se a cada um dessses valores uma probabilidade <span class="math inline">\(p(x_1); p(x_2);...; p(x_n);...\)</span></p>
-<p>Podemos pensar aqui se a pessoa é casada, solteira, divorciada, viúva ou outra condição. Se no processo classificamos como homicídio ou feminicídio, se mora na área urbana ou rural…</p>
+<p>Podemos pensar aqui se a pessoa é casada, solteira, divorciada, viúva ou outra condição. Se no processo classificamos como homicídio ou feminicídio, se é procedente ou improcedente, se mora na área urbana ou rural…</p>
 <p>Na figura abaixo iremos coletar de 20 processos de homicídio e gostariamos de saber quando é classificado como feminicídio e quanto é classificado como homicídio (p=0,3).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>feminicidio <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20</span></span>
@@ -564,8 +564,8 @@ Problema 3
 </div>
 </div>
 <p><strong>VARIÁVEIS ALEATÓRIAS CONTÍNUAS</strong></p>
-<p>Por outro lado, uma variável aleatória contínua pode assumir infinito valores dentro de um intervalo específico. Agora temos infinitas possibilidades de resultados para <span class="math inline">\(X\)</span> e agora associamos uma função <span class="math inline">\(f(x)\)</span> que irá descrever o comportamento da probabilidade.</p>
-<p>Por exemplo, a altura de uma pessoa, a sua renda, a sua idade, o tempo que demora um processo.</p>
+<p>Por outro lado, uma variável aleatória contínua pode assumir infinito valores dentro de um intervalo específico. Agora temos infinitas possibilidades de resultados para <span class="math inline">\(X\)</span> e agora associamos uma <strong>função <span class="math inline">\(f(x)\)</span> que irá descrever o comportamento da probabilidade</strong>.</p>
+<p>Por exemplo, a altura de uma pessoa, a sua renda, a sua idade, o <strong>tempo que demora um processo</strong>.</p>
 <p>Abaixo temos uma representação de uma distriuição continua da renda das mulheres em Ribeirão Preto, chamada distribuição normal:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>(<span class="at">all.names =</span> <span class="cn">TRUE</span>)) <span class="co">#will clear all objects includes hidden objects.</span></span>
@@ -589,20 +589,81 @@ Problema 3
 </div>
 <section id="esperança-e-variância" class="level4" data-number="11.2.1.1">
 <h4 data-number="11.2.1.1" class="anchored" data-anchor-id="esperança-e-variância"><span class="header-section-number">11.2.1.1</span> Esperança e Variância</h4>
-<p>O fomato das distribuições vistas dependem principalmente de dois parâmetros: A esperança que é uma medida de centralidade e a variância que é uma medida de dispersão.</p>
+<p>O formato das distribuições vistas dependem principalmente de dois parâmetros: A <strong>esperança</strong> (média ponderada) que é uma medida de centralidade e a <strong>variância</strong> que é uma medida de dispersão.</p>
 <p><strong>ESPERANÇA</strong> - <span class="math inline">\(E(X)\)</span></p>
-<p>É uma medida de centralidade da variável aleatória. É definida como a média ponderada de todos os possíveis resultados de <span class="math inline">\(X\)</span>, onde os pesos são dados pelas probabilidades desses resultados ocorrerem. A esperança de <span class="math inline">\(X\)</span>, <span class="math inline">\(E(X)\)</span>, é calculada como:</p>
+<p>A <strong>esperança</strong> de uma variável aleatória ou média populacional representa o valor médio que se <strong>espera observar</strong> se o fenômeno fosse repetido muitas vezes sob as mesmas condições. Em outras palavras, é uma medida de tendência central que indica para onde os <strong>resultados tendem a convergir</strong> (a média). É definida como a média ponderada de todos os possíveis resultados de <span class="math inline">\(X\)</span>, onde os pesos são dados pelas probabilidades desses resultados ocorrerem.</p>
+<ul>
+<li>Qual o tempo médio de um processo de homicídio até a sentença?</li>
+<li>Qual a a média de procedência de processos relacionados à violência contra a mulher?</li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled" title="Definição Formal">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definição Formal
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A esperança de <span class="math inline">\(X\)</span>, <span class="math inline">\(E(X)\)</span>, é calculada como:</p>
 <p><span class="math display">\[E(X) = \sum_{x} x \cdot P(X = x)\]</span></p>
 <p>para variáveis discretas.</p>
-<p><span class="math display">\[E(X) = \int_{-\infty}^{\infty} x \cdot f(x)\]</span>,</p>
+<p><span class="math display">\[E(X) = \int_{-\infty}^{\infty} x \cdot f(x)\]</span></p>
 <p>para variáveis contínuas</p>
+</div>
+</div>
+</div>
 <p><strong>VARIÂNCIA POPULACIONAL</strong> - <span class="math inline">\(Var(X)\)</span></p>
-<p>A variância é uma medida que captura como os dados populacionais se dispersão em relação a sua média (ou esperança).</p>
-<p><span class="math display">\[Var(X) =\frac{1}{N} \sum_{1}^{N} (X_i-E(X))^2\]</span> Ou podemos assim representar: <span class="math display">\[\text{Var}(X) = E(X^2) - [E(X)]^2\]</span>.</p>
+<p>A <strong>variância</strong> é uma medida que captura como os dados populacionais se <strong>dispersão em relação a sua média</strong> (ou esperança). Suponha que conhecemos o tempo de tramitação de processos judiciais. A Variância é uma medida que nos ajuda a entender o <strong>quão espalhados estão os tempos de cada processo em relação ao tempo médio</strong>. Como não importa se durou mais ou menos que a média, usamos a medida do <strong>desvio ao quadrado</strong>!</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Definição Formal">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definição Formal
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A Variância é uma medida de desvio em relação a média, ao quadrado, definida como:</p>
+<p><span class="math display">\[Var(X) =\frac{1}{N} \sum_{1}^{N} (X_i-E(X))^2\]</span></p>
+<p>Ou podemos assim representar:</p>
+<p><span class="math display">\[\text{Var}(X) = E(X^2) - [E(X)]^2\]</span></p>
+</div>
+</div>
+</div>
 <p><strong>DESVIO PADRÃO POPULACIONAL</strong> - <span class="math inline">\(DP(X)\)</span></p>
-<p>A variância é uma medida ao quadrado. Se estamos falando da renda seria uma medida da dispersão ao quadrado, ou seja, em <span class="math inline">\(R\$^{2}\)</span>. Para retornar a unidade original usamos o desvio padrão que é:</p>
+<p>A variância é uma medida ao quadrado. Se estamos falando da renda seria uma medida da dispersão ao quadrado, ou seja, em <span class="math inline">\(R\$^{2}\)</span>, se for o tempo, <span class="math inline">\(T^{2}\)</span>. Para retornar a unidade original usamos a raiz quadrada da variância, que chamamos de desvio padrão.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Definição Formal">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definição Formal
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>O desvio padrão é a raiz quadrada da variância:</p>
 <p><span class="math display">\[DP(X)=\sqrt{Var(X)}\]</span></p>
-<p>Vejamos o que acontece quando mudamos a esperança e o desvio padrão. No gráfico em azul temos a esperança igual a 10 e devio padrão de 2,5. No gráfico em vermelho temos esperança de 20 e desvio padrão de 10. E no grafico em verde temos esperança de 10 e desvio padrão de 1. Nota-se que quanto menor o desvio padrão mais concentrados são os valores que podem acontecer.</p>
+</div>
+</div>
+</div>
+<p><strong>EXEMPLO</strong></p>
+<p>Vejamos o que acontece quando mudamos a esperança e o desvio padrão.</p>
+<ul>
+<li>No gráfico em azul temos a esperança igual a 10 e devio padrão de 2,5.</li>
+<li>No gráfico em vermelho temos esperança de 20 e desvio padrão de 10.</li>
+<li>E no grafico em verde temos esperança de 10 e desvio padrão de 1.</li>
+</ul>
+<p>Nota-se que quanto menor o desvio padrão mais concentrados são os valores que podem acontecer.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x,<span class="at">mean=</span><span class="dv">10</span>,<span class="at">sd=</span><span class="fu">sqrt</span>(<span class="fl">2.5</span>)),<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">30</span>),<span class="at">ylim=</span><span class="fu">c</span>(<span class="fl">0.0</span>,<span class="fl">0.4</span>),<span class="at">xaxs=</span><span class="st">"i"</span>,<span class="at">yaxs=</span><span class="st">"i"</span>,<span class="at">ylab=</span><span class="st">""</span>, <span class="at">col=</span><span class="st">"darkblue"</span>) </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">new=</span>T)</span>
@@ -660,10 +721,46 @@ Problema 3
 <h4 data-number="11.2.2.1" class="anchored" data-anchor-id="covariância-e-correlação"><span class="header-section-number">11.2.2.1</span> Covariância e Correlação</h4>
 <p>Duas medidas que tentam mensurar o “grau de associação” linear entre X e Y são:</p>
 <p><strong>COVARIÂNCIA</strong></p>
+<p>A <strong>covariância</strong> mede como duas variáveis se <strong>movem conjuntamente</strong>. Quando <strong>uma aumenta</strong> e a outra <strong>tende a aumentar</strong> também, a <strong>covariância é positiva</strong>. Quando <strong>uma cresce</strong> e a outra <strong>tende a diminuir</strong>, a <strong>covariância é negativa</strong>. Em outras palavras, ela indica o sentido da associação entre as variáveis, se caminham na mesma direção ou em direções opostas.</p>
+<p>Por exemplo, podemos observar a covariância entre renda e consumo: quando a renda aumenta, o consumo normalmente também aumenta, indicando uma covariância positiva.</p>
+<p>Entretanto, a covariância é expressa nas unidades originais das variáveis (por exemplo, em reais e porcentagem), o que dificulta a comparação entre diferentes pares de variáveis.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Definição Formal">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definição Formal
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A covariância pode ser assim medida:</p>
 <p><span class="math display">\[Cov(X,Y)=E[(X-E(X))(Y-E(Y))]= E(X.Y)-E(X).E(Y)\]</span></p>
-<p>Ela mede a variabilidade conjunta de uma variável aleátoria multidimensional. Como no caso da variância, ela sofre do efeito das escalas de medidas. Para corrigir dividimos pelos desvios padrões. Surge dessa maneira a medida de correlação.</p>
+</div>
+</div>
+</div>
 <p><strong>CORRELAÇÃO</strong></p>
+<p>Para contornar o problema das diferentes unidades de medida, utilizamos a <strong>correlação</strong>, que é uma versão <strong>padronizada da covariância</strong>. Isto é, a covariância é <strong>dividida pelo desvios padrões</strong> das variáveis envolvidas. Ela mede a força e direção da <strong>relação linear</strong> entre duas variáveis, mas varia sempre entre –1 e 1, sem unidade de medida. Assim, uma correlação próxima de <strong>1</strong> indica associação positiva perfeita, <strong>–1</strong> associação negativa perfeita, e <strong>0</strong> ausência de relação linear.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="Definição Formal">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definição Formal
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A correlação pode ser assim medida:</p>
 <p><span class="math display">\[\rho_{X,Y}=\frac{E[(X-E(X))(Y-E(Y))]}{\sqrt{Var(X)Var(Y)}}=\frac{Cov(X,Y)}{DP(X).DP(Y)}\]</span></p>
+</div>
+</div>
+</div>
+<p><strong>Atenção</strong></p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -683,7 +780,7 @@ Correlação
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Lendo a Correlação
+Interpretando a Correlação
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1055,7 +1152,7 @@ Erro Estatístico
 <p>Portanto,</p>
 <p><span class="math display">\[P(\bar{X}\geq 633|H_0)=0.05= \alpha\]</span></p>
 <div class="callout callout-style-simple callout-note callout-titled" title="Tabela Normal">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1064,7 +1161,7 @@ Tabela Normal
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <center>
 <div class="quarto-figure quarto-figure-center">
