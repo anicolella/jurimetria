@@ -1,0 +1,332 @@
+[
+  {
+    "objectID": "priest_klein.html",
+    "href": "priest_klein.html",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "",
+    "text": "6.1 Introdução\nO estudo clássico The Selection of Disputes for Litigation, de George L. Priest e Benjamin Klein (1984), marcou a análise econômica do direito ao propor uma teoria para explicar por que apenas uma pequena parte dos conflitos sociais chega, de fato, a julgamento — e por que os casos julgados não são representativos do universo total de disputas.\nA intuição central altera a leitura das estatísticas judiciais: o que vemos nas decisões publicadas é apenas o “topo do iceberg”; a maioria dos conflitos termina em acordo, desistência ou outras formas de composição.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#o-problema-da-seleção-dos-litígios",
+    "href": "priest_klein.html#o-problema-da-seleção-dos-litígios",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.2 O problema da seleção dos litígios",
+    "text": "6.2 O problema da seleção dos litígios\nApenas uma fração mínima das disputas chega a julgamento. A maioria termina antes — por acordo, mediação ou desistência. Assim, analisar apenas decisões judiciais cria uma visão distorcida: as sentenças representam o “topo do iceberg”.\nAntes de Priest e Klein, supunha-se que os casos julgados eram representativos do universo de litígios. O modelo deles refuta essa ideia: os casos são selecionados racionalmente pelas partes, não sorteados aleatoriamente.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#antecedentes-e-limitações",
+    "href": "priest_klein.html#antecedentes-e-limitações",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.3 Antecedentes e limitações",
+    "text": "6.3 Antecedentes e limitações\nEntre os precursores: - Karl Llewellyn, que via os casos litigados como “patológicos”; - William Whitford, que tentou coletar todos os casos de um tipo de litígio; - Landes & Posner, que formularam modelos de custo-benefício mas presumindo seleção aleatória.\nPriest e Klein, ao contrário, argumentam que a decisão de litigar é racional e estratégica, determinada por expectativas e custos.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#o-modelo-de-seleção",
+    "href": "priest_klein.html#o-modelo-de-seleção",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.4 O modelo de seleção",
+    "text": "6.4 O modelo de seleção\n\n6.4.1 Intuição básica\nCada disputa possui um valor “verdadeiro” \\((Y')\\), que reflete o grau de responsabilidade do réu diante de um padrão decisório \\((Y^*)\\). Assim:\n\nSe \\((Y' &gt; Y^*)\\), o autor deveria vencer;\nSe \\((Y' &lt; Y^*)\\), o réu deveria vencer.\n\nAs partes, porém, não conhecem \\((Y')\\) com precisão. Cada uma forma uma estimativa imperfeita, com erro:\n\\[\nY_{p} = Y' + \\varepsilon_{p}\n\\]\n\\[\nY_{d} = Y' + \\varepsilon_{d}\n\\]\nonde:\n\n\\((Y_{p})\\) é a estimativa do autor;\n\\((Y_{d})\\) é a estimativa do réu;\n\\((\\varepsilon_{p})\\) e \\((\\varepsilon_{d})\\) são erros de previsão.\n\nA partir dessas estimativas, cada parte calcula uma probabilidade subjetiva de vitória, \\((P_{p})\\) e \\((P_{d})\\).\n\n\n6.4.2 Condição para o litígio\nUm caso segue a julgamento apenas se a diferença entre as probabilidades esperadas for suficiente para compensar os custos do litígio:\n\\[\nP_{p} - P_{d} &gt; D\n\\]\nem que \\((D)\\) representa o diferencial entre os custos de litigar e os custos de negociar.\nQuando essa diferença é pequena, o acordo é racional; quando é grande, o caso vai a julgamento.\n\n\n6.4.3 O efeito da incerteza\nCasos “claros” — com alto consenso sobre quem vencerá — são resolvidos por acordo.\nOs casos que chegam ao tribunal são aqueles em torno do limiar de incerteza, próximos de \\((Y^*)\\).\nLogo, os julgamentos tendem a envolver casos difíceis, e as vitórias se distribuem quase igualmente entre autor e réu.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#a-regra-dos-50",
+    "href": "priest_klein.html#a-regra-dos-50",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.5 A regra dos 50%",
+    "text": "6.5 A regra dos 50%\nA consequência mais conhecida do modelo é o equilíbrio estatístico de aproximadamente 50%.\nQuanto mais precisas forem as informações das partes:\n\nMenor será o número de casos julgados;\nMais próxima de 50% será a taxa de vitórias dos autores.\n\nIsso não significa justiça perfeita, mas sim um equilíbrio de seleção: as partes só levam a julgamento os casos mais incertos, que tendem a se dividir igualmente em resultados favoráveis a cada lado.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#implicações-teóricas",
+    "href": "priest_klein.html#implicações-teóricas",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.6 Implicações teóricas",
+    "text": "6.6 Implicações teóricas\n\nViés de amostragem – as decisões judiciais não representam o universo completo de disputas;\n\nLimite das estatísticas – taxas de sucesso não medem imparcialidade judicial;\n\nAprendizado – após mudanças legais, as taxas de vitória oscilam, mas convergem a 50%;\n\nCustos e incentivos – quanto maior o custo de litigar, menor o número de julgamentos e mais forte o equilíbrio.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#evidências-empíricas",
+    "href": "priest_klein.html#evidências-empíricas",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.7 Evidências empíricas",
+    "text": "6.7 Evidências empíricas\nEstudos de vinte anos em Cook County (Illinois) mostraram taxas de vitória próximas de 50% em várias categorias (indenizações, responsabilidade médica, etc.).\nOutras pesquisas confirmaram o padrão: a proporção de vitórias é estável ao longo do tempo, sugerindo que reflete o processo de seleção, e não o mérito substantivo.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#críticas-e-limitações",
+    "href": "priest_klein.html#críticas-e-limitações",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.8 Críticas e limitações",
+    "text": "6.8 Críticas e limitações\n\nRacionalidade e informação: o modelo assume simetria informacional e racionalidade perfeita, raramente verificadas;\n\nPoder econômico: ignora diferenças de recursos e capacidade de suportar risco;\n\nFatores psicológicos e simbólicos: desconsidera motivações não econômicas;\n\nLitigância repetitiva: não explica bem comportamentos estratégicos de grandes agentes.\n\nMesmo assim, o modelo fornece uma base teórica poderosa para compreender o funcionamento estatístico do sistema judicial.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#relevância-contemporânea-e-jurimetria",
+    "href": "priest_klein.html#relevância-contemporânea-e-jurimetria",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.9 Relevância contemporânea e jurimetria",
+    "text": "6.9 Relevância contemporânea e jurimetria\nA teoria de Priest & Klein tornou-se essencial para a jurimetria e a IA aplicada ao direito.\nAo analisar grandes bases de dados judiciais, deve-se reconhecer que as decisões publicadas são uma amostra enviesada.\nModelos de previsão baseados apenas em julgamentos podem amplificar esse viés se não corrigirem o processo de seleção.\nFerramentas como modelos de seleção de Heckman, propensity score matching ou dados sobre acordos e desistências ajudam a ajustar as estimativas empíricas.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#conclusão",
+    "href": "priest_klein.html#conclusão",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.10 Conclusão",
+    "text": "6.10 Conclusão\nO modelo de Priest & Klein revela que o equilíbrio de 50% nas vitórias judiciais não expressa imparcialidade perfeita, mas sim o produto da seleção racional dos casos que chegam a julgamento.\nCompreender essa lógica é fundamental para estudos empíricos, políticas de acesso à justiça e modelos de IA jurídica.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "priest_klein.html#referências",
+    "href": "priest_klein.html#referências",
+    "title": "6  Seleção de disputas para o litígio",
+    "section": "6.11 Referências",
+    "text": "6.11 Referências\n\nPriest, G. L., & Klein, B. (1984). The Selection of Disputes for Litigation. Journal of Legal Studies, 13(1), 1–55.\n\nLandes, W., & Posner, R. (1973). The Economic Structure of Tort Law.\n\nLlewellyn, K. (1960). The Common Law Tradition: Deciding Appeals.\n\nWhitford, W. (1968). Strict Products Liability and the Automobile Industry: Much Ado About Nothing. Wisconsin Law Review, 83–125.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Seleção de disputas para o litígio</span>"
+    ]
+  },
+  {
+    "objectID": "movimentacao.html",
+    "href": "movimentacao.html",
+    "title": "8  Movimentação",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(httr)\nlibrary(jsonlite)\n\nheaders = c(\n  'Authorization' = 'APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==',\n  'Content-Type' = 'application/json'\n)\n\n\nbody = '{\n  \"query\": {\n        \"bool\": {\n            \"must\": [\n                {\"match\": {\"assuntos.codigo\": 3372}},\n                {\"match\": {\"grau\": \"G1\"}}\n\n            ]\n        }\n   }\n}'\n\n\nbody = '{\n  \"size\": 8930,\n  \"query\": {\n        \"bool\": {\n            \"must\": [\n                {\"match\": {\"classe.codigo\": 282}},\n                {\"match\": {\"grau\": \"G1\"}}\n\n            ]\n        }\n   }\n}'\n\n\n\n\nPOST(url = \"https://api-publica.datajud.cnj.jus.br/api_publica_tjto/_search\", body = body, add_headers(headers),\nwrite_disk(\"juri.json\"))\n\n\njuri &lt;- fromJSON(\"juri.json\")\n\ndados_basicos &lt;- juri |&gt; \n      pluck(\"hits\",\"hits\",\"_source\")\n\n\n\nmovimento &lt;- dados_basicos  |&gt; \n      select(processo = numeroProcesso, movimentos) |&gt;\n      unnest(movimentos) |&gt; \n      janitor::clean_names() |&gt; \n      select(-complementos_tabelados) |&gt; \n      mutate(data_hora = parse_datetime(data_hora))\n\n\nmovimento  &lt;- movimento |&gt; \n     arrange(processo, desc(data_hora)) |&gt; \n     JurisMiner::tempo_movimentacao(data = data_hora)",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Movimentação</span>"
+    ]
+  },
+  {
+    "objectID": "galanter.html",
+    "href": "galanter.html",
+    "title": "7  Por que os que têm saem na frente: análise do texto de Marc Galanter",
+    "section": "",
+    "text": "7.1 Introdução\nO ensaio “Why the ‘Haves’ Come Out Ahead: Speculations on the Limits of Legal Change”, publicado por Marc Galanter em 1974, é uma das obras mais influentes da sociologia jurídica.\nO texto não é um estudo empírico, mas uma reflexão teórica sobre as estruturas que condicionam o funcionamento do sistema jurídico e limitam sua capacidade de promover mudanças redistributivas.\nGalanter busca compreender por que os grupos socialmente privilegiados (“os que têm”) tendem a sair vitoriosos nos litígios, enquanto os “have-nots” encontram dificuldades em converter o direito em instrumento de transformação.\nO ensaio propõe uma leitura estrutural da justiça: o foco desloca-se das normas e decisões individuais para a arquitetura institucional e estratégica do sistema jurídico.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Por que os que têm saem na frente: análise do texto de Marc Galanter</span>"
+    ]
+  },
+  {
+    "objectID": "galanter.html#a-estrutura-do-sistema-jurídico",
+    "href": "galanter.html#a-estrutura-do-sistema-jurídico",
+    "title": "7  Por que os que têm saem na frente: análise do texto de Marc Galanter",
+    "section": "7.2 A Estrutura do Sistema Jurídico",
+    "text": "7.2 A Estrutura do Sistema Jurídico\nLogo no início, Galanter apresenta uma decomposição do sistema jurídico em quatro elementos essenciais:\n\nRegras (rules) – o corpo de aprendizado normativo autorizado, isto é, o conjunto de princípios, leis e doutrinas reconhecidas.\n\nTribunais (courts) – as instituições que aplicam essas regras a casos concretos.\n\nAdvogados (lawyers) – os intermediários especializados que dominam as técnicas de argumentação e o manejo das instituições.\n\nPartes (parties) – os sujeitos sociais que apresentam ou defendem reivindicações diante do sistema:contentReferenceoaicite:0.\n\nA partir dessa estrutura, o autor formula a pergunta central: em que condições a litigância pode ser redistributiva, isto é, capaz de diminuir desigualdades?\nA resposta que se desenha ao longo do texto é cética: a configuração do sistema jurídico tende a reforçar, e não a reduzir, as diferenças existentes entre os atores sociais.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Por que os que têm saem na frente: análise do texto de Marc Galanter</span>"
+    ]
+  },
+  {
+    "objectID": "galanter.html#suposições-iniciais",
+    "href": "galanter.html#suposições-iniciais",
+    "title": "7  Por que os que têm saem na frente: análise do texto de Marc Galanter",
+    "section": "7.3 Suposições Iniciais",
+    "text": "7.3 Suposições Iniciais\nO autor parte de algumas premissas básicas:\n\nA sociedade é composta por atores com diferentes níveis de riqueza e poder, envolvidos em interações competitivas.\n\nO sistema jurídico pretende aplicar normas gerais de modo imparcial, sem considerar a identidade das partes.\n\nAs regras são complexas e o acesso a elas exige especialização técnica, o que já cria barreiras.\n\nAs cortes produzem novas regras à medida que decidem casos concretos.\n\nOs recursos institucionais são escassos, de modo que nem todos os casos podem ser julgados plenamente — daí a prevalência dos acordos e transações.\n\nHá níveis hierárquicos de instituições: instâncias superiores que formulam regras e instâncias inferiores que as aplicam, com falhas de comunicação e execução entre elas.\n\nEssas premissas preparam o terreno para a ideia de que o direito, mesmo concebido como neutro, opera dentro de condições materiais e organizacionais que favorecem certos atores.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Por que os que têm saem na frente: análise do texto de Marc Galanter</span>"
+    ]
+  },
+  {
+    "objectID": "galanter.html#a-tipologia-das-partes-one-shotters-e-repeat-players",
+    "href": "galanter.html#a-tipologia-das-partes-one-shotters-e-repeat-players",
+    "title": "7  Por que os que têm saem na frente: análise do texto de Marc Galanter",
+    "section": "7.4 A Tipologia das Partes: “One-shotters” e “Repeat Players”",
+    "text": "7.4 A Tipologia das Partes: “One-shotters” e “Repeat Players”\nA principal inovação conceitual do texto é a distinção entre dois tipos de litigantes:\n\n7.4.1 One-shotters (OS)\nSão os atores que têm contato ocasional com o sistema judicial.\nEnvolvem-se em litígios apenas uma vez ou em raras ocasiões, como um acusado criminal, um consumidor lesado ou um trabalhador demitido.\nPara eles, o processo é único e decisivo: o risco é alto, o custo é grande, e não há perspectiva de experiência acumulada.\n\n\n7.4.2 Repeat Players (RP)\nSão aqueles que recorrem ao sistema de forma contínua e sistemática, como empresas, seguradoras, agências governamentais ou grandes credores.\nPossuem recursos financeiros, assessoria técnica constante, conhecimento das práticas institucionais e interesse em moldar o direito a longo prazo:contentReferenceoaicite:1.\nGalanter reconhece que essa distinção é uma simplificação — trata-se de um continuum, não de uma divisão rígida —, mas ela é útil para evidenciar o modo como a repetição e a organização estruturam o poder jurídico.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Por que os que têm saem na frente: análise do texto de Marc Galanter</span>"
+    ]
+  },
+  {
+    "objectID": "galanter.html#as-vantagens-dos-repeat-players",
+    "href": "galanter.html#as-vantagens-dos-repeat-players",
+    "title": "7  Por que os que têm saem na frente: análise do texto de Marc Galanter",
+    "section": "7.5 As Vantagens dos “Repeat Players”",
+    "text": "7.5 As Vantagens dos “Repeat Players”\nA partir dessa tipologia, o autor enumera um conjunto de vantagens sistemáticas dos RPs:\n\nExperiência e informação – o RP “já fez isso antes”: conhece as estratégias, os procedimentos e as reações das instituições.\n\nEconomia de escala – por lidar com muitos casos, reduz custos e aprende com a repetição.\n\nRelações institucionais – estabelece vínculos informais com juízes, promotores e servidores, o que facilita a comunicação e a confiança.\n\nReputação de barganha – pode construir uma imagem de credibilidade ou intransigência que o favorece em negociações.\n\nCapacidade de risco e longo prazo – como cada caso representa apenas uma pequena fração de seus interesses, o RP pode adotar estratégias arriscadas para obter ganhos estruturais.\n\nInfluência sobre as regras – investe recursos para moldar normas e precedentes, seja por meio do lobby, seja pela escolha seletiva de casos a levar adiante.\n\nControle da agenda judicial – decide quais litígios devem ser levados a julgamento e quais devem ser encerrados por acordo.\n\nMaior penetração das normas – dispõe de recursos para transformar decisões favoráveis em práticas efetivas no “nível de campo”.\n\nO resultado dessas vantagens é um acúmulo cumulativo de poder jurídico. O RP não apenas vence mais frequentemente, mas produz o direito a seu favor, orientando a evolução das regras e sua aplicação concreta.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Por que os que têm saem na frente: análise do texto de Marc Galanter</span>"
+    ]
+  },
+  {
+    "objectID": "galanter.html#o-problema-da-penetração-das-regras",
+    "href": "galanter.html#o-problema-da-penetração-das-regras",
+    "title": "7  Por que os que têm saem na frente: análise do texto de Marc Galanter",
+    "section": "7.6 O Problema da “Penetração” das Regras",
+    "text": "7.6 O Problema da “Penetração” das Regras\nGalanter introduz o conceito de “penetração” para descrever a efetividade real das normas.\nNem todas as regras formuladas nas instâncias superiores “penetram” até o nível das práticas cotidianas.\nA distância entre o “pico” (as cortes que enunciam regras) e o “campo” (as instituições que aplicam) abre espaço para distorções e desigualdades.\nOs RPs têm recursos para garantir que as regras que os favorecem sejam efetivamente implementadas, enquanto os OSs tendem a ver as regras favoráveis permanecerem simbólicas, sem eficácia prática.\nDesse modo, o direito formalmente igualitário reproduz desigualdades materiais.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Por que os que têm saem na frente: análise do texto de Marc Galanter</span>"
+    ]
+  },
+  {
+    "objectID": "galanter.html#a-taxonomia-das-configurações-de-litígio",
+    "href": "galanter.html#a-taxonomia-das-configurações-de-litígio",
+    "title": "7  Por que os que têm saem na frente: análise do texto de Marc Galanter",
+    "section": "7.7 A Taxonomia das Configurações de Litígio",
+    "text": "7.7 A Taxonomia das Configurações de Litígio\nPara aprofundar sua análise, Galanter apresenta uma matriz com quatro tipos de configuração processual:\n\n\n\n\n\n\n\n\n\nTipo de relação\nDemandante\nDemandado\nExemplos\n\n\n\n\nBox I\nOS\nOS\nDivórcios, disputas familiares, vizinhança\n\n\nBox II\nRP\nOS\nProcessos de cobrança, despejos, ações fiscais\n\n\nBox III\nOS\nRP\nAcidentes de trânsito, ações contra seguradoras, demissões\n\n\nBox IV\nRP\nRP\nLitígios entre empresas, agências reguladoras, sindicatos\n\n\n\nO autor observa que a maior parte da litigância real situa-se em Box II, onde os RPs processam OSs em escala massiva e rotineira.\nEsses casos raramente geram jurisprudência inovadora, mas mantêm o fluxo burocrático do sistema.\nJá o Box III, no qual o OS desafia um RP, representa o espaço mais frágil da redistribuição.\nO OS tem pouco poder de barganha e dificilmente influencia a criação de novas regras.\nNos Box I e IV, as relações são mais simétricas, mas o volume de casos é pequeno.\nNos litígios entre RPs, há elevado investimento na produção de doutrina e precedentes, o que explica a sofisticação técnica das disputas empresariais ou administrativas.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Por que os que têm saem na frente: análise do texto de Marc Galanter</span>"
+    ]
+  },
+  {
+    "objectID": "galanter.html#o-papel-dos-advogados",
+    "href": "galanter.html#o-papel-dos-advogados",
+    "title": "7  Por que os que têm saem na frente: análise do texto de Marc Galanter",
+    "section": "7.8 O Papel dos Advogados",
+    "text": "7.8 O Papel dos Advogados\nA análise de Galanter ganha complexidade ao incluir os advogados como atores autônomos.\nEles próprios são repeat players profissionais e, portanto, introduzem novas camadas de desigualdade.\n\nOs advogados que atuam para grandes organizações mantêm relações contínuas, recursos estáveis e acesso privilegiado à informação.\n\nJá os que representam clientes ocasionais trabalham de forma esporádica, sob restrições éticas (proibição de publicidade, honorários limitados) e com poucos meios de investimento.\n\nA organização da profissão jurídica, segundo Galanter, tende a reforçar as vantagens dos RPs.\nOs profissionais que os atendem estão melhor posicionados social e economicamente; os que servem aos OSs ocupam as camadas inferiores da profissão e dispõem de menos autonomia.\nMesmo os advogados que poderiam agir como contrapeso acabam integrando-se ao sistema de relações permanentes com as instituições:contentReferenceoaicite:2.\nAssim, o advogado — longe de nivelar as forças — atua como multiplicador das desigualdades estruturais.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Por que os que têm saem na frente: análise do texto de Marc Galanter</span>"
+    ]
+  },
+  {
+    "objectID": "galanter.html#o-direito-e-os-limites-da-mudança",
+    "href": "galanter.html#o-direito-e-os-limites-da-mudança",
+    "title": "7  Por que os que têm saem na frente: análise do texto de Marc Galanter",
+    "section": "7.9 O Direito e os Limites da Mudança",
+    "text": "7.9 O Direito e os Limites da Mudança\nO título do ensaio já sugere seu argumento principal: existem limites estruturais à capacidade do direito de produzir mudanças redistributivas.\nEsses limites decorrem de três fatores combinados:\n\nA posição desigual dos atores diante do sistema.\n\nA lógica interna das instituições jurídicas, que favorece a repetição e a previsibilidade.\n\nA transformação das vitórias dos poderosos em regras duradouras, enquanto as vitórias dos fracos permanecem episódicas.\n\nMesmo quando novas normas parecem beneficiar os “have-nots”, sua aplicação depende de recursos e da disposição institucional que, na maioria das vezes, pertencem aos “haves”.\nO resultado é um paradoxo: o direito formalmente igualitário produz resultados sistematicamente desiguais.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Por que os que têm saem na frente: análise do texto de Marc Galanter</span>"
+    ]
+  },
+  {
+    "objectID": "galanter.html#a-dimensão-cultural-e-a-litigiosidade",
+    "href": "galanter.html#a-dimensão-cultural-e-a-litigiosidade",
+    "title": "7  Por que os que têm saem na frente: análise do texto de Marc Galanter",
+    "section": "7.10 A Dimensão Cultural e a “Litigiosidade”",
+    "text": "7.10 A Dimensão Cultural e a “Litigiosidade”\nEm uma digressão, Galanter observa que as sociedades diferem quanto ao valor atribuído à litigância.\nAlguns contextos culturais encaram a ida aos tribunais como comportamento legítimo e desejável; outros, como indício de fracasso social ou desonra.\nEssas disposições influenciam o equilíbrio entre OSs e RPs: quanto maior o custo psicológico de litigar, mais os indivíduos tenderão a evitar o processo e, portanto, a reforçar a posição dos atores institucionais.\nAo mesmo tempo, o autor distingue entre o valor simbólico das regras e o valor instrumental de sua aplicação:\nas massas podem sentir orgulho de viver sob leis justas, mesmo sem condições de acioná-las eficazmente.\nAssim, a crença na neutralidade do direito serve para legitimar a desigualdade, ao mesmo tempo em que disfarça suas causas estruturais.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Por que os que têm saem na frente: análise do texto de Marc Galanter</span>"
+    ]
+  },
+  {
+    "objectID": "galanter.html#a-lógica-interna-das-instituições",
+    "href": "galanter.html#a-lógica-interna-das-instituições",
+    "title": "7  Por que os que têm saem na frente: análise do texto de Marc Galanter",
+    "section": "7.11 A Lógica Interna das Instituições",
+    "text": "7.11 A Lógica Interna das Instituições\nO ensaio mostra que as instituições jurídicas são organizadas de modo a favorecer a eficiência e a estabilidade, e não a redistribuição.\nO excesso de demandas leva à necessidade de “filtragem” e “acomodação”, produzindo incentivos à conciliação e ao acordo.\nMas esses acordos não são simétricos: resultam de barganhas desiguais, nas quais a repetição e o poder de negociação dos RPs determinam os termos.\nO autor insiste que os tribunais não são instrumentos de engenharia social controlada.\nEles funcionam como arenas em que se reproduzem as posições sociais, e a mudança é possível apenas quando atores organizados — também eles “repeat players” — passam a representar interesses redistributivos.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Por que os que têm saem na frente: análise do texto de Marc Galanter</span>"
+    ]
+  },
+  {
+    "objectID": "galanter.html#considerações-finais",
+    "href": "galanter.html#considerações-finais",
+    "title": "7  Por que os que têm saem na frente: análise do texto de Marc Galanter",
+    "section": "7.12 Considerações Finais",
+    "text": "7.12 Considerações Finais\nMarc Galanter formula, em 1974, uma das análises mais persuasivas sobre a conexão entre estrutura social e desempenho jurídico.\nSeu argumento não é moralista nem sentimental: ele descreve um mecanismo institucional de autoperpetuação.\nOs “haves” saem na frente não porque as leis os favorecem abertamente, mas porque dominam as condições práticas de operação do direito:\na informação, o tempo, os recursos, as relações e a possibilidade de transformar experiências passadas em estratégias futuras.\nOs “have-nots”, por sua vez, chegam ao sistema de modo isolado, episódico e dependente — e, por isso, raramente conseguem modificar as regras do jogo.\nO texto termina com uma advertência: enquanto o sistema jurídico permanecer estruturado em torno da repetição e da especialização, a igualdade formal continuará a conviver com a desigualdade real.\nA lei, por mais neutra que pareça, tende a reproduzir o mundo que a produz.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Por que os que têm saem na frente: análise do texto de Marc Galanter</span>"
+    ]
+  },
+  {
+    "objectID": "galanter.html#referências",
+    "href": "galanter.html#referências",
+    "title": "7  Por que os que têm saem na frente: análise do texto de Marc Galanter",
+    "section": "7.13 Referências",
+    "text": "7.13 Referências\n\nGalanter, M. (1974). Why the “Haves” Come Out Ahead: Speculations on the Limits of Legal Change. Law & Society Review, 9(1), 95–160.",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Por que os que têm saem na frente: análise do texto de Marc Galanter</span>"
+    ]
+  },
+  {
+    "objectID": "manipulacao.html",
+    "href": "manipulacao.html",
+    "title": "9  Maipulando os Dados",
+    "section": "",
+    "text": "9.1 O R-project e as Boas Práticas",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Maipulando os Dados</span>"
+    ]
+  },
+  {
+    "objectID": "manipulacao.html#o-r-project-e-as-boas-práticas",
+    "href": "manipulacao.html#o-r-project-e-as-boas-práticas",
+    "title": "9  Maipulando os Dados",
+    "section": "",
+    "text": "9.1.1 O software R\nO R é uma linguagem e ambiente de desenvolvimento de Estatística e gráficos. É uma ferramenta poderosa, fornecendo ao seu usuário maior integração e qualidade gráfica e de análise. Alguns motivos para utilizar o R:\n\nÉ Gratuito: é um projeto open-source. Pode ser utilizado em qualquer sistema operacional e tem aberto seus códigos e pactos para poder ser inspecionado.\nR é uma Linguagem:Requer que seja escrito um script ao invés de clicar. A primeira vista uma característica negativa, entretanto, permite maior exploração, organização, memória da atividade, maior integração entre processos etc.\nGráficos e Visualizações: É sem sombra de dúvida o pacote estatístico com melhor e mais poderosa ferramenta de elaboração de gráficos e visualização.\nPacotes Estatísticos:Já possui muitas rotinas de análises já programadas nos diversos pacotes desenvolvidos, sendo muito bem documentados. Já possui muitas rotinas para regressão, regressão com séries temporais, regressão em painel, finanças, modelos de causalidade etc.\nFronteira do Conhecimento: Os principais desenvolvimentos teóricos em Econometria tem sua aplicação demonstrada e desenvolvida utilizando o R. Isso é valido para todas as subáreas do conhecimento em econometria, séries temporais, painel, finanças, etc.\nRecursos de Ajuda: Há uma comunidade muito grande disponível para solucionar dúvidas e uma vasta documentação disponível para consulta na rede.\nConexão com Outros Pacotes: O R integra com outros pacotes que automatizam o nosso trabalho cotidiano. Pode se conectar com o Python, Java, SQL, Latex etc.\n\n\n\n9.1.2 Utilizando Interface Gráfica - O Rstudio\nPode-se realizar seu script diretamente no console do R. Ele irá realizar um comando por vez. O R é uma interface leve e com poucos recursos gráficos.\nUma alternativa ao uso do R diretamente é o Rstudio, o qual é um editor de código ou um ambiente de desenvolvimento integrado. Ele possui quatro janelas, sendo a primeira a janela de script (superior esquerda) onde escrevemos os comandos em R.\nA segunda janela é o console (inferior esquerda) similar ao que temos no R e onde os resultados são apresentados. Pode-se digitar comando diretamente no console do RStudio.\nA terceira é a janela de ambiente e história (superior direita) ela armazena seus dados, valores e funções e a aba história possui a memoria dos comandos realizados.\nPor fim a quarta janela (inferior direita) apresenta os pacotes, os gráficos, os arquivos gerados e ajuda. Essa janela facilita a instalação de pacotes, carregamento de bibliotecas, visualização de gráficos e o caminho dos arquivos.\n\n\n9.1.3 Ajuda\nPara abrir a ajuda geral o seguinte abaixo pode ser utilizado e abrirá uma janela no seu navegador.\n\nhelp.start()\n\nSuponha que queiramos saber de uma função específica, assim pode-se utilizar o seguinte comando:\n\nhelp(summary)\n\nou\n\n?summary\n\nInclusive pode pedir um exemplo de como utilizar a função que está buscando\n\nexample(summary)\n\n\n\n9.1.4 Boas Práticas\nÉ fundamental que o usuário seja organizado. Forma é muito importante! Assim o usuário deve adotar padrões que auxiliem na organização do seu script ou programa.\nCase Sensitivy: O R diferencia letras minúsculas e maiúscula. Ou seja, m é diferente de M. Por exemplo, considere as três formas de escrever a palavra idade.\n\nidade ou Idade ou IDADE\n\nCada uma delas representa variáveis diferentes.\n\n\n\n\n\n\nDICA\n\n\n\nSempre utilize as suas variáveis em minúsculo. Adote isso como regra geral.\n\n\nCriando Bons Nomes: Vamos supor que queiramos criar uma variável que indique a idade que se formou na Universidade. Temos algumas opções:\n\nid: Ruim, pois não tem significado claro e pode confundir com a variável de identificação\nidade_formou_na_universidade: Ruim, pois o nome da variável é muito grande, difícil de escrever e de visualizar no banco de dados.\nidade_form: Bom nome, significativo, minúsculo e pequeno separa os dois nomes por underline\nidadeForm :Bom nome, significativo, minúsculo e pequeno separa os dois nomes por uma letra maiúscula.\n\n\n\n\n\n\n\nDICA\n\n\n\nAdote uma regra de criação para você e evite mudar. Crie nomes pequenos e significativos. Nunca inicie uma variável com número.\n\n\n\n\n9.1.5 Criando projeto no R\nPara saber em qual diretório o R está utilizando para salvar seu espaço de trabalho utilize o seguinte comando:\n\ngetwd() \n\nNo RStudio, sempre prefira a criação de um projeto para a organização de seus dados, com isso, ao mudar de máquina (ou estrutura de diretórios) seu código continuará funcionando normalmente.\n\n  File -&gt; New Project\n\n\n\n9.1.6 Identação é Importante\nIdentar é o recuo no texto em relação a margem. É importante que esse recuo exista para linhas do seu programa que são hierarquicamente conectadas. Vejamos dois exemplos com e sem identação:\nSem Identação\n\nx=c()\nx[1] = 3\nfor (i in 2:9) { \nx[i]=2*x[i-1]\n}\n\nNote que a quarta linha desse programa está hierarquicamente conectada a linha 3 do “for”, ou seja, é uma continuação do comando e portanto deve ser identado para demonstrar essa relação de dependência. Vejamos\nCom Identação\n\nx=c()\nx[1] = 3\nfor (i in 2:9) { \n  x[i]=2*x[i-1]\n}",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Maipulando os Dados</span>"
+    ]
+  },
+  {
+    "objectID": "manipulacao.html#inserindo-dados-no-r",
+    "href": "manipulacao.html#inserindo-dados-no-r",
+    "title": "9  Maipulando os Dados",
+    "section": "9.2 Inserindo Dados no R",
+    "text": "9.2 Inserindo Dados no R\n\n9.2.1 Tipos de Variáveis\nO R possui diversos tipos de variáveis. Alguns desses tipos são:\nVetores: Vamos inserir os dados denúmero de homicídios de mulheres nos diversos Estados brasileiros para o ano de 2022.No primeiro elemento teremos um erro, ao invés de 22 colocaremos 2.E não colocamos o valor do Distrito Federal e nem Tocantins\n\nhomic &lt;- c(2,  73,  22,  88,  406,  264,    95,  137,  127,  101,  75,  309,  200,  86,  256,  219,  70,  283,  60,  281,  88,  33,  101,  423,  37)\nhomic\n\n [1]   2  73  22  88 406 264  95 137 127 101  75 309 200  86 256 219  70 283  60\n[20] 281  88  33 101 423  37\n\n\nPodemos inserir vetores de texto, por exemplo, iremos inserir os estados brasileiros na mesma ordem do homicídio acima.\n\n\n [1] \"Acre\"                \"Alagoas\"             \"Amapá\"              \n [4] \"Amazonas\"            \"Bahia\"               \"Ceará\"              \n [7] \"Distrito Federal \"   \"Espírito Santo\"      \"Goiás\"              \n[10] \"Maranhão\"            \"Mato Grosso\"         \"Mato Grosso do Sul\" \n[13] \"Minas Gerais\"        \"Pará\"                \"Paraíba\"            \n[16] \"Paraná\"              \"Pernambuco\"          \"Piauí\"              \n[19] \"Rio de Janeiro\"      \"Rio Grande do Norte\" \"Rio Grande do Sul\"  \n[22] \"Rondônia\"            \"Roraima\"             \"Santa Catarina\"     \n[25] \"São Paulo\"           \"Sergipe\"             \"Tocantins\"          \n\n\nAlgumas manipulações importantes que podemos fazer com os vetores. Renomeando e removendo o vetor antigo:\nTrocando o primeiro elemento do vetor e dando o print do novo resultado:\n\nhomic_abs[1]=22\nhomic_abs\n\n [1]  22  73  22  88 406 264  95 137 127 101  75 309 200  86 256 219  70 283  60\n[20] 281  88  33 101 423  37\n\n\nAlgumas maneiras de pedir o print do vetor de homicídios femininos. Somente o estado 7, todos menos o estado 7, Estado de 1 até 7 etc:\n\nhomic_abs[7] \n\n[1] 95\n\nhomic_abs[-7] \n\n [1]  22  73  22  88 406 264 137 127 101  75 309 200  86 256 219  70 283  60 281\n[20]  88  33 101 423  37\n\nhomic_abs[1:7]\n\n[1]  22  73  22  88 406 264  95\n\n\nPodemos incorporar novos dados no nosso vetor de homicídio feminino, Vamos incorporar o dado do Tocantins na posição 7 e o valor do Distrito Federal na útima posição - 27. Depois trocaremos os dois estados de posição:\n\n#colcar exemplo de inserir no inicio\n\n#inserir no meio e no final \nhomic_abs &lt;- c(homic_abs[1:6], 36,homic_abs[7:25], 32)\nhomic_abs\n\n [1]  22  73  22  88 406 264  36  95 137 127 101  75 309 200  86 256 219  70 283\n[20]  60 281  88  33 101 423  37  32\n\n#troca de posicoes\ntemp &lt;- homic_abs[27]\nhomic_abs[27] &lt;- homic_abs[7]\nhomic_abs[7] &lt;- temp\nhomic_abs\n\n [1]  22  73  22  88 406 264  32  95 137 127 101  75 309 200  86 256 219  70 283\n[20]  60 281  88  33 101 423  37  36\n\n\nString ou Texto:\nString são as variáveis tipo texto. Esse tipo de variável já apareceu na seção anterior quando apresentamos um vetor com a classificação dos Estados. Vejamos mais uma vez. Podemos criar uma variável que contêm “estado homicidio”. Uma segunda maneira é criar um vetor com dois elementos “estado” e “homicidio”. O comando paste cola a variável texto “estado” e a variável texto “homicidio”, separado por um espaço.\n\na &lt;- \"estado homicidio\"\na\n\n[1] \"estado homicidio\"\n\nb &lt;- c(\"estado\",\"homicidio\")\nb\n\n[1] \"estado\"    \"homicidio\"\n\nb[1]\n\n[1] \"estado\"\n\npaste(b[1],b[2],sep=' ')\n\n[1] \"estado homicidio\"\n\n\nFator:\nFator são variáveis de classe. Fator armazenam os valores inteiros na forma de um vetor com as quantidades das k classes e o vetor string dos valores originais. Vejamos o exemplo de um vetor. Podemos análisar os homicídios por região geográfica do país. Assim, classificaremos os estados por região:\n\nregiao &lt;- c(\"N\",  \"NE\",  \"N\",  \"N\",  \"NE\",  \"NE\",  \"CO\",  \"SD\",  \"CO\",  \"NE\",  \"CO\",  \"CO\",  \"SD\",  \"N\",  \"NE\",  \"S\",  \"NE\",  \"NE\",  \"SD\",  \"NE\",  \"S\",  \"N\",  \"N\",  \"S\",  \"SD\",  \"NE\",  \"N\")\nsummary(regiao)\n\nAgora vamos transformar o vetor anterior em um fator\n\nregiao &lt;- factor(regiao)\nsummary(regiao)\n\nCO  N NE  S SD \n 4  7  9  3  4 \n\nlevels(regiao)\n\n[1] \"CO\" \"N\"  \"NE\" \"S\"  \"SD\"\n\n\nO comando levels fornece as classes existentes, no caso acima temos 5, sendo elas 4, 7, 9, 3 e 4.\nFatores podem ser as características de raça, gênero, status familiar, status de saúde, qualidade do atendimento etc.\n\n9.2.1.1 Data Frame ou Banco de Dados\nEsse é um tipo mais geral de variável e consegue lidar na mesma estrutura com variaveis de tipos distintos como numérica, texto e fator. Um banco de dados similar aos outros programas estatísticos. Podemos criar essa variável de forma manual. Nosso banco de dados será composto por 4 variáveis, a primeira o estado, a segunda a região, a terceira o número de homicídios femininos e a quarta o número de feminicidios. As três primeiras já foram incluidas acima e vamos criar somente a quarta. O comando typeof mostra qual o tipo de variável.\n\nfeminic_abs=c(11,  31,  8,  21,  107,  28,  19,  33,  56,  69,  47,  40,  171,  49,  26,  77,  72,  24,  111,  16,  110,  24,  3,  56,  195,  19,  14) \ntypeof(feminic_abs)\n\n[1] \"double\"\n\n\nPara criar o banco de dados utilizamos o seguinte comando:\n\ndata_feminic22&lt;-data.frame(estados, regiao, homic_abs, feminic_abs)  \n\nPodemos modificar o nome das variáveis com o comando names. Entretanto, tem que renomear todas\n\nnames(data_feminic22)&lt;-c(\"estado\", \"regioa\", \"homic_abs\", \"feminic_abs\") \ndata_feminic22\n\nOu podemos renomear somente algumas com o comando reshape:\n\nlibrary(reshape)\ndata_feminic22 &lt;- rename(data_feminic22, c(estado=\"estados\", regioa=\"regiao\"))\ndata_feminic22\n\n               estados regiao homic_abs feminic_abs\n1                 Acre      N        22          11\n2              Alagoas     NE        73          31\n3                Amapá      N        22           8\n4             Amazonas      N        88          21\n5                Bahia     NE       406         107\n6                Ceará     NE       264          28\n7    Distrito Federal      CO        32          19\n8       Espírito Santo     SD        95          33\n9                Goiás     CO       137          56\n10            Maranhão     NE       127          69\n11         Mato Grosso     CO       101          47\n12  Mato Grosso do Sul     CO        75          40\n13        Minas Gerais     SD       309         171\n14                Pará      N       200          49\n15             Paraíba     NE        86          26\n16              Paraná      S       256          77\n17          Pernambuco     NE       219          72\n18               Piauí     NE        70          24\n19      Rio de Janeiro     SD       283         111\n20 Rio Grande do Norte     NE        60          16\n21   Rio Grande do Sul      S       281         110\n22            Rondônia      N        88          24\n23             Roraima      N        33           3\n24      Santa Catarina      S       101          56\n25           São Paulo     SD       423         195\n26             Sergipe     NE        37          19\n27           Tocantins      N        36          14\n\n\nPodemos também listar variáveis do banco de dados, por exemplo, listar colunas de 1 a 2 ou listar por nome das variáveis, conforme apresentado abaixo:\n\ndata_feminic22\ndata_feminic22[,2:3]\ndata_feminic22[1:2,2:3]\ndata_feminic22[c(\"regiao\",\"feminic_abs\")]\n\nEntretanto, inserir dados na mão pode ser uma tarefa muito penosa e existem soluções bem mais simples e rápidas para inserção de dados. Nas seções seguintes veremos aprenderemos mais funções úteis para lidar com banco de dados.\n\n\n9.2.1.2 Trabalhando com as variáveis:\nVamos retomar duas variáveis homic_abs e estado e vamos manipular essas duas variáveis. Primeiramente vejamos o número de elementos, estrutura, classe e nome:\n\nlength(homic_abs) \n\n[1] 27\n\nstr(homic_abs)    \n\n num [1:27] 22 73 22 88 406 264 32 95 137 127 ...\n\nclass(homic_abs)  \n\n[1] \"numeric\"\n\nnames(homic_abs) \n\nNULL\n\n\nPodemos combinar as duas variáveis de forma distintas, por exemplo combinar na forma de um vetor, combinar como coluna ou combinar como linha, vejamos a diferença:\n\n#Precisa mudar essa parte de posição está confuso pois falamos de dataframe e aqui de vetor\ncomb1 &lt;- c(homic_abs,estados)      \ncomb2&lt;- cbind(homic_abs,estados)\ncomb3 &lt;-rbind(homic_abs,estados)\ncomb4 &lt;- data.frame(\n              homic_abs,\n              estados\n              ,stringsAsFactors = F)\ncomb1\ncomb2 \ncomb3\ncomb4\n\nVejamos quais objetos temos e vamos pedir para visualizar os objetos que acabamos de criar. Por fim removeremos o vetor comb1.\n\nls()  \ncomb1\ncomb2\ncomb3\nrm(comb1)              \n\n\n\n\n9.2.2 Importando os Dados\nDisponibilizamos dois banco de dados, um contendo os homicídios e feminicídios por estado e outro com as tentativas. Esses arquivos estão em formato csv (comma separated values).\nPara leitura desse arquivo em csv o seguinte comando é necessário read.csv, indicado que possui cabeçalho e que o separador é “;”\n\ndf_feminic22&lt;-read.csv(\"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/dados_feminic.csv\", head=TRUE,sep=\";\")\n\ndf_t_feminic22&lt;-read.csv(\"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/dados_tent_feminic.csv\", head=TRUE,sep=\";\")\n\nPara leitura de arquivos em Stata terá que utilizar o pacote foreign, conforme exemplo abaixo:\n\nlibrary(foreign)\nstata_feminic &lt;- read.dta(\"~/feminic.dta\")\n\nAlém desses, o R é capaz de trabalhar com SQL, SAS, SPSS, Excel entre outros.\n\n\n\n\n\n\nCuidado com o Ponto\n\n\n\nO R usa o formato americano de separação numérica. Usa ponto ao invés da vírgula para separar a unidade dos decimais. No Brasil usamos a vírgula. Isso sempre gera conflito. No seu csv evite usar acentos nas palavras e use ponto como separados dos decimais e não use separador dos milhares. Exemplo: 12500.97\n\n\n\n\n9.2.3 Exportanto os Dados\nPodemos exportar os dados em diferentes formatos. Alguns exemplos são csv, texto delimitado, excel, stata. Vejamos em csv:\n\nwrite.table(df_feminic22, \"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/export_feminic.csv\", sep=\";\")\n\nPara exportar em Stata utilize os seguintes comandos:\n\nlibrary(foreign)\nwrite.dta(df_feminic22, paste(getwd(),\"~/Banco de dados/export_feminic.dta\",sep=''))\n\n\n\n9.2.4 Lidando com Dados Missing\nNão temos informação para as tentativas de feminicidio para os estados de São Paulo e Mato Grosso. Uma maneira de lidar com valores missing seria fazer um subconjunto que veremos mais a frente. Agora seguiremos alguns passos para analisar os valores missing do nosso banco de dados.\nPrimeiramente, analisamos se há valores missing no banco de dados:\n\nis.na(df_t_feminic22)\n\nPodemos desconsiderar os valores missing da análise de interesse, vamos fazer a média do dolar sem considerar os valores missing:\n\nmean(df_t_feminic22$t_feminic_abs) \n\n[1] NA\n\nmean(df_t_feminic22$t_feminic_abs, na.rm=TRUE)\n\n[1] 102.52\n\n\nPodemos criar um novo banco de dados sem os valores missing.\n\ndf_t_feminic22_sem_missing &lt;- na.omit(df_t_feminic22)\nmean(df_t_feminic22_sem_missing$t_feminic_abs)\n\n[1] 102.52\n\nrm(df_t_feminic22_sem_missing)\n\nOutra maneira de excluir os valores missing seria a utilização do comando subset removendo as observações que contenham valor missing. Isso será explicado em seção a frente.\nPode-se também recodificar uma determinada variável para missing. Muito comum nas pesquisas do IBGE os valores missing serem identificados por um número, por exemplo 999999999999. Dessa forma podemos indicar que esse não é número e sim um valor missing da seguinte maneira:\n\ndf_t_feminic22$t_feminic_abs[df_t_feminic22$t_feminic_abs==999999] &lt;- NA\n\nTodos os valores que forem 99 serão exluídos e a celula ficará com um NA\n\n\n\n\n\n\nDados Missing\n\n\n\nDoois pontos importantes, dados missing não é 0 e nunca devem ser substituídos por 0. Pois 0 é um valor e missing é que não sabemos. Outro ponto é que devemos evitar excluir do banco os dados missing, melhor é fazer as contas retirando apensa do cálculo",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Maipulando os Dados</span>"
+    ]
+  },
+  {
+    "objectID": "manipulacao.html#operando-o-banco-de-dados",
+    "href": "manipulacao.html#operando-o-banco-de-dados",
+    "title": "9  Maipulando os Dados",
+    "section": "9.3 Operando o Banco de Dados",
+    "text": "9.3 Operando o Banco de Dados\n\n9.3.1 Criando uma Nova Variável\nVamos criar uma variável que seria a soma dos homicídios e feminicídios no estado. Para criar a variável precisamos dizer primeiro qual o banco de dados em que queremos criar e qual o nome da variável, conforme apresentado na expressão abaixo.\n\nlibrary(reshape)\ndf_feminic22 &lt;- rename(df_feminic22, c(feminico_abs=\"feminic_abs\"))\n\n\ndf_t_feminic22$t_total_abs&lt;- df_t_feminic22$t_feminic_abs + df_t_feminic22$t_homic_abs\n\ndf_feminic22$total_abs&lt;- df_feminic22$feminic_abs + df_feminic22$homic_abs\n\nAgora vamos criar uma variável binária que representa como 1 os estados que possuem a taxa de feminicídio em relação ao total de homicídios maior que 50%. Novamente, precisamos indicar o banco de dados e o nome da variável no banco de dados.\n\ndf_feminic22$mais_50[df_feminic22$part_feminic &lt; 50] &lt;- 0\ndf_feminic22$mais_50[df_feminic22$part_feminic &gt;= 50] &lt;- 1\n\ndf_feminic22$mais_50\n\n [1] 1 0 0 0 0 0 1 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 1 0 1 0\n\n\n\n\n9.3.2 Operadores Aritméticos e Lógicos\nUtilizando os vetores criados anteriormente:\n\nfeminic_abs&gt;50\n\n [1] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE\n[13]  TRUE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE\n[25]  TRUE FALSE FALSE\n\nfeminic_abs[feminic_abs&gt;50]\n\n [1] 107  56  69 171  77  72 111 110  56 195\n\nfeminic_abs[feminic_abs &lt; 50 | feminic_abs &gt; 100]\n\n [1]  11  31   8  21 107  28  19  33  47  40 171  49  26  24 111  16 110  24   3\n[20] 195  19  14\n\nfeminic_abs[feminic_abs &gt; 50 & feminic_abs &lt; 100]\n\n[1] 56 69 77 72 56\n\nmean(feminic_abs)\n\n[1] 53.22222\n\nfeminic_M &lt;- (feminic_abs[feminic_abs&lt; 100 & feminic_abs &gt; 50])\nfeminic_M\n\n[1] 56 69 77 72 56\n\n\nA tabela abaixo contém alguns operadaroes lógicos frequentemente utilizados.\n\nOperadores Lógicos no R\n\n\nOperador\nSignificado\n\n\n\n\n&lt;\nMenor que\n\n\n&lt;=\nMenor igual\n\n\n&gt;\nMaior que\n\n\n&gt;=\nMaior igual\n\n\n==\nExatamente igual\n\n\n!=\nDiferente\n\n\n!x\nNão x\n\n\nx | y\nx OU y\n\n\nx & y\nx E y",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Maipulando os Dados</span>"
+    ]
+  },
+  {
+    "objectID": "manipulacao.html#algumas-funções-importantes",
+    "href": "manipulacao.html#algumas-funções-importantes",
+    "title": "9  Maipulando os Dados",
+    "section": "9.4 Algumas Funções Importantes",
+    "text": "9.4 Algumas Funções Importantes\n\n9.4.1 Ordenando os Dados\nVamos ordenar os estados dos nossos 2 data frames pela participação do feminicídio no total de homicídios de mulheres.\n\ndf_feminic22_ord&lt;-df_feminic22[order(df_feminic22$part_feminic, decreasing = TRUE),] \n\ndf_t_feminic22_ord&lt;-df_t_feminic22[order(df_t_feminic22$part_t_feminic, decreasing = TRUE),] \n\n\n\n9.4.2 Fazendo Merge\nTemos dois data frames um contendo homicídios e feminicídios e outro contendo as tentativas. Vamos agora juntar os dois. Para isso os bancos devem conter uma chave única que identifica cada linha e essa deve estar presente nos dois bancos. Inclusive devem ter o mesmo nome.No caso em questão podemos usar o estado como nossa chave que irá conectar os dois bancos.\n\ndf_final_feminic_22 &lt;- merge(df_feminic22,df_t_feminic22,by=\"sigla\",keep.all=TRUE)\n\nAgora temos um banco único com homicídios e tentativas de homicídios.\n\n\n9.4.3 Agregando\nVamos criar um banco de dados que contenha os valores médios das variáveis. Para isso vamos agregar fazendo a média por região. Poderíamos utilizar outra função, como a soma, para fazer a agregação:\n\nregiao_media &lt;-aggregate(df_final_feminic_22, by=list(df_final_feminic_22$regiao.x), FUN=mean, na.rm=TRUE)\nregiao_media\n\n  Group.1 sigla estado.x regiao.x homic_abs homic_tx feminic_abs feminic_tx\n1      CO    NA       NA       NA  86.25000 4.250000    40.50000   2.100000\n2       N    NA       NA       NA  69.85714 6.785714    18.57143   1.871429\n3      NE    NA       NA       NA 149.11111 4.355556    43.55556   1.422222\n4       S    NA       NA       NA 212.66667 4.000000    81.00000   1.600000\n5      SD    NA       NA       NA 277.50000 3.300000   127.50000   1.375000\n  part_feminic  rendapc total_abs   mais_50 estado.y regiao.y t_homic_abs\n1     50.02500 2011.250 126.75000 0.5000000       NA       NA    258.2500\n2     30.01429 1175.286  88.42857 0.1428571       NA       NA    161.7143\n3     34.36667 1053.222 192.66667 0.2222222       NA       NA    257.7778\n4     41.53333 1983.667 293.66667 0.3333333       NA       NA    450.6667\n5     43.82500 1842.750 405.00000 0.2500000       NA       NA    455.7500\n  t_homic_tx t_feminic_abs t_feminic_tx part_t_feminic t_total_abs\n1  13.375000     126.33333     6.500000       32.67667    387.6667\n2  24.657143      50.28571     5.285714       26.44286    212.0000\n3   9.311111      85.11111     3.044444       25.72444    342.8889\n4   8.966667     169.66667     3.500000       25.98667    620.3333\n5   8.875000     185.66667     3.000000       26.50000    660.3333\n\n\n\n\n9.4.4 Criando Subconjunto\nSelecionando Variáveis:\nPodemos estar interessado em manter somente algumas variáveis no nosso banco de dados, por exemplo, queremos manter estado e a participação do feminicídio no total. Assim:\n\nvar_sel &lt;- c(\"sigla\", \"part_feminic\", \"part_t_feminic\")\nfeminic_sel &lt;- df_final_feminic_22[var_sel]\n\nfeminic_sel1 &lt;- df_final_feminic_22[c(\"sigla\", \"part_feminic\", \"part_t_feminic\")]\n\nOu podemos fazer indicar as colunas que queremos selecionar. Na segunda opção selecionamos até o final do nosso banco\n\nfeminic_sel2 &lt;- df_final_feminic_22[c(1:3,5:6,12:15)]\nfeminic_sel3 &lt;- df_final_feminic_22[c(1:3,10:ncol(df_final_feminic_22))]\n\n:\nAo fazer o merge as variáveis que tinham o mesmo nome nos dois bancos, como estado, foram mantidas e agora possuem os nomes estado.x e estado.y, vamos manter apenas uma e trocar o seu nome. O comando namesajuda a saber a posição da variável no banco\n\nnames(df_final_feminic_22)\n\n [1] \"sigla\"          \"estado.x\"       \"regiao.x\"       \"homic_abs\"     \n [5] \"homic_tx\"       \"feminic_abs\"    \"feminic_tx\"     \"part_feminic\"  \n [9] \"rendapc\"        \"total_abs\"      \"mais_50\"        \"estado.y\"      \n[13] \"regiao.y\"       \"t_homic_abs\"    \"t_homic_tx\"     \"t_feminic_abs\" \n[17] \"t_feminic_tx\"   \"part_t_feminic\" \"t_total_abs\"   \n\nfinal_fem_22 &lt;- df_final_feminic_22[c(-12)]\n\nlibrary(reshape)\nfinal_fem_22 &lt;- rename(final_fem_22, c(estado.x=\"estados\"))\n\n\n\n\n\n\n\nCuidado ao tirar colunas\n\n\n\nSe fizermos o comando de tirar colunas no mesmo data frame, ao rodar novamente ele continuará sempre tirando a coluna indicada. O ideal seria construir outro data frame como fizemos acima.\n\n\nOu podemos especificar a o nome da coluna que será retirada. Vamos agora tirar a região que ficou duplicada\n\nfinal_fem_22$regiao.y &lt;-  NULL\n\nlibrary(reshape)\nfinal_fem_22 &lt;- rename(final_fem_22, c(regiao.x=\"regiao\"))\n\nsave(final_fem_22, file = \"dados.RData\")\nwrite.table(final_fem_22, \"C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/jurimetria/final_fem_22.csv\", sep=\";\")\n\nSelecionando Variáveis:\nVamos selecionar as observações dos estados da região Norte e Nordeste:\n\nfem_n_nd &lt;- final_fem_22[ which(final_fem_22$regiao==\"NE\" | final_fem_22$regiao==\"N\"),]\n\nfem_n_nd1 &lt;- final_fem_22[ which((final_fem_22$regiao==\"NE\" | final_fem_22$regiao==\"N\") & final_fem_22$part_feminic&gt;=50),]\n\nOu podemos selecionar as observações em que a participação do feminicídio está entre 30 e 50%:\n\nfem_n_nd2 &lt;- subset(final_fem_22, final_fem_22$part_feminic &gt;= 30 & final_fem_22$part_feminic &lt;= 50 )",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Maipulando os Dados</span>"
+    ]
+  }
+]
