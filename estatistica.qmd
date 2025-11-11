@@ -376,11 +376,11 @@ pairs.panels(data)
 
 ## Conceitos Básicos Inferência Estatística
 
-Dado a nossa pergunta ou problema, gostariamos de saber as carcateística de uma população.
+Dado a nossa pergunta ou problema, **gostariamos de saber as carcateística de uma população**.
 
-Entretantom um processo de levantamento de informações é em geral caro e em muitas situações é destrutivo. Em ciências sociais estamos interessados em características de pessoas, empresas, municípios, estados, países etc. Não é destrutivo mas é uma coleta cara. Por exemplo, o Censo demográfico de 2010 custou R\$ 1,3 bilhões, ou aproximadamente R\$ 2,2 bi em reais de 2020. O valor é de aproximadamente R\$ 35,00 por domicílio.
+Entretantom um **processo de levantamento** de informações é em geral **caro** e em muitas situações é destrutivo. Em ciências sociais estamos interessados em características de pessoas, empresas, municípios, estados, países etc. Não é destrutivo mas é uma coleta cara. Por exemplo, o Censo demográfico de 2010 custou R\$ 1,3 bilhões, ou aproximadamente R\$ 2,2 bi em reais de 2020. O valor é de aproximadamente R\$ 35,00 por domicílio.
 
-Dessa forma nosso objetivo aqui é:
+Dessa forma **nosso objetivo** aqui é:
 
 ::: callout-note
 ## Objetivo
@@ -392,13 +392,13 @@ A partir de uma amostra da população realizar inferência sobre toda a popula�
 
 Pense nessas situações:
 
--   Para medir a glicose muitos pacientes usam uma gota de sangue e um pequeno aparelho. A partir dele sabem quanto tem no corpo todo, basta uma gota para termos boa certeza de quanto é taxa de glicose!
--   Para saber se a quantidade de sal está adequada em uma grande panela de arroz, basta uma pequena colher de chá para termos uma boa certeza!
--   Abacaxis às vezes são vendidos em caminhões na rua. Quando paramos provamos e são doces. Compramos 4 por 10. Qual a certeza que esses que vc está levando estejam também doces? É diferente das situações anteriores?
+-   **Glicose**: Para medir a glicose muitos pacientes usam uma gota de sangue e um pequeno aparelho. A partir dele sabem quanto tem no corpo todo, basta uma gota para termos boa certeza de quanto é taxa de glicose!
+-   **Sal**: Para saber se a quantidade de sal está adequada em uma grande panela de arroz, basta uma pequena colher de chá para termos uma boa certeza!
+-   **Doçura**: Abacaxis às vezes são vendidos em caminhões na rua. Quando paramos provamos e são doces. Compramos 4 por 10. Qual a certeza que esses que vc está levando estejam também doces? É diferente das situações anteriores?
 
-Com certeza vc deve ter pensado que essas situações tem grau de certeza variáveis. A diferença está em quão homogênea é a característica na população, o sal no arroz e a glicose no sangue devem ser muito bem distribuidas, ou seja, bem homogêneas. Já a doçura no abacaxi deve ter distribuição maior e provar apenas um abacaxi não nos dá uma ideia do todo.
+Com certeza vc deve ter pensado que essas situações tem grau de certeza variáveis. A diferença está em **quão homogênea** é a característica na população, o sal no arroz e a glicose no sangue devem ser muito bem distribuidas, ou seja, bem homogêneas. Já a doçura no abacaxi deve ter distribuição maior e provar apenas um abacaxi não nos dá uma ideia do todo.
 
-Esse é um erro muito comum, a partir de uma ou poucas observações dizer que o todo se comporta da mesma maneira, esse erro se agrava quando maior é a heterogeneidade!!!
+Esse é um **erro muito comum**, [a partir de uma ou poucas observações dizer que o todo se comporta da mesma maneira]{.underline} , esse erro se agrava quando maior é a heterogeneidade!!!
 
 ### População, Amostra, Parâmetros e Estimadores
 
@@ -411,7 +411,7 @@ flowchart LR
   C --> D[Subconjunto da População]
 ```
 
-A definição da população depende da pergunta de pesquisa ou análise. Se queremos saber qual o salário médio dos empregados do setor industrial no estado de São Paulo para determinado ano, nossa população são todos os funcionários das indústrias instaladas no estado de São Paulo para esse ano. Se queremos os determinantes do desempenho escolar dos alunos do ensino fundamental no Brasil em 2019, nossa população será esse grupo de alunos nesse ano. Se quisermos avaliar o gasto municipal no ano anterior as eleições no Brasil, temos nossa população formada pelos municípios para o ano de análise.
+A **definição da população depende da pergunta de pesquisa** ou análise. Se queremos saber qual o salário médio dos empregados do setor industrial no estado de São Paulo para determinado ano, nossa população são todos os funcionários das indústrias instaladas no estado de São Paulo para esse ano. Se queremos os determinantes do desempenho escolar dos alunos do ensino fundamental no Brasil em 2019, nossa população será esse grupo de alunos nesse ano. Se quisermos avaliar o gasto municipal no ano anterior as eleições no Brasil, temos nossa população formada pelos municípios para o ano de análise.
 
 ::: callout-tip
 ## População
@@ -421,29 +421,44 @@ Quem define a população é o objetivo do seu trabalho!! Ou seja, seu problema 
 
 ### Amostragem Aleatória Simples
 
-Existem várias maneiras de fazer uma análise aleatória, uma delas é a simples. Vejamos primeiro um processo de amostragem não aleatório e que possui tendenciosidade. A figura abaixo mostra esse processo\[\^7\]:
+Existem **várias maneiras de fazer uma análise aleatória**, uma delas é a simples. Vejamos primeiro um processo de amostragem não aleatório e que possui tendenciosidade. A figura abaixo mostra esse processo de amostragem errado:
 
 ![Um processo de amostragem viesádo. Fonte:Data Basecamp](figuras\bias.jpg){width="50%"}
 
-Observa-se que existe uma supervalorização do vermelho e uma subvalorização do azul. Chegariamos a conclusão, caso isso fosse uma pesquisa eleitoral, que o candidato vermelho, segunda amostra teria mais chance de ganhar e o azul quase nenhuma chance. O que não condiz com a população. Dizemos que temos uma amostra viesada ou tendenciosa.
+Observa-se que existe uma **supervalorização do vermelho** e uma subvalorização do azul. Chegariamos a conclusão, caso isso fosse uma pesquisa eleitoral, que o candidato vermelho, segunda amostra teria mais chance de ganhar e o azul quase nenhuma chance. O que não condiz com a população. Dizemos que temos uma **amostra viesada ou tendenciosa**.
 
-Um processo de amostragem aleatório requer que as características presentes na população estejam presentes na amostras e estejam balanceadas, ou seja, que a sua leitura represente bem o todo.
+Um processo de **amostragem aleatório** requer que as **características presentes na população estejam presentes na amostras** e estejam balanceadas, ou seja, que a [sua leitura represente bem o todo]{.underline}.
 
 ## Estatística e Parâmetro
+
+**PARÂMETROS**
 
 ```{mermaid}
 flowchart LR
   A[PARÂMETRO] --> B[Medida que descreve uma característica da população]
 ```
 
-Os parâmetros definem as características de uma população. Qual a renda média da população, qual o desemprego médio da população, qual o desempenho médio educacional, qual a expectativa de vida média na população etc. São características que em geral não observamos.
+Os **parâmetros** definem as **características de uma população**. Qual a renda média da população, qual o desemprego médio da população, qual o desempenho médio educacional, qual a expectativa de vida média na população, qual o tempo médio de processos de homicídios etc. São características que em geral **não observamos**.
 
-Uma pergunta, qual o tempo médio que demora um processo de feminicídio? Perceba que mesmo características da população que conhecemos são de difíceis de conhecermos. Temos que nos valer de uma parte e tentar estimar o que seriam os valores dessas características.
+Uma pergunta, **qual o tempo médio de um processo de feminicídio até a sentença?** Perceba que mesmo características da população que conhecemos muitas vezes são não observadas. Temos que nos valer de **uma parte** e tentar **estimar** o que seriam os valores dessas características.
+
+
+**ESTATÍSTICAS**
 
 ```{mermaid}
 flowchart LR
   A[ESTATÍSTICA] --> B[Medida que descreve uma característica da amostra]
 ```
+  
+
+Vamos supor que **coletamos mil processos judiciais** para analisar o tempo de tramitação até a sentença.
+**Cada processo representa uma realização de da variável aleatória**,  neste caso, o tempo necessário para que o processo tenha sentença. Esses processos pertencem a uma população maior de todos os processos existentes, e o que observamos é apenas uma amostra dessa população.
+
+A partir dessas **observações amostrais**, calculamos **estatísticas**, que são **resumos numéricos** dos dados amostrais, como médias, proporções, desvios, mínimos ou máximos. Essas estatísticas descrevem a amostra que temos em mãos. São estimativas dos parâmetros populacionais, que são os valores verdadeiros (e geralmente desconhecidos) da população como um todo.
+
+É importante notar, porém, que se repetíssemos o mesmo procedimento de coleta com outros mil processos, provavelmente obteríamos valores diferentes de médias e desvios. Isso ocorre porque as estatísticas variam de amostra para amostra.
+
+::: {.callout-note title="Definição Formal" appearance="simple" collapse="true"}
 
 Sejam $x_1, x_2,..., x_{n}$ os valores medidos a cada para cada medição de $X$. Podemos definir uma estatística como:
 
@@ -458,7 +473,11 @@ $$ \text{Variância:} \ s^{2}= \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \overline{x})
 $$ x_{(1)}: Min\{x_1, ..., x_n\}$$
 
 
-Vejamos a tabela abaixo que já faz uma primeira associação entre estatística e parâmetro:
+:::
+
+
+
+Vejamos a tabela abaixo que já faz uma primeira **associação entre estatística e parâmetro**:
 
 | Parâmetro      |                   | Estatística    |                    |
 |----------------|-------------------|----------------|--------------------|
@@ -473,7 +492,8 @@ Como regra geral, os parâmetros são representados por letras gregas e as estat
 
 
 **ESTIMADORES**
-Um estimador é uma estatística calculada a partir da amostra que é usada para estimar um parâmetro desconhecido da população. Nos permitem fazer inferências sobre os parâmetros com base nos dados amostrais. Por exemplo, a média amostral é um estimador da média populacional, e a proporção amostral é um estimador da proporção populacional.
+
+Um **estimador é uma estatística** calculada a partir da amostra que é usada para **estimar um parâmetro desconhecido da população**. Nos permitem fazer inferências sobre os parâmetros com base nos dados amostrais. Por exemplo, a média amostral é um estimador da média populacional, e a proporção amostral é um estimador da proporção populacional.
 
 
 
