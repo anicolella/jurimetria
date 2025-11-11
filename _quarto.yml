@@ -40,6 +40,7 @@ book:
       - priest_klein.qmd
       - galanter.qmd
       #- pesquisa.qmd
+      - movimentacao.qmd
       - manipulacao.qmd
       - googledrive.qmd
       - dplyr.qmd
