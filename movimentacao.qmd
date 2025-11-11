@@ -1,0 +1,73 @@
+---
+title: "Movimentação"
+author:
+- José de Jesus Filho e Alexandre Nicolella
+format: html
+---
+
+```{r eval = FALSE, message=FALSE, warning=FALSE}
+
+library(tidyverse)
+library(httr)
+library(jsonlite)
+
+headers = c(
+  'Authorization' = 'APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==',
+  'Content-Type' = 'application/json'
+)
+
+
+body = '{
+  "query": {
+        "bool": {
+            "must": [
+                {"match": {"assuntos.codigo": 3372}},
+                {"match": {"grau": "G1"}}
+
+            ]
+        }
+   }
+}'
+
+
+body = '{
+  "size": 8930,
+  "query": {
+        "bool": {
+            "must": [
+                {"match": {"classe.codigo": 282}},
+                {"match": {"grau": "G1"}}
+
+            ]
+        }
+   }
+}'
+
+
+
+
+POST(url = "https://api-publica.datajud.cnj.jus.br/api_publica_tjto/_search", body = body, add_headers(headers),
+write_disk("juri.json"))
+
+
+juri <- fromJSON("juri.json")
+
+dados_basicos <- juri |> 
+      pluck("hits","hits","_source")
+
+
+
+movimento <- dados_basicos  |> 
+      select(processo = numeroProcesso, movimentos) |>
+      unnest(movimentos) |> 
+      janitor::clean_names() |> 
+      select(-complementos_tabelados) |> 
+      mutate(data_hora = parse_datetime(data_hora))
+
+
+movimento  <- movimento |> 
+     arrange(processo, desc(data_hora)) |> 
+     JurisMiner::tempo_movimentacao(data = data_hora)
+
+
+```
