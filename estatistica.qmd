@@ -500,9 +500,9 @@ Um **estimador é uma estatística** calculada a partir da amostra que é usada 
 
 ## Teste de Hipotese (Parâmetros).
 
-Algumas vezes gostariamos de testar se uma teoria é verossímil com a realidade ou mesmo testar teorias diferentes e verificar qual seria a mais plausível com base na realidade. 
+Algumas vezes gostariamos de testar se uma **teoria é verossímil** com a realidade ou mesmo testar **teorias diferentes** e verificar qual seria a **mais plausível** com base na realidade. 
 
-Dessa forma, gostariamos de testar se uma \textit{hipótese} sobre a população é mais plausível, ou seja, se os dados amostrais trazem evidências que apoiam ou não essa hipótese. Por exemplo:
+Dessa forma, gostariamos de testar se uma *hipótese* sobre a população é mais plausível, ou seja, se os dados amostrais trazem evidências que apoiam ou não essa hipótese. Por exemplo:
 
 - Verificar se um determinado medicamento não tem efeito sobre a mortalidade causada por um determinado virus ou se possui efeito. 
 - Verificar se a quantidade de gordura anunciado pelo fabricante de um produto realmente está correta ou é maior. 
@@ -512,7 +512,7 @@ Dessa forma, gostariamos de testar se uma \textit{hipótese} sobre a população
 - se o tempo médio de encaminhamento e deferimento de medida protetiva de urgência é menor do que 48 horas em casos de violência doméstica e familiar contra a mulher.
 
 
-Aqui faremos algo muito parecido a presunção de inocência, assumimos que a pessoa ou empresa é "inocente". 
+Aqui faremos algo muito parecido a **presunção de inocência**, assumimos que a pessoa ou empresa é **"inocente"**. 
 
 - O medicamento não tem efeito, 
 - O teor de gordura está certo, 
@@ -522,7 +522,7 @@ Aqui faremos algo muito parecido a presunção de inocência, assumimos que a pe
 - O deferimento ocorre em até 48h. 
 
 ::: {.callout-note title="A Intuição"}
-Partimos da premissa de que a hipótese inicial é a correta e tentamos verificar com os fatos (dados amostrais) se essa hipótese colocada é verossímil. 
+Partimos da premissa de que a **hipótese inicial é a correta** e tentamos verificar com os fatos (dados amostrais) se essa hipótese colocada **é verossímil**. 
 :::
 
 
@@ -545,7 +545,7 @@ Já a hipótese alternativa ($H_1$), que representa a teoria concorrente dos ope
 
 $$ H_1: \quad \mu > 600 \text{ dias}$$
 
-Nosso problema, então, é decidir se devemos **aceitar ou rejeitar a hipótese nula** $H_0$ — de que o tempo médio é de **600 dias** — em favor da hipótese alternativa $H_1$, que afirma que os processos, na realidade, levam **mais tempo** para serem concluídos.  
+Nosso problema, então, é decidir se devemos **aceitar ou rejeitar a hipótese nula** $H_0$ (de que o tempo médio é de **600 dias**) em favor da hipótese alternativa $H_1$, que afirma que os processos, na realidade, levam **mais tempo** para serem concluídos.  
 
 Juntas:  
 $$H_0: \quad \mu = 600$$
@@ -558,20 +558,28 @@ Esse modelo pode ser aplicado utilizando dados reais de processos judiciais para
 
 *Qual dessas duas hipóteses é mais plausível?*
 
-Para isso devemos nos valer de um processo de amostragem, onde faremos $n$ medições do tempo médio dos processos (que chamaremos de X), $X_1, X_2, ..., X_n$, e obteremos os valores em dias do tempo médio de cada processo amostrado $x_1, x_2,...x_n$. 
+Para isso devemos nos valer de um processo de amostragem, onde faremos $n$ medições do tempo médio dos processos (que chamaremos de X) e obteremos os valores em dias do tempo médio de cada processo amostrado $x_1, x_2,...x_n$. Processo 1, $x_1$, demorou 580 dias, processo 2, $x_2$, demorou 720 dias, e assim por diante.
 
-Com base na amostra devemos realizar algum tipo de cálculo que nos permite inferir se rejeitamos ou não $H_0$, se é plausível ou não a hipótese colocada. Isso é o que chamamos de teste estatístico: 
+Com base na amostra devemos realizar algum tipo de cálculo que nos permite inferir se rejeitamos ou não $H_0$, se é plausível ou não a hipótese colocada. Isso é o que chamamos de teste estatístico. Um exemplo é a média amostral:
 
+ $$\bar{X} = \frac{\sum_i^n(X_i)}{n}$$
 
- $$T = h(X_1,X_2, . . .,X_n)$$
+ - **Questão**: quais valores de $\bar{X}$ são típicos se $H_0$ for verdadeira?
 
+::: {.callout-note title="Definição Formal" appearance="simple" collapse="true"}
 
-Decidindo qual o $T$ utilizar - a função $h$ que será aplicado aos valores da amostra - devemos compreender qual é a distribuição dessa estatística sob a condição de que a hipótese $H_0$ for a verdadeira. 
+Considere uma amostragem de tamanho $n$, sendo $X_1, X_2, ..., X_n$ as $n$ medições, e $x_1, x_2,...x_n$ os valores obtidos nessas medições. Um teste estatístico é uma estatística $T$ calculada a partir dos valores amostrais:
+$$T = h(X_1,X_2, . . .,X_n)$$
 
-::: {.callout-note title="A Intuição"}
-Queremos aqui saber se a amostra tivesse sido extraída de contratos com esperança do tempo de duração , $\mathbb{E(X)}$, de 600 dias, quais seriam os valores típicos para a distribuição do estimador T? Dessa forma, podemos comparar esses valores típicos com o que obtivemos no processo de amostragem.
+Que terá o seguinte valor com base na amostra observada:
+
+$$t = h(x_1,x_2, . . .,x_n)$$
+
+Decidindo qual o $T$ utilizar, ou seja, a função $h$ que será aplicado aos valores da amostra,  devemos compreender qual é a distribuição dessa estatística sob a condição de que a hipótese $H_0$ for a verdadeira. 
 :::
 
+
+**A Intuição**
 
 Vejamos no nosso exemplo, gostariamos de verificar a hipótese de que a esperança do tempo médio, $\mu$ é de 600 dias. Como já vimos uma boa alternativa de teste estatístico poderia ser a média, $\bar{X}$. Assim o teste estatístico seria:
 
@@ -590,14 +598,15 @@ width=80% }
 </center>
 
 
+**Encontrando os Valores Típicos sob $H_0$**
 
-Para saber qual seriam os valores típicos do estimador $\bar{X}$ sob $H_0$ imagine que a população $X$ seja $N(600,100^2)$, ou seja, tem esperança 600 e desvio padrão populacional de 100. Essa é a afirmação da Justiça Federal, ou seja, nosso $H_0$. 
+Para saber qual seriam os **valores típicos** do estimador $\bar{X}$ sob $H_0$ imagine que a população $X$ seja $N(600,100^2)$, ou seja, tem esperança 600 e desvio padrão populacional de 100. Essa é a afirmação da Justiça Federal, ou seja, nosso $H_0$. 
 
-Já sabemos que um processo de amostragem cada uma das $n$ medições $X_1, X_2, ...,X_n$ possuem a mesma distribuição de $X$. E também sabemos por definição que o estimador $\bar{X}$ terá uma distribuição:
+Por definição sabemos que o estimador $\bar{X}$ terá uma distribuição (essa nos fornece os valores típicos sob $H_0$) dada por:
 
 $$N(600,\frac{100^2}{n})$$. 
 
-Supondo que retiramos uma amostra de 25 processos, logo os valores típicos do estimador sob $H_0$ são $N(600,\frac{100^2}{25})$. Vejamos abaixo a simulação do estimador $\bar{X}$, os valores típicos para esse caso,  e onde se encontra o valor de 700. 
+Supondo que retiramos uma amostra de 25 processos, logo os valores típicos do estimador sob $H_0$ são $N(600,\frac{100^2}{25})$. Vejamos abaixo a simulação do estimador $\bar{X}$, os valores típicos para esse caso, e onde se encontra o valor de 700. 
 
 
 ```{r echo = TRUE, fig.cap= "Valores típicos da distribuiçao da média sob H0",fig.height = 3.5, fig.width = 7}
@@ -617,7 +626,7 @@ text(602, 0.001, expression(mu))
 
 ```
 
-No centro temos a $E(\bar{X})=\mu=600$. Observamos que para o tamanho amostral que retiramos e sob $H_0$ os valores típicos oscilam mais ou menos entre 560 e 640 - dois desvios padrão para cima e para baixo (lembrem-se que nesse intervalo temos mais de 95\% das observaçoes). 
+No centro temos a $E(\bar{X})=\mu=600$. Observamos que para o tamanho amostral que retiramos e sob $H_0$ os **valores típicos** oscilam mais ou menos entre **560 e 640 - dois desvios padrão para cima e para baixo** (lembrem-se que nesse intervalo temos mais de 95\% das observaçoes). 
 
 Quanto retiramos a amostra e calculamos o valor da média obtivemos $\bar{x}=700$. Observe no gráfico acima onde está o valor de 700, muita a frente e notamos claramente que a probabilidade de obtermos esse valor de média com uma amostra retirada da população $N(600,100^2)$, é praticamente 0. 
 
