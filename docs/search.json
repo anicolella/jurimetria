@@ -119,5 +119,71 @@
       "Home",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Maipulando os Dados</span>"
     ]
+  },
+  {
+    "objectID": "perfil.html",
+    "href": "perfil.html",
+    "title": "4  Perfil da Turma",
+    "section": "",
+    "text": "4.1 Formação Principal\nPrimeiramente, vamos coletar as informações do perfil da turma a partir do arquivo compartilhado do Google Forms. Para isso, utilizaremos a função drive_download() do pacote googledrive, que permite baixar o arquivo diretamente do Google Drive para o ambiente de trabalho do R. Esse procedimento garante que os dados utilizados nas análises estejam sempre sincronizados com a planilha mais recente do formulário.\nA análise da formação dos participantes revela uma predominância de profissionais do Direito, que representam aproximadamente 53% da turma. Em seguida, destacam-se aqueles com formação em Ciência da Computação (25%) e Administração (7%). Essa composição evidencia o caráter interdisciplinar do grupo, reunindo formações jurídicas e técnico-analíticas, sendo esse um aspecto fundamental para o desenvolvimento da Jurimetria, que integra métodos estatísticos e ciência de dados à prática jurídica.\n📊 Ver código para o gráfico de Formação Principal\n# Pacotes necessários\npackages &lt;- c(\"tidyverse\", \"readxl\", \"scales\")\ninstalled &lt;- packages %in% rownames(installed.packages())\nif (any(!installed)) install.packages(packages[!installed])\nlibrary(tidyverse)\nlibrary(readxl)\nlibrary(scales)\n\n# Gráfico para Formação Pirncipal (valores absolutos)\nperfil_turma &lt;- read_excel(\"perfil_final.xlsx\")\ndados_form_princ &lt;- perfil_turma %&gt;%\n  filter(!is.na(form_principal)) %&gt;%\n  group_by(valor = form_principal) %&gt;%\n  summarise(n = n(), .groups = \"drop\")\n\nggplot(dados_form_princ, aes(x = reorder(valor, -n), y = n, fill = valor)) +          # Ordem decrescente\n  geom_col(show.legend = FALSE, fill = \"#3f566f\", alpha=0.7, color = \"#4c5471\") + # Adiciona as barras, cor das barras, transparencia\n  geom_text(aes(label = n), vjust = -0.3, size = 3) +\n  labs(\n    title = \"Distribuição da Formação dos Participantes\",\n    x = \"Formação Principal\",\n    y = \"Frequência (n)\") +\n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Perfil da Turma</span>"
+    ]
+  },
+  {
+    "objectID": "perfil.html#tem-familiaridade-com-métodos-quantitativos",
+    "href": "perfil.html#tem-familiaridade-com-métodos-quantitativos",
+    "title": "4  Perfil da Turma",
+    "section": "4.2 Tem Familiaridade com Métodos Quantitativos?",
+    "text": "4.2 Tem Familiaridade com Métodos Quantitativos?\nObserva-se que 71% dos participantes possuem conhecimento básico de métodos quantitativos, enquanto 18% têm familiaridade intermediária e 11% se consideram avançados nessa área. Essa distribuição indica que a maioria dos participantes está em um nível inicial de compreensão de métodos quantitativos, o que ressalta a importância do curso para aprimorar e avançar nessas habilidades essenciais para a análise de dados no contexto jurídico.\n\n\n📊 Ver código para o gráfico de Familiaridade com M.Q.\n# Gráfico para Familiaridade com M.Q. (valores absolutos)\nperfil_turma &lt;- read_excel(\"perfil_final.xlsx\")\ndados_fam_mq &lt;- perfil_turma %&gt;%\n  filter(!is.na(fam_mq)) %&gt;%\n  group_by(valor = fam_mq) %&gt;%\n  summarise(n = n(), .groups = \"drop\")\n\nggplot(dados_fam_mq, aes(x = reorder(valor, -n), y = n, fill = valor)) +          # Ordem decrescente\n  geom_col(show.legend = FALSE, fill = \"#3f566f\", alpha=0.7, color = \"#4c5471\") + # Adiciona as barras, cor das barras, transparencia\n  geom_text(aes(label = n), vjust = -0.3, size = 3) +\n  labs(\n    title = \"Distribuição da Familiaridade com Métodos Quantitativos\",\n    x = \"Como Considera sua Familiaridade com MQ?\",\n    y = \"Frequência (n)\") +\n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Perfil da Turma</span>"
+    ]
+  },
+  {
+    "objectID": "perfil.html#tem-familiaridade-com-programação",
+    "href": "perfil.html#tem-familiaridade-com-programação",
+    "title": "4  Perfil da Turma",
+    "section": "4.3 Tem Familiaridade com Programação?",
+    "text": "4.3 Tem Familiaridade com Programação?\nObserva-se que 46% dos participantes são familiarizados com planilhas eletrônicas e 25% não possuem nenhum contato. O Uso de planilha apesar da sua importância, não nos ajuda no desenvolvimento de habilidades de programação mais avançadas, que são essenciais para a análise de grandes volumes de dados e automação de processos no contexto jurídico. 25% dos participantes já tiveram contao com ferramentas que serão importantes para o curso, R e Python. Apenas 1 participante indicou uso regular de programação. Essa distribuição destaca a necessidade de fortalecer as competências em programação entre os participantes, visando capacitá-los para lidar com desafios das análises jurimétricas.\n\n\n📊 Ver código para o gráfico de Formação Principal\n# Gráfico para Formação Pirncipal (valores absolutos)\nperfil_turma &lt;- read_excel(\"perfil_final.xlsx\")\ndados_fam_programa &lt;- perfil_turma %&gt;%\n  filter(!is.na(fam_programa)) %&gt;%\n  group_by(valor = fam_programa) %&gt;%\n  summarise(n = n(), .groups = \"drop\")\n\nggplot(dados_fam_programa, aes(x = reorder(valor, -n), y = n, fill = valor)) +          # Ordem decrescente\n  geom_col(show.legend = FALSE, fill = \"#3f566f\", alpha=0.7, color = \"#4c5471\") + # Adiciona as barras, cor das barras, transparencia\n  geom_text(aes(label = n), vjust = -0.3, size = 3) +\n  labs(\n    title = \"Distribuição da Familiaridade com Programação\",\n    x = \"Como Considera sua Familiaridade com Programação?\",\n    y = \"Frequência (n)\") +\n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Perfil da Turma</span>"
+    ]
+  },
+  {
+    "objectID": "perfil.html#conhece-as-linguagens-de-programação-necessárias",
+    "href": "perfil.html#conhece-as-linguagens-de-programação-necessárias",
+    "title": "4  Perfil da Turma",
+    "section": "4.4 Conhece as Linguagens de Programação Necessárias?",
+    "text": "4.4 Conhece as Linguagens de Programação Necessárias?\nCom base na informações fornecidas, observa-se que 61% dos participantes não tiveram contato prévio com linguagens de programação como R ou Python. Por outro lado, 35% indicaram ter tido algum contato com R ou Python e 1 participante em outras linguagens de programação. Essa distribuição sugere que a maioria dos participantes está em um estágio inicial em relação ao uso dessas ferramentas, o que reforça a importância do curso para capacitá-los no uso de linguagens de programação essenciais para a análise de dados no contexto jurídico.\n\n\n📊 Ver código para o gráfico de Contato com Linguagens de Programação\n# Gráfico para Contato com Linguagens de Programação (valores absolutos)\nperfil_turma &lt;- read_excel(\"perfil_final.xlsx\")\ndados_contato_com &lt;- perfil_turma %&gt;%\n  filter(!is.na(contato_com)) %&gt;%\n  group_by(valor = contato_com) %&gt;%\n  summarise(n = n(), .groups = \"drop\")\n\nggplot(dados_contato_com, aes(x = reorder(valor, -n), y = n, fill = valor)) +          # Ordem decrescente\n  geom_col(show.legend = FALSE, fill = \"#3f566f\", alpha=0.7, color = \"#4c5471\") + # Adiciona as barras, cor das barras, transparencia\n  geom_text(aes(label = n), vjust = -0.3, size = 3) +\n  labs(\n    title = \"Já teve Contato com as Linguagens R, Python ou Outra?\",\n    x = \"Ja tive contato com:\",\n    y = \"Frequência (n)\") +\n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Perfil da Turma</span>"
+    ]
+  },
+  {
+    "objectID": "perfil.html#trabalha-com-inteligência-artificial",
+    "href": "perfil.html#trabalha-com-inteligência-artificial",
+    "title": "4  Perfil da Turma",
+    "section": "4.5 Trabalha com Inteligência Artificial?",
+    "text": "4.5 Trabalha com Inteligência Artificial?\nA maioria indica não ter conhecimento ou pouco contato (57%) com ferramentas de inteligência artificial. Cerca de 40% utiliza algumas vezes e apenas 1 participante indica uso regular. Essa distribuição sugere que muitos participantes ainda estão em estágios iniciais de familiaridade com IA, reforçando a necessidade de aprendizado para atingir uma estruturação mais robusta de banco de dados para jurimetria.\n\n\n📊 Ver código para o gráfico de Uso da IA\n# Gráfico para Uso da IA (valores absolutos)\nperfil_turma &lt;- read_excel(\"perfil_final.xlsx\")\ndados_trab_ia &lt;- perfil_turma %&gt;%\n  filter(!is.na(trab_ia)) %&gt;%\n  group_by(valor = trab_ia) %&gt;%\n  summarise(n = n(), .groups = \"drop\")\n\nggplot(dados_trab_ia, aes(x = reorder(valor, -n), y = n, fill = valor)) +          # Ordem decrescente\n  geom_col(show.legend = FALSE, fill = \"#3f566f\", alpha=0.7, color = \"#4c5471\") + # Adiciona as barras, cor das barras, transparencia\n  geom_text(aes(label = n), vjust = -0.3, size = 3) +\n  labs(\n    title = \"Distribuição da FreqUencia de Uso da Inteligência Artificial\",\n    x = \"Com que Frequência usa a IA?\",\n    y = \"Frequência (n)\") +\n  theme_bw() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Perfil da Turma</span>"
+    ]
+  },
+  {
+    "objectID": "perfil.html#expectativas",
+    "href": "perfil.html#expectativas",
+    "title": "4  Perfil da Turma",
+    "section": "4.6 Expectativas",
+    "text": "4.6 Expectativas\nO quadro abaixo mostra uma análise das expectativas dos participantes em relação ao curso. Gestão de processo, aprendizado técnico em estatística e ciência de dados, e a integração entre Direito e Dados (Jurimetria) são as áreas mais mencionadas.\n\n\n\n\n\n\n\n\nCategoria\nDescrição\nExemplos\n\n\n\n\nGestão processual baseada em dados\nUso de indicadores e evidências para aperfeiçoar a gestão institucional.\n“Compreender melhor a necessidade de medir indicadores processuais.”\n\n\nAprendizado técnico em estatística e ciência de dados\nDomínio de ferramentas, modelagem e visualização de dados.\n“Aprofundar conceitos de estatística inferencial e mineração de dados.”\n\n\nIntegração Direito + Dados (Jurimetria)\nAplicar raciocínio empírico e quantitativo ao campo jurídico.\n“Aplicar estatística e ciência de dados ao Direito.”\n\n\nPesquisa empírica e inovação\nAplicar técnicas de dados a projetos científicos e institucionais.\n“Formulação de pesquisas empíricas.”\n\n\nTomada de decisão e estratégia baseada em evidências\nApoiar decisões e planejamento institucional.\n“Transformar dados em informação útil para nortear decisões.”\n\n\nGovernança e estruturação de dados\nFortalecer a cultura e gestão de dados no TJTO.\n“Contribuir na estruturação do setor de dados.”\n\n\nInteligência Artificial e análise preditiva\nInteresse em IA e uso de algoritmos no Judiciário.\n“IA como instrumento de combate ao racismo algorítmico.”",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Perfil da Turma</span>"
+    ]
   }
 ]
