@@ -8,7 +8,7 @@
 
 <meta name="author" content="José de Jesus Filho e Alexandre Nicolella">
 
-<title>8&nbsp; Movimentação – Estruturação e Análise de Dados Jurídicos</title>
+<title>8&nbsp; Aula Prática: Coleta e Análise de Dados sobre Homicídio Qualificado – Estruturação e Análise de Dados Jurídicos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./movimentacao.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Movimentação</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./movimentacao.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aula Prática: Coleta e Análise de Dados sobre Homicídio Qualificado</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -213,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./movimentacao.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Movimentação</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aula Prática: Coleta e Análise de Dados sobre Homicídio Qualificado</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -263,15 +263,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introdução-à-aula-prática-coleta-de-dados-no-datajud" id="toc-introdução-à-aula-prática-coleta-de-dados-no-datajud" class="nav-link active" data-scroll-target="#introdução-à-aula-prática-coleta-de-dados-no-datajud"><span class="header-section-number">8.1</span> Introdução à Aula Prática: Coleta de Dados no DataJud</a></li>
+  <li><a href="#acesso-ao-datajud" id="toc-acesso-ao-datajud" class="nav-link" data-scroll-target="#acesso-ao-datajud"><span class="header-section-number">8.2</span> Acesso ao DataJud</a></li>
+  <li><a href="#autenticação-e-chave-pública" id="toc-autenticação-e-chave-pública" class="nav-link" data-scroll-target="#autenticação-e-chave-pública"><span class="header-section-number">8.3</span> Autenticação e Chave Pública</a></li>
+  <li><a href="#endpoints-rotas-e-seleção-de-tribunais" id="toc-endpoints-rotas-e-seleção-de-tribunais" class="nav-link" data-scroll-target="#endpoints-rotas-e-seleção-de-tribunais"><span class="header-section-number">8.4</span> Endpoints, Rotas e Seleção de Tribunais</a></li>
+  <li><a href="#tipos-de-consultas-possíveis" id="toc-tipos-de-consultas-possíveis" class="nav-link" data-scroll-target="#tipos-de-consultas-possíveis"><span class="header-section-number">8.5</span> Tipos de Consultas Possíveis</a></li>
+  <li><a href="#glossário-de-variáveis" id="toc-glossário-de-variáveis" class="nav-link" data-scroll-target="#glossário-de-variáveis"><span class="header-section-number">8.6</span> Glossário de Variáveis</a></li>
+  <li><a href="#seleção-do-assunto-de-interesse" id="toc-seleção-do-assunto-de-interesse" class="nav-link" data-scroll-target="#seleção-do-assunto-de-interesse"><span class="header-section-number">8.7</span> Seleção do Assunto de Interesse</a></li>
+  <li><a href="#escolha-alternativa-pesquisa-por-classe" id="toc-escolha-alternativa-pesquisa-por-classe" class="nav-link" data-scroll-target="#escolha-alternativa-pesquisa-por-classe"><span class="header-section-number">8.8</span> Escolha Alternativa: Pesquisa por Classe</a></li>
+  <li><a href="#fase-muito-importante" id="toc-fase-muito-importante" class="nav-link" data-scroll-target="#fase-muito-importante"><span class="header-section-number">8.9</span> Fase Muito Importante</a></li>
+  <li><a href="#colocando-a-mão-na-massa-coleta-de-dados-no-datajud" id="toc-colocando-a-mão-na-massa-coleta-de-dados-no-datajud" class="nav-link" data-scroll-target="#colocando-a-mão-na-massa-coleta-de-dados-no-datajud"><span class="header-section-number">8.10</span> Colocando a Mão na Massa: Coleta de Dados no DataJud</a>
+  <ul class="collapse">
+  <li><a href="#extraíndo-os-dados-processuais" id="toc-extraíndo-os-dados-processuais" class="nav-link" data-scroll-target="#extraíndo-os-dados-processuais"><span class="header-section-number">8.10.1</span> Extraíndo os Dados Processuais</a></li>
+  <li><a href="#analisando-as-informações-extraídas" id="toc-analisando-as-informações-extraídas" class="nav-link" data-scroll-target="#analisando-as-informações-extraídas"><span class="header-section-number">8.10.2</span> Analisando as Informações Extraídas</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Movimentação</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aula Prática: Coleta e Análise de Dados sobre Homicídio Qualificado</span></h1>
 </div>
 
 
@@ -294,71 +313,4106 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="introdução-à-aula-prática-coleta-de-dados-no-datajud" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="introdução-à-aula-prática-coleta-de-dados-no-datajud"><span class="header-section-number">8.1</span> Introdução à Aula Prática: Coleta de Dados no DataJud</h2>
+<p>Nesta aula prática, vamos aprender como coletar dados processuais utilizando a Base Nacional de Dados do Poder Judiciário (<strong>DataJud</strong>), mantida pelo Conselho Nacional de Justiça (CNJ). O DataJud é o sistema responsável pelo armazenamento centralizado de dados e metadados de todos os processos judiciais brasileiros, físicos ou eletrônicos, e será a base que utilizaremos ao longo do curso.</p>
+</section>
+<section id="acesso-ao-datajud" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="acesso-ao-datajud"><span class="header-section-number">8.2</span> Acesso ao DataJud</h2>
+<p>O DataJud pode ser acessado diretamente no site do CNJ 🔗:</p>
+<p><a href="https://www.cnj.jus.br/sistemas/datajud/">https://www.cnj.jus.br/sistemas/datajud/</a></p>
+<p>A plataforma fornece dados atualizados para diversos os ramos da Justiça brasileira, agrupados e padronizados para permitir análises estatísticas e jurimétricas.</p>
+</section>
+<section id="autenticação-e-chave-pública" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="autenticação-e-chave-pública"><span class="header-section-number">8.3</span> Autenticação e Chave Pública</h2>
+<p>Para acessar os dados via API, utilizaremos a <strong>API Pública</strong> do DataJud, documentada em:</p>
+<p><a href="https://datajud-wiki.cnj.jus.br/api-publica/">https://datajud-wiki.cnj.jus.br/api-publica/</a></p>
+<p>A autenticação é feita por meio de uma chave pública, disponibilizada pelo DPJ/CNJ. A chave 🔑 pode ser obtida no seguinte endereço:</p>
+<p><a href="https://datajud-wiki.cnj.jus.br/api-publica/acesso">https://datajud-wiki.cnj.jus.br/api-publica/acesso</a></p>
+<p>Essa chave será utilizada diretamente no código em R (ou Python), permitindo realizar consultas autenticadas aos dados processuais.</p>
+</section>
+<section id="endpoints-rotas-e-seleção-de-tribunais" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="endpoints-rotas-e-seleção-de-tribunais"><span class="header-section-number">8.4</span> Endpoints, Rotas e Seleção de Tribunais</h2>
+<p>Para realizar nossas consultas, precisamos escolher os endpoints disponíveis, indicando o tribunal desejado. Os endpoints estão detalhados em:</p>
+<p><a href="https://datajud-wiki.cnj.jus.br/api-publica/endpoints">https://datajud-wiki.cnj.jus.br/api-publica/endpoints</a></p>
+<p>É possível consultar processos de de diversos ramos da Justiça brasileira:</p>
+<ul>
+<li><strong>Tribunais Superiores</strong></li>
+<li><strong>Justiça Federal</strong></li>
+<li><strong>Justiça Estadual</strong></li>
+<li><strong>Justiça do Trabalho</strong></li>
+<li><strong>Justiça Eleitoral</strong></li>
+<li><strong>Justiça Militar</strong></li>
+</ul>
+<p>No nosso estudo, utilizaremos os dados do <strong>Tribunal de Justiça do Tocantins (TJTO)</strong>.</p>
+</section>
+<section id="tipos-de-consultas-possíveis" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="tipos-de-consultas-possíveis"><span class="header-section-number">8.5</span> Tipos de Consultas Possíveis</h2>
+<p>A API permite diferentes modalidades de consulta 🔍, como:</p>
+<ul>
+<li>Pesquisa por número do processo</li>
+<li>Pesquisa paginada</li>
+<li>Pesquisa por classe</li>
+<li>Pesquisa por assunto</li>
+<li>…</li>
+</ul>
+<p>O DataJud também disponibiliza exemplos de código em Python e R, acessíveis na aba de exemplos:</p>
+<p><a href="https://datajud-wiki.cnj.jus.br/api-publica/exemplos/">https://datajud-wiki.cnj.jus.br/api-publica/exemplos/</a></p>
+</section>
+<section id="glossário-de-variáveis" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="glossário-de-variáveis"><span class="header-section-number">8.6</span> Glossário de Variáveis</h2>
+<p>O DataJud define nomes específicos para cada uma das variáveis retornadas pela API. O significado de cada termo pode ser consultado no glossário oficial:</p>
+<p><a href="https://datajud-wiki.cnj.jus.br/api-publica/glossario">https://datajud-wiki.cnj.jus.br/api-publica/glossario</a></p>
+<p>Esse glossário é essencial para interpretar corretamente os dados coletados.</p>
+</section>
+<section id="seleção-do-assunto-de-interesse" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="seleção-do-assunto-de-interesse"><span class="header-section-number">8.7</span> Seleção do Assunto de Interesse</h2>
+<p>Em geral, ao iniciar uma pesquisa empírica, precisamos definir o assunto processual a ser analisado. Para isso, utilizamos o Sistema de Gestão de Tabelas Processuais Unificadas:</p>
+<p><a href="https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php">https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php</a></p>
+<p>No nosso caso, o foco inicial seria <strong>Direito Penal/Crimes Contra a Vida</strong>, que inclui subcategorias como:</p>
+<ul>
+<li><strong>10915 — Aborto</strong></li>
+<li><strong>12091 — Feminicídio</strong></li>
+<li><strong>12130 — Homicídio Agravado pela Prática de Extermínio de Seres Humanos</strong></li>
+<li><strong>3371 — Homicídio Privilegiado</strong></li>
+<li><strong>3372 — Homicídio Qualificado</strong></li>
+<li><strong>15177 — Homicídio Qualificado Contra Menor de 14 Anos (Lei Henry Borel)</strong></li>
+<li><strong>3370 — Homicídio Simples</strong></li>
+<li><strong>3373 — Induzimento, Instigação ou Auxílio a Suicídio</strong></li>
+<li><strong>3375 — Infanticídio</strong></li>
+</ul>
+<p>Poderíamos escolher todas ou algumas dessas categorias para nossa análise.</p>
+</section>
+<section id="escolha-alternativa-pesquisa-por-classe" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="escolha-alternativa-pesquisa-por-classe"><span class="header-section-number">8.8</span> Escolha Alternativa: Pesquisa por Classe</h2>
+<p>Nesta aula, porém, seguiremos um caminho alternativo: em vez de selecionar um assunto específico, trabalharemos com a <strong>classe processual</strong>.</p>
+<p>Selecionamos o seguinte ramo:</p>
+<p><strong>Processo Criminal → Procedimento Comum → Ação Penal de Competência do Júri</strong></p>
+<p><strong>Código: 282</strong></p>
+<p>Essa classe captura processos de crimes dolosos contra a vida julgados pelo Tribunal do Júri, alinhados ao nosso objetivo analítico. Entretanto, muitos dos assuntos acima listados estarão presentes. Alám disso, limitamos os nossos processos à <strong>Instância de 1º Grau (G1)</strong>.</p>
+</section>
+<section id="fase-muito-importante" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="fase-muito-importante"><span class="header-section-number">8.9</span> Fase Muito Importante</h2>
+<p>A etapa que descrevemos até aqui é fundamental em qualquer pesquisa empírica que utilize o DataJud ou outras bases de dados judiciais. As <strong>escolhas feitas nesta fase</strong>, como a definição do assunto, da classe processual e dos critérios de filtragem, <strong>influenciam diretamente o desenho amostral</strong> que construiremos.</p>
+<p>Uma <strong>boa seleção inicial</strong> garante <strong>maior precisão, consistência e relevância dos resultados</strong>. Por isso, é essencial conduzir essa etapa com atenção, calma e organização. Quanto mais cuidadosa for a definição desses parâmetros, melhor será a qualidade da extração dos dados e, consequentemente, das análises que realizaremos nas próximas fases do curso.</p>
+</section>
+<section id="colocando-a-mão-na-massa-coleta-de-dados-no-datajud" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="colocando-a-mão-na-massa-coleta-de-dados-no-datajud"><span class="header-section-number">8.10</span> Colocando a Mão na Massa: Coleta de Dados no DataJud</h2>
+<section id="extraíndo-os-dados-processuais" class="level3" data-number="8.10.1">
+<h3 data-number="8.10.1" class="anchored" data-anchor-id="extraíndo-os-dados-processuais"><span class="header-section-number">8.10.1</span> Extraíndo os Dados Processuais</h3>
+<p>O código abaixo extrairá os dados da <strong>classe 282 do grau G1</strong> do <strong>Tribunal de Justiça do Tocantins</strong> e salvará todas essas informações em um dataframe chamado <em>juri.json</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>headers <span class="ot">=</span> <span class="fu">c</span>(</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Authorization'</span> <span class="ot">=</span> <span class="st">'APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw=='</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Content-Type'</span> <span class="ot">=</span> <span class="st">'application/json'</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>body <span class="ot">=</span> <span class="st">'{</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">  "query": {</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">        "bool": {</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">            "must": [</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">                {"match": {"assuntos.codigo": 3372}},</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">                {"match": {"grau": "G1"}}</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">            ]</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">        }</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">   }</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="st">}'</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>body <span class="ot">=</span> <span class="st">'{</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="st">  "size": 8930,</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="st">  "query": {</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="st">        "bool": {</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="st">            "must": [</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="st">                {"match": {"classe.codigo": 282}},</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="st">                {"match": {"grau": "G1"}}</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="st">            ]</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="st">        }</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="st">   }</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="st">}'</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">POST</span>(<span class="at">url =</span> <span class="st">"https://api-publica.datajud.cnj.jus.br/api_publica_tjto/_search"</span>, <span class="at">body =</span> body, <span class="fu">add_headers</span>(headers),</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">write_disk</span>(<span class="st">"juri.json"</span>))</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>juri <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"juri.json"</span>)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>dados_basicos <span class="ot">&lt;-</span> juri <span class="sc">|&gt;</span> </span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>      <span class="fu">pluck</span>(<span class="st">"hits"</span>,<span class="st">"hits"</span>,<span class="st">"_source"</span>)</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>movimento <span class="ot">&lt;-</span> dados_basicos  <span class="sc">|&gt;</span> </span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="at">processo =</span> numeroProcesso, movimentos) <span class="sc">|&gt;</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>      <span class="fu">unnest</span>(movimentos) <span class="sc">|&gt;</span> </span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>      janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="sc">-</span>complementos_tabelados) <span class="sc">|&gt;</span> </span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">data_hora =</span> <span class="fu">parse_datetime</span>(data_hora))</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>movimento  <span class="ot">&lt;-</span> movimento <span class="sc">|&gt;</span> </span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>     <span class="fu">arrange</span>(processo, <span class="fu">desc</span>(data_hora)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>     JurisMiner<span class="sc">::</span><span class="fu">tempo_movimentacao</span>(<span class="at">data =</span> data_hora)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bibloitecas Necessárias</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Definindo a Chave de Acesso</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>headers <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Authorization'</span> <span class="ot">=</span> <span class="st">'APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw=='</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Content-Type'</span> <span class="ot">=</span> <span class="st">'application/json'</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraindo os dados do DataJud</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Classe 282 e grau G1 (1º Grau)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>body <span class="ot">=</span> <span class="st">'{</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">  "size": 8930,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">  "query": {</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">        "bool": {</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">            "must": [</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">                {"match": {"classe.codigo": 282}},</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">                {"match": {"grau": "G1"}}</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="st">            ]</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="st">        }</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="st">   }</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="st">}'</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Do Tribunal de Justiça do Tocantins</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">POST</span>(<span class="at">url =</span> <span class="st">"https://api-publica.datajud.cnj.jus.br/api_publica_tjto/_search"</span>, <span class="at">body =</span> body, <span class="fu">add_headers</span>(headers),</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">write_disk</span>(<span class="st">"juri.json"</span>))</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Importanto o dado</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>juri <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"juri.json"</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(juri, <span class="at">file =</span> <span class="st">"juri.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Agora vamos analisar a <strong>estrutura do arquivo <em>juri.json</em></strong> para identificar onde cada informação relevante está <strong>localizada</strong>. Esse mapeamento é essencial porque nos permite compreender exatamente como os <strong>dados estão organizados</strong> e, assim, definir qual tipo de <strong>extração precisamos realizar</strong> para trabalhar com informações de movimentação, órgãos julgadores, assuntos e outras características presentes no arquivo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pacotes Necessários</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Importanto o dado</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"juri.rds"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Verifica a classe do objeto (ex.: list, data.frame)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(juri)  </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. ver nomes/elementos de topo</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(juri)          <span class="co"># se for lista ou data.frame, mostra colunas/elementos</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(juri)         <span class="co"># número de elementos/top-level items</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Exibe a estrutura do objeto; max.level evita saída muito grande</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(juri, <span class="at">max.level =</span> <span class="dv">4</span>) </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 4.Extrai os dados principais: hits -&gt; hits -&gt; _source - Aqui estão os dados de interesse</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Cada nível corresponde a um ramo interno do JSON</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>dados_basicos <span class="ot">&lt;-</span> juri <span class="sc">|&gt;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="st">"hits"</span>,<span class="st">"hits"</span>,<span class="st">"_source"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="analisando-as-informações-extraídas" class="level3" data-number="8.10.2">
+<h3 data-number="8.10.2" class="anchored" data-anchor-id="analisando-as-informações-extraídas"><span class="header-section-number">8.10.2</span> Analisando as Informações Extraídas</h3>
+<p><strong>Órgão Julgador dos Processos</strong></p>
+<p>Vamos criar um banco que contenha o número do processo e o órgão julgador responsável por cada caso. Em seguida, analisaremos a frequência de processos por órgão julgador, tanto considerando apenas processos únicos quanto incluindo processos duplicados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pacote que padroniza os nomes das variáveis</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar um dataframe com número do processo e órgão julgador</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>julgador <span class="ot">&lt;-</span> dados_basicos  <span class="sc">|&gt;</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="at">processo =</span> numeroProcesso, orgaoJulgador) <span class="sc">|&gt;</span> <span class="co"># Faço a seleção e renomeio a coluna</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">unnest</span>(orgaoJulgador) <span class="sc">|&gt;</span>  <span class="co"># Como orgaoJulgador é um dataframe, preciso "desempacotar" os dados</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      janitor<span class="sc">::</span><span class="fu">clean_names</span>()    <span class="co"># Deixo os nomes padronizados</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(julgador) <span class="co"># número total de processos</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8432</code></pre>
+</div>
+</div>
+<p>Observa-se um <strong>total de 8430 processos</strong>, mas alguns podem estar <strong>duplicados</strong>. Vamos investigar essa questão. Abaixo está o código para identificar e analisar processos únicos e duplicados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vamos verificar se existem processos duplicados. </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>julgador_uni <span class="ot">&lt;-</span> julgador <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(processo, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(julgador_uni) <span class="co"># numero total de processos únicos</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8287</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(julgador) <span class="sc">-</span> <span class="fu">nrow</span>(julgador_uni) <span class="co"># número de processos duplicados</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 145</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vamos analisar os processos duplicados </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>julgador_dup <span class="ot">&lt;-</span> julgador <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">duplicated</span>(processo) <span class="sc">|</span> <span class="fu">duplicated</span>(processo, <span class="at">fromLast =</span> <span class="cn">TRUE</span>)) </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Esse comando pega todas as linhas após a primeira ocorrência ou </span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Pega todas as linhas antes da última ocorrência e verifica duplicação</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Vamos ver quantos processos duplicados temos:</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(julgador_dup) <span class="co"># número de processos duplicados</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 289</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(julgador_dup<span class="sc">$</span>processo) <span class="sc">|&gt;</span> <span class="fu">length</span>() <span class="co"># número de processos únicos que estão duplicados</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 144</code></pre>
+</div>
+</div>
+<p>O total de <strong>processos únicos</strong> foi de <strong>8.287</strong>, e identificamos <strong>144 processos duplicados</strong>. Agora, vamos verificar se essas duplicações ocorreram em razão de alguma mudança de órgão julgador. Para isso, vamos pivotar os dados e criar uma variável que indique se houve alteração no órgão julgador para cada processo duplicado.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Analisando se houve troca de orgaõ julgador e por isso é duplicado</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Criar ordem dentro de cada processo 1, para primeira vez e 2 para a segunda vez....</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>julgador_dup_ord <span class="ot">&lt;-</span> julgador_dup <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(processo) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">orgao_id =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Pivotar para formato wide, selciono e indico o nome que será dado</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>julgador_wide <span class="ot">&lt;-</span> julgador_dup_ord <span class="sc">%&gt;%</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(processo, orgao_id, nome) <span class="sc">%&gt;%</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> orgao_id,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> nome,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"julgador"</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Variável indicando mudança</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>julgador_wide <span class="ot">&lt;-</span> julgador_wide <span class="sc">%&gt;%</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">mudou_orgao =</span> <span class="fu">n_distinct</span>(<span class="fu">c_across</span>(<span class="fu">starts_with</span>(<span class="st">"julgador"</span>)), <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">&gt;</span> <span class="dv">1</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co"># - &gt; pega todas as colunas cujo nome começa com "julgador", transforma em vetores e verifica se é distinto</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>julgador_wide <span class="sc">%&gt;%</span> </span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(mudou_orgao, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">mudou_orgao =</span> <span class="fu">ifelse</span>(mudou_orgao, <span class="st">"Sim"</span>, <span class="st">"Não"</span>)</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Frequência de processos que mudaram de órgão julgador"</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Frequência de processos que mudaram de órgão julgador</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">mudou_orgao</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Não</td>
+<td style="text-align: right;">93</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sim</td>
+<td style="text-align: right;">51</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Observamos que <strong>93 processos não mudaram de órgão julgador</strong> e <strong>51 passaram por alteração</strong>. Agora precisamos definir como trataremos esses casos: se consideraremos apenas o <em>órgão julgador final</em> ou se adotaremos o <em>órgão julgador inicial</em> como referência. Mas ainda precisamos observar que há <strong>93 processos</strong> que aparecem duplicados, mesmo <strong>sem mudança de órgão julgador</strong>. O que pode estar acontecendo nesses casos?</p>
+<p>Vamos focar nos processos únicos para analisar a frequência de órgãos julgadores e descrever os resultados graficamente e em tabelas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>freq_j_u <span class="ot">&lt;-</span> julgador_uni <span class="sc">%&gt;%</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(nome) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">perc =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="dv">1</span>))</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(freq_j_u, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(nome, n), <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#7185cc"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Frequência por Órgão Julgador (Processos Únicos)"</span>,</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Órgão Julgador"</span>,</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequência"</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">4</span>)   <span class="co"># tamanho da letra das categorias</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="movimentacao_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>freq_j_u <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Frequência por Órgão Julgador (Processos Únicos)"</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">nome =</span> <span class="st">"Órgão Julgador"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="st">"Frequência"</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">perc =</span> <span class="st">"Percentual"</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="qirqumpjyn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qirqumpjyn table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#qirqumpjyn thead, #qirqumpjyn tbody, #qirqumpjyn tfoot, #qirqumpjyn tr, #qirqumpjyn td, #qirqumpjyn th {
+  border-style: none;
+}
+
+#qirqumpjyn p {
+  margin: 0;
+  padding: 0;
+}
+
+#qirqumpjyn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#qirqumpjyn .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#qirqumpjyn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#qirqumpjyn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#qirqumpjyn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qirqumpjyn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qirqumpjyn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#qirqumpjyn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#qirqumpjyn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#qirqumpjyn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#qirqumpjyn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#qirqumpjyn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#qirqumpjyn .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#qirqumpjyn .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#qirqumpjyn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#qirqumpjyn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#qirqumpjyn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#qirqumpjyn .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#qirqumpjyn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qirqumpjyn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#qirqumpjyn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#qirqumpjyn .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#qirqumpjyn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qirqumpjyn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#qirqumpjyn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#qirqumpjyn .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qirqumpjyn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qirqumpjyn .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#qirqumpjyn .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qirqumpjyn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#qirqumpjyn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#qirqumpjyn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qirqumpjyn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qirqumpjyn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#qirqumpjyn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#qirqumpjyn .gt_left {
+  text-align: left;
+}
+
+#qirqumpjyn .gt_center {
+  text-align: center;
+}
+
+#qirqumpjyn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#qirqumpjyn .gt_font_normal {
+  font-weight: normal;
+}
+
+#qirqumpjyn .gt_font_bold {
+  font-weight: bold;
+}
+
+#qirqumpjyn .gt_font_italic {
+  font-style: italic;
+}
+
+#qirqumpjyn .gt_super {
+  font-size: 65%;
+}
+
+#qirqumpjyn .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#qirqumpjyn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#qirqumpjyn .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#qirqumpjyn .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#qirqumpjyn .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#qirqumpjyn .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#qirqumpjyn .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#qirqumpjyn .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#qirqumpjyn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border">Frequência por Órgão Julgador (Processos Únicos)</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="nome" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Órgão Julgador</th>
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Frequência</th>
+<th id="perc" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Percentual</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Vara Criminal de Araguaína</td>
+<td class="gt_row gt_right" headers="n">965</td>
+<td class="gt_row gt_right" headers="perc">11.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juizo da 1ª Vara Criminal de Palmas</td>
+<td class="gt_row gt_right" headers="n">846</td>
+<td class="gt_row gt_right" headers="perc">10.2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juizo da Especializada no Combate à Violência Contra a Mulher e Crimes Dolosos Contra a Vida de Guru</td>
+<td class="gt_row gt_right" headers="n">725</td>
+<td class="gt_row gt_right" headers="perc">8.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Vara Criminal de Porto Nacional</td>
+<td class="gt_row gt_right" headers="n">477</td>
+<td class="gt_row gt_right" headers="perc">5.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Vara Criminal de Colinas do Tocantins</td>
+<td class="gt_row gt_right" headers="n">419</td>
+<td class="gt_row gt_right" headers="perc">5.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Vara Criminal de Paraíso do Tocantins</td>
+<td class="gt_row gt_right" headers="n">326</td>
+<td class="gt_row gt_right" headers="perc">3.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 2ª Vara de Augustinópolis</td>
+<td class="gt_row gt_right" headers="n">309</td>
+<td class="gt_row gt_right" headers="perc">3.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Vara Criminal de Tocantinópolis</td>
+<td class="gt_row gt_right" headers="n">294</td>
+<td class="gt_row gt_right" headers="perc">3.5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Itaguatins</td>
+<td class="gt_row gt_right" headers="n">271</td>
+<td class="gt_row gt_right" headers="perc">3.3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da Vara Criminal, de Violência Doméstica e Juizado Especial Criminal de Dianópolis</td>
+<td class="gt_row gt_right" headers="n">254</td>
+<td class="gt_row gt_right" headers="perc">3.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Vara Criminal de Miracema do Tocantins</td>
+<td class="gt_row gt_right" headers="n">216</td>
+<td class="gt_row gt_right" headers="perc">2.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Colméia</td>
+<td class="gt_row gt_right" headers="n">189</td>
+<td class="gt_row gt_right" headers="perc">2.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da Vara Criminal, de Violência Doméstica e Juizado Especial Criminal de Araguatins</td>
+<td class="gt_row gt_right" headers="n">178</td>
+<td class="gt_row gt_right" headers="perc">2.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Vara Criminal de Guaraí</td>
+<td class="gt_row gt_right" headers="n">177</td>
+<td class="gt_row gt_right" headers="perc">2.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Peixe</td>
+<td class="gt_row gt_right" headers="n">163</td>
+<td class="gt_row gt_right" headers="perc">2.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 2ª Vara da Comarca de Cristalândia</td>
+<td class="gt_row gt_right" headers="n">160</td>
+<td class="gt_row gt_right" headers="perc">1.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Vara Criminal de Taguatinga</td>
+<td class="gt_row gt_right" headers="n">157</td>
+<td class="gt_row gt_right" headers="perc">1.9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Natividade</td>
+<td class="gt_row gt_right" headers="n">154</td>
+<td class="gt_row gt_right" headers="perc">1.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Goiatins</td>
+<td class="gt_row gt_right" headers="n">151</td>
+<td class="gt_row gt_right" headers="perc">1.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Formoso do Araguaia</td>
+<td class="gt_row gt_right" headers="n">144</td>
+<td class="gt_row gt_right" headers="perc">1.7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Vara Criminal de Pedro Afonso</td>
+<td class="gt_row gt_right" headers="n">123</td>
+<td class="gt_row gt_right" headers="perc">1.5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Vara Criminal de Arraias</td>
+<td class="gt_row gt_right" headers="n">121</td>
+<td class="gt_row gt_right" headers="perc">1.5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Miranorte</td>
+<td class="gt_row gt_right" headers="n">113</td>
+<td class="gt_row gt_right" headers="perc">1.4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Novo Acordo</td>
+<td class="gt_row gt_right" headers="n">113</td>
+<td class="gt_row gt_right" headers="perc">1.4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Wanderlândia</td>
+<td class="gt_row gt_right" headers="n">113</td>
+<td class="gt_row gt_right" headers="perc">1.4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Xambioá</td>
+<td class="gt_row gt_right" headers="n">113</td>
+<td class="gt_row gt_right" headers="perc">1.4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Ananás</td>
+<td class="gt_row gt_right" headers="n">98</td>
+<td class="gt_row gt_right" headers="perc">1.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Filadélfia</td>
+<td class="gt_row gt_right" headers="n">95</td>
+<td class="gt_row gt_right" headers="perc">1.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Araguacema</td>
+<td class="gt_row gt_right" headers="n">91</td>
+<td class="gt_row gt_right" headers="perc">1.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Araguaçu</td>
+<td class="gt_row gt_right" headers="n">88</td>
+<td class="gt_row gt_right" headers="perc">1.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Ponte Alta</td>
+<td class="gt_row gt_right" headers="n">87</td>
+<td class="gt_row gt_right" headers="perc">1.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Itacajá</td>
+<td class="gt_row gt_right" headers="n">84</td>
+<td class="gt_row gt_right" headers="perc">1.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Alvorada</td>
+<td class="gt_row gt_right" headers="n">82</td>
+<td class="gt_row gt_right" headers="perc">1.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Palmeiropolis</td>
+<td class="gt_row gt_right" headers="n">70</td>
+<td class="gt_row gt_right" headers="perc">0.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Arapoema</td>
+<td class="gt_row gt_right" headers="n">69</td>
+<td class="gt_row gt_right" headers="perc">0.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Paranã</td>
+<td class="gt_row gt_right" headers="n">67</td>
+<td class="gt_row gt_right" headers="perc">0.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Vara Criminal de Dianópolis</td>
+<td class="gt_row gt_right" headers="n">51</td>
+<td class="gt_row gt_right" headers="perc">0.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Cristalândia</td>
+<td class="gt_row gt_right" headers="n">42</td>
+<td class="gt_row gt_right" headers="perc">0.5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Vara Criminal de Araguatins</td>
+<td class="gt_row gt_right" headers="n">35</td>
+<td class="gt_row gt_right" headers="perc">0.4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 2ª Escrivania de Augustinópolis</td>
+<td class="gt_row gt_right" headers="n">19</td>
+<td class="gt_row gt_right" headers="perc">0.2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Figueirópolis</td>
+<td class="gt_row gt_right" headers="n">10</td>
+<td class="gt_row gt_right" headers="perc">0.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Aurora</td>
+<td class="gt_row gt_right" headers="n">9</td>
+<td class="gt_row gt_right" headers="perc">0.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da Vara de Execuções Penais de Gurupi</td>
+<td class="gt_row gt_right" headers="n">8</td>
+<td class="gt_row gt_right" headers="perc">0.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Pium</td>
+<td class="gt_row gt_right" headers="n">7</td>
+<td class="gt_row gt_right" headers="perc">0.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Juízo da 1ª Escrivania Criminal de Almas</td>
+<td class="gt_row gt_right" headers="n">4</td>
+<td class="gt_row gt_right" headers="perc">0.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>Sistema dos Processos</strong></p>
+<p>Aqui avaliamos se os processos pertencem ao sistema <strong>sistema eletrônico de processos judiciais</strong> EPROC ou a outro sistema.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sistema <span class="ot">&lt;-</span> dados_basicos  <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="at">processo =</span> numeroProcesso, sistema) <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">unnest</span>(sistema) <span class="sc">|&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>      janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>freq_sistema <span class="ot">&lt;-</span> sistema <span class="sc">%&gt;%</span> </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(nome) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>freq_sistema <span class="sc">|&gt;</span> </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Frequência por Sistema (Processos Únicos)"</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">nome =</span> <span class="st">"Sistema"</span>,</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="st">"Frequência"</span>,</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="hdbifcrrpb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hdbifcrrpb table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#hdbifcrrpb thead, #hdbifcrrpb tbody, #hdbifcrrpb tfoot, #hdbifcrrpb tr, #hdbifcrrpb td, #hdbifcrrpb th {
+  border-style: none;
+}
+
+#hdbifcrrpb p {
+  margin: 0;
+  padding: 0;
+}
+
+#hdbifcrrpb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hdbifcrrpb .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#hdbifcrrpb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hdbifcrrpb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hdbifcrrpb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hdbifcrrpb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hdbifcrrpb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hdbifcrrpb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hdbifcrrpb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hdbifcrrpb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hdbifcrrpb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hdbifcrrpb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hdbifcrrpb .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hdbifcrrpb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#hdbifcrrpb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hdbifcrrpb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hdbifcrrpb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hdbifcrrpb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hdbifcrrpb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdbifcrrpb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hdbifcrrpb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hdbifcrrpb .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hdbifcrrpb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdbifcrrpb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#hdbifcrrpb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hdbifcrrpb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hdbifcrrpb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdbifcrrpb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hdbifcrrpb .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hdbifcrrpb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hdbifcrrpb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hdbifcrrpb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hdbifcrrpb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdbifcrrpb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hdbifcrrpb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdbifcrrpb .gt_left {
+  text-align: left;
+}
+
+#hdbifcrrpb .gt_center {
+  text-align: center;
+}
+
+#hdbifcrrpb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hdbifcrrpb .gt_font_normal {
+  font-weight: normal;
+}
+
+#hdbifcrrpb .gt_font_bold {
+  font-weight: bold;
+}
+
+#hdbifcrrpb .gt_font_italic {
+  font-style: italic;
+}
+
+#hdbifcrrpb .gt_super {
+  font-size: 65%;
+}
+
+#hdbifcrrpb .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#hdbifcrrpb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hdbifcrrpb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hdbifcrrpb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hdbifcrrpb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hdbifcrrpb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hdbifcrrpb .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#hdbifcrrpb .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#hdbifcrrpb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border">Frequência por Sistema (Processos Únicos)</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="nome" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Sistema</th>
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Frequência</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">EPROC</td>
+<td class="gt_row gt_right" headers="n">8426</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Inválido</td>
+<td class="gt_row gt_right" headers="n">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Outros</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Com base na tabela acima, podemos observar a distribuição dos processos entre os sistemas Eletrônico e Físico. Observa-se a existência somente de processos eletrônicos, mas 4 foram declaros inválidos e 2 OUtros. O que fazer com esses casos? Devemos excluí-los da análise ou mantê-los?</p>
+<p><strong>Formato do Processo</strong></p>
+<p>Aqui avaliamos se os processos são do tipo <strong>Eletrônico</strong> ou <strong>Físico</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>formato <span class="ot">&lt;-</span> dados_basicos  <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="at">processo =</span> numeroProcesso, formato) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">unnest</span>(formato) <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>      janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>freq_formato <span class="ot">&lt;-</span> formato <span class="sc">%&gt;%</span> </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(nome) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>freq_formato <span class="sc">|&gt;</span> </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Frequência por Formato (Processos Únicos)"</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">nome =</span> <span class="st">"Formato"</span>,</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="st">"Frequência"</span>,</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="mummojslhi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mummojslhi table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mummojslhi thead, #mummojslhi tbody, #mummojslhi tfoot, #mummojslhi tr, #mummojslhi td, #mummojslhi th {
+  border-style: none;
+}
+
+#mummojslhi p {
+  margin: 0;
+  padding: 0;
+}
+
+#mummojslhi .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mummojslhi .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mummojslhi .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mummojslhi .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mummojslhi .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mummojslhi .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mummojslhi .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mummojslhi .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mummojslhi .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mummojslhi .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mummojslhi .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mummojslhi .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mummojslhi .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mummojslhi .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mummojslhi .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mummojslhi .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mummojslhi .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mummojslhi .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mummojslhi .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mummojslhi .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mummojslhi .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mummojslhi .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mummojslhi .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mummojslhi .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mummojslhi .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mummojslhi .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mummojslhi .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mummojslhi .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mummojslhi .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mummojslhi .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mummojslhi .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mummojslhi .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mummojslhi .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mummojslhi .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mummojslhi .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mummojslhi .gt_left {
+  text-align: left;
+}
+
+#mummojslhi .gt_center {
+  text-align: center;
+}
+
+#mummojslhi .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mummojslhi .gt_font_normal {
+  font-weight: normal;
+}
+
+#mummojslhi .gt_font_bold {
+  font-weight: bold;
+}
+
+#mummojslhi .gt_font_italic {
+  font-style: italic;
+}
+
+#mummojslhi .gt_super {
+  font-size: 65%;
+}
+
+#mummojslhi .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mummojslhi .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mummojslhi .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mummojslhi .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mummojslhi .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mummojslhi .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mummojslhi .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#mummojslhi .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mummojslhi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border">Frequência por Formato (Processos Únicos)</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="nome" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Formato</th>
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Frequência</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Eletrônico</td>
+<td class="gt_row gt_right" headers="n">8432</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Observa-se que 100% dos processos estão no formato Eletrônico. Dessa forma, não há necessidade de excluir nenhum processo com base nesse critério.</p>
+<p><strong>Classe Processual</strong></p>
+<p>Como fizemos nossa busca por classe processual, 282, deveríamos ter somente essa classe. Vamos verificar se há outras classes presentes nos dados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>classe <span class="ot">&lt;-</span> dados_basicos  <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="at">processo =</span> numeroProcesso, classe) <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">unnest</span>(classe) <span class="sc">|&gt;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>      janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>freq_classe <span class="ot">&lt;-</span> classe <span class="sc">%&gt;%</span> </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(nome) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>freq_classe <span class="sc">|&gt;</span> </span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Frequência por Classe (Processos Únicos)"</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">nome =</span> <span class="st">"Classe"</span>,</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="st">"Frequência"</span>,</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="dqcfejyxkj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dqcfejyxkj table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#dqcfejyxkj thead, #dqcfejyxkj tbody, #dqcfejyxkj tfoot, #dqcfejyxkj tr, #dqcfejyxkj td, #dqcfejyxkj th {
+  border-style: none;
+}
+
+#dqcfejyxkj p {
+  margin: 0;
+  padding: 0;
+}
+
+#dqcfejyxkj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dqcfejyxkj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#dqcfejyxkj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dqcfejyxkj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dqcfejyxkj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dqcfejyxkj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dqcfejyxkj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dqcfejyxkj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dqcfejyxkj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dqcfejyxkj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dqcfejyxkj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dqcfejyxkj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dqcfejyxkj .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#dqcfejyxkj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#dqcfejyxkj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dqcfejyxkj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dqcfejyxkj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dqcfejyxkj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dqcfejyxkj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dqcfejyxkj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#dqcfejyxkj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#dqcfejyxkj .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#dqcfejyxkj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dqcfejyxkj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#dqcfejyxkj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#dqcfejyxkj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dqcfejyxkj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dqcfejyxkj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dqcfejyxkj .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dqcfejyxkj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dqcfejyxkj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dqcfejyxkj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dqcfejyxkj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dqcfejyxkj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dqcfejyxkj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dqcfejyxkj .gt_left {
+  text-align: left;
+}
+
+#dqcfejyxkj .gt_center {
+  text-align: center;
+}
+
+#dqcfejyxkj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dqcfejyxkj .gt_font_normal {
+  font-weight: normal;
+}
+
+#dqcfejyxkj .gt_font_bold {
+  font-weight: bold;
+}
+
+#dqcfejyxkj .gt_font_italic {
+  font-style: italic;
+}
+
+#dqcfejyxkj .gt_super {
+  font-size: 65%;
+}
+
+#dqcfejyxkj .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#dqcfejyxkj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#dqcfejyxkj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#dqcfejyxkj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#dqcfejyxkj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#dqcfejyxkj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#dqcfejyxkj .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#dqcfejyxkj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#dqcfejyxkj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border">Frequência por Classe (Processos Únicos)</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="nome" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Classe</th>
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Frequência</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Ação Penal de Competência do Júri</td>
+<td class="gt_row gt_right" headers="n">8432</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Conforme esperado pela nossa consulta inicial, todos os processos pertencem à classe <strong>Ação Penal de Competência do Júri (282)</strong>. Portanto, não há necessidade de excluir nenhum processo com base nesse critério.</p>
+<p><strong>Assuntos Processuais</strong></p>
+<p>Vamos extrair e analisar os assuntos processuais associados a cada processo. Vamos fazer a extração e veja que o resultado é uma coluna com processo e a outra com o assunto. Se tivermos mais assuntos por processo, esse será duplicado.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a> <span class="co"># manter só linhas em que 'assuntos' é um data.frame</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>assuntos <span class="ot">&lt;-</span> dados_basicos <span class="sc">|&gt;</span> </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">map_lgl</span>(assuntos, is.data.frame)) <span class="sc">|&gt;</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">processo =</span> numeroProcesso, assuntos) <span class="sc">|&gt;</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(assuntos) <span class="sc">|&gt;</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>freq_assunto <span class="ot">&lt;-</span> assuntos <span class="sc">|&gt;</span> </span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(nome) <span class="sc">|&gt;</span> </span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span> </span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">perc_assunto =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="dv">1</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">perc_processo =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> n <span class="sc">/</span> <span class="dv">8288</span>, <span class="dv">1</span>))  <span class="co"># considerando processos únicos</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(freq_assunto, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(nome, n), <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#7185cc"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Frequência por Assunto (Processos Únicos)"</span>,</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Assunto"</span>,</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequência"</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">4</span>))   <span class="co"># tamanho da letra das categorias</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="movimentacao_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>freq_assunto <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Frequência dos Assuntos"</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">nome =</span> <span class="st">"Assunto"</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="st">"Frequência"</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">perc_assunto =</span> <span class="st">"% Assuntos"</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">perc_processo =</span> <span class="st">"% Processos"</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="gmmocxeoer" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gmmocxeoer table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#gmmocxeoer thead, #gmmocxeoer tbody, #gmmocxeoer tfoot, #gmmocxeoer tr, #gmmocxeoer td, #gmmocxeoer th {
+  border-style: none;
+}
+
+#gmmocxeoer p {
+  margin: 0;
+  padding: 0;
+}
+
+#gmmocxeoer .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#gmmocxeoer .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#gmmocxeoer .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#gmmocxeoer .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#gmmocxeoer .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gmmocxeoer .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gmmocxeoer .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gmmocxeoer .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#gmmocxeoer .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#gmmocxeoer .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#gmmocxeoer .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#gmmocxeoer .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#gmmocxeoer .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#gmmocxeoer .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#gmmocxeoer .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gmmocxeoer .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#gmmocxeoer .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#gmmocxeoer .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#gmmocxeoer .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gmmocxeoer .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#gmmocxeoer .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#gmmocxeoer .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#gmmocxeoer .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gmmocxeoer .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#gmmocxeoer .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#gmmocxeoer .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gmmocxeoer .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gmmocxeoer .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#gmmocxeoer .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gmmocxeoer .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#gmmocxeoer .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gmmocxeoer .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gmmocxeoer .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gmmocxeoer .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gmmocxeoer .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gmmocxeoer .gt_left {
+  text-align: left;
+}
+
+#gmmocxeoer .gt_center {
+  text-align: center;
+}
+
+#gmmocxeoer .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#gmmocxeoer .gt_font_normal {
+  font-weight: normal;
+}
+
+#gmmocxeoer .gt_font_bold {
+  font-weight: bold;
+}
+
+#gmmocxeoer .gt_font_italic {
+  font-style: italic;
+}
+
+#gmmocxeoer .gt_super {
+  font-size: 65%;
+}
+
+#gmmocxeoer .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#gmmocxeoer .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#gmmocxeoer .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#gmmocxeoer .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#gmmocxeoer .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#gmmocxeoer .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#gmmocxeoer .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#gmmocxeoer .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#gmmocxeoer div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border">Frequência dos Assuntos</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="nome" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Assunto</th>
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Frequência</th>
+<th id="perc_assunto" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">% Assuntos</th>
+<th id="perc_processo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">% Processos</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Homicídio Qualificado</td>
+<td class="gt_row gt_right" headers="n">6007</td>
+<td class="gt_row gt_right" headers="perc_assunto">52.5</td>
+<td class="gt_row gt_right" headers="perc_processo">72.5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Crime Tentado</td>
+<td class="gt_row gt_right" headers="n">2762</td>
+<td class="gt_row gt_right" headers="perc_assunto">24.1</td>
+<td class="gt_row gt_right" headers="perc_processo">33.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Homicídio Simples</td>
+<td class="gt_row gt_right" headers="n">1756</td>
+<td class="gt_row gt_right" headers="perc_assunto">15.4</td>
+<td class="gt_row gt_right" headers="perc_processo">21.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Feminicídio</td>
+<td class="gt_row gt_right" headers="n">367</td>
+<td class="gt_row gt_right" headers="perc_assunto">3.2</td>
+<td class="gt_row gt_right" headers="perc_processo">4.4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Violência Doméstica Contra a Mulher</td>
+<td class="gt_row gt_right" headers="n">91</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.8</td>
+<td class="gt_row gt_right" headers="perc_processo">1.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Crimes do Sistema Nacional de Armas</td>
+<td class="gt_row gt_right" headers="n">47</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.4</td>
+<td class="gt_row gt_right" headers="perc_processo">0.6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Homicídio Privilegiado</td>
+<td class="gt_row gt_right" headers="n">45</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.4</td>
+<td class="gt_row gt_right" headers="perc_processo">0.5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Destruição / Subração / Ocultação de Cadáver</td>
+<td class="gt_row gt_right" headers="n">28</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.2</td>
+<td class="gt_row gt_right" headers="perc_processo">0.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Promoção, constituição, financiamento ou integração de Organização Criminosa</td>
+<td class="gt_row gt_right" headers="n">24</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.2</td>
+<td class="gt_row gt_right" headers="perc_processo">0.3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Homicidio qualificado</td>
+<td class="gt_row gt_right" headers="n">20</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.2</td>
+<td class="gt_row gt_right" headers="perc_processo">0.2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Crimes contra a vida</td>
+<td class="gt_row gt_right" headers="n">19</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.2</td>
+<td class="gt_row gt_right" headers="perc_processo">0.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Crimes Previstos no Estatuto da criança e do adolescente</td>
+<td class="gt_row gt_right" headers="n">17</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Ameaça</td>
+<td class="gt_row gt_right" headers="n">15</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Aborto provocado por terceiro</td>
+<td class="gt_row gt_right" headers="n">14</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Crime / Contravenção contra Criança / Adolescente</td>
+<td class="gt_row gt_right" headers="n">13</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Aborto provocado pela gestante ou com o seu consentimento</td>
+<td class="gt_row gt_right" headers="n">12</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Furto</td>
+<td class="gt_row gt_right" headers="n">12</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Crimes de Trânsito</td>
+<td class="gt_row gt_right" headers="n">10</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Leve</td>
+<td class="gt_row gt_right" headers="n">10</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Grave</td>
+<td class="gt_row gt_right" headers="n">9</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Corrupção de Menores</td>
+<td class="gt_row gt_right" headers="n">8</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Contra a Mulher</td>
+<td class="gt_row gt_right" headers="n">7</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Fraude processual</td>
+<td class="gt_row gt_right" headers="n">7</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Crime Culposo</td>
+<td class="gt_row gt_right" headers="n">6</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Dano Qualificado</td>
+<td class="gt_row gt_right" headers="n">6</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Roubo Majorado</td>
+<td class="gt_row gt_right" headers="n">6</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.1</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Estupro de vulnerável</td>
+<td class="gt_row gt_right" headers="n">5</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Falsidade ideológica</td>
+<td class="gt_row gt_right" headers="n">5</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Falso testemunho ou falsa perícia</td>
+<td class="gt_row gt_right" headers="n">5</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Recebimento</td>
+<td class="gt_row gt_right" headers="n">5</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Seqüestro e cárcere privado</td>
+<td class="gt_row gt_right" headers="n">5</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Tráfico de Drogas e Condutas Afins</td>
+<td class="gt_row gt_right" headers="n">5</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Resistência</td>
+<td class="gt_row gt_right" headers="n">4</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Violação a Sepultura</td>
+<td class="gt_row gt_right" headers="n">4</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Violação de domicílio</td>
+<td class="gt_row gt_right" headers="n">4</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Aborto qualificado</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Adulteração de Sinal Identificador de Veículo Automotor</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Coação no curso do processo</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Crime de Descumprimento de Medida Protetiva de Urgência</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Crimes de Tortura</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Dano</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Estupro</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Furto Qualificado</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Homicídio</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Homicídio Agravado pela Prática de Extermínio de Seres Humanos</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Latrocínio</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Quadrilha ou Bando</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Roubo</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">NA</td>
+<td class="gt_row gt_right" headers="n">3</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Crimes Hediondos</td>
+<td class="gt_row gt_right" headers="n">2</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Decorrente de Violência Doméstica</td>
+<td class="gt_row gt_right" headers="n">2</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Incêndio</td>
+<td class="gt_row gt_right" headers="n">2</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Infanticídio</td>
+<td class="gt_row gt_right" headers="n">2</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Lesão leve</td>
+<td class="gt_row gt_right" headers="n">2</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Associação para a Produção e Tráfico e Condutas Afins</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Atentado Violento ao Pudor</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Comunicação falsa de crime ou de contravenção</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Crime / Contravenção contra Idoso</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Crimes Previstos no Estatuto do Idoso</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Crimes contra a Fauna</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Denunciação caluniosa</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Desacato</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Descumprimento de Medida Protetiva de Urgência</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Estelionato Majorado</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Extorsão (art. 158)</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Falsa identidade</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Furto de coisa comum</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Gravíssima</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Induzimento, Instigação ou Auxílio a Suicídio</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Injúria</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Lesão Cometida em Razão da Condição de Mulher</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Participação ilícita</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Perseguição</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Posse de Drogas para Consumo Pessoal</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Receptação</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Receptação Qualificada</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Recurso</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Sequestro ou cárcere privado</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="nome">Vilipêndio a Cadáver</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="nome">Violência Psicológica contra a Mulher</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="perc_assunto">0.0</td>
+<td class="gt_row gt_right" headers="perc_processo">0.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>Assuntos</strong> tem um total de <strong>11438 processos</strong>, sendo que o número de <strong>processos únicos é 8288</strong>. Isso indica que muitos processos têm mais de um assunto associado. Então a leitura da tabela acima deve considerar esses números. Podemos dizer que <strong>6007</strong> processos tiveram <strong>Homicídio Qualificado</strong> como assunto, <strong>2762</strong> tiveram <strong>Crime Tentado</strong>, e assim por diante. <strong>Existe sobreposição</strong> entre os dois assuntos.</p>
+<p>Fizemos duas colunas, uma com percentual com base no total de assuntos (11438), % Assuntos, e outra com base no total de processos únicos (8288), % Processos. A segunda coluna é mais interessante, pois indica a proporção de processos que tiveram cada assunto.</p>
+<p>Agora vamos olhar o assunto por processo, para ver quantos assuntos cada processo tem associado.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>assuntos_wide <span class="ot">&lt;-</span> assuntos <span class="sc">%&gt;%</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(processo, nome) <span class="sc">%&gt;%</span>   <span class="co"># garante uma linha por processo-assunto</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">valor =</span> <span class="dv">1</span>, <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> nome,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> valor,</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_fill =</span> <span class="fu">list</span>(<span class="at">valor =</span> <span class="dv">0</span>)   <span class="co"># preenche com 0 se não ocorreu</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>assuntos_wide <span class="sc">%&gt;%</span> </span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Assuntos por Processo (Exemplo)"</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="gjftaqstxu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gjftaqstxu table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#gjftaqstxu thead, #gjftaqstxu tbody, #gjftaqstxu tfoot, #gjftaqstxu tr, #gjftaqstxu td, #gjftaqstxu th {
+  border-style: none;
+}
+
+#gjftaqstxu p {
+  margin: 0;
+  padding: 0;
+}
+
+#gjftaqstxu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#gjftaqstxu .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#gjftaqstxu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#gjftaqstxu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#gjftaqstxu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gjftaqstxu .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gjftaqstxu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gjftaqstxu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#gjftaqstxu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#gjftaqstxu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#gjftaqstxu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#gjftaqstxu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#gjftaqstxu .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#gjftaqstxu .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#gjftaqstxu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gjftaqstxu .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#gjftaqstxu .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#gjftaqstxu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#gjftaqstxu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gjftaqstxu .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#gjftaqstxu .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#gjftaqstxu .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#gjftaqstxu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gjftaqstxu .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#gjftaqstxu .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#gjftaqstxu .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gjftaqstxu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gjftaqstxu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#gjftaqstxu .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gjftaqstxu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#gjftaqstxu .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gjftaqstxu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gjftaqstxu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gjftaqstxu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gjftaqstxu .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gjftaqstxu .gt_left {
+  text-align: left;
+}
+
+#gjftaqstxu .gt_center {
+  text-align: center;
+}
+
+#gjftaqstxu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#gjftaqstxu .gt_font_normal {
+  font-weight: normal;
+}
+
+#gjftaqstxu .gt_font_bold {
+  font-weight: bold;
+}
+
+#gjftaqstxu .gt_font_italic {
+  font-style: italic;
+}
+
+#gjftaqstxu .gt_super {
+  font-size: 65%;
+}
+
+#gjftaqstxu .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#gjftaqstxu .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#gjftaqstxu .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#gjftaqstxu .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#gjftaqstxu .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#gjftaqstxu .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#gjftaqstxu .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#gjftaqstxu .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#gjftaqstxu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border">Assuntos por Processo (Exemplo)</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="processo" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">processo</th>
+<th id="Homicídio-Simples" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Homicídio Simples</th>
+<th id="Crime-Tentado" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Crime Tentado</th>
+<th id="Homicídio-Qualificado" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Homicídio Qualificado</th>
+<th id="Corrupção-de-Menores" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Corrupção de Menores</th>
+<th id="Feminicídio" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Feminicídio</th>
+<th id="Violência-Doméstica-Contra-a-Mulher" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Violência Doméstica Contra a Mulher</th>
+<th id="Homicídio-Privilegiado" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Homicídio Privilegiado</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="processo">00000059520148272720</td>
+<td class="gt_row gt_right" headers="Homicídio Simples">1</td>
+<td class="gt_row gt_right" headers="Crime Tentado">0</td>
+<td class="gt_row gt_right" headers="Homicídio Qualificado">0</td>
+<td class="gt_row gt_right" headers="Corrupção de Menores">0</td>
+<td class="gt_row gt_right" headers="Feminicídio">0</td>
+<td class="gt_row gt_right" headers="Violência Doméstica Contra a Mulher">0</td>
+<td class="gt_row gt_right" headers="Homicídio Privilegiado">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="processo">00000067320168272732</td>
+<td class="gt_row gt_right" headers="Homicídio Simples">0</td>
+<td class="gt_row gt_right" headers="Crime Tentado">1</td>
+<td class="gt_row gt_right" headers="Homicídio Qualificado">1</td>
+<td class="gt_row gt_right" headers="Corrupção de Menores">0</td>
+<td class="gt_row gt_right" headers="Feminicídio">0</td>
+<td class="gt_row gt_right" headers="Violência Doméstica Contra a Mulher">0</td>
+<td class="gt_row gt_right" headers="Homicídio Privilegiado">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="processo">00000072320198272742</td>
+<td class="gt_row gt_right" headers="Homicídio Simples">1</td>
+<td class="gt_row gt_right" headers="Crime Tentado">1</td>
+<td class="gt_row gt_right" headers="Homicídio Qualificado">0</td>
+<td class="gt_row gt_right" headers="Corrupção de Menores">0</td>
+<td class="gt_row gt_right" headers="Feminicídio">0</td>
+<td class="gt_row gt_right" headers="Violência Doméstica Contra a Mulher">0</td>
+<td class="gt_row gt_right" headers="Homicídio Privilegiado">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="processo">00000080820148272734</td>
+<td class="gt_row gt_right" headers="Homicídio Simples">1</td>
+<td class="gt_row gt_right" headers="Crime Tentado">0</td>
+<td class="gt_row gt_right" headers="Homicídio Qualificado">0</td>
+<td class="gt_row gt_right" headers="Corrupção de Menores">0</td>
+<td class="gt_row gt_right" headers="Feminicídio">0</td>
+<td class="gt_row gt_right" headers="Violência Doméstica Contra a Mulher">0</td>
+<td class="gt_row gt_right" headers="Homicídio Privilegiado">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="processo">00000081220218272718</td>
+<td class="gt_row gt_right" headers="Homicídio Simples">0</td>
+<td class="gt_row gt_right" headers="Crime Tentado">0</td>
+<td class="gt_row gt_right" headers="Homicídio Qualificado">1</td>
+<td class="gt_row gt_right" headers="Corrupção de Menores">1</td>
+<td class="gt_row gt_right" headers="Feminicídio">0</td>
+<td class="gt_row gt_right" headers="Violência Doméstica Contra a Mulher">0</td>
+<td class="gt_row gt_right" headers="Homicídio Privilegiado">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="processo">00000109320198272736</td>
+<td class="gt_row gt_right" headers="Homicídio Simples">1</td>
+<td class="gt_row gt_right" headers="Crime Tentado">0</td>
+<td class="gt_row gt_right" headers="Homicídio Qualificado">0</td>
+<td class="gt_row gt_right" headers="Corrupção de Menores">0</td>
+<td class="gt_row gt_right" headers="Feminicídio">0</td>
+<td class="gt_row gt_right" headers="Violência Doméstica Contra a Mulher">0</td>
+<td class="gt_row gt_right" headers="Homicídio Privilegiado">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="processo">00000121120208272742</td>
+<td class="gt_row gt_right" headers="Homicídio Simples">1</td>
+<td class="gt_row gt_right" headers="Crime Tentado">0</td>
+<td class="gt_row gt_right" headers="Homicídio Qualificado">0</td>
+<td class="gt_row gt_right" headers="Corrupção de Menores">0</td>
+<td class="gt_row gt_right" headers="Feminicídio">0</td>
+<td class="gt_row gt_right" headers="Violência Doméstica Contra a Mulher">0</td>
+<td class="gt_row gt_right" headers="Homicídio Privilegiado">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="processo">00000123520158272726</td>
+<td class="gt_row gt_right" headers="Homicídio Simples">1</td>
+<td class="gt_row gt_right" headers="Crime Tentado">0</td>
+<td class="gt_row gt_right" headers="Homicídio Qualificado">0</td>
+<td class="gt_row gt_right" headers="Corrupção de Menores">0</td>
+<td class="gt_row gt_right" headers="Feminicídio">0</td>
+<td class="gt_row gt_right" headers="Violência Doméstica Contra a Mulher">0</td>
+<td class="gt_row gt_right" headers="Homicídio Privilegiado">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="processo">00000137020178272719</td>
+<td class="gt_row gt_right" headers="Homicídio Simples">0</td>
+<td class="gt_row gt_right" headers="Crime Tentado">0</td>
+<td class="gt_row gt_right" headers="Homicídio Qualificado">1</td>
+<td class="gt_row gt_right" headers="Corrupção de Menores">0</td>
+<td class="gt_row gt_right" headers="Feminicídio">0</td>
+<td class="gt_row gt_right" headers="Violência Doméstica Contra a Mulher">0</td>
+<td class="gt_row gt_right" headers="Homicídio Privilegiado">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="processo">00000170620248272738</td>
+<td class="gt_row gt_right" headers="Homicídio Simples">0</td>
+<td class="gt_row gt_right" headers="Crime Tentado">1</td>
+<td class="gt_row gt_right" headers="Homicídio Qualificado">1</td>
+<td class="gt_row gt_right" headers="Corrupção de Menores">0</td>
+<td class="gt_row gt_right" headers="Feminicídio">0</td>
+<td class="gt_row gt_right" headers="Violência Doméstica Contra a Mulher">0</td>
+<td class="gt_row gt_right" headers="Homicídio Privilegiado">0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Agora cada linha é um processo único com todos os assuntos listados. Tivemos um total de 8285, 3 processos a menos do que haviamos calculado anteriormente. Precisamos verificar o que aconteceu com esses 3 processos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalando Pacotes necessários</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("devtools") </span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"courtsbr/JurisMiner"</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>movimento <span class="ot">&lt;-</span> dados_basicos  <span class="sc">|&gt;</span> </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="at">processo =</span> numeroProcesso, movimentos) <span class="sc">|&gt;</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">unnest</span>(movimentos) <span class="sc">|&gt;</span> </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>      janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="sc">-</span>complementos_tabelados) <span class="sc">|&gt;</span> </span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">data_hora =</span> <span class="fu">parse_datetime</span>(data_hora))</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>movimento  <span class="ot">&lt;-</span> movimento <span class="sc">|&gt;</span> </span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>     <span class="fu">arrange</span>(processo, <span class="fu">desc</span>(data_hora)) <span class="sc">|&gt;</span> </span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>     JurisMiner<span class="sc">::</span><span class="fu">tempo_movimentacao</span>(<span class="at">data =</span> data_hora)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

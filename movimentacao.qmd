@@ -1,35 +1,138 @@
 ---
-title: "Movimentação"
+title: "Aula Prática: Coleta e Análise de Dados sobre Homicídio Qualificado"
 author:
 - José de Jesus Filho e Alexandre Nicolella
 format: html
 ---
 
-```{r eval = FALSE, message=FALSE, warning=FALSE}
 
+
+## Introdução à Aula Prática: Coleta de Dados no DataJud
+
+Nesta aula prática, vamos aprender como coletar dados processuais utilizando a Base Nacional de Dados do Poder Judiciário (**DataJud**), mantida pelo Conselho Nacional de Justiça (CNJ). O DataJud é o sistema responsável pelo armazenamento centralizado de dados e metadados de todos os processos judiciais brasileiros, físicos ou eletrônicos, e será a base que utilizaremos ao longo do curso.
+
+##  Acesso ao DataJud
+
+O DataJud pode ser acessado diretamente no site do CNJ 🔗:
+
+[https://www.cnj.jus.br/sistemas/datajud/](https://www.cnj.jus.br/sistemas/datajud/)
+
+A plataforma fornece dados atualizados para diversos os ramos da Justiça brasileira, agrupados e padronizados para permitir análises estatísticas e jurimétricas.
+
+##  Autenticação e Chave Pública
+
+Para acessar os dados via API, utilizaremos a **API Pública** do DataJud, documentada em:
+
+[https://datajud-wiki.cnj.jus.br/api-publica/](https://datajud-wiki.cnj.jus.br/api-publica/)
+
+A autenticação é feita por meio de uma chave pública, disponibilizada pelo DPJ/CNJ. A chave  🔑 pode ser obtida no seguinte endereço:
+
+[https://datajud-wiki.cnj.jus.br/api-publica/acesso](https://datajud-wiki.cnj.jus.br/api-publica/acesso)
+
+Essa chave será utilizada diretamente no código em R (ou Python), permitindo realizar consultas autenticadas aos dados processuais.
+
+##  Endpoints, Rotas e Seleção de Tribunais
+
+Para realizar nossas consultas, precisamos escolher os endpoints disponíveis, indicando o tribunal desejado. Os endpoints estão detalhados em:
+
+[https://datajud-wiki.cnj.jus.br/api-publica/endpoints](https://datajud-wiki.cnj.jus.br/api-publica/endpoints)
+
+É possível consultar processos de de diversos ramos da Justiça brasileira:
+
+- **Tribunais Superiores**
+- **Justiça Federal**
+- **Justiça Estadual**
+- **Justiça do Trabalho**
+- **Justiça Eleitoral**
+- **Justiça Militar**
+
+No nosso estudo, utilizaremos os dados do **Tribunal de Justiça do Tocantins (TJTO)**.
+
+
+##  Tipos de Consultas Possíveis
+
+A API permite diferentes modalidades de consulta 🔍, como:
+
+- Pesquisa por número do processo
+- Pesquisa paginada
+- Pesquisa por classe
+- Pesquisa por assunto
+- ...
+
+O DataJud também disponibiliza exemplos de código em Python e R, acessíveis na aba de exemplos:
+
+[https://datajud-wiki.cnj.jus.br/api-publica/exemplos/](https://datajud-wiki.cnj.jus.br/api-publica/exemplos/)
+
+
+##  Glossário de Variáveis
+
+O DataJud define nomes específicos para cada uma das variáveis retornadas pela API. O significado de cada termo pode ser consultado no glossário oficial:
+
+[https://datajud-wiki.cnj.jus.br/api-publica/glossario](https://datajud-wiki.cnj.jus.br/api-publica/glossario)
+
+Esse glossário é essencial para interpretar corretamente os dados coletados.
+
+
+## Seleção do Assunto de Interesse
+
+Em geral, ao iniciar uma pesquisa empírica, precisamos definir o assunto processual a ser analisado. Para isso, utilizamos o Sistema de Gestão de Tabelas Processuais Unificadas:
+
+[https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php](https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php)
+
+No nosso caso, o foco inicial seria **Direito Penal/Crimes Contra a Vida**, que inclui subcategorias como:
+
+- **10915 — Aborto**
+- **12091 — Feminicídio**
+- **12130 — Homicídio Agravado pela Prática de Extermínio de Seres Humanos**
+- **3371 — Homicídio Privilegiado**
+- **3372 — Homicídio Qualificado**
+- **15177 — Homicídio Qualificado Contra Menor de 14 Anos (Lei Henry Borel)**
+- **3370 — Homicídio Simples**
+- **3373 — Induzimento, Instigação ou Auxílio a Suicídio**
+- **3375 — Infanticídio**
+
+Poderíamos escolher todas ou algumas dessas categorias para nossa análise.
+
+## Escolha Alternativa: Pesquisa por Classe
+
+Nesta aula, porém, seguiremos um caminho alternativo: em vez de selecionar um assunto específico, trabalharemos com a **classe processual**.
+
+Selecionamos o seguinte ramo:
+
+**Processo Criminal → Procedimento Comum → Ação Penal de Competência do Júri**
+
+**Código: 282**
+
+Essa classe captura processos de crimes dolosos contra a vida julgados pelo Tribunal do Júri, alinhados ao nosso objetivo analítico. Entretanto, muitos dos assuntos acima listados estarão presentes. Alám disso,  limitamos os nossos processos à **Instância de 1º Grau (G1)**.
+
+
+## Fase Muito Importante
+
+A etapa que descrevemos até aqui é fundamental em qualquer pesquisa empírica que utilize o DataJud ou outras bases de dados judiciais. As **escolhas feitas nesta fase**, como a definição do assunto, da classe processual e dos critérios de filtragem, **influenciam diretamente o desenho amostral** que construiremos.
+
+Uma **boa seleção inicial** garante **maior precisão, consistência e relevância dos resultados**. Por isso, é essencial conduzir essa etapa com atenção, calma e organização. Quanto mais cuidadosa for a definição desses parâmetros, melhor será a qualidade da extração dos dados e, consequentemente, das análises que realizaremos nas próximas fases do curso.
+
+## Colocando a Mão na Massa: Coleta de Dados no DataJud
+
+### Extraíndo os Dados Processuais
+
+O código abaixo extrairá os dados da **classe 282 do grau G1** do **Tribunal de Justiça do Tocantins** e salvará todas essas informações em um dataframe chamado *juri.json*.
+
+
+```{r eval = FALSE, message=FALSE, warning=FALSE}
+# Bibloitecas Necessárias
 library(tidyverse)
 library(httr)
 library(jsonlite)
 
+# Definindo a Chave de Acesso
 headers = c(
   'Authorization' = 'APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==',
   'Content-Type' = 'application/json'
 )
 
-
-body = '{
-  "query": {
-        "bool": {
-            "must": [
-                {"match": {"assuntos.codigo": 3372}},
-                {"match": {"grau": "G1"}}
-
-            ]
-        }
-   }
-}'
-
-
+# Extraindo os dados do DataJud
+## Classe 282 e grau G1 (1º Grau)
 body = '{
   "size": 8930,
   "query": {
@@ -43,19 +146,342 @@ body = '{
    }
 }'
 
-
-
-
+## Do Tribunal de Justiça do Tocantins
 POST(url = "https://api-publica.datajud.cnj.jus.br/api_publica_tjto/_search", body = body, add_headers(headers),
 write_disk("juri.json"))
 
-
+## Importanto o dado
 juri <- fromJSON("juri.json")
+save(juri, file = "juri.rds")
+```
 
-dados_basicos <- juri |> 
-      pluck("hits","hits","_source")
 
 
+Agora vamos analisar a **estrutura do arquivo *juri.json*** para identificar onde cada informação relevante está **localizada**. Esse mapeamento é essencial porque nos permite compreender exatamente como os **dados estão organizados** e, assim, definir qual tipo de **extração precisamos realizar** para trabalhar com informações de movimentação, órgãos julgadores, assuntos e outras características presentes no arquivo.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+#| results: "hide"
+
+# Pacotes Necessários
+library(tidyverse)
+library(httr)
+library(jsonlite)
+
+## Importanto o dado
+load("juri.rds")
+
+# 1. Verifica a classe do objeto (ex.: list, data.frame)
+class(juri)  
+
+# 2. ver nomes/elementos de topo
+names(juri)          # se for lista ou data.frame, mostra colunas/elementos
+length(juri)         # número de elementos/top-level items
+
+# 3. Exibe a estrutura do objeto; max.level evita saída muito grande
+str(juri, max.level = 4) 
+
+# 4.Extrai os dados principais: hits -> hits -> _source - Aqui estão os dados de interesse
+## Cada nível corresponde a um ramo interno do JSON
+dados_basicos <- juri |>
+  pluck("hits","hits","_source")
+```
+
+### Analisando as Informações Extraídas 
+
+**Órgão Julgador dos Processos**
+
+Vamos criar um banco que contenha o número do processo e o órgão julgador responsável por cada caso. Em seguida, analisaremos a frequência de processos por órgão julgador, tanto considerando apenas processos únicos quanto incluindo processos duplicados.
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+
+# Pacote que padroniza os nomes das variáveis
+library(janitor)
+library(dplyr)
+library(tidyr)
+
+# Criar um dataframe com número do processo e órgão julgador
+julgador <- dados_basicos  |> 
+      select(processo = numeroProcesso, orgaoJulgador) |> # Faço a seleção e renomeio a coluna
+      unnest(orgaoJulgador) |>  # Como orgaoJulgador é um dataframe, preciso "desempacotar" os dados
+      janitor::clean_names()    # Deixo os nomes padronizados
+nrow(julgador) # número total de processos
+```
+
+Observa-se um **total de 8430 processos**, mas alguns podem estar **duplicados**. Vamos investigar essa questão. Abaixo está o código para identificar e analisar processos únicos e duplicados.
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+# Vamos verificar se existem processos duplicados. 
+julgador_uni <- julgador %>% 
+  distinct(processo, .keep_all = TRUE)
+nrow(julgador_uni) # numero total de processos únicos
+nrow(julgador) - nrow(julgador_uni) # número de processos duplicados
+
+# Vamos analisar os processos duplicados 
+julgador_dup <- julgador %>% 
+  filter(duplicated(processo) | duplicated(processo, fromLast = TRUE)) 
+## Esse comando pega todas as linhas após a primeira ocorrência ou 
+## Pega todas as linhas antes da última ocorrência e verifica duplicação
+
+## Vamos ver quantos processos duplicados temos:
+nrow(julgador_dup) # número de processos duplicados
+unique(julgador_dup$processo) |> length() # número de processos únicos que estão duplicados
+
+```
+
+O total de **processos únicos** foi de **8.287**, e identificamos **144 processos duplicados**. Agora, vamos verificar se essas duplicações ocorreram em razão de alguma mudança de órgão julgador. Para isso, vamos pivotar os dados e criar uma variável que indique se houve alteração no órgão julgador para cada processo duplicado.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+## Analisando se houve troca de orgaõ julgador e por isso é duplicado
+# 1. Criar ordem dentro de cada processo 1, para primeira vez e 2 para a segunda vez....
+julgador_dup_ord <- julgador_dup %>%
+  group_by(processo) %>%
+  mutate(orgao_id = row_number()) %>% 
+  ungroup()
+
+# 2. Pivotar para formato wide, selciono e indico o nome que será dado
+julgador_wide <- julgador_dup_ord %>%
+  select(processo, orgao_id, nome) %>%
+  pivot_wider(
+    names_from = orgao_id,
+    values_from = nome,
+    names_prefix = "julgador"
+  )
+# 3. Variável indicando mudança
+julgador_wide <- julgador_wide %>%
+  rowwise() %>%
+  mutate(
+    mudou_orgao = n_distinct(c_across(starts_with("julgador")), na.rm = TRUE) > 1
+  ) %>%
+  ungroup()
+# - > pega todas as colunas cujo nome começa com "julgador", transforma em vetores e verifica se é distinto
+
+julgador_wide %>% 
+  count(mudou_orgao, sort = TRUE) %>% 
+  mutate(
+    mudou_orgao = ifelse(mudou_orgao, "Sim", "Não")
+  ) %>% 
+  knitr::kable(
+    caption = "Frequência de processos que mudaram de órgão julgador"
+  )
+```
+
+
+Observamos que **93 processos não mudaram de órgão julgador** e **51 passaram por alteração**. Agora precisamos definir como trataremos esses casos: se consideraremos apenas o *órgão julgador final* ou se adotaremos o *órgão julgador inicial* como referência. Mas ainda precisamos observar que há **93 processos** que aparecem duplicados, mesmo **sem mudança de órgão julgador**. O que pode estar acontecendo nesses casos?
+
+
+Vamos focar nos processos únicos para analisar a frequência de órgãos julgadores e descrever os resultados graficamente e em tabelas.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+library(gt)
+
+freq_j_u <- julgador_uni %>% 
+  count(nome) %>% 
+  arrange(desc(n)) %>% 
+  mutate(perc = round(100 * n / sum(n), 1))
+
+ggplot(freq_j_u, aes(x = reorder(nome, n), y = n)) +
+  geom_col(fill = "#7185cc", color = "white", alpha = 0.7) +
+  coord_flip() +
+  labs(
+    title = "Frequência por Órgão Julgador (Processos Únicos)",
+    x = "Órgão Julgador",
+    y = "Frequência"
+  ) +
+  theme_classic()+
+  theme(
+    axis.text.y = element_text(size = 4)   # tamanho da letra das categorias
+  )
+
+
+freq_j_u |> 
+  gt() |>
+  tab_header(
+    title = "Frequência por Órgão Julgador (Processos Únicos)"
+  ) |>
+  cols_label(
+    nome = "Órgão Julgador",
+    n = "Frequência",
+    perc = "Percentual"
+  )
+``` 
+
+**Sistema dos Processos**
+
+Aqui avaliamos se os processos pertencem ao sistema **sistema eletrônico de processos judiciais** EPROC ou a outro sistema.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+sistema <- dados_basicos  |> 
+      select(processo = numeroProcesso, sistema) |> 
+      unnest(sistema) |>
+      janitor::clean_names()
+
+freq_sistema <- sistema %>% 
+  count(nome) %>% 
+  arrange(desc(n))
+
+freq_sistema |> 
+  gt() |>
+  tab_header(
+    title = "Frequência por Sistema (Processos Únicos)"
+  ) |>
+  cols_label(
+    nome = "Sistema",
+    n = "Frequência",
+  )
+```
+
+Com base na tabela acima, podemos observar a distribuição dos processos entre os sistemas Eletrônico e Físico. Observa-se a existência somente de processos eletrônicos, mas 4 foram declaros inválidos e 2 OUtros. O que fazer com esses casos? Devemos excluí-los da análise ou mantê-los? 
+
+
+**Formato do Processo**
+
+Aqui avaliamos se os processos são do tipo **Eletrônico** ou **Físico**.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+formato <- dados_basicos  |> 
+      select(processo = numeroProcesso, formato) |> 
+      unnest(formato) |>
+      janitor::clean_names()
+
+freq_formato <- formato %>% 
+  count(nome) %>% 
+  arrange(desc(n))
+
+freq_formato |> 
+  gt() |>
+  tab_header(
+    title = "Frequência por Formato (Processos Únicos)"
+  ) |>
+  cols_label(
+    nome = "Formato",
+    n = "Frequência",
+  )
+```
+
+Observa-se que 100% dos processos estão no formato Eletrônico. Dessa forma, não há necessidade de excluir nenhum processo com base nesse critério.
+
+
+**Classe Processual** 
+
+Como fizemos nossa busca por classe processual, 282, deveríamos ter somente essa classe. Vamos verificar se há outras classes presentes nos dados.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+
+classe <- dados_basicos  |> 
+      select(processo = numeroProcesso, classe) |> 
+      unnest(classe) |>
+      janitor::clean_names()
+
+freq_classe <- classe %>% 
+  count(nome) %>% 
+  arrange(desc(n))
+
+freq_classe |> 
+  gt() |>
+  tab_header(
+    title = "Frequência por Classe (Processos Únicos)"
+  ) |>
+  cols_label(
+    nome = "Classe",
+    n = "Frequência",
+  )
+```
+
+Conforme esperado pela nossa consulta inicial, todos os processos pertencem à classe **Ação Penal de Competência do Júri (282)**. Portanto, não há necessidade de excluir nenhum processo com base nesse critério.
+
+
+
+**Assuntos Processuais**
+
+Vamos extrair e analisar os assuntos processuais associados a cada processo. Vamos fazer a extração e veja que o resultado é uma coluna com processo e a outra com o assunto. Se tivermos mais assuntos por processo, esse será duplicado. 
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(janitor)
+library(ggplot2)
+library(gt)
+
+ # manter só linhas em que 'assuntos' é um data.frame
+assuntos <- dados_basicos |> 
+  filter(map_lgl(assuntos, is.data.frame)) |>
+  select(processo = numeroProcesso, assuntos) |>
+  unnest(assuntos) |>
+  clean_names()
+
+freq_assunto <- assuntos |> 
+  count(nome) |> 
+  arrange(desc(n)) |> 
+  mutate(perc_assunto = round(100 * n / sum(n), 1)) |> 
+  mutate(perc_processo = round(100 * n / 8288, 1))  # considerando processos únicos
+
+
+ggplot(freq_assunto, aes(x = reorder(nome, n), y = n)) +
+  geom_col(fill = "#7185cc", color = "white", alpha = 0.7) +
+  coord_flip() +
+  labs(
+    title = "Frequência por Assunto (Processos Únicos)",
+    x = "Assunto",
+    y = "Frequência"
+  ) +
+  theme_classic()+
+  theme(
+    axis.text.y = element_text(size = 4))   # tamanho da letra das categorias
+    
+
+freq_assunto |> 
+  gt() |>
+  tab_header(
+    title = "Frequência dos Assuntos"
+  ) |>
+  cols_label(
+    nome = "Assunto",
+    n = "Frequência",
+    perc_assunto = "% Assuntos",
+    perc_processo = "% Processos"
+  )
+
+```
+
+**Assuntos** tem um total de **11438 processos**, sendo que o número de **processos únicos é 8288**. Isso indica que muitos processos têm mais de um assunto associado. Então a leitura da tabela acima deve considerar esses números. Podemos dizer que **6007** processos tiveram **Homicídio Qualificado** como assunto, **2762** tiveram **Crime Tentado**, e assim por diante. **Existe sobreposição** entre os dois assuntos. 
+
+Fizemos duas colunas, uma com percentual com base no total de assuntos (11438), % Assuntos, e outra com base no total de processos únicos (8288), % Processos. A segunda coluna é mais interessante, pois indica a proporção de processos que tiveram cada assunto.
+
+Agora vamos olhar o assunto por processo, para ver quantos assuntos cada processo tem associado.
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+assuntos_wide <- assuntos %>% 
+  group_by(processo, nome) %>%   # garante uma linha por processo-assunto
+  summarise(valor = 1, .groups = "drop") %>%
+  pivot_wider(
+    names_from = nome,
+    values_from = valor,
+    values_fill = list(valor = 0)   # preenche com 0 se não ocorreu
+  )
+
+assuntos_wide %>% 
+  slice_head(n = 10) %>% 
+  select(1:8) %>%
+  gt() %>% 
+  tab_header(
+    title = "Assuntos por Processo (Exemplo)"
+  )
+```
+
+Agora cada linha é um processo único com todos os assuntos listados. Tivemos um total de 8285, 3 processos a menos do que haviamos calculado anteriormente. Precisamos verificar o que aconteceu com esses 3 processos.
+
+```{r eval = FALSE, message=FALSE, warning=FALSE}
+# Instalando Pacotes necessários
+#install.packages("devtools") 
+library(janitor)
+devtools::install_github("courtsbr/JurisMiner")
 
 movimento <- dados_basicos  |> 
       select(processo = numeroProcesso, movimentos) |>
@@ -64,10 +490,9 @@ movimento <- dados_basicos  |>
       select(-complementos_tabelados) |> 
       mutate(data_hora = parse_datetime(data_hora))
 
-
 movimento  <- movimento |> 
      arrange(processo, desc(data_hora)) |> 
      JurisMiner::tempo_movimentacao(data = data_hora)
 
-
 ```
+

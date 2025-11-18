@@ -2,9 +2,13 @@
 /.quarto/
 .RData
 .Rhistory
+.rds
 
 .Rproj.user
 .httr-oauth
 .DS_Store
 .quarto/
 tjto.json
+juri.json
+juri.rds
+juri.Rdata
