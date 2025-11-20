@@ -65,8 +65,6 @@ linprob <- lm(inlf~ nwifeinc + educ + exper + I(exper^2) +
 summary(linprob)
 
 
-
-
 ```
 
 **Interpretação**

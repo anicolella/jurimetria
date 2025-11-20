@@ -208,7 +208,7 @@ julgador <- dados_basicos  |>
 nrow(julgador) # número total de processos
 ```
 
-Observa-se um **total de 8430 processos**, mas alguns podem estar **duplicados**. Vamos investigar essa questão. Abaixo está o código para identificar e analisar processos únicos e duplicados.
+Observa-se um **total de 8432 processos**, mas alguns podem estar **duplicados**. Vamos investigar essa questão. Abaixo está o código para identificar e analisar processos únicos e duplicados.
 
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
@@ -268,7 +268,30 @@ julgador_wide %>%
 ```
 
 
-Observamos que **93 processos não mudaram de órgão julgador** e **51 passaram por alteração**. Agora precisamos definir como trataremos esses casos: se consideraremos apenas o *órgão julgador final* ou se adotaremos o *órgão julgador inicial* como referência. Mas ainda precisamos observar que há **93 processos** que aparecem duplicados, mesmo **sem mudança de órgão julgador**. O que pode estar acontecendo nesses casos?
+Observamos que **93 processos não mudaram de órgão julgador** e **51 passaram por alteração**. Agora precisamos definir como trataremos esses casos: se consideraremos apenas o *órgão julgador final*, se adotaremos o *órgão julgador inicial* como referência ou *excluímos*. Mas ainda precisamos observar que há **93 processos** que aparecem duplicados, mesmo **sem mudança de órgão julgador**. O que pode estar acontecendo nesses casos?
+
+
+*LIMPEZA DOS DADOS*
+
+::: {.callout-note title="Escolha e Justificativa" appearance="simple" collapse="true"}
+
+**Motivos Possíveis**: Recursos, mudanças para varas expecializadas, desclassificação, desforamento, entre outros.
+
+**Escolha**: Vamos excluir os processos que mudaram de órgão julgador, mantendo apenas aqueles que permaneceram no mesmo órgão. Depois analisaremos os processos duplicados restantes.
+
+**Justificativa**: A mudança de órgão julgador pode indicar transferências ou redistribuições que podem afetar a análise do tempo do processo. Para garantir a consistência dos dados e evitar vieses, mantemos somente aqueles permaneceram no mesmo órgão julgador ao longo do tempo.
+
+:::
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+# Vamos retirar os processos que mudaram de orgão julgador 
+
+db_limpo <- dados_basicos %>%
+  anti_join(julgador_wide %>% filter(mudou_orgao == TRUE),
+            by = c("numeroProcesso" = "processo"))
+          
+```
+
 
 
 Vamos focar nos processos únicos para analisar a frequência de órgãos julgadores e descrever os resultados graficamente e em tabelas.
@@ -309,12 +332,18 @@ freq_j_u |>
   )
 ``` 
 
+
+*Questão*
+
+Como podemos fazer a nossa análise de movimento considerando que comarcas distintas possuem diferentes volumes de processos? Devemos agrupar as comarcas maiores e as menores? Quais critérios utilizar para isso? Deixamos varas criminais separada de especializadas? 
+
+
 **Sistema dos Processos**
 
 Aqui avaliamos se os processos pertencem ao sistema **sistema eletrônico de processos judiciais** EPROC ou a outro sistema.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-sistema <- dados_basicos  |> 
+sistema <- db_limpo  |> 
       select(processo = numeroProcesso, sistema) |> 
       unnest(sistema) |>
       janitor::clean_names()
@@ -334,15 +363,37 @@ freq_sistema |>
   )
 ```
 
-Com base na tabela acima, podemos observar a distribuição dos processos entre os sistemas Eletrônico e Físico. Observa-se a existência somente de processos eletrônicos, mas 4 foram declaros inválidos e 2 OUtros. O que fazer com esses casos? Devemos excluí-los da análise ou mantê-los? 
+Com base na tabela acima, podemos observar a distribuição dos processos entre os sistemas Eletrônico e Físico. Observa-se a existência somente de processos eletrônicos, mas 4 foram declaros inválidos e 2 Outros. O que fazer com esses casos? Devemos excluí-los da análise ou mantê-los? 
 
+
+*LIMPEZA DOS DADOS*
+
+
+::: {.callout-note title="Escolha e Justificativa" appearance="simple" collapse="true"}
+
+**Motivos Possíveis**: Citação em outros estados, entre outros.
+
+**Escolha**: Vamos excluir todos os processos que não são EPROC.
+
+**Justificativa**: Não sabemos ao certo os motivos que levaram a um processo ser classificado como inválido ou outros. Além disso, não sabemos como essa classificação afeta a movimentação. Portanton, vamos excluir todos que não foram EPROC e deixar nossa amostra mais homogênea.
+
+:::
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+# Vamos retirar os processos que mudaram de orgão julgador 
+
+db_limpo <- db_limpo %>%
+  anti_join(sistema %>% filter(!nome == "EPROC"),
+            by = c("numeroProcesso" = "processo"))
+          
+```
 
 **Formato do Processo**
 
 Aqui avaliamos se os processos são do tipo **Eletrônico** ou **Físico**.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-formato <- dados_basicos  |> 
+formato <- db_limpo  |> 
       select(processo = numeroProcesso, formato) |> 
       unnest(formato) |>
       janitor::clean_names()
@@ -371,7 +422,7 @@ Como fizemos nossa busca por classe processual, 282, deveríamos ter somente ess
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 
-classe <- dados_basicos  |> 
+classe <- db_limpo  |> 
       select(processo = numeroProcesso, classe) |> 
       unnest(classe) |>
       janitor::clean_names()
@@ -397,7 +448,8 @@ Conforme esperado pela nossa consulta inicial, todos os processos pertencem à c
 
 **Assuntos Processuais**
 
-Vamos extrair e analisar os assuntos processuais associados a cada processo. Vamos fazer a extração e veja que o resultado é uma coluna com processo e a outra com o assunto. Se tivermos mais assuntos por processo, esse será duplicado. 
+Vamos extrair e analisar os **assuntos processuais** associados a cada processo. Vamos fazer a extração e veja que o resultado é uma coluna com processo e a outra com o assunto. Se tivermos mais assuntos por processo, esse será duplicado. 
+
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
 library(tidyr)
@@ -407,17 +459,21 @@ library(ggplot2)
 library(gt)
 
  # manter só linhas em que 'assuntos' é um data.frame
-assuntos <- dados_basicos |> 
+assuntos <- db_limpo |> 
   filter(map_lgl(assuntos, is.data.frame)) |>
   select(processo = numeroProcesso, assuntos) |>
   unnest(assuntos) |>
   clean_names()
 
+# Processos únicos
+nrow(assuntos %>% 
+  distinct(processo, .keep_all = TRUE)) # número total de processos únicos
+
 freq_assunto <- assuntos |> 
   count(nome) |> 
   arrange(desc(n)) |> 
   mutate(perc_assunto = round(100 * n / sum(n), 1)) |> 
-  mutate(perc_processo = round(100 * n / 8288, 1))  # considerando processos únicos
+  mutate(perc_processo = round(100 * n / 8228, 1))  # considerando processos únicos
 
 
 ggplot(freq_assunto, aes(x = reorder(nome, n), y = n)) +
@@ -447,9 +503,9 @@ freq_assunto |>
 
 ```
 
-**Assuntos** tem um total de **11438 processos**, sendo que o número de **processos únicos é 8288**. Isso indica que muitos processos têm mais de um assunto associado. Então a leitura da tabela acima deve considerar esses números. Podemos dizer que **6007** processos tiveram **Homicídio Qualificado** como assunto, **2762** tiveram **Crime Tentado**, e assim por diante. **Existe sobreposição** entre os dois assuntos. 
+**Assuntos** tem um total de **11302 processos**, sendo que o número de **processos únicos é 82228**. Isso indica que muitos processos têm mais de um assunto associado. Então a leitura da tabela acima deve considerar esses números. Podemos dizer que **5933** processos tiveram **Homicídio Qualificado** como assunto, **2733** tiveram **Crime Tentado**, e assim por diante. **Existe sobreposição** entre os assuntos. 
 
-Fizemos duas colunas, uma com percentual com base no total de assuntos (11438), % Assuntos, e outra com base no total de processos únicos (8288), % Processos. A segunda coluna é mais interessante, pois indica a proporção de processos que tiveram cada assunto.
+Fizemos duas colunas, uma com percentual com base no total de assuntos (11302), **% Assuntos**, e outra com base no total de processos únicos (8228), **% Processos**. A segunda coluna é mais interessante, pois indica a proporção de processos que tiveram cada assunto.
 
 Agora vamos olhar o assunto por processo, para ver quantos assuntos cada processo tem associado.
 
@@ -475,7 +531,235 @@ assuntos_wide %>%
   )
 ```
 
-Agora cada linha é um processo único com todos os assuntos listados. Tivemos um total de 8285, 3 processos a menos do que haviamos calculado anteriormente. Precisamos verificar o que aconteceu com esses 3 processos.
+Agora cada linha é um processo único com todos os assuntos listados. Tivemos um total de 8228. Para o tribunal do Juri tem-se **5 tipos penais**: **Homicídio Qualificado, Homicídio Simples, Infanticídio, Aborto, Induzimento ao Suicídio** e a partir de outubro de 24 o **Feminicídio**. 
+
+**Questão**: 
+
+Devemos incluir todos os assuntos ou focar apenas em alguns? Quais critérios utilizar para essa seleção?
+
+
+*LIMPEZA DOS DADOS*
+
+
+::: {.callout-note title="Escolha e Justificativa" appearance="simple" collapse="true"}
+
+**Escolha**: Vamos trabalhar somente com homicídio Qualificado, Simples e Feminicídio.
+
+**Justificativa**: Acreditamos que esse esses processos possuem um perfil semelhante entre si, e diferente do infanticídio, aborto e induzimento ao suicídio.
+
+:::
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+# Vamos retirar os processos que mudaram de orgão julgador 
+
+assuntos_wide_limpo <- assuntos_wide %>%
+  mutate(
+    homic_bin = if_any(
+      c(
+        "Homicídio Qualificado",
+        "Homicídio Simples",
+        "Feminicídio",
+        "Homicidio qualificado",
+        "Homicídio"
+      ),
+      ~ .x == 1
+    ) * 1
+  )
+
+db_limpo <- db_limpo %>%
+  anti_join(assuntos_wide_limpo %>% filter(homic_bin == 0),
+            by = c("numeroProcesso" = "processo"))
+
+nrow(db_limpo) # número total de processos após limpeza
+nrow(db_limpo %>% 
+  distinct(numeroProcesso, .keep_all = TRUE)) # número total de processos únicos
+
+```
+
+Ao final do procedimento, observamos que o banco de dados **original** continha **8.432 processos**. Após as etapas de limpeza e organização, chegamos a **7.867 registros**. No entanto, ainda identificamos a existência de processos duplicados. O total de **processos únicos** é de **7.775**, o que significa que permanecem **92 processos duplicados** para os quais ainda precisamos definir um tratamento adequado.
+
+
+*LIMPEZA DOS DADOS*
+
+::: {.callout-note title="Escolha e Justificativa" appearance="simple" collapse="true"}
+
+**Escolha**: Excuir os processos duplicados.
+
+**Justificativa**: Como não está claro o motivo dessa duplicação e quais seus impactos sobre a movimentação, vamos optar pela exclusão desses processos.Note que poderiamos identificar esses processos e fazermos uma análise mais detalhada sobre eles.
+
+**Motivos**: Insidente de insanidade mental, por exemplo. Processo separado mas com mesmo número. 
+
+:::
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+# Vamos retirar os processos que mudaram de orgão julgador 
+db_limpo <- db_limpo %>%
+  anti_join(julgador_dup,
+            by = c("numeroProcesso" = "processo"))
+
+```
+
+Concluímos a limpeza com **7.683 processos**, que serão a base da análise de movimentação. Antes de prosseguir, vamos reorganizar as tabelas anteriores  de julgador, assunto e demais variáveis, usando agora apenas esse banco de dados limpo.
+
+
+**TABELAS FINAIS APÓS LIMPEZA DOS DADOS**
+
+Com os dados limpos vamos criar uma *data.frame* de julgados final. Nesse vamos deixar o **processo**, o **órgão julgador**, e criar variáveis que indiquem se o **órgão é especializado** ou não, e se está entre os **5 com maior volume de processos**. 
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+
+# Pacote que padroniza os nomes das variáveis
+library(janitor)
+library(dplyr)
+library(tidyr)
+
+# JULGADOR
+julgador_final <- db_limpo  |> 
+      select(processo = numeroProcesso, orgaoJulgador) |> 
+      unnest(orgaoJulgador) |>   
+      janitor::clean_names() 
+
+# Alterando o nome para facilitar a leitura e excluindo o cod do IBGE
+julgador_final <- julgador_final %>%
+  rename(orgao_julgador = nome) %>%
+  select(-codigo_municipio_ibge)  
+
+
+# Construindo a tabela final do orgão julgador
+freq_j_f <- julgador_final %>% 
+  count(orgao_julgador) %>% 
+  arrange(desc(n)) %>% 
+  mutate(perc = round(100 * n / sum(n), 1))
+
+freq_j_f |> 
+  gt() |>
+  tab_header(
+    title = "Frequência por Órgão Julgador (Processos Únicos)"
+  ) |>
+  cols_label(
+    orgao_julgador = "Órgão Julgador",
+    n = "Frequência",
+    perc = "Percentual"
+  )
+```
+
+**Identificando a Varas Especializadas e as Varas com Maior Volume de Processos**
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+# Identificando as Varas Especializadas
+julgador_final <- julgador_final %>%
+  mutate(
+        vara_espec = ifelse(
+      orgao_julgador %in% c(
+        "Juizo da Especializada no Combate à Violência Contra a Mulher e Crimes Dolosos Contra a Vida de Guru",
+        "Juízo da Vara Criminal, de Violência Doméstica e Juizado Especial Criminal de Dianópolis",
+        "Juízo da Vara Criminal, de Violência Doméstica e Juizado Especial Criminal de Araguatins"
+      ),
+      1, 0
+    )
+  )
+
+# Identificando as varas com maior volume de processos (top 5)
+
+julgador_final <- julgador_final %>%
+  mutate(
+    volume_top5 = ifelse(
+      orgao_julgador %in% c(
+        "Juízo da 1ª Vara Criminal de Araguaína",
+        "Juizo da 1ª Vara Criminal de Palmas",
+        "Juízo da 1ª Vara Criminal de Porto Nacional",
+        "Juízo da 1ª Vara Criminal de Colinas do Tocantins",
+        "Juízo da 1ª Vara Criminal de Paraíso do Tocantins"
+      ),
+      1, 0
+    )
+  )
+```
+
+
+Agora começaremos a montar o **banco de dados final**, agregando todos os bancos que já organizamos. Vamos unir as informações de órgão julgador, sistema, formato, classe e assunto além das variáveis binárias que criamos anteriormente.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+sistema_final <- db_limpo  |> 
+      select(processo = numeroProcesso, sistema) |> 
+      unnest(sistema) |>
+      janitor::clean_names()
+
+sistema_final <- sistema_final %>%
+  rename(sistema = nome)
+
+bd_final <- julgador_final |> 
+  left_join(sistema_final, by = c("processo" = "processo")) |>
+  left_join(formato, by = c("processo" = "processo")) |>
+  left_join(classe, by = c("processo" = "processo"))
+
+bd_final <- bd_final %>%
+  rename(
+    cod_julgador = codigo.x,
+    cod_sistema = codigo.y,
+    cod_formato = codigo.x.x,
+    cod_classe = codigo.y.y,
+    formato = nome.x,
+    classe = nome.y
+  )
+
+```
+
+Agora vamos organizar o banco de dados de assuntos. Vamos utilizar o nosso *assunto_wide* para trazer para o nosso banco de dados final e crarmos variáveis binárias. 
+
+Primeiro vamos ver se todos os assuntos estão presentes e depois vamos deixar somente aqueles que possuem soma maior que zero. 
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+
+bd_final <- bd_final |> 
+  left_join(assuntos_wide_limpo, by = c("processo" = "processo"))
+
+tabela_somas <- bd_final %>%
+  summarise(across(where(is.numeric), ~ sum(.x, na.rm = TRUE))) %>%
+  pivot_longer(cols = everything(),
+               names_to = "variavel",
+               values_to = "soma")
+
+
+# Mantém todas as não numéricas 
+# Identifica colunas numéricas com soma > 0
+# Mantém apenas numéricas cuja soma > 0
+bd_final <- bd_final |> 
+  select(
+    where(~ !is.numeric(.x)),
+    where(~ is.numeric(.x) && sum(.x, na.rm = TRUE) > 0)
+  ) |> 
+  janitor::clean_names()
+
+# Essa variável criada anteriormente era apenas para apoio
+table(bd_final$homic_bin)
+
+# Vamos retirar 
+bd_final <- bd_final %>%
+  select(-homic_bin)
+
+# Variáveis que identificam tipos de homicídio
+bd_final <- bd_final %>%
+  mutate(
+    hq  = ifelse(homicidio_qualificado == 1 | homicidio_qualificado_2 == 1, 1, 0),
+    hs  = ifelse(homicidio_simples == 1, 1, 0),
+    fem = ifelse(feminicidio == 1, 1, 0)
+  )
+ 
+```
+
+Trouxemos a tabela `assuntos_wide_limpo` e identificamos que algumas colunas estavam completamente zeradas. Isso ficou claro a partir da tabela de somas. Assim, removemos apenas as variáveis numéricas com soma igual a zero, mantendo todas as variáveis não numéricas.
+
+Também excluímos a variável `homic_bin`, usada apenas como apoio na etapa anterior.
+
+Por fim, criamos **variáveis binárias** para identificar três categorias principais de homicídio: **homicídio qualificado**, **homicídio simples** e **feminicídio**. É importante notar que essas categorias podem se sobrepor em alguns processos.
+
+
+
+### Análise da Movimentação Processual
 
 ```{r eval = FALSE, message=FALSE, warning=FALSE}
 # Instalando Pacotes necessários

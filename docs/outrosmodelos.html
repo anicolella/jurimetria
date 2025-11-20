@@ -242,7 +242,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./movimentacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Movimentação</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Aula Prática: Coleta e Análise de Dados sobre Homicídio Qualificado</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -381,20 +381,18 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(wooldridge)){</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">"wooldridge"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(wooldridge)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'wooldridge' was built under R version 4.4.3</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mroz, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate linear probability model</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>linprob <span class="ot">&lt;-</span> <span class="fu">lm</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6 ,<span class="at">data=</span>mroz)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linprob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(wooldridge)}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mroz, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate linear probability model</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>linprob <span class="ot">&lt;-</span> <span class="fu">lm</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6 ,<span class="at">data=</span>mroz)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linprob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -432,18 +430,18 @@ F-statistic: 38.22 on 7 and 745 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><strong>MULHER 1</strong>: renda familiar adicional de 50 mil ano, 7 anos de escolaridade, não tem experiência, com 25 anos e possui 2 filhos menores de 6 anos. A probabilidade de estar na força de trabalho estimada é -24%….não faz sentido.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Podemos calcular assim a probabilidade </span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5855192</span> <span class="sc">-</span> <span class="fl">0.0034052</span><span class="sc">*</span><span class="dv">50</span>  <span class="sc">+</span> <span class="fl">0.0379953</span><span class="sc">*</span><span class="dv">7</span>  <span class="sc">+</span> <span class="fl">0.0394924</span><span class="sc">*</span><span class="dv">0</span>  <span class="sc">-</span><span class="fl">0.0005963</span><span class="sc">*</span><span class="dv">0</span>  <span class="sc">-</span> <span class="fl">0.0160908</span><span class="sc">*</span><span class="dv">25</span>  <span class="sc">-</span><span class="fl">0.2618105</span><span class="sc">*</span><span class="dv">2</span>  <span class="sc">+</span> <span class="fl">0.0130122</span><span class="sc">*</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Podemos calcular assim a probabilidade </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5855192</span> <span class="sc">-</span> <span class="fl">0.0034052</span><span class="sc">*</span><span class="dv">50</span>  <span class="sc">+</span> <span class="fl">0.0379953</span><span class="sc">*</span><span class="dv">7</span>  <span class="sc">+</span> <span class="fl">0.0394924</span><span class="sc">*</span><span class="dv">0</span>  <span class="sc">-</span><span class="fl">0.0005963</span><span class="sc">*</span><span class="dv">0</span>  <span class="sc">-</span> <span class="fl">0.0160908</span><span class="sc">*</span><span class="dv">25</span>  <span class="sc">-</span><span class="fl">0.2618105</span><span class="sc">*</span><span class="dv">2</span>  <span class="sc">+</span> <span class="fl">0.0130122</span><span class="sc">*</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.2446647</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ou assim: </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>xpred <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">nwifeinc=</span><span class="fu">c</span>(<span class="dv">50</span>),<span class="at">educ=</span><span class="fu">c</span>(<span class="dv">7</span>),<span class="at">exper=</span><span class="fu">c</span>(<span class="dv">0</span>), <span class="st">"I(exper^2)"</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">0</span>),</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a> <span class="at">age=</span><span class="fu">c</span>(<span class="dv">25</span>),<span class="at">kidslt6=</span><span class="fu">c</span>(<span class="dv">2</span>),<span class="at">kidsge6=</span><span class="fu">c</span>(<span class="dv">0</span>))</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(linprob,xpred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ou assim: </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>xpred <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">nwifeinc=</span><span class="fu">c</span>(<span class="dv">50</span>),<span class="at">educ=</span><span class="fu">c</span>(<span class="dv">7</span>),<span class="at">exper=</span><span class="fu">c</span>(<span class="dv">0</span>), <span class="st">"I(exper^2)"</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">0</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> <span class="at">age=</span><span class="fu">c</span>(<span class="dv">25</span>),<span class="at">kidslt6=</span><span class="fu">c</span>(<span class="dv">2</span>),<span class="at">kidsge6=</span><span class="fu">c</span>(<span class="dv">0</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(linprob,xpred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         1 
 -0.2446632 </code></pre>
@@ -453,18 +451,18 @@ F-statistic: 38.22 on 7 and 745 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><strong>MULHER 2</strong>: Não tem renda adicional, 17 anos de escolaridade, 30 anos de experiência, com 52 anos e não possui filhos. A probabilidade de estar na força de trabalho estimada é 104%….não faz sentido. Veja os cálculos abaixo:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Podemos calcular assim a probabilidade </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5855192</span> <span class="sc">-</span> <span class="fl">0.0034052</span><span class="sc">*</span><span class="dv">0</span>  <span class="sc">+</span> <span class="fl">0.0379953</span><span class="sc">*</span><span class="dv">17</span>  <span class="sc">+</span> <span class="fl">0.0394924</span><span class="sc">*</span><span class="dv">30</span>  <span class="sc">-</span><span class="fl">0.0005963</span><span class="sc">*</span><span class="dv">900</span>  <span class="sc">-</span> <span class="fl">0.0160908</span><span class="sc">*</span><span class="dv">52</span>  <span class="sc">-</span><span class="fl">0.2618105</span><span class="sc">*</span><span class="dv">0</span>  <span class="sc">+</span> <span class="fl">0.0130122</span><span class="sc">*</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Podemos calcular assim a probabilidade </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5855192</span> <span class="sc">-</span> <span class="fl">0.0034052</span><span class="sc">*</span><span class="dv">0</span>  <span class="sc">+</span> <span class="fl">0.0379953</span><span class="sc">*</span><span class="dv">17</span>  <span class="sc">+</span> <span class="fl">0.0394924</span><span class="sc">*</span><span class="dv">30</span>  <span class="sc">-</span><span class="fl">0.0005963</span><span class="sc">*</span><span class="dv">900</span>  <span class="sc">-</span> <span class="fl">0.0160908</span><span class="sc">*</span><span class="dv">52</span>  <span class="sc">-</span><span class="fl">0.2618105</span><span class="sc">*</span><span class="dv">0</span>  <span class="sc">+</span> <span class="fl">0.0130122</span><span class="sc">*</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.04282</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ou assim</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>xpred1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">nwifeinc=</span><span class="fu">c</span>(<span class="dv">0</span>),<span class="at">educ=</span><span class="fu">c</span>(<span class="dv">17</span>), <span class="at">exper=</span><span class="fu">c</span>(<span class="dv">30</span>), <span class="st">"I(exper^2)"</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">30</span>),</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a> <span class="at">age=</span><span class="fu">c</span>(<span class="dv">52</span>),<span class="at">kidslt6=</span><span class="fu">c</span>(<span class="dv">0</span>),<span class="at">kidsge6=</span><span class="fu">c</span>(<span class="dv">0</span>))</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(linprob,xpred1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ou assim</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>xpred1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">nwifeinc=</span><span class="fu">c</span>(<span class="dv">0</span>),<span class="at">educ=</span><span class="fu">c</span>(<span class="dv">17</span>), <span class="at">exper=</span><span class="fu">c</span>(<span class="dv">30</span>), <span class="st">"I(exper^2)"</span><span class="ot">=</span><span class="fu">c</span>(<span class="dv">30</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a> <span class="at">age=</span><span class="fu">c</span>(<span class="dv">52</span>),<span class="at">kidslt6=</span><span class="fu">c</span>(<span class="dv">0</span>),<span class="at">kidsge6=</span><span class="fu">c</span>(<span class="dv">0</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(linprob,xpred1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       1 
 1.042808 </code></pre>
@@ -495,12 +493,12 @@ F-statistic: 38.22 on 7 and 745 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h4 data-number="15.1.3.1" class="anchored" data-anchor-id="exemplo-e-interpretação"><span class="header-section-number">15.1.3.1</span> Exemplo e interpretação</h4>
 <p>Primeiramente vamos estimar o modelo logit. Usamos a mesma base que indica se a mulher está na força de trabalho <span class="math inline">\((Y=1)\)</span> ou se a mulher está fora da força de trabalho <span class="math inline">\((Y=0)\)</span>, variável <em>inlf</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mroz, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Modelo logit, familia da binomial = logit</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6 , <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>), <span class="at">data=</span>mroz)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(logit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mroz, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Modelo logit, familia da binomial = logit</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6 , <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>), <span class="at">data=</span>mroz)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(logit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -533,14 +531,14 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <p><strong>Razão de Chance</strong></p>
 <p>Vamos agora calcular a razão de chance. Utilizaremos o pacote <code>mfx</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando o pacote mfx</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(mfx)){</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">"mfx"</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(mfx)}</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">logitor</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6, <span class="at">data=</span>mroz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando o pacote mfx</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(mfx)){</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">"mfx"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(mfx)}</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">logitor</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6, <span class="at">data=</span>mroz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 logitor(formula = inlf ~ nwifeinc + educ + exper + I(exper^2) + 
@@ -558,10 +556,10 @@ kidsge6    1.0619557 0.0794229  0.8038  0.421539
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OU</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>logit.or<span class="ot">=</span><span class="fu">exp</span>(<span class="fu">coef</span>(logit))</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>logit.or</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OU</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>logit.or<span class="ot">=</span><span class="fu">exp</span>(<span class="fu">coef</span>(logit))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>logit.or</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)    nwifeinc        educ       exper  I(exper^2)         age 
   1.5302825   0.9788810   1.2475360   1.2285929   0.9968509   0.9157386 
@@ -574,8 +572,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p><strong>Efeito Marginal</strong></p>
 <p>Utilizando o mesmo pacote anterior <code>mfx</code>, tem-se:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logitmfx</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6, <span class="at">data=</span>mroz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logitmfx</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6, <span class="at">data=</span>mroz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 logitmfx(formula = inlf ~ nwifeinc + educ + exper + I(exper^2) + 
@@ -599,20 +597,20 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p><strong>Calculando a Probabilidade</strong></p>
 <p>Vamos calcular a probabilidade de uma mulher participar do mercado de trabalho. Predizendo a probabilidade:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> expersq <span class="sc">+</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6, <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>), <span class="at">data=</span>mroz)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># temos que fazer o inverso do modelo logit</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>invlogit<span class="ot">=</span><span class="cf">function</span> (x) {<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>x))}</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">invlogit</span>(<span class="fu">coef</span>(logit)[<span class="dv">1</span>]<span class="sc">+</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">2</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>nwifeinc)<span class="sc">+</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">3</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>educ)<span class="sc">+</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">4</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>exper)<span class="sc">+</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">5</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>expersq)<span class="sc">+</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">6</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>age)<span class="sc">+</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">7</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>kidslt6)<span class="sc">+</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">8</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>kidsge6))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> expersq <span class="sc">+</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6, <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>), <span class="at">data=</span>mroz)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># temos que fazer o inverso do modelo logit</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>invlogit<span class="ot">=</span><span class="cf">function</span> (x) {<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>x))}</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">invlogit</span>(<span class="fu">coef</span>(logit)[<span class="dv">1</span>]<span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">2</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>nwifeinc)<span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">3</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>educ)<span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">4</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>exper)<span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">5</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>expersq)<span class="sc">+</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">6</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>age)<span class="sc">+</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">7</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>kidslt6)<span class="sc">+</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">8</span>]<span class="sc">*</span><span class="fu">mean</span>(mroz<span class="sc">$</span>kidsge6))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept) 
    0.582772 </code></pre>
@@ -623,16 +621,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li><strong>MULHER 1</strong>: renda familiar adicional de 50 mil ano, 7 anos de escolaridade, não tem experiência, com 25 anos e possui 2 filhos menores de 6 anos.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mulher 1</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>invlogit<span class="ot">=</span><span class="cf">function</span> (x) {<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>x))}</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">invlogit</span>(<span class="fu">coef</span>(logit)[<span class="dv">1</span>]<span class="sc">+</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">2</span>]<span class="sc">*</span><span class="dv">50</span><span class="sc">+</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">3</span>]<span class="sc">*</span><span class="dv">7</span><span class="sc">+</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">4</span>]<span class="sc">*</span><span class="dv">0</span><span class="sc">+</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">5</span>]<span class="sc">*</span><span class="dv">0</span><span class="sc">+</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">6</span>]<span class="sc">*</span><span class="dv">25</span><span class="sc">+</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">7</span>]<span class="sc">*</span><span class="dv">2</span><span class="sc">+</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">8</span>]<span class="sc">*</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mulher 1</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>invlogit<span class="ot">=</span><span class="cf">function</span> (x) {<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>x))}</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">invlogit</span>(<span class="fu">coef</span>(logit)[<span class="dv">1</span>]<span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">2</span>]<span class="sc">*</span><span class="dv">50</span><span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">3</span>]<span class="sc">*</span><span class="dv">7</span><span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">4</span>]<span class="sc">*</span><span class="dv">0</span><span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">5</span>]<span class="sc">*</span><span class="dv">0</span><span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">6</span>]<span class="sc">*</span><span class="dv">25</span><span class="sc">+</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">7</span>]<span class="sc">*</span><span class="dv">2</span><span class="sc">+</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">8</span>]<span class="sc">*</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept) 
  0.01505417 </code></pre>
@@ -643,16 +641,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li><strong>MULHER 2</strong>: Não tem renda adicional, 17 anos de escolaridade, 30 anos de experiência, com 52 anos e não possui filhos.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mulher 1</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>invlogit<span class="ot">=</span><span class="cf">function</span> (x) {<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>x))}</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">invlogit</span>(<span class="fu">coef</span>(logit)[<span class="dv">1</span>]<span class="sc">+</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">2</span>]<span class="sc">*</span><span class="dv">0</span><span class="sc">+</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">3</span>]<span class="sc">*</span><span class="dv">17</span><span class="sc">+</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">4</span>]<span class="sc">*</span><span class="dv">30</span><span class="sc">+</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">5</span>]<span class="sc">*</span><span class="dv">900</span><span class="sc">+</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">6</span>]<span class="sc">*</span><span class="dv">52</span><span class="sc">+</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">7</span>]<span class="sc">*</span><span class="dv">0</span><span class="sc">+</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">8</span>]<span class="sc">*</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mulher 1</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>invlogit<span class="ot">=</span><span class="cf">function</span> (x) {<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>x))}</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">invlogit</span>(<span class="fu">coef</span>(logit)[<span class="dv">1</span>]<span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">2</span>]<span class="sc">*</span><span class="dv">0</span><span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">3</span>]<span class="sc">*</span><span class="dv">17</span><span class="sc">+</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">4</span>]<span class="sc">*</span><span class="dv">30</span><span class="sc">+</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">5</span>]<span class="sc">*</span><span class="dv">900</span><span class="sc">+</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">6</span>]<span class="sc">*</span><span class="dv">52</span><span class="sc">+</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">7</span>]<span class="sc">*</span><span class="dv">0</span><span class="sc">+</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>           <span class="fu">coef</span>(logit)[<span class="dv">8</span>]<span class="sc">*</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept) 
   0.9500491 </code></pre>
@@ -662,36 +660,36 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p><strong>Graficamente</strong></p>
 <p>Vejamos agora graficamente o efeito dos anos de estudo sobre a probabilidade de a mulher entrar no mercado de trabalho. Vamos manter as variáveis na média e vamos simular mulheres de 5 a 17 anos de estudo e estimar a probabilidde de ela participar da força de trabalho.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(ggplot2)){</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(ggplot2)}</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> expersq <span class="sc">+</span> </span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6, <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>), <span class="at">data=</span>mroz)</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>amp_educ<span class="ot">&lt;-</span><span class="fu">range</span>(mroz<span class="sc">$</span>edu) </span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>edu_sequence <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">17</span>, <span class="at">by =</span> .<span class="dv">02</span>) <span class="co"># 177 points along x axis</span></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>constanteX <span class="ot">&lt;-</span> <span class="fu">with</span>(mroz, <span class="fu">data.frame</span>(<span class="at">nwifeinc=</span> <span class="fu">mean</span>(nwifeinc),</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">exper=</span> <span class="fu">mean</span>(exper),</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">expersq=</span> <span class="fu">mean</span>(expersq),</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">age=</span> <span class="fu">mean</span>(age),</span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">kidslt6=</span> <span class="fu">mean</span>( kidslt6),</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">kidsge6=</span> <span class="fu">mean</span>(kidsge6),</span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">educ =</span> edu_sequence </span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>                                  ))</span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>constanteX<span class="sc">$</span>predicao <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="at">object =</span> logit, </span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>                                <span class="at">newdata =</span> constanteX, </span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>                                <span class="at">type =</span> <span class="st">"response"</span>)</span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(constanteX, <span class="fu">aes</span>(<span class="at">x =</span> educ, <span class="at">y =</span> predicao)) <span class="sc">+</span></span>
-<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
-<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></span>
-<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Probabilidade de Participação no Mercado de Trabalho"</span>, <span class="at">x =</span> <span class="st">"Anos de Estudo"</span>, <span class="at">y =</span> <span class="st">"Prob de Participação"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(ggplot2)){</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(ggplot2)}</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> expersq <span class="sc">+</span> </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6, <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>), <span class="at">data=</span>mroz)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>amp_educ<span class="ot">&lt;-</span><span class="fu">range</span>(mroz<span class="sc">$</span>edu) </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>edu_sequence <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">17</span>, <span class="at">by =</span> .<span class="dv">02</span>) <span class="co"># 177 points along x axis</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>constanteX <span class="ot">&lt;-</span> <span class="fu">with</span>(mroz, <span class="fu">data.frame</span>(<span class="at">nwifeinc=</span> <span class="fu">mean</span>(nwifeinc),</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">exper=</span> <span class="fu">mean</span>(exper),</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">expersq=</span> <span class="fu">mean</span>(expersq),</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">age=</span> <span class="fu">mean</span>(age),</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">kidslt6=</span> <span class="fu">mean</span>( kidslt6),</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">kidsge6=</span> <span class="fu">mean</span>(kidsge6),</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">educ =</span> edu_sequence </span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>                                  ))</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>constanteX<span class="sc">$</span>predicao <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="at">object =</span> logit, </span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>                                <span class="at">newdata =</span> constanteX, </span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>                                <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(constanteX, <span class="fu">aes</span>(<span class="at">x =</span> educ, <span class="at">y =</span> predicao)) <span class="sc">+</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Probabilidade de Participação no Mercado de Trabalho"</span>, <span class="at">x =</span> <span class="st">"Anos de Estudo"</span>, <span class="at">y =</span> <span class="st">"Prob de Participação"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -705,19 +703,19 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h4 data-number="15.1.3.2" class="anchored" data-anchor-id="probit"><span class="header-section-number">15.1.3.2</span> Probit</h4>
 <p>Uma alternativa ao modelo logit seria o uso do modelo probit. Que ao invés da função logística utiliza-se a função distribuição normal padrão. Vejamos os resultados:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mroz, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Modelo logit, familia da binomial = logit</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6 , <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>), <span class="at">data=</span>mroz)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>probit <span class="ot">&lt;-</span> <span class="fu">glm</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6 , <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"probit"</span>), <span class="at">data=</span>mroz)</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(logit,probit, <span class="at">type=</span><span class="st">"text"</span>,<span class="at">keep.stat=</span><span class="st">"n"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mroz, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Modelo logit, familia da binomial = logit</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6 , <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>), <span class="at">data=</span>mroz)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>probit <span class="ot">&lt;-</span> <span class="fu">glm</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6 , <span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"probit"</span>), <span class="at">data=</span>mroz)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(logit,probit, <span class="at">type=</span><span class="st">"text"</span>,<span class="at">keep.stat=</span><span class="st">"n"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 =========================================
@@ -759,8 +757,8 @@ Note:         *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
 </div>
 <p>Observe que sinal e significância estão em acordo entre os dois modelos. Vejamos agora os efeitos marginais para podermos comparar.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logitmfx</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6, <span class="at">data=</span>mroz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logitmfx</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6, <span class="at">data=</span>mroz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 logitmfx(formula = inlf ~ nwifeinc + educ + exper + I(exper^2) + 
@@ -778,8 +776,8 @@ kidsge6     0.01461621  0.01818832  0.8036  0.421625
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">probitmfx</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6, <span class="at">data=</span>mroz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">probitmfx</span>(inlf<span class="sc">~</span> nwifeinc <span class="sc">+</span> educ <span class="sc">+</span> exper <span class="sc">+</span> <span class="fu">I</span>(exper<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                  age<span class="sc">+</span> kidslt6 <span class="sc">+</span> kidsge6, <span class="at">data=</span>mroz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 probitmfx(formula = inlf ~ nwifeinc + educ + exper + I(exper^2) + 
@@ -834,21 +832,21 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </ul>
 <p>Para ajudar a compreender a diferença entre a interpretação do modelo de regressão de Poisson e o modelo linerar, vamos estimar os dois abaixo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(crime1, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Estimando o modelo de Poisson</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>Poisson.res <span class="ot">&lt;-</span> <span class="fu">glm</span>(narr86<span class="sc">~</span>pcnv<span class="sc">+</span>avgsen<span class="sc">+</span>tottime<span class="sc">+</span>ptime86<span class="sc">+</span>qemp86<span class="sc">+</span>inc86<span class="sc">+</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>black<span class="sc">+</span>hispan<span class="sc">+</span>born60, <span class="at">data=</span>crime1, <span class="at">family=</span>poisson)</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co">#estimando o modelo OLS</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>lm.res <span class="ot">&lt;-</span> <span class="fu">lm</span>(narr86<span class="sc">~</span>pcnv<span class="sc">+</span>avgsen<span class="sc">+</span>tottime<span class="sc">+</span>ptime86<span class="sc">+</span>qemp86<span class="sc">+</span>inc86<span class="sc">+</span></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>black<span class="sc">+</span>hispan<span class="sc">+</span>born60, <span class="at">data=</span>crime1)</span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(Poisson.res,lm.res, <span class="at">type=</span><span class="st">"text"</span>,<span class="at">keep.stat=</span><span class="st">"n"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(crime1, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Estimando o modelo de Poisson</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>Poisson.res <span class="ot">&lt;-</span> <span class="fu">glm</span>(narr86<span class="sc">~</span>pcnv<span class="sc">+</span>avgsen<span class="sc">+</span>tottime<span class="sc">+</span>ptime86<span class="sc">+</span>qemp86<span class="sc">+</span>inc86<span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>black<span class="sc">+</span>hispan<span class="sc">+</span>born60, <span class="at">data=</span>crime1, <span class="at">family=</span>poisson)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co">#estimando o modelo OLS</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>lm.res <span class="ot">&lt;-</span> <span class="fu">lm</span>(narr86<span class="sc">~</span>pcnv<span class="sc">+</span>avgsen<span class="sc">+</span>tottime<span class="sc">+</span>ptime86<span class="sc">+</span>qemp86<span class="sc">+</span>inc86<span class="sc">+</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>black<span class="sc">+</span>hispan<span class="sc">+</span>born60, <span class="at">data=</span>crime1)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(Poisson.res,lm.res, <span class="at">type=</span><span class="st">"text"</span>,<span class="at">keep.stat=</span><span class="st">"n"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 =========================================
@@ -912,20 +910,20 @@ Note:         *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
 <p><span class="math display">\[\ddot{y}_{it} = y_{it} - \bar{y}_i = \beta_1 \ddot{x}_{it1} + \cdots + \beta_k \ddot{x}_{itk} + \ddot{u}_{it}\]</span> ### Exemplo:</p>
 <p>Vamos utilizar para exemplificar um modelo simples de dois períodos. Estamos interessados em analisar o efeito do desemprego (<em>unem</em>) sobre a criminalidade (<em>crmrte</em>) em 46 cidades para os anos de 1982 e 1987. Usaremos o pacote <code>plm</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(plm)){</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">"plm"</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(plm)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(plm)){</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">"plm"</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(plm)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: plm</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plm)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(crime2, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>crime2.p <span class="ot">&lt;-</span> <span class="fu">pdata.frame</span>(crime2, <span class="at">index=</span><span class="dv">46</span> )</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="do">##Estimando o modelo</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>Painel<span class="ot">&lt;-</span> <span class="fu">plm</span>(crmrte<span class="sc">~</span>unem <span class="sc">+</span>  d87, <span class="at">data=</span>crime2.p, <span class="at">model=</span><span class="st">"within"</span>)</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Painel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plm)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(crime2, <span class="at">package=</span><span class="st">"wooldridge"</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>crime2.p <span class="ot">&lt;-</span> <span class="fu">pdata.frame</span>(crime2, <span class="at">index=</span><span class="dv">46</span> )</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="do">##Estimando o modelo</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>Painel<span class="ot">&lt;-</span> <span class="fu">plm</span>(crmrte<span class="sc">~</span>unem <span class="sc">+</span>  d87, <span class="at">data=</span>crime2.p, <span class="at">model=</span><span class="st">"within"</span>)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Painel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Oneway (individual) effect Within Model
 
@@ -954,10 +952,10 @@ F-statistic: 5.36528 on 2 and 44 DF, p-value: 0.0082206</code></pre>
 </div>
 <p>Observa-se nesse modelo que o aumento de 1 na taxa de desemprego aumenta em 2.2 pontos a taxa de criminalidade. Observa-se que as características dos munícipios que são fixas no tempo estão sendo controladas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Estimando o modelo</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>Painelln<span class="ot">&lt;-</span> <span class="fu">plm</span>(lcrmrte<span class="sc">~</span><span class="fu">I</span>(<span class="fu">log</span>(unem)) <span class="sc">+</span>  d87, <span class="at">data=</span>crime2.p, <span class="at">model=</span><span class="st">"within"</span>)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Painelln)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Estimando o modelo</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>Painelln<span class="ot">&lt;-</span> <span class="fu">plm</span>(lcrmrte<span class="sc">~</span><span class="fu">I</span>(<span class="fu">log</span>(unem)) <span class="sc">+</span>  d87, <span class="at">data=</span>crime2.p, <span class="at">model=</span><span class="st">"within"</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Painelln)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Oneway (individual) effect Within Model
 

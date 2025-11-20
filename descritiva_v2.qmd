@@ -884,6 +884,7 @@ Dica: Utlizar a densidade e o boxplot?
 library(ggplot2)
 library(gridExtra)
 
+
 # Criar o histograma com ggplot2
 dens_t_f <- ggplot(final_fem_22, aes(x = t_feminic_tx)) +
   geom_density(fill = "#7185cc", color = "darkblue", alpha = 0.6) +
