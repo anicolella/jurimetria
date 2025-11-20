@@ -503,7 +503,7 @@ freq_assunto |>
 
 ```
 
-**Assuntos** tem um total de **11302 processos**, sendo que o número de **processos únicos é 82228**. Isso indica que muitos processos têm mais de um assunto associado. Então a leitura da tabela acima deve considerar esses números. Podemos dizer que **5933** processos tiveram **Homicídio Qualificado** como assunto, **2733** tiveram **Crime Tentado**, e assim por diante. **Existe sobreposição** entre os assuntos. 
+**Assuntos** tem um total de **11302 processos**, sendo que o número de **processos únicos é 8228**. Isso indica que muitos processos têm mais de um assunto associado. Então a leitura da tabela acima deve considerar esses números. Podemos dizer que **5933** processos tiveram **Homicídio Qualificado** como assunto, **2733** tiveram **Crime Tentado**, e assim por diante. **Existe sobreposição** entre os assuntos. 
 
 Fizemos duas colunas, uma com percentual com base no total de assuntos (11302), **% Assuntos**, e outra com base no total de processos únicos (8228), **% Processos**. A segunda coluna é mais interessante, pois indica a proporção de processos que tiveram cada assunto.
 
@@ -761,13 +761,17 @@ Por fim, criamos **variáveis binárias** para identificar três categorias prin
 
 ### Análise da Movimentação Processual
 
-```{r eval = FALSE, message=FALSE, warning=FALSE}
+
+Agora vamos analisar a movimentação processual. Para isso, precisamos extrair e organizar os dados de movimentação de cada processo. Vamos calcular o tempo decorrido entre cada movimentação e, em seguida, focar na análise do tempo até a baixa definitiva do processo.
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
 # Instalando Pacotes necessários
 #install.packages("devtools") 
 library(janitor)
 devtools::install_github("courtsbr/JurisMiner")
 
-movimento <- dados_basicos  |> 
+movimento <- db_limpo  |> 
       select(processo = numeroProcesso, movimentos) |>
       unnest(movimentos) |> 
       janitor::clean_names() |> 
@@ -778,5 +782,280 @@ movimento  <- movimento |>
      arrange(processo, desc(data_hora)) |> 
      JurisMiner::tempo_movimentacao(data = data_hora)
 
+movimento  <- movimento |> 
+ rename(movimento = nome,
+        cod_movimento = codigo
+        ) 
+
+
 ```
 
+
+### Tempo até a Baixa Definitiva
+
+Vamos selecionar todos os processos para os quais conseguimos extrair a baixa definitiva. No código abaixo, buscamos manter apenas a última baixa de cada processo. Note que alguns processos apresentaram múltiplas baixas definitivas.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+# Tempo até a baixa definitiva
+
+tempo_baixa <- movimento |> 
+  filter(movimento == "Baixa Definitiva")
+
+nrow(tempo_baixa %>% 
+  distinct(processo, .keep_all = TRUE)) # número total de processos únicos
+
+# Vamos analisar os processos duplicados 
+t_baixa_dup <- tempo_baixa %>% 
+  filter(duplicated(processo) | duplicated(processo, fromLast = TRUE)) 
+## Esse comando pega todas as linhas após a primeira ocorrência ou 
+## Pega todas as linhas antes da última ocorrência e verifica duplicação
+
+## Vamos ver quantos processos duplicados temos:
+unique(julgador_dup$processo) |> length() # número de processos únicos que estão duplicados
+
+tempo_baixa_unico <- tempo_baixa |> 
+  group_by(processo) |> 
+  slice_max(decorrencia_acumulada, n = 1) |> 
+  ungroup()
+
+```
+
+
+Agora, vamos juntar com o nosso banco de dados, que criamos na outra parte, e que contém assunto, classe e as demais variáveis binárias que geramos.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+baixa_uni_comp <- tempo_baixa_unico |> 
+  left_join(bd_final, by = c("processo" = "processo"))
+
+# Verificar se criou uma coluna NA
+sum(is.na(baixa_uni_comp$fem))
+```
+
+
+**Analise Descritiva Geral**
+
+Primeiramente, vamos descrever ou realizar a análise descritiva do tempo até a baixa, ou seja, do tempo até a baixa definitiva do processo. Neste momento, estamos considerando todos os processos.
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(gt)
+
+# Estatísticas descritivas para a variável decorrencia_acumulada
+tempo_stats <- baixa_uni_comp %>%
+  summarise(
+    media     = mean(decorrencia_acumulada, na.rm = TRUE),
+    mediana   = median(decorrencia_acumulada, na.rm = TRUE),
+    desvio  = sd(decorrencia_acumulada, na.rm = TRUE),
+    variancia = var(decorrencia_acumulada, na.rm = TRUE),
+    q1        = quantile(decorrencia_acumulada, 0.25, na.rm = TRUE),
+    q3        = quantile(decorrencia_acumulada, 0.75, na.rm = TRUE),
+    minimo    = min(decorrencia_acumulada, na.rm = TRUE),
+    maximo    = max(decorrencia_acumulada, na.rm = TRUE)
+  ) |> 
+  pivot_longer(
+    cols = everything(),
+    names_to = "Estatística",
+    values_to = "Valor"
+  ) 
+
+# Tabela GT
+tempo_stats %>%
+  gt() %>%
+  tab_header(
+    title = "Estatísticas Descritivas — Tempo do Processo até Baixa Definitiva",
+    subtitle = "Variável: decorrencia_acumulada"
+  ) %>%
+  fmt_number(
+    columns = Valor,
+    decimals = 2
+  )
+```
+
+
+Vamos analisar também o tempo de forma gráfica, utilizando diferentes tipos de gráficos. Primeiro, apresentamos o gráfico conhecido como BoxPlot; em seguida, o gráfico chamado ViolinPlot. Depois, construímos os gráficos de densidade: inicialmente o histograma e, em seguida, a densidade contínua. Eles estão apresentados abaixo.
+
+
+**O Box Plot**
+
+O boxplot é um gráfico que traz muitas informações e pode ser visto como a distribuição de probabilidade dos dados. O box ou caixa contém 50% dos dados. O limite superior indica o percentil de 75% (*Q3*) e o limite inferior indica o percentil de 25% (*Q1*). A linha que corta o box indica a mediana, ou seja, *Q2*. Os bigodes são calculados com base na distância interquantílica, ou seja,
+
+*Limite inferior: Q1-1,5(Q3-Q1)*
+
+*Limite superior:Q3+1,5(Q3-Q1)*
+
+Dados fora desses limites são classificados como suspeitos de serem outliers. Podemos observar a assimetria dos dados quando a mediana não está no meio da caixa, indicando maior densidade na menor distância entre os quartis Q1 ou Q3 e a mediana Q2.
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+ggplot(baixa_uni_comp, aes(y = decorrencia_acumulada)) +
+  geom_boxplot(fill = "#7185cc", color = "#c2986f", alpha=0.7,  # Linhas tracejadas no boxplot
+    outlier.shape = 16, outlier.color = "red", outlier.size = 3) + # Boxplot com preenchimento azul e bordas pretas
+  labs(
+    title = "Boxplot do Tempo do Processo até Baixa Definitiva", # Título do gráfico
+    x = "",                                                   # Sem rótulo no eixo x
+    y = "Tempo"                        # Rótulo do eixo y
+  ) +
+  coord_flip() + # Inverte os eixos para horizontalidade
+  theme_bw() + # Tema limpo e moderno
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"), # Centraliza e estiliza o título
+    axis.text.y = element_text(size = 10), # Ajusta o tamanho do texto no eixo y
+    axis.title.y = element_text(size = 12) # Ajusta o tamanho do rótulo do eixo y
+  )
+```
+
+
+**O Violin Plot**
+
+O Violin Plot é muito parecido com o BoxPlot mas com a densidade de kernel rotacionada em cada um dos lados. Assim, indica a distribuição dos dados em cada ponto e vem anotado a mediana na forma de um ponto ou marca e um pequeno boxplot no centro do violin plot.
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+ggplot(baixa_uni_comp, aes( x=0,  y = decorrencia_acumulada))+ 
+  geom_violin(trim = FALSE, color = "#c2986f", fill="#7185cc") +                                                        # Cria o gráfico de violino
+  stat_summary(fun="median", geom = "point", shape=19, size=3, color="darkorange"  ) +                # Vamos colocar o ponto mediana
+  labs(
+    title = "Violin Plots do Tempo do Processo até Baixa Definitiva",
+    x = "Processos",
+    y = "Tempo até Baixa Definitiva"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),              # Centraliza o título
+    axis.text.x = element_text(size = 12),                                         # Ajusta o tamanho dos rótulos no eixo X
+    axis.text.y = element_text(size = 10),                                         # Ajusta o tamanho dos rótulos no eixo Y
+    legend.position = "none"  )
+```
+
+
+
+**Gráfico de Densidade**
+
+Visualizar a distribuição empírica dos dados fornece uma grande quantidade de informação. Um gráfico básico em análise descritiva é o histograma, o qual fornece a distribuição de probabilidade empírica dos dados em um formato de barras. A área do histograma é igual a 1 e altura da sua barra da a densidade de observações em cada classe.
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+
+ggplot(baixa_uni_comp, aes(x = decorrencia_acumulada)) +
+  geom_histogram(bins = 30, fill = "#7185cc", color = "white", alpha = 0.7) +    
+  geom_vline(aes(xintercept = mean(decorrencia_acumulada)), color = "#c2986f", size = 1, alpha = 0.7,linetype = "dashed") +
+  annotate("text", x = 1400, y = 300, vjust = -0.5, label = "Média", color = "#c2986f", fontface = "bold", size = 4) +
+  geom_vline(aes(xintercept = median(decorrencia_acumulada)), color = "#c77878ff", size = 1, alpha = 0.7,linetype = "dashed") + 
+  annotate("text", x = 900, y = 400, vjust = -0.5, label = "Mediana", color = "#c77878ff", fontface = "bold", size = 4) + 
+  labs(
+    x = "Tempo do Processo",                                                 
+    y = "Frequência",  
+    title = "Histograma do Tempo do Processo até Baixa Definitiva"   
+  ) +
+  theme_minimal() + 
+ theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),              
+    axis.text.x = element_text(size = 12),                                         
+    axis.text.y = element_text(size = 10))
+```
+
+
+Uma outra maneira de visualizar os dados é utilizando uma distribuição continua e não mais a discreta. Para isso, utiliza-se a densidade de Kernel para visualização da distribuição de probabilidade da taxa de feminicídio. Vejamos
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+ 
+ ggplot(baixa_uni_comp, aes(x = decorrencia_acumulada)) +
+  geom_density(fill = "#7185cc", alpha = 0.4, color = "#7185cc", linewidth = 1) +    
+  geom_vline(aes(xintercept = mean(decorrencia_acumulada)), color = "#c2986f", size = 1, alpha = 0.7,linetype = "dashed") +
+  annotate("text", x = 1400, y = 0.00005, vjust = -0.5, label = "Média", color = "#c2986f", fontface = "bold", size = 4) +
+  geom_vline(aes(xintercept = median(decorrencia_acumulada)), color = "#c77878ff", size = 1, alpha = 0.7,linetype = "dashed") + 
+  annotate("text", x = 900, y = 0.00005, vjust = -0.5, label = "Mediana", color = "#c77878ff", fontface = "bold", size = 4) + 
+  labs(
+    x = "Tempo do Processo",                                                 
+    y = "Frequência",  
+    title = "Histograma do Tempo do Processo até Baixa Definitiva"   
+  ) +
+  theme_minimal() + 
+ theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),              
+    axis.text.x = element_text(size = 12),                                         
+    axis.text.y = element_text(size = 10))
+ 
+```
+
+
+**Análise por Órgão Julgador**
+
+Vamos analisar agora por órgão julgador, os 5 maiores em relação aos demais.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(gt)
+
+# Estatísticas descritivas estratificadas por volume_top5
+tempo_stats_grupo <- baixa_uni_comp %>%
+  group_by(volume_top5) %>% 
+  summarise(
+    media     = mean(decorrencia_acumulada, na.rm = TRUE),
+    mediana   = median(decorrencia_acumulada, na.rm = TRUE),
+    desvio    = sd(decorrencia_acumulada, na.rm = TRUE),
+    variancia = var(decorrencia_acumulada, na.rm = TRUE),
+    q1        = quantile(decorrencia_acumulada, 0.25, na.rm = TRUE),
+    q3        = quantile(decorrencia_acumulada, 0.75, na.rm = TRUE),
+    minimo    = min(decorrencia_acumulada, na.rm = TRUE),
+    maximo    = max(decorrencia_acumulada, na.rm = TRUE)
+  ) %>%
+  pivot_longer(
+    cols = -volume_top5,
+    names_to = "Estatística",
+    values_to = "Valor"
+  )%>%
+  pivot_wider(
+    names_from = volume_top5,
+    values_from = Valor
+  )
+
+# Tabela GT
+tempo_stats_grupo %>%
+  gt(groupname_col = "volume_top5") %>%
+  tab_header(
+    title = "Estatísticas Descritivas — Tempo do Processo até Baixa Definitiva",
+    subtitle = "Estratificadas 5 maiores órgãos julgadores )"
+  ) %>%
+  fmt_number(
+    columns = where(is.numeric),
+    decimals = 2
+  ) %>%
+  cols_label(
+    Estatística = "Estatística",
+    `0` = "Top 5",
+    `1` = "Demais"
+  )
+```
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+ 
+library(ggplot2)
+
+# Garantir que seja fator
+baixa_uni_comp$volume_top5_factor <- factor(baixa_uni_comp$volume_top5, levels = c(1, 0), labels = c("Top5", "Demais"))
+
+ggplot(baixa_uni_comp, aes(x = decorrencia_acumulada, fill = volume_top5_factor, group = volume_top5_factor)) +
+  geom_density(alpha = 0.4, linewidth = 1) +    
+  labs(
+    x = "Tempo do Processo",                                                 
+    y = "Densidade",  
+    title = "Distribuição do Tempo do Processo até Baixa Definitiva"   
+  ) +
+  scale_fill_manual(
+    name = "Grupo de Volume", 
+    values = c("Top5" = "#7185cc", "Demais" = "#c77878ff")  # cores específicas
+  ) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),              
+    axis.text.x = element_text(size = 12),                                         
+    axis.text.y = element_text(size = 10)
+  )
+
+ 
+```
