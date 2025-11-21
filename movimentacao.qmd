@@ -791,28 +791,45 @@ movimento  <- movimento |>
 ```
 
 
-### Tempo até a Baixa Definitiva
+A estratégia de análise será a seguinte: 
 
-Vamos selecionar todos os processos para os quais conseguimos extrair a baixa definitiva. No código abaixo, buscamos manter apenas a última baixa de cada processo. Note que alguns processos apresentaram múltiplas baixas definitivas.
+```{mermaid}
+flowchart LR
+  A[Distribuição] --> B[Recebimento da Denúncia]
+  B --> C[Aud. Instrução e Julgamento]
+  C --> D[Dec. Pronúncia]
+  D --> E[Seç. Trib. do Júri]
+```
 
+* Distribuição: 
+* Recebimento da Denúncia: **391**
+* Audiência de Instrução e Julgamento: **12750**
+* Decisão de Pronúncia: **10953**
+* Seção do Tribunal do Júri: **313**
+
+#### Tempo até Recebimento da Denúncia
+ainda não terminei
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 # Tempo até a baixa definitiva
-
-tempo_baixa <- movimento |> 
+t_recebimento <- movimento |> 
   filter(movimento == "Baixa Definitiva")
 
+# número total de processos únicos
 nrow(tempo_baixa %>% 
-  distinct(processo, .keep_all = TRUE)) # número total de processos únicos
+  distinct(processo, .keep_all = TRUE)) 
 
-# Vamos analisar os processos duplicados 
+# Vamos analisar os processos duplicados
+# Esse comando pega todas as linhas após a primeira ocorrência ou 
+# Pega todas as linhas antes da última ocorrência e verifica duplicação 
 t_baixa_dup <- tempo_baixa %>% 
   filter(duplicated(processo) | duplicated(processo, fromLast = TRUE)) 
-## Esse comando pega todas as linhas após a primeira ocorrência ou 
-## Pega todas as linhas antes da última ocorrência e verifica duplicação
+
 
 ## Vamos ver quantos processos duplicados temos:
-unique(julgador_dup$processo) |> length() # número de processos únicos que estão duplicados
+# número de processos únicos que estão duplicados
+unique(julgador_dup$processo) |> length() 
 
+## Deixamossomente o que tem a maior decorrência acumulada
 tempo_baixa_unico <- tempo_baixa |> 
   group_by(processo) |> 
   slice_max(decorrencia_acumulada, n = 1) |> 
@@ -821,7 +838,53 @@ tempo_baixa_unico <- tempo_baixa |>
 ```
 
 
-Agora, vamos juntar com o nosso banco de dados, que criamos na outra parte, e que contém assunto, classe e as demais variáveis binárias que geramos.
+
+#### Tempo até a Baixa Definitiva
+
+Vamos selecionar todos os processos para os quais conseguimos extrair a baixa definitiva. No código abaixo, buscamos manter apenas a última baixa de cada processo. Note que alguns processos apresentaram múltiplas baixas definitivas. Portanto, vamos considerar a última baixa definitiva que o processo teve. 
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+# Tempo até a baixa definitiva
+tempo_baixa <- movimento |> 
+  filter(movimento == "Baixa Definitiva")
+
+# número total de processos únicos
+nrow(tempo_baixa %>% 
+  distinct(processo, .keep_all = TRUE)) 
+
+# Vamos analisar os processos duplicados
+# Esse comando pega todas as linhas após a primeira ocorrência ou 
+# Pega todas as linhas antes da última ocorrência e verifica duplicação 
+t_baixa_dup <- tempo_baixa %>% 
+  filter(duplicated(processo) | duplicated(processo, fromLast = TRUE)) 
+
+
+## Vamos ver quantos processos duplicados temos:
+# número de processos únicos que estão duplicados
+unique(julgador_dup$processo) |> length() 
+
+## Deixamossomente o que tem a maior decorrência acumulada
+tempo_baixa_unico <- tempo_baixa |> 
+  group_by(processo) |> 
+  slice_max(decorrencia_acumulada, n = 1) |> 
+  ungroup()
+
+```
+
+Observe que agora temos um total de **4595 processos** com baixa definitiva. Iniciamos com **8432 processos**, e após a limpeza dos dados, restaram **7683 processos**. Desses, conseguimos identificar a baixa definitiva em 4595 processos. Note uma redução significativa, representando um grupo específico de processos que chegaram à baixa definitiva. 
+
+
+:::{.callout-note title="Reflexão"}
+
+**Questão:**
+
+Os 4.595 representam bem a realidade dos processos de júri? Ao considerar esses processos estamos selecionando um grupo específico? 
+:::
+
+
+** Juntando os Dados de Baixa com o Banco Final**
+
+Agora, vamos juntar com o nosso banco de dados, que criamos na parte anterior, e que contém assunto, classe e as demais variáveis binárias que geramos.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 baixa_uni_comp <- tempo_baixa_unico |> 
@@ -831,10 +894,12 @@ baixa_uni_comp <- tempo_baixa_unico |>
 sum(is.na(baixa_uni_comp$fem))
 ```
 
+A junção não criou nenhuma coluna com valores **NA**, indicando que todos os processos com baixa definitiva foram **corretamente integrados** ao banco de dados final.
 
-**Analise Descritiva Geral**
 
-Primeiramente, vamos descrever ou realizar a análise descritiva do tempo até a baixa, ou seja, do tempo até a baixa definitiva do processo. Neste momento, estamos considerando todos os processos.
+**Análise Descritiva Geral**
+
+Primeiramente, vamos descrever ou realizar a análise descritiva do tempo até a baixa definitiva do processo. Neste momento, estamos considerando todos os 4.595 processos.
 
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
@@ -873,6 +938,10 @@ tempo_stats %>%
   )
 ```
 
+
+
+
+**Visualmente**
 
 Vamos analisar também o tempo de forma gráfica, utilizando diferentes tipos de gráficos. Primeiro, apresentamos o gráfico conhecido como BoxPlot; em seguida, o gráfico chamado ViolinPlot. Depois, construímos os gráficos de densidade: inicialmente o histograma e, em seguida, a densidade contínua. Eles estão apresentados abaixo.
 
@@ -1026,8 +1095,8 @@ tempo_stats_grupo %>%
   ) %>%
   cols_label(
     Estatística = "Estatística",
-    `0` = "Top 5",
-    `1` = "Demais"
+    `0` = "Demais",
+    `1` = "Top 5"
   )
 ```
 
@@ -1058,4 +1127,107 @@ ggplot(baixa_uni_comp, aes(x = decorrencia_acumulada, fill = volume_top5_factor,
   )
 
  
+```
+
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(gt)
+
+# Estatísticas descritivas estratificadas por volume_top5
+tempo_stats_grupo1 <- baixa_uni_comp %>%
+  group_by(hq) %>% 
+  summarise(
+    media     = mean(decorrencia_acumulada, na.rm = TRUE),
+    mediana   = median(decorrencia_acumulada, na.rm = TRUE),
+    desvio    = sd(decorrencia_acumulada, na.rm = TRUE),
+    variancia = var(decorrencia_acumulada, na.rm = TRUE),
+    q1        = quantile(decorrencia_acumulada, 0.25, na.rm = TRUE),
+    q3        = quantile(decorrencia_acumulada, 0.75, na.rm = TRUE),
+    minimo    = min(decorrencia_acumulada, na.rm = TRUE),
+    maximo    = max(decorrencia_acumulada, na.rm = TRUE)
+  ) %>%
+  pivot_longer(
+    cols = -hq,
+    names_to = "Estatística",
+    values_to = "Valor"
+  )%>%
+  pivot_wider(
+    names_from = hq,
+    values_from = Valor
+  )
+
+# Tabela GT
+tempo_stats_grupo1 %>%
+  gt(groupname_col = "volume_top5") %>%
+  tab_header(
+    title = "Estatísticas Descritivas — Tempo do Processo até Baixa Definitiva",
+    subtitle = "Estratificadas Homicídio Qualificado (1) e Demais (0)"
+  ) %>%
+  fmt_number(
+    columns = where(is.numeric),
+    decimals = 2
+  ) %>%
+  cols_label(
+    Estatística = "Estatística",
+    `0` = "Demais",
+    `1` = "Homic Qualificado"
+  )
+```
+
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(gt)
+
+# Estatísticas descritivas estratificadas por volume_top5
+tempo_stats_grupo2 <- baixa_uni_comp %>%
+  group_by(fem) %>% 
+  summarise(
+    media     = mean(decorrencia_acumulada, na.rm = TRUE),
+    mediana   = median(decorrencia_acumulada, na.rm = TRUE),
+    desvio    = sd(decorrencia_acumulada, na.rm = TRUE),
+    variancia = var(decorrencia_acumulada, na.rm = TRUE),
+    q1        = quantile(decorrencia_acumulada, 0.25, na.rm = TRUE),
+    q3        = quantile(decorrencia_acumulada, 0.75, na.rm = TRUE),
+    minimo    = min(decorrencia_acumulada, na.rm = TRUE),
+    maximo    = max(decorrencia_acumulada, na.rm = TRUE)
+  ) %>%
+  pivot_longer(
+    cols = -fem,
+    names_to = "Estatística",
+    values_to = "Valor"
+  )%>%
+  pivot_wider(
+    names_from = fem,
+    values_from = Valor
+  )
+
+# Tabela GT
+tempo_stats_grupo2 %>%
+  gt(groupname_col = "volume_top5") %>%
+  tab_header(
+    title = "Estatísticas Descritivas — Tempo do Processo até Baixa Definitiva",
+    subtitle = "Estratificadas Feminicídio (1) e Demais (0)"
+  ) %>%
+  fmt_number(
+    columns = where(is.numeric),
+    decimals = 2
+  ) %>%
+  cols_label(
+    Estatística = "Estatística",
+    `0` = "Demais",
+    `1` = "Feminicídio"
+  )
+
+ lm(decorrencia_acumulada ~ volume_top5, data = baixa_uni_comp) |> summary()
+
+ t.test(
+  decorrencia_acumulada ~ volume_top5,
+  data = baixa_uni_comp,
+  var.equal = FALSE) # teste de Welch (padrão e mais seguro)
 ```
