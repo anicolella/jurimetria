@@ -560,7 +560,9 @@ assuntos_wide_limpo <- assuntos_wide %>%
         "Homicídio Simples",
         "Feminicídio",
         "Homicidio qualificado",
-        "Homicídio"
+        "Homicídio",
+        "Homicídio Privilegiado",
+        "Crimes contra a vida"
       ),
       ~ .x == 1
     ) * 1
@@ -583,7 +585,7 @@ Ao final do procedimento, observamos que o banco de dados **original** continha 
 
 ::: {.callout-note title="Escolha e Justificativa" appearance="simple" collapse="true"}
 
-**Escolha**: Excuir os processos duplicados.
+**Escolha**: Excluir os processos duplicados.
 
 **Justificativa**: Como não está claro o motivo dessa duplicação e quais seus impactos sobre a movimentação, vamos optar pela exclusão desses processos.Note que poderiamos identificar esses processos e fazermos uma análise mais detalhada sobre eles.
 
@@ -791,57 +793,9 @@ movimento  <- movimento |>
 ```
 
 
-A estratégia de análise será a seguinte: 
-
-```{mermaid}
-flowchart LR
-  A[Distribuição] --> B[Recebimento da Denúncia]
-  B --> C[Aud. Instrução e Julgamento]
-  C --> D[Dec. Pronúncia]
-  D --> E[Seç. Trib. do Júri]
-```
-
-* Distribuição: 
-* Recebimento da Denúncia: **391**
-* Audiência de Instrução e Julgamento: **12750**
-* Decisão de Pronúncia: **10953**
-* Seção do Tribunal do Júri: **313**
-
-#### Tempo até Recebimento da Denúncia
-ainda não terminei
-```{r eval = TRUE, message=FALSE, warning=FALSE}
-# Tempo até a baixa definitiva
-t_recebimento <- movimento |> 
-  filter(movimento == "Baixa Definitiva")
-
-# número total de processos únicos
-nrow(tempo_baixa %>% 
-  distinct(processo, .keep_all = TRUE)) 
-
-# Vamos analisar os processos duplicados
-# Esse comando pega todas as linhas após a primeira ocorrência ou 
-# Pega todas as linhas antes da última ocorrência e verifica duplicação 
-t_baixa_dup <- tempo_baixa %>% 
-  filter(duplicated(processo) | duplicated(processo, fromLast = TRUE)) 
-
-
-## Vamos ver quantos processos duplicados temos:
-# número de processos únicos que estão duplicados
-unique(julgador_dup$processo) |> length() 
-
-## Deixamossomente o que tem a maior decorrência acumulada
-tempo_baixa_unico <- tempo_baixa |> 
-  group_by(processo) |> 
-  slice_max(decorrencia_acumulada, n = 1) |> 
-  ungroup()
-
-```
-
-
-
 #### Tempo até a Baixa Definitiva
 
-Vamos selecionar todos os processos para os quais conseguimos extrair a baixa definitiva. No código abaixo, buscamos manter apenas a última baixa de cada processo. Note que alguns processos apresentaram múltiplas baixas definitivas. Portanto, vamos considerar a última baixa definitiva que o processo teve. 
+Vamos selecionar todos os processos para os quais conseguimos extrair a baixa definitiva. No código abaixo, buscamos manter apenas a primeira baixa de cada processo. Note que alguns processos apresentaram múltiplas baixas definitivas. Portanto, vamos considerar a última baixa definitiva que o processo teve. 
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 # Tempo até a baixa definitiva
@@ -866,7 +820,7 @@ unique(julgador_dup$processo) |> length()
 ## Deixamossomente o que tem a maior decorrência acumulada
 tempo_baixa_unico <- tempo_baixa |> 
   group_by(processo) |> 
-  slice_max(decorrencia_acumulada, n = 1) |> 
+  slice_min(decorrencia_acumulada, n = 1) |> 
   ungroup()
 
 ```
@@ -939,6 +893,13 @@ tempo_stats %>%
 ```
 
 
+A **média** do tempo do processo até a baixa definitiva é de **1.280 dias**, com **desvio-padrão** de **950 dias**, mostrando grande variação nos tempos processuais.   A **mediana** é de **1.030 dias**, indicando que metade dos processos dura menos do que isso.
+
+*Distribuição dos tempos*
+
+- **25%** dos processos são concluídos em **até 554 dias**.  
+- **50%** (intervalo interquartil) estão entre **554** e **1.762 dias**.  
+- **25%** dos processos duram **mais de 1.762 dias**.
 
 
 **Visualmente**
@@ -948,13 +909,13 @@ Vamos analisar também o tempo de forma gráfica, utilizando diferentes tipos de
 
 **O Box Plot**
 
-O boxplot é um gráfico que traz muitas informações e pode ser visto como a distribuição de probabilidade dos dados. O box ou caixa contém 50% dos dados. O limite superior indica o percentil de 75% (*Q3*) e o limite inferior indica o percentil de 25% (*Q1*). A linha que corta o box indica a mediana, ou seja, *Q2*. Os bigodes são calculados com base na distância interquantílica, ou seja,
+O boxplot é um gráfico que traz muitas informações e pode ser visto como a distribuição de probabilidade dos dados. 
 
-*Limite inferior: Q1-1,5(Q3-Q1)*
+Como visto acima, o gráfico representa a distribuição do tempo até a baixa definitiva e a sua concentração.  
+A **caixa** do boxplot mostra o intervalo interquartil: a parte inferior está em **554 dias**, a **mediana** aparece ao redor de **1.030 dias** e o **terceiro quartil** está em **1.761 dias**. Esses valores compõem o interior da caixa, indicando onde se concentra 50% dos processos.
 
-*Limite superior:Q3+1,5(Q3-Q1)*
+Observa-se também um número significativo de **outliers**, representados por pontos acima de aproximadamente **3.600 dias**. Esses processos podem ser classificados como **atípicos**, pois apresentam tempos de duração muito superiores ao padrão da distribuição.
 
-Dados fora desses limites são classificados como suspeitos de serem outliers. Podemos observar a assimetria dos dados quando a mediana não está no meio da caixa, indicando maior densidade na menor distância entre os quartis Q1 ou Q3 e a mediana Q2.
 
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
@@ -976,33 +937,23 @@ ggplot(baixa_uni_comp, aes(y = decorrencia_acumulada)) +
 ```
 
 
-**O Violin Plot**
+::: {.callout-note title="O BOXPLOT" appearance="simple" collapse="true"}
+O box ou caixa contém 50% dos dados. O limite superior indica o percentil de 75% (*Q3*) e o limite inferior indica o percentil de 25% (*Q1*). A linha que corta o box indica a mediana, ou seja, *Q2*. Os bigodes são calculados com base na distância interquantílica, ou seja,
 
-O Violin Plot é muito parecido com o BoxPlot mas com a densidade de kernel rotacionada em cada um dos lados. Assim, indica a distribuição dos dados em cada ponto e vem anotado a mediana na forma de um ponto ou marca e um pequeno boxplot no centro do violin plot.
+*Limite inferior: Q1-1,5(Q3-Q1)*
 
+*Limite superior:Q3+1,5(Q3-Q1)*
 
-```{r eval = TRUE, message=FALSE, warning=FALSE}
-ggplot(baixa_uni_comp, aes( x=0,  y = decorrencia_acumulada))+ 
-  geom_violin(trim = FALSE, color = "#c2986f", fill="#7185cc") +                                                        # Cria o gráfico de violino
-  stat_summary(fun="median", geom = "point", shape=19, size=3, color="darkorange"  ) +                # Vamos colocar o ponto mediana
-  labs(
-    title = "Violin Plots do Tempo do Processo até Baixa Definitiva",
-    x = "Processos",
-    y = "Tempo até Baixa Definitiva"
-  ) +
-  theme_minimal() +
-  theme(
-    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),              # Centraliza o título
-    axis.text.x = element_text(size = 12),                                         # Ajusta o tamanho dos rótulos no eixo X
-    axis.text.y = element_text(size = 10),                                         # Ajusta o tamanho dos rótulos no eixo Y
-    legend.position = "none"  )
-```
+Dados fora desses limites são classificados como suspeitos de serem outliers. Podemos observar a assimetria dos dados quando a mediana não está no meio da caixa, indicando maior densidade na menor distância entre os quartis Q1 ou Q3 e a mediana Q2.
+:::
 
 
 
 **Gráfico de Densidade**
 
-Visualizar a distribuição empírica dos dados fornece uma grande quantidade de informação. Um gráfico básico em análise descritiva é o histograma, o qual fornece a distribuição de probabilidade empírica dos dados em um formato de barras. A área do histograma é igual a 1 e altura da sua barra da a densidade de observações em cada classe.
+Visualizar a distribuição empírica dos dados fornece uma grande quantidade de informação. Um gráfico básico em análise descritiva é o histograma, o qual fornece a distribuição de probabilidade empírica dos dados em um formato de barras. 
+O histograma mostra a **frequência** de processos em cada faixa de duração até a baixa definitiva. A altura de cada barra indica quantos processos estão naquela faixa de dias.
+
 
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
@@ -1026,7 +977,14 @@ ggplot(baixa_uni_comp, aes(x = decorrencia_acumulada)) +
 ```
 
 
-Uma outra maneira de visualizar os dados é utilizando uma distribuição continua e não mais a discreta. Para isso, utiliza-se a densidade de Kernel para visualização da distribuição de probabilidade da taxa de feminicídio. Vejamos
+Observa-se que há um número relevante de processos com **poucos dias** até a baixa definitiva. Pfecisamos decidir o que fazer com esses processos. **Devemos excluí-los?**
+
+A distribuição é **assimétrica à direita**, com uma **cauda longa**, o que significa que existe um grupo menor de processos que dura muito mais tempo, esses valores elevados **puxam a média para cima**.
+
+A maior concentração de processos ocorre entre **800 e 900 dias**, e aproximadamente **metade dos processos** é concluída em até **1.000 dias**. A partir desse ponto, a frequência diminui gradualmente, até alcançar valores próximos de **4.000 dias**, onde a cauda longa se torna evidente.
+
+
+Uma outra maneira de visualizar os dados é utilizando uma **distribuição continua** e não mais a discreta. Para isso, utiliza-se a densidade de Kernel para visualização da distribuição de probabilidade da taxa de feminicídio. Vejamos:
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
  
@@ -1048,6 +1006,7 @@ Uma outra maneira de visualizar os dados é utilizando uma distribuição contin
     axis.text.y = element_text(size = 10))
  
 ```
+
 
 
 **Análise por Órgão Julgador**
@@ -1100,6 +1059,12 @@ tempo_stats_grupo %>%
   )
 ```
 
+Observamos que as **cinco maiores varas** apresentam uma média de **1.194 dias** até a baixa definitiva, enquanto as **demais varas** possuem uma média de **1.325 dias**. Há, portanto, uma diferença entre as médias dos dois grupos.
+
+Também se verifica diferença na **dispersão**: nas cinco maiores varas, o desvio-padrão é de **802 dias**, ao passo que nas demais varas ele chega a **1.015 dias**. Isso indica que, além de terem um tempo médio menor, as cinco maiores varas apresentam uma duração dos processos **mais concentrada** e com **menor variabilidade** em comparação às demais comarcas.
+
+Vejamos a distribuição graficamente:
+
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
  
@@ -1129,6 +1094,85 @@ ggplot(baixa_uni_comp, aes(x = decorrencia_acumulada, fill = volume_top5_factor,
  
 ```
 
+Para avaliar se a diferença entre as médias dos dois grupos é estatisticamente significativa, realizamos um **teste t de diferença de médias**. O resultado foi **significativo**, indicando que as médias dos dois grupos são, de fato, diferentes.
+
+Em termos práticos, isso significa que, **em média**, as cinco varas com maior volume de processos apresentam um **tempo médio de tramitação menor** do que o observado nas demais varas.
+
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+t.test(
+  decorrencia_acumulada ~ volume_top5,
+  data = baixa_uni_comp,
+  var.equal = FALSE) # teste de Welch (padrão e mais seguro)
+  
+```
+
+Vamos agora analisar por vara especializada versus não especializada.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(gt)
+
+# Estatísticas descritivas estratificadas por vara especializada
+tempo_stats_grupo_espec <- baixa_uni_comp %>%
+  group_by(vara_espec) %>% 
+  summarise(
+    media     = mean(decorrencia_acumulada, na.rm = TRUE),
+    mediana   = median(decorrencia_acumulada, na.rm = TRUE),
+    desvio    = sd(decorrencia_acumulada, na.rm = TRUE),
+    variancia = var(decorrencia_acumulada, na.rm = TRUE),
+    q1        = quantile(decorrencia_acumulada, 0.25, na.rm = TRUE),
+    q3        = quantile(decorrencia_acumulada, 0.75, na.rm = TRUE),
+    minimo    = min(decorrencia_acumulada, na.rm = TRUE),
+    maximo    = max(decorrencia_acumulada, na.rm = TRUE)
+  ) %>%
+  pivot_longer(
+    cols = -vara_espec,
+    names_to = "Estatística",
+    values_to = "Valor"
+  )%>%
+  pivot_wider(
+    names_from = vara_espec,
+    values_from = Valor
+  )
+
+# Tabela GT
+tempo_stats_grupo_espec %>%
+  gt(groupname_col = "volume_top5") %>%
+  tab_header(
+    title = "Estatísticas Descritivas — Tempo do Processo até Baixa Definitiva",
+    subtitle = "Estratificadas Especializada (1) e Demais (0)"
+  ) %>%
+  fmt_number(
+    columns = where(is.numeric),
+    decimals = 2
+  ) %>%
+  cols_label(
+    Estatística = "Estatística",
+    `0` = "Demais",
+    `1` = "Especializada"
+  )
+```
+
+Neste caso, observamos uma diferença ainda maior entre os grupos: enquanto as **demais varas** apresentam tempo médio de **1.302 dias**, as **varas especializadas** têm média de **1.138 dias**. 
+
+ 
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+ t.test(
+  decorrencia_acumulada ~ vara_espec,
+  data = baixa_uni_comp,
+  var.equal = FALSE) # teste de Welch (padrão e mais seguro)
+```
+
+O teste de diferença de média mostra que os processos tramitam **mais rapidamente** nas varas especializadas em relação as demais e é estatisticamente significativo a 1%.
+
+
+
+Vamos agora repetir a mesma análise, mas classificando os processos por **assunto**.   Começaremos examinando os casos de **homicídio qualificado**, comparando-os com os demais processos.
+
+O objetivo é verificar se os processos de homicídio qualificado apresentam um **padrão distinto de duração**. 
 
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
@@ -1136,7 +1180,7 @@ library(dplyr)
 library(tidyr)
 library(gt)
 
-# Estatísticas descritivas estratificadas por volume_top5
+# Estatísticas descritivas estratificadas por Homicídio Qualificado
 tempo_stats_grupo1 <- baixa_uni_comp %>%
   group_by(hq) %>% 
   summarise(
@@ -1177,14 +1221,27 @@ tempo_stats_grupo1 %>%
   )
 ```
 
+Observamos agora que as médias dos dois grupos são **mais próximas**: os processos de **homicídio qualificado** apresentam tempo médio de **1.264 dias**, enquanto os demais processos têm média de **1.319 dias**. Da mesma forma, os **desvios-padrão** também são semelhantes: cerca de **921 dias** para homicídio qualificado e **1.017 dias** para os demais assuntos. 
 
+Portanto, ao contrário do que vimos no caso das varas, **não há uma diferença tão acentuada**.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+t.test(
+  decorrencia_acumulada ~ hq,
+  data = baixa_uni_comp,
+  var.equal = FALSE) # teste de Welch (padrão e mais seguro)
+```
+
+O teste de média s indicou que a diferença entre os dois grupos **não é estatisticamente significativa a 5%**. Isso sugere que, em termos práticos, o tempo médio de tramitação dos processos de homicídio qualificado não difere significativamente dos demais processos.
+
+Vejamos agora os processos de feminicídio, comparando-os com os demais processos. O objetivo é verificar se os **processos de feminicídio** apresentam um **padrão distinto** de duração em relação aos **outros tipos de homicídio**.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
 library(tidyr)
 library(gt)
 
-# Estatísticas descritivas estratificadas por volume_top5
+# Estatísticas descritivas estratificadas por Feminicídio
 tempo_stats_grupo2 <- baixa_uni_comp %>%
   group_by(fem) %>% 
   summarise(
@@ -1223,11 +1280,600 @@ tempo_stats_grupo2 %>%
     `0` = "Demais",
     `1` = "Feminicídio"
   )
+```
 
- lm(decorrencia_acumulada ~ volume_top5, data = baixa_uni_comp) |> summary()
+```{r eval = TRUE, message=FALSE, warning=FALSE}
 
  t.test(
-  decorrencia_acumulada ~ volume_top5,
+  decorrencia_acumulada ~ fem,
   data = baixa_uni_comp,
   var.equal = FALSE) # teste de Welch (padrão e mais seguro)
 ```
+
+Observamos que os processos classificados como **feminicídio** apresentam uma **média de duração menor** do que aqueles não classificados dessa forma. A diferença entre as médias é de aproximadamente **150 dias**, e é estatisticamente significativa a 5%
+
+Vamos tentar analisar por meio de um modelo linear multivariado, que considera todas as variáveis anteriores. 
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+#install.packages("modelsummary")
+library(modelsummary)
+
+lm_model <- lm(decorrencia_acumulada ~ volume_top5 + vara_espec + hq + fem, data = baixa_uni_comp)
+
+modelsummary(
+  lm_model,
+  output = "gt",
+  statistic = c("std.error", "p.value"),
+  shape = term ~ statistic,
+  fmt=2,
+  gof_map = tribble(
+    ~raw,           ~clean,              ~fmt,
+    "adj.r.squared","R² ajustado",       3,
+    "nobs",         "N. de observações", 0,
+    "fstatistic",   "Estatística F",     3
+  ),
+  stars = TRUE,
+  title = "Modelo de Regressão Linear",
+  notes = "S.E.: Erro padrão."
+)
+
+```
+
+Observe-se que o intercepto do nosso modelo é de **1.418 dias**. Esse valor representa o tempo médio dos processos que **não** estão entre as cinco varas de maior volume, **não** tramitam em varas especializadas e **não** são classificados como homicídio qualificado ou feminicídio. Ou seja, é o valor esperado quando **todas as demais variáveis do modelo são iguais a zero**. Esta é a interpretação básica do intercepto.
+
+Em relação a esse grupo de referência, observamos reduções importantes no tempo médio do processo:
+
+- Nas **cinco varas de maior volume**, o tempo médio é cerca de **171 dias menor** do que o valor do intercepto (1.418 dias).
+- Nas **varas especializadas**, a redução é ainda maior, aproximadamente **238 dias** a menos em relação ao intercepto.
+- Para os processos classificados como **feminicídio**, há também uma diminuição média de **164 dias**.
+
+Esses valores indicam quanto cada característica reduz o tempo esperado em comparação com o grupo base definido pelo intercepto.
+
+
+#### Analisando as Fases do Processo de Júri
+A estratégia de análise será a seguinte: 
+
+```{mermaid}
+flowchart LR
+  A[Distribuição] --> B[Recebimento da Denúncia]
+  B --> C[Aud. Instrução e Julgamento]
+  C --> D[Dec. Pronúncia]
+  D --> E[Seç. Trib. do Júri]
+```
+
+* Distribuição: 
+* Recebimento da Denúncia: **391**
+* Audiência de Instrução e Julgamento: **12750**
+* Decisão de Pronúncia: **10953**
+* Seção do Tribunal do Júri: **313**
+
+
+
+**Montando os bancos de dados para cada fase do processo**
+
+Vamos montar os bancos e organizar um banco único para cada fase do processo de júri.
+
+```{r eval = FALSE, message=FALSE, warning=FALSE}
+
+# Montar as bases e selecionar apenas as variáveis desejadas em cada base
+
+# Tempo até a denuncia
+t_denuncia <- movimento |> 
+  filter(cod_movimento == "391")
+
+## Deixamos somente a primeira denuncia
+t_denuncia_unico <- t_denuncia |> 
+  group_by(processo) |> 
+  slice_min(decorrencia_acumulada, n = 1) |> 
+  ungroup()
+
+t_denuncia_unico <- t_denuncia_unico |>
+  select(processo, cod_movimento, decorrencia_acumulada, data_hora) |>
+  rename(cod_denuncia=cod_movimento,
+         deco_denuncia = decorrencia_acumulada,
+         data_denuncia  = data_hora)
+
+# Tempo até a Instrução e Julgamento
+t_int_julg <- movimento |> 
+  filter(cod_movimento == "12750")
+
+## Deixamos somente a primeira instrução e julgamento
+t_int_julg_unico <- t_int_julg |> 
+  group_by(processo) |>
+  slice_min(decorrencia_acumulada, n = 1) |> 
+  ungroup()
+
+t_int_julg_unico <- t_int_julg_unico |>
+  select(processo, cod_movimento, decorrencia_acumulada, data_hora) |>
+  rename(cod_instr=cod_movimento,
+          deco_intjulg = decorrencia_acumulada,
+         data_intjulg  = data_hora)
+
+
+# Tempo até a pronuncia
+t_pronun <- movimento |> 
+  filter(cod_movimento == "10953")
+
+## Deixamos somente a primeira denuncia
+t_pronun_unico <- t_pronun |> 
+  group_by(processo) |> 
+  slice_min(decorrencia_acumulada, n = 1) |> 
+  ungroup()
+t_pronun_unico <- t_pronun_unico |>
+  select(processo, cod_movimento, decorrencia_acumulada, data_hora) |>
+  rename(cod_pronun=cod_movimento,
+         deco_pronun = decorrencia_acumulada,
+         data_pronun  = data_hora)
+
+# Tempo até a juri
+t_juri <- movimento |> 
+  filter(cod_movimento == "313")
+
+## Deixamos somente a primeira denuncia
+t_juri_unico <- t_juri |> 
+  group_by(processo) |> 
+  slice_min(decorrencia_acumulada, n = 1) |> 
+  ungroup()
+
+t_juri_unico <- t_juri_unico %>% 
+  distinct(processo, .keep_all = TRUE)
+
+
+t_juri_unico <- t_juri_unico |>
+  select(processo, cod_movimento, decorrencia_acumulada, data_hora) |>
+  rename(cod_juri=cod_movimento,
+         deco_juri = decorrencia_acumulada,
+         data_juri  = data_hora)
+
+
+
+tempo_baixa_unico <- tempo_baixa_unico |>
+  select(processo, cod_movimento, decorrencia_acumulada, data_hora) |>
+  rename(cod_baixa=cod_movimento,
+         deco_baixa = decorrencia_acumulada,
+         data_baixa  = data_hora)
+
+mov_final <- bd_final |> 
+  left_join(t_denuncia_unico, by ="processo")|> 
+  left_join(t_int_julg_unico, by = "processo") |>
+  left_join(t_pronun_unico,   by = "processo") |>
+  left_join(t_juri_unico,     by = "processo") |> 
+  left_join(tempo_baixa_unico, by ="processo")
+
+
+mov_final <- mov_final |>
+  drop_na(deco_intjulg, deco_baixa, deco_juri, deco_pronun, deco_denuncia)
+
+
+
+```
+
+
+Agora que juntamos todas as movimentações e eliminamos os casos com valores ausentes e chegamos a um total de **1.034 processos**. 
+
+Partimos originalmente de **8.432 processos** no banco básico. Portanto, houve uma redução substancial da base analítica, com a exclusão de aproximadamente **7.400 processos**.
+
+Essa redução levanta uma questão central para a análise:  
+**os 1.034 processos restantes são representativos do conjunto original ou formam um grupo com características muito diferentes?**  
+
+
+Para evitar viés de seleção, vamos seguir olhando cada variável individualmente e comparando as estatísticas descritivas de cada fase do processo.
+  
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(gt)
+
+# 1. Função para gerar estatísticas descritivas
+make_stats <- function(x) {
+  tibble::tibble(
+    Estatística = c(
+      "media", "mediana", "desvio", "variancia",
+      "q1", "q3", "minimo", "maximo"
+    ),
+    Valor = c(
+      mean(x, na.rm = TRUE),
+      median(x, na.rm = TRUE),
+      sd(x, na.rm = TRUE),
+      var(x, na.rm = TRUE),
+      quantile(x, 0.25, na.rm = TRUE),
+      quantile(x, 0.75, na.rm = TRUE),
+      min(x, na.rm = TRUE),
+      max(x, na.rm = TRUE)
+    )
+  )
+}
+
+
+
+# Tempo até a denuncia
+t_denuncia <- movimento |> 
+  filter(cod_movimento == "391")
+t_denuncia_unico <- t_denuncia |> 
+  group_by(processo) |> 
+  slice_min(decorrencia_acumulada, n = 1) |> 
+  ungroup()
+t_denuncia_unico <- t_denuncia_unico |>
+  select(processo, cod_movimento, decorrencia_acumulada, data_hora) |>
+  rename(cod_denuncia=cod_movimento,
+         deco_denuncia = decorrencia_acumulada,
+         data_denuncia  = data_hora)
+# Tempo até a Instrução e Julgamento
+t_int_julg <- movimento |> 
+  filter(cod_movimento == "12750")
+t_int_julg_unico <- t_int_julg |> 
+  group_by(processo) |>
+  slice_min(decorrencia_acumulada, n = 1) |> 
+  ungroup()
+t_int_julg_unico <- t_int_julg_unico |>
+  select(processo, cod_movimento, decorrencia_acumulada, data_hora) |>
+  rename(cod_instr=cod_movimento,
+          deco_intjulg = decorrencia_acumulada,
+         data_intjulg  = data_hora)
+
+# Tempo até a pronuncia
+t_pronun <- movimento |> 
+  filter(cod_movimento == "10953")
+t_pronun_unico <- t_pronun |> 
+  group_by(processo) |> 
+  slice_min(decorrencia_acumulada, n = 1) |> 
+  ungroup()
+t_pronun_unico <- t_pronun_unico |>
+  select(processo, cod_movimento, decorrencia_acumulada, data_hora) |>
+  rename(cod_pronun=cod_movimento,
+         deco_pronun = decorrencia_acumulada,
+         data_pronun  = data_hora)
+
+# Tempo até a juri
+t_juri <- movimento |> 
+  filter(cod_movimento == "313")
+t_juri_unico <- t_juri |> 
+  group_by(processo) |> 
+  slice_min(decorrencia_acumulada, n = 1) |> 
+  ungroup()
+t_juri_unico <- t_juri_unico %>% 
+  distinct(processo, .keep_all = TRUE)
+t_juri_unico <- t_juri_unico |>
+  select(processo, cod_movimento, decorrencia_acumulada, data_hora) |>
+  rename(cod_juri=cod_movimento,
+         deco_juri = decorrencia_acumulada,
+         data_juri  = data_hora)
+
+tempo_baixa_unico <- tempo_baixa_unico |>
+  select(processo, cod_movimento, decorrencia_acumulada, data_hora) |>
+  rename(cod_baixa=cod_movimento,
+         deco_baixa = decorrencia_acumulada,
+         data_baixa  = data_hora)
+
+# 2. Gerar estatísticas para cada banco
+
+stats_denuncia <- make_stats(t_denuncia_unico$deco_denuncia)
+stats_intjulg <- make_stats(t_int_julg_unico$deco_intjulg)
+stats_pronun <- make_stats(t_pronun_unico$deco_pronun)
+stats_juri <- make_stats( t_juri_unico$deco_juri)
+stats_baixa <- make_stats(tempo_baixa_unico$deco_baixa)
+
+# 3. Juntar tudo em uma única tabela
+stats_baixa    <- stats_baixa    %>% rename(Baixa = Valor)
+stats_intjulg  <- stats_intjulg  %>% rename(Instr_Julg = Valor)
+stats_pronun   <- stats_pronun   %>% rename(Pronuncia = Valor)
+stats_juri     <- stats_juri     %>% rename(Juri = Valor)
+stats_denuncia <- stats_denuncia %>% rename(Denuncia = Valor)
+
+all_stats <- stats_denuncia %>%
+  left_join(stats_intjulg,  by = "Estatística") %>%
+  left_join(stats_pronun,   by = "Estatística") %>%
+  left_join(stats_juri,     by = "Estatística") %>%
+  left_join(stats_baixa, by = "Estatística")
+
+# 4. Gerar tabela final
+all_stats %>%
+  gt() %>%
+  fmt_number(
+    columns = where(is.numeric),  # aplica a todas as colunas numéricas
+    decimals = 2
+  ) %>%
+  tab_header(
+    title = "Estatísticas Descritivas — Todas as Fases do Processo"
+  )
+```
+
+
+Nessa tabela tem-se uma visão geral das estatísticas descritivas para cada fase do processo. Observa-se que o tempo médio da distribuição até o Recebimento da Denúncia é de **32,51 dias**. Já o tempo médio da distribuição até a Audiência de Instrução e Julgamento é de **490,23 dias**.
+
+
+#### Da distribuição até o Recebimento da Denúncia
+
+
+Primeiro vamos analisar o tempo entre a distribuição do processo e o recebimento da denúncia. Graficamente tem-se: 
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+t_denuncia_unico <- t_denuncia_unico
+
+ggplot(t_denuncia_unico, aes(x = deco_denuncia)) +
+  geom_histogram(bins = 3000, fill = "#7185cc", color = "white", alpha = 0.7) +    
+  geom_vline(aes(xintercept = mean(deco_denuncia)), color = "#c2986f", size = 1, alpha = 0.7,linetype = "dashed") +
+  annotate("text", x = 37, y = 500, vjust = -0.5, label = "Média", color = "#c2986f", fontface = "bold", size = 4) +
+  geom_vline(aes(xintercept = median(deco_denuncia)), color = "#c77878ff", size = 1, alpha = 0.7,linetype = "dashed") + 
+  annotate("text", x = 7, y = 500, vjust = -0.5, label = "Mediana", color = "#c77878ff", fontface = "bold", size = 4) + 
+  labs(
+    x = "Tempo em dias (até 50 dias)",                                                 
+    y = "Frequência",  
+    title = "Histograma do Tempo da Distribuição até a Denúncia"   
+  ) +
+  coord_cartesian(xlim = c(0, 50)) +
+  theme_minimal() + 
+ theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),              
+    axis.text.x = element_text(size = 12),                                         
+    axis.text.y = element_text(size = 10))
+ 
+```
+
+
+Observa-se que **50% dos processos duram menos de 3 dias** entre a **distribuição** e o **recebimento da denúncia**. Entretanto, a **média é bem maior**, em torno de **32 dias**.
+
+Essa diferença indica que existem **processos com duração muito longa**, alguns com mais de 100 dias, que **puxam a média para cima**. Ou seja, a distribuição é assimétrica, com uma **cauda longa à direita**.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+
+# Contar quantos processos têm soma maior que 30 dias
+t_denuncia_unico %>%
+  filter(deco_denuncia > 30) %>%
+  summarise(n = n(),
+            percentual = n() / nrow(t_denuncia_unico) * 100,
+            media= mean(deco_denuncia))
+
+```
+
+Observa-se que aproximadamente **12% dos processos** levam mais de **30 dias** entre a distribuição e o recebimento da denúncia e possuem média de **245 dias** nesse grupo.
+
+Para entender melhor essa diferença, iremos **investigar os atos ordinatórios** e outros atos, pois eles podem estar **contribuindo significativamente para o aumento do tempo entre distribuição e denúncia**.
+
+**Movimentação até Recebimento da Denúncia**
+
+Vamos analisar a movimentação do processo desde a distribuição até o recebimento da denúncia. Vamos criar um banco específico para essa análise.
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+
+# 1. Identificar o tempo da denúncia para cada processo
+tempo_denuncia <- movimento |> 
+  filter(cod_movimento == "391") |> 
+  group_by(processo) |> 
+  slice_min(decorrencia_acumulada, n = 1)  |> 
+  select(processo, deco_denuncia=decorrencia_acumulada)
+
+# 2. Selecionar todos os atos até a denúncia
+atos_ate_denuncia <- movimento %>%
+  left_join(tempo_denuncia, by = "processo") %>%
+  filter(decorrencia_acumulada <= deco_denuncia) 
+```
+
+Criamos um banco que possui todos os movimentos processuais desde a distribuição até o recebimento da denúncia. Agora, vamos analisar a frequência dos movimentos processuais.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(gt)
+
+freq_movimento <- atos_ate_denuncia %>%
+  count(movimento, sort = TRUE)  # conta por descrição do movimento
+
+freq_movimento %>%
+  gt() %>%
+  tab_header(
+    title = "Frequência de Movimentos até a Denúncia"
+  ) %>%
+  fmt_number(
+    columns = "n",
+    decimals = 0
+  ) %>%
+  cols_label(
+    movimento = "Movimento",
+    n = "Frequência"
+  )
+
+
+
+```
+
+
+E abaixo vamos **somar o tempo** de cada **ato ordinatório** por processo. 
+
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+# Filtra somente atos ordinatórios e soma por processo
+soma_ordinatorios <- atos_ate_denuncia %>%
+  filter(cod_movimento == 11383) %>%   # filtra apenas atos ordinatórios
+  group_by(processo) %>%                       # agrupa por processo
+  summarise(soma_decorrencia = sum(decorrencia, na.rm = TRUE))
+```	
+
+Agora temos um banco com a soma do tempo dos atos ordinatórios para cada processo, desde a distribuição até o recebimento da denúncia. Vamos **analisar as estatísticas** descritivas dessa variável.
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(gt)
+
+# Estatísticas descritivas para a variável decorrencia_acumulada
+tempo_stats <- soma_ordinatorios %>%
+  summarise(
+    media     = mean(soma_decorrencia, na.rm = TRUE),
+    mediana   = median(soma_decorrencia, na.rm = TRUE),
+    desvio  = sd(soma_decorrencia, na.rm = TRUE),
+    variancia = var(soma_decorrencia, na.rm = TRUE),
+    q1        = quantile(soma_decorrencia, 0.25, na.rm = TRUE),
+    q3        = quantile(soma_decorrencia, 0.75, na.rm = TRUE),
+    minimo    = min(soma_decorrencia, na.rm = TRUE),
+    maximo    = max(soma_decorrencia, na.rm = TRUE)
+  ) |> 
+  pivot_longer(
+    cols = everything(),
+    names_to = "Estatística",
+    values_to = "Valor"
+  ) 
+
+# Tabela GT
+tempo_stats %>%
+  gt() %>%
+  tab_header(
+    title = "Estatísticas Descritivas — Tempo médios dos Atos Ordinatórios até a Denúncia",
+    subtitle = "Variável: decorrencia"
+  ) %>%
+  fmt_number(
+    columns = Valor,
+    decimals = 2
+  )
+```
+
+Observa-se que a **mediana** do tempo dos **atos ordinatórios** é muito baixa, cerca de **0,12 dias** (aproximadamente **3 horas**).
+
+Entretanto, a **média** é significativamente maior, em torno de **3,5 dias**, indicando que existem **processos com atos ordinatórios muito longos**, que elevam o valor médio. O **desvio-padrão** também é alto, reforçando que há grande **variação entre os processos**.
+
+Esses resultados sugerem que é importante analisar mais detalhadamente os **atos ordinatórios**, especialmente nos processos que apresentam **tempos excepcionalmente longos**, para entender o que está causando essa discrepância.
+
+
+Graficamente, a distribuição do tempo dos atos ordinatórios até a denúncia pode ser visualizada da seguinte forma:
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+ 
+ggplot(soma_ordinatorios, aes(x = soma_decorrencia)) +
+  geom_histogram(bins = 3000, fill = "#7185cc", color = "white", alpha = 0.7) +    
+  geom_vline(aes(xintercept = mean(soma_decorrencia)), color = "#c2986f", size = 1, alpha = 0.7,linetype = "dashed") +
+  annotate("text", x = 5, y = 750, vjust = -0.5, label = "Média", color = "#c2986f", fontface = "bold", size = 4) +
+  geom_vline(aes(xintercept = median(soma_decorrencia)), color = "#c77878ff", size = 1, alpha = 0.7,linetype = "dashed") + 
+  annotate("text", x = 2, y = 1000, vjust = -0.5, label = "Mediana", color = "#c77878ff", fontface = "bold", size = 4) + 
+  labs(
+    x = "Tempo do Atos Ordinatórios",                                                 
+    y = "Frequência",  
+    title = "Histograma do Tempo Atos Ordinatórios até a Denúncia"   
+  ) +
+  coord_cartesian(xlim = c(0, 25)) +
+  theme_minimal() + 
+ theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),              
+    axis.text.x = element_text(size = 12),                                         
+    axis.text.y = element_text(size = 10))
+ 
+```
+
+
+Como já visto a **mediana** da participação dos atos ordinatórios é **0,12 dias** (aproximadamente **3 horas**), enquanto a **média** é de **3,5 dias**. A distribuição apresenta uma **cauda longa à direita**, evidenciando a presença de processos com **atos ordinatórios excepcionalmente longos**, que merecem análise detalhada.
+
+
+Passamos a estudar a **participação dos atos ordinatórios** no **tempo total entre distribuição e recebimento da denúncia**.
+
+O objetivo é entender:
+
+* **Quanto maior a participação**, maior o tempo gasto entre a distribuição e denúncia?
+* Como o tempo dos atos ordinatórios se relaciona com o **tempo até a denúncia**?
+
+Para isso, abaixo apresentamos uma **tabela** que mostra, para cada processo, a **participação dos atos ordinatórios** e o **tempo total entre distribuição e denúncia**.
+
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+
+part_atos_ord <-  t_denuncia_unico |> 
+  left_join(soma_ordinatorios, by = "processo") |> 
+  mutate(
+    soma_decorrencia = replace_na(soma_decorrencia, 0), 
+    participacao = (soma_decorrencia) / deco_denuncia * 100)
+```
+
+Agora temos um banco que mostra a participação dos atos ordinatórios no tempo total entre a distribuição e o recebimento da denúncia. Vamos **analisar as estatísticas descritivas** dessa participação.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}	
+library(ggplot2)
+library(dplyr)
+
+# Scatterplot: Participação vs Deco_denúncia
+ggplot(part_atos_ord, aes(x = soma_decorrencia, y = deco_denuncia)) +
+  geom_point(color = "#7185cc", alpha = 0.6, size = 2) +
+  geom_smooth(method = "lm", color = "#c2986f", se = FALSE, linetype = "dashed") +  # linha de tendência
+  labs(
+    x = "Participação dos Atos Ordinatórios (%)",
+    y = "Tempo até Denúncia (dias)",
+    title = "Relação entre Participação dos Atos Ordinatórios e Tempo até a Denúncia"
+  ) +
+    coord_cartesian(xlim = c(0, 25), ylim = c(0, 100)) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 10)
+  )
+
+# Correlação entre participação e deco_denuncia
+correlation <- cor(part_atos_ord$soma_decorrencia, part_atos_ord$deco_denuncia, use = "complete.obs")
+correlation
+```
+
+Observa-se que há uma **relação positiva** entre a participação dos atos ordinatórios e o tempo até a denúncia. Ou seja, **quanto maior a participação dos atos ordinatórios, maior tende a ser o tempo até a denúncia**. Entretanto a correlação não é alta, cerca de **0,52**, indicando que outros fatores também influenciam o tempo até a denúncia.
+
+Agora vamos explorar visiualmente se quanto maior a participação dos atos ordinatórios, maior é o tempo total até a denúncia. Primeiramente vamos analisar os processos com soma dos **atos ordinatórios > 3 dias**.
+
+```	{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+
+# Filtrar processos com soma dos atos ordinatórios > 30 dias
+part_mais_3 <- part_atos_ord %>%
+  filter(soma_decorrencia > 3)
+
+# Histograma da participação
+ggplot(part_mais_3, aes(x = participacao )) +
+  geom_histogram(binwidth = 5, fill = "#7185cc", color = "#7185cc", alpha = 0.4) +
+  labs(
+    x = "Participação dos Atos Ordinatórios (%)",
+    y = "Número de Processos",
+    title = "Distribuição da Participação dos Atos Ordinatórios (somente >3 dias)"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 10)
+  )
+```
+
+Observa-se que não há nenhum padrão claro, mostrando que a participação é próxima de **uma distribuição uniforme** para os processos com soma dos atos ordinatórios **maior que 3 dias**.
+
+Abaixo mostramos nos processos com soma dos atos ordinatórios entre **1 e 3 dias**.
+
+```	{r eval = TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+
+# Filtrar processos com soma dos atos ordinatórios > 30 dias
+part_menos_3 <- part_atos_ord %>%
+  filter(soma_decorrencia <= 3 & soma_decorrencia > 1)
+
+# Histograma da participação
+ggplot(part_menos_3, aes(x = participacao )) +
+  geom_histogram(binwidth = 5, fill = "#7185cc", color = "#7185cc", alpha = 0.4) +
+  labs(
+    x = "Participação dos Atos Ordinatórios (%)",
+    y = "Número de Processos",
+    title = "Distribuição da Participação dos Atos Ordinatórios (somente entre 1 e 3 dias)"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 10)
+  )
+```
+
+Novamente, observa-se que não há nenhum padrão claro para os processos com soma dos atos ordinatórios entre **1 e 3 dias**.
+
+
+
+
