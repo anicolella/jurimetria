@@ -5,91 +5,86 @@ author:
 format: html
 ---
 
-
-
 ## Introdução à Aula Prática: Coleta de Dados no DataJud
 
 Nesta aula prática, vamos aprender como coletar dados processuais utilizando a Base Nacional de Dados do Poder Judiciário (**DataJud**), mantida pelo Conselho Nacional de Justiça (CNJ). O DataJud é o sistema responsável pelo armazenamento centralizado de dados e metadados de todos os processos judiciais brasileiros, físicos ou eletrônicos, e será a base que utilizaremos ao longo do curso.
 
-##  Acesso ao DataJud
+## Acesso ao DataJud
 
 O DataJud pode ser acessado diretamente no site do CNJ 🔗:
 
-[https://www.cnj.jus.br/sistemas/datajud/](https://www.cnj.jus.br/sistemas/datajud/)
+<https://www.cnj.jus.br/sistemas/datajud/>
 
-A plataforma fornece dados atualizados para diversos os ramos da Justiça brasileira, agrupados e padronizados para permitir análises estatísticas e jurimétricas.
+A plataforma fornece dados atualizados para os diversos segmentos da Justiça brasileira, agrupados e padronizados para permitir análises estatísticas e jurimétricas.
 
-##  Autenticação e Chave Pública
+## Autenticação e Chave Pública
 
 Para acessar os dados via API, utilizaremos a **API Pública** do DataJud, documentada em:
 
-[https://datajud-wiki.cnj.jus.br/api-publica/](https://datajud-wiki.cnj.jus.br/api-publica/)
+<https://datajud-wiki.cnj.jus.br/api-publica/>
 
-A autenticação é feita por meio de uma chave pública, disponibilizada pelo DPJ/CNJ. A chave  🔑 pode ser obtida no seguinte endereço:
+A autenticação é feita por meio de uma chave pública, disponibilizada pelo DPJ/CNJ. A chave 🔑 pode ser obtida no seguinte endereço:
 
-[https://datajud-wiki.cnj.jus.br/api-publica/acesso](https://datajud-wiki.cnj.jus.br/api-publica/acesso)
+<https://datajud-wiki.cnj.jus.br/api-publica/acesso>
 
 Essa chave será utilizada diretamente no código em R (ou Python), permitindo realizar consultas autenticadas aos dados processuais.
 
-##  Endpoints, Rotas e Seleção de Tribunais
+## Endpoints, Rotas e Seleção de Tribunais
 
 Para realizar nossas consultas, precisamos escolher os endpoints disponíveis, indicando o tribunal desejado. Os endpoints estão detalhados em:
 
-[https://datajud-wiki.cnj.jus.br/api-publica/endpoints](https://datajud-wiki.cnj.jus.br/api-publica/endpoints)
+<https://datajud-wiki.cnj.jus.br/api-publica/endpoints>
 
 É possível consultar processos de de diversos ramos da Justiça brasileira:
 
-- **Tribunais Superiores**
-- **Justiça Federal**
-- **Justiça Estadual**
-- **Justiça do Trabalho**
-- **Justiça Eleitoral**
-- **Justiça Militar**
+-   **Tribunais Superiores**
+-   **Justiça Federal**
+-   **Justiça Estadual**
+-   **Justiça do Trabalho**
+-   **Justiça Eleitoral**
+-   **Justiça Militar**
 
 No nosso estudo, utilizaremos os dados do **Tribunal de Justiça do Tocantins (TJTO)**.
 
-
-##  Tipos de Consultas Possíveis
+## Tipos de Consultas Possíveis
 
 A API permite diferentes modalidades de consulta 🔍, como:
 
-- Pesquisa por número do processo
-- Pesquisa paginada
-- Pesquisa por classe
-- Pesquisa por assunto
-- ...
+-   Pesquisa por número do processo
+-   Pesquisa paginada
+-   Pesquisa por classe
+-   Pesquisa por assunto
+-   ...
 
 O DataJud também disponibiliza exemplos de código em Python e R, acessíveis na aba de exemplos:
 
-[https://datajud-wiki.cnj.jus.br/api-publica/exemplos/](https://datajud-wiki.cnj.jus.br/api-publica/exemplos/)
+<https://datajud-wiki.cnj.jus.br/api-publica/exemplos/>
 
-
-##  Glossário de Variáveis
+## Glossário de Variáveis
 
 O DataJud define nomes específicos para cada uma das variáveis retornadas pela API. O significado de cada termo pode ser consultado no glossário oficial:
 
-[https://datajud-wiki.cnj.jus.br/api-publica/glossario](https://datajud-wiki.cnj.jus.br/api-publica/glossario)
+<https://datajud-wiki.cnj.jus.br/api-publica/glossario>
 
 Esse glossário é essencial para interpretar corretamente os dados coletados.
-
 
 ## Seleção do Assunto de Interesse
 
 Em geral, ao iniciar uma pesquisa empírica, precisamos definir o assunto processual a ser analisado. Para isso, utilizamos o Sistema de Gestão de Tabelas Processuais Unificadas:
 
-[https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php](https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php)
+<https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php>
 
 No nosso caso, o foco inicial seria **Direito Penal/Crimes Contra a Vida**, que inclui subcategorias como:
 
-- **10915 — Aborto**
-- **12091 — Feminicídio**
-- **12130 — Homicídio Agravado pela Prática de Extermínio de Seres Humanos**
-- **3371 — Homicídio Privilegiado**
-- **3372 — Homicídio Qualificado**
-- **15177 — Homicídio Qualificado Contra Menor de 14 Anos (Lei Henry Borel)**
-- **3370 — Homicídio Simples**
-- **3373 — Induzimento, Instigação ou Auxílio a Suicídio**
-- **3375 — Infanticídio**
+-   **10915 — Aborto**
+-   **12091 — Feminicídio**
+-   **12130 — Homicídio Agravado pela Prática de Extermínio de Seres Humanos**
+-   **3371 — Homicídio Privilegiado**
+-   **3372 — Homicídio Qualificado**
+-   **15177 — Homicídio Qualificado Contra Menor de 14 Anos (Lei Henry Borel)**
+-   **3370 — Homicídio Simples**
+-   **3373 — Induzimento, Instigação ou Auxílio a Suicídio**
+-   **3375 — Infanticídio**
 
 Poderíamos escolher todas ou algumas dessas categorias para nossa análise.
 
@@ -103,8 +98,7 @@ Selecionamos o seguinte ramo:
 
 **Código: 282**
 
-Essa classe captura processos de crimes dolosos contra a vida julgados pelo Tribunal do Júri, alinhados ao nosso objetivo analítico. Entretanto, muitos dos assuntos acima listados estarão presentes. Alám disso,  limitamos os nossos processos à **Instância de 1º Grau (G1)**.
-
+Essa classe captura processos de crimes dolosos contra a vida julgados pelo Tribunal do Júri, alinhados ao nosso objetivo analítico. Entretanto, muitos dos assuntos acima listados estarão presentes. Alám disso, limitamos os nossos processos à **Instância de 1º Grau (G1)**.
 
 ## Fase Muito Importante
 
@@ -117,7 +111,6 @@ Uma **boa seleção inicial** garante **maior precisão, consistência e relevâ
 ### Extraíndo os Dados Processuais
 
 O código abaixo extrairá os dados da **classe 282 do grau G1** do **Tribunal de Justiça do Tocantins** e salvará todas essas informações em um dataframe chamado *juri.json*.
-
 
 ```{r eval = FALSE, message=FALSE, warning=FALSE}
 # Bibloitecas Necessárias
@@ -155,8 +148,6 @@ juri <- fromJSON("juri.json")
 save(juri, file = "juri.rds")
 ```
 
-
-
 Agora vamos analisar a **estrutura do arquivo *juri.json*** para identificar onde cada informação relevante está **localizada**. Esse mapeamento é essencial porque nos permite compreender exatamente como os **dados estão organizados** e, assim, definir qual tipo de **extração precisamos realizar** para trabalhar com informações de movimentação, órgãos julgadores, assuntos e outras características presentes no arquivo.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
@@ -168,30 +159,18 @@ library(httr)
 library(jsonlite)
 
 ## Importanto o dado
-load("juri.rds")
 
-# 1. Verifica a classe do objeto (ex.: list, data.frame)
-class(juri)  
+arquivos <- list.files("data/juri", full.names = TRUE, pattern = "rds$")
 
-# 2. ver nomes/elementos de topo
-names(juri)          # se for lista ou data.frame, mostra colunas/elementos
-length(juri)         # número de elementos/top-level items
+dados_basicos <- map_dfr(arquivos, readRDS)
 
-# 3. Exibe a estrutura do objeto; max.level evita saída muito grande
-str(juri, max.level = 4) 
-
-# 4.Extrai os dados principais: hits -> hits -> _source - Aqui estão os dados de interesse
-## Cada nível corresponde a um ramo interno do JSON
-dados_basicos <- juri |>
-  pluck("hits","hits","_source")
 ```
 
-### Analisando as Informações Extraídas 
+### Analisando as Informações Extraídas
 
 **Órgão Julgador dos Processos**
 
 Vamos criar um banco que contenha o número do processo e o órgão julgador responsável por cada caso. Em seguida, analisaremos a frequência de processos por órgão julgador, tanto considerando apenas processos únicos quanto incluindo processos duplicados.
-
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 
@@ -209,7 +188,6 @@ nrow(julgador) # número total de processos
 ```
 
 Observa-se um **total de 8432 processos**, mas alguns podem estar **duplicados**. Vamos investigar essa questão. Abaixo está o código para identificar e analisar processos únicos e duplicados.
-
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 # Vamos verificar se existem processos duplicados. 
@@ -267,20 +245,16 @@ julgador_wide %>%
   )
 ```
 
-
 Observamos que **93 processos não mudaram de órgão julgador** e **51 passaram por alteração**. Agora precisamos definir como trataremos esses casos: se consideraremos apenas o *órgão julgador final*, se adotaremos o *órgão julgador inicial* como referência ou *excluímos*. Mas ainda precisamos observar que há **93 processos** que aparecem duplicados, mesmo **sem mudança de órgão julgador**. O que pode estar acontecendo nesses casos?
-
 
 *LIMPEZA DOS DADOS*
 
 ::: {.callout-note title="Escolha e Justificativa" appearance="simple" collapse="true"}
-
 **Motivos Possíveis**: Recursos, mudanças para varas expecializadas, desclassificação, desforamento, entre outros.
 
 **Escolha**: Vamos excluir os processos que mudaram de órgão julgador, mantendo apenas aqueles que permaneceram no mesmo órgão. Depois analisaremos os processos duplicados restantes.
 
 **Justificativa**: A mudança de órgão julgador pode indicar transferências ou redistribuições que podem afetar a análise do tempo do processo. Para garantir a consistência dos dados e evitar vieses, mantemos somente aqueles permaneceram no mesmo órgão julgador ao longo do tempo.
-
 :::
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
@@ -291,8 +265,6 @@ db_limpo <- dados_basicos %>%
             by = c("numeroProcesso" = "processo"))
           
 ```
-
-
 
 Vamos focar nos processos únicos para analisar a frequência de órgãos julgadores e descrever os resultados graficamente e em tabelas.
 
@@ -330,13 +302,11 @@ freq_j_u |>
     n = "Frequência",
     perc = "Percentual"
   )
-``` 
-
+```
 
 *Questão*
 
-Como podemos fazer a nossa análise de movimento considerando que comarcas distintas possuem diferentes volumes de processos? Devemos agrupar as comarcas maiores e as menores? Quais critérios utilizar para isso? Deixamos varas criminais separada de especializadas? 
-
+Como podemos fazer a nossa análise de movimento considerando que comarcas distintas possuem diferentes volumes de processos? Devemos agrupar as comarcas maiores e as menores? Quais critérios utilizar para isso? Deixamos varas criminais separada de especializadas?
 
 **Sistema dos Processos**
 
@@ -363,20 +333,16 @@ freq_sistema |>
   )
 ```
 
-Com base na tabela acima, podemos observar a distribuição dos processos entre os sistemas Eletrônico e Físico. Observa-se a existência somente de processos eletrônicos, mas 4 foram declaros inválidos e 2 Outros. O que fazer com esses casos? Devemos excluí-los da análise ou mantê-los? 
-
+Com base na tabela acima, podemos observar a distribuição dos processos entre os sistemas Eletrônico e Físico. Observa-se a existência somente de processos eletrônicos, mas 4 foram declaros inválidos e 2 Outros. O que fazer com esses casos? Devemos excluí-los da análise ou mantê-los?
 
 *LIMPEZA DOS DADOS*
 
-
 ::: {.callout-note title="Escolha e Justificativa" appearance="simple" collapse="true"}
-
 **Motivos Possíveis**: Citação em outros estados, entre outros.
 
 **Escolha**: Vamos excluir todos os processos que não são EPROC.
 
 **Justificativa**: Não sabemos ao certo os motivos que levaram a um processo ser classificado como inválido ou outros. Além disso, não sabemos como essa classificação afeta a movimentação. Portanton, vamos excluir todos que não foram EPROC e deixar nossa amostra mais homogênea.
-
 :::
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
@@ -415,8 +381,7 @@ freq_formato |>
 
 Observa-se que 100% dos processos estão no formato Eletrônico. Dessa forma, não há necessidade de excluir nenhum processo com base nesse critério.
 
-
-**Classe Processual** 
+**Classe Processual**
 
 Como fizemos nossa busca por classe processual, 282, deveríamos ter somente essa classe. Vamos verificar se há outras classes presentes nos dados.
 
@@ -444,11 +409,9 @@ freq_classe |>
 
 Conforme esperado pela nossa consulta inicial, todos os processos pertencem à classe **Ação Penal de Competência do Júri (282)**. Portanto, não há necessidade de excluir nenhum processo com base nesse critério.
 
-
-
 **Assuntos Processuais**
 
-Vamos extrair e analisar os **assuntos processuais** associados a cada processo. Vamos fazer a extração e veja que o resultado é uma coluna com processo e a outra com o assunto. Se tivermos mais assuntos por processo, esse será duplicado. 
+Vamos extrair e analisar os **assuntos processuais** associados a cada processo. Vamos fazer a extração e veja que o resultado é uma coluna com processo e a outra com o assunto. Se tivermos mais assuntos por processo, esse será duplicado.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -503,12 +466,11 @@ freq_assunto |>
 
 ```
 
-**Assuntos** tem um total de **11302 processos**, sendo que o número de **processos únicos é 8228**. Isso indica que muitos processos têm mais de um assunto associado. Então a leitura da tabela acima deve considerar esses números. Podemos dizer que **5933** processos tiveram **Homicídio Qualificado** como assunto, **2733** tiveram **Crime Tentado**, e assim por diante. **Existe sobreposição** entre os assuntos. 
+**Assuntos** tem um total de **11302 processos**, sendo que o número de **processos únicos é 8228**. Isso indica que muitos processos têm mais de um assunto associado. Então a leitura da tabela acima deve considerar esses números. Podemos dizer que **5933** processos tiveram **Homicídio Qualificado** como assunto, **2733** tiveram **Crime Tentado**, e assim por diante. **Existe sobreposição** entre os assuntos.
 
 Fizemos duas colunas, uma com percentual com base no total de assuntos (11302), **% Assuntos**, e outra com base no total de processos únicos (8228), **% Processos**. A segunda coluna é mais interessante, pois indica a proporção de processos que tiveram cada assunto.
 
 Agora vamos olhar o assunto por processo, para ver quantos assuntos cada processo tem associado.
-
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -531,22 +493,18 @@ assuntos_wide %>%
   )
 ```
 
-Agora cada linha é um processo único com todos os assuntos listados. Tivemos um total de 8228. Para o tribunal do Juri tem-se **5 tipos penais**: **Homicídio Qualificado, Homicídio Simples, Infanticídio, Aborto, Induzimento ao Suicídio** e a partir de outubro de 24 o **Feminicídio**. 
+Agora cada linha é um processo único com todos os assuntos listados. Tivemos um total de 8228. Para o tribunal do Juri tem-se **5 tipos penais**: **Homicídio Qualificado, Homicídio Simples, Infanticídio, Aborto, Induzimento ao Suicídio** e a partir de outubro de 24 o **Feminicídio**.
 
-**Questão**: 
+**Questão**:
 
 Devemos incluir todos os assuntos ou focar apenas em alguns? Quais critérios utilizar para essa seleção?
 
-
 *LIMPEZA DOS DADOS*
 
-
 ::: {.callout-note title="Escolha e Justificativa" appearance="simple" collapse="true"}
-
 **Escolha**: Vamos trabalhar somente com homicídio Qualificado, Simples e Feminicídio.
 
 **Justificativa**: Acreditamos que esse esses processos possuem um perfil semelhante entre si, e diferente do infanticídio, aborto e induzimento ao suicídio.
-
 :::
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
@@ -580,19 +538,15 @@ nrow(db_limpo %>%
 
 Ao final do procedimento, observamos que o banco de dados **original** continha **8.432 processos**. Após as etapas de limpeza e organização, chegamos a **7.867 registros**. No entanto, ainda identificamos a existência de processos duplicados. O total de **processos únicos** é de **7.775**, o que significa que permanecem **92 processos duplicados** para os quais ainda precisamos definir um tratamento adequado.
 
-
 *LIMPEZA DOS DADOS*
 
 ::: {.callout-note title="Escolha e Justificativa" appearance="simple" collapse="true"}
-
 **Escolha**: Excluir os processos duplicados.
 
 **Justificativa**: Como não está claro o motivo dessa duplicação e quais seus impactos sobre a movimentação, vamos optar pela exclusão desses processos.Note que poderiamos identificar esses processos e fazermos uma análise mais detalhada sobre eles.
 
-**Motivos**: Insidente de insanidade mental, por exemplo. Processo separado mas com mesmo número. 
-
+**Motivos**: Insidente de insanidade mental, por exemplo. Processo separado mas com mesmo número.
 :::
-
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 # Vamos retirar os processos que mudaram de orgão julgador 
@@ -602,12 +556,11 @@ db_limpo <- db_limpo %>%
 
 ```
 
-Concluímos a limpeza com **7.683 processos**, que serão a base da análise de movimentação. Antes de prosseguir, vamos reorganizar as tabelas anteriores  de julgador, assunto e demais variáveis, usando agora apenas esse banco de dados limpo.
-
+Concluímos a limpeza com **7.683 processos**, que serão a base da análise de movimentação. Antes de prosseguir, vamos reorganizar as tabelas anteriores de julgador, assunto e demais variáveis, usando agora apenas esse banco de dados limpo.
 
 **TABELAS FINAIS APÓS LIMPEZA DOS DADOS**
 
-Com os dados limpos vamos criar uma *data.frame* de julgados final. Nesse vamos deixar o **processo**, o **órgão julgador**, e criar variáveis que indiquem se o **órgão é especializado** ou não, e se está entre os **5 com maior volume de processos**. 
+Com os dados limpos vamos criar uma *data.frame* de julgados final. Nesse vamos deixar o **processo**, o **órgão julgador**, e criar variáveis que indiquem se o **órgão é especializado** ou não, e se está entre os **5 com maior volume de processos**.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 
@@ -679,7 +632,6 @@ julgador_final <- julgador_final %>%
   )
 ```
 
-
 Agora começaremos a montar o **banco de dados final**, agregando todos os bancos que já organizamos. Vamos unir as informações de órgão julgador, sistema, formato, classe e assunto além das variáveis binárias que criamos anteriormente.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
@@ -708,9 +660,9 @@ bd_final <- bd_final %>%
 
 ```
 
-Agora vamos organizar o banco de dados de assuntos. Vamos utilizar o nosso *assunto_wide* para trazer para o nosso banco de dados final e crarmos variáveis binárias. 
+Agora vamos organizar o banco de dados de assuntos. Vamos utilizar o nosso *assunto_wide* para trazer para o nosso banco de dados final e crarmos variáveis binárias.
 
-Primeiro vamos ver se todos os assuntos estão presentes e depois vamos deixar somente aqueles que possuem soma maior que zero. 
+Primeiro vamos ver se todos os assuntos estão presentes e depois vamos deixar somente aqueles que possuem soma maior que zero.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -759,13 +711,9 @@ Também excluímos a variável `homic_bin`, usada apenas como apoio na etapa ant
 
 Por fim, criamos **variáveis binárias** para identificar três categorias principais de homicídio: **homicídio qualificado**, **homicídio simples** e **feminicídio**. É importante notar que essas categorias podem se sobrepor em alguns processos.
 
-
-
 ### Análise da Movimentação Processual
 
-
 Agora vamos analisar a movimentação processual. Para isso, precisamos extrair e organizar os dados de movimentação de cada processo. Vamos calcular o tempo decorrido entre cada movimentação e, em seguida, focar na análise do tempo até a baixa definitiva do processo.
-
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 # Instalando Pacotes necessários
@@ -792,10 +740,9 @@ movimento  <- movimento |>
 
 ```
 
-
 #### Tempo até a Baixa Definitiva
 
-Vamos selecionar todos os processos para os quais conseguimos extrair a baixa definitiva. No código abaixo, buscamos manter apenas a primeira baixa de cada processo. Note que alguns processos apresentaram múltiplas baixas definitivas. Portanto, vamos considerar a última baixa definitiva que o processo teve. 
+Vamos selecionar todos os processos para os quais conseguimos extrair a baixa definitiva. No código abaixo, buscamos manter apenas a primeira baixa de cada processo. Note que alguns processos apresentaram múltiplas baixas definitivas. Portanto, vamos considerar a última baixa definitiva que o processo teve.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 # Tempo até a baixa definitiva
@@ -825,18 +772,15 @@ tempo_baixa_unico <- tempo_baixa |>
 
 ```
 
-Observe que agora temos um total de **4595 processos** com baixa definitiva. Iniciamos com **8432 processos**, e após a limpeza dos dados, restaram **7683 processos**. Desses, conseguimos identificar a baixa definitiva em 4595 processos. Note uma redução significativa, representando um grupo específico de processos que chegaram à baixa definitiva. 
+Observe que agora temos um total de **4595 processos** com baixa definitiva. Iniciamos com **8432 processos**, e após a limpeza dos dados, restaram **7683 processos**. Desses, conseguimos identificar a baixa definitiva em 4595 processos. Note uma redução significativa, representando um grupo específico de processos que chegaram à baixa definitiva.
 
-
-:::{.callout-note title="Reflexão"}
-
+::: {.callout-note title="Reflexão"}
 **Questão:**
 
-Os 4.595 representam bem a realidade dos processos de júri? Ao considerar esses processos estamos selecionando um grupo específico? 
+Os 4.595 representam bem a realidade dos processos de júri? Ao considerar esses processos estamos selecionando um grupo específico?
 :::
 
-
-** Juntando os Dados de Baixa com o Banco Final**
+\*\* Juntando os Dados de Baixa com o Banco Final\*\*
 
 Agora, vamos juntar com o nosso banco de dados, que criamos na parte anterior, e que contém assunto, classe e as demais variáveis binárias que geramos.
 
@@ -850,11 +794,9 @@ sum(is.na(baixa_uni_comp$fem))
 
 A junção não criou nenhuma coluna com valores **NA**, indicando que todos os processos com baixa definitiva foram **corretamente integrados** ao banco de dados final.
 
-
 **Análise Descritiva Geral**
 
 Primeiramente, vamos descrever ou realizar a análise descritiva do tempo até a baixa definitiva do processo. Neste momento, estamos considerando todos os 4.595 processos.
-
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -892,31 +834,26 @@ tempo_stats %>%
   )
 ```
 
-
-A **média** do tempo do processo até a baixa definitiva é de **1.280 dias**, com **desvio-padrão** de **950 dias**, mostrando grande variação nos tempos processuais.   A **mediana** é de **1.030 dias**, indicando que metade dos processos dura menos do que isso.
+A **média** do tempo do processo até a baixa definitiva é de **1.280 dias**, com **desvio-padrão** de **950 dias**, mostrando grande variação nos tempos processuais. A **mediana** é de **1.030 dias**, indicando que metade dos processos dura menos do que isso.
 
 *Distribuição dos tempos*
 
-- **25%** dos processos são concluídos em **até 554 dias**.  
-- **50%** (intervalo interquartil) estão entre **554** e **1.762 dias**.  
-- **25%** dos processos duram **mais de 1.762 dias**.
-
+-   **25%** dos processos são concluídos em **até 554 dias**.\
+-   **50%** (intervalo interquartil) estão entre **554** e **1.762 dias**.\
+-   **25%** dos processos duram **mais de 1.762 dias**.
 
 **Visualmente**
 
 Vamos analisar também o tempo de forma gráfica, utilizando diferentes tipos de gráficos. Primeiro, apresentamos o gráfico conhecido como BoxPlot; em seguida, o gráfico chamado ViolinPlot. Depois, construímos os gráficos de densidade: inicialmente o histograma e, em seguida, a densidade contínua. Eles estão apresentados abaixo.
 
-
 **O Box Plot**
 
-O boxplot é um gráfico que traz muitas informações e pode ser visto como a distribuição de probabilidade dos dados. 
+O boxplot é um gráfico que traz muitas informações e pode ser visto como a distribuição de probabilidade dos dados.
 
-Como visto acima, o gráfico representa a distribuição do tempo até a baixa definitiva e a sua concentração.  
+Como visto acima, o gráfico representa a distribuição do tempo até a baixa definitiva e a sua concentração.\
 A **caixa** do boxplot mostra o intervalo interquartil: a parte inferior está em **554 dias**, a **mediana** aparece ao redor de **1.030 dias** e o **terceiro quartil** está em **1.761 dias**. Esses valores compõem o interior da caixa, indicando onde se concentra 50% dos processos.
 
 Observa-se também um número significativo de **outliers**, representados por pontos acima de aproximadamente **3.600 dias**. Esses processos podem ser classificados como **atípicos**, pois apresentam tempos de duração muito superiores ao padrão da distribuição.
-
-
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 ggplot(baixa_uni_comp, aes(y = decorrencia_acumulada)) +
@@ -936,7 +873,6 @@ ggplot(baixa_uni_comp, aes(y = decorrencia_acumulada)) +
   )
 ```
 
-
 ::: {.callout-note title="O BOXPLOT" appearance="simple" collapse="true"}
 O box ou caixa contém 50% dos dados. O limite superior indica o percentil de 75% (*Q3*) e o limite inferior indica o percentil de 25% (*Q1*). A linha que corta o box indica a mediana, ou seja, *Q2*. Os bigodes são calculados com base na distância interquantílica, ou seja,
 
@@ -947,14 +883,9 @@ O box ou caixa contém 50% dos dados. O limite superior indica o percentil de 75
 Dados fora desses limites são classificados como suspeitos de serem outliers. Podemos observar a assimetria dos dados quando a mediana não está no meio da caixa, indicando maior densidade na menor distância entre os quartis Q1 ou Q3 e a mediana Q2.
 :::
 
-
-
 **Gráfico de Densidade**
 
-Visualizar a distribuição empírica dos dados fornece uma grande quantidade de informação. Um gráfico básico em análise descritiva é o histograma, o qual fornece a distribuição de probabilidade empírica dos dados em um formato de barras. 
-O histograma mostra a **frequência** de processos em cada faixa de duração até a baixa definitiva. A altura de cada barra indica quantos processos estão naquela faixa de dias.
-
-
+Visualizar a distribuição empírica dos dados fornece uma grande quantidade de informação. Um gráfico básico em análise descritiva é o histograma, o qual fornece a distribuição de probabilidade empírica dos dados em um formato de barras. O histograma mostra a **frequência** de processos em cada faixa de duração até a baixa definitiva. A altura de cada barra indica quantos processos estão naquela faixa de dias.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 
@@ -976,13 +907,11 @@ ggplot(baixa_uni_comp, aes(x = decorrencia_acumulada)) +
     axis.text.y = element_text(size = 10))
 ```
 
-
 Observa-se que há um número relevante de processos com **poucos dias** até a baixa definitiva. Pfecisamos decidir o que fazer com esses processos. **Devemos excluí-los?**
 
 A distribuição é **assimétrica à direita**, com uma **cauda longa**, o que significa que existe um grupo menor de processos que dura muito mais tempo, esses valores elevados **puxam a média para cima**.
 
 A maior concentração de processos ocorre entre **800 e 900 dias**, e aproximadamente **metade dos processos** é concluída em até **1.000 dias**. A partir desse ponto, a frequência diminui gradualmente, até alcançar valores próximos de **4.000 dias**, onde a cauda longa se torna evidente.
-
 
 Uma outra maneira de visualizar os dados é utilizando uma **distribuição continua** e não mais a discreta. Para isso, utiliza-se a densidade de Kernel para visualização da distribuição de probabilidade da taxa de feminicídio. Vejamos:
 
@@ -1006,8 +935,6 @@ Uma outra maneira de visualizar os dados é utilizando uma **distribuição cont
     axis.text.y = element_text(size = 10))
  
 ```
-
-
 
 **Análise por Órgão Julgador**
 
@@ -1065,7 +992,6 @@ Também se verifica diferença na **dispersão**: nas cinco maiores varas, o des
 
 Vejamos a distribuição graficamente:
 
-
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
  
 library(ggplot2)
@@ -1097,8 +1023,6 @@ ggplot(baixa_uni_comp, aes(x = decorrencia_acumulada, fill = volume_top5_factor,
 Para avaliar se a diferença entre as médias dos dois grupos é estatisticamente significativa, realizamos um **teste t de diferença de médias**. O resultado foi **significativo**, indicando que as médias dos dois grupos são, de fato, diferentes.
 
 Em termos práticos, isso significa que, **em média**, as cinco varas com maior volume de processos apresentam um **tempo médio de tramitação menor** do que o observado nas demais varas.
-
-
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 t.test(
@@ -1156,9 +1080,8 @@ tempo_stats_grupo_espec %>%
   )
 ```
 
-Neste caso, observamos uma diferença ainda maior entre os grupos: enquanto as **demais varas** apresentam tempo médio de **1.302 dias**, as **varas especializadas** têm média de **1.138 dias**. 
+Neste caso, observamos uma diferença ainda maior entre os grupos: enquanto as **demais varas** apresentam tempo médio de **1.302 dias**, as **varas especializadas** têm média de **1.138 dias**.
 
- 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
  t.test(
   decorrencia_acumulada ~ vara_espec,
@@ -1168,12 +1091,9 @@ Neste caso, observamos uma diferença ainda maior entre os grupos: enquanto as *
 
 O teste de diferença de média mostra que os processos tramitam **mais rapidamente** nas varas especializadas em relação as demais e é estatisticamente significativo a 1%.
 
+Vamos agora repetir a mesma análise, mas classificando os processos por **assunto**. Começaremos examinando os casos de **homicídio qualificado**, comparando-os com os demais processos.
 
-
-Vamos agora repetir a mesma análise, mas classificando os processos por **assunto**.   Começaremos examinando os casos de **homicídio qualificado**, comparando-os com os demais processos.
-
-O objetivo é verificar se os processos de homicídio qualificado apresentam um **padrão distinto de duração**. 
-
+O objetivo é verificar se os processos de homicídio qualificado apresentam um **padrão distinto de duração**.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -1221,7 +1141,7 @@ tempo_stats_grupo1 %>%
   )
 ```
 
-Observamos agora que as médias dos dois grupos são **mais próximas**: os processos de **homicídio qualificado** apresentam tempo médio de **1.264 dias**, enquanto os demais processos têm média de **1.319 dias**. Da mesma forma, os **desvios-padrão** também são semelhantes: cerca de **921 dias** para homicídio qualificado e **1.017 dias** para os demais assuntos. 
+Observamos agora que as médias dos dois grupos são **mais próximas**: os processos de **homicídio qualificado** apresentam tempo médio de **1.264 dias**, enquanto os demais processos têm média de **1.319 dias**. Da mesma forma, os **desvios-padrão** também são semelhantes: cerca de **921 dias** para homicídio qualificado e **1.017 dias** para os demais assuntos.
 
 Portanto, ao contrário do que vimos no caso das varas, **não há uma diferença tão acentuada**.
 
@@ -1292,7 +1212,7 @@ tempo_stats_grupo2 %>%
 
 Observamos que os processos classificados como **feminicídio** apresentam uma **média de duração menor** do que aqueles não classificados dessa forma. A diferença entre as médias é de aproximadamente **150 dias**, e é estatisticamente significativa a 5%
 
-Vamos tentar analisar por meio de um modelo linear multivariado, que considera todas as variáveis anteriores. 
+Vamos tentar analisar por meio de um modelo linear multivariado, que considera todas as variáveis anteriores.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 #install.packages("modelsummary")
@@ -1323,15 +1243,15 @@ Observe-se que o intercepto do nosso modelo é de **1.418 dias**. Esse valor rep
 
 Em relação a esse grupo de referência, observamos reduções importantes no tempo médio do processo:
 
-- Nas **cinco varas de maior volume**, o tempo médio é cerca de **171 dias menor** do que o valor do intercepto (1.418 dias).
-- Nas **varas especializadas**, a redução é ainda maior, aproximadamente **238 dias** a menos em relação ao intercepto.
-- Para os processos classificados como **feminicídio**, há também uma diminuição média de **164 dias**.
+-   Nas **cinco varas de maior volume**, o tempo médio é cerca de **171 dias menor** do que o valor do intercepto (1.418 dias).
+-   Nas **varas especializadas**, a redução é ainda maior, aproximadamente **238 dias** a menos em relação ao intercepto.
+-   Para os processos classificados como **feminicídio**, há também uma diminuição média de **164 dias**.
 
 Esses valores indicam quanto cada característica reduz o tempo esperado em comparação com o grupo base definido pelo intercepto.
 
-
 #### Analisando as Fases do Processo de Júri
-A estratégia de análise será a seguinte: 
+
+A estratégia de análise será a seguinte:
 
 ```{mermaid}
 flowchart LR
@@ -1341,13 +1261,11 @@ flowchart LR
   D --> E[Seç. Trib. do Júri]
 ```
 
-* Distribuição: 
-* Recebimento da Denúncia: **391**
-* Audiência de Instrução e Julgamento: **12750**
-* Decisão de Pronúncia: **10953**
-* Seção do Tribunal do Júri: **313**
-
-
+-   Distribuição:
+-   Recebimento da Denúncia: **391**
+-   Audiência de Instrução e Julgamento: **12750**
+-   Decisão de Pronúncia: **10953**
+-   Seção do Tribunal do Júri: **313**
 
 **Montando os bancos de dados para cada fase do processo**
 
@@ -1448,17 +1366,15 @@ mov_final <- mov_final |>
 
 ```
 
-
-Agora que juntamos todas as movimentações e eliminamos os casos com valores ausentes e chegamos a um total de **1.034 processos**. 
+Agora que juntamos todas as movimentações e eliminamos os casos com valores ausentes e chegamos a um total de **1.034 processos**.
 
 Partimos originalmente de **8.432 processos** no banco básico. Portanto, houve uma redução substancial da base analítica, com a exclusão de aproximadamente **7.400 processos**.
 
-Essa redução levanta uma questão central para a análise:  
-**os 1.034 processos restantes são representativos do conjunto original ou formam um grupo com características muito diferentes?**  
-
+Essa redução levanta uma questão central para a análise:\
+**os 1.034 processos restantes são representativos do conjunto original ou formam um grupo com características muito diferentes?**
 
 Para evitar viés de seleção, vamos seguir olhando cada variável individualmente e comparando as estatísticas descritivas de cada fase do processo.
-  
+
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
 library(tidyr)
@@ -1579,14 +1495,11 @@ all_stats %>%
   )
 ```
 
-
 Nessa tabela tem-se uma visão geral das estatísticas descritivas para cada fase do processo. Observa-se que o tempo médio da distribuição até o Recebimento da Denúncia é de **32,51 dias**. Já o tempo médio da distribuição até a Audiência de Instrução e Julgamento é de **490,23 dias**.
-
 
 #### Da distribuição até o Recebimento da Denúncia
 
-
-Primeiro vamos analisar o tempo entre a distribuição do processo e o recebimento da denúncia. Graficamente tem-se: 
+Primeiro vamos analisar o tempo entre a distribuição do processo e o recebimento da denúncia. Graficamente tem-se:
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 t_denuncia_unico <- t_denuncia_unico
@@ -1611,7 +1524,6 @@ ggplot(t_denuncia_unico, aes(x = deco_denuncia)) +
  
 ```
 
-
 Observa-se que **50% dos processos duram menos de 3 dias** entre a **distribuição** e o **recebimento da denúncia**. Entretanto, a **média é bem maior**, em torno de **32 dias**.
 
 Essa diferença indica que existem **processos com duração muito longa**, alguns com mais de 100 dias, que **puxam a média para cima**. Ou seja, a distribuição é assimétrica, com uma **cauda longa à direita**.
@@ -1635,7 +1547,6 @@ Para entender melhor essa diferença, iremos **investigar os atos ordinatórios*
 **Movimentação até Recebimento da Denúncia**
 
 Vamos analisar a movimentação do processo desde a distribuição até o recebimento da denúncia. Vamos criar um banco específico para essa análise.
-
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -1680,10 +1591,7 @@ freq_movimento %>%
 
 ```
 
-
-E abaixo vamos **somar o tempo** de cada **ato ordinatório** por processo. 
-
-
+E abaixo vamos **somar o tempo** de cada **ato ordinatório** por processo.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -1692,10 +1600,9 @@ soma_ordinatorios <- atos_ate_denuncia %>%
   filter(cod_movimento == 11383) %>%   # filtra apenas atos ordinatórios
   group_by(processo) %>%                       # agrupa por processo
   summarise(soma_decorrencia = sum(decorrencia, na.rm = TRUE))
-```	
+```
 
 Agora temos um banco com a soma do tempo dos atos ordinatórios para cada processo, desde a distribuição até o recebimento da denúncia. Vamos **analisar as estatísticas** descritivas dessa variável.
-
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -1739,7 +1646,6 @@ Entretanto, a **média** é significativamente maior, em torno de **3,5 dias**, 
 
 Esses resultados sugerem que é importante analisar mais detalhadamente os **atos ordinatórios**, especialmente nos processos que apresentam **tempos excepcionalmente longos**, para entender o que está causando essa discrepância.
 
-
 Graficamente, a distribuição do tempo dos atos ordinatórios até a denúncia pode ser visualizada da seguinte forma:
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
@@ -1764,19 +1670,16 @@ ggplot(soma_ordinatorios, aes(x = soma_decorrencia)) +
  
 ```
 
-
 Como já visto a **mediana** da participação dos atos ordinatórios é **0,12 dias** (aproximadamente **3 horas**), enquanto a **média** é de **3,5 dias**. A distribuição apresenta uma **cauda longa à direita**, evidenciando a presença de processos com **atos ordinatórios excepcionalmente longos**, que merecem análise detalhada.
-
 
 Passamos a estudar a **participação dos atos ordinatórios** no **tempo total entre distribuição e recebimento da denúncia**.
 
 O objetivo é entender:
 
-* **Quanto maior a participação**, maior o tempo gasto entre a distribuição e denúncia?
-* Como o tempo dos atos ordinatórios se relaciona com o **tempo até a denúncia**?
+-   **Quanto maior a participação**, maior o tempo gasto entre a distribuição e denúncia?
+-   Como o tempo dos atos ordinatórios se relaciona com o **tempo até a denúncia**?
 
 Para isso, abaixo apresentamos uma **tabela** que mostra, para cada processo, a **participação dos atos ordinatórios** e o **tempo total entre distribuição e denúncia**.
-
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -1790,7 +1693,7 @@ part_atos_ord <-  t_denuncia_unico |>
 
 Agora temos um banco que mostra a participação dos atos ordinatórios no tempo total entre a distribuição e o recebimento da denúncia. Vamos **analisar as estatísticas descritivas** dessa participação.
 
-```{r eval = TRUE, message=FALSE, warning=FALSE}	
+```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(dplyr)
 
@@ -1818,9 +1721,9 @@ correlation
 
 Observa-se que há uma **relação positiva** entre a participação dos atos ordinatórios e o tempo até a denúncia. Ou seja, **quanto maior a participação dos atos ordinatórios, maior tende a ser o tempo até a denúncia**. Entretanto a correlação não é alta, cerca de **0,52**, indicando que outros fatores também influenciam o tempo até a denúncia.
 
-Agora vamos explorar visiualmente se quanto maior a participação dos atos ordinatórios, maior é o tempo total até a denúncia. Primeiramente vamos analisar os processos com soma dos **atos ordinatórios > 3 dias**.
+Agora vamos explorar visiualmente se quanto maior a participação dos atos ordinatórios, maior é o tempo total até a denúncia. Primeiramente vamos analisar os processos com soma dos **atos ordinatórios \> 3 dias**.
 
-```	{r eval = TRUE, message=FALSE, warning=FALSE}
+```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
 library(ggplot2)
 
@@ -1848,7 +1751,7 @@ Observa-se que não há nenhum padrão claro, mostrando que a participação é 
 
 Abaixo mostramos nos processos com soma dos atos ordinatórios entre **1 e 3 dias**.
 
-```	{r eval = TRUE, message=FALSE, warning=FALSE}
+```{r eval = TRUE, message=FALSE, warning=FALSE}
 library(dplyr)
 library(ggplot2)
 
@@ -1873,7 +1776,3 @@ ggplot(part_menos_3, aes(x = participacao )) +
 ```
 
 Novamente, observa-se que não há nenhum padrão claro para os processos com soma dos atos ordinatórios entre **1 e 3 dias**.
-
-
-
-

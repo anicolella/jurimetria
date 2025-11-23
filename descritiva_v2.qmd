@@ -87,7 +87,7 @@ final_fem_22 <- read.csv("C:/Users/Alexandre_Nicolella/Aulas/FEA-RP/Jurimetria/j
 
 ```
 
-ou 
+ou
 
 ```{r eval=FALSE}
 
@@ -97,7 +97,6 @@ library(cursoESMP) # carregar o pacote deste curso
 final_fem_22<-cursoESMP::final_fem_22
 
 ```
-
 
 Visualizando as primeiras 10 linhas do banco de dados:
 
@@ -110,9 +109,7 @@ final_fem_22 |>
      kable_styling()
 ```
 
-
 ::: {.callout-note appearance="simple" collapse="true" title="Descrição do Banco de Dados"}
-
 1.  **homic_abs**: Número absoluto de homicídios feminínos registrados em 2022.
 
 2.  **homic_tx**: Taxa de homicídios feminino 100 mil mulheres.
@@ -136,9 +133,7 @@ final_fem_22 |>
 11. **t_feminic_tx**: Taxa de tentativa de feminicídios por 100 mil mulheres.
 
 12. **part_t_feminic**: Participação percentual da tentativa de feminicídios em relação ao total de tentativas de homicídios femininos.
-
 :::
-
 
 ### Gráficos no R
 
@@ -160,10 +155,9 @@ Um gráfico no ggplot2 é construído combinando os seguintes elementos:
 5.  **Facetamento** (facet): Divide os dados em subconjuntos para gerar gráficos separados.
 6.  **Tema** (theme): Personaliza detalhes visuais, como fontes e cores de fundo.
 
-Clique abaixo para ver alguns tipos de gráficos que podem ser criados com o ggplot2: 
+Clique abaixo para ver alguns tipos de gráficos que podem ser criados com o ggplot2:
 
-::: {.callout-note appearance="simple" collapse=true title="Veja aqui Algumas Possibilidades de Camadas"}
-
+::: {.callout-note appearance="simple" collapse="true" title="Veja aqui Algumas Possibilidades de Camadas"}
 -   `geom_area()`: cria um gráfico de área.\
 -   `geom_density()`: cria um gráfico de densidade de kernel.\
 -   `geom_dotplot()`: cria um gráfico de pontos.\
@@ -172,7 +166,6 @@ Clique abaixo para ver alguns tipos de gráficos que podem ser criados com o ggp
 -   `stat_ecdf()`: plota a função de densidade acumulada empírica.\
 -   `stat_qq()`: cria um gráfico quantil-quantil.\
 -   `geom_bar()`: cria um gráfico de barras.
-
 :::
 
 Vejamos um exemplo inicial de um gráfico da taxa de homicídio feminino e a taxa de feminicídio por Estado no Brasil
@@ -421,8 +414,6 @@ ggplot(final_fem_22, aes(x = reorder(estados, -feminic_tx), y = feminic_tx)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 9)) 
 ```
 
-
-
 Vamos fazer um gráfico de barras para a participação do Feminicídio no total de homicídios femininos por Estado.
 
 ```{r}
@@ -439,9 +430,10 @@ ggplot(final_fem_22, aes(x = reorder(estados, -part_feminic), y = part_feminic))
 
 **Gráfico de Barras Agrupadas**
 
-Vamos fazer um gráfico de barras agrupadas para a taxa de feminicídio e taxa de tentativa de feminicídio por região. Vamos passo a passo: 
+Vamos fazer um gráfico de barras agrupadas para a taxa de feminicídio e taxa de tentativa de feminicídio por região. Vamos passo a passo:
 
-1. Transformar os dados em formato long
+1.  Transformar os dados em formato long
+
 ```{r message=FALSE, warning=FALSE}
 library(tidyr)
 library(dplyr)
@@ -457,7 +449,8 @@ tx_long <- final_fem_22 %>%
 head(tx_long)
 ```
 
-2. Criar o gráfico de barras lado a lado
+2.  Criar o gráfico de barras lado a lado
+
 ```{r message=FALSE, warning=FALSE}
 # Criar o gráfico de barras lado a lado
 ggplot(tx_long, aes(x = reorder(estados, -taxa), y = taxa, fill = tipo)) +
@@ -475,16 +468,11 @@ ggplot(tx_long, aes(x = reorder(estados, -taxa), y = taxa, fill = tipo)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 8))                    # Ajusta o tamanho do texto do eixo x
 ```
 
-
-
-
-
 **Gráfico de Linha**
 
 O gráfico de linha ou pontos é muito utilizado para visualização da evolução de séries. É um gráfico que nos permite ver a evolução dos salários entre homens e mulheres, evolução dos preços dos alimentos, evolução do número de casos de feminicídio, evolução dos processos em determinada Vara.
 
-Nosso banco é uma fotografia e não uma evolução, o que torna esse tipo de visualização menos útil. Vejamos a como a taxa de feminicídio evolui com o aumento do número total Homicídios Femininos.  
-
+Nosso banco é uma fotografia e não uma evolução, o que torna esse tipo de visualização menos útil. Vejamos a como a taxa de feminicídio evolui com o aumento do número total Homicídios Femininos.
 
 ```{r message=FALSE, warning=FALSE}
 # Ordenar os dados pelo número absoluto de homicídios do menor para o maior
@@ -520,14 +508,12 @@ ggplot(final_fem_22, aes(x = homic_abs)) +
 
 ```
 
-
-
 ::: {.callout-tip title="Exercício"}
 **PERGUNTA**: Será que quanto maior for a renda per capita, menor será a taxa de feminicídio?
 :::
 
 ::: {.callout-warning title="Veja a Resposta" appearance="simple" collapse="true"}
-**RESPOSTA**: Renda e taxa de feminicídio são variáveis continuas. O ideal seria utilizar um gráfico de dispersão para verificar a relação entre essas variáveis. 
+**RESPOSTA**: Renda e taxa de feminicídio são variáveis continuas. O ideal seria utilizar um gráfico de dispersão para verificar a relação entre essas variáveis.
 
 ```{r message=FALSE, warning=FALSE}
 ggplot(data = final_fem_22, aes(x = rendapc, y = feminic_tx))+
@@ -537,9 +523,6 @@ labs(title="Renda pc e taxa de Feminicídios por Estado", x="Renda pc", y="Tx 10
 theme_bw()
 ```
 :::
-
-
-
 
 **PERCENTIL:**
 
@@ -580,8 +563,6 @@ quantile(final_fem_22$feminic_tx, na.rm=T)
 
 ```
 
-
-
 ## Medidas de Variabilidade
 
 **AMPLITUDE:**
@@ -612,8 +593,6 @@ iq
 **VARIÂNCIA E DESVIO PADRÃO AMOSTRAL**:
 
 A variância amostral é uma medida estatística que indica o quão dispersos estão os dados em relação à média amostral. Em outras palavras, ela quantifica a extensão das diferenças individuais entre os valores observados e a média da amostra.
-
-
 
 Definimos a variância amostral como:
 
@@ -659,7 +638,6 @@ t(est_descrit) %>%
 
 ```
 
-
 **COEFICIENTE DE VARIAÇÃO**:
 
 O coeficiente de variação (CV) é uma medida de dispersão relativa que expressa a variabilidade dos dados como uma porcentagem da média.
@@ -678,12 +656,6 @@ Para entendermos vamos supor que existam duas variáveis com mesmo desvio padrã
 $\text{CV}_{X_1}=\frac{10}{10}.100=100\%$ e $\text{CV}_{X_2}=\frac{10}{20}.100=50\%$
 
 A variabilidade relativa é menor para a segunda variável. No exemplo acima a taxa de feminicídio tem uma variabilidade relativa maior (91%) do que a tentativa de feminicídio (74%) entre os Estados Brasileiros.
-
-
-
-
-
-
 
 #### Visualizando a Distribuição dos Dados
 
@@ -774,13 +746,10 @@ ggplot(final_fem_22, aes(x = factor(N_NE_CO, labels = c("Sul e Sudeste", "Norte,
     legend.position = "none"  )
 ```
 
-
-
-
 **Gráfico de Densidade**
 
-Visualizar a distribuição empírica dos dados fornece uma grande quantidade de informação. Um gráfico básico em análise descritiva é o histograma, o qual fornece a distribuição de probabilidade empírica dos dados em um formato de barras. A área do histograma é igual a 1 e altura da sua barra da a densidade de observações em cada classe.
-"#c2986f", "Feminicídio" = "#7185cc")
+Visualizar a distribuição empírica dos dados fornece uma grande quantidade de informação. Um gráfico básico em análise descritiva é o histograma, o qual fornece a distribuição de probabilidade empírica dos dados em um formato de barras. A área do histograma é igual a 1 e altura da sua barra da a densidade de observações em cada classe. "#c2986f", "Feminicídio" = "#7185cc")
+
 ```{r,warnings=FALSE}
 
 ggplot(final_fem_22, aes(x = feminic_tx)) +
@@ -798,7 +767,6 @@ ggplot(final_fem_22, aes(x = feminic_tx)) +
     axis.text.x = element_text(size = 12),                                         # Ajusta o tamanho dos rótulos no eixo X
     axis.text.y = element_text(size = 10))
 ```
-
 
 Uma outra maneira de visualizar os dados é utilizando uma distribuição continua e não mais a discreta. Para isso, utiliza-se a densidade de Kernel para visualização da distribuição de probabilidade da taxa de feminicídio. Vejamos
 
@@ -818,9 +786,7 @@ Uma outra maneira de visualizar os dados é utilizando uma distribuição contin
     axis.text.y = element_text(size = 10))
 ```
 
-
 Podemos analisar mais de uma variável juntamente no gráfico acima. Vamos ver a Taxa de Feminicídio e a Tentativa de Feminicídio
-
 
 ```{r message=FALSE, warning=FALSE}
  ggplot(final_fem_22) +
@@ -840,7 +806,6 @@ Podemos analisar mais de uma variável juntamente no gráfico acima. Vamos ver a
     axis.text.y = element_text(size = 10)
     )
 ```
-
 
 Outra forma útil de visualizar os dados a é distribuição por classe, por exemplo distribuição de salários entre homens e mulheres, distribuição do tempo do processo por vara, distribuição da taxa de feminicídio por região. Vamos utilizar a densidade de Kernel para analisar a distribuição dos valores da taxa de feminicídio por região. Para isso precisa instalar o pacote `sm`.
 
@@ -870,9 +835,8 @@ ggplot(final_fem_22, aes(x = feminic_tx, fill = factor(N_NE_CO))) + # Curvas de 
   )
 ```
 
-
 ::: {.callout-tip title="Exercício"}
-**PERGUNTA**: Gostaria de ter uma distribuição das Tentativa de Feminicídio por Estado mostrando os quartis, mediana e média. 
+**PERGUNTA**: Gostaria de ter uma distribuição das Tentativa de Feminicídio por Estado mostrando os quartis, mediana e média.
 
 Dica: Utlizar a densidade e o boxplot?
 :::
@@ -918,8 +882,6 @@ grid.arrange( bp_t_f, dens_t_f,
 ```
 :::
 
-
-
 ## Medidas de Associação
 
 **COVARIÂNCIA AMOSTRAL**
@@ -943,16 +905,14 @@ $$r_{XY} = \frac{\text{Cov}(X, Y)}{s_X s_Y}$$ O coeficiente de correlação de P
 
 ```
 
-
-
 #### Visualizando a Associação
 
 **Scatter Plot**
-  
-  O Scatter Plot é conhecido como o gráfico de dispersão. Ele relaciona duas ou três variáveis, ou seja, plota $X$ contra $Y$. Muito utilizado para ver o comportamento conjunto de duas séries. 
 
-Como já visto que renda pc e a taxa de feminicídio não mostram um comportamento conjunto: 
-  
+O Scatter Plot é conhecido como o gráfico de dispersão. Ele relaciona duas ou três variáveis, ou seja, plota $X$ contra $Y$. Muito utilizado para ver o comportamento conjunto de duas séries.
+
+Como já visto que renda pc e a taxa de feminicídio não mostram um comportamento conjunto:
+
 ```{r message=FALSE, warning=FALSE}
 ggplot(data = final_fem_22, aes(x = rendapc, y = feminic_tx))+
   geom_point(color="#6e94bd", size=3, alpha=0.7,  shape=17) +
@@ -961,7 +921,6 @@ ggplot(data = final_fem_22, aes(x = rendapc, y = feminic_tx))+
   labs(title="Renda pc e taxa de Feminicídios por Estado", x="Renda pc", y="Tx 100 mil")+
   theme_bw()
 ```
-
 
 Ao observar o homicídio absoluto e o feminicídio absoluto, estados com maiores números de homicídio tendem a ter maior número de feminicídios.
 
@@ -985,10 +944,9 @@ ggplot(data = final_fem_22, aes(x = part_feminic, y = homic_tx))+
   theme_bw()
 ```
 
-
 **Correlograma**
 
-Correlograma é uma maneira de analisar todas as correlações de umaúnca vez a partir de uma matriz. 
+Correlograma é uma maneira de analisar todas as correlações de umaúnca vez a partir de uma matriz.
 
 ```{r,message=F, warning=F}
 library(corrgram)
@@ -997,6 +955,7 @@ corrgram(correl, order=TRUE, lower.panel=panel.shade, upper.panel=panel.cor,  ma
 
 
 ```
+
 ```{r message=FALSE, warning=FALSE}
 #install.packages("ggcorrplot")
 library(ggcorrplot)
@@ -1014,8 +973,6 @@ ggcorrplot(correl2, hc.order = TRUE, type = "lower",        # Matriz de correla�
   scale_x_discrete(labels = c("Part. Feminic.", "Renda pc", 
                               "Taxa Homic.", "Homic. Abs.", "Taxa Feminic."))  # Nomes no eixo Y
 ```
-
-
 
 Salvando nosso banco para a próxima seção
 
