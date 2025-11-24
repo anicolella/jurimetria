@@ -15,7 +15,7 @@ O DataJud pode ser acessado diretamente no site do CNJ 🔗:
 
 <https://www.cnj.jus.br/sistemas/datajud/>
 
-A plataforma fornece dados atualizados para os diversos segmentos da Justiça brasileira, agrupados e padronizados para permitir análises estatísticas e jurimétricas.
+A plataforma fornece dados atualizados para diversos os ramos da Justiça brasileira, agrupados e padronizados para permitir análises estatísticas e jurimétricas.
 
 ## Autenticação e Chave Pública
 
@@ -92,7 +92,7 @@ Poderíamos escolher todas ou algumas dessas categorias para nossa análise.
 
 Nesta aula, porém, seguiremos um caminho alternativo: em vez de selecionar um assunto específico, trabalharemos com a **classe processual**.
 
-Selecionamos o seguinte ramo:
+Selecionamos a seguinte classe:
 
 **Processo Criminal → Procedimento Comum → Ação Penal de Competência do Júri**
 
@@ -108,63 +108,71 @@ Uma **boa seleção inicial** garante **maior precisão, consistência e relevâ
 
 ## Colocando a Mão na Massa: Coleta de Dados no DataJud
 
-### Extraíndo os Dados Processuais
-
-O código abaixo extrairá os dados da **classe 282 do grau G1** do **Tribunal de Justiça do Tocantins** e salvará todas essas informações em um dataframe chamado *juri.json*.
+### Instalando os pacotes necessários
 
 ```{r eval = FALSE, message=FALSE, warning=FALSE}
-# Bibloitecas Necessárias
-library(tidyverse)
-library(httr)
-library(jsonlite)
+install.packages("remotes","tidyverse","httr", "jsonlite","usethis","janitor", "here","modelsummary","gt")
 
-# Definindo a Chave de Acesso
-headers = c(
-  'Authorization' = 'APIKey cDZHYzlZa0JadVREZDJCendQbXY6SkJlTzNjLV9TRENyQk1RdnFKZGRQdw==',
-  'Content-Type' = 'application/json'
-)
-
-# Extraindo os dados do DataJud
-## Classe 282 e grau G1 (1º Grau)
-body = '{
-  "size": 8930,
-  "query": {
-        "bool": {
-            "must": [
-                {"match": {"classe.codigo": 282}},
-                {"match": {"grau": "G1"}}
-
-            ]
-        }
-   }
-}'
-
-## Do Tribunal de Justiça do Tocantins
-POST(url = "https://api-publica.datajud.cnj.jus.br/api_publica_tjto/_search", body = body, add_headers(headers),
-write_disk("juri.json"))
-
-## Importanto o dado
-juri <- fromJSON("juri.json")
-save(juri, file = "juri.rds")
+remotes::install_github("courtsbr/JurisMiner")
 ```
 
-Agora vamos analisar a **estrutura do arquivo *juri.json*** para identificar onde cada informação relevante está **localizada**. Esse mapeamento é essencial porque nos permite compreender exatamente como os **dados estão organizados** e, assim, definir qual tipo de **extração precisamos realizar** para trabalhar com informações de movimentação, órgãos julgadores, assuntos e outras características presentes no arquivo.
+### Carregando os pacotes necessários
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-#| results: "hide"
-
-# Pacotes Necessários
 library(tidyverse)
-library(httr)
-library(jsonlite)
+library(usethis)
+library(janitor)
+library(modelsummary)
+library(gt)
+library(JurisMiner)
+```
 
-## Importanto o dado
+### Criando um projeto para o curso
 
-arquivos <- list.files("data/juri", full.names = TRUE, pattern = "rds$")
+```{r eval = FALSE, message=FALSE, warning=FALSE}
+usethis::create_project("tjtomov")
+```
 
-dados_basicos <- map_dfr(arquivos, readRDS)
+### Crie a estrutura do projeto
+
+```{r eval = FALSE, message=FALSE, warning=FALSE}
+dir.create("data")
+dir.crate("data-raw")
+```
+
+### Importar a função do datajud
+
+O script abaixo irá carregar na sua sessão do R uma função chamada datajud, que será utilizada para baixar os dados sobre homicídio.
+
+```{r eval = FALSE, message=FALSE, warning=FALSE}
+source("https://gist.githubusercontent.com/jjesusfilho/b4634119b2d075ac54107d87fa6f22c7/raw/285fbfbec85223d3f394e00fed9d14804a1e5e89/baixar_datajud.R")
+
+source("https://gist.githubusercontent.com/jjesusfilho/b4634119b2d075ac54107d87fa6f22c7/raw/285fbfbec85223d3f394e00fed9d14804a1e5e89/ler_datajud.R")
+```
+
+### Baixando os Dados Processuais
+
+O código abaixo extrairá os dados da **classe 282 do grau G1** do **Tribunal de Justiça do Tocantins** e salvará todas essas informações em arquivos jsons.
+
+```{r eval = FALSE, message=FALSE, warning=FALSE}
+baixar_datajud(tamanho = 100, codigo_classe = 282, grau = "G1", diretorio  = "data-raw")
+```
+
+### Lendo os dados processuais
+
+```{r eval = FALSE, message=FALSE, warning=FALSE}
+
+dados_basicos <- ler_datajud(diretorio = "data-raw")
 
 ```
+
+```{r eval = TRUE, message=FALSE, warning=FALSE, echo = FALSE}
+
+a <- list.files(here::here("data/juri"), full.names = TRUE)
+dados_basicos  <- purrr::map_dfr(a, readRDS)
+```
+
+Agora vamos analisar a **estrutura do dados_basicos** para identificar onde cada informação relevante está **localizada**. Esse mapeamento é essencial porque nos permite compreender exatamente como os **dados estão organizados** e, assim, definir qual tipo de **extração precisamos realizar** para trabalhar com informações de movimentação, órgãos julgadores, assuntos e outras características presentes no arquivo.
 
 ### Analisando as Informações Extraídas
 
@@ -173,11 +181,6 @@ dados_basicos <- map_dfr(arquivos, readRDS)
 Vamos criar um banco que contenha o número do processo e o órgão julgador responsável por cada caso. Em seguida, analisaremos a frequência de processos por órgão julgador, tanto considerando apenas processos únicos quanto incluindo processos duplicados.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-
-# Pacote que padroniza os nomes das variáveis
-library(janitor)
-library(dplyr)
-library(tidyr)
 
 # Criar um dataframe com número do processo e órgão julgador
 julgador <- dados_basicos  |> 
@@ -269,10 +272,6 @@ db_limpo <- dados_basicos %>%
 Vamos focar nos processos únicos para analisar a frequência de órgãos julgadores e descrever os resultados graficamente e em tabelas.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(ggplot2)
-library(dplyr)
-library(gt)
-
 freq_j_u <- julgador_uni %>% 
   count(nome) %>% 
   arrange(desc(n)) %>% 
@@ -414,12 +413,6 @@ Conforme esperado pela nossa consulta inicial, todos os processos pertencem à c
 Vamos extrair e analisar os **assuntos processuais** associados a cada processo. Vamos fazer a extração e veja que o resultado é uma coluna com processo e a outra com o assunto. Se tivermos mais assuntos por processo, esse será duplicado.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
-library(tidyr)
-library(purrr)
-library(janitor)
-library(ggplot2)
-library(gt)
 
  # manter só linhas em que 'assuntos' é um data.frame
 assuntos <- db_limpo |> 
@@ -473,8 +466,7 @@ Fizemos duas colunas, uma com percentual com base no total de assuntos (11302), 
 Agora vamos olhar o assunto por processo, para ver quantos assuntos cada processo tem associado.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
-library(tidyr)
+
 assuntos_wide <- assuntos %>% 
   group_by(processo, nome) %>%   # garante uma linha por processo-assunto
   summarise(valor = 1, .groups = "drop") %>%
@@ -564,10 +556,6 @@ Com os dados limpos vamos criar uma *data.frame* de julgados final. Nesse vamos 
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 
-# Pacote que padroniza os nomes das variáveis
-library(janitor)
-library(dplyr)
-library(tidyr)
 
 # JULGADOR
 julgador_final <- db_limpo  |> 
@@ -665,8 +653,6 @@ Agora vamos organizar o banco de dados de assuntos. Vamos utilizar o nosso *assu
 Primeiro vamos ver se todos os assuntos estão presentes e depois vamos deixar somente aqueles que possuem soma maior que zero.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
-library(tidyr)
 
 bd_final <- bd_final |> 
   left_join(assuntos_wide_limpo, by = c("processo" = "processo"))
@@ -716,10 +702,7 @@ Por fim, criamos **variáveis binárias** para identificar três categorias prin
 Agora vamos analisar a movimentação processual. Para isso, precisamos extrair e organizar os dados de movimentação de cada processo. Vamos calcular o tempo decorrido entre cada movimentação e, em seguida, focar na análise do tempo até a baixa definitiva do processo.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-# Instalando Pacotes necessários
-#install.packages("devtools") 
-library(janitor)
-devtools::install_github("courtsbr/JurisMiner")
+
 
 movimento <- db_limpo  |> 
       select(processo = numeroProcesso, movimentos) |>
@@ -799,10 +782,6 @@ A junção não criou nenhuma coluna com valores **NA**, indicando que todos os 
 Primeiramente, vamos descrever ou realizar a análise descritiva do tempo até a baixa definitiva do processo. Neste momento, estamos considerando todos os 4.595 processos.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
-library(tidyr)
-library(gt)
-
 # Estatísticas descritivas para a variável decorrencia_acumulada
 tempo_stats <- baixa_uni_comp %>%
   summarise(
@@ -941,9 +920,6 @@ Uma outra maneira de visualizar os dados é utilizando uma **distribuição cont
 Vamos analisar agora por órgão julgador, os 5 maiores em relação aos demais.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
-library(tidyr)
-library(gt)
 
 # Estatísticas descritivas estratificadas por volume_top5
 tempo_stats_grupo <- baixa_uni_comp %>%
@@ -994,7 +970,6 @@ Vejamos a distribuição graficamente:
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
  
-library(ggplot2)
 
 # Garantir que seja fator
 baixa_uni_comp$volume_top5_factor <- factor(baixa_uni_comp$volume_top5, levels = c(1, 0), labels = c("Top5", "Demais"))
@@ -1035,10 +1010,6 @@ t.test(
 Vamos agora analisar por vara especializada versus não especializada.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
-library(tidyr)
-library(gt)
-
 # Estatísticas descritivas estratificadas por vara especializada
 tempo_stats_grupo_espec <- baixa_uni_comp %>%
   group_by(vara_espec) %>% 
@@ -1096,10 +1067,6 @@ Vamos agora repetir a mesma análise, mas classificando os processos por **assun
 O objetivo é verificar se os processos de homicídio qualificado apresentam um **padrão distinto de duração**.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
-library(tidyr)
-library(gt)
-
 # Estatísticas descritivas estratificadas por Homicídio Qualificado
 tempo_stats_grupo1 <- baixa_uni_comp %>%
   group_by(hq) %>% 
@@ -1157,9 +1124,7 @@ O teste de média s indicou que a diferença entre os dois grupos **não é esta
 Vejamos agora os processos de feminicídio, comparando-os com os demais processos. O objetivo é verificar se os **processos de feminicídio** apresentam um **padrão distinto** de duração em relação aos **outros tipos de homicídio**.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
-library(tidyr)
-library(gt)
+
 
 # Estatísticas descritivas estratificadas por Feminicídio
 tempo_stats_grupo2 <- baixa_uni_comp %>%
@@ -1215,8 +1180,6 @@ Observamos que os processos classificados como **feminicídio** apresentam uma *
 Vamos tentar analisar por meio de um modelo linear multivariado, que considera todas as variáveis anteriores.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-#install.packages("modelsummary")
-library(modelsummary)
 
 lm_model <- lm(decorrencia_acumulada ~ volume_top5 + vara_espec + hq + fem, data = baixa_uni_comp)
 
@@ -1376,11 +1339,6 @@ Essa redução levanta uma questão central para a análise:\
 Para evitar viés de seleção, vamos seguir olhando cada variável individualmente e comparando as estatísticas descritivas de cada fase do processo.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
-library(tidyr)
-library(purrr)
-library(gt)
-
 # 1. Função para gerar estatísticas descritivas
 make_stats <- function(x) {
   tibble::tibble(
@@ -1529,7 +1487,6 @@ Observa-se que **50% dos processos duram menos de 3 dias** entre a **distribuiç
 Essa diferença indica que existem **processos com duração muito longa**, alguns com mais de 100 dias, que **puxam a média para cima**. Ou seja, a distribuição é assimétrica, com uma **cauda longa à direita**.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
 
 # Contar quantos processos têm soma maior que 30 dias
 t_denuncia_unico %>%
@@ -1549,7 +1506,6 @@ Para entender melhor essa diferença, iremos **investigar os atos ordinatórios*
 Vamos analisar a movimentação do processo desde a distribuição até o recebimento da denúncia. Vamos criar um banco específico para essa análise.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
 
 # 1. Identificar o tempo da denúncia para cada processo
 tempo_denuncia <- movimento |> 
@@ -1567,9 +1523,6 @@ atos_ate_denuncia <- movimento %>%
 Criamos um banco que possui todos os movimentos processuais desde a distribuição até o recebimento da denúncia. Agora, vamos analisar a frequência dos movimentos processuais.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
-library(gt)
-
 freq_movimento <- atos_ate_denuncia %>%
   count(movimento, sort = TRUE)  # conta por descrição do movimento
 
@@ -1591,35 +1544,34 @@ freq_movimento %>%
 
 ```
 
+**ATOS ORDINATÓRIOS**
+
 E abaixo vamos **somar o tempo** de cada **ato ordinatório** por processo.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
+
 # Filtra somente atos ordinatórios e soma por processo
-soma_ordinatorios <- atos_ate_denuncia %>%
+bdsoma_ordinatorios <- atos_ate_denuncia %>%
   filter(cod_movimento == 11383) %>%   # filtra apenas atos ordinatórios
   group_by(processo) %>%                       # agrupa por processo
-  summarise(soma_decorrencia = sum(decorrencia, na.rm = TRUE))
+  summarise(soma_ordinatorios = sum(decorrencia, na.rm = TRUE))
 ```
 
 Agora temos um banco com a soma do tempo dos atos ordinatórios para cada processo, desde a distribuição até o recebimento da denúncia. Vamos **analisar as estatísticas** descritivas dessa variável.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
-library(tidyr)
-library(gt)
 
 # Estatísticas descritivas para a variável decorrencia_acumulada
-tempo_stats <- soma_ordinatorios %>%
+tempo_stats <- bdsoma_ordinatorios %>%
   summarise(
-    media     = mean(soma_decorrencia, na.rm = TRUE),
-    mediana   = median(soma_decorrencia, na.rm = TRUE),
-    desvio  = sd(soma_decorrencia, na.rm = TRUE),
-    variancia = var(soma_decorrencia, na.rm = TRUE),
-    q1        = quantile(soma_decorrencia, 0.25, na.rm = TRUE),
-    q3        = quantile(soma_decorrencia, 0.75, na.rm = TRUE),
-    minimo    = min(soma_decorrencia, na.rm = TRUE),
-    maximo    = max(soma_decorrencia, na.rm = TRUE)
+    media     = mean(soma_ordinatorios, na.rm = TRUE),
+    mediana   = median(soma_ordinatorios, na.rm = TRUE),
+    desvio  = sd(soma_ordinatorios, na.rm = TRUE),
+    variancia = var(soma_ordinatorios, na.rm = TRUE),
+    q1        = quantile(soma_ordinatorios, 0.25, na.rm = TRUE),
+    q3        = quantile(soma_ordinatorios, 0.75, na.rm = TRUE),
+    minimo    = min(soma_ordinatorios, na.rm = TRUE),
+    maximo    = max(soma_ordinatorios, na.rm = TRUE)
   ) |> 
   pivot_longer(
     cols = everything(),
@@ -1650,11 +1602,11 @@ Graficamente, a distribuição do tempo dos atos ordinatórios até a denúncia 
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
  
-ggplot(soma_ordinatorios, aes(x = soma_decorrencia)) +
+ggplot(bdsoma_ordinatorios, aes(x = soma_ordinatorios)) +
   geom_histogram(bins = 3000, fill = "#7185cc", color = "white", alpha = 0.7) +    
-  geom_vline(aes(xintercept = mean(soma_decorrencia)), color = "#c2986f", size = 1, alpha = 0.7,linetype = "dashed") +
+  geom_vline(aes(xintercept = mean(soma_ordinatorios)), color = "#c2986f", size = 1, alpha = 0.7,linetype = "dashed") +
   annotate("text", x = 5, y = 750, vjust = -0.5, label = "Média", color = "#c2986f", fontface = "bold", size = 4) +
-  geom_vline(aes(xintercept = median(soma_decorrencia)), color = "#c77878ff", size = 1, alpha = 0.7,linetype = "dashed") + 
+  geom_vline(aes(xintercept = median(soma_ordinatorios)), color = "#c77878ff", size = 1, alpha = 0.7,linetype = "dashed") + 
   annotate("text", x = 2, y = 1000, vjust = -0.5, label = "Mediana", color = "#c77878ff", fontface = "bold", size = 4) + 
   labs(
     x = "Tempo do Atos Ordinatórios",                                                 
@@ -1682,23 +1634,20 @@ O objetivo é entender:
 Para isso, abaixo apresentamos uma **tabela** que mostra, para cada processo, a **participação dos atos ordinatórios** e o **tempo total entre distribuição e denúncia**.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
 
 part_atos_ord <-  t_denuncia_unico |> 
-  left_join(soma_ordinatorios, by = "processo") |> 
+  left_join(bdsoma_ordinatorios, by = "processo") |> 
   mutate(
-    soma_decorrencia = replace_na(soma_decorrencia, 0), 
-    participacao = (soma_decorrencia) / deco_denuncia * 100)
+    soma_ordinatorios = replace_na(soma_ordinatorios, 0), 
+    participacao = (soma_ordinatorios) / deco_denuncia * 100)
 ```
 
 Agora temos um banco que mostra a participação dos atos ordinatórios no tempo total entre a distribuição e o recebimento da denúncia. Vamos **analisar as estatísticas descritivas** dessa participação.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(ggplot2)
-library(dplyr)
 
 # Scatterplot: Participação vs Deco_denúncia
-ggplot(part_atos_ord, aes(x = soma_decorrencia, y = deco_denuncia)) +
+ggplot(part_atos_ord, aes(x = soma_ordinatorios, y = deco_denuncia)) +
   geom_point(color = "#7185cc", alpha = 0.6, size = 2) +
   geom_smooth(method = "lm", color = "#c2986f", se = FALSE, linetype = "dashed") +  # linha de tendência
   labs(
@@ -1715,7 +1664,7 @@ ggplot(part_atos_ord, aes(x = soma_decorrencia, y = deco_denuncia)) +
   )
 
 # Correlação entre participação e deco_denuncia
-correlation <- cor(part_atos_ord$soma_decorrencia, part_atos_ord$deco_denuncia, use = "complete.obs")
+correlation <- cor(part_atos_ord$soma_ordinatorios, part_atos_ord$deco_denuncia, use = "complete.obs")
 correlation
 ```
 
@@ -1724,12 +1673,10 @@ Observa-se que há uma **relação positiva** entre a participação dos atos or
 Agora vamos explorar visiualmente se quanto maior a participação dos atos ordinatórios, maior é o tempo total até a denúncia. Primeiramente vamos analisar os processos com soma dos **atos ordinatórios \> 3 dias**.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
-library(ggplot2)
 
 # Filtrar processos com soma dos atos ordinatórios > 30 dias
 part_mais_3 <- part_atos_ord %>%
-  filter(soma_decorrencia > 3)
+  filter(soma_ordinatorios > 3)
 
 # Histograma da participação
 ggplot(part_mais_3, aes(x = participacao )) +
@@ -1752,12 +1699,10 @@ Observa-se que não há nenhum padrão claro, mostrando que a participação é 
 Abaixo mostramos nos processos com soma dos atos ordinatórios entre **1 e 3 dias**.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-library(dplyr)
-library(ggplot2)
 
 # Filtrar processos com soma dos atos ordinatórios > 30 dias
 part_menos_3 <- part_atos_ord %>%
-  filter(soma_decorrencia <= 3 & soma_decorrencia > 1)
+  filter(soma_ordinatorios <= 3 & soma_ordinatorios > 1)
 
 # Histograma da participação
 ggplot(part_menos_3, aes(x = participacao )) +
@@ -1776,3 +1721,238 @@ ggplot(part_menos_3, aes(x = participacao )) +
 ```
 
 Novamente, observa-se que não há nenhum padrão claro para os processos com soma dos atos ordinatórios entre **1 e 3 dias**.
+
+**REMESSA**
+
+Vamos **somar o tempo** de cada **remessa** por processo.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+
+# Filtra somente atos ordinatórios e soma por processo
+bdsoma_remessa <- atos_ate_denuncia %>%
+  filter(cod_movimento == 123) %>%   # filtra apenas remessas
+  group_by(processo) %>%           # agrupa por processo
+  summarise(soma_remessa = sum(decorrencia, na.rm = TRUE))
+```
+
+Agora temos um banco com a soma do tempo das remessas para cada processo, desde a distribuição até o recebimento da denúncia. Vamos **analisar as estatísticas** descritivas dessa variável.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+
+# Estatísticas descritivas para a variável decorrencia_acumulada
+tempo_stats_r <- bdsoma_remessa %>%
+  summarise(
+    media     = mean(soma_remessa, na.rm = TRUE),
+    mediana   = median(soma_remessa, na.rm = TRUE),
+    desvio  = sd(soma_remessa, na.rm = TRUE),
+    variancia = var(soma_remessa, na.rm = TRUE),
+    q1        = quantile(soma_remessa, 0.25, na.rm = TRUE),
+    q3        = quantile(soma_remessa, 0.75, na.rm = TRUE),
+    minimo    = min(soma_remessa, na.rm = TRUE),
+    maximo    = max(soma_remessa, na.rm = TRUE)
+  ) |> 
+  pivot_longer(
+    cols = everything(),
+    names_to = "Estatística",
+    values_to = "Valor"
+  ) 
+
+# Tabela GT
+tempo_stats_r %>%
+  gt() %>%
+  tab_header(
+    title = "Estatísticas Descritivas — Tempo médios das Remessas até a Denúncia",
+    subtitle = "Variável: decorrencia"
+  ) %>%
+  fmt_number(
+    columns = Valor,
+    decimals = 2
+  )
+```
+
+Observa-se que a **mediana** do tempo dos **das remessas** é muito baixa, em zero **0,00 dias** (aproximadamente **3 horas**).
+
+Entretanto, a **média** é significativamente maior, em torno de **12,76 dias**, indicando que existem **processos com remessas muito longos**, que elevam o valor médio. O **desvio-padrão** também é alto, reforçando que há grande **variação entre os processos**.
+
+Graficamente, a distribuição do tempo dos atos ordinatórios até a denúncia pode ser visualizada da seguinte forma:
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+ 
+ggplot(bdsoma_remessa, aes(x = soma_remessa)) +
+  geom_histogram(bins = 3000, fill = "#7185cc", color = "white", alpha = 0.7) +    
+  geom_vline(aes(xintercept = mean(soma_remessa)), color = "#c2986f", size = 1, alpha = 0.7,linetype = "dashed") +
+  annotate("text", x = 5, y = 750, vjust = -0.5, label = "Média", color = "#c2986f", fontface = "bold", size = 4) +
+  geom_vline(aes(xintercept = median(soma_remessa)), color = "#c77878ff", size = 1, alpha = 0.7,linetype = "dashed") + 
+  annotate("text", x = 2, y = 1000, vjust = -0.5, label = "Mediana", color = "#c77878ff", fontface = "bold", size = 4) + 
+  labs(
+    x = "Tempo do Atos Ordinatórios",                                                 
+    y = "Frequência",  
+    title = "Histograma do Tempo Atos Ordinatórios até a Denúncia"   
+  ) +
+  coord_cartesian(xlim = c(0, 25)) +
+  theme_minimal() + 
+ theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),              
+    axis.text.x = element_text(size = 12),                                         
+    axis.text.y = element_text(size = 10))
+ 
+```
+
+Como já visto a **mediana** da participação dos atos ordinatórios é **0,12 dias** (aproximadamente **3 horas**), enquanto a **média** é de **3,5 dias**. A distribuição apresenta uma **cauda longa à direita**, evidenciando a presença de processos com **atos ordinatórios excepcionalmente longos**, que merecem análise detalhada.
+
+Passamos a estudar a **participação dos atos ordinatórios** no **tempo total entre distribuição e recebimento da denúncia**.
+
+O objetivo é entender:
+
+-   **Quanto maior a participação**, maior o tempo gasto entre a distribuição e denúncia?
+-   Como o tempo dos atos ordinatórios se relaciona com o **tempo até a denúncia**?
+
+Para isso, abaixo apresentamos uma **tabela** que mostra, para cada processo, a **participação dos atos ordinatórios** e o **tempo total entre distribuição e denúncia**.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+
+part_remessa_ord <-  part_atos_ord |> 
+  left_join(bdsoma_remessa, by = "processo") |> 
+  mutate( 
+    soma_remessa = replace_na(soma_remessa, 0),
+    part_remessa = (soma_remessa) / deco_denuncia * 100)
+```
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+part_remessa_ord$soma_remessa[is.na(part_remessa_ord$soma_remessa)] <- 0
+part_remessa_ord$part_remessa[is.na(part_remessa_ord$part_remessa)] <- 0
+  
+```
+
+Agora temos um banco que mostra a participação dos atos ordinatórios no tempo total entre a distribuição e o recebimento da denúncia. Vamos **analisar as estatísticas descritivas** dessa participação.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+
+# Scatterplot: Participação vs Deco_denúncia
+ggplot(part_remessa_ord, aes(x = soma_remessa, y = deco_denuncia)) +
+  geom_point(color = "#7185cc", alpha = 0.6, size = 2) +
+  geom_smooth(method = "lm", color = "#c2986f", se = FALSE, linetype = "dashed") +  # linha de tendência
+  labs(
+    x = "Participação dos Atos Ordinatórios (%)",
+    y = "Tempo até Denúncia (dias)",
+    title = "Relação entre Participação dos Atos Ordinatórios e Tempo até a Denúncia"
+  ) +
+    coord_cartesian(xlim = c(0, 25), ylim = c(0, 100)) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 10)
+  )
+
+# Correlação entre participação e deco_denuncia
+correlation <- cor(part_remessa_ord$soma_remessa, part_remessa_ord$deco_denuncia, use = "complete.obs")
+correlation
+```
+
+Observa-se que há uma **relação positiva** entre a participação das remessas e o tempo até a denúncia. Ou seja, **quanto maior a participação dos atos ordinatórios, maior tende a ser o tempo até a denúncia**. Entretanto a correlação não é alta, cerca de **0,37**, indicando que outros fatores também influenciam o tempo até a denúncia.
+
+Agora vamos explorar visiualmente se quanto maior a participação dos atos ordinatórios, maior é o tempo total até a denúncia. Primeiramente vamos analisar os processos com soma dos **remessas \> 5 dias**.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+
+# Filtrar processos com soma dos atos ordinatórios > 30 dias
+part_mais_3_r <- part_remessa_ord %>%
+  filter(soma_remessa > 10)
+
+# Histograma da participação
+ggplot(part_mais_3_r, aes(x = part_remessa )) +
+  geom_histogram(binwidth = 5, fill = "#7185cc", color = "#7185cc", alpha = 0.4) +
+  labs(
+    x = "Participação dos Atos Ordinatórios (%)",
+    y = "Número de Processos",
+    title = "Distribuição da Participação dos Atos Ordinatórios (somente >3 dias)"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 10)
+  )
+```
+
+Observa-se que não há nenhum padrão claro, mostrando que a participação é próxima de **uma distribuição uniforme** para os processos com soma dos atos ordinatórios **maior que 3 dias**.
+
+Abaixo mostramos nos processos com soma dos atos ordinatórios entre **2 e 10 dias**.
+
+```{r eval = TRUE, message=FALSE, warning=FALSE}
+
+# Filtrar processos com soma dos atos ordinatórios
+part_menos_10_r <- part_remessa_ord %>%
+  filter(soma_remessa <= 10 & soma_remessa > 2)
+
+# Histograma da participação
+ggplot(part_menos_10_r, aes(x = participacao )) +
+  geom_histogram(binwidth = 5, fill = "#7185cc", color = "#7185cc", alpha = 0.4) +
+  labs(
+    x = "Participação dos Atos Ordinatórios (%)",
+    y = "Número de Processos",
+    title = "Distribuição da Participação dos Atos Ordinatórios (somente entre 1 e 3 dias)"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 10)
+  )
+```
+
+Vamos analisar juntos os **Atos Ordinatórios** e as **Remessas** para entender melhor o que está acontecendo nesses processos que apresentam tempos longos entre a distribuição e o recebimento da denúncia.
+
+```{r eval = FALSE, message=FALSE, warning=FALSE}
+
+
+contagens <- atos_ate_denuncia |>
+  summarise(
+    n_remessa = sum(cod_movimento == 123),
+    n_ordinatorio = sum(cod_movimento == 11383),
+    .by = processo
+  )
+
+part_remessa_ord <- part_remessa_ord |>
+  left_join(contagens, by = "processo")
+
+
+
+dados_q <- part_remessa_ord |>
+  mutate(
+    quantil_tempo = ntile(deco_denuncia, 4)  # cria Q1..Q4
+  )
+
+resumo_quantil <- dados_q |>
+  summarise(
+    media_tempo_total = mean(deco_denuncia, na.rm = TRUE),
+    media_soma_remessa = mean(soma_remessa, na.rm = TRUE),
+    media_soma_ordinatorio = mean(soma_decorrencia, na.rm = TRUE),
+    media_n_remessa = mean(n_remessa, na.rm = TRUE),
+    media_n_ordinatorio = mean(n_ordinatorio, na.rm = TRUE),
+    .by = quantil_tempo
+  )
+
+
+
+resumo_quantil |>
+  arrange(quantil_tempo) |>  
+  gt() |>
+  tab_header(
+    title = "Processos mais longos têm mais remessas e atos ordinatórios?"
+  ) |>
+  fmt_number(
+    columns = where(is.numeric),
+    decimals = 2
+  ) |>
+  cols_label(
+    quantil_tempo = "Quantil Tempo",
+    media_tempo_total = "Tempo Denúncia (média)",
+    media_soma_remessa = "Tempo Remessa (média)",
+    media_soma_ordinatorio = "Tempo Atos Ordin. (média)",
+    media_n_remessa = "Nº de Remessas (média)",
+    media_n_ordinatorio = "Nº de Atos Ordin. (média)"
+  )
+
+```
