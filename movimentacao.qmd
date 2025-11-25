@@ -181,7 +181,6 @@ Agora vamos analisar a **estrutura do dados_basicos** para identificar onde cada
 Vamos criar um banco que contenha o número do processo e o órgão julgador responsável por cada caso. Em seguida, analisaremos a frequência de processos por órgão julgador, tanto considerando apenas processos únicos quanto incluindo processos duplicados.
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
-
 # Criar um dataframe com número do processo e órgão julgador
 julgador <- dados_basicos  |> 
       select(processo = numeroProcesso, orgaoJulgador) |> # Faço a seleção e renomeio a coluna
