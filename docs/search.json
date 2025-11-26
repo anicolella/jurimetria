@@ -125,7 +125,7 @@
     "href": "oficina.html#órgão-julgador",
     "title": "17  Oficina sobre análise de sobrevivência",
     "section": "18.11 Órgão julgador",
-    "text": "18.11 Órgão julgador\n\norgao_julgador &lt;- juri |&gt; \n    select(numero_processo, orgao_julgador) |&gt; \n    unnest_longer(orgao_julgador) |&gt; \n    mutate(orgao_julgador = unlist(orgao_julgador)) |&gt; \n     distinct() |&gt; \n     pivot_wider(names_from = \"orgao_julgador_id\", values_from = \"orgao_julgador\" ) |&gt; \n     clean_names() |&gt; \n     unnest(cols = c(codigo_municipio_ibge, codigo, nome))",
+    "text": "18.11 Órgão julgador\n\norgao_julgador &lt;- juri |&gt; \n    select(numero_processo, orgao_julgador) |&gt; \n    unnest_longer(orgao_julgador) |&gt; \n    mutate(orgao_julgador = unlist(orgao_julgador)) |&gt; \n     distinct() |&gt; \n     pivot_wider(names_from = \"orgao_julgador_id\", values_from = \"orgao_julgador\" ) |&gt; \n     clean_names() |&gt; \n     unnest(cols = c(codigo_municipio_ibge, codigo, nome))\n\n\nentrancias &lt;- jsonlite::fromJSON(\"https://gist.githubusercontent.com/jjesusfilho/c150c20e5c1b45bf62d3057e78d86652/raw/99d21a002abb09d0f7b82f4241f9c25e8b0a29b9/entrancias_tjto.json\")\n\nentrancias &lt;- entrancias |&gt; \n     mutate(codigo = as.character(codigo)) |&gt; \n     select(codigo, entrancia)\n\norgao_julgador &lt;- orgao_julgador  |&gt; \n        left_join(entrancias, by = \"codigo\")",
     "crumbs": [
       "Home",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Oficina sobre análise de sobrevivência</span>"
@@ -158,7 +158,7 @@
     "href": "oficina.html#junta-as-duas-tabelas",
     "title": "17  Oficina sobre análise de sobrevivência",
     "section": "18.14 Junta as duas tabelas",
-    "text": "18.14 Junta as duas tabelas\n\nbase &lt;- eventos |&gt; \n    inner_join(assuntos_selecionados, by = \"numero_processo\")",
+    "text": "18.14 Junta as duas tabelas\n\norgao_entrancia &lt;- orgao_julgador |&gt; \n  select(numero_processo,  entrancia) |&gt; \n  distinct()\n\nbase &lt;- eventos |&gt; \n    inner_join(assuntos_selecionados, by = \"numero_processo\") |&gt; \n    inner_join(orgao_entrancia)",
     "crumbs": [
       "Home",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Oficina sobre análise de sobrevivência</span>"
