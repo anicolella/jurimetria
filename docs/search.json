@@ -15,7 +15,7 @@
     "href": "oficina.html#instalar-pacotes",
     "title": "17  Oficina sobre análise de sobrevivência",
     "section": "18.1 Instalar pacotes",
-    "text": "18.1 Instalar pacotes\n\ninstall.packages(\"ggsurvfit\")",
+    "text": "18.1 Instalar pacotes\n\ninstall.packages(\"ggsurvfit\")\nremotes::install_github(\"courtsbr/JurisMiner\")",
     "crumbs": [
       "Home",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Oficina sobre análise de sobrevivência</span>"
