@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="José de Jesus Filho">
 
-<title>Análise de Sobrevivência em Processos Judiciais</title>
+<title>14&nbsp; Análise de Sobrevivência em Processos Judiciais – Estruturação e Análise de Dados Jurídicos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,8 +22,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,16 +59,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="sobrevivencia_files/libs/clipboard/clipboard.min.js"></script>
-<script src="sobrevivencia_files/libs/quarto-html/quarto.js"></script>
-<script src="sobrevivencia_files/libs/quarto-html/popper.min.js"></script>
-<script src="sobrevivencia_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="sobrevivencia_files/libs/quarto-html/anchor.min.js"></script>
-<link href="sobrevivencia_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="sobrevivencia_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="sobrevivencia_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="sobrevivencia_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="sobrevivencia_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./outrosmodelos.html" rel="next">
+<link href="./lineares.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4d862aeedb2eadf8185b0c678bd1a9a4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -101,15 +138,264 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent">
+<body class="nav-sidebar floating nav-fixed quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Estruturação e Análise de Dados Jurídicos</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sobrevivencia.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Análise de Sobrevivência em Processos Judiciais</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Prefácio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./autores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Sobre os Autores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sumário do Curso ESMAT</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./perfil.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Perfil da Turma</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./desenho_jurimetria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introdução ao Desenho de Pesquisa e à Jurimetria</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./priest_klein.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Seleção de disputas para o litígio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./galanter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Por que os que têm saem na frente: análise do texto de Marc Galanter</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./manipulacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Maipulando os Dados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">O Dplyr</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./googledrive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Google Drive</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./descritiva_v2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./estatistica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Uma Introdução à Estatística</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lineares.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sobrevivencia.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Análise de Sobrevivência em Processos Judiciais</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./outrosmodelos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Modelos Avançados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./movimentacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Aula Prática: Coleta e Análise de Dados sobre Homicídio Qualificado</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">14.1</span> Introdução</a></li>
+  <li><a href="#parte-i-motivação-e-fundamentos-jurídicos" id="toc-parte-i-motivação-e-fundamentos-jurídicos" class="nav-link" data-scroll-target="#parte-i-motivação-e-fundamentos-jurídicos"><span class="header-section-number">14.2</span> Parte I — Motivação e fundamentos jurídicos</a>
+  <ul class="collapse">
+  <li><a href="#decidir-se-ingressa-com-ação" id="toc-decidir-se-ingressa-com-ação" class="nav-link" data-scroll-target="#decidir-se-ingressa-com-ação"><span class="header-section-number">14.2.1</span> 1. Decidir se ingressa com ação</a></li>
+  <li><a href="#estimar-custos-do-processo" id="toc-estimar-custos-do-processo" class="nav-link" data-scroll-target="#estimar-custos-do-processo"><span class="header-section-number">14.2.2</span> 2. Estimar custos do processo</a></li>
+  <li><a href="#estimar-risco-de-prescrição" id="toc-estimar-risco-de-prescrição" class="nav-link" data-scroll-target="#estimar-risco-de-prescrição"><span class="header-section-number">14.2.3</span> 3. Estimar risco de prescrição</a></li>
+  <li><a href="#governança-judicial" id="toc-governança-judicial" class="nav-link" data-scroll-target="#governança-judicial"><span class="header-section-number">14.2.4</span> 4. Governança judicial</a></li>
+  <li><a href="#avaliação-de-políticas-públicas" id="toc-avaliação-de-políticas-públicas" class="nav-link" data-scroll-target="#avaliação-de-políticas-públicas"><span class="header-section-number">14.2.5</span> 5. Avaliação de políticas públicas</a></li>
+  </ul></li>
+  <li><a href="#parte-ii-conceitos-essenciais-da-análise-de-duração" id="toc-parte-ii-conceitos-essenciais-da-análise-de-duração" class="nav-link" data-scroll-target="#parte-ii-conceitos-essenciais-da-análise-de-duração"><span class="header-section-number">14.3</span> Parte II — Conceitos essenciais da análise de duração</a>
+  <ul class="collapse">
+  <li><a href="#variáveis-básicas" id="toc-variáveis-básicas" class="nav-link" data-scroll-target="#variáveis-básicas"><span class="header-section-number">14.3.1</span> Variáveis básicas</a></li>
+  <li><a href="#censura" id="toc-censura" class="nav-link" data-scroll-target="#censura"><span class="header-section-number">14.3.2</span> Censura</a></li>
+  <li><a href="#riscos-concorrentes" id="toc-riscos-concorrentes" class="nav-link" data-scroll-target="#riscos-concorrentes"><span class="header-section-number">14.3.3</span> Riscos concorrentes</a></li>
+  </ul></li>
+  <li><a href="#parte-iii-funções-fundamentais" id="toc-parte-iii-funções-fundamentais" class="nav-link" data-scroll-target="#parte-iii-funções-fundamentais"><span class="header-section-number">14.4</span> Parte III — Funções fundamentais</a>
+  <ul class="collapse">
+  <li><a href="#função-de-sobrevivência" id="toc-função-de-sobrevivência" class="nav-link" data-scroll-target="#função-de-sobrevivência"><span class="header-section-number">14.4.1</span> Função de sobrevivência</a></li>
+  <li><a href="#função-de-risco-hazard" id="toc-função-de-risco-hazard" class="nav-link" data-scroll-target="#função-de-risco-hazard"><span class="header-section-number">14.4.2</span> Função de risco (hazard)</a></li>
+  <li><a href="#função-de-risco-acumulado" id="toc-função-de-risco-acumulado" class="nav-link" data-scroll-target="#função-de-risco-acumulado"><span class="header-section-number">14.4.3</span> Função de risco acumulado</a></li>
+  </ul></li>
+  <li><a href="#parte-iv-estimador-de-kaplanmeier" id="toc-parte-iv-estimador-de-kaplanmeier" class="nav-link" data-scroll-target="#parte-iv-estimador-de-kaplanmeier"><span class="header-section-number">14.5</span> Parte IV — Estimador de Kaplan–Meier</a></li>
+  <li><a href="#parte-v-figura-1-curva-kaplanmeier" id="toc-parte-v-figura-1-curva-kaplanmeier" class="nav-link" data-scroll-target="#parte-v-figura-1-curva-kaplanmeier"><span class="header-section-number">14.6</span> Parte V — Figura 1: Curva Kaplan–Meier</a></li>
+  <li><a href="#parte-vi-comparação-entre-grupos" id="toc-parte-vi-comparação-entre-grupos" class="nav-link" data-scroll-target="#parte-vi-comparação-entre-grupos"><span class="header-section-number">14.7</span> Parte VI — Comparação entre grupos</a></li>
+  <li><a href="#parte-vii-figura-2-comparação-de-grupos" id="toc-parte-vii-figura-2-comparação-de-grupos" class="nav-link" data-scroll-target="#parte-vii-figura-2-comparação-de-grupos"><span class="header-section-number">14.8</span> Parte VII — Figura 2: Comparação de grupos</a>
+  <ul class="collapse">
+  <li><a href="#interpretação-jurídica-do-teste-log-rank" id="toc-interpretação-jurídica-do-teste-log-rank" class="nav-link" data-scroll-target="#interpretação-jurídica-do-teste-log-rank"><span class="header-section-number">14.8.1</span> Interpretação jurídica do teste log-rank</a></li>
+  </ul></li>
+  <li><a href="#parte-viii-modelo-de-cox-riscos-proporcionais" id="toc-parte-viii-modelo-de-cox-riscos-proporcionais" class="nav-link" data-scroll-target="#parte-viii-modelo-de-cox-riscos-proporcionais"><span class="header-section-number">14.9</span> Parte VIII — Modelo de Cox (Riscos Proporcionais)</a>
+  <ul class="collapse">
+  <li><a href="#fórmula-do-modelo" id="toc-fórmula-do-modelo" class="nav-link" data-scroll-target="#fórmula-do-modelo"><span class="header-section-number">14.9.1</span> Fórmula do modelo</a></li>
+  <li><a href="#interpretação-jurídica" id="toc-interpretação-jurídica" class="nav-link" data-scroll-target="#interpretação-jurídica"><span class="header-section-number">14.9.2</span> Interpretação jurídica</a></li>
+  <li><a href="#exemplo-em-r-ajuste-do-modelo" id="toc-exemplo-em-r-ajuste-do-modelo" class="nav-link" data-scroll-target="#exemplo-em-r-ajuste-do-modelo"><span class="header-section-number">14.9.3</span> Exemplo em R — Ajuste do modelo</a></li>
+  <li><a href="#como-interpretar-a-saída" id="toc-como-interpretar-a-saída" class="nav-link" data-scroll-target="#como-interpretar-a-saída"><span class="header-section-number">14.9.4</span> Como interpretar a saída</a></li>
+  <li><a href="#observações-importantes-para-pesquisas-jurídicas" id="toc-observações-importantes-para-pesquisas-jurídicas" class="nav-link" data-scroll-target="#observações-importantes-para-pesquisas-jurídicas"><span class="header-section-number">14.9.5</span> Observações importantes para pesquisas jurídicas</a></li>
+  </ul></li>
+  <li><a href="#parte-ix-risco-acumulado-nelsonaalen" id="toc-parte-ix-risco-acumulado-nelsonaalen" class="nav-link" data-scroll-target="#parte-ix-risco-acumulado-nelsonaalen"><span class="header-section-number">14.10</span> Parte IX — Risco acumulado (Nelson–Aalen)</a>
+  <ul class="collapse">
+  <li><a href="#por-que-o-risco-acumulado-importa-no-direito" id="toc-por-que-o-risco-acumulado-importa-no-direito" class="nav-link" data-scroll-target="#por-que-o-risco-acumulado-importa-no-direito"><span class="header-section-number">14.10.1</span> Por que o risco acumulado importa no direito?</a></li>
+  <li><a href="#figura-risco-acumulado-estimador-nelsonaalen" id="toc-figura-risco-acumulado-estimador-nelsonaalen" class="nav-link" data-scroll-target="#figura-risco-acumulado-estimador-nelsonaalen"><span class="header-section-number">14.10.2</span> Figura — Risco acumulado (estimador Nelson–Aalen)</a></li>
+  <li><a href="#interpretação-jurídica-da-curva" id="toc-interpretação-jurídica-da-curva" class="nav-link" data-scroll-target="#interpretação-jurídica-da-curva"><span class="header-section-number">14.10.3</span> Interpretação jurídica da curva</a></li>
+  <li><a href="#observação-técnica" id="toc-observação-técnica" class="nav-link" data-scroll-target="#observação-técnica"><span class="header-section-number">14.10.4</span> Observação técnica</a></li>
+  </ul></li>
+  <li><a href="#parte-x-introdução-aos-riscos-concorrentes-competing-risks" id="toc-parte-x-introdução-aos-riscos-concorrentes-competing-risks" class="nav-link" data-scroll-target="#parte-x-introdução-aos-riscos-concorrentes-competing-risks"><span class="header-section-number">14.11</span> Parte X — Introdução aos riscos concorrentes (Competing Risks)</a>
+  <ul class="collapse">
+  <li><a href="#o-erro-mais-comum-tratar-risco-concorrente-como-censura" id="toc-o-erro-mais-comum-tratar-risco-concorrente-como-censura" class="nav-link" data-scroll-target="#o-erro-mais-comum-tratar-risco-concorrente-como-censura"><span class="header-section-number">14.11.1</span> O erro mais comum: tratar risco concorrente como censura</a></li>
+  <li><a href="#quando-usar-competing-risks" id="toc-quando-usar-competing-risks" class="nav-link" data-scroll-target="#quando-usar-competing-risks"><span class="header-section-number">14.11.2</span> Quando usar competing risks?</a></li>
+  <li><a href="#consequências-jurídicas-de-ignorar-riscos-concorrentes" id="toc-consequências-jurídicas-de-ignorar-riscos-concorrentes" class="nav-link" data-scroll-target="#consequências-jurídicas-de-ignorar-riscos-concorrentes"><span class="header-section-number">14.11.3</span> Consequências jurídicas de ignorar riscos concorrentes</a></li>
+  <li><a href="#métodos-adequados" id="toc-métodos-adequados" class="nav-link" data-scroll-target="#métodos-adequados"><span class="header-section-number">14.11.4</span> Métodos adequados</a></li>
+  <li><a href="#representação-gráfica-típica" id="toc-representação-gráfica-típica" class="nav-link" data-scroll-target="#representação-gráfica-típica"><span class="header-section-number">14.11.5</span> Representação gráfica típica</a></li>
+  <li><a href="#intuição-jurídica" id="toc-intuição-jurídica" class="nav-link" data-scroll-target="#intuição-jurídica"><span class="header-section-number">14.11.6</span> Intuição jurídica</a></li>
+  <li><a href="#conclusão-da-parte-x" id="toc-conclusão-da-parte-x" class="nav-link" data-scroll-target="#conclusão-da-parte-x"><span class="header-section-number">14.11.7</span> Conclusão da Parte X</a></li>
+  </ul></li>
+  <li><a href="#parte-xi-função-de-incidência-cumulativa-cif-para-riscos-concorrentes" id="toc-parte-xi-função-de-incidência-cumulativa-cif-para-riscos-concorrentes" class="nav-link" data-scroll-target="#parte-xi-função-de-incidência-cumulativa-cif-para-riscos-concorrentes"><span class="header-section-number">14.12</span> Parte XI — Função de Incidência Cumulativa (CIF) para riscos concorrentes</a>
+  <ul class="collapse">
+  <li><a href="#o-que-a-cif-estima" id="toc-o-que-a-cif-estima" class="nav-link" data-scroll-target="#o-que-a-cif-estima"><span class="header-section-number">14.12.1</span> O que a CIF estima?</a></li>
+  <li><a href="#interpretação-jurídica-1" id="toc-interpretação-jurídica-1" class="nav-link" data-scroll-target="#interpretação-jurídica-1"><span class="header-section-number">14.12.2</span> Interpretação jurídica</a></li>
+  <li><a href="#exemplo-em-r-estimando-cif" id="toc-exemplo-em-r-estimando-cif" class="nav-link" data-scroll-target="#exemplo-em-r-estimando-cif"><span class="header-section-number">14.12.3</span> Exemplo em R — Estimando CIF</a></li>
+  <li><a href="#como-interpretar-a-cif" id="toc-como-interpretar-a-cif" class="nav-link" data-scroll-target="#como-interpretar-a-cif"><span class="header-section-number">14.12.4</span> Como interpretar a CIF</a></li>
+  <li><a href="#comparação-jurídica-entre-grupos" id="toc-comparação-jurídica-entre-grupos" class="nav-link" data-scroll-target="#comparação-jurídica-entre-grupos"><span class="header-section-number">14.12.5</span> Comparação jurídica entre grupos</a></li>
+  <li><a href="#quando-usar-finegray-modelos-com-covariáveis" id="toc-quando-usar-finegray-modelos-com-covariáveis" class="nav-link" data-scroll-target="#quando-usar-finegray-modelos-com-covariáveis"><span class="header-section-number">14.12.6</span> Quando usar Fine–Gray (modelos com covariáveis)</a></li>
+  <li><a href="#conclusão-da-parte-xi" id="toc-conclusão-da-parte-xi" class="nav-link" data-scroll-target="#conclusão-da-parte-xi"><span class="header-section-number">14.12.7</span> Conclusão da Parte XI</a></li>
+  </ul></li>
+  <li><a href="#parte-xii-interpretação-jurídica-aplicada" id="toc-parte-xii-interpretação-jurídica-aplicada" class="nav-link" data-scroll-target="#parte-xii-interpretação-jurídica-aplicada"><span class="header-section-number">14.13</span> Parte XII — Interpretação jurídica aplicada</a>
+  <ul class="collapse">
+  <li><a href="#exemplos-reais-aplicáveis" id="toc-exemplos-reais-aplicáveis" class="nav-link" data-scroll-target="#exemplos-reais-aplicáveis"><span class="header-section-number">14.13.1</span> Exemplos reais aplicáveis</a></li>
+  <li><a href="#observações-jurídicas-importantes" id="toc-observações-jurídicas-importantes" class="nav-link" data-scroll-target="#observações-jurídicas-importantes"><span class="header-section-number">14.13.2</span> Observações jurídicas importantes</a></li>
+  <li><a href="#exemplos-de-interpretações-estratégicas" id="toc-exemplos-de-interpretações-estratégicas" class="nav-link" data-scroll-target="#exemplos-de-interpretações-estratégicas"><span class="header-section-number">14.13.3</span> Exemplos de interpretações estratégicas</a></li>
+  <li><a href="#aplicações-institucionais" id="toc-aplicações-institucionais" class="nav-link" data-scroll-target="#aplicações-institucionais"><span class="header-section-number">14.13.4</span> Aplicações institucionais</a></li>
+  <li><a href="#conclusão-da-parte-xii" id="toc-conclusão-da-parte-xii" class="nav-link" data-scroll-target="#conclusão-da-parte-xii"><span class="header-section-number">14.13.5</span> Conclusão da Parte XII</a></li>
+  </ul></li>
+  <li><a href="#parte-xiii-erros-metodológicos-comuns-em-análises-de-duração-no-direito" id="toc-parte-xiii-erros-metodológicos-comuns-em-análises-de-duração-no-direito" class="nav-link" data-scroll-target="#parte-xiii-erros-metodológicos-comuns-em-análises-de-duração-no-direito"><span class="header-section-number">14.14</span> Parte XIII — Erros metodológicos comuns em análises de duração no direito</a>
+  <ul class="collapse">
+  <li><a href="#usar-apenas-processos-decididos-complete-case" id="toc-usar-apenas-processos-decididos-complete-case" class="nav-link" data-scroll-target="#usar-apenas-processos-decididos-complete-case"><span class="header-section-number">14.14.1</span> Usar apenas processos decididos (complete case)</a></li>
+  <li><a href="#tratar-riscos-concorrentes-como-censura" id="toc-tratar-riscos-concorrentes-como-censura" class="nav-link" data-scroll-target="#tratar-riscos-concorrentes-como-censura"><span class="header-section-number">14.14.2</span> Tratar riscos concorrentes como censura</a></li>
+  <li><a href="#misturar-eventos-diferentes-no-mesmo-desfecho" id="toc-misturar-eventos-diferentes-no-mesmo-desfecho" class="nav-link" data-scroll-target="#misturar-eventos-diferentes-no-mesmo-desfecho"><span class="header-section-number">14.14.3</span> Misturar eventos diferentes no mesmo desfecho</a></li>
+  <li><a href="#usar-apenas-médias-ou-medianas-brutas" id="toc-usar-apenas-médias-ou-medianas-brutas" class="nav-link" data-scroll-target="#usar-apenas-médias-ou-medianas-brutas"><span class="header-section-number">14.14.4</span> Usar apenas médias ou medianas brutas</a></li>
+  <li><a href="#não-verificar-proporcionalidade-dos-riscos-modelo-de-cox" id="toc-não-verificar-proporcionalidade-dos-riscos-modelo-de-cox" class="nav-link" data-scroll-target="#não-verificar-proporcionalidade-dos-riscos-modelo-de-cox"><span class="header-section-number">14.14.5</span> Não verificar proporcionalidade dos riscos (modelo de Cox)</a></li>
+  <li><a href="#ignorar-heterogeneidade-institucional" id="toc-ignorar-heterogeneidade-institucional" class="nav-link" data-scroll-target="#ignorar-heterogeneidade-institucional"><span class="header-section-number">14.14.6</span> Ignorar heterogeneidade institucional</a></li>
+  <li><a href="#não-documentar-o-critério-de-corte-temporal" id="toc-não-documentar-o-critério-de-corte-temporal" class="nav-link" data-scroll-target="#não-documentar-o-critério-de-corte-temporal"><span class="header-section-number">14.14.7</span> Não documentar o critério de corte temporal</a></li>
+  <li><a href="#falta-de-consistência-na-definição-do-evento" id="toc-falta-de-consistência-na-definição-do-evento" class="nav-link" data-scroll-target="#falta-de-consistência-na-definição-do-evento"><span class="header-section-number">14.14.8</span> Falta de consistência na definição do evento</a></li>
+  <li><a href="#desconsiderar-mudanças-institucionais-ao-longo-do-tempo" id="toc-desconsiderar-mudanças-institucionais-ao-longo-do-tempo" class="nav-link" data-scroll-target="#desconsiderar-mudanças-institucionais-ao-longo-do-tempo"><span class="header-section-number">14.14.9</span> Desconsiderar mudanças institucionais ao longo do tempo</a></li>
+  <li><a href="#conclusão-da-parte-xiii" id="toc-conclusão-da-parte-xiii" class="nav-link" data-scroll-target="#conclusão-da-parte-xiii"><span class="header-section-number">14.14.10</span> Conclusão da Parte XIII</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Análise de Sobrevivência em Processos Judiciais</h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Análise de Sobrevivência em Processos Judiciais</span></h1>
 </div>
 
 
@@ -132,8 +418,8 @@ window.Quarto = {
 </header>
 
 
-<section id="introdução" class="level1">
-<h1>Introdução</h1>
+<section id="introdução" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">14.1</span> Introdução</h2>
 <p>A análise de sobrevivência (ou análise de duração) estuda o <strong>tempo até que um evento ocorra</strong>.<br>
 No direito, os eventos mais comuns são:</p>
 <ul>
@@ -154,16 +440,16 @@ No direito, os eventos mais comuns são:</p>
 <p>A análise de sobrevivência é o método estatístico adequado.</p>
 <hr>
 </section>
-<section id="parte-i-motivação-e-fundamentos-jurídicos" class="level1">
-<h1>Parte I — Motivação e fundamentos jurídicos</h1>
-<section id="decidir-se-ingressa-com-ação" class="level2">
-<h2 class="anchored" data-anchor-id="decidir-se-ingressa-com-ação">1. Decidir se ingressa com ação</h2>
+<section id="parte-i-motivação-e-fundamentos-jurídicos" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="parte-i-motivação-e-fundamentos-jurídicos"><span class="header-section-number">14.2</span> Parte I — Motivação e fundamentos jurídicos</h2>
+<section id="decidir-se-ingressa-com-ação" class="level3" data-number="14.2.1">
+<h3 data-number="14.2.1" class="anchored" data-anchor-id="decidir-se-ingressa-com-ação"><span class="header-section-number">14.2.1</span> 1. Decidir se ingressa com ação</h3>
 <p>A pergunta mais frequente:<br>
 <strong>“Quanto tempo dura um processo como o meu?”</strong></p>
 <p>Estimativas confiáveis ajudam a decidir se vale judicializar ou buscar alternativas.</p>
 </section>
-<section id="estimar-custos-do-processo" class="level2">
-<h2 class="anchored" data-anchor-id="estimar-custos-do-processo">2. Estimar custos do processo</h2>
+<section id="estimar-custos-do-processo" class="level3" data-number="14.2.2">
+<h3 data-number="14.2.2" class="anchored" data-anchor-id="estimar-custos-do-processo"><span class="header-section-number">14.2.2</span> 2. Estimar custos do processo</h3>
 <p>Processos mais longos têm custos maiores:</p>
 <ul>
 <li>honorários,</li>
@@ -173,8 +459,8 @@ No direito, os eventos mais comuns são:</p>
 <li>imobilização de ativos.</li>
 </ul>
 </section>
-<section id="estimar-risco-de-prescrição" class="level2">
-<h2 class="anchored" data-anchor-id="estimar-risco-de-prescrição">3. Estimar risco de prescrição</h2>
+<section id="estimar-risco-de-prescrição" class="level3" data-number="14.2.3">
+<h3 data-number="14.2.3" class="anchored" data-anchor-id="estimar-risco-de-prescrição"><span class="header-section-number">14.2.3</span> 3. Estimar risco de prescrição</h3>
 <p>A análise de duração permite:</p>
 <ul>
 <li>estimar risco de prescrição intercorrente,</li>
@@ -182,16 +468,16 @@ No direito, os eventos mais comuns são:</p>
 <li>calcular probabilidade de não decisão até certo prazo.</li>
 </ul>
 </section>
-<section id="governança-judicial" class="level2">
-<h2 class="anchored" data-anchor-id="governança-judicial">4. Governança judicial</h2>
+<section id="governança-judicial" class="level3" data-number="14.2.4">
+<h3 data-number="14.2.4" class="anchored" data-anchor-id="governança-judicial"><span class="header-section-number">14.2.4</span> 4. Governança judicial</h3>
 <p>Usada por:</p>
 <ul>
 <li>TJs, CNJ, MP, DPE, AGU, procuradorias.</li>
 </ul>
 <p>Permite identificar gargalos e desigualdades.</p>
 </section>
-<section id="avaliação-de-políticas-públicas" class="level2">
-<h2 class="anchored" data-anchor-id="avaliação-de-políticas-públicas">5. Avaliação de políticas públicas</h2>
+<section id="avaliação-de-políticas-públicas" class="level3" data-number="14.2.5">
+<h3 data-number="14.2.5" class="anchored" data-anchor-id="avaliação-de-políticas-públicas"><span class="header-section-number">14.2.5</span> 5. Avaliação de políticas públicas</h3>
 <p>Exemplo:</p>
 <ul>
 <li>impacto do processo eletrônico,</li>
@@ -201,10 +487,10 @@ No direito, os eventos mais comuns são:</p>
 <hr>
 </section>
 </section>
-<section id="parte-ii-conceitos-essenciais-da-análise-de-duração" class="level1">
-<h1>Parte II — Conceitos essenciais da análise de duração</h1>
-<section id="variáveis-básicas" class="level2">
-<h2 class="anchored" data-anchor-id="variáveis-básicas">Variáveis básicas</h2>
+<section id="parte-ii-conceitos-essenciais-da-análise-de-duração" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="parte-ii-conceitos-essenciais-da-análise-de-duração"><span class="header-section-number">14.3</span> Parte II — Conceitos essenciais da análise de duração</h2>
+<section id="variáveis-básicas" class="level3" data-number="14.3.1">
+<h3 data-number="14.3.1" class="anchored" data-anchor-id="variáveis-básicas"><span class="header-section-number">14.3.1</span> Variáveis básicas</h3>
 <ul>
 <li><strong>T</strong>: tempo até evento<br>
 </li>
@@ -217,8 +503,8 @@ No direito, os eventos mais comuns são:</p>
 <li><strong>Risco concorrente</strong>: evento que impede o evento principal</li>
 </ul>
 </section>
-<section id="censura" class="level2">
-<h2 class="anchored" data-anchor-id="censura">Censura</h2>
+<section id="censura" class="level3" data-number="14.3.2">
+<h3 data-number="14.3.2" class="anchored" data-anchor-id="censura"><span class="header-section-number">14.3.2</span> Censura</h3>
 <p>Censura ocorre quando:</p>
 <ul>
 <li>o evento ainda não ocorreu,</li>
@@ -226,8 +512,8 @@ No direito, os eventos mais comuns são:</p>
 </ul>
 <p>Processos pendentes são censurados à direita.</p>
 </section>
-<section id="riscos-concorrentes" class="level2">
-<h2 class="anchored" data-anchor-id="riscos-concorrentes">Riscos concorrentes</h2>
+<section id="riscos-concorrentes" class="level3" data-number="14.3.3">
+<h3 data-number="14.3.3" class="anchored" data-anchor-id="riscos-concorrentes"><span class="header-section-number">14.3.3</span> Riscos concorrentes</h3>
 <p>Não são censura.</p>
 <p>Exemplos:</p>
 <ul>
@@ -243,17 +529,17 @@ No direito, os eventos mais comuns são:</p>
 <hr>
 </section>
 </section>
-<section id="parte-iii-funções-fundamentais" class="level1">
-<h1>Parte III — Funções fundamentais</h1>
-<section id="função-de-sobrevivência" class="level2">
-<h2 class="anchored" data-anchor-id="função-de-sobrevivência">Função de sobrevivência</h2>
+<section id="parte-iii-funções-fundamentais" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="parte-iii-funções-fundamentais"><span class="header-section-number">14.4</span> Parte III — Funções fundamentais</h2>
+<section id="função-de-sobrevivência" class="level3" data-number="14.4.1">
+<h3 data-number="14.4.1" class="anchored" data-anchor-id="função-de-sobrevivência"><span class="header-section-number">14.4.1</span> Função de sobrevivência</h3>
 <p><span class="math display">\[
 S(t) = P(T &gt; t)
 \]</span></p>
 <p>Interpretação: probabilidade de o processo ainda estar pendente após (t) dias.</p>
 </section>
-<section id="função-de-risco-hazard" class="level2">
-<h2 class="anchored" data-anchor-id="função-de-risco-hazard">Função de risco (hazard)</h2>
+<section id="função-de-risco-hazard" class="level3" data-number="14.4.2">
+<h3 data-number="14.4.2" class="anchored" data-anchor-id="função-de-risco-hazard"><span class="header-section-number">14.4.2</span> Função de risco (hazard)</h3>
 <p><span class="math display">\[
 h(t) =
 \lim_{\Delta t \to 0}
@@ -261,16 +547,16 @@ h(t) =
 \]</span></p>
 <p>Interpretação jurídica: taxa instantânea de decisão em (t).</p>
 </section>
-<section id="função-de-risco-acumulado" class="level2">
-<h2 class="anchored" data-anchor-id="função-de-risco-acumulado">Função de risco acumulado</h2>
+<section id="função-de-risco-acumulado" class="level3" data-number="14.4.3">
+<h3 data-number="14.4.3" class="anchored" data-anchor-id="função-de-risco-acumulado"><span class="header-section-number">14.4.3</span> Função de risco acumulado</h3>
 <p><span class="math display">\[
 H(t) = \int_0^t h(u)\,du
 \]</span></p>
 <hr>
 </section>
 </section>
-<section id="parte-iv-estimador-de-kaplanmeier" class="level1">
-<h1>Parte IV — Estimador de Kaplan–Meier</h1>
+<section id="parte-iv-estimador-de-kaplanmeier" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="parte-iv-estimador-de-kaplanmeier"><span class="header-section-number">14.5</span> Parte IV — Estimador de Kaplan–Meier</h2>
 <p>Método não paramétrico:</p>
 <p><span class="math display">\[
 S(t_i)
@@ -292,25 +578,25 @@ S(t_i)
 <li>comparação básica entre grupos.</li>
 </ul>
 </section>
-<section id="parte-v-figura-1-curva-kaplanmeier" class="level1">
-<h1>Parte V — Figura 1: Curva Kaplan–Meier</h1>
+<section id="parte-v-figura-1-curva-kaplanmeier" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="parte-v-figura-1-curva-kaplanmeier"><span class="header-section-number">14.6</span> Parte V — Figura 1: Curva Kaplan–Meier</h2>
 <p>Nesta seção, simulamos um conjunto de dados para demonstrar a curva de Kaplan–Meier.<br>
 Isso permite visualizar a <strong>probabilidade de pendência</strong> ao longo do tempo.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survminer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Carregando pacotes exigidos: ggplot2</code></pre>
+<pre><code>Loading required package: ggplot2</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Carregando pacotes exigidos: ggpubr</code></pre>
+<pre><code>Loading required package: ggpubr</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
-Anexando pacote: 'survminer'</code></pre>
+Attaching package: 'survminer'</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>O seguinte objeto é mascarado por 'package:survival':
+<pre><code>The following object is masked from 'package:survival':
 
     myeloma</code></pre>
 </div>
@@ -333,6 +619,12 @@ Anexando pacote: 'survminer'</code></pre>
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Probabilidade de pendência"</span>,</span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Curva Kaplan–Meier (simulada)"</span></span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+ℹ The deprecated feature was likely used in the ggpubr package.
+  Please report the issue at &lt;https://github.com/kassambara/ggpubr/issues&gt;.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -342,8 +634,8 @@ Anexando pacote: 'survminer'</code></pre>
 </div>
 </div>
 </section>
-<section id="parte-vi-comparação-entre-grupos" class="level1">
-<h1>Parte VI — Comparação entre grupos</h1>
+<section id="parte-vi-comparação-entre-grupos" class="level2" data-number="14.7">
+<h2 data-number="14.7" class="anchored" data-anchor-id="parte-vi-comparação-entre-grupos"><span class="header-section-number">14.7</span> Parte VI — Comparação entre grupos</h2>
 <p>A comparação entre curvas de sobrevivência é fundamental para entender diferenças estruturais entre:</p>
 <ul>
 <li>varas,</li>
@@ -356,8 +648,8 @@ Anexando pacote: 'survminer'</code></pre>
 <p>O método clássico utilizado é o <strong>teste log-rank</strong>, que compara as distribuições de sobrevivência considerando a censura.</p>
 <p>Em seguida, simulamos dois grupos para ilustrar como essa análise funciona.</p>
 </section>
-<section id="parte-vii-figura-2-comparação-de-grupos" class="level1">
-<h1>Parte VII — Figura 2: Comparação de grupos</h1>
+<section id="parte-vii-figura-2-comparação-de-grupos" class="level2" data-number="14.8">
+<h2 data-number="14.8" class="anchored" data-anchor-id="parte-vii-figura-2-comparação-de-grupos"><span class="header-section-number">14.8</span> Parte VII — Figura 2: Comparação de grupos</h2>
 <p>A comparação entre curvas de sobrevivência é fundamental para identificar diferenças estruturais entre grupos de processos, como:</p>
 <ul>
 <li>câmaras ou turmas julgadoras,</li>
@@ -368,22 +660,22 @@ Anexando pacote: 'survminer'</code></pre>
 <p>A técnica usada é o <strong>Kaplan–Meier estratificado</strong>, acompanhada do <strong>teste log-rank</strong>, que avalia se as diferenças entre as curvas são estatisticamente significativas.</p>
 <p>A seguir, simulamos dois grupos (“Câmara 1” e “Câmara 2”), ajustamos as curvas Kaplan–Meier e plotamos o resultado.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando grupos simulados</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>base<span class="sc">$</span>grupo <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">runif</span>(n) <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="st">"Câmara 1"</span>, <span class="st">"Câmara 2"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustando modelo Kaplan–Meier estratificado</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>km2 <span class="ot">&lt;-</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(duracao, status) <span class="sc">~</span> grupo, <span class="at">data =</span> base)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotando curvas dos dois grupos</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsurvplot</span>(</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  km2,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">ggtheme =</span> <span class="fu">theme_minimal</span>(),</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Tempo (dias)"</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Probabilidade de pendência"</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Comparação entre grupos (simulada)"</span>,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">conf.int =</span> <span class="cn">TRUE</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando grupos simulados</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>base<span class="sc">$</span>grupo <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">runif</span>(n) <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="st">"Câmara 1"</span>, <span class="st">"Câmara 2"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustando modelo Kaplan–Meier estratificado</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>km2 <span class="ot">&lt;-</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(duracao, status) <span class="sc">~</span> grupo, <span class="at">data =</span> base)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotando curvas dos dois grupos</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsurvplot</span>(</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  km2,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">ggtheme =</span> <span class="fu">theme_minimal</span>(),</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Tempo (dias)"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Probabilidade de pendência"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Comparação entre grupos (simulada)"</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">conf.int =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -394,7 +686,7 @@ Anexando pacote: 'survminer'</code></pre>
 </div>
 <p>Também executamos o teste log-rank, que verifica se as curvas são diferentes entre si:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">survdiff</span>(<span class="fu">Surv</span>(duracao, status) <span class="sc">~</span> grupo, <span class="at">data =</span> base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">survdiff</span>(<span class="fu">Surv</span>(duracao, status) <span class="sc">~</span> grupo, <span class="at">data =</span> base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 survdiff(formula = Surv(duracao, status) ~ grupo, data = base)
@@ -406,8 +698,8 @@ grupo=Câmara 2 212      142      144    0.0197    0.0413
  Chisq= 0  on 1 degrees of freedom, p= 0.8 </code></pre>
 </div>
 </div>
-<section id="interpretação-jurídica-do-teste-log-rank" class="level2">
-<h2 class="anchored" data-anchor-id="interpretação-jurídica-do-teste-log-rank">Interpretação jurídica do teste log-rank</h2>
+<section id="interpretação-jurídica-do-teste-log-rank" class="level3" data-number="14.8.1">
+<h3 data-number="14.8.1" class="anchored" data-anchor-id="interpretação-jurídica-do-teste-log-rank"><span class="header-section-number">14.8.1</span> Interpretação jurídica do teste log-rank</h3>
 <p>Um valor de <strong>χ² elevado</strong> indica maior diferença entre as curvas Kaplan–Meier comparadas.</p>
 <p>Um <strong>p-valor pequeno (p &lt; 0.05)</strong> sugere que os tempos de tramitação são estatisticamente diferentes entre os grupos analisados.</p>
 <p>No contexto judicial, esse resultado pode revelar:</p>
@@ -420,8 +712,8 @@ grupo=Câmara 2 212      142      144    0.0197    0.0413
 <p>Este tipo de comparação é especialmente útil para órgãos como <strong>CNJ</strong>, <strong>Corregedorias</strong>, <strong>Ministério Público</strong>, <strong>Defensoria Pública</strong>, <strong>AGU</strong> e procuradorias estaduais/municipais, pois permite identificar pontos críticos no fluxo processual e orientar intervenções estruturadas baseadas em evidências.</p>
 </section>
 </section>
-<section id="parte-viii-modelo-de-cox-riscos-proporcionais" class="level1">
-<h1>Parte VIII — Modelo de Cox (Riscos Proporcionais)</h1>
+<section id="parte-viii-modelo-de-cox-riscos-proporcionais" class="level2" data-number="14.9">
+<h2 data-number="14.9" class="anchored" data-anchor-id="parte-viii-modelo-de-cox-riscos-proporcionais"><span class="header-section-number">14.9</span> Parte VIII — Modelo de Cox (Riscos Proporcionais)</h2>
 <p>O <strong>modelo de riscos proporcionais de Cox</strong> é um dos métodos mais utilizados em análise de sobrevivência quando se deseja incluir <strong>covariáveis explicativas</strong> que influenciam o tempo até a decisão.</p>
 <p>Ele permite responder perguntas como:</p>
 <ul>
@@ -432,8 +724,8 @@ grupo=Câmara 2 212      142      144    0.0197    0.0413
 </ul>
 <p>O modelo não exige especificar a forma da função de risco de base, o que o torna flexível e adequado para fenômenos jurídicos.</p>
 <hr>
-<section id="fórmula-do-modelo" class="level2">
-<h2 class="anchored" data-anchor-id="fórmula-do-modelo">Fórmula do modelo</h2>
+<section id="fórmula-do-modelo" class="level3" data-number="14.9.1">
+<h3 data-number="14.9.1" class="anchored" data-anchor-id="fórmula-do-modelo"><span class="header-section-number">14.9.1</span> Fórmula do modelo</h3>
 <p>O modelo é definido por:</p>
 <p><span class="math display">\[
 h(t; X) = h_0(t)\exp(X\beta)
@@ -447,12 +739,12 @@ h(t; X) = h_0(t)\exp(X\beta)
 </ul>
 <hr>
 </section>
-<section id="interpretação-jurídica" class="level2">
-<h2 class="anchored" data-anchor-id="interpretação-jurídica">Interpretação jurídica</h2>
+<section id="interpretação-jurídica" class="level3" data-number="14.9.2">
+<h3 data-number="14.9.2" class="anchored" data-anchor-id="interpretação-jurídica"><span class="header-section-number">14.9.2</span> Interpretação jurídica</h3>
 <ul>
-<li><strong>(() &gt; 1)</strong> → a variável <strong>aumenta</strong> a taxa de decisão (processos mais rápidos).<br>
+<li><strong>(</strong>() &gt; 1) → a variável <strong>aumenta</strong> a taxa de decisão (processos mais rápidos).<br>
 </li>
-<li><strong>(() &lt; 1)</strong> → a variável <strong>reduz</strong> a taxa de decisão (processos mais lentos).<br>
+<li><strong>(</strong>() &lt; 1) → a variável <strong>reduz</strong> a taxa de decisão (processos mais lentos).<br>
 </li>
 <li>Exemplo comum:
 <ul>
@@ -464,8 +756,8 @@ h(t; X) = h_0(t)\exp(X\beta)
 <p>O modelo é amplamente usado em estudos de produtividade judicial, eficiência processual e tempo até decisão.</p>
 <hr>
 </section>
-<section id="exemplo-em-r-ajuste-do-modelo" class="level2">
-<h2 class="anchored" data-anchor-id="exemplo-em-r-ajuste-do-modelo">Exemplo em R — Ajuste do modelo</h2>
+<section id="exemplo-em-r-ajuste-do-modelo" class="level3" data-number="14.9.3">
+<h3 data-number="14.9.3" class="anchored" data-anchor-id="exemplo-em-r-ajuste-do-modelo"><span class="header-section-number">14.9.3</span> Exemplo em R — Ajuste do modelo</h3>
 <p>A seguir, incluímos duas covariáveis simuladas:</p>
 <ul>
 <li><code>x1</code>: variável binária (ex.: réu preso vs solto),<br>
@@ -473,16 +765,16 @@ h(t; X) = h_0(t)\exp(X\beta)
 <li><code>x2</code>: variável contínua (ex.: número de partes, valor da causa etc.).</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando covariáveis simuladas</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>base<span class="sc">$</span>x1 <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fl">0.4</span>)   <span class="co"># variável binária simulada</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>base<span class="sc">$</span>x2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">10</span>, <span class="dv">3</span>)    <span class="co"># variável contínua simulada</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste do modelo de Cox</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>coxmod <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(duracao, status) <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data =</span> base)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Sumário do modelo</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(coxmod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando covariáveis simuladas</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>base<span class="sc">$</span>x1 <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="dv">1</span>, <span class="fl">0.4</span>)   <span class="co"># variável binária simulada</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>base<span class="sc">$</span>x2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">10</span>, <span class="dv">3</span>)    <span class="co"># variável contínua simulada</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste do modelo de Cox</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>coxmod <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(duracao, status) <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data =</span> base)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Sumário do modelo</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(coxmod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 coxph(formula = Surv(duracao, status) ~ x1 + x2, data = base)
@@ -504,8 +796,8 @@ Score (logrank) test = 0.09  on 2 df,   p=1</code></pre>
 </div>
 </div>
 </section>
-<section id="como-interpretar-a-saída" class="level2">
-<h2 class="anchored" data-anchor-id="como-interpretar-a-saída">Como interpretar a saída</h2>
+<section id="como-interpretar-a-saída" class="level3" data-number="14.9.4">
+<h3 data-number="14.9.4" class="anchored" data-anchor-id="como-interpretar-a-saída"><span class="header-section-number">14.9.4</span> Como interpretar a saída</h3>
 <p>O resultado do modelo de Cox inclui os seguintes elementos fundamentais:</p>
 <ul>
 <li><strong>coef</strong>: valor estimado de ().<br>
@@ -516,8 +808,8 @@ Score (logrank) test = 0.09  on 2 df,   p=1</code></pre>
 </li>
 <li><strong>Concordance</strong>: medida de qualidade preditiva do modelo (0.5 = aleatório; &gt;0.7 = bom).</li>
 </ul>
-<section id="exemplos-de-interpretação" class="level3">
-<h3 class="anchored" data-anchor-id="exemplos-de-interpretação">Exemplos de interpretação</h3>
+<section id="exemplos-de-interpretação" class="level4" data-number="14.9.4.1">
+<h4 data-number="14.9.4.1" class="anchored" data-anchor-id="exemplos-de-interpretação"><span class="header-section-number">14.9.4.1</span> Exemplos de interpretação</h4>
 <ul>
 <li><p>Se <strong>exp(coef)</strong> para <code>x1</code> = <strong>1.40</strong>:<br>
 &gt; “Processos do grupo <code>x1 = 1</code> têm <strong>40% maior taxa de decisão</strong> do que processos do grupo <code>x1 = 0</code>.”</p></li>
@@ -527,14 +819,14 @@ Score (logrank) test = 0.09  on 2 df,   p=1</code></pre>
 <hr>
 </section>
 </section>
-<section id="observações-importantes-para-pesquisas-jurídicas" class="level2">
-<h2 class="anchored" data-anchor-id="observações-importantes-para-pesquisas-jurídicas">Observações importantes para pesquisas jurídicas</h2>
+<section id="observações-importantes-para-pesquisas-jurídicas" class="level3" data-number="14.9.5">
+<h3 data-number="14.9.5" class="anchored" data-anchor-id="observações-importantes-para-pesquisas-jurídicas"><span class="header-section-number">14.9.5</span> Observações importantes para pesquisas jurídicas</h3>
 <ul>
 <li>O modelo de Cox assume <strong>proporcionalidade dos riscos</strong>.<br>
 Este pressuposto <strong>deve ser testado</strong> com:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cox.zph</span>(coxmod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cox.zph</span>(coxmod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       chisq df    p
 x1     0.797  1 0.37
@@ -544,8 +836,8 @@ GLOBAL 1.129  2 0.57</code></pre>
 </div>
 </section>
 </section>
-<section id="parte-ix-risco-acumulado-nelsonaalen" class="level1">
-<h1>Parte IX — Risco acumulado (Nelson–Aalen)</h1>
+<section id="parte-ix-risco-acumulado-nelsonaalen" class="level2" data-number="14.10">
+<h2 data-number="14.10" class="anchored" data-anchor-id="parte-ix-risco-acumulado-nelsonaalen"><span class="header-section-number">14.10</span> Parte IX — Risco acumulado (Nelson–Aalen)</h2>
 <p>A função de <strong>risco acumulado</strong> (<em>cumulative hazard</em>) representa a soma da taxa instantânea de decisão ao longo do tempo.<br>
 Ela é definida por:</p>
 <p><span class="math display">\[
@@ -554,8 +846,8 @@ H(t) = \int_0^t h(u)\,du
 <p>Enquanto a curva de <strong>sobrevivência</strong> mostra a probabilidade de o processo continuar pendente, o risco acumulado mostra <strong>a intensidade acumulada de decisões ao longo do tempo</strong>.</p>
 <p>O estimador mais usado é o <strong>Nelson–Aalen</strong>, adequado para dados censurados.</p>
 <hr>
-<section id="por-que-o-risco-acumulado-importa-no-direito" class="level2">
-<h2 class="anchored" data-anchor-id="por-que-o-risco-acumulado-importa-no-direito">Por que o risco acumulado importa no direito?</h2>
+<section id="por-que-o-risco-acumulado-importa-no-direito" class="level3" data-number="14.10.1">
+<h3 data-number="14.10.1" class="anchored" data-anchor-id="por-que-o-risco-acumulado-importa-no-direito"><span class="header-section-number">14.10.1</span> Por que o risco acumulado importa no direito?</h3>
 <p>O hazard acumulado é especialmente útil para:</p>
 <ul>
 <li>avaliar períodos de maior atividade decisória;</li>
@@ -572,20 +864,20 @@ H(t) = \int_0^t h(u)\,du
 </ul>
 <hr>
 </section>
-<section id="figura-risco-acumulado-estimador-nelsonaalen" class="level2">
-<h2 class="anchored" data-anchor-id="figura-risco-acumulado-estimador-nelsonaalen">Figura — Risco acumulado (estimador Nelson–Aalen)</h2>
+<section id="figura-risco-acumulado-estimador-nelsonaalen" class="level3" data-number="14.10.2">
+<h3 data-number="14.10.2" class="anchored" data-anchor-id="figura-risco-acumulado-estimador-nelsonaalen"><span class="header-section-number">14.10.2</span> Figura — Risco acumulado (estimador Nelson–Aalen)</h3>
 <p>A seguir, calculamos o hazard acumulado usando o mesmo conjunto de dados simulado anteriormente:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando o objeto 'km' já estimado anteriormente:</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  km,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> <span class="st">"cumhaz"</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Tempo (dias)"</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Risco acumulado (Nelson–Aalen)"</span>,</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Figura — Risco acumulado (estimativa Nelson–Aalen)"</span>,</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"darkblue"</span>,</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando o objeto 'km' já estimado anteriormente:</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  km,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> <span class="st">"cumhaz"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Tempo (dias)"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Risco acumulado (Nelson–Aalen)"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Figura — Risco acumulado (estimativa Nelson–Aalen)"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"darkblue"</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -595,8 +887,8 @@ H(t) = \int_0^t h(u)\,du
 </div>
 </div>
 </section>
-<section id="interpretação-jurídica-da-curva" class="level2">
-<h2 class="anchored" data-anchor-id="interpretação-jurídica-da-curva">Interpretação jurídica da curva</h2>
+<section id="interpretação-jurídica-da-curva" class="level3" data-number="14.10.3">
+<h3 data-number="14.10.3" class="anchored" data-anchor-id="interpretação-jurídica-da-curva"><span class="header-section-number">14.10.3</span> Interpretação jurídica da curva</h3>
 <p>Algumas interpretações práticas importantes:</p>
 <ul>
 <li><p><strong>A inclinação da curva mostra a intensidade de julgamento.</strong><br>
@@ -630,8 +922,8 @@ Uma curva mais inclinada indica períodos com maior taxa de decisões.</p></li>
 </ul>
 <hr>
 </section>
-<section id="observação-técnica" class="level2">
-<h2 class="anchored" data-anchor-id="observação-técnica">Observação técnica</h2>
+<section id="observação-técnica" class="level3" data-number="14.10.4">
+<h3 data-number="14.10.4" class="anchored" data-anchor-id="observação-técnica"><span class="header-section-number">14.10.4</span> Observação técnica</h3>
 <p>Em análises jurídicas aplicadas, o hazard acumulado é uma ferramenta poderosa para:</p>
 <ul>
 <li>diagnósticos institucionais,<br>
@@ -645,8 +937,8 @@ Uma curva mais inclinada indica períodos com maior taxa de decisões.</p></li>
 <p>O método <strong>Nelson–Aalen</strong> é robusto, não exige suposições paramétricas e lida bem com censura.</p>
 </section>
 </section>
-<section id="parte-x-introdução-aos-riscos-concorrentes-competing-risks" class="level1">
-<h1>Parte X — Introdução aos riscos concorrentes (Competing Risks)</h1>
+<section id="parte-x-introdução-aos-riscos-concorrentes-competing-risks" class="level2" data-number="14.11">
+<h2 data-number="14.11" class="anchored" data-anchor-id="parte-x-introdução-aos-riscos-concorrentes-competing-risks"><span class="header-section-number">14.11</span> Parte X — Introdução aos riscos concorrentes (Competing Risks)</h2>
 <p>Em muitos contextos jurídicos, um processo pode terminar de múltiplas maneiras mutuamente exclusivas.<br>
 Por exemplo:</p>
 <ul>
@@ -660,8 +952,8 @@ Por exemplo:</p>
 </ul>
 <p>Quando diferentes tipos de eventos <strong>impedem</strong> o evento principal de ocorrer, estamos diante de <strong>riscos concorrentes</strong> (<em>competing risks</em>).</p>
 <hr>
-<section id="o-erro-mais-comum-tratar-risco-concorrente-como-censura" class="level2">
-<h2 class="anchored" data-anchor-id="o-erro-mais-comum-tratar-risco-concorrente-como-censura">O erro mais comum: tratar risco concorrente como censura</h2>
+<section id="o-erro-mais-comum-tratar-risco-concorrente-como-censura" class="level3" data-number="14.11.1">
+<h3 data-number="14.11.1" class="anchored" data-anchor-id="o-erro-mais-comum-tratar-risco-concorrente-como-censura"><span class="header-section-number">14.11.1</span> O erro mais comum: tratar risco concorrente como censura</h3>
 <p>Este é um dos erros metodológicos mais graves em pesquisas de jurimetria.</p>
 <ul>
 <li><p>Se o processo é <strong>extinto sem mérito</strong>, ele <em>não poderá mais</em> receber sentença de mérito.<br>
@@ -680,8 +972,8 @@ Logo, não se trata de censura, mas de um <strong>evento concorrente</strong>.</
 </ul>
 <hr>
 </section>
-<section id="quando-usar-competing-risks" class="level2">
-<h2 class="anchored" data-anchor-id="quando-usar-competing-risks">Quando usar competing risks?</h2>
+<section id="quando-usar-competing-risks" class="level3" data-number="14.11.2">
+<h3 data-number="14.11.2" class="anchored" data-anchor-id="quando-usar-competing-risks"><span class="header-section-number">14.11.2</span> Quando usar competing risks?</h3>
 <p>Use modelos de riscos concorrentes quando:</p>
 <ul>
 <li>há <strong>múltiplas formas de resolução</strong> do processo;</li>
@@ -702,8 +994,8 @@ Logo, não se trata de censura, mas de um <strong>evento concorrente</strong>.</
 </ul>
 <hr>
 </section>
-<section id="consequências-jurídicas-de-ignorar-riscos-concorrentes" class="level2">
-<h2 class="anchored" data-anchor-id="consequências-jurídicas-de-ignorar-riscos-concorrentes">Consequências jurídicas de ignorar riscos concorrentes</h2>
+<section id="consequências-jurídicas-de-ignorar-riscos-concorrentes" class="level3" data-number="14.11.3">
+<h3 data-number="14.11.3" class="anchored" data-anchor-id="consequências-jurídicas-de-ignorar-riscos-concorrentes"><span class="header-section-number">14.11.3</span> Consequências jurídicas de ignorar riscos concorrentes</h3>
 <p>Ignorar competing risks pode levar a:</p>
 <ul>
 <li>conclusões erradas sobre duração processual,</li>
@@ -720,15 +1012,15 @@ Logo, não se trata de censura, mas de um <strong>evento concorrente</strong>.</
 </ul>
 <hr>
 </section>
-<section id="métodos-adequados" class="level2">
-<h2 class="anchored" data-anchor-id="métodos-adequados">Métodos adequados</h2>
+<section id="métodos-adequados" class="level3" data-number="14.11.4">
+<h3 data-number="14.11.4" class="anchored" data-anchor-id="métodos-adequados"><span class="header-section-number">14.11.4</span> Métodos adequados</h3>
 <p>Quando há riscos concorrentes, substituir Kaplan–Meier por:</p>
-<section id="cif-cumulative-incidence-function" class="level3">
-<h3 class="anchored" data-anchor-id="cif-cumulative-incidence-function"><strong>1. CIF — Cumulative Incidence Function</strong></h3>
+<section id="cif-cumulative-incidence-function" class="level4" data-number="14.11.4.1">
+<h4 data-number="14.11.4.1" class="anchored" data-anchor-id="cif-cumulative-incidence-function"><span class="header-section-number">14.11.4.1</span> <strong>CIF — Cumulative Incidence Function</strong></h4>
 <p>A CIF estima a probabilidade acumulada de cada tipo de evento ocorrer.</p>
 </section>
-<section id="modelo-de-finegray" class="level3">
-<h3 class="anchored" data-anchor-id="modelo-de-finegray"><strong>2. Modelo de Fine–Gray</strong></h3>
+<section id="modelo-de-finegray" class="level4" data-number="14.11.4.2">
+<h4 data-number="14.11.4.2" class="anchored" data-anchor-id="modelo-de-finegray"><span class="header-section-number">14.11.4.2</span> <strong>Modelo de Fine–Gray</strong></h4>
 <p>Permite:</p>
 <ul>
 <li>incluir covariáveis,</li>
@@ -738,8 +1030,8 @@ Logo, não se trata de censura, mas de um <strong>evento concorrente</strong>.</
 <hr>
 </section>
 </section>
-<section id="representação-gráfica-típica" class="level2">
-<h2 class="anchored" data-anchor-id="representação-gráfica-típica">Representação gráfica típica</h2>
+<section id="representação-gráfica-típica" class="level3" data-number="14.11.5">
+<h3 data-number="14.11.5" class="anchored" data-anchor-id="representação-gráfica-típica"><span class="header-section-number">14.11.5</span> Representação gráfica típica</h3>
 <p>Enquanto a KM mostra uma curva única de sobrevivência, a CIF mostra:</p>
 <ul>
 <li>uma curva para o evento principal,</li>
@@ -749,8 +1041,8 @@ Logo, não se trata de censura, mas de um <strong>evento concorrente</strong>.</
 <p>Isso reflete mais adequadamente o fenômeno jurídico.</p>
 <hr>
 </section>
-<section id="intuição-jurídica" class="level2">
-<h2 class="anchored" data-anchor-id="intuição-jurídica">Intuição jurídica</h2>
+<section id="intuição-jurídica" class="level3" data-number="14.11.6">
+<h3 data-number="14.11.6" class="anchored" data-anchor-id="intuição-jurídica"><span class="header-section-number">14.11.6</span> Intuição jurídica</h3>
 <p>Pense assim:</p>
 <ul>
 <li><p><strong>KM responde:</strong><br>
@@ -772,15 +1064,15 @@ Logo, não se trata de censura, mas de um <strong>evento concorrente</strong>.</
 </ul>
 <hr>
 </section>
-<section id="conclusão-da-parte-x" class="level2">
-<h2 class="anchored" data-anchor-id="conclusão-da-parte-x">Conclusão da Parte X</h2>
+<section id="conclusão-da-parte-x" class="level3" data-number="14.11.7">
+<h3 data-number="14.11.7" class="anchored" data-anchor-id="conclusão-da-parte-x"><span class="header-section-number">14.11.7</span> Conclusão da Parte X</h3>
 <p>Riscos concorrentes são a regra, não a exceção, nos dados judiciais.<br>
 Ignorá-los distorce conclusões e compromete decisões estratégicas, institucionais e acadêmicas.</p>
 <p>As seções seguintes mostram como estimar corretamente a <strong>CIF</strong> e como visualizar esses resultados.</p>
 </section>
 </section>
-<section id="parte-xi-função-de-incidência-cumulativa-cif-para-riscos-concorrentes" class="level1">
-<h1>Parte XI — Função de Incidência Cumulativa (CIF) para riscos concorrentes</h1>
+<section id="parte-xi-função-de-incidência-cumulativa-cif-para-riscos-concorrentes" class="level2" data-number="14.12">
+<h2 data-number="14.12" class="anchored" data-anchor-id="parte-xi-função-de-incidência-cumulativa-cif-para-riscos-concorrentes"><span class="header-section-number">14.12</span> Parte XI — Função de Incidência Cumulativa (CIF) para riscos concorrentes</h2>
 <p>Quando há múltiplos eventos possíveis e mutuamente excludentes, como:</p>
 <ul>
 <li>sentença de mérito,<br>
@@ -794,8 +1086,8 @@ Ignorá-los distorce conclusões e compromete decisões estratégicas, instituci
 <p>não podemos usar Kaplan–Meier para estimar a probabilidade de cada tipo de desfecho.<br>
 Nesses casos, o método correto é a <strong>Função de Incidência Cumulativa (CIF)</strong>.</p>
 <hr>
-<section id="o-que-a-cif-estima" class="level2">
-<h2 class="anchored" data-anchor-id="o-que-a-cif-estima">O que a CIF estima?</h2>
+<section id="o-que-a-cif-estima" class="level3" data-number="14.12.1">
+<h3 data-number="14.12.1" class="anchored" data-anchor-id="o-que-a-cif-estima"><span class="header-section-number">14.12.1</span> O que a CIF estima?</h3>
 <p>A <strong>CIF — Cumulative Incidence Function</strong> estima a probabilidade acumulada de cada tipo específico de evento ocorrer ao longo do tempo.</p>
 <p>Em termos simples:</p>
 <ul>
@@ -812,8 +1104,8 @@ Nesses casos, o método correto é a <strong>Função de Incidência Cumulativa 
 <p>Enquanto a KM não consegue separar os tipos de eventos, a CIF consegue.</p>
 <hr>
 </section>
-<section id="interpretação-jurídica-1" class="level2">
-<h2 class="anchored" data-anchor-id="interpretação-jurídica-1">Interpretação jurídica</h2>
+<section id="interpretação-jurídica-1" class="level3" data-number="14.12.2">
+<h3 data-number="14.12.2" class="anchored" data-anchor-id="interpretação-jurídica-1"><span class="header-section-number">14.12.2</span> Interpretação jurídica</h3>
 <p>A CIF permite:</p>
 <ul>
 <li>analisar <strong>competição entre modos de encerramento</strong>,<br>
@@ -829,8 +1121,8 @@ Nesses casos, o método correto é a <strong>Função de Incidência Cumulativa 
 <p>É a abordagem estatística correta para praticamente todas as análises de encerramento processual.</p>
 <hr>
 </section>
-<section id="exemplo-em-r-estimando-cif" class="level2">
-<h2 class="anchored" data-anchor-id="exemplo-em-r-estimando-cif">Exemplo em R — Estimando CIF</h2>
+<section id="exemplo-em-r-estimando-cif" class="level3" data-number="14.12.3">
+<h3 data-number="14.12.3" class="anchored" data-anchor-id="exemplo-em-r-estimando-cif"><span class="header-section-number">14.12.3</span> Exemplo em R — Estimando CIF</h3>
 <p>Vamos simular dados com três categorias:</p>
 <ul>
 <li>0 = censura (processo pendente)<br>
@@ -840,26 +1132,26 @@ Nesses casos, o método correto é a <strong>Função de Incidência Cumulativa 
 <li>2 = extinção sem mérito (evento concorrente)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cmprsk)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>evento <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.2</span>))</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>fit_cif <span class="ot">&lt;-</span> <span class="fu">cuminc</span>(</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ftime  =</span> base<span class="sc">$</span>duracao,</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">fstatus =</span> evento,</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> base<span class="sc">$</span>grupo</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cmprsk)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>evento <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">0.2</span>))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>fit_cif <span class="ot">&lt;-</span> <span class="fu">cuminc</span>(</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ftime  =</span> base<span class="sc">$</span>duracao,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">fstatus =</span> evento,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> base<span class="sc">$</span>grupo</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>fit_cif,</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="at">xlab =</span> <span class="st">"Tempo (dias)"</span>,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="at">ylab =</span> <span class="st">"Incidência cumulativa"</span>,</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="at">main =</span> <span class="st">"Figura — CIF para riscos concorrentes (simulação)"</span>,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="at">lwd =</span> <span class="dv">2</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>fit_cif,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="at">xlab =</span> <span class="st">"Tempo (dias)"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="at">ylab =</span> <span class="st">"Incidência cumulativa"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="at">main =</span> <span class="st">"Figura — CIF para riscos concorrentes (simulação)"</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="at">lwd =</span> <span class="dv">2</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -876,8 +1168,8 @@ Nesses casos, o método correto é a <strong>Função de Incidência Cumulativa 
 </ul>
 <hr>
 </section>
-<section id="como-interpretar-a-cif" class="level2">
-<h2 class="anchored" data-anchor-id="como-interpretar-a-cif">Como interpretar a CIF</h2>
+<section id="como-interpretar-a-cif" class="level3" data-number="14.12.4">
+<h3 data-number="14.12.4" class="anchored" data-anchor-id="como-interpretar-a-cif"><span class="header-section-number">14.12.4</span> Como interpretar a CIF</h3>
 <ul>
 <li>Uma <strong>curva CIF mais alta</strong> indica maior proporção acumulada daquele desfecho.</li>
 <li>Se a CIF do <strong>grupo A</strong> sobe mais rapidamente para sentenças, então o grupo A <strong>julga mais rapidamente</strong>.</li>
@@ -886,8 +1178,8 @@ Nesses casos, o método correto é a <strong>Função de Incidência Cumulativa 
 </ul>
 <hr>
 </section>
-<section id="comparação-jurídica-entre-grupos" class="level2">
-<h2 class="anchored" data-anchor-id="comparação-jurídica-entre-grupos">Comparação jurídica entre grupos</h2>
+<section id="comparação-jurídica-entre-grupos" class="level3" data-number="14.12.5">
+<h3 data-number="14.12.5" class="anchored" data-anchor-id="comparação-jurídica-entre-grupos"><span class="header-section-number">14.12.5</span> Comparação jurídica entre grupos</h3>
 <p>A CIF responde perguntas que Kaplan–Meier não consegue responder, como:</p>
 <ul>
 <li>“Qual câmara extingue mais processos sem mérito?”</li>
@@ -898,8 +1190,8 @@ Nesses casos, o método correto é a <strong>Função de Incidência Cumulativa 
 <p>Essas interpretações são fundamentais para diagnósticos institucionais e análises de políticas públicas.</p>
 <hr>
 </section>
-<section id="quando-usar-finegray-modelos-com-covariáveis" class="level2">
-<h2 class="anchored" data-anchor-id="quando-usar-finegray-modelos-com-covariáveis">Quando usar Fine–Gray (modelos com covariáveis)</h2>
+<section id="quando-usar-finegray-modelos-com-covariáveis" class="level3" data-number="14.12.6">
+<h3 data-number="14.12.6" class="anchored" data-anchor-id="quando-usar-finegray-modelos-com-covariáveis"><span class="header-section-number">14.12.6</span> Quando usar Fine–Gray (modelos com covariáveis)</h3>
 <p>Para incluir covariáveis em contexto de riscos concorrentes, o método adequado é o <strong>modelo de Fine–Gray</strong>, que modela o <em>subdistribution hazard</em>.</p>
 <p>Esse modelo permite:</p>
 <ul>
@@ -910,8 +1202,8 @@ Nesses casos, o método correto é a <strong>Função de Incidência Cumulativa 
 <p>Com Fine–Gray, é possível fazer análises mais completas e comparações justas entre unidades judiciais.</p>
 <hr>
 </section>
-<section id="conclusão-da-parte-xi" class="level2">
-<h2 class="anchored" data-anchor-id="conclusão-da-parte-xi">Conclusão da Parte XI</h2>
+<section id="conclusão-da-parte-xi" class="level3" data-number="14.12.7">
+<h3 data-number="14.12.7" class="anchored" data-anchor-id="conclusão-da-parte-xi"><span class="header-section-number">14.12.7</span> Conclusão da Parte XI</h3>
 <p>A <strong>CIF</strong> é uma ferramenta indispensável para análises jurídicas realistas porque:</p>
 <ul>
 <li>separa e quantifica cada forma de encerramento processual,</li>
@@ -924,13 +1216,13 @@ Nesses casos, o método correto é a <strong>Função de Incidência Cumulativa 
 <p>Seu uso adequado é decisivo para uma jurimetria confiável e metodologicamente rigorosa.</p>
 </section>
 </section>
-<section id="parte-xii-interpretação-jurídica-aplicada" class="level1">
-<h1>Parte XII — Interpretação jurídica aplicada</h1>
+<section id="parte-xii-interpretação-jurídica-aplicada" class="level2" data-number="14.13">
+<h2 data-number="14.13" class="anchored" data-anchor-id="parte-xii-interpretação-jurídica-aplicada"><span class="header-section-number">14.13</span> Parte XII — Interpretação jurídica aplicada</h2>
 <p>A análise de sobrevivência, o risco acumulado e os métodos de riscos concorrentes ganham significado real quando interpretados à luz do funcionamento do sistema de justiça.<br>
 Esta seção mostra como essas ferramentas estatísticas revelam padrões concretos do comportamento processual.</p>
 <hr>
-<section id="exemplos-reais-aplicáveis" class="level2">
-<h2 class="anchored" data-anchor-id="exemplos-reais-aplicáveis">Exemplos reais aplicáveis</h2>
+<section id="exemplos-reais-aplicáveis" class="level3" data-number="14.13.1">
+<h3 data-number="14.13.1" class="anchored" data-anchor-id="exemplos-reais-aplicáveis"><span class="header-section-number">14.13.1</span> Exemplos reais aplicáveis</h3>
 <p>Os métodos apresentados permitem responder questões como:</p>
 <ul>
 <li><p><strong>Habeas corpus</strong>:<br>
@@ -952,19 +1244,19 @@ Há desigualdades regionais na probabilidade de julgamento?</p></li>
 </ul>
 <hr>
 </section>
-<section id="observações-jurídicas-importantes" class="level2">
-<h2 class="anchored" data-anchor-id="observações-jurídicas-importantes">Observações jurídicas importantes</h2>
-<section id="sobrevivência-não-é-probabilidade-de-vitória" class="level3">
-<h3 class="anchored" data-anchor-id="sobrevivência-não-é-probabilidade-de-vitória">1. Sobrevivência não é probabilidade de vitória</h3>
+<section id="observações-jurídicas-importantes" class="level3" data-number="14.13.2">
+<h3 data-number="14.13.2" class="anchored" data-anchor-id="observações-jurídicas-importantes"><span class="header-section-number">14.13.2</span> Observações jurídicas importantes</h3>
+<section id="sobrevivência-não-é-probabilidade-de-vitória" class="level4" data-number="14.13.2.1">
+<h4 data-number="14.13.2.1" class="anchored" data-anchor-id="sobrevivência-não-é-probabilidade-de-vitória"><span class="header-section-number">14.13.2.1</span> Sobrevivência não é probabilidade de vitória</h4>
 <p>A curva Kaplan–Meier mostra a <strong>probabilidade de pendência</strong>, e não o resultado final do processo.</p>
 </section>
-<section id="hazard-não-é-probabilidade-direta" class="level3">
-<h3 class="anchored" data-anchor-id="hazard-não-é-probabilidade-direta">2. Hazard não é probabilidade direta</h3>
+<section id="hazard-não-é-probabilidade-direta" class="level4" data-number="14.13.2.2">
+<h4 data-number="14.13.2.2" class="anchored" data-anchor-id="hazard-não-é-probabilidade-direta"><span class="header-section-number">14.13.2.2</span> Hazard não é probabilidade direta</h4>
 <p>O <strong>hazard</strong> é uma <strong>taxa instantânea</strong> de decisão, não uma probabilidade bruta.<br>
 Um hazard alto em dado período indica maior ritmo decisório naquele intervalo.</p>
 </section>
-<section id="competing-risks-revelam-padrões-escondidos" class="level3">
-<h3 class="anchored" data-anchor-id="competing-risks-revelam-padrões-escondidos">3. Competing risks revelam padrões escondidos</h3>
+<section id="competing-risks-revelam-padrões-escondidos" class="level4" data-number="14.13.2.3">
+<h4 data-number="14.13.2.3" class="anchored" data-anchor-id="competing-risks-revelam-padrões-escondidos"><span class="header-section-number">14.13.2.3</span> Competing risks revelam padrões escondidos</h4>
 <p>A CIF mostra prioridades decisórias, como:</p>
 <ul>
 <li>câmaras que <strong>extinguem mais processos</strong>,<br>
@@ -977,8 +1269,8 @@ Um hazard alto em dado período indica maior ritmo decisório naquele intervalo.
 </ul>
 <p>Essas informações não aparecem na KM tradicional.</p>
 </section>
-<section id="as-curvas-complementares" class="level3">
-<h3 class="anchored" data-anchor-id="as-curvas-complementares">4. As curvas complementares</h3>
+<section id="as-curvas-complementares" class="level4" data-number="14.13.2.4">
+<h4 data-number="14.13.2.4" class="anchored" data-anchor-id="as-curvas-complementares"><span class="header-section-number">14.13.2.4</span> As curvas complementares</h4>
 <ul>
 <li><strong>KM</strong> → probabilidade de o processo <em>continuar pendente</em>.<br>
 </li>
@@ -990,8 +1282,8 @@ Um hazard alto em dado período indica maior ritmo decisório naquele intervalo.
 <hr>
 </section>
 </section>
-<section id="exemplos-de-interpretações-estratégicas" class="level2">
-<h2 class="anchored" data-anchor-id="exemplos-de-interpretações-estratégicas">Exemplos de interpretações estratégicas</h2>
+<section id="exemplos-de-interpretações-estratégicas" class="level3" data-number="14.13.3">
+<h3 data-number="14.13.3" class="anchored" data-anchor-id="exemplos-de-interpretações-estratégicas"><span class="header-section-number">14.13.3</span> Exemplos de interpretações estratégicas</h3>
 <ul>
 <li>Se a CIF de extinções sobe mais rápido que a de sentenças, isso pode indicar:
 <ul>
@@ -1022,8 +1314,8 @@ Um hazard alto em dado período indica maior ritmo decisório naquele intervalo.
 </ul>
 <hr>
 </section>
-<section id="aplicações-institucionais" class="level2">
-<h2 class="anchored" data-anchor-id="aplicações-institucionais">Aplicações institucionais</h2>
+<section id="aplicações-institucionais" class="level3" data-number="14.13.4">
+<h3 data-number="14.13.4" class="anchored" data-anchor-id="aplicações-institucionais"><span class="header-section-number">14.13.4</span> Aplicações institucionais</h3>
 <p>Os métodos desta aula são usados por:</p>
 <ul>
 <li><strong>CNJ</strong> para monitoramento de produtividade;<br>
@@ -1045,8 +1337,8 @@ Um hazard alto em dado período indica maior ritmo decisório naquele intervalo.
 </ul>
 <hr>
 </section>
-<section id="conclusão-da-parte-xii" class="level2">
-<h2 class="anchored" data-anchor-id="conclusão-da-parte-xii">Conclusão da Parte XII</h2>
+<section id="conclusão-da-parte-xii" class="level3" data-number="14.13.5">
+<h3 data-number="14.13.5" class="anchored" data-anchor-id="conclusão-da-parte-xii"><span class="header-section-number">14.13.5</span> Conclusão da Parte XII</h3>
 <p>Interpretar corretamente curvas de KM, hazard acumulado e CIF permite:</p>
 <ul>
 <li>compreender o funcionamento real do Judiciário,<br>
@@ -1063,14 +1355,14 @@ Um hazard alto em dado período indica maior ritmo decisório naquele intervalo.
 é <strong>uma lente para entender a justiça como fenômeno temporal e institucional</strong>.</p>
 </section>
 </section>
-<section id="parte-xiii-erros-metodológicos-comuns-em-análises-de-duração-no-direito" class="level1">
-<h1>Parte XIII — Erros metodológicos comuns em análises de duração no direito</h1>
+<section id="parte-xiii-erros-metodológicos-comuns-em-análises-de-duração-no-direito" class="level2" data-number="14.14">
+<h2 data-number="14.14" class="anchored" data-anchor-id="parte-xiii-erros-metodológicos-comuns-em-análises-de-duração-no-direito"><span class="header-section-number">14.14</span> Parte XIII — Erros metodológicos comuns em análises de duração no direito</h2>
 <p>A análise de sobrevivência aplicada ao Judiciário exige cuidados específicos.<br>
 Erros metodológicos são frequentes em estudos, relatórios técnicos e até publicações acadêmicas.<br>
 Nesta seção, listamos os principais problemas e explicamos suas consequências.</p>
 <hr>
-<section id="usar-apenas-processos-decididos-complete-case" class="level2">
-<h2 class="anchored" data-anchor-id="usar-apenas-processos-decididos-complete-case">1. Usar apenas processos decididos (complete case)</h2>
+<section id="usar-apenas-processos-decididos-complete-case" class="level3" data-number="14.14.1">
+<h3 data-number="14.14.1" class="anchored" data-anchor-id="usar-apenas-processos-decididos-complete-case"><span class="header-section-number">14.14.1</span> Usar apenas processos decididos (complete case)</h3>
 <p>Este é o erro mais frequente.</p>
 <p>Excluir processos pendentes <strong>viola o pressuposto</strong> de que dados censurados devem ser mantidos na análise.<br>
 Isso produz:</p>
@@ -1086,8 +1378,8 @@ Isso produz:</p>
 <p>Em execuções fiscais, por exemplo, excluir pendentes pode mascarar risco de prescrição.</p>
 <hr>
 </section>
-<section id="tratar-riscos-concorrentes-como-censura" class="level2">
-<h2 class="anchored" data-anchor-id="tratar-riscos-concorrentes-como-censura">2. Tratar riscos concorrentes como censura</h2>
+<section id="tratar-riscos-concorrentes-como-censura" class="level3" data-number="14.14.2">
+<h3 data-number="14.14.2" class="anchored" data-anchor-id="tratar-riscos-concorrentes-como-censura"><span class="header-section-number">14.14.2</span> Tratar riscos concorrentes como censura</h3>
 <p>Quando há extinção, acordo ou perda de objeto, <strong>o evento principal não pode mais ocorrer</strong>.</p>
 <p>Classificar esses eventos como censura leva a:</p>
 <ul>
@@ -1102,8 +1394,8 @@ Isso produz:</p>
 <p>O método correto nesses casos é <strong>CIF</strong> (e Fine–Gray para modelagem).</p>
 <hr>
 </section>
-<section id="misturar-eventos-diferentes-no-mesmo-desfecho" class="level2">
-<h2 class="anchored" data-anchor-id="misturar-eventos-diferentes-no-mesmo-desfecho">3. Misturar eventos diferentes no mesmo desfecho</h2>
+<section id="misturar-eventos-diferentes-no-mesmo-desfecho" class="level3" data-number="14.14.3">
+<h3 data-number="14.14.3" class="anchored" data-anchor-id="misturar-eventos-diferentes-no-mesmo-desfecho"><span class="header-section-number">14.14.3</span> Misturar eventos diferentes no mesmo desfecho</h3>
 <p>Outro erro comum é:</p>
 <ul>
 <li>tratar sentença, acordo e extinção como um único “evento”.</li>
@@ -1119,8 +1411,8 @@ Isso produz:</p>
 <p>O resultado é estatisticamente incorreto e juridicamente inútil.</p>
 <hr>
 </section>
-<section id="usar-apenas-médias-ou-medianas-brutas" class="level2">
-<h2 class="anchored" data-anchor-id="usar-apenas-médias-ou-medianas-brutas">4. Usar apenas médias ou medianas brutas</h2>
+<section id="usar-apenas-médias-ou-medianas-brutas" class="level3" data-number="14.14.4">
+<h3 data-number="14.14.4" class="anchored" data-anchor-id="usar-apenas-médias-ou-medianas-brutas"><span class="header-section-number">14.14.4</span> Usar apenas médias ou medianas brutas</h3>
 <p>A média de duração é <strong>sempre enviesada</strong> quando há:</p>
 <ul>
 <li>censura,</li>
@@ -1132,8 +1424,8 @@ Isso produz:</p>
 <p>A <strong>mediana KM</strong> é muito mais informativa que a mediana simples.</p>
 <hr>
 </section>
-<section id="não-verificar-proporcionalidade-dos-riscos-modelo-de-cox" class="level2">
-<h2 class="anchored" data-anchor-id="não-verificar-proporcionalidade-dos-riscos-modelo-de-cox">5. Não verificar proporcionalidade dos riscos (modelo de Cox)</h2>
+<section id="não-verificar-proporcionalidade-dos-riscos-modelo-de-cox" class="level3" data-number="14.14.5">
+<h3 data-number="14.14.5" class="anchored" data-anchor-id="não-verificar-proporcionalidade-dos-riscos-modelo-de-cox"><span class="header-section-number">14.14.5</span> Não verificar proporcionalidade dos riscos (modelo de Cox)</h3>
 <p>Cox pressupõe riscos proporcionais ao longo do tempo.</p>
 <p>Ignorar isso pode levar a:</p>
 <ul>
@@ -1144,7 +1436,15 @@ Isso produz:</p>
 <li>conclusões inconsistentes.</li>
 </ul>
 <p>O teste recomendado é:</p>
-<p>cox.zph(coxmod) ````</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cox.zph</span>(coxmod) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       chisq df    p
+x1     0.797  1 0.37
+x2     0.330  1 0.57
+GLOBAL 1.129  2 0.57</code></pre>
+</div>
+</div>
 <p>Se a proporcionalidade falhar:</p>
 <ul>
 <li>estratificar o modelo,</li>
@@ -1153,8 +1453,8 @@ Isso produz:</p>
 </ul>
 <hr>
 </section>
-<section id="ignorar-heterogeneidade-institucional" class="level2">
-<h2 class="anchored" data-anchor-id="ignorar-heterogeneidade-institucional">6. Ignorar heterogeneidade institucional</h2>
+<section id="ignorar-heterogeneidade-institucional" class="level3" data-number="14.14.6">
+<h3 data-number="14.14.6" class="anchored" data-anchor-id="ignorar-heterogeneidade-institucional"><span class="header-section-number">14.14.6</span> Ignorar heterogeneidade institucional</h3>
 <p>Processos judiciais variam enormemente entre:</p>
 <ul>
 <li>varas,</li>
@@ -1173,8 +1473,8 @@ Isso produz:</p>
 <p>Modelos devem sempre incluir covariáveis relevantes.</p>
 <hr>
 </section>
-<section id="não-documentar-o-critério-de-corte-temporal" class="level2">
-<h2 class="anchored" data-anchor-id="não-documentar-o-critério-de-corte-temporal">7. Não documentar o critério de corte temporal</h2>
+<section id="não-documentar-o-critério-de-corte-temporal" class="level3" data-number="14.14.7">
+<h3 data-number="14.14.7" class="anchored" data-anchor-id="não-documentar-o-critério-de-corte-temporal"><span class="header-section-number">14.14.7</span> Não documentar o critério de corte temporal</h3>
 <p>Pesquisadores costumam usar datas de extração diferentes sem informar:</p>
 <ul>
 <li>a data de corte da censura,</li>
@@ -1189,8 +1489,8 @@ Isso produz:</p>
 </ul>
 <hr>
 </section>
-<section id="falta-de-consistência-na-definição-do-evento" class="level2">
-<h2 class="anchored" data-anchor-id="falta-de-consistência-na-definição-do-evento">8. Falta de consistência na definição do evento</h2>
+<section id="falta-de-consistência-na-definição-do-evento" class="level3" data-number="14.14.8">
+<h3 data-number="14.14.8" class="anchored" data-anchor-id="falta-de-consistência-na-definição-do-evento"><span class="header-section-number">14.14.8</span> Falta de consistência na definição do evento</h3>
 <p>É essencial definir claramente:</p>
 <ul>
 <li>o que é “evento”,</li>
@@ -1206,8 +1506,8 @@ Isso produz:</p>
 </ul>
 <hr>
 </section>
-<section id="desconsiderar-mudanças-institucionais-ao-longo-do-tempo" class="level2">
-<h2 class="anchored" data-anchor-id="desconsiderar-mudanças-institucionais-ao-longo-do-tempo">9. Desconsiderar mudanças institucionais ao longo do tempo</h2>
+<section id="desconsiderar-mudanças-institucionais-ao-longo-do-tempo" class="level3" data-number="14.14.9">
+<h3 data-number="14.14.9" class="anchored" data-anchor-id="desconsiderar-mudanças-institucionais-ao-longo-do-tempo"><span class="header-section-number">14.14.9</span> Desconsiderar mudanças institucionais ao longo do tempo</h3>
 <p>Mudanças como:</p>
 <ul>
 <li>implantação do PJe,</li>
@@ -1220,8 +1520,8 @@ Isso produz:</p>
 <p>Análises longitudinais precisam incorporar esses efeitos para evitar conclusões equivocadas.</p>
 <hr>
 </section>
-<section id="conclusão-da-parte-xiii" class="level2">
-<h2 class="anchored" data-anchor-id="conclusão-da-parte-xiii">10. Conclusão da Parte XIII</h2>
+<section id="conclusão-da-parte-xiii" class="level3" data-number="14.14.10">
+<h3 data-number="14.14.10" class="anchored" data-anchor-id="conclusão-da-parte-xiii"><span class="header-section-number">14.14.10</span> Conclusão da Parte XIII</h3>
 <p>Evitar esses erros é essencial para:</p>
 <ul>
 <li>análises confiáveis,</li>
@@ -1237,245 +1537,249 @@ Isso produz:</p>
 <li>heterogeneidade institucional,</li>
 <li>e pressupostos dos modelos de sobrevivência.</li>
 </ul>
+
+
 </section>
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
-        return container.innerHTML
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1483,185 +1787,173 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./lineares.html" class="pagination-link" aria-label="Modelos Lineares">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Modelos Lineares</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./outrosmodelos.html" class="pagination-link" aria-label="Modelos Avançados">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Modelos Avançados</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
