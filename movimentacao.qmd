@@ -193,7 +193,7 @@ Observa-se um **total de 8432 processos**, mas alguns podem estar **duplicados**
 
 ```{r eval = TRUE, message=FALSE, warning=FALSE}
 # Vamos verificar se existem processos duplicados. 
-julgador_uni <- julgador %>% 
+julgador_uni <- julgador |> 
   distinct(processo, .keep_all = TRUE)
 nrow(julgador_uni) # numero total de processos únicos
 nrow(julgador) - nrow(julgador_uni) # número de processos duplicados
@@ -762,7 +762,7 @@ Observe que agora temos um total de **4595 processos** com baixa definitiva. Ini
 Os 4.595 representam bem a realidade dos processos de júri? Ao considerar esses processos estamos selecionando um grupo específico?
 :::
 
-\*\* Juntando os Dados de Baixa com o Banco Final\*\*
+**Juntando os Dados de Baixa com o Banco Final**
 
 Agora, vamos juntar com o nosso banco de dados, que criamos na parte anterior, e que contém assunto, classe e as demais variáveis binárias que geramos.
 
@@ -1927,13 +1927,11 @@ resumo_quantil <- dados_q |>
   summarise(
     media_tempo_total = mean(deco_denuncia, na.rm = TRUE),
     media_soma_remessa = mean(soma_remessa, na.rm = TRUE),
-    media_soma_ordinatorio = mean(soma_decorrencia, na.rm = TRUE),
+    media_soma_ordinatorio = mean(soma_ordinatorios, na.rm = TRUE),
     media_n_remessa = mean(n_remessa, na.rm = TRUE),
     media_n_ordinatorio = mean(n_ordinatorio, na.rm = TRUE),
     .by = quantil_tempo
   )
-
-
 
 resumo_quantil |>
   arrange(quantil_tempo) |>  
