@@ -1,0 +1,141 @@
+---
+title: "Oficina sobre análise de sobrevivência"
+format: html
+execute:
+    eval: false
+    echo: true
+    warning: true
+---
+
+# Oficina em análise de sobrevivência
+
+## Instalar pacotes
+
+
+```{r}
+install.packages("ggsurvfit")
+```
+
+## Criar um projeto
+
+```{r}
+usethis::create_project("nome_do_seu_projeto")
+```
+
+## Criar pastas necessárias
+
+```{r}
+dir.create("data-raw")
+dir.create("data")
+dir.create("docs")
+dir.create("R")
+dir.create("data-raw/datajud")
+```
+
+## Criar primeiro script
+
+```{r}
+file.create("R/rotina_1_coleta.R")
+```
+
+## Carregar pacotes necessários
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(ggsurvfit)
+library(datajud)
+```
+
+## Definir os parâmetros para coleta dos dados
+
+
+```{r}
+
+tribunal <- "tjto"
+classe <- "282" ## Dei exemplo do juri
+grau <- "G1"
+assunto <- ""
+distribuicao <- "26"
+julgado <- ""
+data_inicial <- "2020-01-01"
+data_final <- "2025-11-25"
+
+tamanho_pagina <- 1000
+diretorio <- "data-raw/datajud"
+```
+
+## Baixar os dados do datajud
+
+
+```{r}
+set_api_key(get_default_api_key())
+
+results <- search_processes_paginated(
+  tribunal = tribunal,
+  classe_codigo = classe,           
+  grau = grau,                      
+  dataAjuizamento_start = data_inicial,
+  dataAjuizamento_end = data_final,
+  page_size = tamanho_pagina,        
+  max_pages = NULL,                 # Buscar todas as páginas disponíveis
+  save_pages = TRUE,                # Salvar cada página
+  output_dir = diretorio
+)
+```
+
+## Ler arquivos
+```{r}
+
+arquivos <- list.files(diretorio, full.names = TRUE)
+
+juri <- map_dfr(arquivos, readRDS)
+
+```
+
+## Limpeza
+
+```{r}
+
+juri <- juri |> 
+   clean_names()
+
+juri <- juri |> 
+   mutate(data_ajuizamento = str_sub(data_ajuizamento, 1,8) |> ymd()) |> 
+   mutate(data_atualizacao = str_sub(data_hora_ultima_atualizacao, 1,10) |>  ymd(), .after = tribunal)
+
+juri <- juri |> 
+  slice_max(order_by = data_atualizacao,  by = c(numero_processo), n = 1)
+
+```
+
+
+## Classe
+
+
+```{r}
+classe <- juri |> 
+     select(numero_processo, classe) |> 
+     unnest_longer(classe) |> 
+     mutate(classe = unlist(classe)) |> 
+     distinct() |> 
+     pivot_wider(names_from = "classe_id", values_from = "classe" )
+
+```
+
+## Órgão julgador
+
+
+```{r}
+orgao_julgador <- juri |> 
+    select(numero_processo, orgao_julgador) |> 
+    unnest_longer(orgao_julgador) |> 
+    mutate(orgao_julgador = unlist(orgao_julgador)) |> 
+     distinct() |> 
+     pivot_wider(names_from = "orgao_julgador_id", values_from = "orgao_julgador" ) |> 
+     clean_names() |> 
+     unnest(cols = c(codigo_municipio_ibge, codigo, nome))
+     
+
+```
+
