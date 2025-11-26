@@ -278,3 +278,37 @@ survfit(Surv(tempo) ~ entrancia , data = base) |>
   add_quantile(y_value = 0.6, color = "gray50", linewidth = 0.75) +
   scale_ggsurvfit()
 ```
+
+
+### Função de incidência cumulativa
+
+
+```{r}
+
+base <- base |> 
+   mutate(evento = as.factor(evento))
+````
+
+```{r}
+fit_cs1 <- survfit(Surv(tempo, evento) ~ entrancia, data = base)
+
+```
+
+
+```{r}
+ggcuminc(fit_cs1,
+outcome = "decidido") +
+  add_confidence_interval() +
+  labs(title="Risco para decidido")
+
+```
+
+
+```{r}
+ggcuminc(fit_cs1,
+outcome = "impedido") +
+  add_confidence_interval() +
+  labs(title="Risco para impedido")
+
+```
+
