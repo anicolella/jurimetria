@@ -139,3 +139,13 @@ orgao_julgador <- juri |>
 
 ```
 
+## Assuntos
+
+
+```{r}
+  assuntos <- juri |> 
+     select(numero_processo, assuntos) |> 
+     unnest_longer(assuntos) |> 
+     unnest_wider(assuntos, names_sep = "_") |> 
+     unnest_wider(assuntos_1)
+```
