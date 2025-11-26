@@ -14,6 +14,7 @@ execute:
 
 ```{r}
 install.packages("ggsurvfit")
+remotes::install_github("courtsbr/JurisMiner")
 ```
 
 ## Criar um projeto
