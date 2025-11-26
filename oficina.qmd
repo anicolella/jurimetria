@@ -167,3 +167,81 @@ orgao_julgador <- juri |>
       tempo_movimentacao(data_hora) |> 
       rename(numero_processo  = processo)
 ```
+
+### Seleção dos códigos de eventos de interesse
+
+```{r}
+codigos_eventos <- c(10953, 10961,11877) # pronúncia, impronúncia e absolvição sumária
+codigos_impeditivos <- c(1042,12769, 12735)  ## Morte, desclassificação, extinção da punibilidade
+
+codigos_todos <- c(codigos_eventos, codigos_impeditivos)
+
+eventos <- movimentacao |> 
+      filter(codigo %in% codigos_todos)
+
+eventos <- eventos |> 
+   mutate(evento = case_when(
+      codigo %in% codigos_eventos ~ "decidido",
+      TRUE ~ "impedido"
+  
+   ))
+
+eventos <- eventos |> 
+     select(numero_processo, tempo = decorrencia_acumulada, evento)
+
+
+```
+
+### Filtros dos casos censurados
+
+
+```{r}
+nao_eventos <- movimentacao |> 
+          anti_join(eventos, by = "numero_processo")
+
+
+nao_eventos <- nao_eventos |> 
+     group_by(numero_processo) |> 
+    filter(decorrencia_acumulada == max(decorrencia_acumulada))
+
+nao_eventos <- nao_eventos |> 
+  mutate(evento = "censurado") |> 
+  select(numero_processo, tempo = decorrencia_acumulada, evento)
+
+```
+
+### Junção dos dois
+
+
+```{r}
+eventos <- eventos |> 
+     bind_rows(nao_eventos)
+eventos <- eventos |> 
+  distinct()
+```
+
+### Filtrar assuntos 
+
+```{r}
+
+codigos_assuntos <- c(3372, 5555,3370, 12091, 11244) ## homicidio qualificado, simples, tentado e feminicidio.
+
+assuntos_selecionados <- assuntos |> 
+  filter(assuntos_codigo %in% codigos_assuntos)
+
+assuntos_selecionados <- assuntos_selecionados |> 
+     select(numero_processo, crime = assuntos_nome) |> 
+     mutate(crime = JurisMiner::snakecase(crime)) |> 
+     distinct(numero_processo, .keep_all = TRUE)
+
+```
+
+
+## Junta as duas tabelas
+```{r}
+
+base <- eventos |> 
+    inner_join(assuntos_selecionados, by = "numero_processo")
+
+
+```
