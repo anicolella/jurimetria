@@ -149,3 +149,4 @@ orgao_julgador <- juri |>
      unnest_wider(assuntos, names_sep = "_") |> 
      unnest_wider(assuntos_1)
 ```
+
