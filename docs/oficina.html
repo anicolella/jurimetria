@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Alexandre Nicolella">
-<meta name="author" content="José de Jesus Filho">
-<meta name="dcterms.date" content="2025-06-10">
 
-<title>Estruturação e Análise de Dados Jurídicos</title>
+<title>17&nbsp; Oficina sobre análise de sobrevivência – Estruturação e Análise de Dados Jurídicos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./autores.html" rel="next">
+<link href="./movimentacao.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -114,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Prefácio</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./oficina.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Oficina sobre análise de sobrevivência</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -136,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Prefácio</span></span></a>
   </div>
 </li>
@@ -232,7 +264,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./oficina.html" class="sidebar-item-text sidebar-link">
+  <a href="./oficina.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Oficina sobre análise de sobrevivência</span></span></a>
   </div>
 </li>
@@ -246,12 +278,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#prefácio" id="toc-prefácio" class="nav-link active" data-scroll-target="#prefácio"><span class="header-section-number">1</span> Prefácio</a>
+  <li><a href="#oficina-em-análise-de-sobrevivência" id="toc-oficina-em-análise-de-sobrevivência" class="nav-link active" data-scroll-target="#oficina-em-análise-de-sobrevivência"><span class="header-section-number">18</span> Oficina em análise de sobrevivência</a>
   <ul class="collapse">
-  <li><a href="#motivação" id="toc-motivação" class="nav-link" data-scroll-target="#motivação"><span class="header-section-number">1.1</span> <strong>Motivação</strong></a></li>
-  <li><a href="#a-quem-se-destina" id="toc-a-quem-se-destina" class="nav-link" data-scroll-target="#a-quem-se-destina"><span class="header-section-number">1.2</span> <strong>A quem se Destina</strong></a></li>
-  <li><a href="#objetivo" id="toc-objetivo" class="nav-link" data-scroll-target="#objetivo"><span class="header-section-number">1.3</span> <strong>Objetivo</strong></a></li>
-  <li><a href="#abordagem" id="toc-abordagem" class="nav-link" data-scroll-target="#abordagem"><span class="header-section-number">1.4</span> <strong>Abordagem</strong></a></li>
+  <li><a href="#instalar-pacotes" id="toc-instalar-pacotes" class="nav-link" data-scroll-target="#instalar-pacotes"><span class="header-section-number">18.1</span> Instalar pacotes</a></li>
+  <li><a href="#criar-um-projeto" id="toc-criar-um-projeto" class="nav-link" data-scroll-target="#criar-um-projeto"><span class="header-section-number">18.2</span> Criar um projeto</a></li>
+  <li><a href="#criar-pastas-necessárias" id="toc-criar-pastas-necessárias" class="nav-link" data-scroll-target="#criar-pastas-necessárias"><span class="header-section-number">18.3</span> Criar pastas necessárias</a></li>
+  <li><a href="#criar-primeiro-script" id="toc-criar-primeiro-script" class="nav-link" data-scroll-target="#criar-primeiro-script"><span class="header-section-number">18.4</span> Criar primeiro script</a></li>
+  <li><a href="#carregar-pacotes-necessários" id="toc-carregar-pacotes-necessários" class="nav-link" data-scroll-target="#carregar-pacotes-necessários"><span class="header-section-number">18.5</span> Carregar pacotes necessários</a></li>
+  <li><a href="#definir-os-parâmetros-para-coleta-dos-dados" id="toc-definir-os-parâmetros-para-coleta-dos-dados" class="nav-link" data-scroll-target="#definir-os-parâmetros-para-coleta-dos-dados"><span class="header-section-number">18.6</span> Definir os parâmetros para coleta dos dados</a></li>
+  <li><a href="#baixar-os-dados-do-datajud" id="toc-baixar-os-dados-do-datajud" class="nav-link" data-scroll-target="#baixar-os-dados-do-datajud"><span class="header-section-number">18.7</span> Baixar os dados do datajud</a></li>
+  <li><a href="#ler-arquivos" id="toc-ler-arquivos" class="nav-link" data-scroll-target="#ler-arquivos"><span class="header-section-number">18.8</span> Ler arquivos</a></li>
+  <li><a href="#limpeza" id="toc-limpeza" class="nav-link" data-scroll-target="#limpeza"><span class="header-section-number">18.9</span> Limpeza</a></li>
+  <li><a href="#classe" id="toc-classe" class="nav-link" data-scroll-target="#classe"><span class="header-section-number">18.10</span> Classe</a></li>
+  <li><a href="#órgão-julgador" id="toc-órgão-julgador" class="nav-link" data-scroll-target="#órgão-julgador"><span class="header-section-number">18.11</span> Órgão julgador</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -261,42 +300,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Estruturação e Análise de Dados Jurídicos</h1>
-<p class="subtitle lead">Fundamentos de Jurimetria e IA</p>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Oficina sobre análise de sobrevivência</span></h1>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Authors</div>
-  <div class="quarto-title-meta-heading">Affiliations</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Alexandre Nicolella </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Unversidade de São Paulo (USP)
-          </p>
-      </div>
-    <div class="quarto-title-meta-contents">
-    <p class="author">José de Jesus Filho </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            PUC/SP
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 10, 2025</p>
-    </div>
-  </div>
+    
   
     
   </div>
@@ -306,27 +317,124 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="prefácio" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Prefácio</h1>
-<section id="motivação" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="motivação"><span class="header-section-number">1.1</span> <strong>Motivação</strong></h2>
-<p>Acreditamos que a jurimetria é fundamental para a construção de um sistema de Justiça mais eficiente, transparente e orientado por evidências. Ela permite transformar a forma como o Direito é praticado, tornando operadores mais conscientes e capazes de lidar com um mundo em que dados e tecnologia assumem papel central nas decisões.</p>
-<p>A jurimetria e a inteligência artificial aplicadas ao Direito contribuem decisivamente para melhorar a atuação institucional, desde a formulação de políticas públicas até a condução de processos e a gestão estratégica de casos. Elas ajudam a compreender padrões, prever resultados, priorizar recursos e tornar o trabalho jurídico mais objetivo e fundamentado.</p>
+<section id="oficina-em-análise-de-sobrevivência" class="level1" data-number="18">
+<h1 data-number="18"><span class="header-section-number">18</span> Oficina em análise de sobrevivência</h1>
+<section id="instalar-pacotes" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="instalar-pacotes"><span class="header-section-number">18.1</span> Instalar pacotes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggsurvfit"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="a-quem-se-destina" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="a-quem-se-destina"><span class="header-section-number">1.2</span> <strong>A quem se Destina</strong></h2>
-<p>Este <em>Curso de Extensão em Jurimetria</em> foi desenvolvido em parceria com a Escola Superior da Magistratura Tocantinense (ESMAT), com especial foco os membros e servidores do Tribunal de Justiça de Tocantins.</p>
+<section id="criar-um-projeto" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="criar-um-projeto"><span class="header-section-number">18.2</span> Criar um projeto</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_project</span>(<span class="st">"nome_do_seu_projeto"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="objetivo" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="objetivo"><span class="header-section-number">1.3</span> <strong>Objetivo</strong></h2>
-<p>O curso tem como objetivo proporcionar aos membros e servidores do TJTO a formação necessária para compreender e aplicar os fundamentos e as práticas iniciais da jurimetria e da inteligência artificial aplicada ao Direito. Busca-se capacitar os participantes a percorrer o ciclo jurimétrico completo, desde a formulação da pergunta de pesquisa até a apresentação dos resultados, por meio de atividades que envolvem desenho de pesquisa, coleta e listagem de processos, estruturação, limpeza e organização de dados, além da visualização inicial das informações e aplicação de modelos estatísticos.</p>
+<section id="criar-pastas-necessárias" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="criar-pastas-necessárias"><span class="header-section-number">18.3</span> Criar pastas necessárias</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"data-raw"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"data"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"docs"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"R"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"data-raw/datajud"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="abordagem" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="abordagem"><span class="header-section-number">1.4</span> <strong>Abordagem</strong></h2>
-<p>O curso adotará uma abordagem essencialmente prática, baseada em casos reais e na metodologia de aprendizagem baseada em casos empíricos. A proposta é que os participantes desenvolvam seus próprios estudos a partir de questões-problema selecionadas, estruturando e analisando dados reais sob orientação dos docentes.</p>
-<p>Além da fundamentação teórica oferecida pelo professor, as atividades serão organizadas para que os participantes aprendam por meio da elaboração e resolução de um caso concreto, percorrendo o ciclo jurimétrico completo, da formulação da pergunta de pesquisa à visualização, análise e apresentação dos resultados.</p>
-<p>O curso enfatiza a integração entre Direito, Estatística e Computação, com o objetivo de capacitar os participantes a aplicar métodos quantitativos na análise jurídica e a desenvolver interpretações que contribuam para decisões mais eficientes e justas.</p>
-<p>A etapa inicial, realizada em formato on-line, será voltada à introdução das ferramentas e à formação dos grupos de trabalho. Em seguida, as aulas presenciais se concentrarão no desenvolvimento prático dos projetos, culminando na apresentação final das análises produzidas pelos alunos.</p>
+<section id="criar-primeiro-script" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="criar-primeiro-script"><span class="header-section-number">18.4</span> Criar primeiro script</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.create</span>(<span class="st">"R/rotina_1_coleta.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="carregar-pacotes-necessários" class="level2" data-number="18.5">
+<h2 data-number="18.5" class="anchored" data-anchor-id="carregar-pacotes-necessários"><span class="header-section-number">18.5</span> Carregar pacotes necessários</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggsurvfit)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datajud)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="definir-os-parâmetros-para-coleta-dos-dados" class="level2" data-number="18.6">
+<h2 data-number="18.6" class="anchored" data-anchor-id="definir-os-parâmetros-para-coleta-dos-dados"><span class="header-section-number">18.6</span> Definir os parâmetros para coleta dos dados</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tribunal <span class="ot">&lt;-</span> <span class="st">"tjto"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>classe <span class="ot">&lt;-</span> <span class="st">"282"</span> <span class="do">## Dei exemplo do juri</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>grau <span class="ot">&lt;-</span> <span class="st">"G1"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>assunto <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>distribuicao <span class="ot">&lt;-</span> <span class="st">"26"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>julgado <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>data_inicial <span class="ot">&lt;-</span> <span class="st">"2020-01-01"</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>data_final <span class="ot">&lt;-</span> <span class="st">"2025-11-25"</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>tamanho_pagina <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>diretorio <span class="ot">&lt;-</span> <span class="st">"data-raw/datajud"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="baixar-os-dados-do-datajud" class="level2" data-number="18.7">
+<h2 data-number="18.7" class="anchored" data-anchor-id="baixar-os-dados-do-datajud"><span class="header-section-number">18.7</span> Baixar os dados do datajud</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_api_key</span>(<span class="fu">get_default_api_key</span>())</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">search_processes_paginated</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">tribunal =</span> tribunal,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">classe_codigo =</span> classe,           </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">grau =</span> grau,                      </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">dataAjuizamento_start =</span> data_inicial,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">dataAjuizamento_end =</span> data_final,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">page_size =</span> tamanho_pagina,        </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">max_pages =</span> <span class="cn">NULL</span>,                 <span class="co"># Buscar todas as páginas disponíveis</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">save_pages =</span> <span class="cn">TRUE</span>,                <span class="co"># Salvar cada página</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_dir =</span> diretorio</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ler-arquivos" class="level2" data-number="18.8">
+<h2 data-number="18.8" class="anchored" data-anchor-id="ler-arquivos"><span class="header-section-number">18.8</span> Ler arquivos</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>arquivos <span class="ot">&lt;-</span> <span class="fu">list.files</span>(diretorio, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>juri <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(arquivos, readRDS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="limpeza" class="level2" data-number="18.9">
+<h2 data-number="18.9" class="anchored" data-anchor-id="limpeza"><span class="header-section-number">18.9</span> Limpeza</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>juri <span class="ot">&lt;-</span> juri <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">clean_names</span>()</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>juri <span class="ot">&lt;-</span> juri <span class="sc">|&gt;</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">data_ajuizamento =</span> <span class="fu">str_sub</span>(data_ajuizamento, <span class="dv">1</span>,<span class="dv">8</span>) <span class="sc">|&gt;</span> <span class="fu">ymd</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">data_atualizacao =</span> <span class="fu">str_sub</span>(data_hora_ultima_atualizacao, <span class="dv">1</span>,<span class="dv">10</span>) <span class="sc">|&gt;</span>  <span class="fu">ymd</span>(), <span class="at">.after =</span> tribunal)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>juri <span class="ot">&lt;-</span> juri <span class="sc">|&gt;</span> </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> data_atualizacao,  <span class="at">by =</span> <span class="fu">c</span>(numero_processo), <span class="at">n =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="classe" class="level2" data-number="18.10">
+<h2 data-number="18.10" class="anchored" data-anchor-id="classe"><span class="header-section-number">18.10</span> Classe</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>classe <span class="ot">&lt;-</span> juri <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">select</span>(numero_processo, classe) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">unnest_longer</span>(classe) <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">mutate</span>(<span class="at">classe =</span> <span class="fu">unlist</span>(classe)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>     <span class="fu">distinct</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"classe_id"</span>, <span class="at">values_from =</span> <span class="st">"classe"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="órgão-julgador" class="level2" data-number="18.11">
+<h2 data-number="18.11" class="anchored" data-anchor-id="órgão-julgador"><span class="header-section-number">18.11</span> Órgão julgador</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>orgao_julgador <span class="ot">&lt;-</span> juri <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(numero_processo, orgao_julgador) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest_longer</span>(orgao_julgador) <span class="sc">|&gt;</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">orgao_julgador =</span> <span class="fu">unlist</span>(orgao_julgador)) <span class="sc">|&gt;</span> </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>     <span class="fu">distinct</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"orgao_julgador_id"</span>, <span class="at">values_from =</span> <span class="st">"orgao_julgador"</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>     <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(codigo_municipio_ibge, codigo, nome))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
@@ -734,11 +842,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./movimentacao.html" class="pagination-link" aria-label="Aula Prática: Coleta e Análise de Dados sobre Homicídio Qualificado">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Aula Prática: Coleta e Análise de Dados sobre Homicídio Qualificado</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./autores.html" class="pagination-link" aria-label="Sobre os Autores">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Sobre os Autores</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

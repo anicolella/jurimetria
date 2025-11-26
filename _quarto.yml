@@ -53,6 +53,7 @@ book:
       #- interpretando.qmd
       #- dicionario.qmd
       #- references.qmd
+      - oficina.qmd
 
 
 bibliography: references.bib
