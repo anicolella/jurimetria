@@ -15,7 +15,7 @@
     "href": "oficina.html#instalar-pacotes",
     "title": "17  Oficina sobre análise de sobrevivência",
     "section": "18.1 Instalar pacotes",
-    "text": "18.1 Instalar pacotes\n\ninstall.packages(\"ggsurvfit\")",
+    "text": "18.1 Instalar pacotes\n\ninstall.packages(\"ggsurvfit\")\nremotes::install_github(\"courtsbr/JurisMiner\")",
     "crumbs": [
       "Home",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Oficina sobre análise de sobrevivência</span>"
@@ -147,7 +147,18 @@
     "href": "oficina.html#movimentação",
     "title": "17  Oficina sobre análise de sobrevivência",
     "section": "18.13 Movimentação",
-    "text": "18.13 Movimentação\n\n movimentacao &lt;- juri |&gt; \n      select(numero_processo, movimentos) |&gt; \n      unnest_longer(movimentos) |&gt; \n      unnest_wider(movimentos) |&gt; \n      clean_names() |&gt; \n      select(processo = numero_processo, codigo, nome, data_hora) |&gt; \n      mutate(data_hora = ymd_hms(data_hora, tz = \"America/Sao_Paulo\")) |&gt; \n      group_by(processo) |&gt; \n      arrange(desc(data_hora)) |&gt; \n      tempo_movimentacao(data_hora) |&gt; \n      rename(numero_processo  = processo)",
+    "text": "18.13 Movimentação\n\n movimentacao &lt;- juri |&gt; \n      select(numero_processo, movimentos) |&gt; \n      unnest_longer(movimentos) |&gt; \n      unnest_wider(movimentos) |&gt; \n      clean_names() |&gt; \n      select(processo = numero_processo, codigo, nome, data_hora) |&gt; \n      mutate(data_hora = ymd_hms(data_hora, tz = \"America/Sao_Paulo\")) |&gt; \n      group_by(processo) |&gt; \n      arrange(desc(data_hora)) |&gt; \n      tempo_movimentacao(data_hora) |&gt; \n      rename(numero_processo  = processo)\n\n\n18.13.1 Seleção dos códigos de eventos de interesse\n\ncodigos_eventos &lt;- c(10953, 10961,11877) # pronúncia, impronúncia e absolvição sumária\ncodigos_impeditivos &lt;- c(1042,12769, 12735)  ## Morte, desclassificação, extinção da punibilidade\n\ncodigos_todos &lt;- c(codigos_eventos, codigos_impeditivos)\n\neventos &lt;- movimentacao |&gt; \n      filter(codigo %in% codigos_todos)\n\neventos &lt;- eventos |&gt; \n   mutate(evento = case_when(\n      codigo %in% codigos_eventos ~ \"decidido\",\n      TRUE ~ \"impedido\"\n  \n   ))\n\neventos &lt;- eventos |&gt; \n     select(numero_processo, tempo = decorrencia_acumulada, evento)\n\n\n\n18.13.2 Filtros dos casos censurados\n\nnao_eventos &lt;- movimentacao |&gt; \n          anti_join(eventos, by = \"numero_processo\")\n\n\nnao_eventos &lt;- nao_eventos |&gt; \n     group_by(numero_processo) |&gt; \n    filter(decorrencia_acumulada == max(decorrencia_acumulada))\n\nnao_eventos &lt;- nao_eventos |&gt; \n  mutate(evento = \"censurado\") |&gt; \n  select(numero_processo, tempo = decorrencia_acumulada, evento)\n\n\n\n18.13.3 Junção dos dois\n\neventos &lt;- eventos |&gt; \n     bind_rows(nao_eventos)\neventos &lt;- eventos |&gt; \n  distinct()\n\n\n\n18.13.4 Filtrar assuntos\n\ncodigos_assuntos &lt;- c(3372, 5555,3370, 12091, 11244) ## homicidio qualificado, simples, tentado e feminicidio.\n\nassuntos_selecionados &lt;- assuntos |&gt; \n  filter(assuntos_codigo %in% codigos_assuntos)\n\nassuntos_selecionados &lt;- assuntos_selecionados |&gt; \n     select(numero_processo, crime = assuntos_nome) |&gt; \n     mutate(crime = JurisMiner::snakecase(crime)) |&gt; \n     distinct(numero_processo, .keep_all = TRUE)",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Oficina sobre análise de sobrevivência</span>"
+    ]
+  },
+  {
+    "objectID": "oficina.html#junta-as-duas-tabelas",
+    "href": "oficina.html#junta-as-duas-tabelas",
+    "title": "17  Oficina sobre análise de sobrevivência",
+    "section": "18.14 Junta as duas tabelas",
+    "text": "18.14 Junta as duas tabelas\n\nbase &lt;- eventos |&gt; \n    inner_join(assuntos_selecionados, by = \"numero_processo\")",
     "crumbs": [
       "Home",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Oficina sobre análise de sobrevivência</span>"
