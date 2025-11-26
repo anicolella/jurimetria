@@ -141,6 +141,18 @@ orgao_julgador <- juri |>
 
 ```
 
+```{r}
+entrancias <- jsonlite::fromJSON("https://gist.githubusercontent.com/jjesusfilho/c150c20e5c1b45bf62d3057e78d86652/raw/99d21a002abb09d0f7b82f4241f9c25e8b0a29b9/entrancias_tjto.json")
+
+entrancias <- entrancias |> 
+     mutate(codigo = as.character(codigo)) |> 
+     select(codigo, entrancia)
+
+orgao_julgador <- orgao_julgador  |> 
+        left_join(entrancias, by = "codigo")
+
+```
+
 ## Assuntos
 
 ```{r}
@@ -240,8 +252,12 @@ assuntos_selecionados <- assuntos_selecionados |>
 ## Junta as duas tabelas
 ```{r}
 
-base <- eventos |> 
-    inner_join(assuntos_selecionados, by = "numero_processo")
+orgao_entrancia <- orgao_julgador |> 
+  select(numero_processo,  entrancia) |> 
+  distinct()
 
+base <- eventos |> 
+    inner_join(assuntos_selecionados, by = "numero_processo") |> 
+    inner_join(orgao_entrancia)
 
 ```
