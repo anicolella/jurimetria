@@ -45,6 +45,7 @@ library(tidyverse)
 library(janitor)
 library(ggsurvfit)
 library(datajud)
+library(JurisMiner)
 ```
 
 ## Definir os parâmetros para coleta dos dados
@@ -141,7 +142,6 @@ orgao_julgador <- juri |>
 
 ## Assuntos
 
-
 ```{r}
   assuntos <- juri |> 
      select(numero_processo, assuntos) |> 
@@ -150,3 +150,19 @@ orgao_julgador <- juri |>
      unnest_wider(assuntos_1)
 ```
 
+## Movimentação
+
+
+```{r}
+ movimentacao <- juri |> 
+      select(numero_processo, movimentos) |> 
+      unnest_longer(movimentos) |> 
+      unnest_wider(movimentos) |> 
+      clean_names() |> 
+      select(processo = numero_processo, codigo, nome, data_hora) |> 
+      mutate(data_hora = ymd_hms(data_hora, tz = "America/Sao_Paulo")) |> 
+      group_by(processo) |> 
+      arrange(desc(data_hora)) |> 
+      tempo_movimentacao(data_hora) |> 
+      rename(numero_processo  = processo)
+```
