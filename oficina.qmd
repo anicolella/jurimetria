@@ -262,6 +262,11 @@ base <- eventos |>
 
 ```
 
+
+```{r echo = FALSE, eval = TRUE}
+base <- jsonlite::fromJSON("https://gist.githubusercontent.com/jjesusfilho/98ebd6fcb7ec63cd42373245d51ba53d/raw/ac422d2ea1a94204ec23e99a77d75472bd094924/basetjto.json")
+```
+
 ## Curva de Kaplan Meier 
 
 ```{r}
