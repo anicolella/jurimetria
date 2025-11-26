@@ -261,3 +261,14 @@ base <- eventos |>
     inner_join(orgao_entrancia)
 
 ```
+
+## Curva de Kaplan Meier 
+
+```{r}
+survfit(Surv(tempo) ~ entrancia , data = base) |>
+  ggsurvfit(linewidth = 1) +
+  add_confidence_interval() +
+  add_risktable() +
+  add_quantile(y_value = 0.6, color = "gray50", linewidth = 0.75) +
+  scale_ggsurvfit()
+```
