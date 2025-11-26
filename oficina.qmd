@@ -265,6 +265,7 @@ base <- eventos |>
 
 ```{r echo = FALSE, eval = TRUE}
 library(ggsurvfit)
+library(tidyverse)
 base <- jsonlite::fromJSON("https://gist.githubusercontent.com/jjesusfilho/98ebd6fcb7ec63cd42373245d51ba53d/raw/ac422d2ea1a94204ec23e99a77d75472bd094924/basetjto.json")
 ```
 
@@ -283,19 +284,19 @@ survfit(Surv(tempo) ~ entrancia , data = base) |>
 ### Função de incidência cumulativa
 
 
-```{r}
+```{r eval = TRUE}
 
 base <- base |> 
    mutate(evento = as.factor(evento))
-````
+```
 
-```{r}
+```{r eval = TRUE}
 fit_cs1 <- survfit(Surv(tempo, evento) ~ entrancia, data = base)
 
 ```
 
 
-```{r}
+```{r eval=TRUE}
 ggcuminc(fit_cs1,
 outcome = "decidido") +
   add_confidence_interval() +
@@ -304,7 +305,7 @@ outcome = "decidido") +
 ```
 
 
-```{r}
+```{r eval=TRUE}
 ggcuminc(fit_cs1,
 outcome = "impedido") +
   add_confidence_interval() +
