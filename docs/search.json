@@ -163,5 +163,16 @@
       "Home",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Oficina sobre análise de sobrevivência</span>"
     ]
+  },
+  {
+    "objectID": "oficina.html#curva-de-kaplan-meier",
+    "href": "oficina.html#curva-de-kaplan-meier",
+    "title": "17  Oficina sobre análise de sobrevivência",
+    "section": "18.15 Curva de Kaplan Meier",
+    "text": "18.15 Curva de Kaplan Meier\n\nsurvfit(Surv(tempo) ~ entrancia , data = base) |&gt;\n  ggsurvfit(linewidth = 1) +\n  add_confidence_interval() +\n  add_risktable() +\n  add_quantile(y_value = 0.6, color = \"gray50\", linewidth = 0.75) +\n  scale_ggsurvfit()",
+    "crumbs": [
+      "Home",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Oficina sobre análise de sobrevivência</span>"
+    ]
   }
 ]
